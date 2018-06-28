@@ -1,0 +1,68 @@
+[Version]
+Signature="$Windows NT$"
+Provider=%COMPANY%
+DriverVer=05/23/2014,1.0.1.0
+Class=Ports
+ClassGuid={4D36E978-E325-11CE-BFC1-08002BE10318}
+LayoutFile=layout.inf
+CatalogFile=spectra_serial.cat
+
+[Manufacturer] 
+%SPECTRA%=DeviceList,NTx86,NTamd64
+
+;--------------------------------------------------------------------------
+; Files
+;--------------------------------------------------------------------------
+
+[DestinationDirs]
+DefaultDestDir=12
+
+;--------------------------------------------------------------------------
+; Device driver (x86)
+;--------------------------------------------------------------------------
+[DriverInstall.NTx86]
+include=mdmcpq.inf
+CopyFiles=FakeModemCopyFileSection
+AddReg=LowerFilterAddReg
+AddReg=DriverInstall.NTx86.AddReg
+
+[DriverInstall.NTx86.Services]
+include=mdmcpq.inf
+AddService=usbser, 0x00000002, LowerFilter_Service_Inst
+
+[DriverInstall.NTx86.AddReg]
+HKR,,EnumPropPages32,,"MsPorts.dll,SerialPortPropPageProvider"
+
+;--------------------------------------------------------------------------
+; Device driver (x64)
+;--------------------------------------------------------------------------
+[DriverInstall.NTamd64]
+include=mdmcpq.inf
+CopyFiles=FakeModemCopyFileSection
+AddReg=DriverInstall.NTamd64.AddReg
+
+[DriverInstall.NTamd64.Services]
+include=mdmcpq.inf
+AddService=usbser, 0x00000002, LowerFilter_Service_Inst
+
+[DriverInstall.NTamd64.AddReg]
+HKR,,EnumPropPages32,,"MsPorts.dll,SerialPortPropPageProvider"
+
+;--------------------------------------------------------------------------
+; DeviceList
+;--------------------------------------------------------------------------
+[DeviceList.NTx86]
+%USBSerialPort%	= DriverInstall,USB\VID_123A&PID_0001
+
+[DeviceList.NTamd64]
+%USBSerialPort%	= DriverInstall,USB\VID_123A&PID_0001
+
+;--------------------------------------------------------------------------
+; Strings
+;--------------------------------------------------------------------------
+
+[Strings]
+COMPANY="Spectra Technologies Holdings Co. Ltd."
+SPECTRA="SPECTRA Technologies"
+USBSerialPort="Spectra USB Serial Port"
+SERVICE="USB Serial Driver"

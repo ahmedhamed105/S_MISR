@@ -1,0 +1,3674 @@
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-a5
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"message.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.global	KRemoteDLHeader
+  19              		.global	KRemoteDLSch
+  20              		.global	KItemNotEnabled
+  21              		.global	KTIDFileFailed
+  22              		.global	KDLLFileFailed
+  23              		.global	KServerKeyError
+  24              		.global	KDownloadFailed
+  25              		.global	KLogInFailed
+  26              		.global	KReturn2Base
+  27              		.global	KLoadExtraParam
+  28              		.global	KLoadEMVParam
+  29              		.global	KLoadEMVKey
+  30              		.global	KEDCInit
+  31              		.global	KDnloadSchedule
+  32              		.global	KDnloadBIN
+  33              		.global	KTryAgainTO
+  34              		.global	KTryAgainNC
+  35              		.global	KNoLine
+  36              		.global	KLineOccup
+  37              		.global	KTryAgainLC
+  38              		.global	KLineBusy
+  39              		.global	KHostOffline
+  40              		.global	KNoDialTone
+  41              		.global	KInvalidResp
+  42              		.global	KUpdateRequest
+  43              		.global	KUnSupportCard
+  44              		.global	KSysError
+  45              		.global	KCardBlocked
+  46              		.global	KCardReadErr
+  47              		.global	KInvalidPWD
+  48              		.global	KNoTransRec
+  49              		.global	KNotAllowed
+  50              		.global	KWrongMAC
+  51              		.global	KSwipeCard
+  52              		.global	KHostNotFound
+  53              		.global	KInvalidTerm
+  54              		.global	KInvalidTrace
+  55              		.global	KInvalidSeq
+  56              		.global	KECRCommErr
+  57              		.global	KDataError
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 2
+
+
+  58              		.global	KBadProcCode
+  59              		.global	KTxnCanceled
+  60              		.global	KLowBattery
+  61              		.global	KTxnAccepted
+  62              		.global	KTxnNotFound
+  63              		.global	KBadAmount
+  64              		.global	KComplted
+  65              		.global	KEcrSslMode
+  66              		.global	KNonBtModel
+  67              		.global	KExtraMsgLen
+  68              		.global	KHostSslKeyIdx
+  69              		.global	KHostPort
+  70              		.global	KHostIP
+  71              		.global	KHostParamHdr
+  72              		.global	KNonWifiModel
+  73              		.global	KInitPPPPort
+  74              		.global	KInitPPPIP
+  75              		.global	KInitPPPIPHdr
+  76              		.global	KPPPPwd
+  77              		.global	KPPPUser
+  78              		.global	KFTPServerKey
+  79              		.global	KFTPPwd
+  80              		.global	KFTPUser
+  81              		.global	KCheckInSecNum
+  82              		.global	KCheckInPriNum
+  83              		.global	KDefaultApp
+  84              		.global	KEcrPort
+  85              		.global	KPPadPort
+  86              		.global	KPrintStis
+  87              		.global	KDebugMode
+  88              		.global	KTrainingMode
+  89              		.global	KCurrBatchNo
+  90              		.global	KDefaultAmt
+  91              		.global	KReturnBaseTO
+  92              		.global	KInitNII
+  93              		.global	KInitConnTime
+  94              		.global	KPABX
+  95              		.global	KCancelExit
+  96              		.global	KInitEnterSave
+  97              		.global	KInitSpeed
+  98              		.global	KInitPort
+  99              		.global	KInitIP
+ 100              		.global	KInitIPHdr
+ 101              		.global	KTimeDelay
+ 102              		.global	KDialModeStr
+ 103              		.global	KInitSecNum
+ 104              		.global	KInitPriNum
+ 105              		.global	KInitModeStr
+ 106              		.global	KChkSumErr
+ 107              		.global	KTermId
+ 108              		.global	KSelAcquirer
+ 109              		.global	KNoPaper
+ 110              		.global	KHighTemp
+ 111              		.global	KManualCut
+ 112              		.global	KPrintingMsg
+ 113              		.global	KPlsSwipe
+ 114              		.global	KTestMSR
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 3
+
+
+ 115              		.global	KInsertICC
+ 116              		.global	KTestICC
+ 117              		.global	KSamTest
+ 118              		.global	KCommWait
+ 119              		.global	KCommRcvd
+ 120              		.global	KCommSend
+ 121              		.global	KConnected
+ 122              		.global	KCommConnectWait
+ 123              		.global	KCommNoCancel
+ 124              		.global	KDialNum
+ 125              		.global	KPassword
+ 126              		.global	KUserName
+ 127              		.global	KApn
+ 128              		.global	KProcessing
+ 129              		.global	KSettleBatch
+ 130              		.global	KADataReset
+ 131              		.global	KResetEMVData
+ 132              		.global	KDataReseted
+ 133              		.global	KConfirm
+ 134              		.global	KResetAppData
+ 135              		.global	KGPRSHdr
+ 136              		.global	KUpdated
+ 137              		.global	KDateTime
+ 138              		.global	KReboot
+ 139              		.global	KEnterSave
+ 140              		.global	KKbdBacklight
+ 141              		.global	KDHCPHdr
+ 142              		.global	KIpHdr
+ 143              		.global	KSystemInit
+ 144              		.global	KVirginInit
+ 145              		.section	.rodata
+ 146              		.type	KRemoteDLHeader, %object
+ 147              		.size	KRemoteDLHeader, 17
+ 148              	KRemoteDLHeader:
+ 149 0000 52454D4F 		.ascii	"REMOTE DOWNLOAD \000"
+ 149      54452044 
+ 149      4F574E4C 
+ 149      4F414420 
+ 149      00
+ 150              		.type	KRemoteDLSch, %object
+ 151              		.size	KRemoteDLSch, 17
+ 152              	KRemoteDLSch:
+ 153 0011 44574E4C 		.ascii	"DWNLOAD SCHEDULE\000"
+ 153      4F414420 
+ 153      53434845 
+ 153      44554C45 
+ 153      00
+ 154              		.type	KItemNotEnabled, %object
+ 155              		.size	KItemNotEnabled, 33
+ 156              	KItemNotEnabled:
+ 157 0022 20202020 		.ascii	"                ITEM NOT ENABLED\000"
+ 157      20202020 
+ 157      20202020 
+ 157      20202020 
+ 157      4954454D 
+ 158              		.type	KTIDFileFailed, %object
+ 159              		.size	KTIDFileFailed, 33
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 4
+
+
+ 160              	KTIDFileFailed:
+ 161 0043 20202020 		.ascii	"                 TID DL. FAILED \000"
+ 161      20202020 
+ 161      20202020 
+ 161      20202020 
+ 161      20544944 
+ 162              		.type	KDLLFileFailed, %object
+ 163              		.size	KDLLFileFailed, 33
+ 164              	KDLLFileFailed:
+ 165 0064 20202020 		.ascii	"                 DLL DL. FAILED \000"
+ 165      20202020 
+ 165      20202020 
+ 165      20202020 
+ 165      20444C4C 
+ 166              		.type	KServerKeyError, %object
+ 167              		.size	KServerKeyError, 33
+ 168              	KServerKeyError:
+ 169 0085 20202020 		.ascii	"                 SERVER KEY ERR \000"
+ 169      20202020 
+ 169      20202020 
+ 169      20202020 
+ 169      20534552 
+ 170              		.type	KDownloadFailed, %object
+ 171              		.size	KDownloadFailed, 33
+ 172              	KDownloadFailed:
+ 173 00a6 20202020 		.ascii	"                DOWNLOAD  FAILED\000"
+ 173      20202020 
+ 173      20202020 
+ 173      20202020 
+ 173      444F574E 
+ 174              		.type	KLogInFailed, %object
+ 175              		.size	KLogInFailed, 33
+ 176              	KLogInFailed:
+ 177 00c7 20202020 		.ascii	"                  LOGIN FAILED  \000"
+ 177      20202020 
+ 177      20202020 
+ 177      20202020 
+ 177      20204C4F 
+ 178              		.type	KReturn2Base, %object
+ 179              		.size	KReturn2Base, 32
+ 180              	KReturn2Base:
+ 181 00e8 20202020 		.ascii	"                RETURN TO BASE \000"
+ 181      20202020 
+ 181      20202020 
+ 181      20202020 
+ 181      52455455 
+ 182              		.type	KLoadExtraParam, %object
+ 183              		.size	KLoadExtraParam, 17
+ 184              	KLoadExtraParam:
+ 185 0108 4C4F4144 		.ascii	"LOAD EXTRA PARAM\000"
+ 185      20455854 
+ 185      52412050 
+ 185      4152414D 
+ 185      00
+ 186              		.type	KLoadEMVParam, %object
+ 187              		.size	KLoadEMVParam, 15
+ 188              	KLoadEMVParam:
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 5
+
+
+ 189 0119 4C4F4144 		.ascii	"LOAD EMV PARAM\000"
+ 189      20454D56 
+ 189      20504152 
+ 189      414D00
+ 190              		.type	KLoadEMVKey, %object
+ 191              		.size	KLoadEMVKey, 13
+ 192              	KLoadEMVKey:
+ 193 0128 4C4F4144 		.ascii	"LOAD EMV KEY\000"
+ 193      20454D56 
+ 193      204B4559 
+ 193      00
+ 194              		.type	KEDCInit, %object
+ 195              		.size	KEDCInit, 17
+ 196              	KEDCInit:
+ 197 0135 20202020 		.ascii	"      INITIALIZE\000"
+ 197      2020494E 
+ 197      49544941 
+ 197      4C495A45 
+ 197      00
+ 198              		.type	KDnloadSchedule, %object
+ 199              		.size	KDnloadSchedule, 17
+ 200              	KDnloadSchedule:
+ 201 0146 2052454D 		.ascii	" REMOTE DOWNLOAD\000"
+ 201      4F544520 
+ 201      444F574E 
+ 201      4C4F4144 
+ 201      00
+ 202              		.type	KDnloadBIN, %object
+ 203              		.size	KDnloadBIN, 17
+ 204              	KDnloadBIN:
+ 205 0157 20202020 		.ascii	"        BIN FILE\000"
+ 205      20202020 
+ 205      42494E20 
+ 205      46494C45 
+ 205      00
+ 206              		.type	KTryAgainTO, %object
+ 207              		.size	KTryAgainTO, 33
+ 208              	KTryAgainTO:
+ 209 0168 20202020 		.ascii	"                PLS TRY AGAIN-TO\000"
+ 209      20202020 
+ 209      20202020 
+ 209      20202020 
+ 209      504C5320 
+ 210              		.type	KTryAgainNC, %object
+ 211              		.size	KTryAgainNC, 33
+ 212              	KTryAgainNC:
+ 213 0189 20202020 		.ascii	"                PLS TRY AGAIN-NC\000"
+ 213      20202020 
+ 213      20202020 
+ 213      20202020 
+ 213      504C5320 
+ 214              		.type	KNoLine, %object
+ 215              		.size	KNoLine, 33
+ 216              	KNoLine:
+ 217 01aa 20202020 		.ascii	"                    NO LINE     \000"
+ 217      20202020 
+ 217      20202020 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 6
+
+
+ 217      20202020 
+ 217      20202020 
+ 218              		.type	KLineOccup, %object
+ 219              		.size	KLineOccup, 33
+ 220              	KLineOccup:
+ 221 01cb 20202020 		.ascii	"                 LINE  OCCUPIED \000"
+ 221      20202020 
+ 221      20202020 
+ 221      20202020 
+ 221      204C494E 
+ 222              		.type	KTryAgainLC, %object
+ 223              		.size	KTryAgainLC, 33
+ 224              	KTryAgainLC:
+ 225 01ec 20202020 		.ascii	"                PLS TRY AGAIN-LC\000"
+ 225      20202020 
+ 225      20202020 
+ 225      20202020 
+ 225      504C5320 
+ 226              		.type	KLineBusy, %object
+ 227              		.size	KLineBusy, 33
+ 228              	KLineBusy:
+ 229 020d 20202020 		.ascii	"                   LINE  BUSY   \000"
+ 229      20202020 
+ 229      20202020 
+ 229      20202020 
+ 229      2020204C 
+ 230              		.type	KHostOffline, %object
+ 231              		.size	KHostOffline, 33
+ 232              	KHostOffline:
+ 233 022e 20202020 		.ascii	"                  HOST OFFLINE  \000"
+ 233      20202020 
+ 233      20202020 
+ 233      20202020 
+ 233      2020484F 
+ 234              		.type	KNoDialTone, %object
+ 235              		.size	KNoDialTone, 33
+ 236              	KNoDialTone:
+ 237 024f 20202020 		.ascii	"                  NO DIAL TONE  \000"
+ 237      20202020 
+ 237      20202020 
+ 237      20202020 
+ 237      20204E4F 
+ 238              		.type	KInvalidResp, %object
+ 239              		.size	KInvalidResp, 33
+ 240              	KInvalidResp:
+ 241 0270 20202020 		.ascii	"                CALL HELP - IC  \000"
+ 241      20202020 
+ 241      20202020 
+ 241      20202020 
+ 241      43414C4C 
+ 242              		.type	KUpdateRequest, %object
+ 243              		.size	KUpdateRequest, 33
+ 244              	KUpdateRequest:
+ 245 0291 20202020 		.ascii	"                 UPDATE REQUEST \000"
+ 245      20202020 
+ 245      20202020 
+ 245      20202020 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 7
+
+
+ 245      20555044 
+ 246              		.type	KUnSupportCard, %object
+ 247              		.size	KUnSupportCard, 33
+ 248              	KUnSupportCard:
+ 249 02b2 20202020 		.ascii	"                UNSUPPORTED CARD\000"
+ 249      20202020 
+ 249      20202020 
+ 249      20202020 
+ 249      554E5355 
+ 250              		.type	KSysError, %object
+ 251              		.size	KSysError, 33
+ 252              	KSysError:
+ 253 02d3 20202020 		.ascii	"                  SYSTEM ERROR  \000"
+ 253      20202020 
+ 253      20202020 
+ 253      20202020 
+ 253      20205359 
+ 254              		.type	KCardBlocked, %object
+ 255              		.size	KCardBlocked, 33
+ 256              	KCardBlocked:
+ 257 02f4 20202020 		.ascii	"                  CARD BLOCKED  \000"
+ 257      20202020 
+ 257      20202020 
+ 257      20202020 
+ 257      20204341 
+ 258              		.type	KCardReadErr, %object
+ 259              		.size	KCardReadErr, 33
+ 260              	KCardReadErr:
+ 261 0315 20202020 		.ascii	"                CARD READ ERROR \000"
+ 261      20202020 
+ 261      20202020 
+ 261      20202020 
+ 261      43415244 
+ 262              		.type	KInvalidPWD, %object
+ 263              		.size	KInvalidPWD, 33
+ 264              	KInvalidPWD:
+ 265 0336 20202020 		.ascii	"                INVALID PASSWORD\000"
+ 265      20202020 
+ 265      20202020 
+ 265      20202020 
+ 265      494E5641 
+ 266              		.type	KNoTransRec, %object
+ 267              		.size	KNoTransRec, 33
+ 268              	KNoTransRec:
+ 269 0357 20202020 		.ascii	"                NO TRANS. RECORD\000"
+ 269      20202020 
+ 269      20202020 
+ 269      20202020 
+ 269      4E4F2054 
+ 270              		.type	KNotAllowed, %object
+ 271              		.size	KNotAllowed, 33
+ 272              	KNotAllowed:
+ 273 0378 20202020 		.ascii	"                  NOT ALLOWED   \000"
+ 273      20202020 
+ 273      20202020 
+ 273      20202020 
+ 273      20204E4F 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 8
+
+
+ 274              		.type	KWrongMAC, %object
+ 275              		.size	KWrongMAC, 33
+ 276              	KWrongMAC:
+ 277 0399 20202020 		.ascii	"                  MAC MISMATCH  \000"
+ 277      20202020 
+ 277      20202020 
+ 277      20202020 
+ 277      20204D41 
+ 278              		.type	KSwipeCard, %object
+ 279              		.size	KSwipeCard, 33
+ 280              	KSwipeCard:
+ 281 03ba 20202020 		.ascii	"                 PLS SWIPE CARD \000"
+ 281      20202020 
+ 281      20202020 
+ 281      20202020 
+ 281      20504C53 
+ 282              		.type	KHostNotFound, %object
+ 283              		.size	KHostNotFound, 33
+ 284              	KHostNotFound:
+ 285 03db 20202020 		.ascii	"                 HOST NOT FOUND \000"
+ 285      20202020 
+ 285      20202020 
+ 285      20202020 
+ 285      20484F53 
+ 286              		.type	KInvalidTerm, %object
+ 287              		.size	KInvalidTerm, 33
+ 288              	KInvalidTerm:
+ 289 03fc 20202020 		.ascii	"                INVALID TERMINAL\000"
+ 289      20202020 
+ 289      20202020 
+ 289      20202020 
+ 289      494E5641 
+ 290              		.type	KInvalidTrace, %object
+ 291              		.size	KInvalidTrace, 33
+ 292              	KInvalidTrace:
+ 293 041d 20202020 		.ascii	"                CALL HELP - IS  \000"
+ 293      20202020 
+ 293      20202020 
+ 293      20202020 
+ 293      43414C4C 
+ 294              		.type	KInvalidSeq, %object
+ 295              		.size	KInvalidSeq, 33
+ 296              	KInvalidSeq:
+ 297 043e 20202020 		.ascii	"                CALL HELP - IR  \000"
+ 297      20202020 
+ 297      20202020 
+ 297      20202020 
+ 297      43414C4C 
+ 298              		.type	KECRCommErr, %object
+ 299              		.size	KECRCommErr, 33
+ 300              	KECRCommErr:
+ 301 045f 20202020 		.ascii	"                ECR COMM. ERROR \000"
+ 301      20202020 
+ 301      20202020 
+ 301      20202020 
+ 301      45435220 
+ 302              		.type	KDataError, %object
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 9
+
+
+ 303              		.size	KDataError, 33
+ 304              	KDataError:
+ 305 0480 20202020 		.ascii	"                   DATA ERROR   \000"
+ 305      20202020 
+ 305      20202020 
+ 305      20202020 
+ 305      20202044 
+ 306              		.type	KBadProcCode, %object
+ 307              		.size	KBadProcCode, 33
+ 308              	KBadProcCode:
+ 309 04a1 20202020 		.ascii	"                BAD PROCESS CODE\000"
+ 309      20202020 
+ 309      20202020 
+ 309      20202020 
+ 309      42414420 
+ 310              		.type	KTxnCanceled, %object
+ 311              		.size	KTxnCanceled, 33
+ 312              	KTxnCanceled:
+ 313 04c2 20202020 		.ascii	"                TRANS. CANCELLED\000"
+ 313      20202020 
+ 313      20202020 
+ 313      20202020 
+ 313      5452414E 
+ 314              		.type	KLowBattery, %object
+ 315              		.size	KLowBattery, 33
+ 316              	KLowBattery:
+ 317 04e3 20202020 		.ascii	"                  LOW BATTERY   \000"
+ 317      20202020 
+ 317      20202020 
+ 317      20202020 
+ 317      20204C4F 
+ 318              		.type	KTxnAccepted, %object
+ 319              		.size	KTxnAccepted, 33
+ 320              	KTxnAccepted:
+ 321 0504 20202020 		.ascii	"                TRANS. ACCEPTED \000"
+ 321      20202020 
+ 321      20202020 
+ 321      20202020 
+ 321      5452414E 
+ 322              		.type	KTxnNotFound, %object
+ 323              		.size	KTxnNotFound, 33
+ 324              	KTxnNotFound:
+ 325 0525 20202020 		.ascii	"                TRACE NOT FOUND \000"
+ 325      20202020 
+ 325      20202020 
+ 325      20202020 
+ 325      54524143 
+ 326              		.type	KBadAmount, %object
+ 327              		.size	KBadAmount, 33
+ 328              	KBadAmount:
+ 329 0546 20202020 		.ascii	"                 INVALID AMOUNT \000"
+ 329      20202020 
+ 329      20202020 
+ 329      20202020 
+ 329      20494E56 
+ 330              		.type	KComplted, %object
+ 331              		.size	KComplted, 33
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 10
+
+
+ 332              	KComplted:
+ 333 0567 20202020 		.ascii	"                TRANS. ACCEPTED \000"
+ 333      20202020 
+ 333      20202020 
+ 333      20202020 
+ 333      5452414E 
+ 334              		.type	KEcrSslMode, %object
+ 335              		.size	KEcrSslMode, 14
+ 336              	KEcrSslMode:
+ 337 0588 45435220 		.ascii	"ECR SSL Mode:\000"
+ 337      53534C20 
+ 337      4D6F6465 
+ 337      3A00
+ 338              		.type	KNonBtModel, %object
+ 339              		.size	KNonBtModel, 14
+ 340              	KNonBtModel:
+ 341 0596 4E6F6E2D 		.ascii	"Non-BT Model!\000"
+ 341      4254204D 
+ 341      6F64656C 
+ 341      2100
+ 342              		.type	KExtraMsgLen, %object
+ 343              		.size	KExtraMsgLen, 12
+ 344              	KExtraMsgLen:
+ 345 05a4 322D4279 		.ascii	"2-Byte Len:\000"
+ 345      7465204C 
+ 345      656E3A00 
+ 346              		.type	KHostSslKeyIdx, %object
+ 347              		.size	KHostSslKeyIdx, 12
+ 348              	KHostSslKeyIdx:
+ 349 05b0 53534C20 		.ascii	"SSL KeyIdx:\000"
+ 349      4B657949 
+ 349      64783A00 
+ 350              		.type	KHostPort, %object
+ 351              		.size	KHostPort, 6
+ 352              	KHostPort:
+ 353 05bc 506F7274 		.ascii	"Port:\000"
+ 353      3A00
+ 354              		.type	KHostIP, %object
+ 355              		.size	KHostIP, 6
+ 356              	KHostIP:
+ 357 05c2 49502020 		.ascii	"IP  :\000"
+ 357      3A00
+ 358              		.type	KHostParamHdr, %object
+ 359              		.size	KHostParamHdr, 11
+ 360              	KHostParamHdr:
+ 361 05c8 486F7374 		.ascii	"Host Param\000"
+ 361      20506172 
+ 361      616D00
+ 362              		.type	KNonWifiModel, %object
+ 363              		.size	KNonWifiModel, 16
+ 364              	KNonWifiModel:
+ 365 05d3 4E6F6E2D 		.ascii	"Non-Wifi Model!\000"
+ 365      57696669 
+ 365      204D6F64 
+ 365      656C2100 
+ 366              		.type	KInitPPPPort, %object
+ 367              		.size	KInitPPPPort, 15
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 11
+
+
+ 368              	KInitPPPPort:
+ 369 05e3 50505020 		.ascii	"PPP Init Port:\000"
+ 369      496E6974 
+ 369      20506F72 
+ 369      743A00
+ 370              		.type	KInitPPPIP, %object
+ 371              		.size	KInitPPPIP, 13
+ 372              	KInitPPPIP:
+ 373 05f2 50505020 		.ascii	"PPP Init IP:\000"
+ 373      496E6974 
+ 373      2049503A 
+ 373      00
+ 374              		.type	KInitPPPIPHdr, %object
+ 375              		.size	KInitPPPIPHdr, 17
+ 376              	KInitPPPIPHdr:
+ 377 05ff 50505020 		.ascii	"PPP Init IP Setu\000"
+ 377      496E6974 
+ 377      20495020 
+ 377      53657475 
+ 377      00
+ 378              		.type	KPPPPwd, %object
+ 379              		.size	KPPPPwd, 13
+ 380              	KPPPPwd:
+ 381 0610 50505020 		.ascii	"PPP PASSWORD\000"
+ 381      50415353 
+ 381      574F5244 
+ 381      00
+ 382              		.type	KPPPUser, %object
+ 383              		.size	KPPPUser, 14
+ 384              	KPPPUser:
+ 385 061d 50505020 		.ascii	"PPP USER NAME\000"
+ 385      55534552 
+ 385      204E414D 
+ 385      4500
+ 386              		.type	KFTPServerKey, %object
+ 387              		.size	KFTPServerKey, 15
+ 388              	KFTPServerKey:
+ 389 062b 46545020 		.ascii	"FTP SERVER KEY\000"
+ 389      53455256 
+ 389      4552204B 
+ 389      455900
+ 390              		.type	KFTPPwd, %object
+ 391              		.size	KFTPPwd, 13
+ 392              	KFTPPwd:
+ 393 063a 46545020 		.ascii	"FTP PASSWORD\000"
+ 393      50415353 
+ 393      574F5244 
+ 393      00
+ 394              		.type	KFTPUser, %object
+ 395              		.size	KFTPUser, 14
+ 396              	KFTPUser:
+ 397 0647 46545020 		.ascii	"FTP USER NAME\000"
+ 397      55534552 
+ 397      204E414D 
+ 397      4500
+ 398              		.type	KCheckInSecNum, %object
+ 399              		.size	KCheckInSecNum, 17
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 12
+
+
+ 400              	KCheckInSecNum:
+ 401 0655 43484543 		.ascii	"CHECKIN PHONE #2\000"
+ 401      4B494E20 
+ 401      50484F4E 
+ 401      45202332 
+ 401      00
+ 402              		.type	KCheckInPriNum, %object
+ 403              		.size	KCheckInPriNum, 17
+ 404              	KCheckInPriNum:
+ 405 0666 43484543 		.ascii	"CHECKIN PHONE #1\000"
+ 405      4B494E20 
+ 405      50484F4E 
+ 405      45202331 
+ 405      00
+ 406              		.type	KDefaultApp, %object
+ 407              		.size	KDefaultApp, 14
+ 408              	KDefaultApp:
+ 409 0677 44454641 		.ascii	"DEFAULT APP: \000"
+ 409      554C5420 
+ 409      4150503A 
+ 409      2000
+ 410              		.type	KEcrPort, %object
+ 411              		.size	KEcrPort, 11
+ 412              	KEcrPort:
+ 413 0685 45435220 		.ascii	"ECR PORT: \000"
+ 413      504F5254 
+ 413      3A2000
+ 414              		.type	KPPadPort, %object
+ 415              		.size	KPPadPort, 16
+ 416              	KPPadPort:
+ 417 0690 45585420 		.ascii	"EXT PPAD PORT: \000"
+ 417      50504144 
+ 417      20504F52 
+ 417      543A2000 
+ 418              		.type	KPrintStis, %object
+ 419              		.size	KPrintStis, 11
+ 420              	KPrintStis:
+ 421 06a0 5052494E 		.ascii	"PRINT STIS\000"
+ 421      54205354 
+ 421      495300
+ 422              		.type	KDebugMode, %object
+ 423              		.size	KDebugMode, 11
+ 424              	KDebugMode:
+ 425 06ab 44454255 		.ascii	"DEBUG MODE\000"
+ 425      47204D4F 
+ 425      444500
+ 426              		.type	KTrainingMode, %object
+ 427              		.size	KTrainingMode, 14
+ 428              	KTrainingMode:
+ 429 06b6 54524149 		.ascii	"TRAINING MODE\000"
+ 429      4E494E47 
+ 429      204D4F44 
+ 429      4500
+ 430              		.type	KCurrBatchNo, %object
+ 431              		.size	KCurrBatchNo, 17
+ 432              	KCurrBatchNo:
+ 433 06c4 42415443 		.ascii	"BATCH NO        \000"
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 13
+
+
+ 433      48204E4F 
+ 433      20202020 
+ 433      20202020 
+ 433      00
+ 434              		.type	KDefaultAmt, %object
+ 435              		.size	KDefaultAmt, 17
+ 436              	KDefaultAmt:
+ 437 06d5 44454641 		.ascii	"DEFAULT AMOUNT: \000"
+ 437      554C5420 
+ 437      414D4F55 
+ 437      4E543A20 
+ 437      00
+ 438              		.type	KReturnBaseTO, %object
+ 439              		.size	KReturnBaseTO, 33
+ 440              	KReturnBaseTO:
+ 441 06e6 52455455 		.ascii	"RETURN TO BASE  TIMEOUT - MINUTE\000"
+ 441      524E2054 
+ 441      4F204241 
+ 441      53452020 
+ 441      54494D45 
+ 442              		.type	KInitNII, %object
+ 443              		.size	KInitNII, 10
+ 444              	KInitNII:
+ 445 0707 494E4954 		.ascii	"INIT. NII\000"
+ 445      2E204E49 
+ 445      4900
+ 446              		.type	KInitConnTime, %object
+ 447              		.size	KInitConnTime, 17
+ 448              	KInitConnTime:
+ 449 0711 494E4954 		.ascii	"INIT. CONN. TIME\000"
+ 449      2E20434F 
+ 449      4E4E2E20 
+ 449      54494D45 
+ 449      00
+ 450              		.type	KPABX, %object
+ 451              		.size	KPABX, 17
+ 452              	KPABX:
+ 453 0722 50414258 		.ascii	"PABX ACCESS CODE\000"
+ 453      20414343 
+ 453      45535320 
+ 453      434F4445 
+ 453      00
+ 454              		.type	KCancelExit, %object
+ 455              		.size	KCancelExit, 15
+ 456              	KCancelExit:
+ 457 0733 45584954 		.ascii	"EXIT -- CANCEL\000"
+ 457      202D2D20 
+ 457      43414E43 
+ 457      454C00
+ 458              		.type	KInitEnterSave, %object
+ 459              		.size	KInitEnterSave, 15
+ 460              	KInitEnterSave:
+ 461 0742 456E7465 		.ascii	"Enter To Save!\000"
+ 461      7220546F 
+ 461      20536176 
+ 461      652100
+ 462              		.type	KInitSpeed, %object
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 14
+
+
+ 463              		.size	KInitSpeed, 7
+ 464              	KInitSpeed:
+ 465 0751 53706565 		.ascii	"Speed:\000"
+ 465      643A00
+ 466              		.type	KInitPort, %object
+ 467              		.size	KInitPort, 11
+ 468              	KInitPort:
+ 469 0758 496E6974 		.ascii	"Init Port:\000"
+ 469      20506F72 
+ 469      743A00
+ 470              		.type	KInitIP, %object
+ 471              		.size	KInitIP, 9
+ 472              	KInitIP:
+ 473 0763 496E6974 		.ascii	"Init IP:\000"
+ 473      2049503A 
+ 473      00
+ 474              		.type	KInitIPHdr, %object
+ 475              		.size	KInitIPHdr, 14
+ 476              	KInitIPHdr:
+ 477 076c 496E6974 		.ascii	"Init IP Setup\000"
+ 477      20495020 
+ 477      53657475 
+ 477      7000
+ 478              		.type	KTimeDelay, %object
+ 479              		.size	KTimeDelay, 17
+ 480              	KTimeDelay:
+ 481 077a 4153594E 		.ascii	"ASYNC DELAY TIME\000"
+ 481      43204445 
+ 481      4C415920 
+ 481      54494D45 
+ 481      00
+ 482              		.type	KDialModeStr, %object
+ 483              		.size	KDialModeStr, 12
+ 484              	KDialModeStr:
+ 485 078b 4449414C 		.ascii	"DIAL MODE :\000"
+ 485      204D4F44 
+ 485      45203A00 
+ 486              		.type	KInitSecNum, %object
+ 487              		.size	KInitSecNum, 17
+ 488              	KInitSecNum:
+ 489 0797 494E4954 		.ascii	"INIT SEC PHONE #\000"
+ 489      20534543 
+ 489      2050484F 
+ 489      4E452023 
+ 489      00
+ 490              		.type	KInitPriNum, %object
+ 491              		.size	KInitPriNum, 17
+ 492              	KInitPriNum:
+ 493 07a8 494E4954 		.ascii	"INIT PRI PHONE #\000"
+ 493      20505249 
+ 493      2050484F 
+ 493      4E452023 
+ 493      00
+ 494              		.type	KInitModeStr, %object
+ 495              		.size	KInitModeStr, 10
+ 496              	KInitModeStr:
+ 497 07b9 494E4954 		.ascii	"INIT MODE\000"
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 15
+
+
+ 497      204D4F44 
+ 497      4500
+ 498              		.type	KChkSumErr, %object
+ 499              		.size	KChkSumErr, 16
+ 500              	KChkSumErr:
+ 501 07c3 43484543 		.ascii	"CHECK SUM ERROR\000"
+ 501      4B205355 
+ 501      4D204552 
+ 501      524F5200 
+ 502              		.type	KTermId, %object
+ 503              		.size	KTermId, 13
+ 504              	KTermId:
+ 505 07d3 5445524D 		.ascii	"TERMINAL ID.\000"
+ 505      494E414C 
+ 505      2049442E 
+ 505      00
+ 506              		.type	KSelAcquirer, %object
+ 507              		.size	KSelAcquirer, 16
+ 508              	KSelAcquirer:
+ 509 07e0 53454C45 		.ascii	"SELECT ACQUIRER\000"
+ 509      43542041 
+ 509      43515549 
+ 509      52455200 
+ 510              		.type	KNoPaper, %object
+ 511              		.size	KNoPaper, 32
+ 512              	KNoPaper:
+ 513 07f0 20202020 		.ascii	"                  NO PAPER     \000"
+ 513      20202020 
+ 513      20202020 
+ 513      20202020 
+ 513      20204E4F 
+ 514              		.type	KHighTemp, %object
+ 515              		.size	KHighTemp, 33
+ 516              	KHighTemp:
+ 517 0810 20202020 		.ascii	"                    HIGH TEMP   \000"
+ 517      20202020 
+ 517      20202020 
+ 517      20202020 
+ 517      20202020 
+ 518              		.type	KManualCut, %object
+ 519              		.size	KManualCut, 33
+ 520              	KManualCut:
+ 521 0831 20202020 		.ascii	"                 PLS TEAR PAPER \000"
+ 521      20202020 
+ 521      20202020 
+ 521      20202020 
+ 521      20504C53 
+ 522              		.type	KPrintingMsg, %object
+ 523              		.size	KPrintingMsg, 33
+ 524              	KPrintingMsg:
+ 525 0852 20202020 		.ascii	"                  PRINTING...   \000"
+ 525      20202020 
+ 525      20202020 
+ 525      20202020 
+ 525      20205052 
+ 526              		.type	KPlsSwipe, %object
+ 527              		.size	KPlsSwipe, 15
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 16
+
+
+ 528              	KPlsSwipe:
+ 529 0873 504C5320 		.ascii	"PLS SWIPE CARD\000"
+ 529      53574950 
+ 529      45204341 
+ 529      524400
+ 530              		.type	KTestMSR, %object
+ 531              		.size	KTestMSR, 17
+ 532              	KTestMSR:
+ 533 0882 54524143 		.ascii	"TRACK 1,2,3 TEST\000"
+ 533      4B20312C 
+ 533      322C3320 
+ 533      54455354 
+ 533      00
+ 534              		.type	KInsertICC, %object
+ 535              		.size	KInsertICC, 15
+ 536              	KInsertICC:
+ 537 0893 494E5345 		.ascii	"INSERT IC CARD\000"
+ 537      52542049 
+ 537      43204341 
+ 537      524400
+ 538              		.type	KTestICC, %object
+ 539              		.size	KTestICC, 13
+ 540              	KTestICC:
+ 541 08a2 49432043 		.ascii	"IC CARD TEST\000"
+ 541      41524420 
+ 541      54455354 
+ 541      00
+ 542              		.type	KSamTest, %object
+ 543              		.size	KSamTest, 9
+ 544              	KSamTest:
+ 545 08af 53414D20 		.ascii	"SAM TEST\000"
+ 545      54455354 
+ 545      00
+ 546              		.type	KCommWait, %object
+ 547              		.size	KCommWait, 17
+ 548              	KCommWait:
+ 549 08b8 20202020 		.ascii	"    (Tx)    (Rx)\000"
+ 549      28547829 
+ 549      20202020 
+ 549      28527829 
+ 549      00
+ 550              		.type	KCommRcvd, %object
+ 551              		.size	KCommRcvd, 17
+ 552              	KCommRcvd:
+ 553 08c9 20202020 		.ascii	"            (Rx)\000"
+ 553      20202020 
+ 553      20202020 
+ 553      28527829 
+ 553      00
+ 554              		.type	KCommSend, %object
+ 555              		.size	KCommSend, 17
+ 556              	KCommSend:
+ 557 08da 20202020 		.ascii	"    (Tx)        \000"
+ 557      28547829 
+ 557      20202020 
+ 557      20202020 
+ 557      00
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 17
+
+
+ 558              		.type	KConnected, %object
+ 559              		.size	KConnected, 17
+ 560              	KConnected:
+ 561 08eb 20202020 		.ascii	"       CONNECTED\000"
+ 561      20202043 
+ 561      4F4E4E45 
+ 561      43544544 
+ 561      00
+ 562              		.type	KCommConnectWait, %object
+ 563              		.size	KCommConnectWait, 33
+ 564              	KCommConnectWait:
+ 565 08fc 20202020 		.ascii	"      CONNECTING      ...       \000"
+ 565      2020434F 
+ 565      4E4E4543 
+ 565      54494E47 
+ 565      20202020 
+ 566              		.type	KCommNoCancel, %object
+ 567              		.size	KCommNoCancel, 33
+ 568              	KCommNoCancel:
+ 569 091d 20202020 		.ascii	"                ** NO  CANCEL **\000"
+ 569      20202020 
+ 569      20202020 
+ 569      20202020 
+ 569      2A2A204E 
+ 570              		.type	KDialNum, %object
+ 571              		.size	KDialNum, 12
+ 572              	KDialNum:
+ 573 093e 4469616C 		.ascii	"Dial Number\000"
+ 573      204E756D 
+ 573      62657200 
+ 574              		.type	KPassword, %object
+ 575              		.size	KPassword, 14
+ 576              	KPassword:
+ 577 094a 55736572 		.ascii	"User Password\000"
+ 577      20506173 
+ 577      73776F72 
+ 577      6400
+ 578              		.type	KUserName, %object
+ 579              		.size	KUserName, 10
+ 580              	KUserName:
+ 581 0958 55736572 		.ascii	"User Name\000"
+ 581      204E616D 
+ 581      6500
+ 582              		.type	KApn, %object
+ 583              		.size	KApn, 4
+ 584              	KApn:
+ 585 0962 41504E00 		.ascii	"APN\000"
+ 586              		.type	KProcessing, %object
+ 587              		.size	KProcessing, 33
+ 588              	KProcessing:
+ 589 0966 20202020 		.ascii	"                 PROCESSING...  \000"
+ 589      20202020 
+ 589      20202020 
+ 589      20202020 
+ 589      2050524F 
+ 590              		.type	KSettleBatch, %object
+ 591              		.size	KSettleBatch, 33
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 18
+
+
+ 592              	KSettleBatch:
+ 593 0987 504C5320 		.ascii	"PLS SETTLE BATCHBEFORE CONTINUE.\000"
+ 593      53455454 
+ 593      4C452042 
+ 593      41544348 
+ 593      4245464F 
+ 594              		.type	KADataReset, %object
+ 595              		.size	KADataReset, 33
+ 596              	KADataReset:
+ 597 09a8 4170706C 		.ascii	"Appl. Data Reset PLEASE WAIT... \000"
+ 597      2E204461 
+ 597      74612052 
+ 597      65736574 
+ 597      20504C45 
+ 598              		.type	KResetEMVData, %object
+ 599              		.size	KResetEMVData, 15
+ 600              	KResetEMVData:
+ 601 09c9 52455345 		.ascii	"RESET EMV DATA\000"
+ 601      5420454D 
+ 601      56204441 
+ 601      544100
+ 602              		.type	KDataReseted, %object
+ 603              		.size	KDataReseted, 13
+ 604              	KDataReseted:
+ 605 09d8 44415441 		.ascii	"DATA RESET !\000"
+ 605      20524553 
+ 605      45542021 
+ 605      00
+ 606              		.type	KConfirm, %object
+ 607              		.size	KConfirm, 17
+ 608              	KConfirm:
+ 609 09e5 434F4E46 		.ascii	"CONFIRM ?  (Y/N)\000"
+ 609      49524D20 
+ 609      3F202028 
+ 609      592F4E29 
+ 609      00
+ 610              		.type	KResetAppData, %object
+ 611              		.size	KResetAppData, 17
+ 612              	KResetAppData:
+ 613 09f6 52455345 		.ascii	"RESET APPL. DATA\000"
+ 613      54204150 
+ 613      504C2E20 
+ 613      44415441 
+ 613      00
+ 614              		.type	KGPRSHdr, %object
+ 615              		.size	KGPRSHdr, 11
+ 616              	KGPRSHdr:
+ 617 0a07 47505253 		.ascii	"GPRS SETUP\000"
+ 617      20534554 
+ 617      555000
+ 618              		.type	KUpdated, %object
+ 619              		.size	KUpdated, 8
+ 620              	KUpdated:
+ 621 0a12 55504441 		.ascii	"UPDATED\000"
+ 621      54454400 
+ 622              		.type	KDateTime, %object
+ 623              		.size	KDateTime, 10
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 19
+
+
+ 624              	KDateTime:
+ 625 0a1a 44415445 		.ascii	"DATE/TIME\000"
+ 625      2F54494D 
+ 625      4500
+ 626              		.type	KReboot, %object
+ 627              		.size	KReboot, 33
+ 628              	KReboot:
+ 629 0a24 20205265 		.ascii	"  Reboot Now ?        (Y/N)     \000"
+ 629      626F6F74 
+ 629      204E6F77 
+ 629      203F2020 
+ 629      20202020 
+ 630              		.type	KEnterSave, %object
+ 631              		.size	KEnterSave, 15
+ 632              	KEnterSave:
+ 633 0a45 456E7465 		.ascii	"Enter To Save!\000"
+ 633      7220546F 
+ 633      20536176 
+ 633      652100
+ 634              		.type	KKbdBacklight, %object
+ 635              		.size	KKbdBacklight, 14
+ 636              	KKbdBacklight:
+ 637 0a54 4B626420 		.ascii	"Kbd BackLight\000"
+ 637      4261636B 
+ 637      4C696768 
+ 637      7400
+ 638              		.type	KDHCPHdr, %object
+ 639              		.size	KDHCPHdr, 11
+ 640              	KDHCPHdr:
+ 641 0a62 44484350 		.ascii	"DHCP SETUP\000"
+ 641      20534554 
+ 641      555000
+ 642              		.type	KIpHdr, %object
+ 643              		.size	KIpHdr, 9
+ 644              	KIpHdr:
+ 645 0a6d 49502053 		.ascii	"IP SETUP\000"
+ 645      45545550 
+ 645      00
+ 646              		.type	KSystemInit, %object
+ 647              		.size	KSystemInit, 33
+ 648              	KSystemInit:
+ 649 0a76 20205359 		.ascii	"  SYSTEM INIT.   PLEASE WAIT... \000"
+ 649      5354454D 
+ 649      20494E49 
+ 649      542E2020 
+ 649      20504C45 
+ 650              		.type	KVirginInit, %object
+ 651              		.size	KVirginInit, 33
+ 652              	KVirginInit:
+ 653 0a97 20202020 		.ascii	"    APM INIT.    PLEASE WAIT... \000"
+ 653      41504D20 
+ 653      494E4954 
+ 653      2E202020 
+ 653      20504C45 
+ 654              		.text
+ 655              	.Letext0:
+ 656              		.file 1 "../LibA5T1000/common.h"
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 20
+
+
+ 657              		.file 2 "src/message.c"
+ 658              		.file 3 "../LibA5T1000/system.h"
+ 659              		.section	.debug_info,"",%progbits
+ 660              	.Ldebug_info0:
+ 661 0000 870C0000 		.4byte	0xc87
+ 662 0004 0400     		.2byte	0x4
+ 663 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 664 000a 04       		.byte	0x4
+ 665 000b 01       		.uleb128 0x1
+ 666 000c 39010000 		.4byte	.LASF145
+ 667 0010 01       		.byte	0x1
+ 668 0011 0E030000 		.4byte	.LASF146
+ 669 0015 A2020000 		.4byte	.LASF147
+ 670 0019 00000000 		.4byte	.Ldebug_line0
+ 671 001d 02       		.uleb128 0x2
+ 672 001e 04       		.byte	0x4
+ 673 001f 05       		.byte	0x5
+ 674 0020 696E7400 		.ascii	"int\000"
+ 675 0024 03       		.uleb128 0x3
+ 676 0025 04       		.byte	0x4
+ 677 0026 07       		.byte	0x7
+ 678 0027 92060000 		.4byte	.LASF0
+ 679 002b 03       		.uleb128 0x3
+ 680 002c 01       		.byte	0x1
+ 681 002d 06       		.byte	0x6
+ 682 002e 09010000 		.4byte	.LASF1
+ 683 0032 03       		.uleb128 0x3
+ 684 0033 01       		.byte	0x1
+ 685 0034 08       		.byte	0x8
+ 686 0035 C0050000 		.4byte	.LASF2
+ 687 0039 03       		.uleb128 0x3
+ 688 003a 02       		.byte	0x2
+ 689 003b 05       		.byte	0x5
+ 690 003c D9050000 		.4byte	.LASF3
+ 691 0040 03       		.uleb128 0x3
+ 692 0041 02       		.byte	0x2
+ 693 0042 07       		.byte	0x7
+ 694 0043 D1030000 		.4byte	.LASF4
+ 695 0047 03       		.uleb128 0x3
+ 696 0048 04       		.byte	0x4
+ 697 0049 05       		.byte	0x5
+ 698 004a 21020000 		.4byte	.LASF5
+ 699 004e 03       		.uleb128 0x3
+ 700 004f 04       		.byte	0x4
+ 701 0050 07       		.byte	0x7
+ 702 0051 5C030000 		.4byte	.LASF6
+ 703 0055 03       		.uleb128 0x3
+ 704 0056 08       		.byte	0x8
+ 705 0057 05       		.byte	0x5
+ 706 0058 FB000000 		.4byte	.LASF7
+ 707 005c 03       		.uleb128 0x3
+ 708 005d 08       		.byte	0x8
+ 709 005e 07       		.byte	0x7
+ 710 005f 85000000 		.4byte	.LASF8
+ 711 0063 03       		.uleb128 0x3
+ 712 0064 04       		.byte	0x4
+ 713 0065 07       		.byte	0x7
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 21
+
+
+ 714 0066 86040000 		.4byte	.LASF9
+ 715 006a 03       		.uleb128 0x3
+ 716 006b 01       		.byte	0x1
+ 717 006c 06       		.byte	0x6
+ 718 006d 73060000 		.4byte	.LASF10
+ 719 0071 04       		.uleb128 0x4
+ 720 0072 E4030000 		.4byte	.LASF11
+ 721 0076 01       		.byte	0x1
+ 722 0077 0E       		.byte	0xe
+ 723 0078 32000000 		.4byte	0x32
+ 724 007c 04       		.uleb128 0x4
+ 725 007d C7020000 		.4byte	.LASF12
+ 726 0081 01       		.byte	0x1
+ 727 0082 10       		.byte	0x10
+ 728 0083 24000000 		.4byte	0x24
+ 729 0087 05       		.uleb128 0x5
+ 730 0088 71000000 		.4byte	0x71
+ 731 008c 97000000 		.4byte	0x97
+ 732 0090 06       		.uleb128 0x6
+ 733 0091 63000000 		.4byte	0x63
+ 734 0095 03       		.byte	0x3
+ 735 0096 00       		.byte	0
+ 736 0097 05       		.uleb128 0x5
+ 737 0098 71000000 		.4byte	0x71
+ 738 009c A7000000 		.4byte	0xa7
+ 739 00a0 06       		.uleb128 0x6
+ 740 00a1 63000000 		.4byte	0x63
+ 741 00a5 09       		.byte	0x9
+ 742 00a6 00       		.byte	0
+ 743 00a7 05       		.uleb128 0x5
+ 744 00a8 71000000 		.4byte	0x71
+ 745 00ac B7000000 		.4byte	0xb7
+ 746 00b0 06       		.uleb128 0x6
+ 747 00b1 63000000 		.4byte	0x63
+ 748 00b5 1F       		.byte	0x1f
+ 749 00b6 00       		.byte	0
+ 750 00b7 05       		.uleb128 0x5
+ 751 00b8 71000000 		.4byte	0x71
+ 752 00bc C7000000 		.4byte	0xc7
+ 753 00c0 06       		.uleb128 0x6
+ 754 00c1 63000000 		.4byte	0x63
+ 755 00c5 0F       		.byte	0xf
+ 756 00c6 00       		.byte	0
+ 757 00c7 05       		.uleb128 0x5
+ 758 00c8 71000000 		.4byte	0x71
+ 759 00cc D7000000 		.4byte	0xd7
+ 760 00d0 06       		.uleb128 0x6
+ 761 00d1 63000000 		.4byte	0x63
+ 762 00d5 07       		.byte	0x7
+ 763 00d6 00       		.byte	0
+ 764 00d7 05       		.uleb128 0x5
+ 765 00d8 71000000 		.4byte	0x71
+ 766 00dc E7000000 		.4byte	0xe7
+ 767 00e0 06       		.uleb128 0x6
+ 768 00e1 63000000 		.4byte	0x63
+ 769 00e5 0C       		.byte	0xc
+ 770 00e6 00       		.byte	0
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 22
+
+
+ 771 00e7 05       		.uleb128 0x5
+ 772 00e8 71000000 		.4byte	0x71
+ 773 00ec F7000000 		.4byte	0xf7
+ 774 00f0 06       		.uleb128 0x6
+ 775 00f1 63000000 		.4byte	0x63
+ 776 00f5 06       		.byte	0x6
+ 777 00f6 00       		.byte	0
+ 778 00f7 05       		.uleb128 0x5
+ 779 00f8 71000000 		.4byte	0x71
+ 780 00fc 07010000 		.4byte	0x107
+ 781 0100 06       		.uleb128 0x6
+ 782 0101 63000000 		.4byte	0x63
+ 783 0105 05       		.byte	0x5
+ 784 0106 00       		.byte	0
+ 785 0107 07       		.uleb128 0x7
+ 786 0108 02       		.byte	0x2
+ 787 0109 03       		.byte	0x3
+ 788 010a DD18     		.2byte	0x18dd
+ 789 010c 30010000 		.4byte	0x130
+ 790 0110 08       		.uleb128 0x8
+ 791 0111 87020000 		.4byte	.LASF13
+ 792 0115 00       		.sleb128 0
+ 793 0116 08       		.uleb128 0x8
+ 794 0117 A1050000 		.4byte	.LASF14
+ 795 011b 01       		.sleb128 1
+ 796 011c 08       		.uleb128 0x8
+ 797 011d 58000000 		.4byte	.LASF15
+ 798 0121 02       		.sleb128 2
+ 799 0122 08       		.uleb128 0x8
+ 800 0123 91030000 		.4byte	.LASF16
+ 801 0127 03       		.sleb128 3
+ 802 0128 08       		.uleb128 0x8
+ 803 0129 AE030000 		.4byte	.LASF17
+ 804 012d 8002     		.sleb128 256
+ 805 012f 00       		.byte	0
+ 806 0130 05       		.uleb128 0x5
+ 807 0131 71000000 		.4byte	0x71
+ 808 0135 40010000 		.4byte	0x140
+ 809 0139 06       		.uleb128 0x6
+ 810 013a 63000000 		.4byte	0x63
+ 811 013e 20       		.byte	0x20
+ 812 013f 00       		.byte	0
+ 813 0140 09       		.uleb128 0x9
+ 814 0141 44030000 		.4byte	.LASF18
+ 815 0145 02       		.byte	0x2
+ 816 0146 27       		.byte	0x27
+ 817 0147 51010000 		.4byte	0x151
+ 818 014b 05       		.uleb128 0x5
+ 819 014c 03       		.byte	0x3
+ 820 014d 00000000 		.4byte	KVirginInit
+ 821 0151 0A       		.uleb128 0xa
+ 822 0152 30010000 		.4byte	0x130
+ 823 0156 09       		.uleb128 0x9
+ 824 0157 E7070000 		.4byte	.LASF19
+ 825 015b 02       		.byte	0x2
+ 826 015c 28       		.byte	0x28
+ 827 015d 67010000 		.4byte	0x167
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 23
+
+
+ 828 0161 05       		.uleb128 0x5
+ 829 0162 03       		.byte	0x3
+ 830 0163 00000000 		.4byte	KSystemInit
+ 831 0167 0A       		.uleb128 0xa
+ 832 0168 30010000 		.4byte	0x130
+ 833 016c 05       		.uleb128 0x5
+ 834 016d 71000000 		.4byte	0x71
+ 835 0171 7C010000 		.4byte	0x17c
+ 836 0175 06       		.uleb128 0x6
+ 837 0176 63000000 		.4byte	0x63
+ 838 017a 08       		.byte	0x8
+ 839 017b 00       		.byte	0
+ 840 017c 09       		.uleb128 0x9
+ 841 017d A4000000 		.4byte	.LASF20
+ 842 0181 02       		.byte	0x2
+ 843 0182 2B       		.byte	0x2b
+ 844 0183 8D010000 		.4byte	0x18d
+ 845 0187 05       		.uleb128 0x5
+ 846 0188 03       		.byte	0x3
+ 847 0189 00000000 		.4byte	KIpHdr
+ 848 018d 0A       		.uleb128 0xa
+ 849 018e 6C010000 		.4byte	0x16c
+ 850 0192 05       		.uleb128 0x5
+ 851 0193 71000000 		.4byte	0x71
+ 852 0197 A2010000 		.4byte	0x1a2
+ 853 019b 06       		.uleb128 0x6
+ 854 019c 63000000 		.4byte	0x63
+ 855 01a0 0A       		.byte	0xa
+ 856 01a1 00       		.byte	0
+ 857 01a2 09       		.uleb128 0x9
+ 858 01a3 E9030000 		.4byte	.LASF21
+ 859 01a7 02       		.byte	0x2
+ 860 01a8 2C       		.byte	0x2c
+ 861 01a9 B3010000 		.4byte	0x1b3
+ 862 01ad 05       		.uleb128 0x5
+ 863 01ae 03       		.byte	0x3
+ 864 01af 00000000 		.4byte	KDHCPHdr
+ 865 01b3 0A       		.uleb128 0xa
+ 866 01b4 92010000 		.4byte	0x192
+ 867 01b8 05       		.uleb128 0x5
+ 868 01b9 71000000 		.4byte	0x71
+ 869 01bd C8010000 		.4byte	0x1c8
+ 870 01c1 06       		.uleb128 0x6
+ 871 01c2 63000000 		.4byte	0x63
+ 872 01c6 0D       		.byte	0xd
+ 873 01c7 00       		.byte	0
+ 874 01c8 09       		.uleb128 0x9
+ 875 01c9 BE070000 		.4byte	.LASF22
+ 876 01cd 02       		.byte	0x2
+ 877 01ce 2D       		.byte	0x2d
+ 878 01cf D9010000 		.4byte	0x1d9
+ 879 01d3 05       		.uleb128 0x5
+ 880 01d4 03       		.byte	0x3
+ 881 01d5 00000000 		.4byte	KKbdBacklight
+ 882 01d9 0A       		.uleb128 0xa
+ 883 01da B8010000 		.4byte	0x1b8
+ 884 01de 05       		.uleb128 0x5
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 24
+
+
+ 885 01df 71000000 		.4byte	0x71
+ 886 01e3 EE010000 		.4byte	0x1ee
+ 887 01e7 06       		.uleb128 0x6
+ 888 01e8 63000000 		.4byte	0x63
+ 889 01ec 0E       		.byte	0xe
+ 890 01ed 00       		.byte	0
+ 891 01ee 09       		.uleb128 0x9
+ 892 01ef 1A040000 		.4byte	.LASF23
+ 893 01f3 02       		.byte	0x2
+ 894 01f4 2E       		.byte	0x2e
+ 895 01f5 FF010000 		.4byte	0x1ff
+ 896 01f9 05       		.uleb128 0x5
+ 897 01fa 03       		.byte	0x3
+ 898 01fb 00000000 		.4byte	KEnterSave
+ 899 01ff 0A       		.uleb128 0xa
+ 900 0200 DE010000 		.4byte	0x1de
+ 901 0204 09       		.uleb128 0x9
+ 902 0205 B6070000 		.4byte	.LASF24
+ 903 0209 02       		.byte	0x2
+ 904 020a 2F       		.byte	0x2f
+ 905 020b 15020000 		.4byte	0x215
+ 906 020f 05       		.uleb128 0x5
+ 907 0210 03       		.byte	0x3
+ 908 0211 00000000 		.4byte	KReboot
+ 909 0215 0A       		.uleb128 0xa
+ 910 0216 30010000 		.4byte	0x130
+ 911 021a 09       		.uleb128 0x9
+ 912 021b C8060000 		.4byte	.LASF25
+ 913 021f 02       		.byte	0x2
+ 914 0220 30       		.byte	0x30
+ 915 0221 2B020000 		.4byte	0x22b
+ 916 0225 05       		.uleb128 0x5
+ 917 0226 03       		.byte	0x3
+ 918 0227 00000000 		.4byte	KDateTime
+ 919 022b 0A       		.uleb128 0xa
+ 920 022c 97000000 		.4byte	0x97
+ 921 0230 09       		.uleb128 0x9
+ 922 0231 05030000 		.4byte	.LASF26
+ 923 0235 02       		.byte	0x2
+ 924 0236 31       		.byte	0x31
+ 925 0237 41020000 		.4byte	0x241
+ 926 023b 05       		.uleb128 0x5
+ 927 023c 03       		.byte	0x3
+ 928 023d 00000000 		.4byte	KUpdated
+ 929 0241 0A       		.uleb128 0xa
+ 930 0242 C7000000 		.4byte	0xc7
+ 931 0246 09       		.uleb128 0x9
+ 932 0247 92070000 		.4byte	.LASF27
+ 933 024b 02       		.byte	0x2
+ 934 024c 32       		.byte	0x32
+ 935 024d 57020000 		.4byte	0x257
+ 936 0251 05       		.uleb128 0x5
+ 937 0252 03       		.byte	0x3
+ 938 0253 00000000 		.4byte	KGPRSHdr
+ 939 0257 0A       		.uleb128 0xa
+ 940 0258 92010000 		.4byte	0x192
+ 941 025c 05       		.uleb128 0x5
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 25
+
+
+ 942 025d 71000000 		.4byte	0x71
+ 943 0261 6C020000 		.4byte	0x26c
+ 944 0265 06       		.uleb128 0x6
+ 945 0266 63000000 		.4byte	0x63
+ 946 026a 10       		.byte	0x10
+ 947 026b 00       		.byte	0
+ 948 026c 09       		.uleb128 0x9
+ 949 026d 2D060000 		.4byte	.LASF28
+ 950 0271 02       		.byte	0x2
+ 951 0272 35       		.byte	0x35
+ 952 0273 7D020000 		.4byte	0x27d
+ 953 0277 05       		.uleb128 0x5
+ 954 0278 03       		.byte	0x3
+ 955 0279 00000000 		.4byte	KResetAppData
+ 956 027d 0A       		.uleb128 0xa
+ 957 027e 5C020000 		.4byte	0x25c
+ 958 0282 09       		.uleb128 0x9
+ 959 0283 5F060000 		.4byte	.LASF29
+ 960 0287 02       		.byte	0x2
+ 961 0288 36       		.byte	0x36
+ 962 0289 93020000 		.4byte	0x293
+ 963 028d 05       		.uleb128 0x5
+ 964 028e 03       		.byte	0x3
+ 965 028f 00000000 		.4byte	KConfirm
+ 966 0293 0A       		.uleb128 0xa
+ 967 0294 5C020000 		.4byte	0x25c
+ 968 0298 09       		.uleb128 0x9
+ 969 0299 EF020000 		.4byte	.LASF30
+ 970 029d 02       		.byte	0x2
+ 971 029e 37       		.byte	0x37
+ 972 029f A9020000 		.4byte	0x2a9
+ 973 02a3 05       		.uleb128 0x5
+ 974 02a4 03       		.byte	0x3
+ 975 02a5 00000000 		.4byte	KDataReseted
+ 976 02a9 0A       		.uleb128 0xa
+ 977 02aa D7000000 		.4byte	0xd7
+ 978 02ae 09       		.uleb128 0x9
+ 979 02af 01070000 		.4byte	.LASF31
+ 980 02b3 02       		.byte	0x2
+ 981 02b4 38       		.byte	0x38
+ 982 02b5 BF020000 		.4byte	0x2bf
+ 983 02b9 05       		.uleb128 0x5
+ 984 02ba 03       		.byte	0x3
+ 985 02bb 00000000 		.4byte	KResetEMVData
+ 986 02bf 0A       		.uleb128 0xa
+ 987 02c0 DE010000 		.4byte	0x1de
+ 988 02c4 09       		.uleb128 0x9
+ 989 02c5 6D070000 		.4byte	.LASF32
+ 990 02c9 02       		.byte	0x2
+ 991 02ca 39       		.byte	0x39
+ 992 02cb D5020000 		.4byte	0x2d5
+ 993 02cf 05       		.uleb128 0x5
+ 994 02d0 03       		.byte	0x3
+ 995 02d1 00000000 		.4byte	KADataReset
+ 996 02d5 0A       		.uleb128 0xa
+ 997 02d6 30010000 		.4byte	0x130
+ 998 02da 09       		.uleb128 0x9
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 26
+
+
+ 999 02db 25040000 		.4byte	.LASF33
+ 1000 02df 02       		.byte	0x2
+ 1001 02e0 3A       		.byte	0x3a
+ 1002 02e1 EB020000 		.4byte	0x2eb
+ 1003 02e5 05       		.uleb128 0x5
+ 1004 02e6 03       		.byte	0x3
+ 1005 02e7 00000000 		.4byte	KSettleBatch
+ 1006 02eb 0A       		.uleb128 0xa
+ 1007 02ec 30010000 		.4byte	0x130
+ 1008 02f0 09       		.uleb128 0x9
+ 1009 02f1 86060000 		.4byte	.LASF34
+ 1010 02f5 02       		.byte	0x2
+ 1011 02f6 3D       		.byte	0x3d
+ 1012 02f7 01030000 		.4byte	0x301
+ 1013 02fb 05       		.uleb128 0x5
+ 1014 02fc 03       		.byte	0x3
+ 1015 02fd 00000000 		.4byte	KProcessing
+ 1016 0301 0A       		.uleb128 0xa
+ 1017 0302 30010000 		.4byte	0x130
+ 1018 0306 09       		.uleb128 0x9
+ 1019 0307 15040000 		.4byte	.LASF35
+ 1020 030b 02       		.byte	0x2
+ 1021 030c 40       		.byte	0x40
+ 1022 030d 17030000 		.4byte	0x317
+ 1023 0311 05       		.uleb128 0x5
+ 1024 0312 03       		.byte	0x3
+ 1025 0313 00000000 		.4byte	KApn
+ 1026 0317 0A       		.uleb128 0xa
+ 1027 0318 87000000 		.4byte	0x87
+ 1028 031c 09       		.uleb128 0x9
+ 1029 031d 4E000000 		.4byte	.LASF36
+ 1030 0321 02       		.byte	0x2
+ 1031 0322 41       		.byte	0x41
+ 1032 0323 2D030000 		.4byte	0x32d
+ 1033 0327 05       		.uleb128 0x5
+ 1034 0328 03       		.byte	0x3
+ 1035 0329 00000000 		.4byte	KUserName
+ 1036 032d 0A       		.uleb128 0xa
+ 1037 032e 97000000 		.4byte	0x97
+ 1038 0332 09       		.uleb128 0x9
+ 1039 0333 19060000 		.4byte	.LASF37
+ 1040 0337 02       		.byte	0x2
+ 1041 0338 42       		.byte	0x42
+ 1042 0339 43030000 		.4byte	0x343
+ 1043 033d 05       		.uleb128 0x5
+ 1044 033e 03       		.byte	0x3
+ 1045 033f 00000000 		.4byte	KPassword
+ 1046 0343 0A       		.uleb128 0xa
+ 1047 0344 B8010000 		.4byte	0x1b8
+ 1048 0348 05       		.uleb128 0x5
+ 1049 0349 71000000 		.4byte	0x71
+ 1050 034d 58030000 		.4byte	0x358
+ 1051 0351 06       		.uleb128 0x6
+ 1052 0352 63000000 		.4byte	0x63
+ 1053 0356 0B       		.byte	0xb
+ 1054 0357 00       		.byte	0
+ 1055 0358 09       		.uleb128 0x9
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 27
+
+
+ 1056 0359 ED050000 		.4byte	.LASF38
+ 1057 035d 02       		.byte	0x2
+ 1058 035e 43       		.byte	0x43
+ 1059 035f 69030000 		.4byte	0x369
+ 1060 0363 05       		.uleb128 0x5
+ 1061 0364 03       		.byte	0x3
+ 1062 0365 00000000 		.4byte	KDialNum
+ 1063 0369 0A       		.uleb128 0xa
+ 1064 036a 48030000 		.4byte	0x348
+ 1065 036e 09       		.uleb128 0x9
+ 1066 036f 08020000 		.4byte	.LASF39
+ 1067 0373 02       		.byte	0x2
+ 1068 0374 44       		.byte	0x44
+ 1069 0375 7F030000 		.4byte	0x37f
+ 1070 0379 05       		.uleb128 0x5
+ 1071 037a 03       		.byte	0x3
+ 1072 037b 00000000 		.4byte	KCommNoCancel
+ 1073 037f 0A       		.uleb128 0xa
+ 1074 0380 30010000 		.4byte	0x130
+ 1075 0384 09       		.uleb128 0x9
+ 1076 0385 6A020000 		.4byte	.LASF40
+ 1077 0389 02       		.byte	0x2
+ 1078 038a 45       		.byte	0x45
+ 1079 038b 95030000 		.4byte	0x395
+ 1080 038f 05       		.uleb128 0x5
+ 1081 0390 03       		.byte	0x3
+ 1082 0391 00000000 		.4byte	KCommConnectWait
+ 1083 0395 0A       		.uleb128 0xa
+ 1084 0396 30010000 		.4byte	0x130
+ 1085 039a 09       		.uleb128 0x9
+ 1086 039b F6060000 		.4byte	.LASF41
+ 1087 039f 02       		.byte	0x2
+ 1088 03a0 46       		.byte	0x46
+ 1089 03a1 AB030000 		.4byte	0x3ab
+ 1090 03a5 05       		.uleb128 0x5
+ 1091 03a6 03       		.byte	0x3
+ 1092 03a7 00000000 		.4byte	KConnected
+ 1093 03ab 0A       		.uleb128 0xa
+ 1094 03ac 5C020000 		.4byte	0x25c
+ 1095 03b0 09       		.uleb128 0x9
+ 1096 03b1 43070000 		.4byte	.LASF42
+ 1097 03b5 02       		.byte	0x2
+ 1098 03b6 47       		.byte	0x47
+ 1099 03b7 C1030000 		.4byte	0x3c1
+ 1100 03bb 05       		.uleb128 0x5
+ 1101 03bc 03       		.byte	0x3
+ 1102 03bd 00000000 		.4byte	KCommSend
+ 1103 03c1 0A       		.uleb128 0xa
+ 1104 03c2 5C020000 		.4byte	0x25c
+ 1105 03c6 09       		.uleb128 0x9
+ 1106 03c7 E3050000 		.4byte	.LASF43
+ 1107 03cb 02       		.byte	0x2
+ 1108 03cc 48       		.byte	0x48
+ 1109 03cd D7030000 		.4byte	0x3d7
+ 1110 03d1 05       		.uleb128 0x5
+ 1111 03d2 03       		.byte	0x3
+ 1112 03d3 00000000 		.4byte	KCommRcvd
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 28
+
+
+ 1113 03d7 0A       		.uleb128 0xa
+ 1114 03d8 5C020000 		.4byte	0x25c
+ 1115 03dc 09       		.uleb128 0x9
+ 1116 03dd 87030000 		.4byte	.LASF44
+ 1117 03e1 02       		.byte	0x2
+ 1118 03e2 49       		.byte	0x49
+ 1119 03e3 ED030000 		.4byte	0x3ed
+ 1120 03e7 05       		.uleb128 0x5
+ 1121 03e8 03       		.byte	0x3
+ 1122 03e9 00000000 		.4byte	KCommWait
+ 1123 03ed 0A       		.uleb128 0xa
+ 1124 03ee 5C020000 		.4byte	0x25c
+ 1125 03f2 09       		.uleb128 0x9
+ 1126 03f3 45050000 		.4byte	.LASF45
+ 1127 03f7 02       		.byte	0x2
+ 1128 03f8 4C       		.byte	0x4c
+ 1129 03f9 03040000 		.4byte	0x403
+ 1130 03fd 05       		.uleb128 0x5
+ 1131 03fe 03       		.byte	0x3
+ 1132 03ff 00000000 		.4byte	KSamTest
+ 1133 0403 0A       		.uleb128 0xa
+ 1134 0404 6C010000 		.4byte	0x16c
+ 1135 0408 09       		.uleb128 0x9
+ 1136 0409 B3060000 		.4byte	.LASF46
+ 1137 040d 02       		.byte	0x2
+ 1138 040e 4D       		.byte	0x4d
+ 1139 040f 19040000 		.4byte	0x419
+ 1140 0413 05       		.uleb128 0x5
+ 1141 0414 03       		.byte	0x3
+ 1142 0415 00000000 		.4byte	KTestICC
+ 1143 0419 0A       		.uleb128 0xa
+ 1144 041a D7000000 		.4byte	0xd7
+ 1145 041e 09       		.uleb128 0x9
+ 1146 041f 32040000 		.4byte	.LASF47
+ 1147 0423 02       		.byte	0x2
+ 1148 0424 4E       		.byte	0x4e
+ 1149 0425 2F040000 		.4byte	0x42f
+ 1150 0429 05       		.uleb128 0x5
+ 1151 042a 03       		.byte	0x3
+ 1152 042b 00000000 		.4byte	KInsertICC
+ 1153 042f 0A       		.uleb128 0xa
+ 1154 0430 DE010000 		.4byte	0x1de
+ 1155 0434 09       		.uleb128 0x9
+ 1156 0435 44020000 		.4byte	.LASF48
+ 1157 0439 02       		.byte	0x2
+ 1158 043a 4F       		.byte	0x4f
+ 1159 043b 45040000 		.4byte	0x445
+ 1160 043f 05       		.uleb128 0x5
+ 1161 0440 03       		.byte	0x3
+ 1162 0441 00000000 		.4byte	KTestMSR
+ 1163 0445 0A       		.uleb128 0xa
+ 1164 0446 5C020000 		.4byte	0x25c
+ 1165 044a 09       		.uleb128 0x9
+ 1166 044b ED040000 		.4byte	.LASF49
+ 1167 044f 02       		.byte	0x2
+ 1168 0450 50       		.byte	0x50
+ 1169 0451 5B040000 		.4byte	0x45b
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 29
+
+
+ 1170 0455 05       		.uleb128 0x5
+ 1171 0456 03       		.byte	0x3
+ 1172 0457 00000000 		.4byte	KPlsSwipe
+ 1173 045b 0A       		.uleb128 0xa
+ 1174 045c DE010000 		.4byte	0x1de
+ 1175 0460 09       		.uleb128 0x9
+ 1176 0461 38050000 		.4byte	.LASF50
+ 1177 0465 02       		.byte	0x2
+ 1178 0466 53       		.byte	0x53
+ 1179 0467 71040000 		.4byte	0x471
+ 1180 046b 05       		.uleb128 0x5
+ 1181 046c 03       		.byte	0x3
+ 1182 046d 00000000 		.4byte	KPrintingMsg
+ 1183 0471 0A       		.uleb128 0xa
+ 1184 0472 30010000 		.4byte	0x130
+ 1185 0476 09       		.uleb128 0x9
+ 1186 0477 39020000 		.4byte	.LASF51
+ 1187 047b 02       		.byte	0x2
+ 1188 047c 54       		.byte	0x54
+ 1189 047d 87040000 		.4byte	0x487
+ 1190 0481 05       		.uleb128 0x5
+ 1191 0482 03       		.byte	0x3
+ 1192 0483 00000000 		.4byte	KManualCut
+ 1193 0487 0A       		.uleb128 0xa
+ 1194 0488 30010000 		.4byte	0x130
+ 1195 048c 09       		.uleb128 0x9
+ 1196 048d 79070000 		.4byte	.LASF52
+ 1197 0491 02       		.byte	0x2
+ 1198 0492 55       		.byte	0x55
+ 1199 0493 9D040000 		.4byte	0x49d
+ 1200 0497 05       		.uleb128 0x5
+ 1201 0498 03       		.byte	0x3
+ 1202 0499 00000000 		.4byte	KHighTemp
+ 1203 049d 0A       		.uleb128 0xa
+ 1204 049e 30010000 		.4byte	0x130
+ 1205 04a2 09       		.uleb128 0x9
+ 1206 04a3 32000000 		.4byte	.LASF53
+ 1207 04a7 02       		.byte	0x2
+ 1208 04a8 56       		.byte	0x56
+ 1209 04a9 B3040000 		.4byte	0x4b3
+ 1210 04ad 05       		.uleb128 0x5
+ 1211 04ae 03       		.byte	0x3
+ 1212 04af 00000000 		.4byte	KNoPaper
+ 1213 04b3 0A       		.uleb128 0xa
+ 1214 04b4 A7000000 		.4byte	0xa7
+ 1215 04b8 09       		.uleb128 0x9
+ 1216 04b9 08040000 		.4byte	.LASF54
+ 1217 04bd 02       		.byte	0x2
+ 1218 04be 59       		.byte	0x59
+ 1219 04bf C9040000 		.4byte	0x4c9
+ 1220 04c3 05       		.uleb128 0x5
+ 1221 04c4 03       		.byte	0x3
+ 1222 04c5 00000000 		.4byte	KSelAcquirer
+ 1223 04c9 0A       		.uleb128 0xa
+ 1224 04ca B7000000 		.4byte	0xb7
+ 1225 04ce 09       		.uleb128 0x9
+ 1226 04cf 3B000000 		.4byte	.LASF55
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 30
+
+
+ 1227 04d3 02       		.byte	0x2
+ 1228 04d4 5C       		.byte	0x5c
+ 1229 04d5 DF040000 		.4byte	0x4df
+ 1230 04d9 05       		.uleb128 0x5
+ 1231 04da 03       		.byte	0x3
+ 1232 04db 00000000 		.4byte	KTermId
+ 1233 04df 0A       		.uleb128 0xa
+ 1234 04e0 D7000000 		.4byte	0xd7
+ 1235 04e4 09       		.uleb128 0x9
+ 1236 04e5 2D050000 		.4byte	.LASF56
+ 1237 04e9 02       		.byte	0x2
+ 1238 04ea 5D       		.byte	0x5d
+ 1239 04eb F5040000 		.4byte	0x4f5
+ 1240 04ef 05       		.uleb128 0x5
+ 1241 04f0 03       		.byte	0x3
+ 1242 04f1 00000000 		.4byte	KChkSumErr
+ 1243 04f5 0A       		.uleb128 0xa
+ 1244 04f6 B7000000 		.4byte	0xb7
+ 1245 04fa 09       		.uleb128 0x9
+ 1246 04fb 2C010000 		.4byte	.LASF57
+ 1247 04ff 02       		.byte	0x2
+ 1248 0500 5E       		.byte	0x5e
+ 1249 0501 0B050000 		.4byte	0x50b
+ 1250 0505 05       		.uleb128 0x5
+ 1251 0506 03       		.byte	0x3
+ 1252 0507 00000000 		.4byte	KInitModeStr
+ 1253 050b 0A       		.uleb128 0xa
+ 1254 050c 97000000 		.4byte	0x97
+ 1255 0510 09       		.uleb128 0x9
+ 1256 0511 6F050000 		.4byte	.LASF58
+ 1257 0515 02       		.byte	0x2
+ 1258 0516 5F       		.byte	0x5f
+ 1259 0517 21050000 		.4byte	0x521
+ 1260 051b 05       		.uleb128 0x5
+ 1261 051c 03       		.byte	0x3
+ 1262 051d 00000000 		.4byte	KInitPriNum
+ 1263 0521 0A       		.uleb128 0xa
+ 1264 0522 5C020000 		.4byte	0x25c
+ 1265 0526 09       		.uleb128 0x9
+ 1266 0527 9F060000 		.4byte	.LASF59
+ 1267 052b 02       		.byte	0x2
+ 1268 052c 60       		.byte	0x60
+ 1269 052d 37050000 		.4byte	0x537
+ 1270 0531 05       		.uleb128 0x5
+ 1271 0532 03       		.byte	0x3
+ 1272 0533 00000000 		.4byte	KInitSecNum
+ 1273 0537 0A       		.uleb128 0xa
+ 1274 0538 5C020000 		.4byte	0x25c
+ 1275 053c 09       		.uleb128 0x9
+ 1276 053d 5D020000 		.4byte	.LASF60
+ 1277 0541 02       		.byte	0x2
+ 1278 0542 61       		.byte	0x61
+ 1279 0543 4D050000 		.4byte	0x54d
+ 1280 0547 05       		.uleb128 0x5
+ 1281 0548 03       		.byte	0x3
+ 1282 0549 00000000 		.4byte	KDialModeStr
+ 1283 054d 0A       		.uleb128 0xa
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 31
+
+
+ 1284 054e 48030000 		.4byte	0x348
+ 1285 0552 09       		.uleb128 0x9
+ 1286 0553 CE050000 		.4byte	.LASF61
+ 1287 0557 02       		.byte	0x2
+ 1288 0558 62       		.byte	0x62
+ 1289 0559 63050000 		.4byte	0x563
+ 1290 055d 05       		.uleb128 0x5
+ 1291 055e 03       		.byte	0x3
+ 1292 055f 00000000 		.4byte	KTimeDelay
+ 1293 0563 0A       		.uleb128 0xa
+ 1294 0564 5C020000 		.4byte	0x25c
+ 1295 0568 09       		.uleb128 0x9
+ 1296 0569 D5000000 		.4byte	.LASF62
+ 1297 056d 02       		.byte	0x2
+ 1298 056e 63       		.byte	0x63
+ 1299 056f 79050000 		.4byte	0x579
+ 1300 0573 05       		.uleb128 0x5
+ 1301 0574 03       		.byte	0x3
+ 1302 0575 00000000 		.4byte	KInitIPHdr
+ 1303 0579 0A       		.uleb128 0xa
+ 1304 057a B8010000 		.4byte	0x1b8
+ 1305 057e 09       		.uleb128 0x9
+ 1306 057f 24010000 		.4byte	.LASF63
+ 1307 0583 02       		.byte	0x2
+ 1308 0584 64       		.byte	0x64
+ 1309 0585 8F050000 		.4byte	0x58f
+ 1310 0589 05       		.uleb128 0x5
+ 1311 058a 03       		.byte	0x3
+ 1312 058b 00000000 		.4byte	KInitIP
+ 1313 058f 0A       		.uleb128 0xa
+ 1314 0590 6C010000 		.4byte	0x16c
+ 1315 0594 09       		.uleb128 0x9
+ 1316 0595 8F040000 		.4byte	.LASF64
+ 1317 0599 02       		.byte	0x2
+ 1318 059a 65       		.byte	0x65
+ 1319 059b A5050000 		.4byte	0x5a5
+ 1320 059f 05       		.uleb128 0x5
+ 1321 05a0 03       		.byte	0x3
+ 1322 05a1 00000000 		.4byte	KInitPort
+ 1323 05a5 0A       		.uleb128 0xa
+ 1324 05a6 92010000 		.4byte	0x192
+ 1325 05aa 09       		.uleb128 0x9
+ 1326 05ab 68060000 		.4byte	.LASF65
+ 1327 05af 02       		.byte	0x2
+ 1328 05b0 66       		.byte	0x66
+ 1329 05b1 BB050000 		.4byte	0x5bb
+ 1330 05b5 05       		.uleb128 0x5
+ 1331 05b6 03       		.byte	0x3
+ 1332 05b7 00000000 		.4byte	KInitSpeed
+ 1333 05bb 0A       		.uleb128 0xa
+ 1334 05bc E7000000 		.4byte	0xe7
+ 1335 05c0 09       		.uleb128 0x9
+ 1336 05c1 2A020000 		.4byte	.LASF66
+ 1337 05c5 02       		.byte	0x2
+ 1338 05c6 67       		.byte	0x67
+ 1339 05c7 D1050000 		.4byte	0x5d1
+ 1340 05cb 05       		.uleb128 0x5
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 32
+
+
+ 1341 05cc 03       		.byte	0x3
+ 1342 05cd 00000000 		.4byte	KInitEnterSave
+ 1343 05d1 0A       		.uleb128 0xa
+ 1344 05d2 DE010000 		.4byte	0x1de
+ 1345 05d6 09       		.uleb128 0x9
+ 1346 05d7 00000000 		.4byte	.LASF67
+ 1347 05db 02       		.byte	0x2
+ 1348 05dc 68       		.byte	0x68
+ 1349 05dd E7050000 		.4byte	0x5e7
+ 1350 05e1 05       		.uleb128 0x5
+ 1351 05e2 03       		.byte	0x3
+ 1352 05e3 00000000 		.4byte	KCancelExit
+ 1353 05e7 0A       		.uleb128 0xa
+ 1354 05e8 DE010000 		.4byte	0x1de
+ 1355 05ec 09       		.uleb128 0x9
+ 1356 05ed 67070000 		.4byte	.LASF68
+ 1357 05f1 02       		.byte	0x2
+ 1358 05f2 69       		.byte	0x69
+ 1359 05f3 FD050000 		.4byte	0x5fd
+ 1360 05f7 05       		.uleb128 0x5
+ 1361 05f8 03       		.byte	0x3
+ 1362 05f9 00000000 		.4byte	KPABX
+ 1363 05fd 0A       		.uleb128 0xa
+ 1364 05fe 5C020000 		.4byte	0x25c
+ 1365 0602 09       		.uleb128 0x9
+ 1366 0603 0F070000 		.4byte	.LASF69
+ 1367 0607 02       		.byte	0x2
+ 1368 0608 6A       		.byte	0x6a
+ 1369 0609 13060000 		.4byte	0x613
+ 1370 060d 05       		.uleb128 0x5
+ 1371 060e 03       		.byte	0x3
+ 1372 060f 00000000 		.4byte	KInitConnTime
+ 1373 0613 0A       		.uleb128 0xa
+ 1374 0614 5C020000 		.4byte	0x25c
+ 1375 0618 09       		.uleb128 0x9
+ 1376 0619 56060000 		.4byte	.LASF70
+ 1377 061d 02       		.byte	0x2
+ 1378 061e 6B       		.byte	0x6b
+ 1379 061f 29060000 		.4byte	0x629
+ 1380 0623 05       		.uleb128 0x5
+ 1381 0624 03       		.byte	0x3
+ 1382 0625 00000000 		.4byte	KInitNII
+ 1383 0629 0A       		.uleb128 0xa
+ 1384 062a 97000000 		.4byte	0x97
+ 1385 062e 09       		.uleb128 0x9
+ 1386 062f 78060000 		.4byte	.LASF71
+ 1387 0633 02       		.byte	0x2
+ 1388 0634 6C       		.byte	0x6c
+ 1389 0635 3F060000 		.4byte	0x63f
+ 1390 0639 05       		.uleb128 0x5
+ 1391 063a 03       		.byte	0x3
+ 1392 063b 00000000 		.4byte	KReturnBaseTO
+ 1393 063f 0A       		.uleb128 0xa
+ 1394 0640 30010000 		.4byte	0x130
+ 1395 0644 09       		.uleb128 0x9
+ 1396 0645 CD020000 		.4byte	.LASF72
+ 1397 0649 02       		.byte	0x2
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 33
+
+
+ 1398 064a 6D       		.byte	0x6d
+ 1399 064b 55060000 		.4byte	0x655
+ 1400 064f 05       		.uleb128 0x5
+ 1401 0650 03       		.byte	0x3
+ 1402 0651 00000000 		.4byte	KDefaultAmt
+ 1403 0655 0A       		.uleb128 0xa
+ 1404 0656 5C020000 		.4byte	0x25c
+ 1405 065a 09       		.uleb128 0x9
+ 1406 065b EE000000 		.4byte	.LASF73
+ 1407 065f 02       		.byte	0x2
+ 1408 0660 6E       		.byte	0x6e
+ 1409 0661 6B060000 		.4byte	0x66b
+ 1410 0665 05       		.uleb128 0x5
+ 1411 0666 03       		.byte	0x3
+ 1412 0667 00000000 		.4byte	KCurrBatchNo
+ 1413 066b 0A       		.uleb128 0xa
+ 1414 066c 5C020000 		.4byte	0x25c
+ 1415 0670 09       		.uleb128 0x9
+ 1416 0671 78040000 		.4byte	.LASF74
+ 1417 0675 02       		.byte	0x2
+ 1418 0676 6F       		.byte	0x6f
+ 1419 0677 81060000 		.4byte	0x681
+ 1420 067b 05       		.uleb128 0x5
+ 1421 067c 03       		.byte	0x3
+ 1422 067d 00000000 		.4byte	KTrainingMode
+ 1423 0681 0A       		.uleb128 0xa
+ 1424 0682 B8010000 		.4byte	0x1b8
+ 1425 0686 09       		.uleb128 0x9
+ 1426 0687 05060000 		.4byte	.LASF75
+ 1427 068b 02       		.byte	0x2
+ 1428 068c 70       		.byte	0x70
+ 1429 068d 97060000 		.4byte	0x697
+ 1430 0691 05       		.uleb128 0x5
+ 1431 0692 03       		.byte	0x3
+ 1432 0693 00000000 		.4byte	KDebugMode
+ 1433 0697 0A       		.uleb128 0xa
+ 1434 0698 92010000 		.4byte	0x192
+ 1435 069c 09       		.uleb128 0x9
+ 1436 069d 18000000 		.4byte	.LASF76
+ 1437 06a1 02       		.byte	0x2
+ 1438 06a2 71       		.byte	0x71
+ 1439 06a3 AD060000 		.4byte	0x6ad
+ 1440 06a7 05       		.uleb128 0x5
+ 1441 06a8 03       		.byte	0x3
+ 1442 06a9 00000000 		.4byte	KPrintStis
+ 1443 06ad 0A       		.uleb128 0xa
+ 1444 06ae 92010000 		.4byte	0x192
+ 1445 06b2 09       		.uleb128 0x9
+ 1446 06b3 23060000 		.4byte	.LASF77
+ 1447 06b7 02       		.byte	0x2
+ 1448 06b8 72       		.byte	0x72
+ 1449 06b9 C3060000 		.4byte	0x6c3
+ 1450 06bd 05       		.uleb128 0x5
+ 1451 06be 03       		.byte	0x3
+ 1452 06bf 00000000 		.4byte	KPPadPort
+ 1453 06c3 0A       		.uleb128 0xa
+ 1454 06c4 B7000000 		.4byte	0xb7
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 34
+
+
+ 1455 06c8 09       		.uleb128 0x9
+ 1456 06c9 FC020000 		.4byte	.LASF78
+ 1457 06cd 02       		.byte	0x2
+ 1458 06ce 73       		.byte	0x73
+ 1459 06cf D9060000 		.4byte	0x6d9
+ 1460 06d3 05       		.uleb128 0x5
+ 1461 06d4 03       		.byte	0x3
+ 1462 06d5 00000000 		.4byte	KEcrPort
+ 1463 06d9 0A       		.uleb128 0xa
+ 1464 06da 92010000 		.4byte	0x192
+ 1465 06de 09       		.uleb128 0x9
+ 1466 06df 88050000 		.4byte	.LASF79
+ 1467 06e3 02       		.byte	0x2
+ 1468 06e4 74       		.byte	0x74
+ 1469 06e5 EF060000 		.4byte	0x6ef
+ 1470 06e9 05       		.uleb128 0x5
+ 1471 06ea 03       		.byte	0x3
+ 1472 06eb 00000000 		.4byte	KDefaultApp
+ 1473 06ef 0A       		.uleb128 0xa
+ 1474 06f0 B8010000 		.4byte	0x1b8
+ 1475 06f4 09       		.uleb128 0x9
+ 1476 06f5 15010000 		.4byte	.LASF80
+ 1477 06f9 02       		.byte	0x2
+ 1478 06fa 75       		.byte	0x75
+ 1479 06fb 05070000 		.4byte	0x705
+ 1480 06ff 05       		.uleb128 0x5
+ 1481 0700 03       		.byte	0x3
+ 1482 0701 00000000 		.4byte	KCheckInPriNum
+ 1483 0705 0A       		.uleb128 0xa
+ 1484 0706 5C020000 		.4byte	0x25c
+ 1485 070a 09       		.uleb128 0x9
+ 1486 070b 1C030000 		.4byte	.LASF81
+ 1487 070f 02       		.byte	0x2
+ 1488 0710 76       		.byte	0x76
+ 1489 0711 1B070000 		.4byte	0x71b
+ 1490 0715 05       		.uleb128 0x5
+ 1491 0716 03       		.byte	0x3
+ 1492 0717 00000000 		.4byte	KCheckInSecNum
+ 1493 071b 0A       		.uleb128 0xa
+ 1494 071c 5C020000 		.4byte	0x25c
+ 1495 0720 09       		.uleb128 0x9
+ 1496 0721 10060000 		.4byte	.LASF82
+ 1497 0725 02       		.byte	0x2
+ 1498 0726 77       		.byte	0x77
+ 1499 0727 31070000 		.4byte	0x731
+ 1500 072b 05       		.uleb128 0x5
+ 1501 072c 03       		.byte	0x3
+ 1502 072d 00000000 		.4byte	KFTPUser
+ 1503 0731 0A       		.uleb128 0xa
+ 1504 0732 B8010000 		.4byte	0x1b8
+ 1505 0736 09       		.uleb128 0x9
+ 1506 0737 70040000 		.4byte	.LASF83
+ 1507 073b 02       		.byte	0x2
+ 1508 073c 78       		.byte	0x78
+ 1509 073d 47070000 		.4byte	0x747
+ 1510 0741 05       		.uleb128 0x5
+ 1511 0742 03       		.byte	0x3
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 35
+
+
+ 1512 0743 00000000 		.4byte	KFTPPwd
+ 1513 0747 0A       		.uleb128 0xa
+ 1514 0748 D7000000 		.4byte	0xd7
+ 1515 074c 09       		.uleb128 0x9
+ 1516 074d 79030000 		.4byte	.LASF84
+ 1517 0751 02       		.byte	0x2
+ 1518 0752 79       		.byte	0x79
+ 1519 0753 5D070000 		.4byte	0x75d
+ 1520 0757 05       		.uleb128 0x5
+ 1521 0758 03       		.byte	0x3
+ 1522 0759 00000000 		.4byte	KFTPServerKey
+ 1523 075d 0A       		.uleb128 0xa
+ 1524 075e DE010000 		.4byte	0x1de
+ 1525 0762 09       		.uleb128 0x9
+ 1526 0763 46040000 		.4byte	.LASF85
+ 1527 0767 02       		.byte	0x2
+ 1528 0768 7A       		.byte	0x7a
+ 1529 0769 73070000 		.4byte	0x773
+ 1530 076d 05       		.uleb128 0x5
+ 1531 076e 03       		.byte	0x3
+ 1532 076f 00000000 		.4byte	KPPPUser
+ 1533 0773 0A       		.uleb128 0xa
+ 1534 0774 B8010000 		.4byte	0x1b8
+ 1535 0778 09       		.uleb128 0x9
+ 1536 0779 9C000000 		.4byte	.LASF86
+ 1537 077d 02       		.byte	0x2
+ 1538 077e 7B       		.byte	0x7b
+ 1539 077f 89070000 		.4byte	0x789
+ 1540 0783 05       		.uleb128 0x5
+ 1541 0784 03       		.byte	0x3
+ 1542 0785 00000000 		.4byte	KPPPPwd
+ 1543 0789 0A       		.uleb128 0xa
+ 1544 078a D7000000 		.4byte	0xd7
+ 1545 078e 09       		.uleb128 0x9
+ 1546 078f D9020000 		.4byte	.LASF87
+ 1547 0793 02       		.byte	0x2
+ 1548 0794 7C       		.byte	0x7c
+ 1549 0795 9F070000 		.4byte	0x79f
+ 1550 0799 05       		.uleb128 0x5
+ 1551 079a 03       		.byte	0x3
+ 1552 079b 00000000 		.4byte	KInitPPPIPHdr
+ 1553 079f 0A       		.uleb128 0xa
+ 1554 07a0 5C020000 		.4byte	0x25c
+ 1555 07a4 09       		.uleb128 0x9
+ 1556 07a5 59040000 		.4byte	.LASF88
+ 1557 07a9 02       		.byte	0x2
+ 1558 07aa 7D       		.byte	0x7d
+ 1559 07ab B5070000 		.4byte	0x7b5
+ 1560 07af 05       		.uleb128 0x5
+ 1561 07b0 03       		.byte	0x3
+ 1562 07b1 00000000 		.4byte	KInitPPPIP
+ 1563 07b5 0A       		.uleb128 0xa
+ 1564 07b6 D7000000 		.4byte	0xd7
+ 1565 07ba 09       		.uleb128 0x9
+ 1566 07bb 2B030000 		.4byte	.LASF89
+ 1567 07bf 02       		.byte	0x2
+ 1568 07c0 7E       		.byte	0x7e
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 36
+
+
+ 1569 07c1 CB070000 		.4byte	0x7cb
+ 1570 07c5 05       		.uleb128 0x5
+ 1571 07c6 03       		.byte	0x3
+ 1572 07c7 00000000 		.4byte	KInitPPPPort
+ 1573 07cb 0A       		.uleb128 0xa
+ 1574 07cc DE010000 		.4byte	0x1de
+ 1575 07d0 09       		.uleb128 0x9
+ 1576 07d1 A6040000 		.4byte	.LASF90
+ 1577 07d5 02       		.byte	0x2
+ 1578 07d6 7F       		.byte	0x7f
+ 1579 07d7 E1070000 		.4byte	0x7e1
+ 1580 07db 05       		.uleb128 0x5
+ 1581 07dc 03       		.byte	0x3
+ 1582 07dd 00000000 		.4byte	KNonWifiModel
+ 1583 07e1 0A       		.uleb128 0xa
+ 1584 07e2 B7000000 		.4byte	0xb7
+ 1585 07e6 09       		.uleb128 0x9
+ 1586 07e7 CC070000 		.4byte	.LASF91
+ 1587 07eb 02       		.byte	0x2
+ 1588 07ec 80       		.byte	0x80
+ 1589 07ed F7070000 		.4byte	0x7f7
+ 1590 07f1 05       		.uleb128 0x5
+ 1591 07f2 03       		.byte	0x3
+ 1592 07f3 00000000 		.4byte	KHostParamHdr
+ 1593 07f7 0A       		.uleb128 0xa
+ 1594 07f8 92010000 		.4byte	0x192
+ 1595 07fc 09       		.uleb128 0x9
+ 1596 07fd E7020000 		.4byte	.LASF92
+ 1597 0801 02       		.byte	0x2
+ 1598 0802 81       		.byte	0x81
+ 1599 0803 0D080000 		.4byte	0x80d
+ 1600 0807 05       		.uleb128 0x5
+ 1601 0808 03       		.byte	0x3
+ 1602 0809 00000000 		.4byte	KHostIP
+ 1603 080d 0A       		.uleb128 0xa
+ 1604 080e F7000000 		.4byte	0xf7
+ 1605 0812 09       		.uleb128 0x9
+ 1606 0813 4F040000 		.4byte	.LASF93
+ 1607 0817 02       		.byte	0x2
+ 1608 0818 82       		.byte	0x82
+ 1609 0819 23080000 		.4byte	0x823
+ 1610 081d 05       		.uleb128 0x5
+ 1611 081e 03       		.byte	0x3
+ 1612 081f 00000000 		.4byte	KHostPort
+ 1613 0823 0A       		.uleb128 0xa
+ 1614 0824 F7000000 		.4byte	0xf7
+ 1615 0828 09       		.uleb128 0x9
+ 1616 0829 83070000 		.4byte	.LASF94
+ 1617 082d 02       		.byte	0x2
+ 1618 082e 83       		.byte	0x83
+ 1619 082f 39080000 		.4byte	0x839
+ 1620 0833 05       		.uleb128 0x5
+ 1621 0834 03       		.byte	0x3
+ 1622 0835 00000000 		.4byte	KHostSslKeyIdx
+ 1623 0839 0A       		.uleb128 0xa
+ 1624 083a 48030000 		.4byte	0x348
+ 1625 083e 09       		.uleb128 0x9
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 37
+
+
+ 1626 083f DA070000 		.4byte	.LASF95
+ 1627 0843 02       		.byte	0x2
+ 1628 0844 84       		.byte	0x84
+ 1629 0845 4F080000 		.4byte	0x84f
+ 1630 0849 05       		.uleb128 0x5
+ 1631 084a 03       		.byte	0x3
+ 1632 084b 00000000 		.4byte	KExtraMsgLen
+ 1633 084f 0A       		.uleb128 0xa
+ 1634 0850 48030000 		.4byte	0x348
+ 1635 0854 09       		.uleb128 0x9
+ 1636 0855 50030000 		.4byte	.LASF96
+ 1637 0859 02       		.byte	0x2
+ 1638 085a 85       		.byte	0x85
+ 1639 085b 65080000 		.4byte	0x865
+ 1640 085f 05       		.uleb128 0x5
+ 1641 0860 03       		.byte	0x3
+ 1642 0861 00000000 		.4byte	KNonBtModel
+ 1643 0865 0A       		.uleb128 0xa
+ 1644 0866 B8010000 		.4byte	0x1b8
+ 1645 086a 09       		.uleb128 0x9
+ 1646 086b 7B020000 		.4byte	.LASF97
+ 1647 086f 02       		.byte	0x2
+ 1648 0870 86       		.byte	0x86
+ 1649 0871 7B080000 		.4byte	0x87b
+ 1650 0875 05       		.uleb128 0x5
+ 1651 0876 03       		.byte	0x3
+ 1652 0877 00000000 		.4byte	KEcrSslMode
+ 1653 087b 0A       		.uleb128 0xa
+ 1654 087c B8010000 		.4byte	0x1b8
+ 1655 0880 09       		.uleb128 0x9
+ 1656 0881 C7030000 		.4byte	.LASF98
+ 1657 0885 02       		.byte	0x2
+ 1658 0886 89       		.byte	0x89
+ 1659 0887 91080000 		.4byte	0x891
+ 1660 088b 05       		.uleb128 0x5
+ 1661 088c 03       		.byte	0x3
+ 1662 088d 00000000 		.4byte	KComplted
+ 1663 0891 0A       		.uleb128 0xa
+ 1664 0892 30010000 		.4byte	0x130
+ 1665 0896 09       		.uleb128 0x9
+ 1666 0897 16020000 		.4byte	.LASF99
+ 1667 089b 02       		.byte	0x2
+ 1668 089c 8A       		.byte	0x8a
+ 1669 089d A7080000 		.4byte	0x8a7
+ 1670 08a1 05       		.uleb128 0x5
+ 1671 08a2 03       		.byte	0x3
+ 1672 08a3 00000000 		.4byte	KBadAmount
+ 1673 08a7 0A       		.uleb128 0xa
+ 1674 08a8 30010000 		.4byte	0x130
+ 1675 08ac 09       		.uleb128 0x9
+ 1676 08ad 29070000 		.4byte	.LASF100
+ 1677 08b1 02       		.byte	0x2
+ 1678 08b2 8B       		.byte	0x8b
+ 1679 08b3 BD080000 		.4byte	0x8bd
+ 1680 08b7 05       		.uleb128 0x5
+ 1681 08b8 03       		.byte	0x3
+ 1682 08b9 00000000 		.4byte	KTxnNotFound
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 38
+
+
+ 1683 08bd 0A       		.uleb128 0xa
+ 1684 08be 30010000 		.4byte	0x130
+ 1685 08c2 09       		.uleb128 0x9
+ 1686 08c3 D2060000 		.4byte	.LASF101
+ 1687 08c7 02       		.byte	0x2
+ 1688 08c8 8C       		.byte	0x8c
+ 1689 08c9 D3080000 		.4byte	0x8d3
+ 1690 08cd 05       		.uleb128 0x5
+ 1691 08ce 03       		.byte	0x3
+ 1692 08cf 00000000 		.4byte	KTxnAccepted
+ 1693 08d3 0A       		.uleb128 0xa
+ 1694 08d4 30010000 		.4byte	0x130
+ 1695 08d8 09       		.uleb128 0x9
+ 1696 08d9 1D070000 		.4byte	.LASF102
+ 1697 08dd 02       		.byte	0x2
+ 1698 08de 8D       		.byte	0x8d
+ 1699 08df E9080000 		.4byte	0x8e9
+ 1700 08e3 05       		.uleb128 0x5
+ 1701 08e4 03       		.byte	0x3
+ 1702 08e5 00000000 		.4byte	KLowBattery
+ 1703 08e9 0A       		.uleb128 0xa
+ 1704 08ea 30010000 		.4byte	0x130
+ 1705 08ee 09       		.uleb128 0x9
+ 1706 08ef E9060000 		.4byte	.LASF103
+ 1707 08f3 02       		.byte	0x2
+ 1708 08f4 8E       		.byte	0x8e
+ 1709 08f5 FF080000 		.4byte	0x8ff
+ 1710 08f9 05       		.uleb128 0x5
+ 1711 08fa 03       		.byte	0x3
+ 1712 08fb 00000000 		.4byte	KTxnCanceled
+ 1713 08ff 0A       		.uleb128 0xa
+ 1714 0900 30010000 		.4byte	0x130
+ 1715 0904 09       		.uleb128 0x9
+ 1716 0905 5A070000 		.4byte	.LASF104
+ 1717 0909 02       		.byte	0x2
+ 1718 090a 8F       		.byte	0x8f
+ 1719 090b 15090000 		.4byte	0x915
+ 1720 090f 05       		.uleb128 0x5
+ 1721 0910 03       		.byte	0x3
+ 1722 0911 00000000 		.4byte	KBadProcCode
+ 1723 0915 0A       		.uleb128 0xa
+ 1724 0916 30010000 		.4byte	0x130
+ 1725 091a 09       		.uleb128 0x9
+ 1726 091b 5A050000 		.4byte	.LASF105
+ 1727 091f 02       		.byte	0x2
+ 1728 0920 90       		.byte	0x90
+ 1729 0921 2B090000 		.4byte	0x92b
+ 1730 0925 05       		.uleb128 0x5
+ 1731 0926 03       		.byte	0x3
+ 1732 0927 00000000 		.4byte	KDataError
+ 1733 092b 0A       		.uleb128 0xa
+ 1734 092c 30010000 		.4byte	0x130
+ 1735 0930 09       		.uleb128 0x9
+ 1736 0931 21050000 		.4byte	.LASF106
+ 1737 0935 02       		.byte	0x2
+ 1738 0936 91       		.byte	0x91
+ 1739 0937 41090000 		.4byte	0x941
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 39
+
+
+ 1740 093b 05       		.uleb128 0x5
+ 1741 093c 03       		.byte	0x3
+ 1742 093d 00000000 		.4byte	KECRCommErr
+ 1743 0941 0A       		.uleb128 0xa
+ 1744 0942 30010000 		.4byte	0x130
+ 1745 0946 09       		.uleb128 0x9
+ 1746 0947 9B070000 		.4byte	.LASF107
+ 1747 094b 02       		.byte	0x2
+ 1748 094c 92       		.byte	0x92
+ 1749 094d 57090000 		.4byte	0x957
+ 1750 0951 05       		.uleb128 0x5
+ 1751 0952 03       		.byte	0x3
+ 1752 0953 00000000 		.4byte	KInvalidSeq
+ 1753 0957 0A       		.uleb128 0xa
+ 1754 0958 30010000 		.4byte	0x130
+ 1755 095c 09       		.uleb128 0x9
+ 1756 095d E0000000 		.4byte	.LASF108
+ 1757 0961 02       		.byte	0x2
+ 1758 0962 93       		.byte	0x93
+ 1759 0963 6D090000 		.4byte	0x96d
+ 1760 0967 05       		.uleb128 0x5
+ 1761 0968 03       		.byte	0x3
+ 1762 0969 00000000 		.4byte	KInvalidTrace
+ 1763 096d 0A       		.uleb128 0xa
+ 1764 096e 30010000 		.4byte	0x130
+ 1765 0972 09       		.uleb128 0x9
+ 1766 0973 99040000 		.4byte	.LASF109
+ 1767 0977 02       		.byte	0x2
+ 1768 0978 94       		.byte	0x94
+ 1769 0979 83090000 		.4byte	0x983
+ 1770 097d 05       		.uleb128 0x5
+ 1771 097e 03       		.byte	0x3
+ 1772 097f 00000000 		.4byte	KInvalidTerm
+ 1773 0983 0A       		.uleb128 0xa
+ 1774 0984 30010000 		.4byte	0x130
+ 1775 0988 09       		.uleb128 0x9
+ 1776 0989 BA000000 		.4byte	.LASF110
+ 1777 098d 02       		.byte	0x2
+ 1778 098e 95       		.byte	0x95
+ 1779 098f 99090000 		.4byte	0x999
+ 1780 0993 05       		.uleb128 0x5
+ 1781 0994 03       		.byte	0x3
+ 1782 0995 00000000 		.4byte	KHostNotFound
+ 1783 0999 0A       		.uleb128 0xa
+ 1784 099a 30010000 		.4byte	0x130
+ 1785 099e 09       		.uleb128 0x9
+ 1786 099f 4B060000 		.4byte	.LASF111
+ 1787 09a3 02       		.byte	0x2
+ 1788 09a4 96       		.byte	0x96
+ 1789 09a5 AF090000 		.4byte	0x9af
+ 1790 09a9 05       		.uleb128 0x5
+ 1791 09aa 03       		.byte	0x3
+ 1792 09ab 00000000 		.4byte	KSwipeCard
+ 1793 09af 0A       		.uleb128 0xa
+ 1794 09b0 30010000 		.4byte	0x130
+ 1795 09b4 09       		.uleb128 0x9
+ 1796 09b5 65050000 		.4byte	.LASF112
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 40
+
+
+ 1797 09b9 02       		.byte	0x2
+ 1798 09ba 97       		.byte	0x97
+ 1799 09bb C5090000 		.4byte	0x9c5
+ 1800 09bf 05       		.uleb128 0x5
+ 1801 09c0 03       		.byte	0x3
+ 1802 09c1 00000000 		.4byte	KWrongMAC
+ 1803 09c5 0A       		.uleb128 0xa
+ 1804 09c6 30010000 		.4byte	0x130
+ 1805 09ca 09       		.uleb128 0x9
+ 1806 09cb 64040000 		.4byte	.LASF113
+ 1807 09cf 02       		.byte	0x2
+ 1808 09d0 98       		.byte	0x98
+ 1809 09d1 DB090000 		.4byte	0x9db
+ 1810 09d5 05       		.uleb128 0x5
+ 1811 09d6 03       		.byte	0x3
+ 1812 09d7 00000000 		.4byte	KNotAllowed
+ 1813 09db 0A       		.uleb128 0xa
+ 1814 09dc 30010000 		.4byte	0x130
+ 1815 09e0 09       		.uleb128 0x9
+ 1816 09e1 38030000 		.4byte	.LASF114
+ 1817 09e5 02       		.byte	0x2
+ 1818 09e6 99       		.byte	0x99
+ 1819 09e7 F1090000 		.4byte	0x9f1
+ 1820 09eb 05       		.uleb128 0x5
+ 1821 09ec 03       		.byte	0x3
+ 1822 09ed 00000000 		.4byte	KNoTransRec
+ 1823 09f1 0A       		.uleb128 0xa
+ 1824 09f2 30010000 		.4byte	0x130
+ 1825 09f6 09       		.uleb128 0x9
+ 1826 09f7 F7040000 		.4byte	.LASF115
+ 1827 09fb 02       		.byte	0x2
+ 1828 09fc 9A       		.byte	0x9a
+ 1829 09fd 070A0000 		.4byte	0xa07
+ 1830 0a01 05       		.uleb128 0x5
+ 1831 0a02 03       		.byte	0x3
+ 1832 0a03 00000000 		.4byte	KInvalidPWD
+ 1833 0a07 0A       		.uleb128 0xa
+ 1834 0a08 30010000 		.4byte	0x130
+ 1835 0a0c 09       		.uleb128 0x9
+ 1836 0a0d 94050000 		.4byte	.LASF116
+ 1837 0a11 02       		.byte	0x2
+ 1838 0a12 9B       		.byte	0x9b
+ 1839 0a13 1D0A0000 		.4byte	0xa1d
+ 1840 0a17 05       		.uleb128 0x5
+ 1841 0a18 03       		.byte	0x3
+ 1842 0a19 00000000 		.4byte	KCardReadErr
+ 1843 0a1d 0A       		.uleb128 0xa
+ 1844 0a1e 30010000 		.4byte	0x130
+ 1845 0a22 09       		.uleb128 0x9
+ 1846 0a23 36070000 		.4byte	.LASF117
+ 1847 0a27 02       		.byte	0x2
+ 1848 0a28 9C       		.byte	0x9c
+ 1849 0a29 330A0000 		.4byte	0xa33
+ 1850 0a2d 05       		.uleb128 0x5
+ 1851 0a2e 03       		.byte	0x3
+ 1852 0a2f 00000000 		.4byte	KCardBlocked
+ 1853 0a33 0A       		.uleb128 0xa
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 41
+
+
+ 1854 0a34 30010000 		.4byte	0x130
+ 1855 0a38 09       		.uleb128 0x9
+ 1856 0a39 DF060000 		.4byte	.LASF118
+ 1857 0a3d 02       		.byte	0x2
+ 1858 0a3e 9D       		.byte	0x9d
+ 1859 0a3f 490A0000 		.4byte	0xa49
+ 1860 0a43 05       		.uleb128 0x5
+ 1861 0a44 03       		.byte	0x3
+ 1862 0a45 00000000 		.4byte	KSysError
+ 1863 0a49 0A       		.uleb128 0xa
+ 1864 0a4a 30010000 		.4byte	0x130
+ 1865 0a4e 09       		.uleb128 0x9
+ 1866 0a4f A7070000 		.4byte	.LASF119
+ 1867 0a53 02       		.byte	0x2
+ 1868 0a54 9E       		.byte	0x9e
+ 1869 0a55 5F0A0000 		.4byte	0xa5f
+ 1870 0a59 05       		.uleb128 0x5
+ 1871 0a5a 03       		.byte	0x3
+ 1872 0a5b 00000000 		.4byte	KUnSupportCard
+ 1873 0a5f 0A       		.uleb128 0xa
+ 1874 0a60 30010000 		.4byte	0x130
+ 1875 0a64 09       		.uleb128 0x9
+ 1876 0a65 23000000 		.4byte	.LASF120
+ 1877 0a69 02       		.byte	0x2
+ 1878 0a6a 9F       		.byte	0x9f
+ 1879 0a6b 750A0000 		.4byte	0xa75
+ 1880 0a6f 05       		.uleb128 0x5
+ 1881 0a70 03       		.byte	0x3
+ 1882 0a71 00000000 		.4byte	KUpdateRequest
+ 1883 0a75 0A       		.uleb128 0xa
+ 1884 0a76 30010000 		.4byte	0x130
+ 1885 0a7a 09       		.uleb128 0x9
+ 1886 0a7b 4D070000 		.4byte	.LASF121
+ 1887 0a7f 02       		.byte	0x2
+ 1888 0a80 A0       		.byte	0xa0
+ 1889 0a81 8B0A0000 		.4byte	0xa8b
+ 1890 0a85 05       		.uleb128 0x5
+ 1891 0a86 03       		.byte	0x3
+ 1892 0a87 00000000 		.4byte	KInvalidResp
+ 1893 0a8b 0A       		.uleb128 0xa
+ 1894 0a8c 30010000 		.4byte	0x130
+ 1895 0a90 09       		.uleb128 0x9
+ 1896 0a91 0C000000 		.4byte	.LASF122
+ 1897 0a95 02       		.byte	0x2
+ 1898 0a96 A1       		.byte	0xa1
+ 1899 0a97 A10A0000 		.4byte	0xaa1
+ 1900 0a9b 05       		.uleb128 0x5
+ 1901 0a9c 03       		.byte	0x3
+ 1902 0a9d 00000000 		.4byte	KNoDialTone
+ 1903 0aa1 0A       		.uleb128 0xa
+ 1904 0aa2 30010000 		.4byte	0x130
+ 1905 0aa6 09       		.uleb128 0x9
+ 1906 0aa7 7B050000 		.4byte	.LASF123
+ 1907 0aab 02       		.byte	0x2
+ 1908 0aac A2       		.byte	0xa2
+ 1909 0aad B70A0000 		.4byte	0xab7
+ 1910 0ab1 05       		.uleb128 0x5
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 42
+
+
+ 1911 0ab2 03       		.byte	0x3
+ 1912 0ab3 00000000 		.4byte	KHostOffline
+ 1913 0ab7 0A       		.uleb128 0xa
+ 1914 0ab8 30010000 		.4byte	0x130
+ 1915 0abc 09       		.uleb128 0x9
+ 1916 0abd FE030000 		.4byte	.LASF124
+ 1917 0ac1 02       		.byte	0x2
+ 1918 0ac2 A3       		.byte	0xa3
+ 1919 0ac3 CD0A0000 		.4byte	0xacd
+ 1920 0ac7 05       		.uleb128 0x5
+ 1921 0ac8 03       		.byte	0x3
+ 1922 0ac9 00000000 		.4byte	KLineBusy
+ 1923 0acd 0A       		.uleb128 0xa
+ 1924 0ace 30010000 		.4byte	0x130
+ 1925 0ad2 09       		.uleb128 0x9
+ 1926 0ad3 D1040000 		.4byte	.LASF125
+ 1927 0ad7 02       		.byte	0x2
+ 1928 0ad8 A4       		.byte	0xa4
+ 1929 0ad9 E30A0000 		.4byte	0xae3
+ 1930 0add 05       		.uleb128 0x5
+ 1931 0ade 03       		.byte	0x3
+ 1932 0adf 00000000 		.4byte	KTryAgainLC
+ 1933 0ae3 0A       		.uleb128 0xa
+ 1934 0ae4 30010000 		.4byte	0x130
+ 1935 0ae8 09       		.uleb128 0x9
+ 1936 0ae9 6E030000 		.4byte	.LASF126
+ 1937 0aed 02       		.byte	0x2
+ 1938 0aee A5       		.byte	0xa5
+ 1939 0aef F90A0000 		.4byte	0xaf9
+ 1940 0af3 05       		.uleb128 0x5
+ 1941 0af4 03       		.byte	0x3
+ 1942 0af5 00000000 		.4byte	KLineOccup
+ 1943 0af9 0A       		.uleb128 0xa
+ 1944 0afa 30010000 		.4byte	0x130
+ 1945 0afe 09       		.uleb128 0x9
+ 1946 0aff AB060000 		.4byte	.LASF127
+ 1947 0b03 02       		.byte	0x2
+ 1948 0b04 A6       		.byte	0xa6
+ 1949 0b05 0F0B0000 		.4byte	0xb0f
+ 1950 0b09 05       		.uleb128 0x5
+ 1951 0b0a 03       		.byte	0x3
+ 1952 0b0b 00000000 		.4byte	KNoLine
+ 1953 0b0f 0A       		.uleb128 0xa
+ 1954 0b10 30010000 		.4byte	0x130
+ 1955 0b14 09       		.uleb128 0x9
+ 1956 0b15 BC060000 		.4byte	.LASF128
+ 1957 0b19 02       		.byte	0x2
+ 1958 0b1a A7       		.byte	0xa7
+ 1959 0b1b 250B0000 		.4byte	0xb25
+ 1960 0b1f 05       		.uleb128 0x5
+ 1961 0b20 03       		.byte	0x3
+ 1962 0b21 00000000 		.4byte	KTryAgainNC
+ 1963 0b25 0A       		.uleb128 0xa
+ 1964 0b26 30010000 		.4byte	0x130
+ 1965 0b2a 09       		.uleb128 0x9
+ 1966 0b2b 4E050000 		.4byte	.LASF129
+ 1967 0b2f 02       		.byte	0x2
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 43
+
+
+ 1968 0b30 A8       		.byte	0xa8
+ 1969 0b31 3B0B0000 		.4byte	0xb3b
+ 1970 0b35 05       		.uleb128 0x5
+ 1971 0b36 03       		.byte	0x3
+ 1972 0b37 00000000 		.4byte	KTryAgainTO
+ 1973 0b3b 0A       		.uleb128 0xa
+ 1974 0b3c 30010000 		.4byte	0x130
+ 1975 0b40 09       		.uleb128 0x9
+ 1976 0b41 43000000 		.4byte	.LASF130
+ 1977 0b45 02       		.byte	0x2
+ 1978 0b46 A9       		.byte	0xa9
+ 1979 0b47 510B0000 		.4byte	0xb51
+ 1980 0b4b 05       		.uleb128 0x5
+ 1981 0b4c 03       		.byte	0x3
+ 1982 0b4d 00000000 		.4byte	KDnloadBIN
+ 1983 0b51 0A       		.uleb128 0xa
+ 1984 0b52 5C020000 		.4byte	0x25c
+ 1985 0b56 09       		.uleb128 0x9
+ 1986 0b57 03050000 		.4byte	.LASF131
+ 1987 0b5b 02       		.byte	0x2
+ 1988 0b5c AA       		.byte	0xaa
+ 1989 0b5d 670B0000 		.4byte	0xb67
+ 1990 0b61 05       		.uleb128 0x5
+ 1991 0b62 03       		.byte	0x3
+ 1992 0b63 00000000 		.4byte	KDnloadSchedule
+ 1993 0b67 0A       		.uleb128 0xa
+ 1994 0b68 5C020000 		.4byte	0x25c
+ 1995 0b6c 09       		.uleb128 0x9
+ 1996 0b6d 3D040000 		.4byte	.LASF132
+ 1997 0b71 02       		.byte	0x2
+ 1998 0b72 AD       		.byte	0xad
+ 1999 0b73 7D0B0000 		.4byte	0xb7d
+ 2000 0b77 05       		.uleb128 0x5
+ 2001 0b78 03       		.byte	0x3
+ 2002 0b79 00000000 		.4byte	KEDCInit
+ 2003 0b7d 0A       		.uleb128 0xa
+ 2004 0b7e 5C020000 		.4byte	0x25c
+ 2005 0b82 09       		.uleb128 0x9
+ 2006 0b83 F2030000 		.4byte	.LASF133
+ 2007 0b87 02       		.byte	0x2
+ 2008 0b88 AE       		.byte	0xae
+ 2009 0b89 930B0000 		.4byte	0xb93
+ 2010 0b8d 05       		.uleb128 0x5
+ 2011 0b8e 03       		.byte	0x3
+ 2012 0b8f 00000000 		.4byte	KLoadEMVKey
+ 2013 0b93 0A       		.uleb128 0xa
+ 2014 0b94 D7000000 		.4byte	0xd7
+ 2015 0b98 09       		.uleb128 0x9
+ 2016 0b99 13050000 		.4byte	.LASF134
+ 2017 0b9d 02       		.byte	0x2
+ 2018 0b9e AF       		.byte	0xaf
+ 2019 0b9f A90B0000 		.4byte	0xba9
+ 2020 0ba3 05       		.uleb128 0x5
+ 2021 0ba4 03       		.byte	0x3
+ 2022 0ba5 00000000 		.4byte	KLoadEMVParam
+ 2023 0ba9 0A       		.uleb128 0xa
+ 2024 0baa DE010000 		.4byte	0x1de
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 44
+
+
+ 2025 0bae 09       		.uleb128 0x9
+ 2026 0baf DD040000 		.4byte	.LASF135
+ 2027 0bb3 02       		.byte	0x2
+ 2028 0bb4 B0       		.byte	0xb0
+ 2029 0bb5 BF0B0000 		.4byte	0xbbf
+ 2030 0bb9 05       		.uleb128 0x5
+ 2031 0bba 03       		.byte	0x3
+ 2032 0bbb 00000000 		.4byte	KLoadExtraParam
+ 2033 0bbf 0A       		.uleb128 0xa
+ 2034 0bc0 5C020000 		.4byte	0x25c
+ 2035 0bc4 09       		.uleb128 0x9
+ 2036 0bc5 C8000000 		.4byte	.LASF136
+ 2037 0bc9 02       		.byte	0x2
+ 2038 0bca B1       		.byte	0xb1
+ 2039 0bcb D50B0000 		.4byte	0xbd5
+ 2040 0bcf 05       		.uleb128 0x5
+ 2041 0bd0 03       		.byte	0x3
+ 2042 0bd1 00000000 		.4byte	KReturn2Base
+ 2043 0bd5 0A       		.uleb128 0xa
+ 2044 0bd6 A7000000 		.4byte	0xa7
+ 2045 0bda 09       		.uleb128 0x9
+ 2046 0bdb B4040000 		.4byte	.LASF137
+ 2047 0bdf 02       		.byte	0x2
+ 2048 0be0 B4       		.byte	0xb4
+ 2049 0be1 EB0B0000 		.4byte	0xbeb
+ 2050 0be5 05       		.uleb128 0x5
+ 2051 0be6 03       		.byte	0x3
+ 2052 0be7 00000000 		.4byte	KLogInFailed
+ 2053 0beb 0A       		.uleb128 0xa
+ 2054 0bec 30010000 		.4byte	0x130
+ 2055 0bf0 09       		.uleb128 0x9
+ 2056 0bf1 4D020000 		.4byte	.LASF138
+ 2057 0bf5 02       		.byte	0x2
+ 2058 0bf6 B5       		.byte	0xb5
+ 2059 0bf7 010C0000 		.4byte	0xc01
+ 2060 0bfb 05       		.uleb128 0x5
+ 2061 0bfc 03       		.byte	0x3
+ 2062 0bfd 00000000 		.4byte	KDownloadFailed
+ 2063 0c01 0A       		.uleb128 0xa
+ 2064 0c02 30010000 		.4byte	0x130
+ 2065 0c06 09       		.uleb128 0x9
+ 2066 0c07 F3070000 		.4byte	.LASF139
+ 2067 0c0b 02       		.byte	0x2
+ 2068 0c0c B6       		.byte	0xb6
+ 2069 0c0d 170C0000 		.4byte	0xc17
+ 2070 0c11 05       		.uleb128 0x5
+ 2071 0c12 03       		.byte	0x3
+ 2072 0c13 00000000 		.4byte	KServerKeyError
+ 2073 0c17 0A       		.uleb128 0xa
+ 2074 0c18 30010000 		.4byte	0x130
+ 2075 0c1c 09       		.uleb128 0x9
+ 2076 0c1d AB000000 		.4byte	.LASF140
+ 2077 0c21 02       		.byte	0x2
+ 2078 0c22 B7       		.byte	0xb7
+ 2079 0c23 2D0C0000 		.4byte	0xc2d
+ 2080 0c27 05       		.uleb128 0x5
+ 2081 0c28 03       		.byte	0x3
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 45
+
+
+ 2082 0c29 00000000 		.4byte	KDLLFileFailed
+ 2083 0c2d 0A       		.uleb128 0xa
+ 2084 0c2e 30010000 		.4byte	0x130
+ 2085 0c32 09       		.uleb128 0x9
+ 2086 0c33 F6050000 		.4byte	.LASF141
+ 2087 0c37 02       		.byte	0x2
+ 2088 0c38 B8       		.byte	0xb8
+ 2089 0c39 430C0000 		.4byte	0xc43
+ 2090 0c3d 05       		.uleb128 0x5
+ 2091 0c3e 03       		.byte	0x3
+ 2092 0c3f 00000000 		.4byte	KTIDFileFailed
+ 2093 0c43 0A       		.uleb128 0xa
+ 2094 0c44 30010000 		.4byte	0x130
+ 2095 0c48 09       		.uleb128 0x9
+ 2096 0c49 C1040000 		.4byte	.LASF142
+ 2097 0c4d 02       		.byte	0x2
+ 2098 0c4e B9       		.byte	0xb9
+ 2099 0c4f 590C0000 		.4byte	0xc59
+ 2100 0c53 05       		.uleb128 0x5
+ 2101 0c54 03       		.byte	0x3
+ 2102 0c55 00000000 		.4byte	KItemNotEnabled
+ 2103 0c59 0A       		.uleb128 0xa
+ 2104 0c5a 30010000 		.4byte	0x130
+ 2105 0c5e 09       		.uleb128 0x9
+ 2106 0c5f 78000000 		.4byte	.LASF143
+ 2107 0c63 02       		.byte	0x2
+ 2108 0c64 BC       		.byte	0xbc
+ 2109 0c65 6F0C0000 		.4byte	0xc6f
+ 2110 0c69 05       		.uleb128 0x5
+ 2111 0c6a 03       		.byte	0x3
+ 2112 0c6b 00000000 		.4byte	KRemoteDLSch
+ 2113 0c6f 0A       		.uleb128 0xa
+ 2114 0c70 5C020000 		.4byte	0x25c
+ 2115 0c74 09       		.uleb128 0x9
+ 2116 0c75 3B060000 		.4byte	.LASF144
+ 2117 0c79 02       		.byte	0x2
+ 2118 0c7a BD       		.byte	0xbd
+ 2119 0c7b 850C0000 		.4byte	0xc85
+ 2120 0c7f 05       		.uleb128 0x5
+ 2121 0c80 03       		.byte	0x3
+ 2122 0c81 00000000 		.4byte	KRemoteDLHeader
+ 2123 0c85 0A       		.uleb128 0xa
+ 2124 0c86 5C020000 		.4byte	0x25c
+ 2125 0c8a 00       		.byte	0
+ 2126              		.section	.debug_abbrev,"",%progbits
+ 2127              	.Ldebug_abbrev0:
+ 2128 0000 01       		.uleb128 0x1
+ 2129 0001 11       		.uleb128 0x11
+ 2130 0002 01       		.byte	0x1
+ 2131 0003 25       		.uleb128 0x25
+ 2132 0004 0E       		.uleb128 0xe
+ 2133 0005 13       		.uleb128 0x13
+ 2134 0006 0B       		.uleb128 0xb
+ 2135 0007 03       		.uleb128 0x3
+ 2136 0008 0E       		.uleb128 0xe
+ 2137 0009 1B       		.uleb128 0x1b
+ 2138 000a 0E       		.uleb128 0xe
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 46
+
+
+ 2139 000b 10       		.uleb128 0x10
+ 2140 000c 17       		.uleb128 0x17
+ 2141 000d 00       		.byte	0
+ 2142 000e 00       		.byte	0
+ 2143 000f 02       		.uleb128 0x2
+ 2144 0010 24       		.uleb128 0x24
+ 2145 0011 00       		.byte	0
+ 2146 0012 0B       		.uleb128 0xb
+ 2147 0013 0B       		.uleb128 0xb
+ 2148 0014 3E       		.uleb128 0x3e
+ 2149 0015 0B       		.uleb128 0xb
+ 2150 0016 03       		.uleb128 0x3
+ 2151 0017 08       		.uleb128 0x8
+ 2152 0018 00       		.byte	0
+ 2153 0019 00       		.byte	0
+ 2154 001a 03       		.uleb128 0x3
+ 2155 001b 24       		.uleb128 0x24
+ 2156 001c 00       		.byte	0
+ 2157 001d 0B       		.uleb128 0xb
+ 2158 001e 0B       		.uleb128 0xb
+ 2159 001f 3E       		.uleb128 0x3e
+ 2160 0020 0B       		.uleb128 0xb
+ 2161 0021 03       		.uleb128 0x3
+ 2162 0022 0E       		.uleb128 0xe
+ 2163 0023 00       		.byte	0
+ 2164 0024 00       		.byte	0
+ 2165 0025 04       		.uleb128 0x4
+ 2166 0026 16       		.uleb128 0x16
+ 2167 0027 00       		.byte	0
+ 2168 0028 03       		.uleb128 0x3
+ 2169 0029 0E       		.uleb128 0xe
+ 2170 002a 3A       		.uleb128 0x3a
+ 2171 002b 0B       		.uleb128 0xb
+ 2172 002c 3B       		.uleb128 0x3b
+ 2173 002d 0B       		.uleb128 0xb
+ 2174 002e 49       		.uleb128 0x49
+ 2175 002f 13       		.uleb128 0x13
+ 2176 0030 00       		.byte	0
+ 2177 0031 00       		.byte	0
+ 2178 0032 05       		.uleb128 0x5
+ 2179 0033 01       		.uleb128 0x1
+ 2180 0034 01       		.byte	0x1
+ 2181 0035 49       		.uleb128 0x49
+ 2182 0036 13       		.uleb128 0x13
+ 2183 0037 01       		.uleb128 0x1
+ 2184 0038 13       		.uleb128 0x13
+ 2185 0039 00       		.byte	0
+ 2186 003a 00       		.byte	0
+ 2187 003b 06       		.uleb128 0x6
+ 2188 003c 21       		.uleb128 0x21
+ 2189 003d 00       		.byte	0
+ 2190 003e 49       		.uleb128 0x49
+ 2191 003f 13       		.uleb128 0x13
+ 2192 0040 2F       		.uleb128 0x2f
+ 2193 0041 0B       		.uleb128 0xb
+ 2194 0042 00       		.byte	0
+ 2195 0043 00       		.byte	0
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 47
+
+
+ 2196 0044 07       		.uleb128 0x7
+ 2197 0045 04       		.uleb128 0x4
+ 2198 0046 01       		.byte	0x1
+ 2199 0047 0B       		.uleb128 0xb
+ 2200 0048 0B       		.uleb128 0xb
+ 2201 0049 3A       		.uleb128 0x3a
+ 2202 004a 0B       		.uleb128 0xb
+ 2203 004b 3B       		.uleb128 0x3b
+ 2204 004c 05       		.uleb128 0x5
+ 2205 004d 01       		.uleb128 0x1
+ 2206 004e 13       		.uleb128 0x13
+ 2207 004f 00       		.byte	0
+ 2208 0050 00       		.byte	0
+ 2209 0051 08       		.uleb128 0x8
+ 2210 0052 28       		.uleb128 0x28
+ 2211 0053 00       		.byte	0
+ 2212 0054 03       		.uleb128 0x3
+ 2213 0055 0E       		.uleb128 0xe
+ 2214 0056 1C       		.uleb128 0x1c
+ 2215 0057 0D       		.uleb128 0xd
+ 2216 0058 00       		.byte	0
+ 2217 0059 00       		.byte	0
+ 2218 005a 09       		.uleb128 0x9
+ 2219 005b 34       		.uleb128 0x34
+ 2220 005c 00       		.byte	0
+ 2221 005d 03       		.uleb128 0x3
+ 2222 005e 0E       		.uleb128 0xe
+ 2223 005f 3A       		.uleb128 0x3a
+ 2224 0060 0B       		.uleb128 0xb
+ 2225 0061 3B       		.uleb128 0x3b
+ 2226 0062 0B       		.uleb128 0xb
+ 2227 0063 49       		.uleb128 0x49
+ 2228 0064 13       		.uleb128 0x13
+ 2229 0065 3F       		.uleb128 0x3f
+ 2230 0066 19       		.uleb128 0x19
+ 2231 0067 02       		.uleb128 0x2
+ 2232 0068 18       		.uleb128 0x18
+ 2233 0069 00       		.byte	0
+ 2234 006a 00       		.byte	0
+ 2235 006b 0A       		.uleb128 0xa
+ 2236 006c 26       		.uleb128 0x26
+ 2237 006d 00       		.byte	0
+ 2238 006e 49       		.uleb128 0x49
+ 2239 006f 13       		.uleb128 0x13
+ 2240 0070 00       		.byte	0
+ 2241 0071 00       		.byte	0
+ 2242 0072 00       		.byte	0
+ 2243              		.section	.debug_aranges,"",%progbits
+ 2244 0000 14000000 		.4byte	0x14
+ 2245 0004 0200     		.2byte	0x2
+ 2246 0006 00000000 		.4byte	.Ldebug_info0
+ 2247 000a 04       		.byte	0x4
+ 2248 000b 00       		.byte	0
+ 2249 000c 0000     		.2byte	0
+ 2250 000e 0000     		.2byte	0
+ 2251 0010 00000000 		.4byte	0
+ 2252 0014 00000000 		.4byte	0
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 48
+
+
+ 2253              		.section	.debug_line,"",%progbits
+ 2254              	.Ldebug_line0:
+ 2255 0000 50000000 		.section	.debug_str,"MS",%progbits,1
+ 2255      02004A00 
+ 2255      00000201 
+ 2255      FB0E0D00 
+ 2255      01010101 
+ 2256              	.LASF67:
+ 2257 0000 4B43616E 		.ascii	"KCancelExit\000"
+ 2257      63656C45 
+ 2257      78697400 
+ 2258              	.LASF122:
+ 2259 000c 4B4E6F44 		.ascii	"KNoDialTone\000"
+ 2259      69616C54 
+ 2259      6F6E6500 
+ 2260              	.LASF76:
+ 2261 0018 4B507269 		.ascii	"KPrintStis\000"
+ 2261      6E745374 
+ 2261      697300
+ 2262              	.LASF120:
+ 2263 0023 4B557064 		.ascii	"KUpdateRequest\000"
+ 2263      61746552 
+ 2263      65717565 
+ 2263      737400
+ 2264              	.LASF53:
+ 2265 0032 4B4E6F50 		.ascii	"KNoPaper\000"
+ 2265      61706572 
+ 2265      00
+ 2266              	.LASF55:
+ 2267 003b 4B546572 		.ascii	"KTermId\000"
+ 2267      6D496400 
+ 2268              	.LASF130:
+ 2269 0043 4B446E6C 		.ascii	"KDnloadBIN\000"
+ 2269      6F616442 
+ 2269      494E00
+ 2270              	.LASF36:
+ 2271 004e 4B557365 		.ascii	"KUserName\000"
+ 2271      724E616D 
+ 2271      6500
+ 2272              	.LASF15:
+ 2273 0058 55534246 		.ascii	"USBFPRT_GENERAL_INFO_IMG_HEIGHT\000"
+ 2273      5052545F 
+ 2273      47454E45 
+ 2273      52414C5F 
+ 2273      494E464F 
+ 2274              	.LASF143:
+ 2275 0078 4B52656D 		.ascii	"KRemoteDLSch\000"
+ 2275      6F746544 
+ 2275      4C536368 
+ 2275      00
+ 2276              	.LASF8:
+ 2277 0085 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2277      206C6F6E 
+ 2277      6720756E 
+ 2277      7369676E 
+ 2277      65642069 
+ 2278              	.LASF86:
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 49
+
+
+ 2279 009c 4B505050 		.ascii	"KPPPPwd\000"
+ 2279      50776400 
+ 2280              	.LASF20:
+ 2281 00a4 4B497048 		.ascii	"KIpHdr\000"
+ 2281      647200
+ 2282              	.LASF140:
+ 2283 00ab 4B444C4C 		.ascii	"KDLLFileFailed\000"
+ 2283      46696C65 
+ 2283      4661696C 
+ 2283      656400
+ 2284              	.LASF110:
+ 2285 00ba 4B486F73 		.ascii	"KHostNotFound\000"
+ 2285      744E6F74 
+ 2285      466F756E 
+ 2285      6400
+ 2286              	.LASF136:
+ 2287 00c8 4B526574 		.ascii	"KReturn2Base\000"
+ 2287      75726E32 
+ 2287      42617365 
+ 2287      00
+ 2288              	.LASF62:
+ 2289 00d5 4B496E69 		.ascii	"KInitIPHdr\000"
+ 2289      74495048 
+ 2289      647200
+ 2290              	.LASF108:
+ 2291 00e0 4B496E76 		.ascii	"KInvalidTrace\000"
+ 2291      616C6964 
+ 2291      54726163 
+ 2291      6500
+ 2292              	.LASF73:
+ 2293 00ee 4B437572 		.ascii	"KCurrBatchNo\000"
+ 2293      72426174 
+ 2293      63684E6F 
+ 2293      00
+ 2294              	.LASF7:
+ 2295 00fb 6C6F6E67 		.ascii	"long long int\000"
+ 2295      206C6F6E 
+ 2295      6720696E 
+ 2295      7400
+ 2296              	.LASF1:
+ 2297 0109 7369676E 		.ascii	"signed char\000"
+ 2297      65642063 
+ 2297      68617200 
+ 2298              	.LASF80:
+ 2299 0115 4B436865 		.ascii	"KCheckInPriNum\000"
+ 2299      636B496E 
+ 2299      5072694E 
+ 2299      756D00
+ 2300              	.LASF63:
+ 2301 0124 4B496E69 		.ascii	"KInitIP\000"
+ 2301      74495000 
+ 2302              	.LASF57:
+ 2303 012c 4B496E69 		.ascii	"KInitModeStr\000"
+ 2303      744D6F64 
+ 2303      65537472 
+ 2303      00
+ 2304              	.LASF145:
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 50
+
+
+ 2305 0139 474E5520 		.ascii	"GNU C 4.9.3 20141119 (release) [ARM/embedded-4_9-br"
+ 2305      4320342E 
+ 2305      392E3320 
+ 2305      32303134 
+ 2305      31313139 
+ 2306 016c 616E6368 		.ascii	"anch revision 218278] -mthumb -mcpu=cortex-a5 -mthu"
+ 2306      20726576 
+ 2306      6973696F 
+ 2306      6E203231 
+ 2306      38323738 
+ 2307 019f 6D622D69 		.ascii	"mb-interwork -mstructure-size-boundary=32 -mno-unal"
+ 2307      6E746572 
+ 2307      776F726B 
+ 2307      202D6D73 
+ 2307      74727563 
+ 2308 01d2 69676E65 		.ascii	"igned-access -g -Os -ffunction-sections -fsigned-ch"
+ 2308      642D6163 
+ 2308      63657373 
+ 2308      202D6720 
+ 2308      2D4F7320 
+ 2309 0205 617200   		.ascii	"ar\000"
+ 2310              	.LASF39:
+ 2311 0208 4B436F6D 		.ascii	"KCommNoCancel\000"
+ 2311      6D4E6F43 
+ 2311      616E6365 
+ 2311      6C00
+ 2312              	.LASF99:
+ 2313 0216 4B426164 		.ascii	"KBadAmount\000"
+ 2313      416D6F75 
+ 2313      6E7400
+ 2314              	.LASF5:
+ 2315 0221 6C6F6E67 		.ascii	"long int\000"
+ 2315      20696E74 
+ 2315      00
+ 2316              	.LASF66:
+ 2317 022a 4B496E69 		.ascii	"KInitEnterSave\000"
+ 2317      74456E74 
+ 2317      65725361 
+ 2317      766500
+ 2318              	.LASF51:
+ 2319 0239 4B4D616E 		.ascii	"KManualCut\000"
+ 2319      75616C43 
+ 2319      757400
+ 2320              	.LASF48:
+ 2321 0244 4B546573 		.ascii	"KTestMSR\000"
+ 2321      744D5352 
+ 2321      00
+ 2322              	.LASF138:
+ 2323 024d 4B446F77 		.ascii	"KDownloadFailed\000"
+ 2323      6E6C6F61 
+ 2323      64466169 
+ 2323      6C656400 
+ 2324              	.LASF60:
+ 2325 025d 4B446961 		.ascii	"KDialModeStr\000"
+ 2325      6C4D6F64 
+ 2325      65537472 
+ 2325      00
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 51
+
+
+ 2326              	.LASF40:
+ 2327 026a 4B436F6D 		.ascii	"KCommConnectWait\000"
+ 2327      6D436F6E 
+ 2327      6E656374 
+ 2327      57616974 
+ 2327      00
+ 2328              	.LASF97:
+ 2329 027b 4B456372 		.ascii	"KEcrSslMode\000"
+ 2329      53736C4D 
+ 2329      6F646500 
+ 2330              	.LASF13:
+ 2331 0287 55534246 		.ascii	"USBFPRT_GENERAL_INFO_MODEL\000"
+ 2331      5052545F 
+ 2331      47454E45 
+ 2331      52414C5F 
+ 2331      494E464F 
+ 2332              	.LASF147:
+ 2333 02a2 433A5C54 		.ascii	"C:\\T1000-A5\\Projects\\APM\\apm_v3.0s03\000"
+ 2333      31303030 
+ 2333      2D41355C 
+ 2333      50726F6A 
+ 2333      65637473 
+ 2334              	.LASF12:
+ 2335 02c7 44574F52 		.ascii	"DWORD\000"
+ 2335      4400
+ 2336              	.LASF72:
+ 2337 02cd 4B446566 		.ascii	"KDefaultAmt\000"
+ 2337      61756C74 
+ 2337      416D7400 
+ 2338              	.LASF87:
+ 2339 02d9 4B496E69 		.ascii	"KInitPPPIPHdr\000"
+ 2339      74505050 
+ 2339      49504864 
+ 2339      7200
+ 2340              	.LASF92:
+ 2341 02e7 4B486F73 		.ascii	"KHostIP\000"
+ 2341      74495000 
+ 2342              	.LASF30:
+ 2343 02ef 4B446174 		.ascii	"KDataReseted\000"
+ 2343      61526573 
+ 2343      65746564 
+ 2343      00
+ 2344              	.LASF78:
+ 2345 02fc 4B456372 		.ascii	"KEcrPort\000"
+ 2345      506F7274 
+ 2345      00
+ 2346              	.LASF26:
+ 2347 0305 4B557064 		.ascii	"KUpdated\000"
+ 2347      61746564 
+ 2347      00
+ 2348              	.LASF146:
+ 2349 030e 7372632F 		.ascii	"src/message.c\000"
+ 2349      6D657373 
+ 2349      6167652E 
+ 2349      6300
+ 2350              	.LASF81:
+ 2351 031c 4B436865 		.ascii	"KCheckInSecNum\000"
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 52
+
+
+ 2351      636B496E 
+ 2351      5365634E 
+ 2351      756D00
+ 2352              	.LASF89:
+ 2353 032b 4B496E69 		.ascii	"KInitPPPPort\000"
+ 2353      74505050 
+ 2353      506F7274 
+ 2353      00
+ 2354              	.LASF114:
+ 2355 0338 4B4E6F54 		.ascii	"KNoTransRec\000"
+ 2355      72616E73 
+ 2355      52656300 
+ 2356              	.LASF18:
+ 2357 0344 4B566972 		.ascii	"KVirginInit\000"
+ 2357      67696E49 
+ 2357      6E697400 
+ 2358              	.LASF96:
+ 2359 0350 4B4E6F6E 		.ascii	"KNonBtModel\000"
+ 2359      42744D6F 
+ 2359      64656C00 
+ 2360              	.LASF6:
+ 2361 035c 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2361      20756E73 
+ 2361      69676E65 
+ 2361      6420696E 
+ 2361      7400
+ 2362              	.LASF126:
+ 2363 036e 4B4C696E 		.ascii	"KLineOccup\000"
+ 2363      654F6363 
+ 2363      757000
+ 2364              	.LASF84:
+ 2365 0379 4B465450 		.ascii	"KFTPServerKey\000"
+ 2365      53657276 
+ 2365      65724B65 
+ 2365      7900
+ 2366              	.LASF44:
+ 2367 0387 4B436F6D 		.ascii	"KCommWait\000"
+ 2367      6D576169 
+ 2367      7400
+ 2368              	.LASF16:
+ 2369 0391 55534246 		.ascii	"USBFPRT_GENERAL_INFO_IMG_BPP\000"
+ 2369      5052545F 
+ 2369      47454E45 
+ 2369      52414C5F 
+ 2369      494E464F 
+ 2370              	.LASF17:
+ 2371 03ae 55534246 		.ascii	"USBFPRT_GENERAL_INFO_END\000"
+ 2371      5052545F 
+ 2371      47454E45 
+ 2371      52414C5F 
+ 2371      494E464F 
+ 2372              	.LASF98:
+ 2373 03c7 4B436F6D 		.ascii	"KComplted\000"
+ 2373      706C7465 
+ 2373      6400
+ 2374              	.LASF4:
+ 2375 03d1 73686F72 		.ascii	"short unsigned int\000"
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 53
+
+
+ 2375      7420756E 
+ 2375      7369676E 
+ 2375      65642069 
+ 2375      6E7400
+ 2376              	.LASF11:
+ 2377 03e4 42595445 		.ascii	"BYTE\000"
+ 2377      00
+ 2378              	.LASF21:
+ 2379 03e9 4B444843 		.ascii	"KDHCPHdr\000"
+ 2379      50486472 
+ 2379      00
+ 2380              	.LASF133:
+ 2381 03f2 4B4C6F61 		.ascii	"KLoadEMVKey\000"
+ 2381      64454D56 
+ 2381      4B657900 
+ 2382              	.LASF124:
+ 2383 03fe 4B4C696E 		.ascii	"KLineBusy\000"
+ 2383      65427573 
+ 2383      7900
+ 2384              	.LASF54:
+ 2385 0408 4B53656C 		.ascii	"KSelAcquirer\000"
+ 2385      41637175 
+ 2385      69726572 
+ 2385      00
+ 2386              	.LASF35:
+ 2387 0415 4B41706E 		.ascii	"KApn\000"
+ 2387      00
+ 2388              	.LASF23:
+ 2389 041a 4B456E74 		.ascii	"KEnterSave\000"
+ 2389      65725361 
+ 2389      766500
+ 2390              	.LASF33:
+ 2391 0425 4B536574 		.ascii	"KSettleBatch\000"
+ 2391      746C6542 
+ 2391      61746368 
+ 2391      00
+ 2392              	.LASF47:
+ 2393 0432 4B496E73 		.ascii	"KInsertICC\000"
+ 2393      65727449 
+ 2393      434300
+ 2394              	.LASF132:
+ 2395 043d 4B454443 		.ascii	"KEDCInit\000"
+ 2395      496E6974 
+ 2395      00
+ 2396              	.LASF85:
+ 2397 0446 4B505050 		.ascii	"KPPPUser\000"
+ 2397      55736572 
+ 2397      00
+ 2398              	.LASF93:
+ 2399 044f 4B486F73 		.ascii	"KHostPort\000"
+ 2399      74506F72 
+ 2399      7400
+ 2400              	.LASF88:
+ 2401 0459 4B496E69 		.ascii	"KInitPPPIP\000"
+ 2401      74505050 
+ 2401      495000
+ 2402              	.LASF113:
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 54
+
+
+ 2403 0464 4B4E6F74 		.ascii	"KNotAllowed\000"
+ 2403      416C6C6F 
+ 2403      77656400 
+ 2404              	.LASF83:
+ 2405 0470 4B465450 		.ascii	"KFTPPwd\000"
+ 2405      50776400 
+ 2406              	.LASF74:
+ 2407 0478 4B547261 		.ascii	"KTrainingMode\000"
+ 2407      696E696E 
+ 2407      674D6F64 
+ 2407      6500
+ 2408              	.LASF9:
+ 2409 0486 73697A65 		.ascii	"sizetype\000"
+ 2409      74797065 
+ 2409      00
+ 2410              	.LASF64:
+ 2411 048f 4B496E69 		.ascii	"KInitPort\000"
+ 2411      74506F72 
+ 2411      7400
+ 2412              	.LASF109:
+ 2413 0499 4B496E76 		.ascii	"KInvalidTerm\000"
+ 2413      616C6964 
+ 2413      5465726D 
+ 2413      00
+ 2414              	.LASF90:
+ 2415 04a6 4B4E6F6E 		.ascii	"KNonWifiModel\000"
+ 2415      57696669 
+ 2415      4D6F6465 
+ 2415      6C00
+ 2416              	.LASF137:
+ 2417 04b4 4B4C6F67 		.ascii	"KLogInFailed\000"
+ 2417      496E4661 
+ 2417      696C6564 
+ 2417      00
+ 2418              	.LASF142:
+ 2419 04c1 4B497465 		.ascii	"KItemNotEnabled\000"
+ 2419      6D4E6F74 
+ 2419      456E6162 
+ 2419      6C656400 
+ 2420              	.LASF125:
+ 2421 04d1 4B547279 		.ascii	"KTryAgainLC\000"
+ 2421      41676169 
+ 2421      6E4C4300 
+ 2422              	.LASF135:
+ 2423 04dd 4B4C6F61 		.ascii	"KLoadExtraParam\000"
+ 2423      64457874 
+ 2423      72615061 
+ 2423      72616D00 
+ 2424              	.LASF49:
+ 2425 04ed 4B506C73 		.ascii	"KPlsSwipe\000"
+ 2425      53776970 
+ 2425      6500
+ 2426              	.LASF115:
+ 2427 04f7 4B496E76 		.ascii	"KInvalidPWD\000"
+ 2427      616C6964 
+ 2427      50574400 
+ 2428              	.LASF131:
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 55
+
+
+ 2429 0503 4B446E6C 		.ascii	"KDnloadSchedule\000"
+ 2429      6F616453 
+ 2429      63686564 
+ 2429      756C6500 
+ 2430              	.LASF134:
+ 2431 0513 4B4C6F61 		.ascii	"KLoadEMVParam\000"
+ 2431      64454D56 
+ 2431      50617261 
+ 2431      6D00
+ 2432              	.LASF106:
+ 2433 0521 4B454352 		.ascii	"KECRCommErr\000"
+ 2433      436F6D6D 
+ 2433      45727200 
+ 2434              	.LASF56:
+ 2435 052d 4B43686B 		.ascii	"KChkSumErr\000"
+ 2435      53756D45 
+ 2435      727200
+ 2436              	.LASF50:
+ 2437 0538 4B507269 		.ascii	"KPrintingMsg\000"
+ 2437      6E74696E 
+ 2437      674D7367 
+ 2437      00
+ 2438              	.LASF45:
+ 2439 0545 4B53616D 		.ascii	"KSamTest\000"
+ 2439      54657374 
+ 2439      00
+ 2440              	.LASF129:
+ 2441 054e 4B547279 		.ascii	"KTryAgainTO\000"
+ 2441      41676169 
+ 2441      6E544F00 
+ 2442              	.LASF105:
+ 2443 055a 4B446174 		.ascii	"KDataError\000"
+ 2443      61457272 
+ 2443      6F7200
+ 2444              	.LASF112:
+ 2445 0565 4B57726F 		.ascii	"KWrongMAC\000"
+ 2445      6E674D41 
+ 2445      4300
+ 2446              	.LASF58:
+ 2447 056f 4B496E69 		.ascii	"KInitPriNum\000"
+ 2447      74507269 
+ 2447      4E756D00 
+ 2448              	.LASF123:
+ 2449 057b 4B486F73 		.ascii	"KHostOffline\000"
+ 2449      744F6666 
+ 2449      6C696E65 
+ 2449      00
+ 2450              	.LASF79:
+ 2451 0588 4B446566 		.ascii	"KDefaultApp\000"
+ 2451      61756C74 
+ 2451      41707000 
+ 2452              	.LASF116:
+ 2453 0594 4B436172 		.ascii	"KCardReadErr\000"
+ 2453      64526561 
+ 2453      64457272 
+ 2453      00
+ 2454              	.LASF14:
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 56
+
+
+ 2455 05a1 55534246 		.ascii	"USBFPRT_GENERAL_INFO_IMG_WIDTH\000"
+ 2455      5052545F 
+ 2455      47454E45 
+ 2455      52414C5F 
+ 2455      494E464F 
+ 2456              	.LASF2:
+ 2457 05c0 756E7369 		.ascii	"unsigned char\000"
+ 2457      676E6564 
+ 2457      20636861 
+ 2457      7200
+ 2458              	.LASF61:
+ 2459 05ce 4B54696D 		.ascii	"KTimeDelay\000"
+ 2459      6544656C 
+ 2459      617900
+ 2460              	.LASF3:
+ 2461 05d9 73686F72 		.ascii	"short int\000"
+ 2461      7420696E 
+ 2461      7400
+ 2462              	.LASF43:
+ 2463 05e3 4B436F6D 		.ascii	"KCommRcvd\000"
+ 2463      6D526376 
+ 2463      6400
+ 2464              	.LASF38:
+ 2465 05ed 4B446961 		.ascii	"KDialNum\000"
+ 2465      6C4E756D 
+ 2465      00
+ 2466              	.LASF141:
+ 2467 05f6 4B544944 		.ascii	"KTIDFileFailed\000"
+ 2467      46696C65 
+ 2467      4661696C 
+ 2467      656400
+ 2468              	.LASF75:
+ 2469 0605 4B446562 		.ascii	"KDebugMode\000"
+ 2469      75674D6F 
+ 2469      646500
+ 2470              	.LASF82:
+ 2471 0610 4B465450 		.ascii	"KFTPUser\000"
+ 2471      55736572 
+ 2471      00
+ 2472              	.LASF37:
+ 2473 0619 4B506173 		.ascii	"KPassword\000"
+ 2473      73776F72 
+ 2473      6400
+ 2474              	.LASF77:
+ 2475 0623 4B505061 		.ascii	"KPPadPort\000"
+ 2475      64506F72 
+ 2475      7400
+ 2476              	.LASF28:
+ 2477 062d 4B526573 		.ascii	"KResetAppData\000"
+ 2477      65744170 
+ 2477      70446174 
+ 2477      6100
+ 2478              	.LASF144:
+ 2479 063b 4B52656D 		.ascii	"KRemoteDLHeader\000"
+ 2479      6F746544 
+ 2479      4C486561 
+ 2479      64657200 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 57
+
+
+ 2480              	.LASF111:
+ 2481 064b 4B537769 		.ascii	"KSwipeCard\000"
+ 2481      70654361 
+ 2481      726400
+ 2482              	.LASF70:
+ 2483 0656 4B496E69 		.ascii	"KInitNII\000"
+ 2483      744E4949 
+ 2483      00
+ 2484              	.LASF29:
+ 2485 065f 4B436F6E 		.ascii	"KConfirm\000"
+ 2485      6669726D 
+ 2485      00
+ 2486              	.LASF65:
+ 2487 0668 4B496E69 		.ascii	"KInitSpeed\000"
+ 2487      74537065 
+ 2487      656400
+ 2488              	.LASF10:
+ 2489 0673 63686172 		.ascii	"char\000"
+ 2489      00
+ 2490              	.LASF71:
+ 2491 0678 4B526574 		.ascii	"KReturnBaseTO\000"
+ 2491      75726E42 
+ 2491      61736554 
+ 2491      4F00
+ 2492              	.LASF34:
+ 2493 0686 4B50726F 		.ascii	"KProcessing\000"
+ 2493      63657373 
+ 2493      696E6700 
+ 2494              	.LASF0:
+ 2495 0692 756E7369 		.ascii	"unsigned int\000"
+ 2495      676E6564 
+ 2495      20696E74 
+ 2495      00
+ 2496              	.LASF59:
+ 2497 069f 4B496E69 		.ascii	"KInitSecNum\000"
+ 2497      74536563 
+ 2497      4E756D00 
+ 2498              	.LASF127:
+ 2499 06ab 4B4E6F4C 		.ascii	"KNoLine\000"
+ 2499      696E6500 
+ 2500              	.LASF46:
+ 2501 06b3 4B546573 		.ascii	"KTestICC\000"
+ 2501      74494343 
+ 2501      00
+ 2502              	.LASF128:
+ 2503 06bc 4B547279 		.ascii	"KTryAgainNC\000"
+ 2503      41676169 
+ 2503      6E4E4300 
+ 2504              	.LASF25:
+ 2505 06c8 4B446174 		.ascii	"KDateTime\000"
+ 2505      6554696D 
+ 2505      6500
+ 2506              	.LASF101:
+ 2507 06d2 4B54786E 		.ascii	"KTxnAccepted\000"
+ 2507      41636365 
+ 2507      70746564 
+ 2507      00
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 58
+
+
+ 2508              	.LASF118:
+ 2509 06df 4B537973 		.ascii	"KSysError\000"
+ 2509      4572726F 
+ 2509      7200
+ 2510              	.LASF103:
+ 2511 06e9 4B54786E 		.ascii	"KTxnCanceled\000"
+ 2511      43616E63 
+ 2511      656C6564 
+ 2511      00
+ 2512              	.LASF41:
+ 2513 06f6 4B436F6E 		.ascii	"KConnected\000"
+ 2513      6E656374 
+ 2513      656400
+ 2514              	.LASF31:
+ 2515 0701 4B526573 		.ascii	"KResetEMVData\000"
+ 2515      6574454D 
+ 2515      56446174 
+ 2515      6100
+ 2516              	.LASF69:
+ 2517 070f 4B496E69 		.ascii	"KInitConnTime\000"
+ 2517      74436F6E 
+ 2517      6E54696D 
+ 2517      6500
+ 2518              	.LASF102:
+ 2519 071d 4B4C6F77 		.ascii	"KLowBattery\000"
+ 2519      42617474 
+ 2519      65727900 
+ 2520              	.LASF100:
+ 2521 0729 4B54786E 		.ascii	"KTxnNotFound\000"
+ 2521      4E6F7446 
+ 2521      6F756E64 
+ 2521      00
+ 2522              	.LASF117:
+ 2523 0736 4B436172 		.ascii	"KCardBlocked\000"
+ 2523      64426C6F 
+ 2523      636B6564 
+ 2523      00
+ 2524              	.LASF42:
+ 2525 0743 4B436F6D 		.ascii	"KCommSend\000"
+ 2525      6D53656E 
+ 2525      6400
+ 2526              	.LASF121:
+ 2527 074d 4B496E76 		.ascii	"KInvalidResp\000"
+ 2527      616C6964 
+ 2527      52657370 
+ 2527      00
+ 2528              	.LASF104:
+ 2529 075a 4B426164 		.ascii	"KBadProcCode\000"
+ 2529      50726F63 
+ 2529      436F6465 
+ 2529      00
+ 2530              	.LASF68:
+ 2531 0767 4B504142 		.ascii	"KPABX\000"
+ 2531      5800
+ 2532              	.LASF32:
+ 2533 076d 4B414461 		.ascii	"KADataReset\000"
+ 2533      74615265 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 59
+
+
+ 2533      73657400 
+ 2534              	.LASF52:
+ 2535 0779 4B486967 		.ascii	"KHighTemp\000"
+ 2535      6854656D 
+ 2535      7000
+ 2536              	.LASF94:
+ 2537 0783 4B486F73 		.ascii	"KHostSslKeyIdx\000"
+ 2537      7453736C 
+ 2537      4B657949 
+ 2537      647800
+ 2538              	.LASF27:
+ 2539 0792 4B475052 		.ascii	"KGPRSHdr\000"
+ 2539      53486472 
+ 2539      00
+ 2540              	.LASF107:
+ 2541 079b 4B496E76 		.ascii	"KInvalidSeq\000"
+ 2541      616C6964 
+ 2541      53657100 
+ 2542              	.LASF119:
+ 2543 07a7 4B556E53 		.ascii	"KUnSupportCard\000"
+ 2543      7570706F 
+ 2543      72744361 
+ 2543      726400
+ 2544              	.LASF24:
+ 2545 07b6 4B526562 		.ascii	"KReboot\000"
+ 2545      6F6F7400 
+ 2546              	.LASF22:
+ 2547 07be 4B4B6264 		.ascii	"KKbdBacklight\000"
+ 2547      4261636B 
+ 2547      6C696768 
+ 2547      7400
+ 2548              	.LASF91:
+ 2549 07cc 4B486F73 		.ascii	"KHostParamHdr\000"
+ 2549      74506172 
+ 2549      616D4864 
+ 2549      7200
+ 2550              	.LASF95:
+ 2551 07da 4B457874 		.ascii	"KExtraMsgLen\000"
+ 2551      72614D73 
+ 2551      674C656E 
+ 2551      00
+ 2552              	.LASF19:
+ 2553 07e7 4B537973 		.ascii	"KSystemInit\000"
+ 2553      74656D49 
+ 2553      6E697400 
+ 2554              	.LASF139:
+ 2555 07f3 4B536572 		.ascii	"KServerKeyError\000"
+ 2555      7665724B 
+ 2555      65794572 
+ 2555      726F7200 
+ 2556              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-br
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 60
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 message.c
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:148    .rodata:00000000 KRemoteDLHeader
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:152    .rodata:00000011 KRemoteDLSch
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:156    .rodata:00000022 KItemNotEnabled
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:160    .rodata:00000043 KTIDFileFailed
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:164    .rodata:00000064 KDLLFileFailed
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:168    .rodata:00000085 KServerKeyError
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:172    .rodata:000000a6 KDownloadFailed
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:176    .rodata:000000c7 KLogInFailed
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:180    .rodata:000000e8 KReturn2Base
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:184    .rodata:00000108 KLoadExtraParam
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:188    .rodata:00000119 KLoadEMVParam
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:192    .rodata:00000128 KLoadEMVKey
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:196    .rodata:00000135 KEDCInit
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:200    .rodata:00000146 KDnloadSchedule
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:204    .rodata:00000157 KDnloadBIN
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:208    .rodata:00000168 KTryAgainTO
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:212    .rodata:00000189 KTryAgainNC
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:216    .rodata:000001aa KNoLine
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:220    .rodata:000001cb KLineOccup
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:224    .rodata:000001ec KTryAgainLC
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:228    .rodata:0000020d KLineBusy
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:232    .rodata:0000022e KHostOffline
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:236    .rodata:0000024f KNoDialTone
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:240    .rodata:00000270 KInvalidResp
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:244    .rodata:00000291 KUpdateRequest
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:248    .rodata:000002b2 KUnSupportCard
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:252    .rodata:000002d3 KSysError
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:256    .rodata:000002f4 KCardBlocked
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:260    .rodata:00000315 KCardReadErr
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:264    .rodata:00000336 KInvalidPWD
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:268    .rodata:00000357 KNoTransRec
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:272    .rodata:00000378 KNotAllowed
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:276    .rodata:00000399 KWrongMAC
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:280    .rodata:000003ba KSwipeCard
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:284    .rodata:000003db KHostNotFound
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:288    .rodata:000003fc KInvalidTerm
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:292    .rodata:0000041d KInvalidTrace
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:296    .rodata:0000043e KInvalidSeq
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:300    .rodata:0000045f KECRCommErr
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:304    .rodata:00000480 KDataError
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:308    .rodata:000004a1 KBadProcCode
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:312    .rodata:000004c2 KTxnCanceled
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:316    .rodata:000004e3 KLowBattery
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:320    .rodata:00000504 KTxnAccepted
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:324    .rodata:00000525 KTxnNotFound
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:328    .rodata:00000546 KBadAmount
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:332    .rodata:00000567 KComplted
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:336    .rodata:00000588 KEcrSslMode
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:340    .rodata:00000596 KNonBtModel
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:344    .rodata:000005a4 KExtraMsgLen
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:348    .rodata:000005b0 KHostSslKeyIdx
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:352    .rodata:000005bc KHostPort
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:356    .rodata:000005c2 KHostIP
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:360    .rodata:000005c8 KHostParamHdr
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:364    .rodata:000005d3 KNonWifiModel
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 61
+
+
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:368    .rodata:000005e3 KInitPPPPort
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:372    .rodata:000005f2 KInitPPPIP
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:376    .rodata:000005ff KInitPPPIPHdr
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:380    .rodata:00000610 KPPPPwd
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:384    .rodata:0000061d KPPPUser
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:388    .rodata:0000062b KFTPServerKey
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:392    .rodata:0000063a KFTPPwd
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:396    .rodata:00000647 KFTPUser
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:400    .rodata:00000655 KCheckInSecNum
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:404    .rodata:00000666 KCheckInPriNum
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:408    .rodata:00000677 KDefaultApp
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:412    .rodata:00000685 KEcrPort
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:416    .rodata:00000690 KPPadPort
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:420    .rodata:000006a0 KPrintStis
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:424    .rodata:000006ab KDebugMode
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:428    .rodata:000006b6 KTrainingMode
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:432    .rodata:000006c4 KCurrBatchNo
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:436    .rodata:000006d5 KDefaultAmt
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:440    .rodata:000006e6 KReturnBaseTO
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:444    .rodata:00000707 KInitNII
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:448    .rodata:00000711 KInitConnTime
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:452    .rodata:00000722 KPABX
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:456    .rodata:00000733 KCancelExit
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:460    .rodata:00000742 KInitEnterSave
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:464    .rodata:00000751 KInitSpeed
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:468    .rodata:00000758 KInitPort
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:472    .rodata:00000763 KInitIP
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:476    .rodata:0000076c KInitIPHdr
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:480    .rodata:0000077a KTimeDelay
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:484    .rodata:0000078b KDialModeStr
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:488    .rodata:00000797 KInitSecNum
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:492    .rodata:000007a8 KInitPriNum
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:496    .rodata:000007b9 KInitModeStr
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:500    .rodata:000007c3 KChkSumErr
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:504    .rodata:000007d3 KTermId
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:508    .rodata:000007e0 KSelAcquirer
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:512    .rodata:000007f0 KNoPaper
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:516    .rodata:00000810 KHighTemp
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:520    .rodata:00000831 KManualCut
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:524    .rodata:00000852 KPrintingMsg
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:528    .rodata:00000873 KPlsSwipe
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:532    .rodata:00000882 KTestMSR
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:536    .rodata:00000893 KInsertICC
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:540    .rodata:000008a2 KTestICC
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:544    .rodata:000008af KSamTest
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:548    .rodata:000008b8 KCommWait
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:552    .rodata:000008c9 KCommRcvd
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:556    .rodata:000008da KCommSend
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:560    .rodata:000008eb KConnected
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:564    .rodata:000008fc KCommConnectWait
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:568    .rodata:0000091d KCommNoCancel
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:572    .rodata:0000093e KDialNum
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:576    .rodata:0000094a KPassword
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:580    .rodata:00000958 KUserName
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:584    .rodata:00000962 KApn
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:588    .rodata:00000966 KProcessing
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:592    .rodata:00000987 KSettleBatch
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s 			page 62
+
+
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:596    .rodata:000009a8 KADataReset
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:600    .rodata:000009c9 KResetEMVData
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:604    .rodata:000009d8 KDataReseted
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:608    .rodata:000009e5 KConfirm
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:612    .rodata:000009f6 KResetAppData
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:616    .rodata:00000a07 KGPRSHdr
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:620    .rodata:00000a12 KUpdated
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:624    .rodata:00000a1a KDateTime
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:628    .rodata:00000a24 KReboot
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:632    .rodata:00000a45 KEnterSave
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:636    .rodata:00000a54 KKbdBacklight
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:640    .rodata:00000a62 KDHCPHdr
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:644    .rodata:00000a6d KIpHdr
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:648    .rodata:00000a76 KSystemInit
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cccMRjzW.s:652    .rodata:00000a97 KVirginInit
+
+NO UNDEFINED SYMBOLS

@@ -1,0 +1,3546 @@
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-a5
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"pkcs.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.getASNLength,"ax",%progbits
+  19              		.align	1
+  20              		.global	getASNLength
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	getASNLength, %function
+  24              	getASNLength:
+  25              	.LFB0:
+  26              		.file 1 "src/pkcs.c"
+   1:src/pkcs.c    **** //***************************************
+   2:src/pkcs.c    **** // Generate RSAPrivateKey C header
+   3:src/pkcs.c    **** // by Harris Lee, 15 Sep 2011
+   4:src/pkcs.c    **** // Last update : 20 Dec 2011 
+   5:src/pkcs.c    **** //***************************************
+   6:src/pkcs.c    **** 
+   7:src/pkcs.c    **** #include <stdio.h>
+   8:src/pkcs.c    **** #include <string.h>
+   9:src/pkcs.c    **** #include "pkcs.h"
+  10:src/pkcs.c    **** 
+  11:src/pkcs.c    **** #define ASN_PRIMITIVE        0x00
+  12:src/pkcs.c    **** #define ASN_CONSTRUCTED      0x20
+  13:src/pkcs.c    **** 
+  14:src/pkcs.c    **** #define ASN_UNIVERSAL        0x00
+  15:src/pkcs.c    **** #define ASN_APPLICATION      0x40
+  16:src/pkcs.c    **** #define ASN_CONTEXT_SPECIFIC 0x80
+  17:src/pkcs.c    **** #define ASN_PRIVATE          0xC0
+  18:src/pkcs.c    **** 
+  19:src/pkcs.c    **** #define ASN_BOOLEAN          1
+  20:src/pkcs.c    **** #define ASN_INTEGER          2
+  21:src/pkcs.c    **** #define ASN_BIT_STRING       3
+  22:src/pkcs.c    **** #define ASN_OCTET_STRING     4
+  23:src/pkcs.c    **** #define ASN_NULL             5
+  24:src/pkcs.c    **** #define ASN_OID              6
+  25:src/pkcs.c    **** #define ASN_UTF8STRING       12
+  26:src/pkcs.c    **** #define ASN_SEQUENCE         16
+  27:src/pkcs.c    **** #define ASN_SET              17
+  28:src/pkcs.c    **** #define ASN_PRINTABLESTRING  19
+  29:src/pkcs.c    **** #define ASN_T61STRING        20
+  30:src/pkcs.c    **** #define ASN_IA5STRING        22
+  31:src/pkcs.c    **** #define ASN_UTCTIME          23
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 2
+
+
+  32:src/pkcs.c    **** #define ASN_GENERALIZEDTIME  24
+  33:src/pkcs.c    **** 
+  34:src/pkcs.c    **** #define ATTRIB_COUNTRY_NAME    6
+  35:src/pkcs.c    **** #define ATTRIB_LOCALITY        7
+  36:src/pkcs.c    **** #define ATTRIB_ORGANIZATION   10
+  37:src/pkcs.c    **** #define ATTRIB_ORG_UNIT       11
+  38:src/pkcs.c    **** #define ATTRIB_DN_QUALIFIER   46
+  39:src/pkcs.c    **** #define ATTRIB_STATE_PROVINCE  8
+  40:src/pkcs.c    **** #define ATTRIB_COMMON_NAME     3
+  41:src/pkcs.c    **** 
+  42:src/pkcs.c    **** #define IMPLICIT_ISSUER_ID      1
+  43:src/pkcs.c    **** #define IMPLICIT_SUBJECT_ID     2
+  44:src/pkcs.c    **** #define EXPLICIT_EXTENSION      3
+  45:src/pkcs.c    **** 
+  46:src/pkcs.c    **** #define EXT_CERT_POLICIES       146
+  47:src/pkcs.c    **** #define EXT_BASIC_CONSTRAINTS   133
+  48:src/pkcs.c    **** #define EXT_AUTH_KEY_ID         149
+  49:src/pkcs.c    **** #define EXT_KEY_USAGE           129
+  50:src/pkcs.c    **** #define EXT_ALT_SUBJECT_NAME    131
+  51:src/pkcs.c    **** #define EXT_ALT_ISSUER_NAME     132
+  52:src/pkcs.c    **** #define EXT_SUBJ_KEY_ID         128
+  53:src/pkcs.c    **** 
+  54:src/pkcs.c    **** 
+  55:src/pkcs.c    **** int getASNLength(BYTE **p, DWORD size, int *valLen) {
+  27              		.loc 1 55 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              	.LVL0:
+  56:src/pkcs.c    ****   BYTE  *c, *end; // , value;
+  57:src/pkcs.c    ****   int len, olen;
+  58:src/pkcs.c    **** 
+  59:src/pkcs.c    ****   c = *p;
+  60:src/pkcs.c    ****   end = c + size;
+  61:src/pkcs.c    ****   if (end - c < 1)
+  32              		.loc 1 61 0
+  33 0000 0029     		cmp	r1, #0
+  55:src/pkcs.c    ****   BYTE  *c, *end; // , value;
+  34              		.loc 1 55 0
+  35 0002 F0B5     		push	{r4, r5, r6, r7, lr}
+  36              		.cfi_def_cfa_offset 20
+  37              		.cfi_offset 4, -20
+  38              		.cfi_offset 5, -16
+  39              		.cfi_offset 6, -12
+  40              		.cfi_offset 7, -8
+  41              		.cfi_offset 14, -4
+  59:src/pkcs.c    ****   end = c + size;
+  42              		.loc 1 59 0
+  43 0004 0668     		ldr	r6, [r0]
+  44              	.LVL1:
+  45              		.loc 1 61 0
+  46 0006 26DD     		ble	.L10
+  62:src/pkcs.c    ****     return 0;
+  63:src/pkcs.c    **** 
+  64:src/pkcs.c    ****   /*
+  65:src/pkcs.c    ****     If the length byte has high bit only set, it's an indefinite length
+  66:src/pkcs.c    ****     We don't support this!
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 3
+
+
+  67:src/pkcs.c    ****   */
+  68:src/pkcs.c    ****   if (*c == 0x80) {
+  47              		.loc 1 68 0
+  48 0008 3778     		ldrb	r7, [r6]	@ zero_extendqisi2
+  49 000a 802F     		cmp	r7, #128
+  50 000c 03D1     		bne	.L3
+  69:src/pkcs.c    ****     *valLen = -1;
+  51              		.loc 1 69 0
+  52 000e 4FF0FF33 		mov	r3, #-1
+  53 0012 1360     		str	r3, [r2]
+  54 0014 1FE0     		b	.L10
+  55              	.L3:
+  70:src/pkcs.c    ****     return 0;
+  71:src/pkcs.c    ****   }
+  72:src/pkcs.c    ****   /*
+  73:src/pkcs.c    ****     If the high bit is set, the lower 7 bits represent the number of 
+  74:src/pkcs.c    ****     bytes that follow and represent length
+  75:src/pkcs.c    ****     If the high bit is not set, the lower 7 represent the actual length
+  76:src/pkcs.c    ****   */
+  77:src/pkcs.c    ****   len = *c & 0x7F;
+  56              		.loc 1 77 0
+  57 0016 07F07F05 		and	r5, r7, #127
+  78:src/pkcs.c    ****   if ((*(c++) & 0x80) != 0) {
+  58              		.loc 1 78 0
+  59 001a 3F06     		lsls	r7, r7, #24
+  77:src/pkcs.c    ****   if ((*(c++) & 0x80) != 0) {
+  60              		.loc 1 77 0
+  61 001c 2B46     		mov	r3, r5
+  62              	.LVL2:
+  63              		.loc 1 78 0
+  64 001e 06F10104 		add	r4, r6, #1
+  65              	.LVL3:
+  66 0022 13D5     		bpl	.L4
+  79:src/pkcs.c    ****     /*
+  80:src/pkcs.c    ****       Make sure there aren't more than 4 bytes of length specifier,
+  81:src/pkcs.c    ****       and that we have that many bytes left in the buffer
+  82:src/pkcs.c    ****     */
+  83:src/pkcs.c    ****     if (len > 4 || len == 0x7f || (end - c) < len) { 
+  67              		.loc 1 83 0
+  68 0024 042D     		cmp	r5, #4
+  69 0026 16D8     		bhi	.L10
+  60:src/pkcs.c    ****   if (end - c < 1)
+  70              		.loc 1 60 0 discriminator 1
+  71 0028 3144     		add	r1, r1, r6
+  72              	.LVL4:
+  73              		.loc 1 83 0 discriminator 1
+  74 002a 091B     		subs	r1, r1, r4
+  75 002c A942     		cmp	r1, r5
+  76 002e 12DB     		blt	.L10
+  77 0030 2646     		mov	r6, r4
+  78              		.loc 1 83 0 is_stmt 0
+  79 0032 0021     		movs	r1, #0
+  80              	.LVL5:
+  81              	.L5:
+  84:src/pkcs.c    ****       return 0;
+  85:src/pkcs.c    ****     }
+  86:src/pkcs.c    **** 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 4
+
+
+  87:src/pkcs.c    ****     olen = 0;
+  88:src/pkcs.c    ****     while (len > 0) {
+  82              		.loc 1 88 0 is_stmt 1
+  83 0034 2BB1     		cbz	r3, .L12
+  89:src/pkcs.c    ****       olen = (olen << 8) | *c;
+  84              		.loc 1 89 0
+  85 0036 16F8017B 		ldrb	r7, [r6], #1	@ zero_extendqisi2
+  86              	.LVL6:
+  90:src/pkcs.c    ****       c++; len--;
+  87              		.loc 1 90 0
+  88 003a 013B     		subs	r3, r3, #1
+  89              	.LVL7:
+  89:src/pkcs.c    ****       olen = (olen << 8) | *c;
+  90              		.loc 1 89 0
+  91 003c 47EA0121 		orr	r1, r7, r1, lsl #8
+  92              	.LVL8:
+  93 0040 F8E7     		b	.L5
+  94              	.L12:
+  91:src/pkcs.c    ****     }
+  92:src/pkcs.c    ****     if (olen < 0 || olen > 0x7FFFFF) {
+  95              		.loc 1 92 0
+  96 0042 B1F5000F 		cmp	r1, #8388608
+  97 0046 0B46     		mov	r3, r1
+  98              	.LVL9:
+  99 0048 2C44     		add	r4, r4, r5
+ 100 004a 04D2     		bcs	.L10
+ 101              	.LVL10:
+ 102              	.L4:
+  93:src/pkcs.c    ****       return 0;
+  94:src/pkcs.c    ****     }
+  95:src/pkcs.c    ****     len = olen;
+  96:src/pkcs.c    ****   }
+  97:src/pkcs.c    **** 
+  98:src/pkcs.c    ****   *p = c;
+ 103              		.loc 1 98 0
+ 104 004c 0460     		str	r4, [r0]
+  99:src/pkcs.c    ****   *valLen = len;
+ 105              		.loc 1 99 0
+ 106 004e 1360     		str	r3, [r2]
+ 100:src/pkcs.c    ****   return -1;
+ 107              		.loc 1 100 0
+ 108 0050 4FF0FF30 		mov	r0, #-1
+ 109              	.LVL11:
+ 110 0054 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 111              	.LVL12:
+ 112              	.L10:
+  62:src/pkcs.c    **** 
+ 113              		.loc 1 62 0
+ 114 0056 0020     		movs	r0, #0
+ 115              	.LVL13:
+ 101:src/pkcs.c    **** }
+ 116              		.loc 1 101 0
+ 117 0058 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 118              		.cfi_endproc
+ 119              	.LFE0:
+ 120              		.size	getASNLength, .-getASNLength
+ 121              		.section	.text.getSequence,"ax",%progbits
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 5
+
+
+ 122              		.align	1
+ 123              		.global	getSequence
+ 124              		.thumb
+ 125              		.thumb_func
+ 126              		.type	getSequence, %function
+ 127              	getSequence:
+ 128              	.LFB1:
+ 102:src/pkcs.c    **** 
+ 103:src/pkcs.c    **** /* getSequence -- Find Sequence Object From Buffer
+ 104:src/pkcs.c    ****  * pp     - Pointer to Buffer
+ 105:src/pkcs.c    ****  * len    - Size of Buffer
+ 106:src/pkcs.c    ****  * seqlen - Return the Length of Sequence Object
+ 107:src/pkcs.c    ****  */
+ 108:src/pkcs.c    **** int getSequence(BYTE **pp, DWORD len, int *seqlen) {
+ 129              		.loc 1 108 0
+ 130              		.cfi_startproc
+ 131              		@ args = 0, pretend = 0, frame = 8
+ 132              		@ frame_needed = 0, uses_anonymous_args = 0
+ 133              	.LVL14:
+ 134 0000 73B5     		push	{r0, r1, r4, r5, r6, lr}
+ 135              		.cfi_def_cfa_offset 24
+ 136              		.cfi_offset 4, -16
+ 137              		.cfi_offset 5, -12
+ 138              		.cfi_offset 6, -8
+ 139              		.cfi_offset 14, -4
+ 109:src/pkcs.c    ****   BYTE *p = *pp;
+ 140              		.loc 1 109 0
+ 141 0002 0368     		ldr	r3, [r0]
+ 108:src/pkcs.c    ****   BYTE *p = *pp;
+ 142              		.loc 1 108 0
+ 143 0004 0546     		mov	r5, r0
+ 144 0006 1646     		mov	r6, r2
+ 110:src/pkcs.c    **** 
+ 111:src/pkcs.c    ****   if (len < 1 || *(p++) != (ASN_SEQUENCE | ASN_CONSTRUCTED) || 
+ 145              		.loc 1 111 0
+ 146 0008 0C46     		mov	r4, r1
+ 147 000a 09B9     		cbnz	r1, .L14
+ 148              	.LVL15:
+ 149              	.L16:
+ 112:src/pkcs.c    ****       getASNLength(&p, len - 1, seqlen) == 0 || len < *seqlen) {
+ 113:src/pkcs.c    ****     return 0;
+ 150              		.loc 1 113 0
+ 151 000c 0020     		movs	r0, #0
+ 152 000e 11E0     		b	.L15
+ 153              	.LVL16:
+ 154              	.L14:
+ 111:src/pkcs.c    ****       getASNLength(&p, len - 1, seqlen) == 0 || len < *seqlen) {
+ 155              		.loc 1 111 0 discriminator 1
+ 156 0010 591C     		adds	r1, r3, #1
+ 157              	.LVL17:
+ 158 0012 0191     		str	r1, [sp, #4]
+ 159 0014 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 160 0016 302B     		cmp	r3, #48
+ 161 0018 F8D1     		bne	.L16
+ 112:src/pkcs.c    ****       getASNLength(&p, len - 1, seqlen) == 0 || len < *seqlen) {
+ 162              		.loc 1 112 0 discriminator 2
+ 163 001a 01A8     		add	r0, sp, #4
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 6
+
+
+ 164              	.LVL18:
+ 165 001c 611E     		subs	r1, r4, #1
+ 166 001e FFF7FEFF 		bl	getASNLength
+ 167              	.LVL19:
+ 111:src/pkcs.c    ****       getASNLength(&p, len - 1, seqlen) == 0 || len < *seqlen) {
+ 168              		.loc 1 111 0 discriminator 2
+ 169 0022 0028     		cmp	r0, #0
+ 170 0024 F2D0     		beq	.L16
+ 112:src/pkcs.c    ****       getASNLength(&p, len - 1, seqlen) == 0 || len < *seqlen) {
+ 171              		.loc 1 112 0
+ 172 0026 3368     		ldr	r3, [r6]
+ 173 0028 9C42     		cmp	r4, r3
+ 174 002a EFD3     		bcc	.L16
+ 114:src/pkcs.c    ****   }
+ 115:src/pkcs.c    **** 
+ 116:src/pkcs.c    ****   *pp = p;
+ 175              		.loc 1 116 0
+ 176 002c 019B     		ldr	r3, [sp, #4]
+ 117:src/pkcs.c    ****   return -1;
+ 177              		.loc 1 117 0
+ 178 002e 4FF0FF30 		mov	r0, #-1
+ 116:src/pkcs.c    ****   return -1;
+ 179              		.loc 1 116 0
+ 180 0032 2B60     		str	r3, [r5]
+ 181              	.L15:
+ 118:src/pkcs.c    **** }
+ 182              		.loc 1 118 0
+ 183 0034 02B0     		add	sp, sp, #8
+ 184              		.cfi_def_cfa_offset 16
+ 185              		@ sp needed
+ 186 0036 70BD     		pop	{r4, r5, r6, pc}
+ 187              		.cfi_endproc
+ 188              	.LFE1:
+ 189              		.size	getSequence, .-getSequence
+ 190              		.section	.text.getVersionNum,"ax",%progbits
+ 191              		.align	1
+ 192              		.global	getVersionNum
+ 193              		.thumb
+ 194              		.thumb_func
+ 195              		.type	getVersionNum, %function
+ 196              	getVersionNum:
+ 197              	.LFB2:
+ 119:src/pkcs.c    **** 
+ 120:src/pkcs.c    **** int getVersionNum(BYTE **pp, int len)
+ 121:src/pkcs.c    **** {
+ 198              		.loc 1 121 0
+ 199              		.cfi_startproc
+ 200              		@ args = 0, pretend = 0, frame = 8
+ 201              		@ frame_needed = 0, uses_anonymous_args = 0
+ 202              	.LVL20:
+ 203 0000 13B5     		push	{r0, r1, r4, lr}
+ 204              		.cfi_def_cfa_offset 16
+ 205              		.cfi_offset 4, -8
+ 206              		.cfi_offset 14, -4
+ 122:src/pkcs.c    ****   BYTE *p = *pp;
+ 123:src/pkcs.c    ****   int  vlen;
+ 124:src/pkcs.c    ****   
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 7
+
+
+ 125:src/pkcs.c    ****   if (len < 1 || *(p++) != ASN_INTEGER ||
+ 207              		.loc 1 125 0
+ 208 0002 0029     		cmp	r1, #0
+ 121:src/pkcs.c    ****   BYTE *p = *pp;
+ 209              		.loc 1 121 0
+ 210 0004 0446     		mov	r4, r0
+ 122:src/pkcs.c    ****   BYTE *p = *pp;
+ 211              		.loc 1 122 0
+ 212 0006 0368     		ldr	r3, [r0]
+ 213              		.loc 1 125 0
+ 214 0008 01DC     		bgt	.L21
+ 215              	.LVL21:
+ 216              	.L23:
+ 126:src/pkcs.c    ****       getASNLength(&p, len - 1, &vlen) == 0) {
+ 127:src/pkcs.c    ****     return 0;
+ 217              		.loc 1 127 0
+ 218 000a 0020     		movs	r0, #0
+ 219 000c 11E0     		b	.L22
+ 220              	.LVL22:
+ 221              	.L21:
+ 125:src/pkcs.c    ****       getASNLength(&p, len - 1, &vlen) == 0) {
+ 222              		.loc 1 125 0 discriminator 1
+ 223 000e 5A1C     		adds	r2, r3, #1
+ 224 0010 0092     		str	r2, [sp]
+ 225 0012 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 226 0014 022B     		cmp	r3, #2
+ 227 0016 F8D1     		bne	.L23
+ 126:src/pkcs.c    ****       getASNLength(&p, len - 1, &vlen) == 0) {
+ 228              		.loc 1 126 0 discriminator 2
+ 229 0018 6846     		mov	r0, sp
+ 230              	.LVL23:
+ 231 001a 0139     		subs	r1, r1, #1
+ 232              	.LVL24:
+ 233 001c 01AA     		add	r2, sp, #4
+ 234 001e FFF7FEFF 		bl	getASNLength
+ 235              	.LVL25:
+ 125:src/pkcs.c    ****       getASNLength(&p, len - 1, &vlen) == 0) {
+ 236              		.loc 1 125 0 discriminator 2
+ 237 0022 0028     		cmp	r0, #0
+ 238 0024 F1D0     		beq	.L23
+ 239              	.LVL26:
+ 128:src/pkcs.c    ****   }
+ 129:src/pkcs.c    **** 
+ 130:src/pkcs.c    ****   p += vlen;
+ 240              		.loc 1 130 0
+ 241 0026 9DE80C00 		ldmia	sp, {r2, r3}
+ 131:src/pkcs.c    ****   *pp = p;
+ 132:src/pkcs.c    ****   return -1;
+ 242              		.loc 1 132 0
+ 243 002a 4FF0FF30 		mov	r0, #-1
+ 130:src/pkcs.c    ****   *pp = p;
+ 244              		.loc 1 130 0
+ 245 002e 1344     		add	r3, r3, r2
+ 246              	.LVL27:
+ 131:src/pkcs.c    ****   *pp = p;
+ 247              		.loc 1 131 0
+ 248 0030 2360     		str	r3, [r4]
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 8
+
+
+ 249              	.LVL28:
+ 250              	.L22:
+ 133:src/pkcs.c    **** }
+ 251              		.loc 1 133 0
+ 252 0032 02B0     		add	sp, sp, #8
+ 253              		.cfi_def_cfa_offset 8
+ 254              		@ sp needed
+ 255 0034 10BD     		pop	{r4, pc}
+ 256              		.cfi_endproc
+ 257              	.LFE2:
+ 258              		.size	getVersionNum, .-getVersionNum
+ 259              		.section	.text.getBig,"ax",%progbits
+ 260              		.align	1
+ 261              		.global	getBig
+ 262              		.thumb
+ 263              		.thumb_func
+ 264              		.type	getBig, %function
+ 265              	getBig:
+ 266              	.LFB3:
+ 134:src/pkcs.c    **** 
+ 135:src/pkcs.c    **** int getBig(BYTE **pp, int len, BYTE *big, DWORD *keylen, unsigned int keylen_hdr, BYTE fillzero)
+ 136:src/pkcs.c    **** {
+ 267              		.loc 1 136 0
+ 268              		.cfi_startproc
+ 269              		@ args = 8, pretend = 0, frame = 8
+ 270              		@ frame_needed = 0, uses_anonymous_args = 0
+ 271              	.LVL29:
+ 272 0000 2DE9F743 		push	{r0, r1, r2, r4, r5, r6, r7, r8, r9, lr}
+ 273              		.cfi_def_cfa_offset 40
+ 274              		.cfi_offset 4, -28
+ 275              		.cfi_offset 5, -24
+ 276              		.cfi_offset 6, -20
+ 277              		.cfi_offset 7, -16
+ 278              		.cfi_offset 8, -12
+ 279              		.cfi_offset 9, -8
+ 280              		.cfi_offset 14, -4
+ 137:src/pkcs.c    ****   BYTE *p = *pp;
+ 138:src/pkcs.c    ****   int   vlen;
+ 139:src/pkcs.c    **** 
+ 140:src/pkcs.c    ****   if (len < 1 || *(p++) != ASN_INTEGER ||
+ 281              		.loc 1 140 0
+ 282 0004 0029     		cmp	r1, #0
+ 136:src/pkcs.c    ****   BYTE *p = *pp;
+ 283              		.loc 1 136 0
+ 284 0006 9846     		mov	r8, r3
+ 285 0008 0746     		mov	r7, r0
+ 286 000a 1646     		mov	r6, r2
+ 287 000c 9DF82C90 		ldrb	r9, [sp, #44]	@ zero_extendqisi2
+ 137:src/pkcs.c    ****   BYTE *p = *pp;
+ 288              		.loc 1 137 0
+ 289 0010 0368     		ldr	r3, [r0]
+ 290              	.LVL30:
+ 291              		.loc 1 140 0
+ 292 0012 01DC     		bgt	.L28
+ 293              	.LVL31:
+ 294              	.L30:
+ 141:src/pkcs.c    ****       getASNLength(&p, len - 1, &vlen) == 0) {
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 9
+
+
+ 142:src/pkcs.c    ****     return 0;
+ 295              		.loc 1 142 0
+ 296 0014 0020     		movs	r0, #0
+ 297 0016 38E0     		b	.L29
+ 298              	.LVL32:
+ 299              	.L28:
+ 140:src/pkcs.c    ****       getASNLength(&p, len - 1, &vlen) == 0) {
+ 300              		.loc 1 140 0 discriminator 1
+ 301 0018 5A1C     		adds	r2, r3, #1
+ 302              	.LVL33:
+ 303 001a 0092     		str	r2, [sp]
+ 304 001c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 305 001e 022B     		cmp	r3, #2
+ 306 0020 F8D1     		bne	.L30
+ 141:src/pkcs.c    ****       getASNLength(&p, len - 1, &vlen) == 0) {
+ 307              		.loc 1 141 0 discriminator 2
+ 308 0022 6846     		mov	r0, sp
+ 309              	.LVL34:
+ 310 0024 0139     		subs	r1, r1, #1
+ 311              	.LVL35:
+ 312 0026 01AA     		add	r2, sp, #4
+ 313 0028 FFF7FEFF 		bl	getASNLength
+ 314              	.LVL36:
+ 140:src/pkcs.c    ****       getASNLength(&p, len - 1, &vlen) == 0) {
+ 315              		.loc 1 140 0 discriminator 2
+ 316 002c 0028     		cmp	r0, #0
+ 317 002e F1D0     		beq	.L30
+ 143:src/pkcs.c    ****   }
+ 144:src/pkcs.c    **** 
+ 145:src/pkcs.c    ****   if (*p == 0) {
+ 318              		.loc 1 145 0
+ 319 0030 009B     		ldr	r3, [sp]
+ 320 0032 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 321 0034 22B9     		cbnz	r2, .L31
+ 146:src/pkcs.c    ****     p++; vlen--;
+ 322              		.loc 1 146 0
+ 323 0036 0133     		adds	r3, r3, #1
+ 324 0038 0093     		str	r3, [sp]
+ 325 003a 019B     		ldr	r3, [sp, #4]
+ 326 003c 013B     		subs	r3, r3, #1
+ 327 003e 0193     		str	r3, [sp, #4]
+ 328              	.L31:
+ 147:src/pkcs.c    ****   }
+ 148:src/pkcs.c    **** 
+ 149:src/pkcs.c    ****   if (vlen > *keylen)
+ 329              		.loc 1 149 0
+ 330 0040 019C     		ldr	r4, [sp, #4]
+ 331 0042 D8F80030 		ldr	r3, [r8]
+ 332 0046 9C42     		cmp	r4, r3
+ 333 0048 E4D8     		bhi	.L30
+ 334 004a 0A9D     		ldr	r5, [sp, #40]
+ 150:src/pkcs.c    ****     return 0;  
+ 151:src/pkcs.c    **** 
+ 152:src/pkcs.c    ****   if (fillzero == FILL_PRE_ZERO) {
+ 153:src/pkcs.c    ****     memset(big, 0, (keylen_hdr -vlen));
+ 335              		.loc 1 153 0
+ 336 004c 3046     		mov	r0, r6
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 10
+
+
+ 337 004e 2D1B     		subs	r5, r5, r4
+ 152:src/pkcs.c    ****     memset(big, 0, (keylen_hdr -vlen));
+ 338              		.loc 1 152 0
+ 339 0050 B9F1000F 		cmp	r9, #0
+ 340 0054 09D1     		bne	.L32
+ 341              	.LVL37:
+ 342              		.loc 1 153 0
+ 343 0056 4946     		mov	r1, r9
+ 344 0058 2A46     		mov	r2, r5
+ 345 005a FFF7FEFF 		bl	memset
+ 346              	.LVL38:
+ 154:src/pkcs.c    ****     memcpy((big+(keylen_hdr -vlen)), (void*)p, vlen);
+ 347              		.loc 1 154 0
+ 348 005e 7019     		adds	r0, r6, r5
+ 349 0060 0099     		ldr	r1, [sp]
+ 350 0062 2246     		mov	r2, r4
+ 351 0064 FFF7FEFF 		bl	memcpy
+ 352              	.LVL39:
+ 353 0068 08E0     		b	.L33
+ 354              	.LVL40:
+ 355              	.L32:
+ 155:src/pkcs.c    ****   }
+ 156:src/pkcs.c    ****   else {
+ 157:src/pkcs.c    ****     memcpy(big, (void*)p, vlen);
+ 356              		.loc 1 157 0
+ 357 006a 0099     		ldr	r1, [sp]
+ 358 006c 2246     		mov	r2, r4
+ 359 006e FFF7FEFF 		bl	memcpy
+ 360              	.LVL41:
+ 158:src/pkcs.c    ****     memset((big+vlen), 0, (keylen_hdr -vlen));
+ 361              		.loc 1 158 0
+ 362 0072 3019     		adds	r0, r6, r4
+ 363 0074 0021     		movs	r1, #0
+ 364 0076 2A46     		mov	r2, r5
+ 365 0078 FFF7FEFF 		bl	memset
+ 366              	.LVL42:
+ 367              	.L33:
+ 159:src/pkcs.c    ****   }
+ 160:src/pkcs.c    **** 
+ 161:src/pkcs.c    ****   *keylen = vlen;  
+ 162:src/pkcs.c    ****   p += vlen;
+ 368              		.loc 1 162 0
+ 369 007c 009B     		ldr	r3, [sp]
+ 161:src/pkcs.c    ****   p += vlen;
+ 370              		.loc 1 161 0
+ 371 007e C8F80040 		str	r4, [r8]
+ 372              	.LVL43:
+ 163:src/pkcs.c    ****   *pp = p;
+ 164:src/pkcs.c    **** 
+ 165:src/pkcs.c    ****   return -1;
+ 373              		.loc 1 165 0
+ 374 0082 4FF0FF30 		mov	r0, #-1
+ 162:src/pkcs.c    ****   *pp = p;
+ 375              		.loc 1 162 0
+ 376 0086 1C44     		add	r4, r4, r3
+ 377              	.LVL44:
+ 163:src/pkcs.c    ****   *pp = p;
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 11
+
+
+ 378              		.loc 1 163 0
+ 379 0088 3C60     		str	r4, [r7]
+ 380              	.LVL45:
+ 381              	.L29:
+ 166:src/pkcs.c    **** }
+ 382              		.loc 1 166 0
+ 383 008a 03B0     		add	sp, sp, #12
+ 384              		.cfi_def_cfa_offset 28
+ 385              		@ sp needed
+ 386 008c BDE8F083 		pop	{r4, r5, r6, r7, r8, r9, pc}
+ 387              		.cfi_endproc
+ 388              	.LFE3:
+ 389              		.size	getBig, .-getBig
+ 390              		.section	.text.getPubKey,"ax",%progbits
+ 391              		.align	1
+ 392              		.global	getPubKey
+ 393              		.thumb
+ 394              		.thumb_func
+ 395              		.type	getPubKey, %function
+ 396              	getPubKey:
+ 397              	.LFB4:
+ 167:src/pkcs.c    **** 
+ 168:src/pkcs.c    **** int getPubKey(BYTE**pp, int len, DWORD *keyLen, T_KEY *pubKey) {
+ 398              		.loc 1 168 0
+ 399              		.cfi_startproc
+ 400              		@ args = 0, pretend = 0, frame = 16
+ 401              		@ frame_needed = 0, uses_anonymous_args = 0
+ 402              	.LVL46:
+ 403 0000 2DE9F043 		push	{r4, r5, r6, r7, r8, r9, lr}
+ 404              		.cfi_def_cfa_offset 28
+ 405              		.cfi_offset 4, -28
+ 406              		.cfi_offset 5, -24
+ 407              		.cfi_offset 6, -20
+ 408              		.cfi_offset 7, -16
+ 409              		.cfi_offset 8, -12
+ 410              		.cfi_offset 9, -8
+ 411              		.cfi_offset 14, -4
+ 412 0004 1D46     		mov	r5, r3
+ 413 0006 87B0     		sub	sp, sp, #28
+ 414              		.cfi_def_cfa_offset 56
+ 169:src/pkcs.c    ****   BYTE  *p = *pp;
+ 415              		.loc 1 169 0
+ 416 0008 0368     		ldr	r3, [r0]
+ 417              	.LVL47:
+ 170:src/pkcs.c    ****   BYTE  value[4];
+ 171:src/pkcs.c    ****   DWORD expLen, count;
+ 172:src/pkcs.c    **** 
+ 173:src/pkcs.c    ****   expLen = 4;
+ 174:src/pkcs.c    ****   if ((getBig(&p, len, (BYTE*)pubKey->s_key, keyLen, K_MaxRsaModulusLen, FILL_PRE_ZERO/*FILL_POST_Z
+ 418              		.loc 1 174 0
+ 419 000a 0024     		movs	r4, #0
+ 169:src/pkcs.c    ****   BYTE  *p = *pp;
+ 420              		.loc 1 169 0
+ 421 000c 0393     		str	r3, [sp, #12]
+ 173:src/pkcs.c    ****   if ((getBig(&p, len, (BYTE*)pubKey->s_key, keyLen, K_MaxRsaModulusLen, FILL_PRE_ZERO/*FILL_POST_Z
+ 422              		.loc 1 173 0
+ 423 000e 0423     		movs	r3, #4
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 12
+
+
+ 168:src/pkcs.c    ****   BYTE  *p = *pp;
+ 424              		.loc 1 168 0
+ 425 0010 9046     		mov	r8, r2
+ 173:src/pkcs.c    ****   if ((getBig(&p, len, (BYTE*)pubKey->s_key, keyLen, K_MaxRsaModulusLen, FILL_PRE_ZERO/*FILL_POST_Z
+ 426              		.loc 1 173 0
+ 427 0012 0593     		str	r3, [sp, #20]
+ 428              		.loc 1 174 0
+ 429 0014 4FF48073 		mov	r3, #256
+ 168:src/pkcs.c    ****   BYTE  *p = *pp;
+ 430              		.loc 1 168 0
+ 431 0018 0646     		mov	r6, r0
+ 432              		.loc 1 174 0
+ 433 001a 8DE81800 		stmia	sp, {r3, r4}
+ 434 001e 03A8     		add	r0, sp, #12
+ 435              	.LVL48:
+ 436 0020 05F10802 		add	r2, r5, #8
+ 437              	.LVL49:
+ 438 0024 4346     		mov	r3, r8
+ 168:src/pkcs.c    ****   BYTE  *p = *pp;
+ 439              		.loc 1 168 0
+ 440 0026 8946     		mov	r9, r1
+ 441              		.loc 1 174 0
+ 442 0028 FFF7FEFF 		bl	getBig
+ 443              	.LVL50:
+ 444 002c 08B9     		cbnz	r0, .L38
+ 445              	.L40:
+ 175:src/pkcs.c    ****        (getBig(&p, len, (BYTE*)value, &expLen, expLen, FILL_POST_ZERO) == 0)) {
+ 176:src/pkcs.c    ****     return 0;
+ 446              		.loc 1 176 0
+ 447 002e 0020     		movs	r0, #0
+ 448 0030 1FE0     		b	.L39
+ 449              	.L38:
+ 175:src/pkcs.c    ****        (getBig(&p, len, (BYTE*)value, &expLen, expLen, FILL_POST_ZERO) == 0)) {
+ 450              		.loc 1 175 0 discriminator 1
+ 451 0032 059B     		ldr	r3, [sp, #20]
+ 452 0034 04AF     		add	r7, sp, #16
+ 453 0036 0093     		str	r3, [sp]
+ 454 0038 0123     		movs	r3, #1
+ 455 003a 03A8     		add	r0, sp, #12
+ 456 003c 0193     		str	r3, [sp, #4]
+ 457 003e 4946     		mov	r1, r9
+ 458 0040 3A46     		mov	r2, r7
+ 459 0042 05AB     		add	r3, sp, #20
+ 460 0044 FFF7FEFF 		bl	getBig
+ 461              	.LVL51:
+ 174:src/pkcs.c    ****        (getBig(&p, len, (BYTE*)value, &expLen, expLen, FILL_POST_ZERO) == 0)) {
+ 462              		.loc 1 174 0 discriminator 1
+ 463 0048 0028     		cmp	r0, #0
+ 464 004a F0D0     		beq	.L40
+ 177:src/pkcs.c    ****   }
+ 178:src/pkcs.c    ****   pubKey->d_keysize  = *keyLen;
+ 465              		.loc 1 178 0
+ 466 004c D8F80030 		ldr	r3, [r8]
+ 179:src/pkcs.c    ****   pubKey->d_exponent = 0;
+ 180:src/pkcs.c    ****   for (count = 0; count < expLen; count++)
+ 467              		.loc 1 180 0
+ 468 0050 0599     		ldr	r1, [sp, #20]
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 13
+
+
+ 178:src/pkcs.c    ****   pubKey->d_exponent = 0;
+ 469              		.loc 1 178 0
+ 470 0052 6B60     		str	r3, [r5, #4]
+ 471              		.loc 1 180 0
+ 472 0054 2346     		mov	r3, r4
+ 179:src/pkcs.c    ****   pubKey->d_exponent = 0;
+ 473              		.loc 1 179 0
+ 474 0056 2C60     		str	r4, [r5]
+ 475              	.LVL52:
+ 476              	.L41:
+ 477              		.loc 1 180 0 discriminator 1
+ 478 0058 8B42     		cmp	r3, r1
+ 479 005a 06D0     		beq	.L46
+ 181:src/pkcs.c    ****     pubKey->d_exponent = (pubKey->d_exponent << 8) | value[count];
+ 480              		.loc 1 181 0 discriminator 3
+ 481 005c FA5C     		ldrb	r2, [r7, r3]	@ zero_extendqisi2
+ 482 005e 2868     		ldr	r0, [r5]
+ 180:src/pkcs.c    ****     pubKey->d_exponent = (pubKey->d_exponent << 8) | value[count];
+ 483              		.loc 1 180 0 discriminator 3
+ 484 0060 0133     		adds	r3, r3, #1
+ 485              	.LVL53:
+ 486              		.loc 1 181 0 discriminator 3
+ 487 0062 42EA0022 		orr	r2, r2, r0, lsl #8
+ 488 0066 2A60     		str	r2, [r5]
+ 489 0068 F6E7     		b	.L41
+ 490              	.L46:
+ 182:src/pkcs.c    ****   
+ 183:src/pkcs.c    ****   *pp = p;
+ 491              		.loc 1 183 0
+ 492 006a 039B     		ldr	r3, [sp, #12]
+ 493              	.LVL54:
+ 184:src/pkcs.c    ****   return -1;
+ 494              		.loc 1 184 0
+ 495 006c 4FF0FF30 		mov	r0, #-1
+ 183:src/pkcs.c    ****   return -1;
+ 496              		.loc 1 183 0
+ 497 0070 3360     		str	r3, [r6]
+ 498              	.L39:
+ 185:src/pkcs.c    **** }
+ 499              		.loc 1 185 0
+ 500 0072 07B0     		add	sp, sp, #28
+ 501              		.cfi_def_cfa_offset 28
+ 502              		@ sp needed
+ 503 0074 BDE8F083 		pop	{r4, r5, r6, r7, r8, r9, pc}
+ 504              		.cfi_endproc
+ 505              	.LFE4:
+ 506              		.size	getPubKey, .-getPubKey
+ 507              		.section	.text.x509ParseKey,"ax",%progbits
+ 508              		.align	1
+ 509              		.global	x509ParseKey
+ 510              		.thumb
+ 511              		.thumb_func
+ 512              		.type	x509ParseKey, %function
+ 513              	x509ParseKey:
+ 514              	.LFB5:
+ 186:src/pkcs.c    **** 
+ 187:src/pkcs.c    **** DWORD x509ParseKey(BYTE *ptr, DWORD size,  T_KEY *pubKey, T_RSA_PRIVATE_KEY *priKey) {
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 14
+
+
+ 515              		.loc 1 187 0
+ 516              		.cfi_startproc
+ 517              		@ args = 0, pretend = 0, frame = 16
+ 518              		@ frame_needed = 0, uses_anonymous_args = 0
+ 519              	.LVL55:
+ 520 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+ 521              		.cfi_def_cfa_offset 36
+ 522              		.cfi_offset 4, -36
+ 523              		.cfi_offset 5, -32
+ 524              		.cfi_offset 6, -28
+ 525              		.cfi_offset 7, -24
+ 526              		.cfi_offset 8, -20
+ 527              		.cfi_offset 9, -16
+ 528              		.cfi_offset 10, -12
+ 529              		.cfi_offset 11, -8
+ 530              		.cfi_offset 14, -4
+ 531 0004 87B0     		sub	sp, sp, #28
+ 532              		.cfi_def_cfa_offset 64
+ 188:src/pkcs.c    ****   BYTE *p = ptr;
+ 189:src/pkcs.c    ****   BYTE *KeyEnd, *end;
+ 190:src/pkcs.c    ****   int len;
+ 191:src/pkcs.c    ****   DWORD keyLen, keyLen_read;
+ 192:src/pkcs.c    **** 
+ 193:src/pkcs.c    **** /*
+ 194:src/pkcs.c    **** RSAPrivateKey ::= SEQUENCE {
+ 195:src/pkcs.c    ****     version           Version,
+ 196:src/pkcs.c    ****     modulus           INTEGER,  -- n
+ 197:src/pkcs.c    ****     publicExponent    INTEGER,  -- e
+ 198:src/pkcs.c    ****     privateExponent   INTEGER,  -- d
+ 199:src/pkcs.c    ****     prime1            INTEGER,  -- p
+ 200:src/pkcs.c    ****     prime2            INTEGER,  -- q
+ 201:src/pkcs.c    ****     exponent1         INTEGER,  -- d mod (p-1)
+ 202:src/pkcs.c    ****     exponent2         INTEGER,  -- d mod (q-1)
+ 203:src/pkcs.c    ****     coefficient       INTEGER,  -- (inverse of q) mod p
+ 204:src/pkcs.c    ****     otherPrimeInfos   OtherPrimeInfos OPTIONAL
+ 205:src/pkcs.c    **** }
+ 206:src/pkcs.c    **** 
+ 207:src/pkcs.c    **** Version ::= INTEGER { two-prime(0), multi(1) }
+ 208:src/pkcs.c    ****     (CONSTRAINED BY {
+ 209:src/pkcs.c    ****         -- version must be multi if otherPrimeInfos present --
+ 210:src/pkcs.c    ****     })
+ 211:src/pkcs.c    **** 
+ 212:src/pkcs.c    **** OtherPrimeInfos ::= SEQUENCE SIZE(1..MAX) OF OtherPrimeInfo
+ 213:src/pkcs.c    **** 
+ 214:src/pkcs.c    **** OtherPrimeInfo ::= SEQUENCE {
+ 215:src/pkcs.c    ****     prime             INTEGER,  -- ri
+ 216:src/pkcs.c    ****     exponent          INTEGER,  -- di
+ 217:src/pkcs.c    ****     coefficient       INTEGER   -- ti
+ 218:src/pkcs.c    **** }
+ 219:src/pkcs.c    **** */
+ 220:src/pkcs.c    ****   len = 0;
+ 533              		.loc 1 220 0
+ 534 0006 0026     		movs	r6, #0
+ 187:src/pkcs.c    ****   BYTE *p = ptr;
+ 535              		.loc 1 187 0
+ 536 0008 0446     		mov	r4, r0
+ 537 000a 9346     		mov	fp, r2
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 15
+
+
+ 188:src/pkcs.c    ****   BYTE *p = ptr;
+ 538              		.loc 1 188 0
+ 539 000c 0390     		str	r0, [sp, #12]
+ 221:src/pkcs.c    ****   end = p + size;
+ 222:src/pkcs.c    **** 
+ 223:src/pkcs.c    ****   if (getSequence(&p, size, &len) == 0)
+ 540              		.loc 1 223 0
+ 541 000e 04AA     		add	r2, sp, #16
+ 542              	.LVL56:
+ 543 0010 03A8     		add	r0, sp, #12
+ 544              	.LVL57:
+ 187:src/pkcs.c    ****   BYTE *p = ptr;
+ 545              		.loc 1 187 0
+ 546 0012 0F46     		mov	r7, r1
+ 547 0014 1D46     		mov	r5, r3
+ 220:src/pkcs.c    ****   end = p + size;
+ 548              		.loc 1 220 0
+ 549 0016 0496     		str	r6, [sp, #16]
+ 550              	.LVL58:
+ 551              		.loc 1 223 0
+ 552 0018 FFF7FEFF 		bl	getSequence
+ 553              	.LVL59:
+ 554 001c 0028     		cmp	r0, #0
+ 555 001e 78D0     		beq	.L49
+ 224:src/pkcs.c    ****     return ERR_PKCS_KEY_SEQUENCE;
+ 225:src/pkcs.c    **** 
+ 226:src/pkcs.c    ****   KeyEnd = p + len;
+ 556              		.loc 1 226 0
+ 557 0020 DDF80CA0 		ldr	r10, [sp, #12]
+ 221:src/pkcs.c    **** 
+ 558              		.loc 1 221 0
+ 559 0024 3C44     		add	r4, r4, r7
+ 560              	.LVL60:
+ 227:src/pkcs.c    **** 
+ 228:src/pkcs.c    **** /*
+ 229:src/pkcs.c    **** 	Version ::= INTEGER { two-prime(0), multi(1) }
+ 230:src/pkcs.c    **** */
+ 231:src/pkcs.c    ****   if (getVersionNum(&p, (int)(end - p)) == 0)
+ 561              		.loc 1 231 0
+ 562 0026 03A8     		add	r0, sp, #12
+ 563 0028 CAEB0401 		rsb	r1, r10, r4
+ 226:src/pkcs.c    **** 
+ 564              		.loc 1 226 0
+ 565 002c DDF81090 		ldr	r9, [sp, #16]
+ 566              	.LVL61:
+ 567              		.loc 1 231 0
+ 568 0030 FFF7FEFF 		bl	getVersionNum
+ 569              	.LVL62:
+ 570 0034 0028     		cmp	r0, #0
+ 571 0036 6ED0     		beq	.L50
+ 232:src/pkcs.c    ****     return ERR_PKCS_KEY_VERSION;
+ 233:src/pkcs.c    **** 
+ 234:src/pkcs.c    ****   keyLen = K_MaxRsaModulusLen;
+ 235:src/pkcs.c    ****   if (getPubKey(&p, (int)(end - p), &keyLen, pubKey) == 0) {
+ 572              		.loc 1 235 0
+ 573 0038 0399     		ldr	r1, [sp, #12]
+ 234:src/pkcs.c    ****   if (getPubKey(&p, (int)(end - p), &keyLen, pubKey) == 0) {
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 16
+
+
+ 574              		.loc 1 234 0
+ 575 003a 4FF48078 		mov	r8, #256
+ 576              		.loc 1 235 0
+ 577 003e 03A8     		add	r0, sp, #12
+ 578 0040 611A     		subs	r1, r4, r1
+ 579 0042 05AA     		add	r2, sp, #20
+ 580 0044 5B46     		mov	r3, fp
+ 234:src/pkcs.c    ****   if (getPubKey(&p, (int)(end - p), &keyLen, pubKey) == 0) {
+ 581              		.loc 1 234 0
+ 582 0046 CDF81480 		str	r8, [sp, #20]
+ 583              		.loc 1 235 0
+ 584 004a FFF7FEFF 		bl	getPubKey
+ 585              	.LVL63:
+ 586 004e 0028     		cmp	r0, #0
+ 587 0050 63D0     		beq	.L51
+ 236:src/pkcs.c    ****     return ERR_PKCS_PUB_KEY;
+ 237:src/pkcs.c    ****   }
+ 238:src/pkcs.c    ****   keyLen_read = keyLen;
+ 239:src/pkcs.c    ****   priKey->d_bits = pubKey->d_keysize * 8;
+ 588              		.loc 1 239 0
+ 589 0052 DBF80430 		ldr	r3, [fp, #4]
+ 240:src/pkcs.c    **** 
+ 241:src/pkcs.c    ****   keyLen = keyLen_read;
+ 242:src/pkcs.c    ****   if ((getBig(&p, (int)(end - p), (BYTE*) priKey->s_modulus, &keyLen, K_MaxRsaModulusLen, FILL_PRE_
+ 590              		.loc 1 242 0
+ 591 0056 0399     		ldr	r1, [sp, #12]
+ 239:src/pkcs.c    **** 
+ 592              		.loc 1 239 0
+ 593 0058 DB00     		lsls	r3, r3, #3
+ 594              		.loc 1 242 0
+ 595 005a CDF80080 		str	r8, [sp]
+ 239:src/pkcs.c    **** 
+ 596              		.loc 1 239 0
+ 597 005e 6B60     		str	r3, [r5, #4]
+ 598              		.loc 1 242 0
+ 599 0060 0196     		str	r6, [sp, #4]
+ 600 0062 03A8     		add	r0, sp, #12
+ 601 0064 611A     		subs	r1, r4, r1
+ 602 0066 05F10802 		add	r2, r5, #8
+ 603 006a 05AB     		add	r3, sp, #20
+ 238:src/pkcs.c    ****   priKey->d_bits = pubKey->d_keysize * 8;
+ 604              		.loc 1 238 0
+ 605 006c 059F     		ldr	r7, [sp, #20]
+ 606              	.LVL64:
+ 607              		.loc 1 242 0
+ 608 006e FFF7FEFF 		bl	getBig
+ 609              	.LVL65:
+ 610 0072 0028     		cmp	r0, #0
+ 611 0074 53D0     		beq	.L52
+ 243:src/pkcs.c    ****     return ERR_PKCS_PRI_MODULUS;
+ 244:src/pkcs.c    **** 
+ 245:src/pkcs.c    ****   keyLen = MaxRsaPrimeLen(keyLen_read);
+ 612              		.loc 1 245 0
+ 613 0076 4FEA5708 		lsr	r8, r7, #1
+ 246:src/pkcs.c    ****   if ((getBig(&p, (int)(end - p), (BYTE*) priKey->s_prime[0], &keyLen, K_MaxRsaPrimeLen, FILL_PRE_Z
+ 614              		.loc 1 246 0
+ 615 007a 0399     		ldr	r1, [sp, #12]
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 17
+
+
+ 616 007c 8027     		movs	r7, #128
+ 617              	.LVL66:
+ 618 007e 0196     		str	r6, [sp, #4]
+ 619 0080 0097     		str	r7, [sp]
+ 620 0082 03A8     		add	r0, sp, #12
+ 621 0084 611A     		subs	r1, r4, r1
+ 622 0086 05F58472 		add	r2, r5, #264
+ 623 008a 05AB     		add	r3, sp, #20
+ 245:src/pkcs.c    ****   if ((getBig(&p, (int)(end - p), (BYTE*) priKey->s_prime[0], &keyLen, K_MaxRsaPrimeLen, FILL_PRE_Z
+ 624              		.loc 1 245 0
+ 625 008c CDF81480 		str	r8, [sp, #20]
+ 626              		.loc 1 246 0
+ 627 0090 FFF7FEFF 		bl	getBig
+ 628              	.LVL67:
+ 629 0094 0028     		cmp	r0, #0
+ 630 0096 44D0     		beq	.L53
+ 247:src/pkcs.c    ****     return ERR_PKCS_PRI_PRIME1; 
+ 248:src/pkcs.c    **** 
+ 249:src/pkcs.c    ****   keyLen = MaxRsaPrimeLen(keyLen_read);
+ 250:src/pkcs.c    ****   if ((getBig(&p, (int)(end - p), (BYTE*) priKey->s_prime[1], &keyLen, K_MaxRsaPrimeLen, FILL_PRE_Z
+ 631              		.loc 1 250 0
+ 632 0098 0399     		ldr	r1, [sp, #12]
+ 633 009a 0097     		str	r7, [sp]
+ 634 009c 0196     		str	r6, [sp, #4]
+ 635 009e 03A8     		add	r0, sp, #12
+ 636 00a0 611A     		subs	r1, r4, r1
+ 637 00a2 05F5C472 		add	r2, r5, #392
+ 638 00a6 05AB     		add	r3, sp, #20
+ 249:src/pkcs.c    ****   if ((getBig(&p, (int)(end - p), (BYTE*) priKey->s_prime[1], &keyLen, K_MaxRsaPrimeLen, FILL_PRE_Z
+ 639              		.loc 1 249 0
+ 640 00a8 CDF81480 		str	r8, [sp, #20]
+ 641              		.loc 1 250 0
+ 642 00ac FFF7FEFF 		bl	getBig
+ 643              	.LVL68:
+ 644 00b0 0028     		cmp	r0, #0
+ 645 00b2 38D0     		beq	.L54
+ 251:src/pkcs.c    ****     return ERR_PKCS_PRI_PRIME2; 
+ 252:src/pkcs.c    **** 
+ 253:src/pkcs.c    ****   keyLen = MaxRsaPrimeLen(keyLen_read);
+ 254:src/pkcs.c    ****   if ((getBig(&p, (int)(end - p), (BYTE*) priKey->s_prime_exponent[0], &keyLen, K_MaxRsaPrimeLen, F
+ 646              		.loc 1 254 0
+ 647 00b4 0399     		ldr	r1, [sp, #12]
+ 648 00b6 0097     		str	r7, [sp]
+ 649 00b8 0196     		str	r6, [sp, #4]
+ 650 00ba 03A8     		add	r0, sp, #12
+ 651 00bc 611A     		subs	r1, r4, r1
+ 652 00be 05F50272 		add	r2, r5, #520
+ 653 00c2 05AB     		add	r3, sp, #20
+ 253:src/pkcs.c    ****   if ((getBig(&p, (int)(end - p), (BYTE*) priKey->s_prime_exponent[0], &keyLen, K_MaxRsaPrimeLen, F
+ 654              		.loc 1 253 0
+ 655 00c4 CDF81480 		str	r8, [sp, #20]
+ 656              		.loc 1 254 0
+ 657 00c8 FFF7FEFF 		bl	getBig
+ 658              	.LVL69:
+ 659 00cc 68B3     		cbz	r0, .L55
+ 255:src/pkcs.c    ****     return ERR_PKCS_PRI_EXPONENT1; 
+ 256:src/pkcs.c    **** 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 18
+
+
+ 257:src/pkcs.c    ****   keyLen = MaxRsaPrimeLen(keyLen_read);
+ 258:src/pkcs.c    ****   if ((getBig(&p, (int)(end - p), (BYTE*) priKey->s_prime_exponent[1], &keyLen, K_MaxRsaPrimeLen, F
+ 660              		.loc 1 258 0
+ 661 00ce 0399     		ldr	r1, [sp, #12]
+ 662 00d0 0097     		str	r7, [sp]
+ 663 00d2 0196     		str	r6, [sp, #4]
+ 664 00d4 03A8     		add	r0, sp, #12
+ 665 00d6 611A     		subs	r1, r4, r1
+ 666 00d8 05F52272 		add	r2, r5, #648
+ 667 00dc 05AB     		add	r3, sp, #20
+ 257:src/pkcs.c    ****   if ((getBig(&p, (int)(end - p), (BYTE*) priKey->s_prime_exponent[1], &keyLen, K_MaxRsaPrimeLen, F
+ 668              		.loc 1 257 0
+ 669 00de CDF81480 		str	r8, [sp, #20]
+ 670              		.loc 1 258 0
+ 671 00e2 FFF7FEFF 		bl	getBig
+ 672              	.LVL70:
+ 673 00e6 10B3     		cbz	r0, .L56
+ 259:src/pkcs.c    ****     return ERR_PKCS_PRI_EXPONENT2;
+ 260:src/pkcs.c    **** 
+ 261:src/pkcs.c    ****   keyLen = MaxRsaPrimeLen(keyLen_read);
+ 262:src/pkcs.c    ****   if ((getBig(&p, (int)(end - p), (BYTE*) priKey->s_coefficient, &keyLen, K_MaxRsaPrimeLen, FILL_PR
+ 674              		.loc 1 262 0
+ 675 00e8 0399     		ldr	r1, [sp, #12]
+ 676 00ea 0097     		str	r7, [sp]
+ 677 00ec 0196     		str	r6, [sp, #4]
+ 678 00ee 03A8     		add	r0, sp, #12
+ 679 00f0 611A     		subs	r1, r4, r1
+ 680 00f2 05F54272 		add	r2, r5, #776
+ 681 00f6 05AB     		add	r3, sp, #20
+ 261:src/pkcs.c    ****   if ((getBig(&p, (int)(end - p), (BYTE*) priKey->s_coefficient, &keyLen, K_MaxRsaPrimeLen, FILL_PR
+ 682              		.loc 1 261 0
+ 683 00f8 CDF81480 		str	r8, [sp, #20]
+ 684              		.loc 1 262 0
+ 685 00fc FFF7FEFF 		bl	getBig
+ 686              	.LVL71:
+ 687 0100 B8B1     		cbz	r0, .L57
+ 263:src/pkcs.c    ****     return ERR_PKCS_PRI_COEFFICIENT;     
+ 264:src/pkcs.c    **** 
+ 265:src/pkcs.c    ****   if (KeyEnd != p)
+ 266:src/pkcs.c    ****       return ERR_PKCS_KEY_END;
+ 267:src/pkcs.c    **** 
+ 268:src/pkcs.c    ****   return PKCS_OK;
+ 688              		.loc 1 268 0
+ 689 0102 039B     		ldr	r3, [sp, #12]
+ 226:src/pkcs.c    **** 
+ 690              		.loc 1 226 0
+ 691 0104 0AEB0900 		add	r0, r10, r9
+ 692              		.loc 1 268 0
+ 693 0108 8342     		cmp	r3, r0
+ 694 010a 14BF     		ite	ne
+ 695 010c 0B20     		movne	r0, #11
+ 696 010e 3046     		moveq	r0, r6
+ 697 0110 10E0     		b	.L48
+ 698              	.LVL72:
+ 699              	.L49:
+ 224:src/pkcs.c    **** 
+ 700              		.loc 1 224 0
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 19
+
+
+ 701 0112 0120     		movs	r0, #1
+ 702 0114 0EE0     		b	.L48
+ 703              	.LVL73:
+ 704              	.L50:
+ 232:src/pkcs.c    **** 
+ 705              		.loc 1 232 0
+ 706 0116 0220     		movs	r0, #2
+ 707 0118 0CE0     		b	.L48
+ 708              	.L51:
+ 236:src/pkcs.c    ****   }
+ 709              		.loc 1 236 0
+ 710 011a 0320     		movs	r0, #3
+ 711 011c 0AE0     		b	.L48
+ 712              	.LVL74:
+ 713              	.L52:
+ 243:src/pkcs.c    **** 
+ 714              		.loc 1 243 0
+ 715 011e 0520     		movs	r0, #5
+ 716 0120 08E0     		b	.L48
+ 717              	.LVL75:
+ 718              	.L53:
+ 247:src/pkcs.c    **** 
+ 719              		.loc 1 247 0
+ 720 0122 0620     		movs	r0, #6
+ 721 0124 06E0     		b	.L48
+ 722              	.L54:
+ 251:src/pkcs.c    **** 
+ 723              		.loc 1 251 0
+ 724 0126 0720     		movs	r0, #7
+ 725 0128 04E0     		b	.L48
+ 726              	.L55:
+ 255:src/pkcs.c    **** 
+ 727              		.loc 1 255 0
+ 728 012a 0820     		movs	r0, #8
+ 729 012c 02E0     		b	.L48
+ 730              	.L56:
+ 259:src/pkcs.c    **** 
+ 731              		.loc 1 259 0
+ 732 012e 0920     		movs	r0, #9
+ 733 0130 00E0     		b	.L48
+ 734              	.L57:
+ 263:src/pkcs.c    **** 
+ 735              		.loc 1 263 0
+ 736 0132 0A20     		movs	r0, #10
+ 737              	.LVL76:
+ 738              	.L48:
+ 269:src/pkcs.c    **** }
+ 739              		.loc 1 269 0
+ 740 0134 07B0     		add	sp, sp, #28
+ 741              		.cfi_def_cfa_offset 36
+ 742              		@ sp needed
+ 743 0136 BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 744              		.cfi_endproc
+ 745              	.LFE5:
+ 746              		.size	x509ParseKey, .-x509ParseKey
+ 747              		.text
+ 748              	.Letext0:
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 20
+
+
+ 749              		.file 2 "../LibA5T1000/common.h"
+ 750              		.file 3 "../LibA5T1000/system.h"
+ 751              		.section	.debug_info,"",%progbits
+ 752              	.Ldebug_info0:
+ 753 0000 6F070000 		.4byte	0x76f
+ 754 0004 0400     		.2byte	0x4
+ 755 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 756 000a 04       		.byte	0x4
+ 757 000b 01       		.uleb128 0x1
+ 758 000c C9000000 		.4byte	.LASF46
+ 759 0010 01       		.byte	0x1
+ 760 0011 FA010000 		.4byte	.LASF47
+ 761 0015 B9010000 		.4byte	.LASF48
+ 762 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 763 001d 00000000 		.4byte	0
+ 764 0021 00000000 		.4byte	.Ldebug_line0
+ 765 0025 02       		.uleb128 0x2
+ 766 0026 01       		.byte	0x1
+ 767 0027 06       		.byte	0x6
+ 768 0028 9F020000 		.4byte	.LASF0
+ 769 002c 02       		.uleb128 0x2
+ 770 002d 01       		.byte	0x1
+ 771 002e 08       		.byte	0x8
+ 772 002f A2000000 		.4byte	.LASF1
+ 773 0033 02       		.uleb128 0x2
+ 774 0034 02       		.byte	0x2
+ 775 0035 05       		.byte	0x5
+ 776 0036 65020000 		.4byte	.LASF2
+ 777 003a 02       		.uleb128 0x2
+ 778 003b 02       		.byte	0x2
+ 779 003c 07       		.byte	0x7
+ 780 003d 7B000000 		.4byte	.LASF3
+ 781 0041 02       		.uleb128 0x2
+ 782 0042 04       		.byte	0x4
+ 783 0043 05       		.byte	0x5
+ 784 0044 8F020000 		.4byte	.LASF4
+ 785 0048 02       		.uleb128 0x2
+ 786 0049 04       		.byte	0x4
+ 787 004a 07       		.byte	0x7
+ 788 004b 69000000 		.4byte	.LASF5
+ 789 004f 02       		.uleb128 0x2
+ 790 0050 08       		.byte	0x8
+ 791 0051 05       		.byte	0x5
+ 792 0052 42020000 		.4byte	.LASF6
+ 793 0056 02       		.uleb128 0x2
+ 794 0057 08       		.byte	0x8
+ 795 0058 07       		.byte	0x7
+ 796 0059 BB020000 		.4byte	.LASF7
+ 797 005d 03       		.uleb128 0x3
+ 798 005e 04       		.byte	0x4
+ 799 005f 05       		.byte	0x5
+ 800 0060 696E7400 		.ascii	"int\000"
+ 801 0064 02       		.uleb128 0x2
+ 802 0065 04       		.byte	0x4
+ 803 0066 07       		.byte	0x7
+ 804 0067 E6010000 		.4byte	.LASF8
+ 805 006b 04       		.uleb128 0x4
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 21
+
+
+ 806 006c 04       		.byte	0x4
+ 807 006d 02       		.uleb128 0x2
+ 808 006e 04       		.byte	0x4
+ 809 006f 07       		.byte	0x7
+ 810 0070 39020000 		.4byte	.LASF9
+ 811 0074 02       		.uleb128 0x2
+ 812 0075 01       		.byte	0x1
+ 813 0076 06       		.byte	0x6
+ 814 0077 0B000000 		.4byte	.LASF10
+ 815 007b 05       		.uleb128 0x5
+ 816 007c 29000000 		.4byte	.LASF11
+ 817 0080 02       		.byte	0x2
+ 818 0081 0E       		.byte	0xe
+ 819 0082 2C000000 		.4byte	0x2c
+ 820 0086 05       		.uleb128 0x5
+ 821 0087 23000000 		.4byte	.LASF12
+ 822 008b 02       		.byte	0x2
+ 823 008c 10       		.byte	0x10
+ 824 008d 64000000 		.4byte	0x64
+ 825 0091 06       		.uleb128 0x6
+ 826 0092 04       		.byte	0x4
+ 827 0093 7B000000 		.4byte	0x7b
+ 828 0097 07       		.uleb128 0x7
+ 829 0098 7B000000 		.4byte	0x7b
+ 830 009c A7000000 		.4byte	0xa7
+ 831 00a0 08       		.uleb128 0x8
+ 832 00a1 6D000000 		.4byte	0x6d
+ 833 00a5 03       		.byte	0x3
+ 834 00a6 00       		.byte	0
+ 835 00a7 07       		.uleb128 0x7
+ 836 00a8 7B000000 		.4byte	0x7b
+ 837 00ac B7000000 		.4byte	0xb7
+ 838 00b0 08       		.uleb128 0x8
+ 839 00b1 6D000000 		.4byte	0x6d
+ 840 00b5 7F       		.byte	0x7f
+ 841 00b6 00       		.byte	0
+ 842 00b7 09       		.uleb128 0x9
+ 843 00b8 0C02     		.2byte	0x20c
+ 844 00ba 03       		.byte	0x3
+ 845 00bb 7A01     		.2byte	0x17a
+ 846 00bd F7000000 		.4byte	0xf7
+ 847 00c1 0A       		.uleb128 0xa
+ 848 00c2 17020000 		.4byte	.LASF13
+ 849 00c6 03       		.byte	0x3
+ 850 00c7 7B01     		.2byte	0x17b
+ 851 00c9 86000000 		.4byte	0x86
+ 852 00cd 00       		.byte	0
+ 853 00ce 0A       		.uleb128 0xa
+ 854 00cf 98000000 		.4byte	.LASF14
+ 855 00d3 03       		.byte	0x3
+ 856 00d4 7C01     		.2byte	0x17c
+ 857 00d6 86000000 		.4byte	0x86
+ 858 00da 04       		.byte	0x4
+ 859 00db 0A       		.uleb128 0xa
+ 860 00dc 52000000 		.4byte	.LASF15
+ 861 00e0 03       		.byte	0x3
+ 862 00e1 7D01     		.2byte	0x17d
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 22
+
+
+ 863 00e3 F7000000 		.4byte	0xf7
+ 864 00e7 08       		.byte	0x8
+ 865 00e8 0B       		.uleb128 0xb
+ 866 00e9 43000000 		.4byte	.LASF16
+ 867 00ed 03       		.byte	0x3
+ 868 00ee 7E01     		.2byte	0x17e
+ 869 00f0 86000000 		.4byte	0x86
+ 870 00f4 0802     		.2byte	0x208
+ 871 00f6 00       		.byte	0
+ 872 00f7 07       		.uleb128 0x7
+ 873 00f8 86000000 		.4byte	0x86
+ 874 00fc 07010000 		.4byte	0x107
+ 875 0100 08       		.uleb128 0x8
+ 876 0101 6D000000 		.4byte	0x6d
+ 877 0105 7F       		.byte	0x7f
+ 878 0106 00       		.byte	0
+ 879 0107 0C       		.uleb128 0xc
+ 880 0108 11020000 		.4byte	.LASF17
+ 881 010c 03       		.byte	0x3
+ 882 010d 7F01     		.2byte	0x17f
+ 883 010f B7000000 		.4byte	0xb7
+ 884 0113 09       		.uleb128 0x9
+ 885 0114 8803     		.2byte	0x388
+ 886 0116 03       		.byte	0x3
+ 887 0117 8A01     		.2byte	0x18a
+ 888 0119 6F010000 		.4byte	0x16f
+ 889 011d 0A       		.uleb128 0xa
+ 890 011e 43000000 		.4byte	.LASF16
+ 891 0122 03       		.byte	0x3
+ 892 0123 8B01     		.2byte	0x18b
+ 893 0125 86000000 		.4byte	0x86
+ 894 0129 00       		.byte	0
+ 895 012a 0A       		.uleb128 0xa
+ 896 012b 3C000000 		.4byte	.LASF18
+ 897 012f 03       		.byte	0x3
+ 898 0130 8C01     		.2byte	0x18c
+ 899 0132 86000000 		.4byte	0x86
+ 900 0136 04       		.byte	0x4
+ 901 0137 0A       		.uleb128 0xa
+ 902 0138 8E000000 		.4byte	.LASF19
+ 903 013c 03       		.byte	0x3
+ 904 013d 8D01     		.2byte	0x18d
+ 905 013f 6F010000 		.4byte	0x16f
+ 906 0143 08       		.byte	0x8
+ 907 0144 0B       		.uleb128 0xb
+ 908 0145 DE010000 		.4byte	.LASF20
+ 909 0149 03       		.byte	0x3
+ 910 014a 8E01     		.2byte	0x18e
+ 911 014c 7F010000 		.4byte	0x17f
+ 912 0150 0801     		.2byte	0x108
+ 913 0152 0B       		.uleb128 0xb
+ 914 0153 58000000 		.4byte	.LASF21
+ 915 0157 03       		.byte	0x3
+ 916 0158 8F01     		.2byte	0x18f
+ 917 015a 7F010000 		.4byte	0x17f
+ 918 015e 0802     		.2byte	0x208
+ 919 0160 0B       		.uleb128 0xb
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 23
+
+
+ 920 0161 2E000000 		.4byte	.LASF22
+ 921 0165 03       		.byte	0x3
+ 922 0166 9001     		.2byte	0x190
+ 923 0168 A7000000 		.4byte	0xa7
+ 924 016c 0803     		.2byte	0x308
+ 925 016e 00       		.byte	0
+ 926 016f 07       		.uleb128 0x7
+ 927 0170 7B000000 		.4byte	0x7b
+ 928 0174 7F010000 		.4byte	0x17f
+ 929 0178 08       		.uleb128 0x8
+ 930 0179 6D000000 		.4byte	0x6d
+ 931 017d FF       		.byte	0xff
+ 932 017e 00       		.byte	0
+ 933 017f 07       		.uleb128 0x7
+ 934 0180 7B000000 		.4byte	0x7b
+ 935 0184 95010000 		.4byte	0x195
+ 936 0188 08       		.uleb128 0x8
+ 937 0189 6D000000 		.4byte	0x6d
+ 938 018d 01       		.byte	0x1
+ 939 018e 08       		.uleb128 0x8
+ 940 018f 6D000000 		.4byte	0x6d
+ 941 0193 7F       		.byte	0x7f
+ 942 0194 00       		.byte	0
+ 943 0195 0C       		.uleb128 0xc
+ 944 0196 B7000000 		.4byte	.LASF23
+ 945 019a 03       		.byte	0x3
+ 946 019b 9101     		.2byte	0x191
+ 947 019d 13010000 		.4byte	0x113
+ 948 01a1 06       		.uleb128 0x6
+ 949 01a2 04       		.byte	0x4
+ 950 01a3 A7010000 		.4byte	0x1a7
+ 951 01a7 0D       		.uleb128 0xd
+ 952 01a8 0E       		.uleb128 0xe
+ 953 01a9 82020000 		.4byte	.LASF27
+ 954 01ad 01       		.byte	0x1
+ 955 01ae 37       		.byte	0x37
+ 956 01af 5D000000 		.4byte	0x5d
+ 957 01b3 00000000 		.4byte	.LFB0
+ 958 01b7 5A000000 		.4byte	.LFE0-.LFB0
+ 959 01bb 01       		.uleb128 0x1
+ 960 01bc 9C       		.byte	0x9c
+ 961 01bd 21020000 		.4byte	0x221
+ 962 01c1 0F       		.uleb128 0xf
+ 963 01c2 7000     		.ascii	"p\000"
+ 964 01c4 01       		.byte	0x1
+ 965 01c5 37       		.byte	0x37
+ 966 01c6 21020000 		.4byte	0x221
+ 967 01ca 00000000 		.4byte	.LLST0
+ 968 01ce 10       		.uleb128 0x10
+ 969 01cf 4D000000 		.4byte	.LASF24
+ 970 01d3 01       		.byte	0x1
+ 971 01d4 37       		.byte	0x37
+ 972 01d5 86000000 		.4byte	0x86
+ 973 01d9 3A000000 		.4byte	.LLST1
+ 974 01dd 11       		.uleb128 0x11
+ 975 01de B2010000 		.4byte	.LASF25
+ 976 01e2 01       		.byte	0x1
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 24
+
+
+ 977 01e3 37       		.byte	0x37
+ 978 01e4 27020000 		.4byte	0x227
+ 979 01e8 01       		.uleb128 0x1
+ 980 01e9 52       		.byte	0x52
+ 981 01ea 12       		.uleb128 0x12
+ 982 01eb 6300     		.ascii	"c\000"
+ 983 01ed 01       		.byte	0x1
+ 984 01ee 38       		.byte	0x38
+ 985 01ef 91000000 		.4byte	0x91
+ 986 01f3 5B000000 		.4byte	.LLST2
+ 987 01f7 13       		.uleb128 0x13
+ 988 01f8 656E6400 		.ascii	"end\000"
+ 989 01fc 01       		.byte	0x1
+ 990 01fd 38       		.byte	0x38
+ 991 01fe 91000000 		.4byte	0x91
+ 992 0202 12       		.uleb128 0x12
+ 993 0203 6C656E00 		.ascii	"len\000"
+ 994 0207 01       		.byte	0x1
+ 995 0208 39       		.byte	0x39
+ 996 0209 5D000000 		.4byte	0x5d
+ 997 020d A7000000 		.4byte	.LLST3
+ 998 0211 14       		.uleb128 0x14
+ 999 0212 05020000 		.4byte	.LASF26
+ 1000 0216 01       		.byte	0x1
+ 1001 0217 39       		.byte	0x39
+ 1002 0218 5D000000 		.4byte	0x5d
+ 1003 021c DD000000 		.4byte	.LLST4
+ 1004 0220 00       		.byte	0
+ 1005 0221 06       		.uleb128 0x6
+ 1006 0222 04       		.byte	0x4
+ 1007 0223 91000000 		.4byte	0x91
+ 1008 0227 06       		.uleb128 0x6
+ 1009 0228 04       		.byte	0x4
+ 1010 0229 5D000000 		.4byte	0x5d
+ 1011 022d 0E       		.uleb128 0xe
+ 1012 022e 98010000 		.4byte	.LASF28
+ 1013 0232 01       		.byte	0x1
+ 1014 0233 6C       		.byte	0x6c
+ 1015 0234 5D000000 		.4byte	0x5d
+ 1016 0238 00000000 		.4byte	.LFB1
+ 1017 023c 38000000 		.4byte	.LFE1-.LFB1
+ 1018 0240 01       		.uleb128 0x1
+ 1019 0241 9C       		.byte	0x9c
+ 1020 0242 95020000 		.4byte	0x295
+ 1021 0246 0F       		.uleb128 0xf
+ 1022 0247 707000   		.ascii	"pp\000"
+ 1023 024a 01       		.byte	0x1
+ 1024 024b 6C       		.byte	0x6c
+ 1025 024c 21020000 		.4byte	0x221
+ 1026 0250 F0000000 		.4byte	.LLST5
+ 1027 0254 0F       		.uleb128 0xf
+ 1028 0255 6C656E00 		.ascii	"len\000"
+ 1029 0259 01       		.byte	0x1
+ 1030 025a 6C       		.byte	0x6c
+ 1031 025b 86000000 		.4byte	0x86
+ 1032 025f 24010000 		.4byte	.LLST6
+ 1033 0263 10       		.uleb128 0x10
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 25
+
+
+ 1034 0264 5E020000 		.4byte	.LASF29
+ 1035 0268 01       		.byte	0x1
+ 1036 0269 6C       		.byte	0x6c
+ 1037 026a 27020000 		.4byte	0x227
+ 1038 026e 58010000 		.4byte	.LLST7
+ 1039 0272 15       		.uleb128 0x15
+ 1040 0273 7000     		.ascii	"p\000"
+ 1041 0275 01       		.byte	0x1
+ 1042 0276 6D       		.byte	0x6d
+ 1043 0277 91000000 		.4byte	0x91
+ 1044 027b 02       		.uleb128 0x2
+ 1045 027c 91       		.byte	0x91
+ 1046 027d 6C       		.sleb128 -20
+ 1047 027e 16       		.uleb128 0x16
+ 1048 027f 22000000 		.4byte	.LVL19
+ 1049 0283 A8010000 		.4byte	0x1a8
+ 1050 0287 17       		.uleb128 0x17
+ 1051 0288 01       		.uleb128 0x1
+ 1052 0289 51       		.byte	0x51
+ 1053 028a 02       		.uleb128 0x2
+ 1054 028b 74       		.byte	0x74
+ 1055 028c 7F       		.sleb128 -1
+ 1056 028d 17       		.uleb128 0x17
+ 1057 028e 01       		.uleb128 0x1
+ 1058 028f 50       		.byte	0x50
+ 1059 0290 02       		.uleb128 0x2
+ 1060 0291 91       		.byte	0x91
+ 1061 0292 6C       		.sleb128 -20
+ 1062 0293 00       		.byte	0
+ 1063 0294 00       		.byte	0
+ 1064 0295 0E       		.uleb128 0xe
+ 1065 0296 A4010000 		.4byte	.LASF30
+ 1066 029a 01       		.byte	0x1
+ 1067 029b 78       		.byte	0x78
+ 1068 029c 5D000000 		.4byte	0x5d
+ 1069 02a0 00000000 		.4byte	.LFB2
+ 1070 02a4 36000000 		.4byte	.LFE2-.LFB2
+ 1071 02a8 01       		.uleb128 0x1
+ 1072 02a9 9C       		.byte	0x9c
+ 1073 02aa 06030000 		.4byte	0x306
+ 1074 02ae 0F       		.uleb128 0xf
+ 1075 02af 707000   		.ascii	"pp\000"
+ 1076 02b2 01       		.byte	0x1
+ 1077 02b3 78       		.byte	0x78
+ 1078 02b4 21020000 		.4byte	0x221
+ 1079 02b8 8C010000 		.4byte	.LLST8
+ 1080 02bc 0F       		.uleb128 0xf
+ 1081 02bd 6C656E00 		.ascii	"len\000"
+ 1082 02c1 01       		.byte	0x1
+ 1083 02c2 78       		.byte	0x78
+ 1084 02c3 5D000000 		.4byte	0x5d
+ 1085 02c7 C0010000 		.4byte	.LLST9
+ 1086 02cb 12       		.uleb128 0x12
+ 1087 02cc 7000     		.ascii	"p\000"
+ 1088 02ce 01       		.byte	0x1
+ 1089 02cf 7A       		.byte	0x7a
+ 1090 02d0 91000000 		.4byte	0x91
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 26
+
+
+ 1091 02d4 07020000 		.4byte	.LLST10
+ 1092 02d8 18       		.uleb128 0x18
+ 1093 02d9 D2020000 		.4byte	.LASF31
+ 1094 02dd 01       		.byte	0x1
+ 1095 02de 7B       		.byte	0x7b
+ 1096 02df 5D000000 		.4byte	0x5d
+ 1097 02e3 02       		.uleb128 0x2
+ 1098 02e4 91       		.byte	0x91
+ 1099 02e5 74       		.sleb128 -12
+ 1100 02e6 16       		.uleb128 0x16
+ 1101 02e7 22000000 		.4byte	.LVL25
+ 1102 02eb A8010000 		.4byte	0x1a8
+ 1103 02ef 17       		.uleb128 0x17
+ 1104 02f0 01       		.uleb128 0x1
+ 1105 02f1 52       		.byte	0x52
+ 1106 02f2 02       		.uleb128 0x2
+ 1107 02f3 91       		.byte	0x91
+ 1108 02f4 74       		.sleb128 -12
+ 1109 02f5 17       		.uleb128 0x17
+ 1110 02f6 01       		.uleb128 0x1
+ 1111 02f7 51       		.byte	0x51
+ 1112 02f8 05       		.uleb128 0x5
+ 1113 02f9 F3       		.byte	0xf3
+ 1114 02fa 01       		.uleb128 0x1
+ 1115 02fb 51       		.byte	0x51
+ 1116 02fc 31       		.byte	0x31
+ 1117 02fd 1C       		.byte	0x1c
+ 1118 02fe 17       		.uleb128 0x17
+ 1119 02ff 01       		.uleb128 0x1
+ 1120 0300 50       		.byte	0x50
+ 1121 0301 02       		.uleb128 0x2
+ 1122 0302 7D       		.byte	0x7d
+ 1123 0303 00       		.sleb128 0
+ 1124 0304 00       		.byte	0
+ 1125 0305 00       		.byte	0
+ 1126 0306 0E       		.uleb128 0xe
+ 1127 0307 10000000 		.4byte	.LASF32
+ 1128 030b 01       		.byte	0x1
+ 1129 030c 87       		.byte	0x87
+ 1130 030d 5D000000 		.4byte	0x5d
+ 1131 0311 00000000 		.4byte	.LFB3
+ 1132 0315 90000000 		.4byte	.LFE3-.LFB3
+ 1133 0319 01       		.uleb128 0x1
+ 1134 031a 9C       		.byte	0x9c
+ 1135 031b 24040000 		.4byte	0x424
+ 1136 031f 0F       		.uleb128 0xf
+ 1137 0320 707000   		.ascii	"pp\000"
+ 1138 0323 01       		.byte	0x1
+ 1139 0324 87       		.byte	0x87
+ 1140 0325 21020000 		.4byte	0x221
+ 1141 0329 2C020000 		.4byte	.LLST11
+ 1142 032d 0F       		.uleb128 0xf
+ 1143 032e 6C656E00 		.ascii	"len\000"
+ 1144 0332 01       		.byte	0x1
+ 1145 0333 87       		.byte	0x87
+ 1146 0334 5D000000 		.4byte	0x5d
+ 1147 0338 60020000 		.4byte	.LLST12
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 27
+
+
+ 1148 033c 0F       		.uleb128 0xf
+ 1149 033d 62696700 		.ascii	"big\000"
+ 1150 0341 01       		.byte	0x1
+ 1151 0342 87       		.byte	0x87
+ 1152 0343 91000000 		.4byte	0x91
+ 1153 0347 A7020000 		.4byte	.LLST13
+ 1154 034b 10       		.uleb128 0x10
+ 1155 034c 6F020000 		.4byte	.LASF33
+ 1156 0350 01       		.byte	0x1
+ 1157 0351 87       		.byte	0x87
+ 1158 0352 24040000 		.4byte	0x424
+ 1159 0356 07030000 		.4byte	.LLST14
+ 1160 035a 11       		.uleb128 0x11
+ 1161 035b 00000000 		.4byte	.LASF34
+ 1162 035f 01       		.byte	0x1
+ 1163 0360 87       		.byte	0x87
+ 1164 0361 64000000 		.4byte	0x64
+ 1165 0365 02       		.uleb128 0x2
+ 1166 0366 91       		.byte	0x91
+ 1167 0367 00       		.sleb128 0
+ 1168 0368 11       		.uleb128 0x11
+ 1169 0369 B2020000 		.4byte	.LASF35
+ 1170 036d 01       		.byte	0x1
+ 1171 036e 87       		.byte	0x87
+ 1172 036f 7B000000 		.4byte	0x7b
+ 1173 0373 02       		.uleb128 0x2
+ 1174 0374 91       		.byte	0x91
+ 1175 0375 04       		.sleb128 4
+ 1176 0376 12       		.uleb128 0x12
+ 1177 0377 7000     		.ascii	"p\000"
+ 1178 0379 01       		.byte	0x1
+ 1179 037a 89       		.byte	0x89
+ 1180 037b 91000000 		.4byte	0x91
+ 1181 037f 25030000 		.4byte	.LLST15
+ 1182 0383 18       		.uleb128 0x18
+ 1183 0384 D2020000 		.4byte	.LASF31
+ 1184 0388 01       		.byte	0x1
+ 1185 0389 8A       		.byte	0x8a
+ 1186 038a 5D000000 		.4byte	0x5d
+ 1187 038e 02       		.uleb128 0x2
+ 1188 038f 91       		.byte	0x91
+ 1189 0390 5C       		.sleb128 -36
+ 1190 0391 19       		.uleb128 0x19
+ 1191 0392 2C000000 		.4byte	.LVL36
+ 1192 0396 A8010000 		.4byte	0x1a8
+ 1193 039a B4030000 		.4byte	0x3b4
+ 1194 039e 17       		.uleb128 0x17
+ 1195 039f 01       		.uleb128 0x1
+ 1196 03a0 52       		.byte	0x52
+ 1197 03a1 02       		.uleb128 0x2
+ 1198 03a2 91       		.byte	0x91
+ 1199 03a3 5C       		.sleb128 -36
+ 1200 03a4 17       		.uleb128 0x17
+ 1201 03a5 01       		.uleb128 0x1
+ 1202 03a6 51       		.byte	0x51
+ 1203 03a7 05       		.uleb128 0x5
+ 1204 03a8 F3       		.byte	0xf3
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 28
+
+
+ 1205 03a9 01       		.uleb128 0x1
+ 1206 03aa 51       		.byte	0x51
+ 1207 03ab 31       		.byte	0x31
+ 1208 03ac 1C       		.byte	0x1c
+ 1209 03ad 17       		.uleb128 0x17
+ 1210 03ae 01       		.uleb128 0x1
+ 1211 03af 50       		.byte	0x50
+ 1212 03b0 02       		.uleb128 0x2
+ 1213 03b1 7D       		.byte	0x7d
+ 1214 03b2 00       		.sleb128 0
+ 1215 03b3 00       		.byte	0
+ 1216 03b4 19       		.uleb128 0x19
+ 1217 03b5 5E000000 		.4byte	.LVL38
+ 1218 03b9 3C070000 		.4byte	0x73c
+ 1219 03bd D4030000 		.4byte	0x3d4
+ 1220 03c1 17       		.uleb128 0x17
+ 1221 03c2 01       		.uleb128 0x1
+ 1222 03c3 52       		.byte	0x52
+ 1223 03c4 02       		.uleb128 0x2
+ 1224 03c5 75       		.byte	0x75
+ 1225 03c6 00       		.sleb128 0
+ 1226 03c7 17       		.uleb128 0x17
+ 1227 03c8 01       		.uleb128 0x1
+ 1228 03c9 51       		.byte	0x51
+ 1229 03ca 02       		.uleb128 0x2
+ 1230 03cb 79       		.byte	0x79
+ 1231 03cc 00       		.sleb128 0
+ 1232 03cd 17       		.uleb128 0x17
+ 1233 03ce 01       		.uleb128 0x1
+ 1234 03cf 50       		.byte	0x50
+ 1235 03d0 02       		.uleb128 0x2
+ 1236 03d1 76       		.byte	0x76
+ 1237 03d2 00       		.sleb128 0
+ 1238 03d3 00       		.byte	0
+ 1239 03d4 19       		.uleb128 0x19
+ 1240 03d5 68000000 		.4byte	.LVL39
+ 1241 03d9 59070000 		.4byte	0x759
+ 1242 03dd F1030000 		.4byte	0x3f1
+ 1243 03e1 17       		.uleb128 0x17
+ 1244 03e2 01       		.uleb128 0x1
+ 1245 03e3 52       		.byte	0x52
+ 1246 03e4 02       		.uleb128 0x2
+ 1247 03e5 74       		.byte	0x74
+ 1248 03e6 00       		.sleb128 0
+ 1249 03e7 17       		.uleb128 0x17
+ 1250 03e8 01       		.uleb128 0x1
+ 1251 03e9 50       		.byte	0x50
+ 1252 03ea 05       		.uleb128 0x5
+ 1253 03eb 76       		.byte	0x76
+ 1254 03ec 00       		.sleb128 0
+ 1255 03ed 75       		.byte	0x75
+ 1256 03ee 00       		.sleb128 0
+ 1257 03ef 22       		.byte	0x22
+ 1258 03f0 00       		.byte	0
+ 1259 03f1 19       		.uleb128 0x19
+ 1260 03f2 72000000 		.4byte	.LVL41
+ 1261 03f6 59070000 		.4byte	0x759
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 29
+
+
+ 1262 03fa 05040000 		.4byte	0x405
+ 1263 03fe 17       		.uleb128 0x17
+ 1264 03ff 01       		.uleb128 0x1
+ 1265 0400 52       		.byte	0x52
+ 1266 0401 02       		.uleb128 0x2
+ 1267 0402 74       		.byte	0x74
+ 1268 0403 00       		.sleb128 0
+ 1269 0404 00       		.byte	0
+ 1270 0405 16       		.uleb128 0x16
+ 1271 0406 7C000000 		.4byte	.LVL42
+ 1272 040a 3C070000 		.4byte	0x73c
+ 1273 040e 17       		.uleb128 0x17
+ 1274 040f 01       		.uleb128 0x1
+ 1275 0410 52       		.byte	0x52
+ 1276 0411 02       		.uleb128 0x2
+ 1277 0412 75       		.byte	0x75
+ 1278 0413 00       		.sleb128 0
+ 1279 0414 17       		.uleb128 0x17
+ 1280 0415 01       		.uleb128 0x1
+ 1281 0416 51       		.byte	0x51
+ 1282 0417 01       		.uleb128 0x1
+ 1283 0418 30       		.byte	0x30
+ 1284 0419 17       		.uleb128 0x17
+ 1285 041a 01       		.uleb128 0x1
+ 1286 041b 50       		.byte	0x50
+ 1287 041c 05       		.uleb128 0x5
+ 1288 041d 76       		.byte	0x76
+ 1289 041e 00       		.sleb128 0
+ 1290 041f 74       		.byte	0x74
+ 1291 0420 00       		.sleb128 0
+ 1292 0421 22       		.byte	0x22
+ 1293 0422 00       		.byte	0
+ 1294 0423 00       		.byte	0
+ 1295 0424 06       		.uleb128 0x6
+ 1296 0425 04       		.byte	0x4
+ 1297 0426 86000000 		.4byte	0x86
+ 1298 042a 0E       		.uleb128 0xe
+ 1299 042b 22020000 		.4byte	.LASF36
+ 1300 042f 01       		.byte	0x1
+ 1301 0430 A8       		.byte	0xa8
+ 1302 0431 5D000000 		.4byte	0x5d
+ 1303 0435 00000000 		.4byte	.LFB4
+ 1304 0439 78000000 		.4byte	.LFE4-.LFB4
+ 1305 043d 01       		.uleb128 0x1
+ 1306 043e 9C       		.byte	0x9c
+ 1307 043f 13050000 		.4byte	0x513
+ 1308 0443 0F       		.uleb128 0xf
+ 1309 0444 707000   		.ascii	"pp\000"
+ 1310 0447 01       		.byte	0x1
+ 1311 0448 A8       		.byte	0xa8
+ 1312 0449 21020000 		.4byte	0x221
+ 1313 044d 49030000 		.4byte	.LLST16
+ 1314 0451 0F       		.uleb128 0xf
+ 1315 0452 6C656E00 		.ascii	"len\000"
+ 1316 0456 01       		.byte	0x1
+ 1317 0457 A8       		.byte	0xa8
+ 1318 0458 5D000000 		.4byte	0x5d
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 30
+
+
+ 1319 045c 67030000 		.4byte	.LLST17
+ 1320 0460 10       		.uleb128 0x10
+ 1321 0461 50020000 		.4byte	.LASF37
+ 1322 0465 01       		.byte	0x1
+ 1323 0466 A8       		.byte	0xa8
+ 1324 0467 24040000 		.4byte	0x424
+ 1325 046b 85030000 		.4byte	.LLST18
+ 1326 046f 10       		.uleb128 0x10
+ 1327 0470 AB020000 		.4byte	.LASF38
+ 1328 0474 01       		.byte	0x1
+ 1329 0475 A8       		.byte	0xa8
+ 1330 0476 13050000 		.4byte	0x513
+ 1331 047a A3030000 		.4byte	.LLST19
+ 1332 047e 15       		.uleb128 0x15
+ 1333 047f 7000     		.ascii	"p\000"
+ 1334 0481 01       		.byte	0x1
+ 1335 0482 A9       		.byte	0xa9
+ 1336 0483 91000000 		.4byte	0x91
+ 1337 0487 02       		.uleb128 0x2
+ 1338 0488 91       		.byte	0x91
+ 1339 0489 54       		.sleb128 -44
+ 1340 048a 18       		.uleb128 0x18
+ 1341 048b 17000000 		.4byte	.LASF39
+ 1342 048f 01       		.byte	0x1
+ 1343 0490 AA       		.byte	0xaa
+ 1344 0491 97000000 		.4byte	0x97
+ 1345 0495 02       		.uleb128 0x2
+ 1346 0496 91       		.byte	0x91
+ 1347 0497 58       		.sleb128 -40
+ 1348 0498 18       		.uleb128 0x18
+ 1349 0499 F3010000 		.4byte	.LASF40
+ 1350 049d 01       		.byte	0x1
+ 1351 049e AB       		.byte	0xab
+ 1352 049f 86000000 		.4byte	0x86
+ 1353 04a3 02       		.uleb128 0x2
+ 1354 04a4 91       		.byte	0x91
+ 1355 04a5 5C       		.sleb128 -36
+ 1356 04a6 14       		.uleb128 0x14
+ 1357 04a7 1D000000 		.4byte	.LASF41
+ 1358 04ab 01       		.byte	0x1
+ 1359 04ac AB       		.byte	0xab
+ 1360 04ad 86000000 		.4byte	0x86
+ 1361 04b1 C1030000 		.4byte	.LLST20
+ 1362 04b5 19       		.uleb128 0x19
+ 1363 04b6 2C000000 		.4byte	.LVL50
+ 1364 04ba 06030000 		.4byte	0x306
+ 1365 04be EA040000 		.4byte	0x4ea
+ 1366 04c2 17       		.uleb128 0x17
+ 1367 04c3 01       		.uleb128 0x1
+ 1368 04c4 53       		.byte	0x53
+ 1369 04c5 02       		.uleb128 0x2
+ 1370 04c6 78       		.byte	0x78
+ 1371 04c7 00       		.sleb128 0
+ 1372 04c8 17       		.uleb128 0x17
+ 1373 04c9 01       		.uleb128 0x1
+ 1374 04ca 52       		.byte	0x52
+ 1375 04cb 02       		.uleb128 0x2
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 31
+
+
+ 1376 04cc 75       		.byte	0x75
+ 1377 04cd 08       		.sleb128 8
+ 1378 04ce 17       		.uleb128 0x17
+ 1379 04cf 01       		.uleb128 0x1
+ 1380 04d0 51       		.byte	0x51
+ 1381 04d1 02       		.uleb128 0x2
+ 1382 04d2 79       		.byte	0x79
+ 1383 04d3 00       		.sleb128 0
+ 1384 04d4 17       		.uleb128 0x17
+ 1385 04d5 01       		.uleb128 0x1
+ 1386 04d6 50       		.byte	0x50
+ 1387 04d7 02       		.uleb128 0x2
+ 1388 04d8 91       		.byte	0x91
+ 1389 04d9 54       		.sleb128 -44
+ 1390 04da 17       		.uleb128 0x17
+ 1391 04db 02       		.uleb128 0x2
+ 1392 04dc 7D       		.byte	0x7d
+ 1393 04dd 04       		.sleb128 4
+ 1394 04de 02       		.uleb128 0x2
+ 1395 04df 74       		.byte	0x74
+ 1396 04e0 00       		.sleb128 0
+ 1397 04e1 17       		.uleb128 0x17
+ 1398 04e2 02       		.uleb128 0x2
+ 1399 04e3 7D       		.byte	0x7d
+ 1400 04e4 00       		.sleb128 0
+ 1401 04e5 03       		.uleb128 0x3
+ 1402 04e6 0A       		.byte	0xa
+ 1403 04e7 0001     		.2byte	0x100
+ 1404 04e9 00       		.byte	0
+ 1405 04ea 16       		.uleb128 0x16
+ 1406 04eb 48000000 		.4byte	.LVL51
+ 1407 04ef 06030000 		.4byte	0x306
+ 1408 04f3 17       		.uleb128 0x17
+ 1409 04f4 01       		.uleb128 0x1
+ 1410 04f5 53       		.byte	0x53
+ 1411 04f6 02       		.uleb128 0x2
+ 1412 04f7 91       		.byte	0x91
+ 1413 04f8 5C       		.sleb128 -36
+ 1414 04f9 17       		.uleb128 0x17
+ 1415 04fa 01       		.uleb128 0x1
+ 1416 04fb 52       		.byte	0x52
+ 1417 04fc 02       		.uleb128 0x2
+ 1418 04fd 77       		.byte	0x77
+ 1419 04fe 00       		.sleb128 0
+ 1420 04ff 17       		.uleb128 0x17
+ 1421 0500 01       		.uleb128 0x1
+ 1422 0501 51       		.byte	0x51
+ 1423 0502 02       		.uleb128 0x2
+ 1424 0503 79       		.byte	0x79
+ 1425 0504 00       		.sleb128 0
+ 1426 0505 17       		.uleb128 0x17
+ 1427 0506 01       		.uleb128 0x1
+ 1428 0507 50       		.byte	0x50
+ 1429 0508 02       		.uleb128 0x2
+ 1430 0509 91       		.byte	0x91
+ 1431 050a 54       		.sleb128 -44
+ 1432 050b 17       		.uleb128 0x17
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 32
+
+
+ 1433 050c 02       		.uleb128 0x2
+ 1434 050d 7D       		.byte	0x7d
+ 1435 050e 04       		.sleb128 4
+ 1436 050f 01       		.uleb128 0x1
+ 1437 0510 31       		.byte	0x31
+ 1438 0511 00       		.byte	0
+ 1439 0512 00       		.byte	0
+ 1440 0513 06       		.uleb128 0x6
+ 1441 0514 04       		.byte	0x4
+ 1442 0515 07010000 		.4byte	0x107
+ 1443 0519 0E       		.uleb128 0xe
+ 1444 051a 2C020000 		.4byte	.LASF42
+ 1445 051e 01       		.byte	0x1
+ 1446 051f BB       		.byte	0xbb
+ 1447 0520 86000000 		.4byte	0x86
+ 1448 0524 00000000 		.4byte	.LFB5
+ 1449 0528 3A010000 		.4byte	.LFE5-.LFB5
+ 1450 052c 01       		.uleb128 0x1
+ 1451 052d 9C       		.byte	0x9c
+ 1452 052e 36070000 		.4byte	0x736
+ 1453 0532 0F       		.uleb128 0xf
+ 1454 0533 70747200 		.ascii	"ptr\000"
+ 1455 0537 01       		.byte	0x1
+ 1456 0538 BB       		.byte	0xbb
+ 1457 0539 91000000 		.4byte	0x91
+ 1458 053d D4030000 		.4byte	.LLST21
+ 1459 0541 10       		.uleb128 0x10
+ 1460 0542 4D000000 		.4byte	.LASF24
+ 1461 0546 01       		.byte	0x1
+ 1462 0547 BB       		.byte	0xbb
+ 1463 0548 86000000 		.4byte	0x86
+ 1464 054c 19040000 		.4byte	.LLST22
+ 1465 0550 10       		.uleb128 0x10
+ 1466 0551 AB020000 		.4byte	.LASF38
+ 1467 0555 01       		.byte	0x1
+ 1468 0556 BB       		.byte	0xbb
+ 1469 0557 13050000 		.4byte	0x513
+ 1470 055b 5E040000 		.4byte	.LLST23
+ 1471 055f 10       		.uleb128 0x10
+ 1472 0560 98020000 		.4byte	.LASF43
+ 1473 0564 01       		.byte	0x1
+ 1474 0565 BB       		.byte	0xbb
+ 1475 0566 36070000 		.4byte	0x736
+ 1476 056a 7C040000 		.4byte	.LLST24
+ 1477 056e 15       		.uleb128 0x15
+ 1478 056f 7000     		.ascii	"p\000"
+ 1479 0571 01       		.byte	0x1
+ 1480 0572 BC       		.byte	0xbc
+ 1481 0573 91000000 		.4byte	0x91
+ 1482 0577 02       		.uleb128 0x2
+ 1483 0578 91       		.byte	0x91
+ 1484 0579 4C       		.sleb128 -52
+ 1485 057a 14       		.uleb128 0x14
+ 1486 057b 0A020000 		.4byte	.LASF44
+ 1487 057f 01       		.byte	0x1
+ 1488 0580 BD       		.byte	0xbd
+ 1489 0581 91000000 		.4byte	0x91
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 33
+
+
+ 1490 0585 9A040000 		.4byte	.LLST25
+ 1491 0589 12       		.uleb128 0x12
+ 1492 058a 656E6400 		.ascii	"end\000"
+ 1493 058e 01       		.byte	0x1
+ 1494 058f BD       		.byte	0xbd
+ 1495 0590 91000000 		.4byte	0x91
+ 1496 0594 C2040000 		.4byte	.LLST26
+ 1497 0598 15       		.uleb128 0x15
+ 1498 0599 6C656E00 		.ascii	"len\000"
+ 1499 059d 01       		.byte	0x1
+ 1500 059e BE       		.byte	0xbe
+ 1501 059f 5D000000 		.4byte	0x5d
+ 1502 05a3 02       		.uleb128 0x2
+ 1503 05a4 91       		.byte	0x91
+ 1504 05a5 50       		.sleb128 -48
+ 1505 05a6 18       		.uleb128 0x18
+ 1506 05a7 50020000 		.4byte	.LASF37
+ 1507 05ab 01       		.byte	0x1
+ 1508 05ac BF       		.byte	0xbf
+ 1509 05ad 86000000 		.4byte	0x86
+ 1510 05b1 02       		.uleb128 0x2
+ 1511 05b2 91       		.byte	0x91
+ 1512 05b3 54       		.sleb128 -44
+ 1513 05b4 14       		.uleb128 0x14
+ 1514 05b5 76020000 		.4byte	.LASF45
+ 1515 05b9 01       		.byte	0x1
+ 1516 05ba BF       		.byte	0xbf
+ 1517 05bb 86000000 		.4byte	0x86
+ 1518 05bf 22050000 		.4byte	.LLST27
+ 1519 05c3 19       		.uleb128 0x19
+ 1520 05c4 1C000000 		.4byte	.LVL59
+ 1521 05c8 2D020000 		.4byte	0x22d
+ 1522 05cc E3050000 		.4byte	0x5e3
+ 1523 05d0 17       		.uleb128 0x17
+ 1524 05d1 01       		.uleb128 0x1
+ 1525 05d2 52       		.byte	0x52
+ 1526 05d3 02       		.uleb128 0x2
+ 1527 05d4 91       		.byte	0x91
+ 1528 05d5 50       		.sleb128 -48
+ 1529 05d6 17       		.uleb128 0x17
+ 1530 05d7 01       		.uleb128 0x1
+ 1531 05d8 51       		.byte	0x51
+ 1532 05d9 02       		.uleb128 0x2
+ 1533 05da 77       		.byte	0x77
+ 1534 05db 00       		.sleb128 0
+ 1535 05dc 17       		.uleb128 0x17
+ 1536 05dd 01       		.uleb128 0x1
+ 1537 05de 50       		.byte	0x50
+ 1538 05df 02       		.uleb128 0x2
+ 1539 05e0 91       		.byte	0x91
+ 1540 05e1 4C       		.sleb128 -52
+ 1541 05e2 00       		.byte	0
+ 1542 05e3 19       		.uleb128 0x19
+ 1543 05e4 34000000 		.4byte	.LVL62
+ 1544 05e8 95020000 		.4byte	0x295
+ 1545 05ec 00060000 		.4byte	0x600
+ 1546 05f0 17       		.uleb128 0x17
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 34
+
+
+ 1547 05f1 01       		.uleb128 0x1
+ 1548 05f2 51       		.byte	0x51
+ 1549 05f3 05       		.uleb128 0x5
+ 1550 05f4 74       		.byte	0x74
+ 1551 05f5 00       		.sleb128 0
+ 1552 05f6 7A       		.byte	0x7a
+ 1553 05f7 00       		.sleb128 0
+ 1554 05f8 1C       		.byte	0x1c
+ 1555 05f9 17       		.uleb128 0x17
+ 1556 05fa 01       		.uleb128 0x1
+ 1557 05fb 50       		.byte	0x50
+ 1558 05fc 02       		.uleb128 0x2
+ 1559 05fd 91       		.byte	0x91
+ 1560 05fe 4C       		.sleb128 -52
+ 1561 05ff 00       		.byte	0
+ 1562 0600 19       		.uleb128 0x19
+ 1563 0601 4E000000 		.4byte	.LVL63
+ 1564 0605 2A040000 		.4byte	0x42a
+ 1565 0609 20060000 		.4byte	0x620
+ 1566 060d 17       		.uleb128 0x17
+ 1567 060e 01       		.uleb128 0x1
+ 1568 060f 53       		.byte	0x53
+ 1569 0610 02       		.uleb128 0x2
+ 1570 0611 7B       		.byte	0x7b
+ 1571 0612 00       		.sleb128 0
+ 1572 0613 17       		.uleb128 0x17
+ 1573 0614 01       		.uleb128 0x1
+ 1574 0615 52       		.byte	0x52
+ 1575 0616 02       		.uleb128 0x2
+ 1576 0617 91       		.byte	0x91
+ 1577 0618 54       		.sleb128 -44
+ 1578 0619 17       		.uleb128 0x17
+ 1579 061a 01       		.uleb128 0x1
+ 1580 061b 50       		.byte	0x50
+ 1581 061c 02       		.uleb128 0x2
+ 1582 061d 91       		.byte	0x91
+ 1583 061e 4C       		.sleb128 -52
+ 1584 061f 00       		.byte	0
+ 1585 0620 19       		.uleb128 0x19
+ 1586 0621 72000000 		.4byte	.LVL65
+ 1587 0625 06030000 		.4byte	0x306
+ 1588 0629 4E060000 		.4byte	0x64e
+ 1589 062d 17       		.uleb128 0x17
+ 1590 062e 01       		.uleb128 0x1
+ 1591 062f 53       		.byte	0x53
+ 1592 0630 02       		.uleb128 0x2
+ 1593 0631 91       		.byte	0x91
+ 1594 0632 54       		.sleb128 -44
+ 1595 0633 17       		.uleb128 0x17
+ 1596 0634 01       		.uleb128 0x1
+ 1597 0635 52       		.byte	0x52
+ 1598 0636 02       		.uleb128 0x2
+ 1599 0637 75       		.byte	0x75
+ 1600 0638 08       		.sleb128 8
+ 1601 0639 17       		.uleb128 0x17
+ 1602 063a 01       		.uleb128 0x1
+ 1603 063b 50       		.byte	0x50
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 35
+
+
+ 1604 063c 02       		.uleb128 0x2
+ 1605 063d 91       		.byte	0x91
+ 1606 063e 4C       		.sleb128 -52
+ 1607 063f 17       		.uleb128 0x17
+ 1608 0640 02       		.uleb128 0x2
+ 1609 0641 7D       		.byte	0x7d
+ 1610 0642 04       		.sleb128 4
+ 1611 0643 02       		.uleb128 0x2
+ 1612 0644 76       		.byte	0x76
+ 1613 0645 00       		.sleb128 0
+ 1614 0646 17       		.uleb128 0x17
+ 1615 0647 02       		.uleb128 0x2
+ 1616 0648 7D       		.byte	0x7d
+ 1617 0649 00       		.sleb128 0
+ 1618 064a 02       		.uleb128 0x2
+ 1619 064b 78       		.byte	0x78
+ 1620 064c 00       		.sleb128 0
+ 1621 064d 00       		.byte	0
+ 1622 064e 19       		.uleb128 0x19
+ 1623 064f 94000000 		.4byte	.LVL67
+ 1624 0653 06030000 		.4byte	0x306
+ 1625 0657 7D060000 		.4byte	0x67d
+ 1626 065b 17       		.uleb128 0x17
+ 1627 065c 01       		.uleb128 0x1
+ 1628 065d 53       		.byte	0x53
+ 1629 065e 02       		.uleb128 0x2
+ 1630 065f 91       		.byte	0x91
+ 1631 0660 54       		.sleb128 -44
+ 1632 0661 17       		.uleb128 0x17
+ 1633 0662 01       		.uleb128 0x1
+ 1634 0663 52       		.byte	0x52
+ 1635 0664 03       		.uleb128 0x3
+ 1636 0665 75       		.byte	0x75
+ 1637 0666 8802     		.sleb128 264
+ 1638 0668 17       		.uleb128 0x17
+ 1639 0669 01       		.uleb128 0x1
+ 1640 066a 50       		.byte	0x50
+ 1641 066b 02       		.uleb128 0x2
+ 1642 066c 91       		.byte	0x91
+ 1643 066d 4C       		.sleb128 -52
+ 1644 066e 17       		.uleb128 0x17
+ 1645 066f 02       		.uleb128 0x2
+ 1646 0670 7D       		.byte	0x7d
+ 1647 0671 04       		.sleb128 4
+ 1648 0672 02       		.uleb128 0x2
+ 1649 0673 76       		.byte	0x76
+ 1650 0674 00       		.sleb128 0
+ 1651 0675 17       		.uleb128 0x17
+ 1652 0676 02       		.uleb128 0x2
+ 1653 0677 7D       		.byte	0x7d
+ 1654 0678 00       		.sleb128 0
+ 1655 0679 02       		.uleb128 0x2
+ 1656 067a 77       		.byte	0x77
+ 1657 067b 00       		.sleb128 0
+ 1658 067c 00       		.byte	0
+ 1659 067d 19       		.uleb128 0x19
+ 1660 067e B0000000 		.4byte	.LVL68
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 36
+
+
+ 1661 0682 06030000 		.4byte	0x306
+ 1662 0686 AC060000 		.4byte	0x6ac
+ 1663 068a 17       		.uleb128 0x17
+ 1664 068b 01       		.uleb128 0x1
+ 1665 068c 53       		.byte	0x53
+ 1666 068d 02       		.uleb128 0x2
+ 1667 068e 91       		.byte	0x91
+ 1668 068f 54       		.sleb128 -44
+ 1669 0690 17       		.uleb128 0x17
+ 1670 0691 01       		.uleb128 0x1
+ 1671 0692 52       		.byte	0x52
+ 1672 0693 03       		.uleb128 0x3
+ 1673 0694 75       		.byte	0x75
+ 1674 0695 8803     		.sleb128 392
+ 1675 0697 17       		.uleb128 0x17
+ 1676 0698 01       		.uleb128 0x1
+ 1677 0699 50       		.byte	0x50
+ 1678 069a 02       		.uleb128 0x2
+ 1679 069b 91       		.byte	0x91
+ 1680 069c 4C       		.sleb128 -52
+ 1681 069d 17       		.uleb128 0x17
+ 1682 069e 02       		.uleb128 0x2
+ 1683 069f 7D       		.byte	0x7d
+ 1684 06a0 04       		.sleb128 4
+ 1685 06a1 02       		.uleb128 0x2
+ 1686 06a2 76       		.byte	0x76
+ 1687 06a3 00       		.sleb128 0
+ 1688 06a4 17       		.uleb128 0x17
+ 1689 06a5 02       		.uleb128 0x2
+ 1690 06a6 7D       		.byte	0x7d
+ 1691 06a7 00       		.sleb128 0
+ 1692 06a8 02       		.uleb128 0x2
+ 1693 06a9 77       		.byte	0x77
+ 1694 06aa 00       		.sleb128 0
+ 1695 06ab 00       		.byte	0
+ 1696 06ac 19       		.uleb128 0x19
+ 1697 06ad CC000000 		.4byte	.LVL69
+ 1698 06b1 06030000 		.4byte	0x306
+ 1699 06b5 DB060000 		.4byte	0x6db
+ 1700 06b9 17       		.uleb128 0x17
+ 1701 06ba 01       		.uleb128 0x1
+ 1702 06bb 53       		.byte	0x53
+ 1703 06bc 02       		.uleb128 0x2
+ 1704 06bd 91       		.byte	0x91
+ 1705 06be 54       		.sleb128 -44
+ 1706 06bf 17       		.uleb128 0x17
+ 1707 06c0 01       		.uleb128 0x1
+ 1708 06c1 52       		.byte	0x52
+ 1709 06c2 03       		.uleb128 0x3
+ 1710 06c3 75       		.byte	0x75
+ 1711 06c4 8804     		.sleb128 520
+ 1712 06c6 17       		.uleb128 0x17
+ 1713 06c7 01       		.uleb128 0x1
+ 1714 06c8 50       		.byte	0x50
+ 1715 06c9 02       		.uleb128 0x2
+ 1716 06ca 91       		.byte	0x91
+ 1717 06cb 4C       		.sleb128 -52
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 37
+
+
+ 1718 06cc 17       		.uleb128 0x17
+ 1719 06cd 02       		.uleb128 0x2
+ 1720 06ce 7D       		.byte	0x7d
+ 1721 06cf 04       		.sleb128 4
+ 1722 06d0 02       		.uleb128 0x2
+ 1723 06d1 76       		.byte	0x76
+ 1724 06d2 00       		.sleb128 0
+ 1725 06d3 17       		.uleb128 0x17
+ 1726 06d4 02       		.uleb128 0x2
+ 1727 06d5 7D       		.byte	0x7d
+ 1728 06d6 00       		.sleb128 0
+ 1729 06d7 02       		.uleb128 0x2
+ 1730 06d8 77       		.byte	0x77
+ 1731 06d9 00       		.sleb128 0
+ 1732 06da 00       		.byte	0
+ 1733 06db 19       		.uleb128 0x19
+ 1734 06dc E6000000 		.4byte	.LVL70
+ 1735 06e0 06030000 		.4byte	0x306
+ 1736 06e4 0A070000 		.4byte	0x70a
+ 1737 06e8 17       		.uleb128 0x17
+ 1738 06e9 01       		.uleb128 0x1
+ 1739 06ea 53       		.byte	0x53
+ 1740 06eb 02       		.uleb128 0x2
+ 1741 06ec 91       		.byte	0x91
+ 1742 06ed 54       		.sleb128 -44
+ 1743 06ee 17       		.uleb128 0x17
+ 1744 06ef 01       		.uleb128 0x1
+ 1745 06f0 52       		.byte	0x52
+ 1746 06f1 03       		.uleb128 0x3
+ 1747 06f2 75       		.byte	0x75
+ 1748 06f3 8805     		.sleb128 648
+ 1749 06f5 17       		.uleb128 0x17
+ 1750 06f6 01       		.uleb128 0x1
+ 1751 06f7 50       		.byte	0x50
+ 1752 06f8 02       		.uleb128 0x2
+ 1753 06f9 91       		.byte	0x91
+ 1754 06fa 4C       		.sleb128 -52
+ 1755 06fb 17       		.uleb128 0x17
+ 1756 06fc 02       		.uleb128 0x2
+ 1757 06fd 7D       		.byte	0x7d
+ 1758 06fe 04       		.sleb128 4
+ 1759 06ff 02       		.uleb128 0x2
+ 1760 0700 76       		.byte	0x76
+ 1761 0701 00       		.sleb128 0
+ 1762 0702 17       		.uleb128 0x17
+ 1763 0703 02       		.uleb128 0x2
+ 1764 0704 7D       		.byte	0x7d
+ 1765 0705 00       		.sleb128 0
+ 1766 0706 02       		.uleb128 0x2
+ 1767 0707 77       		.byte	0x77
+ 1768 0708 00       		.sleb128 0
+ 1769 0709 00       		.byte	0
+ 1770 070a 16       		.uleb128 0x16
+ 1771 070b 00010000 		.4byte	.LVL71
+ 1772 070f 06030000 		.4byte	0x306
+ 1773 0713 17       		.uleb128 0x17
+ 1774 0714 01       		.uleb128 0x1
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 38
+
+
+ 1775 0715 53       		.byte	0x53
+ 1776 0716 02       		.uleb128 0x2
+ 1777 0717 91       		.byte	0x91
+ 1778 0718 54       		.sleb128 -44
+ 1779 0719 17       		.uleb128 0x17
+ 1780 071a 01       		.uleb128 0x1
+ 1781 071b 52       		.byte	0x52
+ 1782 071c 03       		.uleb128 0x3
+ 1783 071d 75       		.byte	0x75
+ 1784 071e 8806     		.sleb128 776
+ 1785 0720 17       		.uleb128 0x17
+ 1786 0721 01       		.uleb128 0x1
+ 1787 0722 50       		.byte	0x50
+ 1788 0723 02       		.uleb128 0x2
+ 1789 0724 91       		.byte	0x91
+ 1790 0725 4C       		.sleb128 -52
+ 1791 0726 17       		.uleb128 0x17
+ 1792 0727 02       		.uleb128 0x2
+ 1793 0728 7D       		.byte	0x7d
+ 1794 0729 04       		.sleb128 4
+ 1795 072a 02       		.uleb128 0x2
+ 1796 072b 76       		.byte	0x76
+ 1797 072c 00       		.sleb128 0
+ 1798 072d 17       		.uleb128 0x17
+ 1799 072e 02       		.uleb128 0x2
+ 1800 072f 7D       		.byte	0x7d
+ 1801 0730 00       		.sleb128 0
+ 1802 0731 02       		.uleb128 0x2
+ 1803 0732 77       		.byte	0x77
+ 1804 0733 00       		.sleb128 0
+ 1805 0734 00       		.byte	0
+ 1806 0735 00       		.byte	0
+ 1807 0736 06       		.uleb128 0x6
+ 1808 0737 04       		.byte	0x4
+ 1809 0738 95010000 		.4byte	0x195
+ 1810 073c 1A       		.uleb128 0x1a
+ 1811 073d B0000000 		.4byte	.LASF49
+ 1812 0741 6B000000 		.4byte	0x6b
+ 1813 0745 59070000 		.4byte	0x759
+ 1814 0749 1B       		.uleb128 0x1b
+ 1815 074a 6B000000 		.4byte	0x6b
+ 1816 074e 1B       		.uleb128 0x1b
+ 1817 074f 5D000000 		.4byte	0x5d
+ 1818 0753 1B       		.uleb128 0x1b
+ 1819 0754 6D000000 		.4byte	0x6d
+ 1820 0758 00       		.byte	0
+ 1821 0759 1C       		.uleb128 0x1c
+ 1822 075a 57020000 		.4byte	.LASF50
+ 1823 075e 6B000000 		.4byte	0x6b
+ 1824 0762 1B       		.uleb128 0x1b
+ 1825 0763 6B000000 		.4byte	0x6b
+ 1826 0767 1B       		.uleb128 0x1b
+ 1827 0768 A1010000 		.4byte	0x1a1
+ 1828 076c 1B       		.uleb128 0x1b
+ 1829 076d 6D000000 		.4byte	0x6d
+ 1830 0771 00       		.byte	0
+ 1831 0772 00       		.byte	0
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 39
+
+
+ 1832              		.section	.debug_abbrev,"",%progbits
+ 1833              	.Ldebug_abbrev0:
+ 1834 0000 01       		.uleb128 0x1
+ 1835 0001 11       		.uleb128 0x11
+ 1836 0002 01       		.byte	0x1
+ 1837 0003 25       		.uleb128 0x25
+ 1838 0004 0E       		.uleb128 0xe
+ 1839 0005 13       		.uleb128 0x13
+ 1840 0006 0B       		.uleb128 0xb
+ 1841 0007 03       		.uleb128 0x3
+ 1842 0008 0E       		.uleb128 0xe
+ 1843 0009 1B       		.uleb128 0x1b
+ 1844 000a 0E       		.uleb128 0xe
+ 1845 000b 55       		.uleb128 0x55
+ 1846 000c 17       		.uleb128 0x17
+ 1847 000d 11       		.uleb128 0x11
+ 1848 000e 01       		.uleb128 0x1
+ 1849 000f 10       		.uleb128 0x10
+ 1850 0010 17       		.uleb128 0x17
+ 1851 0011 00       		.byte	0
+ 1852 0012 00       		.byte	0
+ 1853 0013 02       		.uleb128 0x2
+ 1854 0014 24       		.uleb128 0x24
+ 1855 0015 00       		.byte	0
+ 1856 0016 0B       		.uleb128 0xb
+ 1857 0017 0B       		.uleb128 0xb
+ 1858 0018 3E       		.uleb128 0x3e
+ 1859 0019 0B       		.uleb128 0xb
+ 1860 001a 03       		.uleb128 0x3
+ 1861 001b 0E       		.uleb128 0xe
+ 1862 001c 00       		.byte	0
+ 1863 001d 00       		.byte	0
+ 1864 001e 03       		.uleb128 0x3
+ 1865 001f 24       		.uleb128 0x24
+ 1866 0020 00       		.byte	0
+ 1867 0021 0B       		.uleb128 0xb
+ 1868 0022 0B       		.uleb128 0xb
+ 1869 0023 3E       		.uleb128 0x3e
+ 1870 0024 0B       		.uleb128 0xb
+ 1871 0025 03       		.uleb128 0x3
+ 1872 0026 08       		.uleb128 0x8
+ 1873 0027 00       		.byte	0
+ 1874 0028 00       		.byte	0
+ 1875 0029 04       		.uleb128 0x4
+ 1876 002a 0F       		.uleb128 0xf
+ 1877 002b 00       		.byte	0
+ 1878 002c 0B       		.uleb128 0xb
+ 1879 002d 0B       		.uleb128 0xb
+ 1880 002e 00       		.byte	0
+ 1881 002f 00       		.byte	0
+ 1882 0030 05       		.uleb128 0x5
+ 1883 0031 16       		.uleb128 0x16
+ 1884 0032 00       		.byte	0
+ 1885 0033 03       		.uleb128 0x3
+ 1886 0034 0E       		.uleb128 0xe
+ 1887 0035 3A       		.uleb128 0x3a
+ 1888 0036 0B       		.uleb128 0xb
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 40
+
+
+ 1889 0037 3B       		.uleb128 0x3b
+ 1890 0038 0B       		.uleb128 0xb
+ 1891 0039 49       		.uleb128 0x49
+ 1892 003a 13       		.uleb128 0x13
+ 1893 003b 00       		.byte	0
+ 1894 003c 00       		.byte	0
+ 1895 003d 06       		.uleb128 0x6
+ 1896 003e 0F       		.uleb128 0xf
+ 1897 003f 00       		.byte	0
+ 1898 0040 0B       		.uleb128 0xb
+ 1899 0041 0B       		.uleb128 0xb
+ 1900 0042 49       		.uleb128 0x49
+ 1901 0043 13       		.uleb128 0x13
+ 1902 0044 00       		.byte	0
+ 1903 0045 00       		.byte	0
+ 1904 0046 07       		.uleb128 0x7
+ 1905 0047 01       		.uleb128 0x1
+ 1906 0048 01       		.byte	0x1
+ 1907 0049 49       		.uleb128 0x49
+ 1908 004a 13       		.uleb128 0x13
+ 1909 004b 01       		.uleb128 0x1
+ 1910 004c 13       		.uleb128 0x13
+ 1911 004d 00       		.byte	0
+ 1912 004e 00       		.byte	0
+ 1913 004f 08       		.uleb128 0x8
+ 1914 0050 21       		.uleb128 0x21
+ 1915 0051 00       		.byte	0
+ 1916 0052 49       		.uleb128 0x49
+ 1917 0053 13       		.uleb128 0x13
+ 1918 0054 2F       		.uleb128 0x2f
+ 1919 0055 0B       		.uleb128 0xb
+ 1920 0056 00       		.byte	0
+ 1921 0057 00       		.byte	0
+ 1922 0058 09       		.uleb128 0x9
+ 1923 0059 13       		.uleb128 0x13
+ 1924 005a 01       		.byte	0x1
+ 1925 005b 0B       		.uleb128 0xb
+ 1926 005c 05       		.uleb128 0x5
+ 1927 005d 3A       		.uleb128 0x3a
+ 1928 005e 0B       		.uleb128 0xb
+ 1929 005f 3B       		.uleb128 0x3b
+ 1930 0060 05       		.uleb128 0x5
+ 1931 0061 01       		.uleb128 0x1
+ 1932 0062 13       		.uleb128 0x13
+ 1933 0063 00       		.byte	0
+ 1934 0064 00       		.byte	0
+ 1935 0065 0A       		.uleb128 0xa
+ 1936 0066 0D       		.uleb128 0xd
+ 1937 0067 00       		.byte	0
+ 1938 0068 03       		.uleb128 0x3
+ 1939 0069 0E       		.uleb128 0xe
+ 1940 006a 3A       		.uleb128 0x3a
+ 1941 006b 0B       		.uleb128 0xb
+ 1942 006c 3B       		.uleb128 0x3b
+ 1943 006d 05       		.uleb128 0x5
+ 1944 006e 49       		.uleb128 0x49
+ 1945 006f 13       		.uleb128 0x13
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 41
+
+
+ 1946 0070 38       		.uleb128 0x38
+ 1947 0071 0B       		.uleb128 0xb
+ 1948 0072 00       		.byte	0
+ 1949 0073 00       		.byte	0
+ 1950 0074 0B       		.uleb128 0xb
+ 1951 0075 0D       		.uleb128 0xd
+ 1952 0076 00       		.byte	0
+ 1953 0077 03       		.uleb128 0x3
+ 1954 0078 0E       		.uleb128 0xe
+ 1955 0079 3A       		.uleb128 0x3a
+ 1956 007a 0B       		.uleb128 0xb
+ 1957 007b 3B       		.uleb128 0x3b
+ 1958 007c 05       		.uleb128 0x5
+ 1959 007d 49       		.uleb128 0x49
+ 1960 007e 13       		.uleb128 0x13
+ 1961 007f 38       		.uleb128 0x38
+ 1962 0080 05       		.uleb128 0x5
+ 1963 0081 00       		.byte	0
+ 1964 0082 00       		.byte	0
+ 1965 0083 0C       		.uleb128 0xc
+ 1966 0084 16       		.uleb128 0x16
+ 1967 0085 00       		.byte	0
+ 1968 0086 03       		.uleb128 0x3
+ 1969 0087 0E       		.uleb128 0xe
+ 1970 0088 3A       		.uleb128 0x3a
+ 1971 0089 0B       		.uleb128 0xb
+ 1972 008a 3B       		.uleb128 0x3b
+ 1973 008b 05       		.uleb128 0x5
+ 1974 008c 49       		.uleb128 0x49
+ 1975 008d 13       		.uleb128 0x13
+ 1976 008e 00       		.byte	0
+ 1977 008f 00       		.byte	0
+ 1978 0090 0D       		.uleb128 0xd
+ 1979 0091 26       		.uleb128 0x26
+ 1980 0092 00       		.byte	0
+ 1981 0093 00       		.byte	0
+ 1982 0094 00       		.byte	0
+ 1983 0095 0E       		.uleb128 0xe
+ 1984 0096 2E       		.uleb128 0x2e
+ 1985 0097 01       		.byte	0x1
+ 1986 0098 3F       		.uleb128 0x3f
+ 1987 0099 19       		.uleb128 0x19
+ 1988 009a 03       		.uleb128 0x3
+ 1989 009b 0E       		.uleb128 0xe
+ 1990 009c 3A       		.uleb128 0x3a
+ 1991 009d 0B       		.uleb128 0xb
+ 1992 009e 3B       		.uleb128 0x3b
+ 1993 009f 0B       		.uleb128 0xb
+ 1994 00a0 27       		.uleb128 0x27
+ 1995 00a1 19       		.uleb128 0x19
+ 1996 00a2 49       		.uleb128 0x49
+ 1997 00a3 13       		.uleb128 0x13
+ 1998 00a4 11       		.uleb128 0x11
+ 1999 00a5 01       		.uleb128 0x1
+ 2000 00a6 12       		.uleb128 0x12
+ 2001 00a7 06       		.uleb128 0x6
+ 2002 00a8 40       		.uleb128 0x40
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 42
+
+
+ 2003 00a9 18       		.uleb128 0x18
+ 2004 00aa 9742     		.uleb128 0x2117
+ 2005 00ac 19       		.uleb128 0x19
+ 2006 00ad 01       		.uleb128 0x1
+ 2007 00ae 13       		.uleb128 0x13
+ 2008 00af 00       		.byte	0
+ 2009 00b0 00       		.byte	0
+ 2010 00b1 0F       		.uleb128 0xf
+ 2011 00b2 05       		.uleb128 0x5
+ 2012 00b3 00       		.byte	0
+ 2013 00b4 03       		.uleb128 0x3
+ 2014 00b5 08       		.uleb128 0x8
+ 2015 00b6 3A       		.uleb128 0x3a
+ 2016 00b7 0B       		.uleb128 0xb
+ 2017 00b8 3B       		.uleb128 0x3b
+ 2018 00b9 0B       		.uleb128 0xb
+ 2019 00ba 49       		.uleb128 0x49
+ 2020 00bb 13       		.uleb128 0x13
+ 2021 00bc 02       		.uleb128 0x2
+ 2022 00bd 17       		.uleb128 0x17
+ 2023 00be 00       		.byte	0
+ 2024 00bf 00       		.byte	0
+ 2025 00c0 10       		.uleb128 0x10
+ 2026 00c1 05       		.uleb128 0x5
+ 2027 00c2 00       		.byte	0
+ 2028 00c3 03       		.uleb128 0x3
+ 2029 00c4 0E       		.uleb128 0xe
+ 2030 00c5 3A       		.uleb128 0x3a
+ 2031 00c6 0B       		.uleb128 0xb
+ 2032 00c7 3B       		.uleb128 0x3b
+ 2033 00c8 0B       		.uleb128 0xb
+ 2034 00c9 49       		.uleb128 0x49
+ 2035 00ca 13       		.uleb128 0x13
+ 2036 00cb 02       		.uleb128 0x2
+ 2037 00cc 17       		.uleb128 0x17
+ 2038 00cd 00       		.byte	0
+ 2039 00ce 00       		.byte	0
+ 2040 00cf 11       		.uleb128 0x11
+ 2041 00d0 05       		.uleb128 0x5
+ 2042 00d1 00       		.byte	0
+ 2043 00d2 03       		.uleb128 0x3
+ 2044 00d3 0E       		.uleb128 0xe
+ 2045 00d4 3A       		.uleb128 0x3a
+ 2046 00d5 0B       		.uleb128 0xb
+ 2047 00d6 3B       		.uleb128 0x3b
+ 2048 00d7 0B       		.uleb128 0xb
+ 2049 00d8 49       		.uleb128 0x49
+ 2050 00d9 13       		.uleb128 0x13
+ 2051 00da 02       		.uleb128 0x2
+ 2052 00db 18       		.uleb128 0x18
+ 2053 00dc 00       		.byte	0
+ 2054 00dd 00       		.byte	0
+ 2055 00de 12       		.uleb128 0x12
+ 2056 00df 34       		.uleb128 0x34
+ 2057 00e0 00       		.byte	0
+ 2058 00e1 03       		.uleb128 0x3
+ 2059 00e2 08       		.uleb128 0x8
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 43
+
+
+ 2060 00e3 3A       		.uleb128 0x3a
+ 2061 00e4 0B       		.uleb128 0xb
+ 2062 00e5 3B       		.uleb128 0x3b
+ 2063 00e6 0B       		.uleb128 0xb
+ 2064 00e7 49       		.uleb128 0x49
+ 2065 00e8 13       		.uleb128 0x13
+ 2066 00e9 02       		.uleb128 0x2
+ 2067 00ea 17       		.uleb128 0x17
+ 2068 00eb 00       		.byte	0
+ 2069 00ec 00       		.byte	0
+ 2070 00ed 13       		.uleb128 0x13
+ 2071 00ee 34       		.uleb128 0x34
+ 2072 00ef 00       		.byte	0
+ 2073 00f0 03       		.uleb128 0x3
+ 2074 00f1 08       		.uleb128 0x8
+ 2075 00f2 3A       		.uleb128 0x3a
+ 2076 00f3 0B       		.uleb128 0xb
+ 2077 00f4 3B       		.uleb128 0x3b
+ 2078 00f5 0B       		.uleb128 0xb
+ 2079 00f6 49       		.uleb128 0x49
+ 2080 00f7 13       		.uleb128 0x13
+ 2081 00f8 00       		.byte	0
+ 2082 00f9 00       		.byte	0
+ 2083 00fa 14       		.uleb128 0x14
+ 2084 00fb 34       		.uleb128 0x34
+ 2085 00fc 00       		.byte	0
+ 2086 00fd 03       		.uleb128 0x3
+ 2087 00fe 0E       		.uleb128 0xe
+ 2088 00ff 3A       		.uleb128 0x3a
+ 2089 0100 0B       		.uleb128 0xb
+ 2090 0101 3B       		.uleb128 0x3b
+ 2091 0102 0B       		.uleb128 0xb
+ 2092 0103 49       		.uleb128 0x49
+ 2093 0104 13       		.uleb128 0x13
+ 2094 0105 02       		.uleb128 0x2
+ 2095 0106 17       		.uleb128 0x17
+ 2096 0107 00       		.byte	0
+ 2097 0108 00       		.byte	0
+ 2098 0109 15       		.uleb128 0x15
+ 2099 010a 34       		.uleb128 0x34
+ 2100 010b 00       		.byte	0
+ 2101 010c 03       		.uleb128 0x3
+ 2102 010d 08       		.uleb128 0x8
+ 2103 010e 3A       		.uleb128 0x3a
+ 2104 010f 0B       		.uleb128 0xb
+ 2105 0110 3B       		.uleb128 0x3b
+ 2106 0111 0B       		.uleb128 0xb
+ 2107 0112 49       		.uleb128 0x49
+ 2108 0113 13       		.uleb128 0x13
+ 2109 0114 02       		.uleb128 0x2
+ 2110 0115 18       		.uleb128 0x18
+ 2111 0116 00       		.byte	0
+ 2112 0117 00       		.byte	0
+ 2113 0118 16       		.uleb128 0x16
+ 2114 0119 898201   		.uleb128 0x4109
+ 2115 011c 01       		.byte	0x1
+ 2116 011d 11       		.uleb128 0x11
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 44
+
+
+ 2117 011e 01       		.uleb128 0x1
+ 2118 011f 31       		.uleb128 0x31
+ 2119 0120 13       		.uleb128 0x13
+ 2120 0121 00       		.byte	0
+ 2121 0122 00       		.byte	0
+ 2122 0123 17       		.uleb128 0x17
+ 2123 0124 8A8201   		.uleb128 0x410a
+ 2124 0127 00       		.byte	0
+ 2125 0128 02       		.uleb128 0x2
+ 2126 0129 18       		.uleb128 0x18
+ 2127 012a 9142     		.uleb128 0x2111
+ 2128 012c 18       		.uleb128 0x18
+ 2129 012d 00       		.byte	0
+ 2130 012e 00       		.byte	0
+ 2131 012f 18       		.uleb128 0x18
+ 2132 0130 34       		.uleb128 0x34
+ 2133 0131 00       		.byte	0
+ 2134 0132 03       		.uleb128 0x3
+ 2135 0133 0E       		.uleb128 0xe
+ 2136 0134 3A       		.uleb128 0x3a
+ 2137 0135 0B       		.uleb128 0xb
+ 2138 0136 3B       		.uleb128 0x3b
+ 2139 0137 0B       		.uleb128 0xb
+ 2140 0138 49       		.uleb128 0x49
+ 2141 0139 13       		.uleb128 0x13
+ 2142 013a 02       		.uleb128 0x2
+ 2143 013b 18       		.uleb128 0x18
+ 2144 013c 00       		.byte	0
+ 2145 013d 00       		.byte	0
+ 2146 013e 19       		.uleb128 0x19
+ 2147 013f 898201   		.uleb128 0x4109
+ 2148 0142 01       		.byte	0x1
+ 2149 0143 11       		.uleb128 0x11
+ 2150 0144 01       		.uleb128 0x1
+ 2151 0145 31       		.uleb128 0x31
+ 2152 0146 13       		.uleb128 0x13
+ 2153 0147 01       		.uleb128 0x1
+ 2154 0148 13       		.uleb128 0x13
+ 2155 0149 00       		.byte	0
+ 2156 014a 00       		.byte	0
+ 2157 014b 1A       		.uleb128 0x1a
+ 2158 014c 2E       		.uleb128 0x2e
+ 2159 014d 01       		.byte	0x1
+ 2160 014e 3F       		.uleb128 0x3f
+ 2161 014f 19       		.uleb128 0x19
+ 2162 0150 03       		.uleb128 0x3
+ 2163 0151 0E       		.uleb128 0xe
+ 2164 0152 27       		.uleb128 0x27
+ 2165 0153 19       		.uleb128 0x19
+ 2166 0154 49       		.uleb128 0x49
+ 2167 0155 13       		.uleb128 0x13
+ 2168 0156 34       		.uleb128 0x34
+ 2169 0157 19       		.uleb128 0x19
+ 2170 0158 3C       		.uleb128 0x3c
+ 2171 0159 19       		.uleb128 0x19
+ 2172 015a 01       		.uleb128 0x1
+ 2173 015b 13       		.uleb128 0x13
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 45
+
+
+ 2174 015c 00       		.byte	0
+ 2175 015d 00       		.byte	0
+ 2176 015e 1B       		.uleb128 0x1b
+ 2177 015f 05       		.uleb128 0x5
+ 2178 0160 00       		.byte	0
+ 2179 0161 49       		.uleb128 0x49
+ 2180 0162 13       		.uleb128 0x13
+ 2181 0163 00       		.byte	0
+ 2182 0164 00       		.byte	0
+ 2183 0165 1C       		.uleb128 0x1c
+ 2184 0166 2E       		.uleb128 0x2e
+ 2185 0167 01       		.byte	0x1
+ 2186 0168 3F       		.uleb128 0x3f
+ 2187 0169 19       		.uleb128 0x19
+ 2188 016a 03       		.uleb128 0x3
+ 2189 016b 0E       		.uleb128 0xe
+ 2190 016c 27       		.uleb128 0x27
+ 2191 016d 19       		.uleb128 0x19
+ 2192 016e 49       		.uleb128 0x49
+ 2193 016f 13       		.uleb128 0x13
+ 2194 0170 34       		.uleb128 0x34
+ 2195 0171 19       		.uleb128 0x19
+ 2196 0172 3C       		.uleb128 0x3c
+ 2197 0173 19       		.uleb128 0x19
+ 2198 0174 00       		.byte	0
+ 2199 0175 00       		.byte	0
+ 2200 0176 00       		.byte	0
+ 2201              		.section	.debug_loc,"",%progbits
+ 2202              	.Ldebug_loc0:
+ 2203              	.LLST0:
+ 2204 0000 00000000 		.4byte	.LVL0
+ 2205 0004 54000000 		.4byte	.LVL11
+ 2206 0008 0100     		.2byte	0x1
+ 2207 000a 50       		.byte	0x50
+ 2208 000b 54000000 		.4byte	.LVL11
+ 2209 000f 56000000 		.4byte	.LVL12
+ 2210 0013 0400     		.2byte	0x4
+ 2211 0015 F3       		.byte	0xf3
+ 2212 0016 01       		.uleb128 0x1
+ 2213 0017 50       		.byte	0x50
+ 2214 0018 9F       		.byte	0x9f
+ 2215 0019 56000000 		.4byte	.LVL12
+ 2216 001d 58000000 		.4byte	.LVL13
+ 2217 0021 0100     		.2byte	0x1
+ 2218 0023 50       		.byte	0x50
+ 2219 0024 58000000 		.4byte	.LVL13
+ 2220 0028 5A000000 		.4byte	.LFE0
+ 2221 002c 0400     		.2byte	0x4
+ 2222 002e F3       		.byte	0xf3
+ 2223 002f 01       		.uleb128 0x1
+ 2224 0030 50       		.byte	0x50
+ 2225 0031 9F       		.byte	0x9f
+ 2226 0032 00000000 		.4byte	0
+ 2227 0036 00000000 		.4byte	0
+ 2228              	.LLST1:
+ 2229 003a 00000000 		.4byte	.LVL0
+ 2230 003e 2A000000 		.4byte	.LVL4
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 46
+
+
+ 2231 0042 0100     		.2byte	0x1
+ 2232 0044 51       		.byte	0x51
+ 2233 0045 2A000000 		.4byte	.LVL4
+ 2234 0049 5A000000 		.4byte	.LFE0
+ 2235 004d 0400     		.2byte	0x4
+ 2236 004f F3       		.byte	0xf3
+ 2237 0050 01       		.uleb128 0x1
+ 2238 0051 51       		.byte	0x51
+ 2239 0052 9F       		.byte	0x9f
+ 2240 0053 00000000 		.4byte	0
+ 2241 0057 00000000 		.4byte	0
+ 2242              	.LLST2:
+ 2243 005b 06000000 		.4byte	.LVL1
+ 2244 005f 22000000 		.4byte	.LVL3
+ 2245 0063 0100     		.2byte	0x1
+ 2246 0065 56       		.byte	0x56
+ 2247 0066 22000000 		.4byte	.LVL3
+ 2248 006a 34000000 		.4byte	.LVL5
+ 2249 006e 0100     		.2byte	0x1
+ 2250 0070 54       		.byte	0x54
+ 2251 0071 34000000 		.4byte	.LVL5
+ 2252 0075 3A000000 		.4byte	.LVL6
+ 2253 0079 0100     		.2byte	0x1
+ 2254 007b 56       		.byte	0x56
+ 2255 007c 3A000000 		.4byte	.LVL6
+ 2256 0080 40000000 		.4byte	.LVL8
+ 2257 0084 0300     		.2byte	0x3
+ 2258 0086 76       		.byte	0x76
+ 2259 0087 7F       		.sleb128 -1
+ 2260 0088 9F       		.byte	0x9f
+ 2261 0089 40000000 		.4byte	.LVL8
+ 2262 008d 4C000000 		.4byte	.LVL10
+ 2263 0091 0100     		.2byte	0x1
+ 2264 0093 56       		.byte	0x56
+ 2265 0094 4C000000 		.4byte	.LVL10
+ 2266 0098 56000000 		.4byte	.LVL12
+ 2267 009c 0100     		.2byte	0x1
+ 2268 009e 54       		.byte	0x54
+ 2269 009f 00000000 		.4byte	0
+ 2270 00a3 00000000 		.4byte	0
+ 2271              	.LLST3:
+ 2272 00a7 1E000000 		.4byte	.LVL2
+ 2273 00ab 3C000000 		.4byte	.LVL7
+ 2274 00af 0100     		.2byte	0x1
+ 2275 00b1 53       		.byte	0x53
+ 2276 00b2 3C000000 		.4byte	.LVL7
+ 2277 00b6 40000000 		.4byte	.LVL8
+ 2278 00ba 0300     		.2byte	0x3
+ 2279 00bc 73       		.byte	0x73
+ 2280 00bd 01       		.sleb128 1
+ 2281 00be 9F       		.byte	0x9f
+ 2282 00bf 40000000 		.4byte	.LVL8
+ 2283 00c3 48000000 		.4byte	.LVL9
+ 2284 00c7 0100     		.2byte	0x1
+ 2285 00c9 53       		.byte	0x53
+ 2286 00ca 4C000000 		.4byte	.LVL10
+ 2287 00ce 56000000 		.4byte	.LVL12
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 47
+
+
+ 2288 00d2 0100     		.2byte	0x1
+ 2289 00d4 53       		.byte	0x53
+ 2290 00d5 00000000 		.4byte	0
+ 2291 00d9 00000000 		.4byte	0
+ 2292              	.LLST4:
+ 2293 00dd 34000000 		.4byte	.LVL5
+ 2294 00e1 4C000000 		.4byte	.LVL10
+ 2295 00e5 0100     		.2byte	0x1
+ 2296 00e7 51       		.byte	0x51
+ 2297 00e8 00000000 		.4byte	0
+ 2298 00ec 00000000 		.4byte	0
+ 2299              	.LLST5:
+ 2300 00f0 00000000 		.4byte	.LVL14
+ 2301 00f4 0C000000 		.4byte	.LVL15
+ 2302 00f8 0100     		.2byte	0x1
+ 2303 00fa 50       		.byte	0x50
+ 2304 00fb 0C000000 		.4byte	.LVL15
+ 2305 00ff 10000000 		.4byte	.LVL16
+ 2306 0103 0100     		.2byte	0x1
+ 2307 0105 55       		.byte	0x55
+ 2308 0106 10000000 		.4byte	.LVL16
+ 2309 010a 1C000000 		.4byte	.LVL18
+ 2310 010e 0100     		.2byte	0x1
+ 2311 0110 50       		.byte	0x50
+ 2312 0111 1C000000 		.4byte	.LVL18
+ 2313 0115 38000000 		.4byte	.LFE1
+ 2314 0119 0100     		.2byte	0x1
+ 2315 011b 55       		.byte	0x55
+ 2316 011c 00000000 		.4byte	0
+ 2317 0120 00000000 		.4byte	0
+ 2318              	.LLST6:
+ 2319 0124 00000000 		.4byte	.LVL14
+ 2320 0128 0C000000 		.4byte	.LVL15
+ 2321 012c 0100     		.2byte	0x1
+ 2322 012e 51       		.byte	0x51
+ 2323 012f 0C000000 		.4byte	.LVL15
+ 2324 0133 10000000 		.4byte	.LVL16
+ 2325 0137 0100     		.2byte	0x1
+ 2326 0139 54       		.byte	0x54
+ 2327 013a 10000000 		.4byte	.LVL16
+ 2328 013e 12000000 		.4byte	.LVL17
+ 2329 0142 0100     		.2byte	0x1
+ 2330 0144 51       		.byte	0x51
+ 2331 0145 12000000 		.4byte	.LVL17
+ 2332 0149 38000000 		.4byte	.LFE1
+ 2333 014d 0100     		.2byte	0x1
+ 2334 014f 54       		.byte	0x54
+ 2335 0150 00000000 		.4byte	0
+ 2336 0154 00000000 		.4byte	0
+ 2337              	.LLST7:
+ 2338 0158 00000000 		.4byte	.LVL14
+ 2339 015c 0C000000 		.4byte	.LVL15
+ 2340 0160 0100     		.2byte	0x1
+ 2341 0162 52       		.byte	0x52
+ 2342 0163 0C000000 		.4byte	.LVL15
+ 2343 0167 10000000 		.4byte	.LVL16
+ 2344 016b 0100     		.2byte	0x1
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 48
+
+
+ 2345 016d 56       		.byte	0x56
+ 2346 016e 10000000 		.4byte	.LVL16
+ 2347 0172 21000000 		.4byte	.LVL19-1
+ 2348 0176 0100     		.2byte	0x1
+ 2349 0178 52       		.byte	0x52
+ 2350 0179 21000000 		.4byte	.LVL19-1
+ 2351 017d 38000000 		.4byte	.LFE1
+ 2352 0181 0100     		.2byte	0x1
+ 2353 0183 56       		.byte	0x56
+ 2354 0184 00000000 		.4byte	0
+ 2355 0188 00000000 		.4byte	0
+ 2356              	.LLST8:
+ 2357 018c 00000000 		.4byte	.LVL20
+ 2358 0190 0A000000 		.4byte	.LVL21
+ 2359 0194 0100     		.2byte	0x1
+ 2360 0196 50       		.byte	0x50
+ 2361 0197 0A000000 		.4byte	.LVL21
+ 2362 019b 0E000000 		.4byte	.LVL22
+ 2363 019f 0100     		.2byte	0x1
+ 2364 01a1 54       		.byte	0x54
+ 2365 01a2 0E000000 		.4byte	.LVL22
+ 2366 01a6 1A000000 		.4byte	.LVL23
+ 2367 01aa 0100     		.2byte	0x1
+ 2368 01ac 50       		.byte	0x50
+ 2369 01ad 1A000000 		.4byte	.LVL23
+ 2370 01b1 36000000 		.4byte	.LFE2
+ 2371 01b5 0100     		.2byte	0x1
+ 2372 01b7 54       		.byte	0x54
+ 2373 01b8 00000000 		.4byte	0
+ 2374 01bc 00000000 		.4byte	0
+ 2375              	.LLST9:
+ 2376 01c0 00000000 		.4byte	.LVL20
+ 2377 01c4 0A000000 		.4byte	.LVL21
+ 2378 01c8 0100     		.2byte	0x1
+ 2379 01ca 51       		.byte	0x51
+ 2380 01cb 0A000000 		.4byte	.LVL21
+ 2381 01cf 0E000000 		.4byte	.LVL22
+ 2382 01d3 0400     		.2byte	0x4
+ 2383 01d5 F3       		.byte	0xf3
+ 2384 01d6 01       		.uleb128 0x1
+ 2385 01d7 51       		.byte	0x51
+ 2386 01d8 9F       		.byte	0x9f
+ 2387 01d9 0E000000 		.4byte	.LVL22
+ 2388 01dd 1C000000 		.4byte	.LVL24
+ 2389 01e1 0100     		.2byte	0x1
+ 2390 01e3 51       		.byte	0x51
+ 2391 01e4 1C000000 		.4byte	.LVL24
+ 2392 01e8 21000000 		.4byte	.LVL25-1
+ 2393 01ec 0300     		.2byte	0x3
+ 2394 01ee 71       		.byte	0x71
+ 2395 01ef 01       		.sleb128 1
+ 2396 01f0 9F       		.byte	0x9f
+ 2397 01f1 21000000 		.4byte	.LVL25-1
+ 2398 01f5 36000000 		.4byte	.LFE2
+ 2399 01f9 0400     		.2byte	0x4
+ 2400 01fb F3       		.byte	0xf3
+ 2401 01fc 01       		.uleb128 0x1
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 49
+
+
+ 2402 01fd 51       		.byte	0x51
+ 2403 01fe 9F       		.byte	0x9f
+ 2404 01ff 00000000 		.4byte	0
+ 2405 0203 00000000 		.4byte	0
+ 2406              	.LLST10:
+ 2407 0207 26000000 		.4byte	.LVL26
+ 2408 020b 30000000 		.4byte	.LVL27
+ 2409 020f 0800     		.2byte	0x8
+ 2410 0211 7D       		.byte	0x7d
+ 2411 0212 00       		.sleb128 0
+ 2412 0213 06       		.byte	0x6
+ 2413 0214 91       		.byte	0x91
+ 2414 0215 74       		.sleb128 -12
+ 2415 0216 06       		.byte	0x6
+ 2416 0217 22       		.byte	0x22
+ 2417 0218 9F       		.byte	0x9f
+ 2418 0219 30000000 		.4byte	.LVL27
+ 2419 021d 32000000 		.4byte	.LVL28
+ 2420 0221 0100     		.2byte	0x1
+ 2421 0223 53       		.byte	0x53
+ 2422 0224 00000000 		.4byte	0
+ 2423 0228 00000000 		.4byte	0
+ 2424              	.LLST11:
+ 2425 022c 00000000 		.4byte	.LVL29
+ 2426 0230 14000000 		.4byte	.LVL31
+ 2427 0234 0100     		.2byte	0x1
+ 2428 0236 50       		.byte	0x50
+ 2429 0237 14000000 		.4byte	.LVL31
+ 2430 023b 18000000 		.4byte	.LVL32
+ 2431 023f 0100     		.2byte	0x1
+ 2432 0241 57       		.byte	0x57
+ 2433 0242 18000000 		.4byte	.LVL32
+ 2434 0246 24000000 		.4byte	.LVL34
+ 2435 024a 0100     		.2byte	0x1
+ 2436 024c 50       		.byte	0x50
+ 2437 024d 24000000 		.4byte	.LVL34
+ 2438 0251 90000000 		.4byte	.LFE3
+ 2439 0255 0100     		.2byte	0x1
+ 2440 0257 57       		.byte	0x57
+ 2441 0258 00000000 		.4byte	0
+ 2442 025c 00000000 		.4byte	0
+ 2443              	.LLST12:
+ 2444 0260 00000000 		.4byte	.LVL29
+ 2445 0264 14000000 		.4byte	.LVL31
+ 2446 0268 0100     		.2byte	0x1
+ 2447 026a 51       		.byte	0x51
+ 2448 026b 14000000 		.4byte	.LVL31
+ 2449 026f 18000000 		.4byte	.LVL32
+ 2450 0273 0400     		.2byte	0x4
+ 2451 0275 F3       		.byte	0xf3
+ 2452 0276 01       		.uleb128 0x1
+ 2453 0277 51       		.byte	0x51
+ 2454 0278 9F       		.byte	0x9f
+ 2455 0279 18000000 		.4byte	.LVL32
+ 2456 027d 26000000 		.4byte	.LVL35
+ 2457 0281 0100     		.2byte	0x1
+ 2458 0283 51       		.byte	0x51
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 50
+
+
+ 2459 0284 26000000 		.4byte	.LVL35
+ 2460 0288 2B000000 		.4byte	.LVL36-1
+ 2461 028c 0300     		.2byte	0x3
+ 2462 028e 71       		.byte	0x71
+ 2463 028f 01       		.sleb128 1
+ 2464 0290 9F       		.byte	0x9f
+ 2465 0291 2B000000 		.4byte	.LVL36-1
+ 2466 0295 90000000 		.4byte	.LFE3
+ 2467 0299 0400     		.2byte	0x4
+ 2468 029b F3       		.byte	0xf3
+ 2469 029c 01       		.uleb128 0x1
+ 2470 029d 51       		.byte	0x51
+ 2471 029e 9F       		.byte	0x9f
+ 2472 029f 00000000 		.4byte	0
+ 2473 02a3 00000000 		.4byte	0
+ 2474              	.LLST13:
+ 2475 02a7 00000000 		.4byte	.LVL29
+ 2476 02ab 14000000 		.4byte	.LVL31
+ 2477 02af 0100     		.2byte	0x1
+ 2478 02b1 52       		.byte	0x52
+ 2479 02b2 14000000 		.4byte	.LVL31
+ 2480 02b6 18000000 		.4byte	.LVL32
+ 2481 02ba 0100     		.2byte	0x1
+ 2482 02bc 56       		.byte	0x56
+ 2483 02bd 18000000 		.4byte	.LVL32
+ 2484 02c1 1A000000 		.4byte	.LVL33
+ 2485 02c5 0100     		.2byte	0x1
+ 2486 02c7 52       		.byte	0x52
+ 2487 02c8 1A000000 		.4byte	.LVL33
+ 2488 02cc 56000000 		.4byte	.LVL37
+ 2489 02d0 0100     		.2byte	0x1
+ 2490 02d2 56       		.byte	0x56
+ 2491 02d3 56000000 		.4byte	.LVL37
+ 2492 02d7 5D000000 		.4byte	.LVL38-1
+ 2493 02db 0100     		.2byte	0x1
+ 2494 02dd 50       		.byte	0x50
+ 2495 02de 5D000000 		.4byte	.LVL38-1
+ 2496 02e2 6A000000 		.4byte	.LVL40
+ 2497 02e6 0100     		.2byte	0x1
+ 2498 02e8 56       		.byte	0x56
+ 2499 02e9 6A000000 		.4byte	.LVL40
+ 2500 02ed 71000000 		.4byte	.LVL41-1
+ 2501 02f1 0100     		.2byte	0x1
+ 2502 02f3 50       		.byte	0x50
+ 2503 02f4 71000000 		.4byte	.LVL41-1
+ 2504 02f8 90000000 		.4byte	.LFE3
+ 2505 02fc 0100     		.2byte	0x1
+ 2506 02fe 56       		.byte	0x56
+ 2507 02ff 00000000 		.4byte	0
+ 2508 0303 00000000 		.4byte	0
+ 2509              	.LLST14:
+ 2510 0307 00000000 		.4byte	.LVL29
+ 2511 030b 12000000 		.4byte	.LVL30
+ 2512 030f 0100     		.2byte	0x1
+ 2513 0311 53       		.byte	0x53
+ 2514 0312 12000000 		.4byte	.LVL30
+ 2515 0316 90000000 		.4byte	.LFE3
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 51
+
+
+ 2516 031a 0100     		.2byte	0x1
+ 2517 031c 58       		.byte	0x58
+ 2518 031d 00000000 		.4byte	0
+ 2519 0321 00000000 		.4byte	0
+ 2520              	.LLST15:
+ 2521 0325 82000000 		.4byte	.LVL43
+ 2522 0329 88000000 		.4byte	.LVL44
+ 2523 032d 0700     		.2byte	0x7
+ 2524 032f 73       		.byte	0x73
+ 2525 0330 00       		.sleb128 0
+ 2526 0331 78       		.byte	0x78
+ 2527 0332 00       		.sleb128 0
+ 2528 0333 06       		.byte	0x6
+ 2529 0334 22       		.byte	0x22
+ 2530 0335 9F       		.byte	0x9f
+ 2531 0336 88000000 		.4byte	.LVL44
+ 2532 033a 8A000000 		.4byte	.LVL45
+ 2533 033e 0100     		.2byte	0x1
+ 2534 0340 54       		.byte	0x54
+ 2535 0341 00000000 		.4byte	0
+ 2536 0345 00000000 		.4byte	0
+ 2537              	.LLST16:
+ 2538 0349 00000000 		.4byte	.LVL46
+ 2539 034d 20000000 		.4byte	.LVL48
+ 2540 0351 0100     		.2byte	0x1
+ 2541 0353 50       		.byte	0x50
+ 2542 0354 20000000 		.4byte	.LVL48
+ 2543 0358 78000000 		.4byte	.LFE4
+ 2544 035c 0100     		.2byte	0x1
+ 2545 035e 56       		.byte	0x56
+ 2546 035f 00000000 		.4byte	0
+ 2547 0363 00000000 		.4byte	0
+ 2548              	.LLST17:
+ 2549 0367 00000000 		.4byte	.LVL46
+ 2550 036b 2B000000 		.4byte	.LVL50-1
+ 2551 036f 0100     		.2byte	0x1
+ 2552 0371 51       		.byte	0x51
+ 2553 0372 2B000000 		.4byte	.LVL50-1
+ 2554 0376 78000000 		.4byte	.LFE4
+ 2555 037a 0100     		.2byte	0x1
+ 2556 037c 59       		.byte	0x59
+ 2557 037d 00000000 		.4byte	0
+ 2558 0381 00000000 		.4byte	0
+ 2559              	.LLST18:
+ 2560 0385 00000000 		.4byte	.LVL46
+ 2561 0389 24000000 		.4byte	.LVL49
+ 2562 038d 0100     		.2byte	0x1
+ 2563 038f 52       		.byte	0x52
+ 2564 0390 24000000 		.4byte	.LVL49
+ 2565 0394 78000000 		.4byte	.LFE4
+ 2566 0398 0100     		.2byte	0x1
+ 2567 039a 58       		.byte	0x58
+ 2568 039b 00000000 		.4byte	0
+ 2569 039f 00000000 		.4byte	0
+ 2570              	.LLST19:
+ 2571 03a3 00000000 		.4byte	.LVL46
+ 2572 03a7 0A000000 		.4byte	.LVL47
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 52
+
+
+ 2573 03ab 0100     		.2byte	0x1
+ 2574 03ad 53       		.byte	0x53
+ 2575 03ae 0A000000 		.4byte	.LVL47
+ 2576 03b2 78000000 		.4byte	.LFE4
+ 2577 03b6 0100     		.2byte	0x1
+ 2578 03b8 55       		.byte	0x55
+ 2579 03b9 00000000 		.4byte	0
+ 2580 03bd 00000000 		.4byte	0
+ 2581              	.LLST20:
+ 2582 03c1 58000000 		.4byte	.LVL52
+ 2583 03c5 6C000000 		.4byte	.LVL54
+ 2584 03c9 0100     		.2byte	0x1
+ 2585 03cb 53       		.byte	0x53
+ 2586 03cc 00000000 		.4byte	0
+ 2587 03d0 00000000 		.4byte	0
+ 2588              	.LLST21:
+ 2589 03d4 00000000 		.4byte	.LVL55
+ 2590 03d8 12000000 		.4byte	.LVL57
+ 2591 03dc 0100     		.2byte	0x1
+ 2592 03de 50       		.byte	0x50
+ 2593 03df 12000000 		.4byte	.LVL57
+ 2594 03e3 26000000 		.4byte	.LVL60
+ 2595 03e7 0100     		.2byte	0x1
+ 2596 03e9 54       		.byte	0x54
+ 2597 03ea 26000000 		.4byte	.LVL60
+ 2598 03ee 12010000 		.4byte	.LVL72
+ 2599 03f2 0400     		.2byte	0x4
+ 2600 03f4 F3       		.byte	0xf3
+ 2601 03f5 01       		.uleb128 0x1
+ 2602 03f6 50       		.byte	0x50
+ 2603 03f7 9F       		.byte	0x9f
+ 2604 03f8 12010000 		.4byte	.LVL72
+ 2605 03fc 16010000 		.4byte	.LVL73
+ 2606 0400 0100     		.2byte	0x1
+ 2607 0402 54       		.byte	0x54
+ 2608 0403 16010000 		.4byte	.LVL73
+ 2609 0407 3A010000 		.4byte	.LFE5
+ 2610 040b 0400     		.2byte	0x4
+ 2611 040d F3       		.byte	0xf3
+ 2612 040e 01       		.uleb128 0x1
+ 2613 040f 50       		.byte	0x50
+ 2614 0410 9F       		.byte	0x9f
+ 2615 0411 00000000 		.4byte	0
+ 2616 0415 00000000 		.4byte	0
+ 2617              	.LLST22:
+ 2618 0419 00000000 		.4byte	.LVL55
+ 2619 041d 1B000000 		.4byte	.LVL59-1
+ 2620 0421 0100     		.2byte	0x1
+ 2621 0423 51       		.byte	0x51
+ 2622 0424 1B000000 		.4byte	.LVL59-1
+ 2623 0428 6E000000 		.4byte	.LVL64
+ 2624 042c 0100     		.2byte	0x1
+ 2625 042e 57       		.byte	0x57
+ 2626 042f 6E000000 		.4byte	.LVL64
+ 2627 0433 12010000 		.4byte	.LVL72
+ 2628 0437 0400     		.2byte	0x4
+ 2629 0439 F3       		.byte	0xf3
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 53
+
+
+ 2630 043a 01       		.uleb128 0x1
+ 2631 043b 51       		.byte	0x51
+ 2632 043c 9F       		.byte	0x9f
+ 2633 043d 12010000 		.4byte	.LVL72
+ 2634 0441 1E010000 		.4byte	.LVL74
+ 2635 0445 0100     		.2byte	0x1
+ 2636 0447 57       		.byte	0x57
+ 2637 0448 1E010000 		.4byte	.LVL74
+ 2638 044c 3A010000 		.4byte	.LFE5
+ 2639 0450 0400     		.2byte	0x4
+ 2640 0452 F3       		.byte	0xf3
+ 2641 0453 01       		.uleb128 0x1
+ 2642 0454 51       		.byte	0x51
+ 2643 0455 9F       		.byte	0x9f
+ 2644 0456 00000000 		.4byte	0
+ 2645 045a 00000000 		.4byte	0
+ 2646              	.LLST23:
+ 2647 045e 00000000 		.4byte	.LVL55
+ 2648 0462 10000000 		.4byte	.LVL56
+ 2649 0466 0100     		.2byte	0x1
+ 2650 0468 52       		.byte	0x52
+ 2651 0469 10000000 		.4byte	.LVL56
+ 2652 046d 3A010000 		.4byte	.LFE5
+ 2653 0471 0100     		.2byte	0x1
+ 2654 0473 5B       		.byte	0x5b
+ 2655 0474 00000000 		.4byte	0
+ 2656 0478 00000000 		.4byte	0
+ 2657              	.LLST24:
+ 2658 047c 00000000 		.4byte	.LVL55
+ 2659 0480 1B000000 		.4byte	.LVL59-1
+ 2660 0484 0100     		.2byte	0x1
+ 2661 0486 53       		.byte	0x53
+ 2662 0487 1B000000 		.4byte	.LVL59-1
+ 2663 048b 3A010000 		.4byte	.LFE5
+ 2664 048f 0100     		.2byte	0x1
+ 2665 0491 55       		.byte	0x55
+ 2666 0492 00000000 		.4byte	0
+ 2667 0496 00000000 		.4byte	0
+ 2668              	.LLST25:
+ 2669 049a 30000000 		.4byte	.LVL61
+ 2670 049e 12010000 		.4byte	.LVL72
+ 2671 04a2 0600     		.2byte	0x6
+ 2672 04a4 7A       		.byte	0x7a
+ 2673 04a5 00       		.sleb128 0
+ 2674 04a6 79       		.byte	0x79
+ 2675 04a7 00       		.sleb128 0
+ 2676 04a8 22       		.byte	0x22
+ 2677 04a9 9F       		.byte	0x9f
+ 2678 04aa 16010000 		.4byte	.LVL73
+ 2679 04ae 34010000 		.4byte	.LVL76
+ 2680 04b2 0600     		.2byte	0x6
+ 2681 04b4 7A       		.byte	0x7a
+ 2682 04b5 00       		.sleb128 0
+ 2683 04b6 79       		.byte	0x79
+ 2684 04b7 00       		.sleb128 0
+ 2685 04b8 22       		.byte	0x22
+ 2686 04b9 9F       		.byte	0x9f
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 54
+
+
+ 2687 04ba 00000000 		.4byte	0
+ 2688 04be 00000000 		.4byte	0
+ 2689              	.LLST26:
+ 2690 04c2 18000000 		.4byte	.LVL58
+ 2691 04c6 1B000000 		.4byte	.LVL59-1
+ 2692 04ca 0600     		.2byte	0x6
+ 2693 04cc 74       		.byte	0x74
+ 2694 04cd 00       		.sleb128 0
+ 2695 04ce 71       		.byte	0x71
+ 2696 04cf 00       		.sleb128 0
+ 2697 04d0 22       		.byte	0x22
+ 2698 04d1 9F       		.byte	0x9f
+ 2699 04d2 1B000000 		.4byte	.LVL59-1
+ 2700 04d6 26000000 		.4byte	.LVL60
+ 2701 04da 0600     		.2byte	0x6
+ 2702 04dc 74       		.byte	0x74
+ 2703 04dd 00       		.sleb128 0
+ 2704 04de 77       		.byte	0x77
+ 2705 04df 00       		.sleb128 0
+ 2706 04e0 22       		.byte	0x22
+ 2707 04e1 9F       		.byte	0x9f
+ 2708 04e2 26000000 		.4byte	.LVL60
+ 2709 04e6 12010000 		.4byte	.LVL72
+ 2710 04ea 0100     		.2byte	0x1
+ 2711 04ec 54       		.byte	0x54
+ 2712 04ed 12010000 		.4byte	.LVL72
+ 2713 04f1 16010000 		.4byte	.LVL73
+ 2714 04f5 0600     		.2byte	0x6
+ 2715 04f7 74       		.byte	0x74
+ 2716 04f8 00       		.sleb128 0
+ 2717 04f9 77       		.byte	0x77
+ 2718 04fa 00       		.sleb128 0
+ 2719 04fb 22       		.byte	0x22
+ 2720 04fc 9F       		.byte	0x9f
+ 2721 04fd 16010000 		.4byte	.LVL73
+ 2722 0501 34010000 		.4byte	.LVL76
+ 2723 0505 0100     		.2byte	0x1
+ 2724 0507 54       		.byte	0x54
+ 2725 0508 34010000 		.4byte	.LVL76
+ 2726 050c 3A010000 		.4byte	.LFE5
+ 2727 0510 0800     		.2byte	0x8
+ 2728 0512 F3       		.byte	0xf3
+ 2729 0513 01       		.uleb128 0x1
+ 2730 0514 50       		.byte	0x50
+ 2731 0515 F3       		.byte	0xf3
+ 2732 0516 01       		.uleb128 0x1
+ 2733 0517 51       		.byte	0x51
+ 2734 0518 22       		.byte	0x22
+ 2735 0519 9F       		.byte	0x9f
+ 2736 051a 00000000 		.4byte	0
+ 2737 051e 00000000 		.4byte	0
+ 2738              	.LLST27:
+ 2739 0522 6E000000 		.4byte	.LVL64
+ 2740 0526 7E000000 		.4byte	.LVL66
+ 2741 052a 0100     		.2byte	0x1
+ 2742 052c 57       		.byte	0x57
+ 2743 052d 1E010000 		.4byte	.LVL74
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 55
+
+
+ 2744 0531 22010000 		.4byte	.LVL75
+ 2745 0535 0100     		.2byte	0x1
+ 2746 0537 57       		.byte	0x57
+ 2747 0538 00000000 		.4byte	0
+ 2748 053c 00000000 		.4byte	0
+ 2749              		.section	.debug_aranges,"",%progbits
+ 2750 0000 44000000 		.4byte	0x44
+ 2751 0004 0200     		.2byte	0x2
+ 2752 0006 00000000 		.4byte	.Ldebug_info0
+ 2753 000a 04       		.byte	0x4
+ 2754 000b 00       		.byte	0
+ 2755 000c 0000     		.2byte	0
+ 2756 000e 0000     		.2byte	0
+ 2757 0010 00000000 		.4byte	.LFB0
+ 2758 0014 5A000000 		.4byte	.LFE0-.LFB0
+ 2759 0018 00000000 		.4byte	.LFB1
+ 2760 001c 38000000 		.4byte	.LFE1-.LFB1
+ 2761 0020 00000000 		.4byte	.LFB2
+ 2762 0024 36000000 		.4byte	.LFE2-.LFB2
+ 2763 0028 00000000 		.4byte	.LFB3
+ 2764 002c 90000000 		.4byte	.LFE3-.LFB3
+ 2765 0030 00000000 		.4byte	.LFB4
+ 2766 0034 78000000 		.4byte	.LFE4-.LFB4
+ 2767 0038 00000000 		.4byte	.LFB5
+ 2768 003c 3A010000 		.4byte	.LFE5-.LFB5
+ 2769 0040 00000000 		.4byte	0
+ 2770 0044 00000000 		.4byte	0
+ 2771              		.section	.debug_ranges,"",%progbits
+ 2772              	.Ldebug_ranges0:
+ 2773 0000 00000000 		.4byte	.LFB0
+ 2774 0004 5A000000 		.4byte	.LFE0
+ 2775 0008 00000000 		.4byte	.LFB1
+ 2776 000c 38000000 		.4byte	.LFE1
+ 2777 0010 00000000 		.4byte	.LFB2
+ 2778 0014 36000000 		.4byte	.LFE2
+ 2779 0018 00000000 		.4byte	.LFB3
+ 2780 001c 90000000 		.4byte	.LFE3
+ 2781 0020 00000000 		.4byte	.LFB4
+ 2782 0024 78000000 		.4byte	.LFE4
+ 2783 0028 00000000 		.4byte	.LFB5
+ 2784 002c 3A010000 		.4byte	.LFE5
+ 2785 0030 00000000 		.4byte	0
+ 2786 0034 00000000 		.4byte	0
+ 2787              		.section	.debug_line,"",%progbits
+ 2788              	.Ldebug_line0:
+ 2789 0000 AB010000 		.section	.debug_str,"MS",%progbits,1
+ 2789      02004700 
+ 2789      00000201 
+ 2789      FB0E0D00 
+ 2789      01010101 
+ 2790              	.LASF34:
+ 2791 0000 6B65796C 		.ascii	"keylen_hdr\000"
+ 2791      656E5F68 
+ 2791      647200
+ 2792              	.LASF10:
+ 2793 000b 63686172 		.ascii	"char\000"
+ 2793      00
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 56
+
+
+ 2794              	.LASF32:
+ 2795 0010 67657442 		.ascii	"getBig\000"
+ 2795      696700
+ 2796              	.LASF39:
+ 2797 0017 76616C75 		.ascii	"value\000"
+ 2797      6500
+ 2798              	.LASF41:
+ 2799 001d 636F756E 		.ascii	"count\000"
+ 2799      7400
+ 2800              	.LASF12:
+ 2801 0023 44574F52 		.ascii	"DWORD\000"
+ 2801      4400
+ 2802              	.LASF11:
+ 2803 0029 42595445 		.ascii	"BYTE\000"
+ 2803      00
+ 2804              	.LASF22:
+ 2805 002e 735F636F 		.ascii	"s_coefficient\000"
+ 2805      65666669 
+ 2805      6369656E 
+ 2805      7400
+ 2806              	.LASF18:
+ 2807 003c 645F6269 		.ascii	"d_bits\000"
+ 2807      747300
+ 2808              	.LASF16:
+ 2809 0043 645F6B65 		.ascii	"d_key_idx\000"
+ 2809      795F6964 
+ 2809      7800
+ 2810              	.LASF24:
+ 2811 004d 73697A65 		.ascii	"size\000"
+ 2811      00
+ 2812              	.LASF15:
+ 2813 0052 735F6B65 		.ascii	"s_key\000"
+ 2813      7900
+ 2814              	.LASF21:
+ 2815 0058 735F7072 		.ascii	"s_prime_exponent\000"
+ 2815      696D655F 
+ 2815      6578706F 
+ 2815      6E656E74 
+ 2815      00
+ 2816              	.LASF5:
+ 2817 0069 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2817      20756E73 
+ 2817      69676E65 
+ 2817      6420696E 
+ 2817      7400
+ 2818              	.LASF3:
+ 2819 007b 73686F72 		.ascii	"short unsigned int\000"
+ 2819      7420756E 
+ 2819      7369676E 
+ 2819      65642069 
+ 2819      6E7400
+ 2820              	.LASF19:
+ 2821 008e 735F6D6F 		.ascii	"s_modulus\000"
+ 2821      64756C75 
+ 2821      7300
+ 2822              	.LASF14:
+ 2823 0098 645F6B65 		.ascii	"d_keysize\000"
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 57
+
+
+ 2823      7973697A 
+ 2823      6500
+ 2824              	.LASF1:
+ 2825 00a2 756E7369 		.ascii	"unsigned char\000"
+ 2825      676E6564 
+ 2825      20636861 
+ 2825      7200
+ 2826              	.LASF49:
+ 2827 00b0 6D656D73 		.ascii	"memset\000"
+ 2827      657400
+ 2828              	.LASF23:
+ 2829 00b7 545F5253 		.ascii	"T_RSA_PRIVATE_KEY\000"
+ 2829      415F5052 
+ 2829      49564154 
+ 2829      455F4B45 
+ 2829      5900
+ 2830              	.LASF46:
+ 2831 00c9 474E5520 		.ascii	"GNU C 4.9.3 20141119 (release) [ARM/embedded-4_9-br"
+ 2831      4320342E 
+ 2831      392E3320 
+ 2831      32303134 
+ 2831      31313139 
+ 2832 00fc 616E6368 		.ascii	"anch revision 218278] -mthumb -mcpu=cortex-a5 -mthu"
+ 2832      20726576 
+ 2832      6973696F 
+ 2832      6E203231 
+ 2832      38323738 
+ 2833 012f 6D622D69 		.ascii	"mb-interwork -mstructure-size-boundary=32 -mno-unal"
+ 2833      6E746572 
+ 2833      776F726B 
+ 2833      202D6D73 
+ 2833      74727563 
+ 2834 0162 69676E65 		.ascii	"igned-access -g -Os -ffunction-sections -fsigned-ch"
+ 2834      642D6163 
+ 2834      63657373 
+ 2834      202D6720 
+ 2834      2D4F7320 
+ 2835 0195 617200   		.ascii	"ar\000"
+ 2836              	.LASF28:
+ 2837 0198 67657453 		.ascii	"getSequence\000"
+ 2837      65717565 
+ 2837      6E636500 
+ 2838              	.LASF30:
+ 2839 01a4 67657456 		.ascii	"getVersionNum\000"
+ 2839      65727369 
+ 2839      6F6E4E75 
+ 2839      6D00
+ 2840              	.LASF25:
+ 2841 01b2 76616C4C 		.ascii	"valLen\000"
+ 2841      656E00
+ 2842              	.LASF48:
+ 2843 01b9 433A5C54 		.ascii	"C:\\T1000-A5\\Projects\\APM\\apm_v3.0s03\000"
+ 2843      31303030 
+ 2843      2D41355C 
+ 2843      50726F6A 
+ 2843      65637473 
+ 2844              	.LASF20:
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 58
+
+
+ 2845 01de 735F7072 		.ascii	"s_prime\000"
+ 2845      696D6500 
+ 2846              	.LASF8:
+ 2847 01e6 756E7369 		.ascii	"unsigned int\000"
+ 2847      676E6564 
+ 2847      20696E74 
+ 2847      00
+ 2848              	.LASF40:
+ 2849 01f3 6578704C 		.ascii	"expLen\000"
+ 2849      656E00
+ 2850              	.LASF47:
+ 2851 01fa 7372632F 		.ascii	"src/pkcs.c\000"
+ 2851      706B6373 
+ 2851      2E6300
+ 2852              	.LASF26:
+ 2853 0205 6F6C656E 		.ascii	"olen\000"
+ 2853      00
+ 2854              	.LASF44:
+ 2855 020a 4B657945 		.ascii	"KeyEnd\000"
+ 2855      6E6400
+ 2856              	.LASF17:
+ 2857 0211 545F4B45 		.ascii	"T_KEY\000"
+ 2857      5900
+ 2858              	.LASF13:
+ 2859 0217 645F6578 		.ascii	"d_exponent\000"
+ 2859      706F6E65 
+ 2859      6E7400
+ 2860              	.LASF36:
+ 2861 0222 67657450 		.ascii	"getPubKey\000"
+ 2861      75624B65 
+ 2861      7900
+ 2862              	.LASF42:
+ 2863 022c 78353039 		.ascii	"x509ParseKey\000"
+ 2863      50617273 
+ 2863      654B6579 
+ 2863      00
+ 2864              	.LASF9:
+ 2865 0239 73697A65 		.ascii	"sizetype\000"
+ 2865      74797065 
+ 2865      00
+ 2866              	.LASF6:
+ 2867 0242 6C6F6E67 		.ascii	"long long int\000"
+ 2867      206C6F6E 
+ 2867      6720696E 
+ 2867      7400
+ 2868              	.LASF37:
+ 2869 0250 6B65794C 		.ascii	"keyLen\000"
+ 2869      656E00
+ 2870              	.LASF50:
+ 2871 0257 6D656D63 		.ascii	"memcpy\000"
+ 2871      707900
+ 2872              	.LASF29:
+ 2873 025e 7365716C 		.ascii	"seqlen\000"
+ 2873      656E00
+ 2874              	.LASF2:
+ 2875 0265 73686F72 		.ascii	"short int\000"
+ 2875      7420696E 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 59
+
+
+ 2875      7400
+ 2876              	.LASF33:
+ 2877 026f 6B65796C 		.ascii	"keylen\000"
+ 2877      656E00
+ 2878              	.LASF45:
+ 2879 0276 6B65794C 		.ascii	"keyLen_read\000"
+ 2879      656E5F72 
+ 2879      65616400 
+ 2880              	.LASF27:
+ 2881 0282 67657441 		.ascii	"getASNLength\000"
+ 2881      534E4C65 
+ 2881      6E677468 
+ 2881      00
+ 2882              	.LASF4:
+ 2883 028f 6C6F6E67 		.ascii	"long int\000"
+ 2883      20696E74 
+ 2883      00
+ 2884              	.LASF43:
+ 2885 0298 7072694B 		.ascii	"priKey\000"
+ 2885      657900
+ 2886              	.LASF0:
+ 2887 029f 7369676E 		.ascii	"signed char\000"
+ 2887      65642063 
+ 2887      68617200 
+ 2888              	.LASF38:
+ 2889 02ab 7075624B 		.ascii	"pubKey\000"
+ 2889      657900
+ 2890              	.LASF35:
+ 2891 02b2 66696C6C 		.ascii	"fillzero\000"
+ 2891      7A65726F 
+ 2891      00
+ 2892              	.LASF7:
+ 2893 02bb 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2893      206C6F6E 
+ 2893      6720756E 
+ 2893      7369676E 
+ 2893      65642069 
+ 2894              	.LASF31:
+ 2895 02d2 766C656E 		.ascii	"vlen\000"
+ 2895      00
+ 2896              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-br
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s 			page 60
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 pkcs.c
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s:19     .text.getASNLength:00000000 $t
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s:24     .text.getASNLength:00000000 getASNLength
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s:122    .text.getSequence:00000000 $t
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s:127    .text.getSequence:00000000 getSequence
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s:191    .text.getVersionNum:00000000 $t
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s:196    .text.getVersionNum:00000000 getVersionNum
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s:260    .text.getBig:00000000 $t
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s:265    .text.getBig:00000000 getBig
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s:391    .text.getPubKey:00000000 $t
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s:396    .text.getPubKey:00000000 getPubKey
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s:508    .text.x509ParseKey:00000000 $t
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccES0SXN.s:513    .text.x509ParseKey:00000000 x509ParseKey
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+memset
+memcpy

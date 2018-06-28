@@ -1,0 +1,65 @@
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccdaBZJI.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-a5
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"PhList.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              	.Letext0:
+  19              		.section	.debug_line,"",%progbits
+  20              	.Ldebug_line0:
+  21              		.section	.debug_str,"MS",%progbits,1
+  22              	.LASF0:
+  23 0000 7372632F 		.ascii	"src/PhList.c\000"
+  23      50684C69 
+  23      73742E63 
+  23      00
+  24              	.LASF1:
+  25 000d 474E5520 		.ascii	"GNU C 4.9.3 20141119 (release) [ARM/embedded-4_9-br"
+  25      4320342E 
+  25      392E3320 
+  25      32303134 
+  25      31313139 
+  26 0040 616E6368 		.ascii	"anch revision 218278] -mthumb -mcpu=cortex-a5 -mthu"
+  26      20726576 
+  26      6973696F 
+  26      6E203231 
+  26      38323738 
+  27 0073 6D622D69 		.ascii	"mb-interwork -mstructure-size-boundary=32 -mno-unal"
+  27      6E746572 
+  27      776F726B 
+  27      202D6D73 
+  27      74727563 
+  28 00a6 69676E65 		.ascii	"igned-access -g -Os -ffunction-sections -fsigned-ch"
+  28      642D6163 
+  28      63657373 
+  28      202D6720 
+  28      2D4F7320 
+  29 00d9 617200   		.ascii	"ar\000"
+  30              	.LASF2:
+  31 00dc 433A5C54 		.ascii	"C:\\T1000-A5\\Projects\\APM\\apm_v3.0s03\000"
+  31      31303030 
+  31      2D41355C 
+  31      50726F6A 
+  31      65637473 
+  32              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-br
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccdaBZJI.s 			page 2
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 PhList.c
+
+NO UNDEFINED SYMBOLS

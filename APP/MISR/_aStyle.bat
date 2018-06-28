@@ -1,0 +1,1 @@
+call ..\..\Tools\aStyle.bat

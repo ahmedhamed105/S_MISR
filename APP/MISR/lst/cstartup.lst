@@ -1,0 +1,5937 @@
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-a5
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"cstartup.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.SegmentInit,"ax",%progbits
+  19              		.align	1
+  20              		.global	SegmentInit
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	SegmentInit, %function
+  24              	SegmentInit:
+  25              	.LFB0:
+  26              		.file 1 "../LibA5T1000/gcc/cstartup.c"
+   1:../LibA5T1000/gcc/cstartup.c **** //-----------------------------------------------------------------------------
+   2:../LibA5T1000/gcc/cstartup.c **** //  File          : cstartup.c                                                     
+   3:../LibA5T1000/gcc/cstartup.c **** //  Module        :                                                            
+   4:../LibA5T1000/gcc/cstartup.c **** //  Description   : Main Entry.                                                
+   5:../LibA5T1000/gcc/cstartup.c **** //  Author        : 
+   6:../LibA5T1000/gcc/cstartup.c **** //  Notes         :                                                            
+   7:../LibA5T1000/gcc/cstartup.c **** //                                                                             
+   8:../LibA5T1000/gcc/cstartup.c **** // ============================================================================
+   9:../LibA5T1000/gcc/cstartup.c **** // | Naming conventions                                                       |
+  10:../LibA5T1000/gcc/cstartup.c **** // | ~~~~~~~~~~~~~~~~~~                                                       |
+  11:../LibA5T1000/gcc/cstartup.c **** // |         Struct/Array : Leading s                                         |
+  12:../LibA5T1000/gcc/cstartup.c **** // |             Constant : Leading K                                         |
+  13:../LibA5T1000/gcc/cstartup.c **** // |      Global Variable : Leading g  (variable use outside one C file)      |
+  14:../LibA5T1000/gcc/cstartup.c **** // |                                                                          |
+  15:../LibA5T1000/gcc/cstartup.c **** // |   BYTE( 8 Bits) size : Leading b                                         |
+  16:../LibA5T1000/gcc/cstartup.c **** // |   CHAR( 8 Bits) size : Leading c                                         |
+  17:../LibA5T1000/gcc/cstartup.c **** // |   WORD(16 Bits) size : Leading w                                         |
+  18:../LibA5T1000/gcc/cstartup.c **** // |  DWORD(32 Bits) size : Leading d                                         |
+  19:../LibA5T1000/gcc/cstartup.c **** // |    int(32 Bits) size : Leading i                                         |
+  20:../LibA5T1000/gcc/cstartup.c **** // | DDWORD(64 Bits) size : Leading dd                                        |
+  21:../LibA5T1000/gcc/cstartup.c **** // |              Pointer : Leading p                                         |
+  22:../LibA5T1000/gcc/cstartup.c **** // |                                                                          |
+  23:../LibA5T1000/gcc/cstartup.c **** // |    Function argument : Leading a                                         |
+  24:../LibA5T1000/gcc/cstartup.c **** // |       Local Variable : All lower case                                    |
+  25:../LibA5T1000/gcc/cstartup.c **** // |                                                                          |
+  26:../LibA5T1000/gcc/cstartup.c **** // | Examples:                                                                |
+  27:../LibA5T1000/gcc/cstartup.c **** // |                Array : Leading s, (sb = arrary of byte, etc)             |
+  28:../LibA5T1000/gcc/cstartup.c **** // |              Pointer : Leading p, (pb = pointer of byte, etc)            |
+  29:../LibA5T1000/gcc/cstartup.c **** // ============================================================================
+  30:../LibA5T1000/gcc/cstartup.c **** //                                                                             
+  31:../LibA5T1000/gcc/cstartup.c **** //  Date          Who         Action                                           
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 2
+
+
+  32:../LibA5T1000/gcc/cstartup.c **** //  ------------  ----------- -------------------------------------------------
+  33:../LibA5T1000/gcc/cstartup.c **** //  DD MMM  YYYY  main_c      Initial Version.                                 
+  34:../LibA5T1000/gcc/cstartup.c **** //-----------------------------------------------------------------------------
+  35:../LibA5T1000/gcc/cstartup.c **** //#include <stdio.h>
+  36:../LibA5T1000/gcc/cstartup.c **** #include "system.h"
+  37:../LibA5T1000/gcc/cstartup.c **** #include "coremain.h"
+  38:../LibA5T1000/gcc/cstartup.c **** 
+  39:../LibA5T1000/gcc/cstartup.c **** //-----------------------------------------------------------------------------
+  40:../LibA5T1000/gcc/cstartup.c **** //      Prototypes                                                             
+  41:../LibA5T1000/gcc/cstartup.c **** //-----------------------------------------------------------------------------
+  42:../LibA5T1000/gcc/cstartup.c **** //From Link Scripts
+  43:../LibA5T1000/gcc/cstartup.c **** extern unsigned long _start_of_app;
+  44:../LibA5T1000/gcc/cstartup.c **** extern unsigned long _end_of_app;
+  45:../LibA5T1000/gcc/cstartup.c **** extern unsigned long _start_of_data;
+  46:../LibA5T1000/gcc/cstartup.c **** extern unsigned long _end_of_data;
+  47:../LibA5T1000/gcc/cstartup.c **** extern unsigned long _start_of_bss;
+  48:../LibA5T1000/gcc/cstartup.c **** extern unsigned long _end_of_bss;
+  49:../LibA5T1000/gcc/cstartup.c **** extern unsigned long _end_of_sram;
+  50:../LibA5T1000/gcc/cstartup.c **** extern unsigned long _end_of_flash;
+  51:../LibA5T1000/gcc/cstartup.c **** 
+  52:../LibA5T1000/gcc/cstartup.c **** //From main.c
+  53:../LibA5T1000/gcc/cstartup.c **** extern const T_APP_HDR KAppHdr;
+  54:../LibA5T1000/gcc/cstartup.c **** extern int main(unsigned long aFuncNo, unsigned long aParam2, unsigned long aParam3);
+  55:../LibA5T1000/gcc/cstartup.c **** 
+  56:../LibA5T1000/gcc/cstartup.c **** //-----------------------------------------------------------------------------
+  57:../LibA5T1000/gcc/cstartup.c **** //      Constants
+  58:../LibA5T1000/gcc/cstartup.c **** //-----------------------------------------------------------------------------
+  59:../LibA5T1000/gcc/cstartup.c **** const unsigned long KAppHeader[12] __attribute__ ((section ("sect_apphdr"))) =
+  60:../LibA5T1000/gcc/cstartup.c **** {
+  61:../LibA5T1000/gcc/cstartup.c ****   (unsigned long)&KAppHdr,          // app table ptr
+  62:../LibA5T1000/gcc/cstartup.c ****   (unsigned long)&_start_of_app,    // crc check start at 0x50
+  63:../LibA5T1000/gcc/cstartup.c ****   (unsigned long)&_end_of_flash,    // crc check end address
+  64:../LibA5T1000/gcc/cstartup.c ****   (unsigned long)0,                 // crc will be overrided
+  65:../LibA5T1000/gcc/cstartup.c ****   (unsigned long)&_start_of_data,   // SFB(DATA_I)
+  66:../LibA5T1000/gcc/cstartup.c ****   (unsigned long)&_end_of_bss,      // SFE(DATA_N), Maybe 
+  67:../LibA5T1000/gcc/cstartup.c ****   (unsigned long)(((unsigned long)MY_APPL_ID) | ((unsigned long)SOFT_VERSION<<8) | ((unsigned long)
+  68:../LibA5T1000/gcc/cstartup.c ****   (unsigned long)0,                 // will be filled with YYYYMMDD                
+  69:../LibA5T1000/gcc/cstartup.c ****   (unsigned long)0,                 // will be filled with HHMMSSNN
+  70:../LibA5T1000/gcc/cstartup.c ****   (unsigned long)0,                 // fill with TMS checksum
+  71:../LibA5T1000/gcc/cstartup.c ****   (unsigned long)0,                 // fill display checksum
+  72:../LibA5T1000/gcc/cstartup.c ****   (unsigned long)0x80000000,        // crc of YYYYMMDDHHMMSSNN, TMS checksum & display checksum, si
+  73:../LibA5T1000/gcc/cstartup.c **** };
+  74:../LibA5T1000/gcc/cstartup.c **** 
+  75:../LibA5T1000/gcc/cstartup.c **** const unsigned char KKek[8] __attribute__ ((section ("sect_kek"))) = "Spectra\x00";
+  76:../LibA5T1000/gcc/cstartup.c **** 
+  77:../LibA5T1000/gcc/cstartup.c **** //*****************************************************************************
+  78:../LibA5T1000/gcc/cstartup.c **** //  Function        : SegmentInit
+  79:../LibA5T1000/gcc/cstartup.c **** //  Description     : Initial Clean Up.
+  80:../LibA5T1000/gcc/cstartup.c **** //  Input           : N/A                                                      
+  81:../LibA5T1000/gcc/cstartup.c **** //  Return          : N/A                                                      
+  82:../LibA5T1000/gcc/cstartup.c **** //  Note            : N/A                                                      
+  83:../LibA5T1000/gcc/cstartup.c **** //  Globals Changed : N/A                                                      
+  84:../LibA5T1000/gcc/cstartup.c **** //*****************************************************************************
+  85:../LibA5T1000/gcc/cstartup.c **** void SegmentInit(void)
+  86:../LibA5T1000/gcc/cstartup.c **** {
+  27              		.loc 1 86 0
+  28              		.cfi_startproc
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 3
+
+
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  87:../LibA5T1000/gcc/cstartup.c ****   unsigned long *src;
+  88:../LibA5T1000/gcc/cstartup.c ****   unsigned long *dest;
+  89:../LibA5T1000/gcc/cstartup.c ****   unsigned long *end_addr;
+  90:../LibA5T1000/gcc/cstartup.c **** 
+  91:../LibA5T1000/gcc/cstartup.c ****   //Debug
+  92:../LibA5T1000/gcc/cstartup.c ****   //printf("\f%X\n%X\n%X\n%X\n%X\n%X\n%X\n%X"
+  93:../LibA5T1000/gcc/cstartup.c ****   //        , &_start_of_app
+  94:../LibA5T1000/gcc/cstartup.c ****   //        , &_end_of_app
+  95:../LibA5T1000/gcc/cstartup.c ****   //        , &_start_of_data
+  96:../LibA5T1000/gcc/cstartup.c ****   //        , &_end_of_data
+  97:../LibA5T1000/gcc/cstartup.c ****   //        , &_start_of_bss
+  98:../LibA5T1000/gcc/cstartup.c ****   //        , &_end_of_bss
+  99:../LibA5T1000/gcc/cstartup.c ****   //        , &_end_of_sram
+ 100:../LibA5T1000/gcc/cstartup.c ****   //        , &_end_of_flash
+ 101:../LibA5T1000/gcc/cstartup.c ****   //      );
+ 102:../LibA5T1000/gcc/cstartup.c ****   //while (os_kbd_getkey () == 0) os_sleep();
+ 103:../LibA5T1000/gcc/cstartup.c ****  
+ 104:../LibA5T1000/gcc/cstartup.c ****   //------------------------------
+ 105:../LibA5T1000/gcc/cstartup.c ****   // Check data area size         
+ 106:../LibA5T1000/gcc/cstartup.c ****   //------------------------------
+ 107:../LibA5T1000/gcc/cstartup.c ****   if ((unsigned long)&_end_of_bss > (unsigned long)&_end_of_sram) {
+  31              		.loc 1 107 0
+  32 0000 154B     		ldr	r3, .L13
+  86:../LibA5T1000/gcc/cstartup.c ****   unsigned long *src;
+  33              		.loc 1 86 0
+  34 0002 10B5     		push	{r4, lr}
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 4, -8
+  37              		.cfi_offset 14, -4
+  38              		.loc 1 107 0
+  39 0004 154A     		ldr	r2, .L13+4
+  40 0006 1C46     		mov	r4, r3
+  41 0008 9A42     		cmp	r2, r3
+  42 000a 02D3     		bcc	.L2
+  43              	.L6:
+  44 000c 144A     		ldr	r2, .L13+8
+  86:../LibA5T1000/gcc/cstartup.c ****   unsigned long *src;
+  45              		.loc 1 86 0
+  46 000e 154B     		ldr	r3, .L13+12
+  47 0010 11E0     		b	.L3
+  48              	.L2:
+ 108:../LibA5T1000/gcc/cstartup.c ****     os_disp_puts("\f""Data oversized.");
+  49              		.loc 1 108 0
+  50 0012 1549     		ldr	r1, .L13+16
+  51 0014 1720     		movs	r0, #23
+  52 0016 FFF7FEFF 		bl	sys_func1
+  53              	.LVL0:
+ 109:../LibA5T1000/gcc/cstartup.c ****     os_disp_puts("\nPls Power Off");
+  54              		.loc 1 109 0
+  55 001a 1720     		movs	r0, #23
+  56 001c 1349     		ldr	r1, .L13+20
+  57 001e FFF7FEFF 		bl	sys_func1
+  58              	.LVL1:
+  59              	.L4:
+ 110:../LibA5T1000/gcc/cstartup.c ****     while (os_kbd_getkey () == 0) os_sleep();
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 4
+
+
+  60              		.loc 1 110 0 discriminator 1
+  61 0022 0720     		movs	r0, #7
+  62 0024 FFF7FEFF 		bl	sys_func0
+  63              	.LVL2:
+  64 0028 0028     		cmp	r0, #0
+  65 002a EFD1     		bne	.L6
+  66              		.loc 1 110 0 is_stmt 0 discriminator 2
+  67 002c 4FF4CE70 		mov	r0, #412
+  68 0030 FFF7FEFF 		bl	sys_func0
+  69              	.LVL3:
+  70 0034 F5E7     		b	.L4
+  71              	.L3:
+  72              	.LVL4:
+ 111:../LibA5T1000/gcc/cstartup.c ****   }
+ 112:../LibA5T1000/gcc/cstartup.c **** 
+ 113:../LibA5T1000/gcc/cstartup.c ****   //------------------------------
+ 114:../LibA5T1000/gcc/cstartup.c ****   // Copy preset data             
+ 115:../LibA5T1000/gcc/cstartup.c ****   //------------------------------
+ 116:../LibA5T1000/gcc/cstartup.c ****   src      = &_end_of_app;
+ 117:../LibA5T1000/gcc/cstartup.c ****   dest     = &_start_of_data;
+ 118:../LibA5T1000/gcc/cstartup.c ****   end_addr = &_end_of_data;
+ 119:../LibA5T1000/gcc/cstartup.c ****   while (dest < end_addr) {
+  73              		.loc 1 119 0 is_stmt 1
+  74 0036 0E49     		ldr	r1, .L13+24
+  75 0038 8B42     		cmp	r3, r1
+  76 003a 04D2     		bcs	.L11
+ 120:../LibA5T1000/gcc/cstartup.c ****     *dest = *src;
+  77              		.loc 1 120 0
+  78 003c 52F8041B 		ldr	r1, [r2], #4
+  79 0040 43F8041B 		str	r1, [r3], #4
+  80              	.LVL5:
+  81 0044 F7E7     		b	.L3
+  82              	.LVL6:
+  83              	.L11:
+  84 0046 0B4B     		ldr	r3, .L13+28
+  85              	.LVL7:
+  86              	.L8:
+ 121:../LibA5T1000/gcc/cstartup.c ****     src++;
+ 122:../LibA5T1000/gcc/cstartup.c ****     dest++;
+ 123:../LibA5T1000/gcc/cstartup.c ****   }
+ 124:../LibA5T1000/gcc/cstartup.c **** 
+ 125:../LibA5T1000/gcc/cstartup.c ****   //------------------------------
+ 126:../LibA5T1000/gcc/cstartup.c ****   // Clear uninitialized data     
+ 127:../LibA5T1000/gcc/cstartup.c ****   //------------------------------
+ 128:../LibA5T1000/gcc/cstartup.c ****   dest = &_start_of_bss;
+ 129:../LibA5T1000/gcc/cstartup.c ****   end_addr = &_end_of_bss;
+ 130:../LibA5T1000/gcc/cstartup.c ****   while (dest < end_addr) {
+  87              		.loc 1 130 0
+  88 0048 A342     		cmp	r3, r4
+  89 004a 03D2     		bcs	.L12
+ 131:../LibA5T1000/gcc/cstartup.c ****     *dest = 0;
+  90              		.loc 1 131 0
+  91 004c 0022     		movs	r2, #0
+  92 004e 43F8042B 		str	r2, [r3], #4
+  93              	.LVL8:
+  94 0052 F9E7     		b	.L8
+  95              	.L12:
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 5
+
+
+ 132:../LibA5T1000/gcc/cstartup.c ****     dest++;
+ 133:../LibA5T1000/gcc/cstartup.c ****   }
+ 134:../LibA5T1000/gcc/cstartup.c **** }
+  96              		.loc 1 134 0
+  97 0054 10BD     		pop	{r4, pc}
+  98              	.L14:
+  99 0056 00BF     		.align	2
+ 100              	.L13:
+ 101 0058 00000000 		.word	_end_of_bss
+ 102 005c 00000000 		.word	_end_of_sram
+ 103 0060 00000000 		.word	_end_of_app
+ 104 0064 00000000 		.word	_start_of_data
+ 105 0068 00000000 		.word	.LC0
+ 106 006c 11000000 		.word	.LC1
+ 107 0070 00000000 		.word	_end_of_data
+ 108 0074 00000000 		.word	_start_of_bss
+ 109              		.cfi_endproc
+ 110              	.LFE0:
+ 111              		.size	SegmentInit, .-SegmentInit
+ 112              		.section	sect_startup,"ax",%progbits
+ 113              		.align	1
+ 114              		.global	cstartup
+ 115              		.thumb
+ 116              		.thumb_func
+ 117              		.type	cstartup, %function
+ 118              	cstartup:
+ 119              	.LFB1:
+ 135:../LibA5T1000/gcc/cstartup.c **** 
+ 136:../LibA5T1000/gcc/cstartup.c **** //*****************************************************************************
+ 137:../LibA5T1000/gcc/cstartup.c **** //  Function        : cstartup
+ 138:../LibA5T1000/gcc/cstartup.c **** //  Description     : Entry point for application.                             
+ 139:../LibA5T1000/gcc/cstartup.c **** //  Input           : N/A                                                      
+ 140:../LibA5T1000/gcc/cstartup.c **** //  Return          : N/A                                                      
+ 141:../LibA5T1000/gcc/cstartup.c **** //  Note            : N/A                                                      
+ 142:../LibA5T1000/gcc/cstartup.c **** //  Globals Changed : N/A                                                      
+ 143:../LibA5T1000/gcc/cstartup.c **** //*****************************************************************************
+ 144:../LibA5T1000/gcc/cstartup.c **** int cstartup (unsigned long aFuncNo, unsigned long aParam2, unsigned long aParam3) __attribute__ ((
+ 145:../LibA5T1000/gcc/cstartup.c **** int cstartup (unsigned long aFuncNo, unsigned long aParam2, unsigned long aParam3)
+ 146:../LibA5T1000/gcc/cstartup.c **** {
+ 120              		.loc 1 146 0
+ 121              		.cfi_startproc
+ 122              		@ args = 0, pretend = 0, frame = 0
+ 123              		@ frame_needed = 0, uses_anonymous_args = 0
+ 124              	.LVL9:
+ 125 0000 70B5     		push	{r4, r5, r6, lr}
+ 126              		.cfi_def_cfa_offset 16
+ 127              		.cfi_offset 4, -16
+ 128              		.cfi_offset 5, -12
+ 129              		.cfi_offset 6, -8
+ 130              		.cfi_offset 14, -4
+ 131              		.loc 1 146 0
+ 132 0002 0646     		mov	r6, r0
+ 133 0004 0D46     		mov	r5, r1
+ 134 0006 1446     		mov	r4, r2
+ 147:../LibA5T1000/gcc/cstartup.c ****   SegmentInit();
+ 135              		.loc 1 147 0
+ 136 0008 FFF7FEFF 		bl	SegmentInit
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 6
+
+
+ 137              	.LVL10:
+ 148:../LibA5T1000/gcc/cstartup.c ****   return main(aFuncNo, aParam2, aParam3);
+ 138              		.loc 1 148 0
+ 139 000c 3046     		mov	r0, r6
+ 140 000e 2946     		mov	r1, r5
+ 141 0010 2246     		mov	r2, r4
+ 149:../LibA5T1000/gcc/cstartup.c **** }
+ 142              		.loc 1 149 0
+ 143 0012 BDE87040 		pop	{r4, r5, r6, lr}
+ 144              		.cfi_restore 14
+ 145              		.cfi_restore 6
+ 146              		.cfi_restore 5
+ 147              		.cfi_restore 4
+ 148              		.cfi_def_cfa_offset 0
+ 149              	.LVL11:
+ 148:../LibA5T1000/gcc/cstartup.c ****   return main(aFuncNo, aParam2, aParam3);
+ 150              		.loc 1 148 0
+ 151 0016 FFF7FEBF 		b	main
+ 152              	.LVL12:
+ 153              		.cfi_endproc
+ 154              	.LFE1:
+ 155              		.size	cstartup, .-cstartup
+ 156              		.global	KKek
+ 157              		.global	KAppHeader
+ 158              		.section	sect_apphdr,"a",%progbits
+ 159              		.align	2
+ 160              		.type	KAppHeader, %object
+ 161              		.size	KAppHeader, 48
+ 162              	KAppHeader:
+ 163 0000 00000000 		.word	KAppHdr
+ 164 0004 00000000 		.word	_start_of_app
+ 165 0008 00000000 		.word	_end_of_flash
+ 166 000c 00000000 		.word	0
+ 167 0010 00000000 		.word	_start_of_data
+ 168 0014 00000000 		.word	_end_of_bss
+ 169 0018 11030100 		.word	66321
+ 170 001c 00000000 		.word	0
+ 171 0020 00000000 		.word	0
+ 172 0024 00000000 		.word	0
+ 173 0028 00000000 		.word	0
+ 174 002c 00000080 		.word	-2147483648
+ 175              		.section	.rodata.str1.1,"aMS",%progbits,1
+ 176              	.LC0:
+ 177 0000 0C446174 		.ascii	"\014Data oversized.\000"
+ 177      61206F76 
+ 177      65727369 
+ 177      7A65642E 
+ 177      00
+ 178              	.LC1:
+ 179 0011 0A506C73 		.ascii	"\012Pls Power Off\000"
+ 179      20506F77 
+ 179      6572204F 
+ 179      666600
+ 180              		.section	sect_kek,"a",%progbits
+ 181              		.type	KKek, %object
+ 182              		.size	KKek, 8
+ 183              	KKek:
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 7
+
+
+ 184 0000 53706563 		.ascii	"Spectra\000"
+ 184      74726100 
+ 185              		.text
+ 186              	.Letext0:
+ 187              		.file 2 "../LibA5T1000/common.h"
+ 188              		.file 3 "../LibA5T1000/system.h"
+ 189              		.section	.debug_info,"",%progbits
+ 190              	.Ldebug_info0:
+ 191 0000 05100000 		.4byte	0x1005
+ 192 0004 0400     		.2byte	0x4
+ 193 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 194 000a 04       		.byte	0x4
+ 195 000b 01       		.uleb128 0x1
+ 196 000c 20220000 		.4byte	.LASF518
+ 197 0010 01       		.byte	0x1
+ 198 0011 4B040000 		.4byte	.LASF519
+ 199 0015 8B040000 		.4byte	.LASF520
+ 200 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 201 001d 00000000 		.4byte	0
+ 202 0021 00000000 		.4byte	.Ldebug_line0
+ 203 0025 02       		.uleb128 0x2
+ 204 0026 01       		.byte	0x1
+ 205 0027 08       		.byte	0x8
+ 206 0028 B2080000 		.4byte	.LASF0
+ 207 002c 03       		.uleb128 0x3
+ 208 002d EF040000 		.4byte	.LASF2
+ 209 0031 02       		.byte	0x2
+ 210 0032 0E       		.byte	0xe
+ 211 0033 25000000 		.4byte	0x25
+ 212 0037 02       		.uleb128 0x2
+ 213 0038 02       		.byte	0x2
+ 214 0039 07       		.byte	0x7
+ 215 003a 7B230000 		.4byte	.LASF1
+ 216 003e 03       		.uleb128 0x3
+ 217 003f 1A220000 		.4byte	.LASF3
+ 218 0043 02       		.byte	0x2
+ 219 0044 10       		.byte	0x10
+ 220 0045 49000000 		.4byte	0x49
+ 221 0049 02       		.uleb128 0x2
+ 222 004a 04       		.byte	0x4
+ 223 004b 07       		.byte	0x7
+ 224 004c EB140000 		.4byte	.LASF4
+ 225 0050 02       		.uleb128 0x2
+ 226 0051 08       		.byte	0x8
+ 227 0052 07       		.byte	0x7
+ 228 0053 341A0000 		.4byte	.LASF5
+ 229 0057 02       		.uleb128 0x2
+ 230 0058 04       		.byte	0x4
+ 231 0059 07       		.byte	0x7
+ 232 005a 83000000 		.4byte	.LASF6
+ 233 005e 04       		.uleb128 0x4
+ 234 005f 04       		.byte	0x4
+ 235 0060 05       		.byte	0x5
+ 236 0061 696E7400 		.ascii	"int\000"
+ 237 0065 02       		.uleb128 0x2
+ 238 0066 01       		.byte	0x1
+ 239 0067 06       		.byte	0x6
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 8
+
+
+ 240 0068 5C200000 		.4byte	.LASF7
+ 241 006c 02       		.uleb128 0x2
+ 242 006d 02       		.byte	0x2
+ 243 006e 05       		.byte	0x5
+ 244 006f 581E0000 		.4byte	.LASF8
+ 245 0073 02       		.uleb128 0x2
+ 246 0074 04       		.byte	0x4
+ 247 0075 05       		.byte	0x5
+ 248 0076 2B060000 		.4byte	.LASF9
+ 249 007a 02       		.uleb128 0x2
+ 250 007b 04       		.byte	0x4
+ 251 007c 07       		.byte	0x7
+ 252 007d FF0F0000 		.4byte	.LASF10
+ 253 0081 02       		.uleb128 0x2
+ 254 0082 08       		.byte	0x8
+ 255 0083 05       		.byte	0x5
+ 256 0084 B0120000 		.4byte	.LASF11
+ 257 0088 05       		.uleb128 0x5
+ 258 0089 18       		.byte	0x18
+ 259 008a 03       		.byte	0x3
+ 260 008b 4B01     		.2byte	0x14b
+ 261 008d 07010000 		.4byte	0x107
+ 262 0091 06       		.uleb128 0x6
+ 263 0092 9D0B0000 		.4byte	.LASF12
+ 264 0096 03       		.byte	0x3
+ 265 0097 4C01     		.2byte	0x14c
+ 266 0099 3E000000 		.4byte	0x3e
+ 267 009d 00       		.byte	0
+ 268 009e 06       		.uleb128 0x6
+ 269 009f AA080000 		.4byte	.LASF13
+ 270 00a3 03       		.byte	0x3
+ 271 00a4 4D01     		.2byte	0x14d
+ 272 00a6 3E000000 		.4byte	0x3e
+ 273 00aa 04       		.byte	0x4
+ 274 00ab 06       		.uleb128 0x6
+ 275 00ac 6A000000 		.4byte	.LASF14
+ 276 00b0 03       		.byte	0x3
+ 277 00b1 4E01     		.2byte	0x14e
+ 278 00b3 3E000000 		.4byte	0x3e
+ 279 00b7 08       		.byte	0x8
+ 280 00b8 06       		.uleb128 0x6
+ 281 00b9 95210000 		.4byte	.LASF15
+ 282 00bd 03       		.byte	0x3
+ 283 00be 4F01     		.2byte	0x14f
+ 284 00c0 3E000000 		.4byte	0x3e
+ 285 00c4 0C       		.byte	0xc
+ 286 00c5 06       		.uleb128 0x6
+ 287 00c6 190C0000 		.4byte	.LASF16
+ 288 00ca 03       		.byte	0x3
+ 289 00cb 5001     		.2byte	0x150
+ 290 00cd 2C000000 		.4byte	0x2c
+ 291 00d1 10       		.byte	0x10
+ 292 00d2 06       		.uleb128 0x6
+ 293 00d3 27090000 		.4byte	.LASF17
+ 294 00d7 03       		.byte	0x3
+ 295 00d8 5101     		.2byte	0x151
+ 296 00da 2C000000 		.4byte	0x2c
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 9
+
+
+ 297 00de 11       		.byte	0x11
+ 298 00df 06       		.uleb128 0x6
+ 299 00e0 D6000000 		.4byte	.LASF18
+ 300 00e4 03       		.byte	0x3
+ 301 00e5 5201     		.2byte	0x152
+ 302 00e7 2C000000 		.4byte	0x2c
+ 303 00eb 12       		.byte	0x12
+ 304 00ec 06       		.uleb128 0x6
+ 305 00ed BA0F0000 		.4byte	.LASF19
+ 306 00f1 03       		.byte	0x3
+ 307 00f2 5301     		.2byte	0x153
+ 308 00f4 2C000000 		.4byte	0x2c
+ 309 00f8 13       		.byte	0x13
+ 310 00f9 06       		.uleb128 0x6
+ 311 00fa B2090000 		.4byte	.LASF20
+ 312 00fe 03       		.byte	0x3
+ 313 00ff 5401     		.2byte	0x154
+ 314 0101 3E000000 		.4byte	0x3e
+ 315 0105 14       		.byte	0x14
+ 316 0106 00       		.byte	0
+ 317 0107 07       		.uleb128 0x7
+ 318 0108 E0120000 		.4byte	.LASF21
+ 319 010c 03       		.byte	0x3
+ 320 010d 5501     		.2byte	0x155
+ 321 010f 88000000 		.4byte	0x88
+ 322 0113 08       		.uleb128 0x8
+ 323 0114 B80E0000 		.4byte	.LASF521
+ 324 0118 02       		.byte	0x2
+ 325 0119 03       		.byte	0x3
+ 326 011a 9A04     		.2byte	0x49a
+ 327 011c D00D0000 		.4byte	0xdd0
+ 328 0120 09       		.uleb128 0x9
+ 329 0121 E5240000 		.4byte	.LASF22
+ 330 0125 00       		.sleb128 0
+ 331 0126 09       		.uleb128 0x9
+ 332 0127 55100000 		.4byte	.LASF23
+ 333 012b 01       		.sleb128 1
+ 334 012c 09       		.uleb128 0x9
+ 335 012d 59120000 		.4byte	.LASF24
+ 336 0131 02       		.sleb128 2
+ 337 0132 09       		.uleb128 0x9
+ 338 0133 CC080000 		.4byte	.LASF25
+ 339 0137 03       		.sleb128 3
+ 340 0138 09       		.uleb128 0x9
+ 341 0139 A0120000 		.4byte	.LASF26
+ 342 013d 04       		.sleb128 4
+ 343 013e 09       		.uleb128 0x9
+ 344 013f 55180000 		.4byte	.LASF27
+ 345 0143 05       		.sleb128 5
+ 346 0144 09       		.uleb128 0x9
+ 347 0145 0A0B0000 		.4byte	.LASF28
+ 348 0149 06       		.sleb128 6
+ 349 014a 09       		.uleb128 0x9
+ 350 014b ED190000 		.4byte	.LASF29
+ 351 014f 07       		.sleb128 7
+ 352 0150 09       		.uleb128 0x9
+ 353 0151 0C110000 		.4byte	.LASF30
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 10
+
+
+ 354 0155 08       		.sleb128 8
+ 355 0156 09       		.uleb128 0x9
+ 356 0157 4E210000 		.4byte	.LASF31
+ 357 015b 09       		.sleb128 9
+ 358 015c 09       		.uleb128 0x9
+ 359 015d C5210000 		.4byte	.LASF32
+ 360 0161 0A       		.sleb128 10
+ 361 0162 09       		.uleb128 0x9
+ 362 0163 211C0000 		.4byte	.LASF33
+ 363 0167 0B       		.sleb128 11
+ 364 0168 09       		.uleb128 0x9
+ 365 0169 34020000 		.4byte	.LASF34
+ 366 016d 0C       		.sleb128 12
+ 367 016e 09       		.uleb128 0x9
+ 368 016f 65180000 		.4byte	.LASF35
+ 369 0173 0D       		.sleb128 13
+ 370 0174 09       		.uleb128 0x9
+ 371 0175 DB090000 		.4byte	.LASF36
+ 372 0179 0E       		.sleb128 14
+ 373 017a 09       		.uleb128 0x9
+ 374 017b 49250000 		.4byte	.LASF37
+ 375 017f 0F       		.sleb128 15
+ 376 0180 09       		.uleb128 0x9
+ 377 0181 22120000 		.4byte	.LASF38
+ 378 0185 10       		.sleb128 16
+ 379 0186 09       		.uleb128 0x9
+ 380 0187 901C0000 		.4byte	.LASF39
+ 381 018b 11       		.sleb128 17
+ 382 018c 09       		.uleb128 0x9
+ 383 018d BA0C0000 		.4byte	.LASF40
+ 384 0191 12       		.sleb128 18
+ 385 0192 09       		.uleb128 0x9
+ 386 0193 C71C0000 		.4byte	.LASF41
+ 387 0197 13       		.sleb128 19
+ 388 0198 09       		.uleb128 0x9
+ 389 0199 3C070000 		.4byte	.LASF42
+ 390 019d 14       		.sleb128 20
+ 391 019e 09       		.uleb128 0x9
+ 392 019f BE120000 		.4byte	.LASF43
+ 393 01a3 15       		.sleb128 21
+ 394 01a4 09       		.uleb128 0x9
+ 395 01a5 4C070000 		.4byte	.LASF44
+ 396 01a9 16       		.sleb128 22
+ 397 01aa 09       		.uleb128 0x9
+ 398 01ab 06080000 		.4byte	.LASF45
+ 399 01af 17       		.sleb128 23
+ 400 01b0 09       		.uleb128 0x9
+ 401 01b1 AE070000 		.4byte	.LASF46
+ 402 01b5 18       		.sleb128 24
+ 403 01b6 09       		.uleb128 0x9
+ 404 01b7 EB170000 		.4byte	.LASF47
+ 405 01bb 19       		.sleb128 25
+ 406 01bc 09       		.uleb128 0x9
+ 407 01bd 70070000 		.4byte	.LASF48
+ 408 01c1 1A       		.sleb128 26
+ 409 01c2 09       		.uleb128 0x9
+ 410 01c3 D9070000 		.4byte	.LASF49
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 11
+
+
+ 411 01c7 1B       		.sleb128 27
+ 412 01c8 09       		.uleb128 0x9
+ 413 01c9 22100000 		.4byte	.LASF50
+ 414 01cd 1C       		.sleb128 28
+ 415 01ce 09       		.uleb128 0x9
+ 416 01cf C5140000 		.4byte	.LASF51
+ 417 01d3 1D       		.sleb128 29
+ 418 01d4 09       		.uleb128 0x9
+ 419 01d5 7B250000 		.4byte	.LASF52
+ 420 01d9 1E       		.sleb128 30
+ 421 01da 09       		.uleb128 0x9
+ 422 01db ED060000 		.4byte	.LASF53
+ 423 01df 1F       		.sleb128 31
+ 424 01e0 09       		.uleb128 0x9
+ 425 01e1 11100000 		.4byte	.LASF54
+ 426 01e5 20       		.sleb128 32
+ 427 01e6 09       		.uleb128 0x9
+ 428 01e7 BD020000 		.4byte	.LASF55
+ 429 01eb 21       		.sleb128 33
+ 430 01ec 09       		.uleb128 0x9
+ 431 01ed 69170000 		.4byte	.LASF56
+ 432 01f1 22       		.sleb128 34
+ 433 01f2 09       		.uleb128 0x9
+ 434 01f3 77130000 		.4byte	.LASF57
+ 435 01f7 23       		.sleb128 35
+ 436 01f8 09       		.uleb128 0x9
+ 437 01f9 FE080000 		.4byte	.LASF58
+ 438 01fd 24       		.sleb128 36
+ 439 01fe 09       		.uleb128 0x9
+ 440 01ff 840D0000 		.4byte	.LASF59
+ 441 0203 25       		.sleb128 37
+ 442 0204 09       		.uleb128 0x9
+ 443 0205 2C200000 		.4byte	.LASF60
+ 444 0209 26       		.sleb128 38
+ 445 020a 09       		.uleb128 0x9
+ 446 020b B3130000 		.4byte	.LASF61
+ 447 020f 27       		.sleb128 39
+ 448 0210 09       		.uleb128 0x9
+ 449 0211 47060000 		.4byte	.LASF62
+ 450 0215 28       		.sleb128 40
+ 451 0216 09       		.uleb128 0x9
+ 452 0217 C9190000 		.4byte	.LASF63
+ 453 021b 29       		.sleb128 41
+ 454 021c 09       		.uleb128 0x9
+ 455 021d DB0C0000 		.4byte	.LASF64
+ 456 0221 2A       		.sleb128 42
+ 457 0222 09       		.uleb128 0x9
+ 458 0223 3B140000 		.4byte	.LASF65
+ 459 0227 2B       		.sleb128 43
+ 460 0228 09       		.uleb128 0x9
+ 461 0229 D30B0000 		.4byte	.LASF66
+ 462 022d 2C       		.sleb128 44
+ 463 022e 09       		.uleb128 0x9
+ 464 022f 94090000 		.4byte	.LASF67
+ 465 0233 2D       		.sleb128 45
+ 466 0234 09       		.uleb128 0x9
+ 467 0235 80200000 		.4byte	.LASF68
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 12
+
+
+ 468 0239 2E       		.sleb128 46
+ 469 023a 09       		.uleb128 0x9
+ 470 023b EB230000 		.4byte	.LASF69
+ 471 023f 2F       		.sleb128 47
+ 472 0240 09       		.uleb128 0x9
+ 473 0241 8C1E0000 		.4byte	.LASF70
+ 474 0245 30       		.sleb128 48
+ 475 0246 09       		.uleb128 0x9
+ 476 0247 96030000 		.4byte	.LASF71
+ 477 024b 31       		.sleb128 49
+ 478 024c 09       		.uleb128 0x9
+ 479 024d 871B0000 		.4byte	.LASF72
+ 480 0251 32       		.sleb128 50
+ 481 0252 09       		.uleb128 0x9
+ 482 0253 E9210000 		.4byte	.LASF73
+ 483 0257 33       		.sleb128 51
+ 484 0258 09       		.uleb128 0x9
+ 485 0259 79110000 		.4byte	.LASF74
+ 486 025d 34       		.sleb128 52
+ 487 025e 09       		.uleb128 0x9
+ 488 025f CB090000 		.4byte	.LASF75
+ 489 0263 35       		.sleb128 53
+ 490 0264 09       		.uleb128 0x9
+ 491 0265 CB180000 		.4byte	.LASF76
+ 492 0269 36       		.sleb128 54
+ 493 026a 09       		.uleb128 0x9
+ 494 026b EA120000 		.4byte	.LASF77
+ 495 026f 37       		.sleb128 55
+ 496 0270 09       		.uleb128 0x9
+ 497 0271 A6250000 		.4byte	.LASF78
+ 498 0275 38       		.sleb128 56
+ 499 0276 09       		.uleb128 0x9
+ 500 0277 20230000 		.4byte	.LASF79
+ 501 027b 39       		.sleb128 57
+ 502 027c 09       		.uleb128 0x9
+ 503 027d 1E1B0000 		.4byte	.LASF80
+ 504 0281 3A       		.sleb128 58
+ 505 0282 09       		.uleb128 0x9
+ 506 0283 85030000 		.4byte	.LASF81
+ 507 0287 3B       		.sleb128 59
+ 508 0288 09       		.uleb128 0x9
+ 509 0289 57240000 		.4byte	.LASF82
+ 510 028d 3C       		.sleb128 60
+ 511 028e 09       		.uleb128 0x9
+ 512 028f 75180000 		.4byte	.LASF83
+ 513 0293 3D       		.sleb128 61
+ 514 0294 09       		.uleb128 0x9
+ 515 0295 AA200000 		.4byte	.LASF84
+ 516 0299 3E       		.sleb128 62
+ 517 029a 09       		.uleb128 0x9
+ 518 029b FB1D0000 		.4byte	.LASF85
+ 519 029f 3F       		.sleb128 63
+ 520 02a0 09       		.uleb128 0x9
+ 521 02a1 D8050000 		.4byte	.LASF86
+ 522 02a5 C000     		.sleb128 64
+ 523 02a7 09       		.uleb128 0x9
+ 524 02a8 45010000 		.4byte	.LASF87
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 13
+
+
+ 525 02ac C100     		.sleb128 65
+ 526 02ae 09       		.uleb128 0x9
+ 527 02af C4240000 		.4byte	.LASF88
+ 528 02b3 C200     		.sleb128 66
+ 529 02b5 09       		.uleb128 0x9
+ 530 02b6 FE130000 		.4byte	.LASF89
+ 531 02ba C300     		.sleb128 67
+ 532 02bc 09       		.uleb128 0x9
+ 533 02bd A8190000 		.4byte	.LASF90
+ 534 02c1 C400     		.sleb128 68
+ 535 02c3 09       		.uleb128 0x9
+ 536 02c4 800B0000 		.4byte	.LASF91
+ 537 02c8 C500     		.sleb128 69
+ 538 02ca 09       		.uleb128 0x9
+ 539 02cb 230F0000 		.4byte	.LASF92
+ 540 02cf C600     		.sleb128 70
+ 541 02d1 09       		.uleb128 0x9
+ 542 02d2 FF1A0000 		.4byte	.LASF93
+ 543 02d6 C700     		.sleb128 71
+ 544 02d8 09       		.uleb128 0x9
+ 545 02d9 FC120000 		.4byte	.LASF94
+ 546 02dd C800     		.sleb128 72
+ 547 02df 09       		.uleb128 0x9
+ 548 02e0 1E160000 		.4byte	.LASF95
+ 549 02e4 C900     		.sleb128 73
+ 550 02e6 09       		.uleb128 0x9
+ 551 02e7 4F230000 		.4byte	.LASF96
+ 552 02eb CA00     		.sleb128 74
+ 553 02ed 09       		.uleb128 0x9
+ 554 02ee 0C240000 		.4byte	.LASF97
+ 555 02f2 CB00     		.sleb128 75
+ 556 02f4 09       		.uleb128 0x9
+ 557 02f5 1D050000 		.4byte	.LASF98
+ 558 02f9 CC00     		.sleb128 76
+ 559 02fb 09       		.uleb128 0x9
+ 560 02fc F7150000 		.4byte	.LASF99
+ 561 0300 CD00     		.sleb128 77
+ 562 0302 09       		.uleb128 0x9
+ 563 0303 CC030000 		.4byte	.LASF100
+ 564 0307 CE00     		.sleb128 78
+ 565 0309 09       		.uleb128 0x9
+ 566 030a C9040000 		.4byte	.LASF101
+ 567 030e CF00     		.sleb128 79
+ 568 0310 09       		.uleb128 0x9
+ 569 0311 BA210000 		.4byte	.LASF102
+ 570 0315 D000     		.sleb128 80
+ 571 0317 09       		.uleb128 0x9
+ 572 0318 1C1D0000 		.4byte	.LASF103
+ 573 031c D100     		.sleb128 81
+ 574 031e 09       		.uleb128 0x9
+ 575 031f 29140000 		.4byte	.LASF104
+ 576 0323 D200     		.sleb128 82
+ 577 0325 09       		.uleb128 0x9
+ 578 0326 240D0000 		.4byte	.LASF105
+ 579 032a D300     		.sleb128 83
+ 580 032c 09       		.uleb128 0x9
+ 581 032d 6C250000 		.4byte	.LASF106
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 14
+
+
+ 582 0331 D400     		.sleb128 84
+ 583 0333 09       		.uleb128 0x9
+ 584 0334 83190000 		.4byte	.LASF107
+ 585 0338 D500     		.sleb128 85
+ 586 033a 09       		.uleb128 0x9
+ 587 033b 3A040000 		.4byte	.LASF108
+ 588 033f D600     		.sleb128 86
+ 589 0341 09       		.uleb128 0x9
+ 590 0342 FC230000 		.4byte	.LASF109
+ 591 0346 D700     		.sleb128 87
+ 592 0348 09       		.uleb128 0x9
+ 593 0349 581C0000 		.4byte	.LASF110
+ 594 034d D800     		.sleb128 88
+ 595 034f 09       		.uleb128 0x9
+ 596 0350 8B0B0000 		.4byte	.LASF111
+ 597 0354 D900     		.sleb128 89
+ 598 0356 09       		.uleb128 0x9
+ 599 0357 0D1B0000 		.4byte	.LASF112
+ 600 035b DA00     		.sleb128 90
+ 601 035d 09       		.uleb128 0x9
+ 602 035e 33190000 		.4byte	.LASF113
+ 603 0362 DB00     		.sleb128 91
+ 604 0364 09       		.uleb128 0x9
+ 605 0365 B1060000 		.4byte	.LASF114
+ 606 0369 DC00     		.sleb128 92
+ 607 036b 09       		.uleb128 0x9
+ 608 036c 6D030000 		.4byte	.LASF115
+ 609 0370 DD00     		.sleb128 93
+ 610 0372 09       		.uleb128 0x9
+ 611 0373 AE040000 		.4byte	.LASF116
+ 612 0377 DE00     		.sleb128 94
+ 613 0379 09       		.uleb128 0x9
+ 614 037a 6C060000 		.4byte	.LASF117
+ 615 037e DF00     		.sleb128 95
+ 616 0380 09       		.uleb128 0x9
+ 617 0381 D3160000 		.4byte	.LASF118
+ 618 0385 E000     		.sleb128 96
+ 619 0387 09       		.uleb128 0x9
+ 620 0388 561F0000 		.4byte	.LASF119
+ 621 038c E100     		.sleb128 97
+ 622 038e 09       		.uleb128 0x9
+ 623 038f 1A1F0000 		.4byte	.LASF120
+ 624 0393 E200     		.sleb128 98
+ 625 0395 09       		.uleb128 0x9
+ 626 0396 C10A0000 		.4byte	.LASF121
+ 627 039a E300     		.sleb128 99
+ 628 039c 09       		.uleb128 0x9
+ 629 039d 1A200000 		.4byte	.LASF122
+ 630 03a1 E400     		.sleb128 100
+ 631 03a3 09       		.uleb128 0x9
+ 632 03a4 15170000 		.4byte	.LASF123
+ 633 03a8 E500     		.sleb128 101
+ 634 03aa 09       		.uleb128 0x9
+ 635 03ab 81010000 		.4byte	.LASF124
+ 636 03af E600     		.sleb128 102
+ 637 03b1 09       		.uleb128 0x9
+ 638 03b2 0E050000 		.4byte	.LASF125
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 15
+
+
+ 639 03b6 E700     		.sleb128 103
+ 640 03b8 09       		.uleb128 0x9
+ 641 03b9 46120000 		.4byte	.LASF126
+ 642 03bd E800     		.sleb128 104
+ 643 03bf 09       		.uleb128 0x9
+ 644 03c0 E1040000 		.4byte	.LASF127
+ 645 03c4 E900     		.sleb128 105
+ 646 03c6 09       		.uleb128 0x9
+ 647 03c7 050F0000 		.4byte	.LASF128
+ 648 03cb EA00     		.sleb128 106
+ 649 03cd 09       		.uleb128 0x9
+ 650 03ce 461F0000 		.4byte	.LASF129
+ 651 03d2 EB00     		.sleb128 107
+ 652 03d4 09       		.uleb128 0x9
+ 653 03d5 0B1E0000 		.4byte	.LASF130
+ 654 03d9 EC00     		.sleb128 108
+ 655 03db 09       		.uleb128 0x9
+ 656 03dc 6F140000 		.4byte	.LASF131
+ 657 03e0 ED00     		.sleb128 109
+ 658 03e2 09       		.uleb128 0x9
+ 659 03e3 DB080000 		.4byte	.LASF132
+ 660 03e7 EE00     		.sleb128 110
+ 661 03e9 09       		.uleb128 0x9
+ 662 03ea E5150000 		.4byte	.LASF133
+ 663 03ee EF00     		.sleb128 111
+ 664 03f0 09       		.uleb128 0x9
+ 665 03f1 D2110000 		.4byte	.LASF134
+ 666 03f5 F000     		.sleb128 112
+ 667 03f7 09       		.uleb128 0x9
+ 668 03f8 2E030000 		.4byte	.LASF135
+ 669 03fc F100     		.sleb128 113
+ 670 03fe 09       		.uleb128 0x9
+ 671 03ff 9D160000 		.4byte	.LASF136
+ 672 0403 F200     		.sleb128 114
+ 673 0405 09       		.uleb128 0x9
+ 674 0406 E81A0000 		.4byte	.LASF137
+ 675 040a F300     		.sleb128 115
+ 676 040c 09       		.uleb128 0x9
+ 677 040d 80070000 		.4byte	.LASF138
+ 678 0411 F400     		.sleb128 116
+ 679 0413 09       		.uleb128 0x9
+ 680 0414 E71F0000 		.4byte	.LASF139
+ 681 0418 F500     		.sleb128 117
+ 682 041a 09       		.uleb128 0x9
+ 683 041b 92200000 		.4byte	.LASF140
+ 684 041f F600     		.sleb128 118
+ 685 0421 09       		.uleb128 0x9
+ 686 0422 A4090000 		.4byte	.LASF141
+ 687 0426 F700     		.sleb128 119
+ 688 0428 09       		.uleb128 0x9
+ 689 0429 44090000 		.4byte	.LASF142
+ 690 042d F800     		.sleb128 120
+ 691 042f 09       		.uleb128 0x9
+ 692 0430 770A0000 		.4byte	.LASF143
+ 693 0434 F900     		.sleb128 121
+ 694 0436 09       		.uleb128 0x9
+ 695 0437 8E230000 		.4byte	.LASF144
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 16
+
+
+ 696 043b FA00     		.sleb128 122
+ 697 043d 09       		.uleb128 0x9
+ 698 043e 8A0C0000 		.4byte	.LASF145
+ 699 0442 FB00     		.sleb128 123
+ 700 0444 09       		.uleb128 0x9
+ 701 0445 8A110000 		.4byte	.LASF146
+ 702 0449 FC00     		.sleb128 124
+ 703 044b 09       		.uleb128 0x9
+ 704 044c 231E0000 		.4byte	.LASF147
+ 705 0450 FD00     		.sleb128 125
+ 706 0452 09       		.uleb128 0x9
+ 707 0453 7F080000 		.4byte	.LASF148
+ 708 0457 FE00     		.sleb128 126
+ 709 0459 09       		.uleb128 0x9
+ 710 045a 670E0000 		.4byte	.LASF149
+ 711 045e FF00     		.sleb128 127
+ 712 0460 09       		.uleb128 0x9
+ 713 0461 391D0000 		.4byte	.LASF150
+ 714 0465 8001     		.sleb128 128
+ 715 0467 09       		.uleb128 0x9
+ 716 0468 34060000 		.4byte	.LASF151
+ 717 046c 8101     		.sleb128 129
+ 718 046e 09       		.uleb128 0x9
+ 719 046f 5C020000 		.4byte	.LASF152
+ 720 0473 8201     		.sleb128 130
+ 721 0475 09       		.uleb128 0x9
+ 722 0476 09190000 		.4byte	.LASF153
+ 723 047a 8301     		.sleb128 131
+ 724 047c 09       		.uleb128 0x9
+ 725 047d 331C0000 		.4byte	.LASF154
+ 726 0481 8401     		.sleb128 132
+ 727 0483 09       		.uleb128 0x9
+ 728 0484 AB0C0000 		.4byte	.LASF155
+ 729 0488 8501     		.sleb128 133
+ 730 048a 09       		.uleb128 0x9
+ 731 048b 32240000 		.4byte	.LASF156
+ 732 048f 8601     		.sleb128 134
+ 733 0491 09       		.uleb128 0x9
+ 734 0492 BA090000 		.4byte	.LASF157
+ 735 0496 8701     		.sleb128 135
+ 736 0498 09       		.uleb128 0x9
+ 737 0499 2F110000 		.4byte	.LASF158
+ 738 049d 8801     		.sleb128 136
+ 739 049f 09       		.uleb128 0x9
+ 740 04a0 EC0C0000 		.4byte	.LASF159
+ 741 04a4 8901     		.sleb128 137
+ 742 04a6 09       		.uleb128 0x9
+ 743 04a7 52080000 		.4byte	.LASF160
+ 744 04ab 8A01     		.sleb128 138
+ 745 04ad 09       		.uleb128 0x9
+ 746 04ae F51C0000 		.4byte	.LASF161
+ 747 04b2 8B01     		.sleb128 139
+ 748 04b4 09       		.uleb128 0x9
+ 749 04b5 9F210000 		.4byte	.LASF162
+ 750 04b9 8C01     		.sleb128 140
+ 751 04bb 09       		.uleb128 0x9
+ 752 04bc 8D130000 		.4byte	.LASF163
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 17
+
+
+ 753 04c0 8D01     		.sleb128 141
+ 754 04c2 09       		.uleb128 0x9
+ 755 04c3 6D190000 		.4byte	.LASF164
+ 756 04c7 8E01     		.sleb128 142
+ 757 04c9 09       		.uleb128 0x9
+ 758 04ca 230C0000 		.4byte	.LASF165
+ 759 04ce 8F01     		.sleb128 143
+ 760 04d0 09       		.uleb128 0x9
+ 761 04d1 040C0000 		.4byte	.LASF166
+ 762 04d5 9001     		.sleb128 144
+ 763 04d7 09       		.uleb128 0x9
+ 764 04d8 20210000 		.4byte	.LASF167
+ 765 04dc 9101     		.sleb128 145
+ 766 04de 09       		.uleb128 0x9
+ 767 04df AA180000 		.4byte	.LASF168
+ 768 04e3 9201     		.sleb128 146
+ 769 04e5 09       		.uleb128 0x9
+ 770 04e6 7C1F0000 		.4byte	.LASF169
+ 771 04ea 9301     		.sleb128 147
+ 772 04ec 09       		.uleb128 0x9
+ 773 04ed 95120000 		.4byte	.LASF170
+ 774 04f1 9401     		.sleb128 148
+ 775 04f3 09       		.uleb128 0x9
+ 776 04f4 AA000000 		.4byte	.LASF171
+ 777 04f8 9501     		.sleb128 149
+ 778 04fa 09       		.uleb128 0x9
+ 779 04fb 5F080000 		.4byte	.LASF172
+ 780 04ff 9601     		.sleb128 150
+ 781 0501 09       		.uleb128 0x9
+ 782 0502 AC0D0000 		.4byte	.LASF173
+ 783 0506 9701     		.sleb128 151
+ 784 0508 09       		.uleb128 0x9
+ 785 0509 84120000 		.4byte	.LASF174
+ 786 050d 9801     		.sleb128 152
+ 787 050f 09       		.uleb128 0x9
+ 788 0510 56010000 		.4byte	.LASF175
+ 789 0514 9901     		.sleb128 153
+ 790 0516 09       		.uleb128 0x9
+ 791 0517 4C140000 		.4byte	.LASF176
+ 792 051b 9A01     		.sleb128 154
+ 793 051d 09       		.uleb128 0x9
+ 794 051e F7180000 		.4byte	.LASF177
+ 795 0522 9B01     		.sleb128 155
+ 796 0524 09       		.uleb128 0x9
+ 797 0525 59250000 		.4byte	.LASF178
+ 798 0529 9C01     		.sleb128 156
+ 799 052b 09       		.uleb128 0x9
+ 800 052c 73000000 		.4byte	.LASF179
+ 801 0530 9D01     		.sleb128 157
+ 802 0532 09       		.uleb128 0x9
+ 803 0533 570E0000 		.4byte	.LASF180
+ 804 0537 9E01     		.sleb128 158
+ 805 0539 09       		.uleb128 0x9
+ 806 053a 56090000 		.4byte	.LASF181
+ 807 053e 9F01     		.sleb128 159
+ 808 0540 09       		.uleb128 0x9
+ 809 0541 6F080000 		.4byte	.LASF182
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 18
+
+
+ 810 0545 A001     		.sleb128 160
+ 811 0547 09       		.uleb128 0x9
+ 812 0548 4A150000 		.4byte	.LASF183
+ 813 054c A101     		.sleb128 161
+ 814 054e 09       		.uleb128 0x9
+ 815 054f 86180000 		.4byte	.LASF184
+ 816 0553 A201     		.sleb128 162
+ 817 0555 09       		.uleb128 0x9
+ 818 0556 E4030000 		.4byte	.LASF185
+ 819 055a A301     		.sleb128 163
+ 820 055c 09       		.uleb128 0x9
+ 821 055d 5C1A0000 		.4byte	.LASF186
+ 822 0561 A401     		.sleb128 164
+ 823 0563 09       		.uleb128 0x9
+ 824 0564 FE060000 		.4byte	.LASF187
+ 825 0568 A501     		.sleb128 165
+ 826 056a 09       		.uleb128 0x9
+ 827 056b 0A020000 		.4byte	.LASF188
+ 828 056f A601     		.sleb128 166
+ 829 0571 09       		.uleb128 0x9
+ 830 0572 2C160000 		.4byte	.LASF189
+ 831 0576 A701     		.sleb128 167
+ 832 0578 09       		.uleb128 0x9
+ 833 0579 B1140000 		.4byte	.LASF190
+ 834 057d A801     		.sleb128 168
+ 835 057f 09       		.uleb128 0x9
+ 836 0580 77040000 		.4byte	.LASF191
+ 837 0584 A901     		.sleb128 169
+ 838 0586 09       		.uleb128 0x9
+ 839 0587 5E230000 		.4byte	.LASF192
+ 840 058b AA01     		.sleb128 170
+ 841 058d 09       		.uleb128 0x9
+ 842 058e 33180000 		.4byte	.LASF193
+ 843 0592 AB01     		.sleb128 171
+ 844 0594 09       		.uleb128 0x9
+ 845 0595 F7200000 		.4byte	.LASF194
+ 846 0599 AC01     		.sleb128 172
+ 847 059b 09       		.uleb128 0x9
+ 848 059c 14030000 		.4byte	.LASF195
+ 849 05a0 AD01     		.sleb128 173
+ 850 05a2 09       		.uleb128 0x9
+ 851 05a3 E1110000 		.4byte	.LASF196
+ 852 05a7 AE01     		.sleb128 174
+ 853 05a9 09       		.uleb128 0x9
+ 854 05aa 741D0000 		.4byte	.LASF197
+ 855 05ae AF01     		.sleb128 175
+ 856 05b0 09       		.uleb128 0x9
+ 857 05b1 520A0000 		.4byte	.LASF198
+ 858 05b5 B001     		.sleb128 176
+ 859 05b7 09       		.uleb128 0x9
+ 860 05b8 53000000 		.4byte	.LASF199
+ 861 05bc B101     		.sleb128 177
+ 862 05be 09       		.uleb128 0x9
+ 863 05bf 0F120000 		.4byte	.LASF200
+ 864 05c3 B201     		.sleb128 178
+ 865 05c5 09       		.uleb128 0x9
+ 866 05c6 84210000 		.4byte	.LASF201
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 19
+
+
+ 867 05ca B301     		.sleb128 179
+ 868 05cc 09       		.uleb128 0x9
+ 869 05cd 3C050000 		.4byte	.LASF202
+ 870 05d1 B401     		.sleb128 180
+ 871 05d3 09       		.uleb128 0x9
+ 872 05d4 5C0F0000 		.4byte	.LASF203
+ 873 05d8 B501     		.sleb128 181
+ 874 05da 09       		.uleb128 0x9
+ 875 05db A9050000 		.4byte	.LASF204
+ 876 05df B601     		.sleb128 182
+ 877 05e1 09       		.uleb128 0x9
+ 878 05e2 4B1A0000 		.4byte	.LASF205
+ 879 05e6 B701     		.sleb128 183
+ 880 05e8 09       		.uleb128 0x9
+ 881 05e9 13090000 		.4byte	.LASF206
+ 882 05ed B801     		.sleb128 184
+ 883 05ef 09       		.uleb128 0x9
+ 884 05f0 16080000 		.4byte	.LASF207
+ 885 05f4 B901     		.sleb128 185
+ 886 05f6 09       		.uleb128 0x9
+ 887 05f7 D3250000 		.4byte	.LASF208
+ 888 05fb BA01     		.sleb128 186
+ 889 05fd 09       		.uleb128 0x9
+ 890 05fe 4D1D0000 		.4byte	.LASF209
+ 891 0602 BB01     		.sleb128 187
+ 892 0604 09       		.uleb128 0x9
+ 893 0605 2B040000 		.4byte	.LASF210
+ 894 0609 BC01     		.sleb128 188
+ 895 060b 09       		.uleb128 0x9
+ 896 060c 130F0000 		.4byte	.LASF211
+ 897 0610 BD01     		.sleb128 189
+ 898 0612 09       		.uleb128 0x9
+ 899 0613 F3030000 		.4byte	.LASF212
+ 900 0617 BE01     		.sleb128 190
+ 901 0619 09       		.uleb128 0x9
+ 902 061a 621E0000 		.4byte	.LASF213
+ 903 061e BF01     		.sleb128 191
+ 904 0620 09       		.uleb128 0x9
+ 905 0621 380C0000 		.4byte	.LASF214
+ 906 0625 C001     		.sleb128 192
+ 907 0627 09       		.uleb128 0x9
+ 908 0628 2A1F0000 		.4byte	.LASF215
+ 909 062c C101     		.sleb128 193
+ 910 062e 09       		.uleb128 0x9
+ 911 062f 02120000 		.4byte	.LASF216
+ 912 0633 C201     		.sleb128 194
+ 913 0635 09       		.uleb128 0x9
+ 914 0636 A0140000 		.4byte	.LASF217
+ 915 063a C301     		.sleb128 195
+ 916 063c 09       		.uleb128 0x9
+ 917 063d A11D0000 		.4byte	.LASF218
+ 918 0641 C401     		.sleb128 196
+ 919 0643 09       		.uleb128 0x9
+ 920 0644 D9130000 		.4byte	.LASF219
+ 921 0648 C501     		.sleb128 197
+ 922 064a 09       		.uleb128 0x9
+ 923 064b D6210000 		.4byte	.LASF220
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 20
+
+
+ 924 064f C601     		.sleb128 198
+ 925 0651 09       		.uleb128 0x9
+ 926 0652 FB010000 		.4byte	.LASF221
+ 927 0656 C701     		.sleb128 199
+ 928 0658 09       		.uleb128 0x9
+ 929 0659 27170000 		.4byte	.LASF222
+ 930 065d C801     		.sleb128 200
+ 931 065f 09       		.uleb128 0x9
+ 932 0660 091D0000 		.4byte	.LASF223
+ 933 0664 C901     		.sleb128 201
+ 934 0666 09       		.uleb128 0x9
+ 935 0667 0C180000 		.4byte	.LASF224
+ 936 066b CA01     		.sleb128 202
+ 937 066d 09       		.uleb128 0x9
+ 938 066e 31230000 		.4byte	.LASF225
+ 939 0672 CB01     		.sleb128 203
+ 940 0674 09       		.uleb128 0x9
+ 941 0675 B10A0000 		.4byte	.LASF226
+ 942 0679 CC01     		.sleb128 204
+ 943 067b 09       		.uleb128 0x9
+ 944 067c 981B0000 		.4byte	.LASF227
+ 945 0680 CD01     		.sleb128 205
+ 946 0682 09       		.uleb128 0x9
+ 947 0683 AE020000 		.4byte	.LASF228
+ 948 0687 CE01     		.sleb128 206
+ 949 0689 09       		.uleb128 0x9
+ 950 068a E30B0000 		.4byte	.LASF229
+ 951 068e CF01     		.sleb128 207
+ 952 0690 09       		.uleb128 0x9
+ 953 0691 F5160000 		.4byte	.LASF230
+ 954 0695 D001     		.sleb128 208
+ 955 0697 09       		.uleb128 0x9
+ 956 0698 C90E0000 		.4byte	.LASF231
+ 957 069c D101     		.sleb128 209
+ 958 069e 09       		.uleb128 0x9
+ 959 069f 0E0A0000 		.4byte	.LASF232
+ 960 06a3 D201     		.sleb128 210
+ 961 06a5 09       		.uleb128 0x9
+ 962 06a6 AA210000 		.4byte	.LASF233
+ 963 06aa D301     		.sleb128 211
+ 964 06ac 09       		.uleb128 0x9
+ 965 06ad B71C0000 		.4byte	.LASF234
+ 966 06b1 D401     		.sleb128 212
+ 967 06b3 09       		.uleb128 0x9
+ 968 06b4 670A0000 		.4byte	.LASF235
+ 969 06b8 D501     		.sleb128 213
+ 970 06ba 09       		.uleb128 0x9
+ 971 06bb 8E100000 		.4byte	.LASF236
+ 972 06bf D601     		.sleb128 214
+ 973 06c1 09       		.uleb128 0x9
+ 974 06c2 F20D0000 		.4byte	.LASF237
+ 975 06c6 D701     		.sleb128 215
+ 976 06c8 09       		.uleb128 0x9
+ 977 06c9 F30B0000 		.4byte	.LASF238
+ 978 06cd D801     		.sleb128 216
+ 979 06cf 09       		.uleb128 0x9
+ 980 06d0 EF220000 		.4byte	.LASF239
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 21
+
+
+ 981 06d4 D901     		.sleb128 217
+ 982 06d6 09       		.uleb128 0x9
+ 983 06d7 60100000 		.4byte	.LASF240
+ 984 06db DA01     		.sleb128 218
+ 985 06dd 09       		.uleb128 0x9
+ 986 06de BC030000 		.4byte	.LASF241
+ 987 06e2 DB01     		.sleb128 219
+ 988 06e4 09       		.uleb128 0x9
+ 989 06e5 C9050000 		.4byte	.LASF242
+ 990 06e9 DC01     		.sleb128 220
+ 991 06eb 09       		.uleb128 0x9
+ 992 06ec 2F210000 		.4byte	.LASF243
+ 993 06f0 DD01     		.sleb128 221
+ 994 06f2 09       		.uleb128 0x9
+ 995 06f3 960F0000 		.4byte	.LASF244
+ 996 06f7 DE01     		.sleb128 222
+ 997 06f9 09       		.uleb128 0x9
+ 998 06fa BE0D0000 		.4byte	.LASF245
+ 999 06fe DF01     		.sleb128 223
+ 1000 0700 09       		.uleb128 0x9
+ 1001 0701 F50E0000 		.4byte	.LASF246
+ 1002 0705 E001     		.sleb128 224
+ 1003 0707 09       		.uleb128 0x9
+ 1004 0708 CD0D0000 		.4byte	.LASF247
+ 1005 070c E101     		.sleb128 225
+ 1006 070e 09       		.uleb128 0x9
+ 1007 070f FC100000 		.4byte	.LASF248
+ 1008 0713 E201     		.sleb128 226
+ 1009 0715 09       		.uleb128 0x9
+ 1010 0716 66130000 		.4byte	.LASF249
+ 1011 071a E301     		.sleb128 227
+ 1012 071c 09       		.uleb128 0x9
+ 1013 071d 360E0000 		.4byte	.LASF250
+ 1014 0721 E401     		.sleb128 228
+ 1015 0723 09       		.uleb128 0x9
+ 1016 0724 550C0000 		.4byte	.LASF251
+ 1017 0728 E501     		.sleb128 229
+ 1018 072a 09       		.uleb128 0x9
+ 1019 072b 17140000 		.4byte	.LASF252
+ 1020 072f E601     		.sleb128 230
+ 1021 0731 09       		.uleb128 0x9
+ 1022 0732 DB0F0000 		.4byte	.LASF253
+ 1023 0736 E701     		.sleb128 231
+ 1024 0738 09       		.uleb128 0x9
+ 1025 0739 28080000 		.4byte	.LASF254
+ 1026 073d E801     		.sleb128 232
+ 1027 073f 09       		.uleb128 0x9
+ 1028 0740 88240000 		.4byte	.LASF255
+ 1029 0744 E901     		.sleb128 233
+ 1030 0746 09       		.uleb128 0x9
+ 1031 0747 F21E0000 		.4byte	.LASF256
+ 1032 074b EA01     		.sleb128 234
+ 1033 074d 09       		.uleb128 0x9
+ 1034 074e B3160000 		.4byte	.LASF257
+ 1035 0752 EB01     		.sleb128 235
+ 1036 0754 09       		.uleb128 0x9
+ 1037 0755 691F0000 		.4byte	.LASF258
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 22
+
+
+ 1038 0759 EC01     		.sleb128 236
+ 1039 075b 09       		.uleb128 0x9
+ 1040 075c 2B1D0000 		.4byte	.LASF259
+ 1041 0760 ED01     		.sleb128 237
+ 1042 0762 09       		.uleb128 0x9
+ 1043 0763 2F050000 		.4byte	.LASF260
+ 1044 0767 EE01     		.sleb128 238
+ 1045 0769 09       		.uleb128 0x9
+ 1046 076a 30130000 		.4byte	.LASF261
+ 1047 076e EF01     		.sleb128 239
+ 1048 0770 09       		.uleb128 0x9
+ 1049 0771 11230000 		.4byte	.LASF262
+ 1050 0775 F001     		.sleb128 240
+ 1051 0777 09       		.uleb128 0x9
+ 1052 0778 52160000 		.4byte	.LASF263
+ 1053 077c F101     		.sleb128 241
+ 1054 077e 09       		.uleb128 0x9
+ 1055 077f 0B210000 		.4byte	.LASF264
+ 1056 0783 F201     		.sleb128 242
+ 1057 0785 09       		.uleb128 0x9
+ 1058 0786 43130000 		.4byte	.LASF265
+ 1059 078a F301     		.sleb128 243
+ 1060 078c 09       		.uleb128 0x9
+ 1061 078d D8060000 		.4byte	.LASF266
+ 1062 0791 F401     		.sleb128 244
+ 1063 0793 09       		.uleb128 0x9
+ 1064 0794 471B0000 		.4byte	.LASF267
+ 1065 0798 F501     		.sleb128 245
+ 1066 079a 09       		.uleb128 0x9
+ 1067 079b 741B0000 		.4byte	.LASF268
+ 1068 079f F601     		.sleb128 246
+ 1069 07a1 09       		.uleb128 0x9
+ 1070 07a2 30090000 		.4byte	.LASF269
+ 1071 07a6 F701     		.sleb128 247
+ 1072 07a8 09       		.uleb128 0x9
+ 1073 07a9 63160000 		.4byte	.LASF270
+ 1074 07ad F801     		.sleb128 248
+ 1075 07af 09       		.uleb128 0x9
+ 1076 07b0 830F0000 		.4byte	.LASF271
+ 1077 07b4 F901     		.sleb128 249
+ 1078 07b6 09       		.uleb128 0x9
+ 1079 07b7 43180000 		.4byte	.LASF272
+ 1080 07bb FA01     		.sleb128 250
+ 1081 07bd 09       		.uleb128 0x9
+ 1082 07be C8100000 		.4byte	.LASF273
+ 1083 07c2 FB01     		.sleb128 251
+ 1084 07c4 09       		.uleb128 0x9
+ 1085 07c5 09250000 		.4byte	.LASF274
+ 1086 07c9 FC01     		.sleb128 252
+ 1087 07cb 09       		.uleb128 0x9
+ 1088 07cc 7B0C0000 		.4byte	.LASF275
+ 1089 07d0 FD01     		.sleb128 253
+ 1090 07d2 09       		.uleb128 0x9
+ 1091 07d3 40230000 		.4byte	.LASF276
+ 1092 07d7 FE01     		.sleb128 254
+ 1093 07d9 09       		.uleb128 0x9
+ 1094 07da D60E0000 		.4byte	.LASF277
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 23
+
+
+ 1095 07de FF01     		.sleb128 255
+ 1096 07e0 09       		.uleb128 0x9
+ 1097 07e1 09220000 		.4byte	.LASF278
+ 1098 07e5 8002     		.sleb128 256
+ 1099 07e7 09       		.uleb128 0x9
+ 1100 07e8 D7100000 		.4byte	.LASF279
+ 1101 07ec 8102     		.sleb128 257
+ 1102 07ee 09       		.uleb128 0x9
+ 1103 07ef 47190000 		.4byte	.LASF280
+ 1104 07f3 8202     		.sleb128 258
+ 1105 07f5 09       		.uleb128 0x9
+ 1106 07f6 471C0000 		.4byte	.LASF281
+ 1107 07fa 8302     		.sleb128 259
+ 1108 07fc 09       		.uleb128 0x9
+ 1109 07fd E60A0000 		.4byte	.LASF282
+ 1110 0801 8402     		.sleb128 260
+ 1111 0803 09       		.uleb128 0x9
+ 1112 0804 E40E0000 		.4byte	.LASF283
+ 1113 0808 8502     		.sleb128 261
+ 1114 080a 09       		.uleb128 0x9
+ 1115 080b 9D020000 		.4byte	.LASF284
+ 1116 080f 8602     		.sleb128 262
+ 1117 0811 09       		.uleb128 0x9
+ 1118 0812 C1110000 		.4byte	.LASF285
+ 1119 0816 8702     		.sleb128 263
+ 1120 0818 09       		.uleb128 0x9
+ 1121 0819 71050000 		.4byte	.LASF286
+ 1122 081d 8802     		.sleb128 264
+ 1123 081f 09       		.uleb128 0x9
+ 1124 0820 720D0000 		.4byte	.LASF287
+ 1125 0824 8902     		.sleb128 265
+ 1126 0826 09       		.uleb128 0x9
+ 1127 0827 B61E0000 		.4byte	.LASF288
+ 1128 082b 8A02     		.sleb128 266
+ 1129 082d 09       		.uleb128 0x9
+ 1130 082e 450C0000 		.4byte	.LASF289
+ 1131 0832 8B02     		.sleb128 267
+ 1132 0834 09       		.uleb128 0x9
+ 1133 0835 310A0000 		.4byte	.LASF290
+ 1134 0839 8C02     		.sleb128 268
+ 1135 083b 09       		.uleb128 0x9
+ 1136 083c FE1B0000 		.4byte	.LASF291
+ 1137 0840 8D02     		.sleb128 269
+ 1138 0842 09       		.uleb128 0x9
+ 1139 0843 8A0A0000 		.4byte	.LASF292
+ 1140 0847 8E02     		.sleb128 270
+ 1141 0849 09       		.uleb128 0x9
+ 1142 084a EA050000 		.4byte	.LASF293
+ 1143 084e 8F02     		.sleb128 271
+ 1144 0850 09       		.uleb128 0x9
+ 1145 0851 9A070000 		.4byte	.LASF294
+ 1146 0855 9002     		.sleb128 272
+ 1147 0857 09       		.uleb128 0x9
+ 1148 0858 E6010000 		.4byte	.LASF295
+ 1149 085c 9102     		.sleb128 273
+ 1150 085e 09       		.uleb128 0x9
+ 1151 085f F7240000 		.4byte	.LASF296
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 24
+
+
+ 1152 0863 9202     		.sleb128 274
+ 1153 0865 09       		.uleb128 0x9
+ 1154 0866 E01E0000 		.4byte	.LASF297
+ 1155 086a 9302     		.sleb128 275
+ 1156 086c 09       		.uleb128 0x9
+ 1157 086d B2240000 		.4byte	.LASF298
+ 1158 0871 9402     		.sleb128 276
+ 1159 0873 09       		.uleb128 0x9
+ 1160 0874 340F0000 		.4byte	.LASF299
+ 1161 0878 9502     		.sleb128 277
+ 1162 087a 09       		.uleb128 0x9
+ 1163 087b 6E020000 		.4byte	.LASF300
+ 1164 087f 9602     		.sleb128 278
+ 1165 0881 09       		.uleb128 0x9
+ 1166 0882 56130000 		.4byte	.LASF301
+ 1167 0886 9702     		.sleb128 279
+ 1168 0888 09       		.uleb128 0x9
+ 1169 0889 E7020000 		.4byte	.LASF302
+ 1170 088d 9802     		.sleb128 280
+ 1171 088f 09       		.uleb128 0x9
+ 1172 0890 0B130000 		.4byte	.LASF303
+ 1173 0894 9902     		.sleb128 281
+ 1174 0896 09       		.uleb128 0x9
+ 1175 0897 AC150000 		.4byte	.LASF304
+ 1176 089b 9A02     		.sleb128 282
+ 1177 089d 09       		.uleb128 0x9
+ 1178 089e AD010000 		.4byte	.LASF305
+ 1179 08a2 9B02     		.sleb128 283
+ 1180 08a4 09       		.uleb128 0x9
+ 1181 08a5 57060000 		.4byte	.LASF306
+ 1182 08a9 9C02     		.sleb128 284
+ 1183 08ab 09       		.uleb128 0x9
+ 1184 08ac AB110000 		.4byte	.LASF307
+ 1185 08b0 9D02     		.sleb128 285
+ 1186 08b2 09       		.uleb128 0x9
+ 1187 08b3 42100000 		.4byte	.LASF308
+ 1188 08b7 9E02     		.sleb128 286
+ 1189 08b9 09       		.uleb128 0x9
+ 1190 08ba C2000000 		.4byte	.LASF309
+ 1191 08be 9F02     		.sleb128 287
+ 1192 08c0 09       		.uleb128 0x9
+ 1193 08c1 A01C0000 		.4byte	.LASF310
+ 1194 08c5 A002     		.sleb128 288
+ 1195 08c7 09       		.uleb128 0x9
+ 1196 08c8 D3020000 		.4byte	.LASF311
+ 1197 08cc A102     		.sleb128 289
+ 1198 08ce 09       		.uleb128 0x9
+ 1199 08cf C3160000 		.4byte	.LASF312
+ 1200 08d3 A202     		.sleb128 290
+ 1201 08d5 09       		.uleb128 0x9
+ 1202 08d6 471E0000 		.4byte	.LASF313
+ 1203 08da A302     		.sleb128 291
+ 1204 08dc 09       		.uleb128 0x9
+ 1205 08dd 211A0000 		.4byte	.LASF314
+ 1206 08e1 A402     		.sleb128 292
+ 1207 08e3 09       		.uleb128 0x9
+ 1208 08e4 230E0000 		.4byte	.LASF315
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 25
+
+
+ 1209 08e8 A502     		.sleb128 293
+ 1210 08ea 09       		.uleb128 0x9
+ 1211 08eb 4C200000 		.4byte	.LASF316
+ 1212 08ef A602     		.sleb128 294
+ 1213 08f1 09       		.uleb128 0x9
+ 1214 08f2 D01A0000 		.4byte	.LASF317
+ 1215 08f6 A702     		.sleb128 295
+ 1216 08f8 09       		.uleb128 0x9
+ 1217 08f9 1E190000 		.4byte	.LASF318
+ 1218 08fd A802     		.sleb128 296
+ 1219 08ff 09       		.uleb128 0x9
+ 1220 0900 C6130000 		.4byte	.LASF319
+ 1221 0904 A902     		.sleb128 297
+ 1222 0906 09       		.uleb128 0x9
+ 1223 0907 34010000 		.4byte	.LASF320
+ 1224 090b AA02     		.sleb128 298
+ 1225 090d 09       		.uleb128 0x9
+ 1226 090e 30000000 		.4byte	.LASF321
+ 1227 0912 AB02     		.sleb128 299
+ 1228 0914 09       		.uleb128 0x9
+ 1229 0915 58170000 		.4byte	.LASF322
+ 1230 0919 AC02     		.sleb128 300
+ 1231 091b 09       		.uleb128 0x9
+ 1232 091c 5D0D0000 		.4byte	.LASF323
+ 1233 0920 AD02     		.sleb128 301
+ 1234 0922 09       		.uleb128 0x9
+ 1235 0923 F5070000 		.4byte	.LASF324
+ 1236 0927 AE02     		.sleb128 302
+ 1237 0929 09       		.uleb128 0x9
+ 1238 092a A6170000 		.4byte	.LASF325
+ 1239 092e AF02     		.sleb128 303
+ 1240 0930 09       		.uleb128 0x9
+ 1241 0931 3D110000 		.4byte	.LASF326
+ 1242 0935 B002     		.sleb128 304
+ 1243 0937 09       		.uleb128 0x9
+ 1244 0938 95250000 		.4byte	.LASF327
+ 1245 093c B102     		.sleb128 305
+ 1246 093e 09       		.uleb128 0x9
+ 1247 093f FE220000 		.4byte	.LASF328
+ 1248 0943 B202     		.sleb128 306
+ 1249 0945 09       		.uleb128 0x9
+ 1250 0946 780E0000 		.4byte	.LASF329
+ 1251 094a B302     		.sleb128 307
+ 1252 094c 09       		.uleb128 0x9
+ 1253 094d 24150000 		.4byte	.LASF330
+ 1254 0951 B402     		.sleb128 308
+ 1255 0953 09       		.uleb128 0x9
+ 1256 0954 FB170000 		.4byte	.LASF331
+ 1257 0958 B502     		.sleb128 309
+ 1258 095a 09       		.uleb128 0x9
+ 1259 095b 5C070000 		.4byte	.LASF332
+ 1260 095f B602     		.sleb128 310
+ 1261 0961 09       		.uleb128 0x9
+ 1262 0962 00000000 		.4byte	.LASF333
+ 1263 0966 B702     		.sleb128 311
+ 1264 0968 09       		.uleb128 0x9
+ 1265 0969 EA090000 		.4byte	.LASF334
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 26
+
+
+ 1266 096d B802     		.sleb128 312
+ 1267 096f 09       		.uleb128 0x9
+ 1268 0970 751E0000 		.4byte	.LASF335
+ 1269 0974 B902     		.sleb128 313
+ 1270 0976 09       		.uleb128 0x9
+ 1271 0977 B9170000 		.4byte	.LASF336
+ 1272 097b BA02     		.sleb128 314
+ 1273 097d 09       		.uleb128 0x9
+ 1274 097e 57190000 		.4byte	.LASF337
+ 1275 0982 BB02     		.sleb128 315
+ 1276 0984 09       		.uleb128 0x9
+ 1277 0985 DD000000 		.4byte	.LASF338
+ 1278 0989 BC02     		.sleb128 316
+ 1279 098b 09       		.uleb128 0x9
+ 1280 098c B7250000 		.4byte	.LASF339
+ 1281 0990 BD02     		.sleb128 317
+ 1282 0992 09       		.uleb128 0x9
+ 1283 0993 E6250000 		.4byte	.LASF340
+ 1284 0997 BE02     		.sleb128 318
+ 1285 0999 09       		.uleb128 0x9
+ 1286 099a FE190000 		.4byte	.LASF341
+ 1287 099e BF02     		.sleb128 319
+ 1288 09a0 09       		.uleb128 0x9
+ 1289 09a1 8A0E0000 		.4byte	.LASF342
+ 1290 09a5 C002     		.sleb128 320
+ 1291 09a7 09       		.uleb128 0x9
+ 1292 09a8 16240000 		.4byte	.LASF343
+ 1293 09ac C102     		.sleb128 321
+ 1294 09ae 09       		.uleb128 0x9
+ 1295 09af A6030000 		.4byte	.LASF344
+ 1296 09b3 C202     		.sleb128 322
+ 1297 09b5 09       		.uleb128 0x9
+ 1298 09b6 F0000000 		.4byte	.LASF345
+ 1299 09ba C302     		.sleb128 323
+ 1300 09bc 09       		.uleb128 0x9
+ 1301 09bd 15000000 		.4byte	.LASF346
+ 1302 09c1 C402     		.sleb128 324
+ 1303 09c3 09       		.uleb128 0x9
+ 1304 09c4 9B1A0000 		.4byte	.LASF347
+ 1305 09c8 C502     		.sleb128 325
+ 1306 09ca 09       		.uleb128 0x9
+ 1307 09cb 82050000 		.4byte	.LASF348
+ 1308 09cf C602     		.sleb128 326
+ 1309 09d1 09       		.uleb128 0x9
+ 1310 09d2 BD0B0000 		.4byte	.LASF349
+ 1311 09d6 C702     		.sleb128 327
+ 1312 09d8 09       		.uleb128 0x9
+ 1313 09d9 94060000 		.4byte	.LASF350
+ 1314 09dd C802     		.sleb128 328
+ 1315 09df 09       		.uleb128 0x9
+ 1316 09e0 B01D0000 		.4byte	.LASF351
+ 1317 09e4 C902     		.sleb128 329
+ 1318 09e6 09       		.uleb128 0x9
+ 1319 09e7 E21C0000 		.4byte	.LASF352
+ 1320 09eb CA02     		.sleb128 330
+ 1321 09ed 09       		.uleb128 0x9
+ 1322 09ee 9D1E0000 		.4byte	.LASF353
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 27
+
+
+ 1323 09f2 CB02     		.sleb128 331
+ 1324 09f4 09       		.uleb128 0x9
+ 1325 09f5 08010000 		.4byte	.LASF354
+ 1326 09f9 CC02     		.sleb128 332
+ 1327 09fb 09       		.uleb128 0x9
+ 1328 09fc A1130000 		.4byte	.LASF355
+ 1329 0a00 CD02     		.sleb128 333
+ 1330 0a02 09       		.uleb128 0x9
+ 1331 0a03 0B160000 		.4byte	.LASF356
+ 1332 0a07 CE02     		.sleb128 334
+ 1333 0a09 09       		.uleb128 0x9
+ 1334 0a0a 42240000 		.4byte	.LASF357
+ 1335 0a0e CF02     		.sleb128 335
+ 1336 0a10 09       		.uleb128 0x9
+ 1337 0a11 87140000 		.4byte	.LASF358
+ 1338 0a15 D002     		.sleb128 336
+ 1339 0a17 09       		.uleb128 0x9
+ 1340 0a18 6D150000 		.4byte	.LASF359
+ 1341 0a1c D102     		.sleb128 337
+ 1342 0a1e 09       		.uleb128 0x9
+ 1343 0a1f 140D0000 		.4byte	.LASF360
+ 1344 0a23 D202     		.sleb128 338
+ 1345 0a25 09       		.uleb128 0x9
+ 1346 0a26 9C110000 		.4byte	.LASF361
+ 1347 0a2a D302     		.sleb128 339
+ 1348 0a2c 09       		.uleb128 0x9
+ 1349 0a2d 14060000 		.4byte	.LASF362
+ 1350 0a31 D402     		.sleb128 340
+ 1351 0a33 09       		.uleb128 0x9
+ 1352 0a34 7F170000 		.4byte	.LASF363
+ 1353 0a38 D502     		.sleb128 341
+ 1354 0a3a 09       		.uleb128 0x9
+ 1355 0a3b C2230000 		.4byte	.LASF364
+ 1356 0a3f D602     		.sleb128 342
+ 1357 0a41 09       		.uleb128 0x9
+ 1358 0a42 E9130000 		.4byte	.LASF365
+ 1359 0a46 D702     		.sleb128 343
+ 1360 0a48 09       		.uleb128 0x9
+ 1361 0a49 45170000 		.4byte	.LASF366
+ 1362 0a4d D802     		.sleb128 344
+ 1363 0a4f 09       		.uleb128 0x9
+ 1364 0a50 95190000 		.4byte	.LASF367
+ 1365 0a54 D902     		.sleb128 345
+ 1366 0a56 09       		.uleb128 0x9
+ 1367 0a57 4E0B0000 		.4byte	.LASF368
+ 1368 0a5b DA02     		.sleb128 346
+ 1369 0a5d 09       		.uleb128 0x9
+ 1370 0a5e 20180000 		.4byte	.LASF369
+ 1371 0a62 DB02     		.sleb128 347
+ 1372 0a64 09       		.uleb128 0x9
+ 1373 0a65 66110000 		.4byte	.LASF370
+ 1374 0a69 DC02     		.sleb128 348
+ 1375 0a6b 09       		.uleb128 0x9
+ 1376 0a6c B7180000 		.4byte	.LASF371
+ 1377 0a70 DD02     		.sleb128 349
+ 1378 0a72 09       		.uleb128 0x9
+ 1379 0a73 42160000 		.4byte	.LASF372
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 28
+
+
+ 1380 0a77 DE02     		.sleb128 350
+ 1381 0a79 09       		.uleb128 0x9
+ 1382 0a7a E31D0000 		.4byte	.LASF373
+ 1383 0a7e DF02     		.sleb128 351
+ 1384 0a80 09       		.uleb128 0x9
+ 1385 0a81 C0010000 		.4byte	.LASF374
+ 1386 0a85 E002     		.sleb128 352
+ 1387 0a87 09       		.uleb128 0x9
+ 1388 0a88 BB1B0000 		.4byte	.LASF375
+ 1389 0a8c E102     		.sleb128 353
+ 1390 0a8e 09       		.uleb128 0x9
+ 1391 0a8f 371E0000 		.4byte	.LASF376
+ 1392 0a93 E202     		.sleb128 354
+ 1393 0a95 09       		.uleb128 0x9
+ 1394 0a96 EE0F0000 		.4byte	.LASF377
+ 1395 0a9a E302     		.sleb128 355
+ 1396 0a9c 09       		.uleb128 0x9
+ 1397 0a9d 740F0000 		.4byte	.LASF378
+ 1398 0aa1 E402     		.sleb128 356
+ 1399 0aa3 09       		.uleb128 0x9
+ 1400 0aa4 9D0A0000 		.4byte	.LASF379
+ 1401 0aa8 E502     		.sleb128 357
+ 1402 0aaa 09       		.uleb128 0x9
+ 1403 0aab 010E0000 		.4byte	.LASF380
+ 1404 0aaf E602     		.sleb128 358
+ 1405 0ab1 09       		.uleb128 0x9
+ 1406 0ab2 ED080000 		.4byte	.LASF381
+ 1407 0ab6 E702     		.sleb128 359
+ 1408 0ab8 09       		.uleb128 0x9
+ 1409 0ab9 A61F0000 		.4byte	.LASF382
+ 1410 0abd E802     		.sleb128 360
+ 1411 0abf 09       		.uleb128 0x9
+ 1412 0ac0 CF120000 		.4byte	.LASF383
+ 1413 0ac4 E902     		.sleb128 361
+ 1414 0ac6 09       		.uleb128 0x9
+ 1415 0ac7 8E1D0000 		.4byte	.LASF384
+ 1416 0acb EA02     		.sleb128 362
+ 1417 0acd 09       		.uleb128 0x9
+ 1418 0ace 600B0000 		.4byte	.LASF385
+ 1419 0ad2 EB02     		.sleb128 363
+ 1420 0ad4 09       		.uleb128 0x9
+ 1421 0ad5 700B0000 		.4byte	.LASF386
+ 1422 0ad9 EC02     		.sleb128 364
+ 1423 0adb 09       		.uleb128 0x9
+ 1424 0adc 5F210000 		.4byte	.LASF387
+ 1425 0ae0 ED02     		.sleb128 365
+ 1426 0ae2 09       		.uleb128 0x9
+ 1427 0ae3 3E210000 		.4byte	.LASF388
+ 1428 0ae7 EE02     		.sleb128 366
+ 1429 0ae9 09       		.uleb128 0x9
+ 1430 0aea E9180000 		.4byte	.LASF389
+ 1431 0aee EF02     		.sleb128 367
+ 1432 0af0 09       		.uleb128 0x9
+ 1433 0af1 000A0000 		.4byte	.LASF390
+ 1434 0af5 F002     		.sleb128 368
+ 1435 0af7 09       		.uleb128 0x9
+ 1436 0af8 5F050000 		.4byte	.LASF391
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 29
+
+
+ 1437 0afc F102     		.sleb128 369
+ 1438 0afe 09       		.uleb128 0x9
+ 1439 0aff 0E1C0000 		.4byte	.LASF392
+ 1440 0b03 F202     		.sleb128 370
+ 1441 0b05 09       		.uleb128 0x9
+ 1442 0b06 A90B0000 		.4byte	.LASF393
+ 1443 0b0a F302     		.sleb128 371
+ 1444 0b0c 09       		.uleb128 0x9
+ 1445 0b0d 8F160000 		.4byte	.LASF394
+ 1446 0b11 F402     		.sleb128 372
+ 1447 0b13 09       		.uleb128 0x9
+ 1448 0b14 F80A0000 		.4byte	.LASF395
+ 1449 0b18 F502     		.sleb128 373
+ 1450 0b1a 09       		.uleb128 0x9
+ 1451 0b1b E9200000 		.4byte	.LASF396
+ 1452 0b1f F602     		.sleb128 374
+ 1453 0b21 09       		.uleb128 0x9
+ 1454 0b22 01060000 		.4byte	.LASF397
+ 1455 0b26 F702     		.sleb128 375
+ 1456 0b28 09       		.uleb128 0x9
+ 1457 0b29 75240000 		.4byte	.LASF398
+ 1458 0b2d F802     		.sleb128 376
+ 1459 0b2f 09       		.uleb128 0x9
+ 1460 0b30 A70F0000 		.4byte	.LASF399
+ 1461 0b34 F902     		.sleb128 377
+ 1462 0b36 09       		.uleb128 0x9
+ 1463 0b37 1C130000 		.4byte	.LASF400
+ 1464 0b3b FA02     		.sleb128 378
+ 1465 0b3d 09       		.uleb128 0x9
+ 1466 0b3e 7E1C0000 		.4byte	.LASF401
+ 1467 0b42 FB02     		.sleb128 379
+ 1468 0b44 09       		.uleb128 0x9
+ 1469 0b45 DA190000 		.4byte	.LASF402
+ 1470 0b49 FC02     		.sleb128 380
+ 1471 0b4b 09       		.uleb128 0x9
+ 1472 0b4c 5A150000 		.4byte	.LASF403
+ 1473 0b50 FD02     		.sleb128 381
+ 1474 0b52 09       		.uleb128 0x9
+ 1475 0b53 6A1C0000 		.4byte	.LASF404
+ 1476 0b57 FE02     		.sleb128 382
+ 1477 0b59 09       		.uleb128 0x9
+ 1478 0b5a 16040000 		.4byte	.LASF405
+ 1479 0b5e FF02     		.sleb128 383
+ 1480 0b60 09       		.uleb128 0x9
+ 1481 0b61 DC0D0000 		.4byte	.LASF406
+ 1482 0b65 8003     		.sleb128 384
+ 1483 0b67 09       		.uleb128 0x9
+ 1484 0b68 C80C0000 		.4byte	.LASF407
+ 1485 0b6c 8103     		.sleb128 385
+ 1486 0b6e 09       		.uleb128 0x9
+ 1487 0b6f 68200000 		.4byte	.LASF408
+ 1488 0b73 8203     		.sleb128 386
+ 1489 0b75 09       		.uleb128 0x9
+ 1490 0b76 75100000 		.4byte	.LASF409
+ 1491 0b7a 8303     		.sleb128 387
+ 1492 0b7c 09       		.uleb128 0x9
+ 1493 0b7d 11070000 		.4byte	.LASF410
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 30
+
+
+ 1494 0b81 8403     		.sleb128 388
+ 1495 0b83 09       		.uleb128 0x9
+ 1496 0b84 6B120000 		.4byte	.LASF411
+ 1497 0b88 8503     		.sleb128 389
+ 1498 0b8a 09       		.uleb128 0x9
+ 1499 0b8b F4040000 		.4byte	.LASF412
+ 1500 0b8f 8603     		.sleb128 390
+ 1501 0b91 09       		.uleb128 0x9
+ 1502 0b92 3C080000 		.4byte	.LASF413
+ 1503 0b96 8703     		.sleb128 391
+ 1504 0b98 09       		.uleb128 0x9
+ 1505 0b99 CD170000 		.4byte	.LASF414
+ 1506 0b9d 8803     		.sleb128 392
+ 1507 0b9f 09       		.uleb128 0x9
+ 1508 0ba0 67090000 		.4byte	.LASF415
+ 1509 0ba4 8903     		.sleb128 393
+ 1510 0ba6 09       		.uleb128 0x9
+ 1511 0ba7 D5240000 		.4byte	.LASF416
+ 1512 0bab 8A03     		.sleb128 394
+ 1513 0bad 09       		.uleb128 0x9
+ 1514 0bae 6E1A0000 		.4byte	.LASF417
+ 1515 0bb2 8B03     		.sleb128 395
+ 1516 0bb4 09       		.uleb128 0x9
+ 1517 0bb5 611D0000 		.4byte	.LASF418
+ 1518 0bb9 8C03     		.sleb128 396
+ 1519 0bbb 09       		.uleb128 0x9
+ 1520 0bbc B91F0000 		.4byte	.LASF419
+ 1521 0bc0 8D03     		.sleb128 397
+ 1522 0bc2 09       		.uleb128 0x9
+ 1523 0bc3 8C000000 		.4byte	.LASF420
+ 1524 0bc7 8E03     		.sleb128 398
+ 1525 0bc9 09       		.uleb128 0x9
+ 1526 0bca 72160000 		.4byte	.LASF421
+ 1527 0bce 8F03     		.sleb128 399
+ 1528 0bd0 09       		.uleb128 0x9
+ 1529 0bd1 500D0000 		.4byte	.LASF422
+ 1530 0bd5 9003     		.sleb128 400
+ 1531 0bd7 09       		.uleb128 0x9
+ 1532 0bd8 381F0000 		.4byte	.LASF423
+ 1533 0bdc 9103     		.sleb128 401
+ 1534 0bde 09       		.uleb128 0x9
+ 1535 0bdf 680C0000 		.4byte	.LASF424
+ 1536 0be3 9203     		.sleb128 402
+ 1537 0be5 09       		.uleb128 0x9
+ 1538 0be6 BF150000 		.4byte	.LASF425
+ 1539 0bea 9303     		.sleb128 403
+ 1540 0bec 09       		.uleb128 0x9
+ 1541 0bed DB180000 		.4byte	.LASF426
+ 1542 0bf1 9403     		.sleb128 404
+ 1543 0bf3 09       		.uleb128 0x9
+ 1544 0bf4 68040000 		.4byte	.LASF427
+ 1545 0bf8 9503     		.sleb128 405
+ 1546 0bfa 09       		.uleb128 0x9
+ 1547 0bfb AB1B0000 		.4byte	.LASF428
+ 1548 0bff 9603     		.sleb128 406
+ 1549 0c01 09       		.uleb128 0x9
+ 1550 0c02 04040000 		.4byte	.LASF429
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 31
+
+
+ 1551 0c06 9703     		.sleb128 407
+ 1552 0c08 09       		.uleb128 0x9
+ 1553 0c09 32100000 		.4byte	.LASF430
+ 1554 0c0d 9803     		.sleb128 408
+ 1555 0c0f 09       		.uleb128 0x9
+ 1556 0c10 04170000 		.4byte	.LASF431
+ 1557 0c14 9903     		.sleb128 409
+ 1558 0c16 09       		.uleb128 0x9
+ 1559 0c17 6E210000 		.4byte	.LASF432
+ 1560 0c1b 9A03     		.sleb128 410
+ 1561 0c1d 09       		.uleb128 0x9
+ 1562 0c1e 42000000 		.4byte	.LASF433
+ 1563 0c22 9B03     		.sleb128 411
+ 1564 0c24 09       		.uleb128 0x9
+ 1565 0c25 F0100000 		.4byte	.LASF434
+ 1566 0c29 9C03     		.sleb128 412
+ 1567 0c2b 09       		.uleb128 0x9
+ 1568 0c2c 9A0D0000 		.4byte	.LASF435
+ 1569 0c30 9D03     		.sleb128 413
+ 1570 0c32 09       		.uleb128 0x9
+ 1571 0c33 39170000 		.4byte	.LASF436
+ 1572 0c37 9E03     		.sleb128 414
+ 1573 0c39 09       		.uleb128 0x9
+ 1574 0c3a C61E0000 		.4byte	.LASF437
+ 1575 0c3e 9F03     		.sleb128 415
+ 1576 0c40 09       		.uleb128 0x9
+ 1577 0c41 420A0000 		.4byte	.LASF438
+ 1578 0c45 A003     		.sleb128 416
+ 1579 0c47 09       		.uleb128 0x9
+ 1580 0c48 480E0000 		.4byte	.LASF439
+ 1581 0c4c A103     		.sleb128 417
+ 1582 0c4e 09       		.uleb128 0x9
+ 1583 0c4f E9070000 		.4byte	.LASF440
+ 1584 0c53 A203     		.sleb128 418
+ 1585 0c55 09       		.uleb128 0x9
+ 1586 0c56 A0080000 		.4byte	.LASF441
+ 1587 0c5a A303     		.sleb128 419
+ 1588 0c5c 09       		.uleb128 0x9
+ 1589 0c5d 21020000 		.4byte	.LASF442
+ 1590 0c61 A403     		.sleb128 420
+ 1591 0c63 09       		.uleb128 0x9
+ 1592 0c64 3C150000 		.4byte	.LASF443
+ 1593 0c68 A503     		.sleb128 421
+ 1594 0c6a 09       		.uleb128 0x9
+ 1595 0c6b FA210000 		.4byte	.LASF444
+ 1596 0c6f A603     		.sleb128 422
+ 1597 0c71 09       		.uleb128 0x9
+ 1598 0c72 5B030000 		.4byte	.LASF445
+ 1599 0c76 A703     		.sleb128 423
+ 1600 0c78 09       		.uleb128 0x9
+ 1601 0c79 31120000 		.4byte	.LASF446
+ 1602 0c7d A803     		.sleb128 424
+ 1603 0c7f 09       		.uleb128 0x9
+ 1604 0c80 DA010000 		.4byte	.LASF447
+ 1605 0c84 A903     		.sleb128 425
+ 1606 0c86 09       		.uleb128 0x9
+ 1607 0c87 4D050000 		.4byte	.LASF448
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 32
+
+
+ 1608 0c8b AA03     		.sleb128 426
+ 1609 0c8d 09       		.uleb128 0x9
+ 1610 0c8e 19250000 		.4byte	.LASF449
+ 1611 0c92 AB03     		.sleb128 427
+ 1612 0c94 09       		.uleb128 0x9
+ 1613 0c95 2E1B0000 		.4byte	.LASF450
+ 1614 0c99 AC03     		.sleb128 428
+ 1615 0c9b 09       		.uleb128 0x9
+ 1616 0c9c FC0C0000 		.4byte	.LASF451
+ 1617 0ca0 AD03     		.sleb128 429
+ 1618 0ca2 09       		.uleb128 0x9
+ 1619 0ca3 0C150000 		.4byte	.LASF452
+ 1620 0ca7 AE03     		.sleb128 430
+ 1621 0ca9 09       		.uleb128 0x9
+ 1622 0caa 9C240000 		.4byte	.LASF453
+ 1623 0cae AF03     		.sleb128 431
+ 1624 0cb0 09       		.uleb128 0x9
+ 1625 0cb1 1D0A0000 		.4byte	.LASF454
+ 1626 0cb5 B003     		.sleb128 432
+ 1627 0cb7 09       		.uleb128 0x9
+ 1628 0cb8 B9050000 		.4byte	.LASF455
+ 1629 0cbc B103     		.sleb128 433
+ 1630 0cbe 09       		.uleb128 0x9
+ 1631 0cbf 5E140000 		.4byte	.LASF456
+ 1632 0cc3 B203     		.sleb128 434
+ 1633 0cc5 09       		.uleb128 0x9
+ 1634 0cc6 0F0E0000 		.4byte	.LASF457
+ 1635 0cca B303     		.sleb128 435
+ 1636 0ccc 09       		.uleb128 0x9
+ 1637 0ccd D7140000 		.4byte	.LASF458
+ 1638 0cd1 B403     		.sleb128 436
+ 1639 0cd3 09       		.uleb128 0x9
+ 1640 0cd4 95050000 		.4byte	.LASF459
+ 1641 0cd8 B503     		.sleb128 437
+ 1642 0cda 09       		.uleb128 0x9
+ 1643 0cdb CB0A0000 		.4byte	.LASF460
+ 1644 0cdf B603     		.sleb128 438
+ 1645 0ce1 09       		.uleb128 0x9
+ 1646 0ce2 4E110000 		.4byte	.LASF461
+ 1647 0ce6 B703     		.sleb128 439
+ 1648 0ce8 09       		.uleb128 0x9
+ 1649 0ce9 340B0000 		.4byte	.LASF462
+ 1650 0ced B803     		.sleb128 440
+ 1651 0cef 09       		.uleb128 0x9
+ 1652 0cf0 21010000 		.4byte	.LASF463
+ 1653 0cf4 B903     		.sleb128 441
+ 1654 0cf6 09       		.uleb128 0x9
+ 1655 0cf7 CA1B0000 		.4byte	.LASF464
+ 1656 0cfb BA03     		.sleb128 442
+ 1657 0cfd 09       		.uleb128 0x9
+ 1658 0cfe C91D0000 		.4byte	.LASF465
+ 1659 0d02 BB03     		.sleb128 443
+ 1660 0d04 09       		.uleb128 0x9
+ 1661 0d05 7E060000 		.4byte	.LASF466
+ 1662 0d09 BC03     		.sleb128 444
+ 1663 0d0b 09       		.uleb128 0x9
+ 1664 0d0c 91170000 		.4byte	.LASF467
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 33
+
+
+ 1665 0d10 BD03     		.sleb128 445
+ 1666 0d12 09       		.uleb128 0x9
+ 1667 0d13 A6100000 		.4byte	.LASF468
+ 1668 0d17 BE03     		.sleb128 446
+ 1669 0d19 09       		.uleb128 0x9
+ 1670 0d1a 44020000 		.4byte	.LASF469
+ 1671 0d1e BF03     		.sleb128 447
+ 1672 0d20 09       		.uleb128 0x9
+ 1673 0d21 1A0B0000 		.4byte	.LASF470
+ 1674 0d25 C003     		.sleb128 448
+ 1675 0d27 09       		.uleb128 0x9
+ 1676 0d28 B31A0000 		.4byte	.LASF471
+ 1677 0d2c C103     		.sleb128 449
+ 1678 0d2e 09       		.uleb128 0x9
+ 1679 0d2f 8A1F0000 		.4byte	.LASF472
+ 1680 0d33 C203     		.sleb128 450
+ 1681 0d35 09       		.uleb128 0x9
+ 1682 0d36 CC1F0000 		.4byte	.LASF473
+ 1683 0d3a C303     		.sleb128 451
+ 1684 0d3c 09       		.uleb128 0x9
+ 1685 0d3d 40030000 		.4byte	.LASF474
+ 1686 0d41 C403     		.sleb128 452
+ 1687 0d43 09       		.uleb128 0x9
+ 1688 0d44 78090000 		.4byte	.LASF475
+ 1689 0d48 C503     		.sleb128 453
+ 1690 0d4a 09       		.uleb128 0x9
+ 1691 0d4b FD1F0000 		.4byte	.LASF476
+ 1692 0d4f C603     		.sleb128 454
+ 1693 0d51 09       		.uleb128 0x9
+ 1694 0d52 C20F0000 		.4byte	.LASF477
+ 1695 0d56 C703     		.sleb128 455
+ 1696 0d58 09       		.uleb128 0x9
+ 1697 0d59 D5230000 		.4byte	.LASF478
+ 1698 0d5d C803     		.sleb128 456
+ 1699 0d5f 09       		.uleb128 0x9
+ 1700 0d60 BE070000 		.4byte	.LASF479
+ 1701 0d64 C903     		.sleb128 457
+ 1702 0d66 09       		.uleb128 0x9
+ 1703 0d67 88150000 		.4byte	.LASF480
+ 1704 0d6b CA03     		.sleb128 458
+ 1705 0d6d 09       		.uleb128 0x9
+ 1706 0d6e B2190000 		.4byte	.LASF481
+ 1707 0d72 CB03     		.sleb128 459
+ 1708 0d74 09       		.uleb128 0x9
+ 1709 0d75 1B110000 		.4byte	.LASF482
+ 1710 0d79 CC03     		.sleb128 460
+ 1711 0d7b 09       		.uleb128 0x9
+ 1712 0d7c 81020000 		.4byte	.LASF483
+ 1713 0d80 CD03     		.sleb128 461
+ 1714 0d82 09       		.uleb128 0x9
+ 1715 0d83 001F0000 		.4byte	.LASF484
+ 1716 0d87 CE03     		.sleb128 462
+ 1717 0d89 09       		.uleb128 0x9
+ 1718 0d8a 67010000 		.4byte	.LASF485
+ 1719 0d8e CF03     		.sleb128 463
+ 1720 0d90 09       		.uleb128 0x9
+ 1721 0d91 9F0E0000 		.4byte	.LASF486
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 34
+
+
+ 1722 0d95 D003     		.sleb128 464
+ 1723 0d97 09       		.uleb128 0x9
+ 1724 0d98 460F0000 		.4byte	.LASF487
+ 1725 0d9c D103     		.sleb128 465
+ 1726 0d9e 09       		.uleb128 0x9
+ 1727 0d9f BA200000 		.4byte	.LASF488
+ 1728 0da3 D203     		.sleb128 466
+ 1729 0da5 09       		.uleb128 0x9
+ 1730 0da6 DD1B0000 		.4byte	.LASF489
+ 1731 0daa D303     		.sleb128 467
+ 1732 0dac 09       		.uleb128 0x9
+ 1733 0dad 871A0000 		.4byte	.LASF490
+ 1734 0db1 D403     		.sleb128 468
+ 1735 0db3 09       		.uleb128 0x9
+ 1736 0db4 C6060000 		.4byte	.LASF491
+ 1737 0db8 D503     		.sleb128 469
+ 1738 0dba 09       		.uleb128 0x9
+ 1739 0dbb 5A1B0000 		.4byte	.LASF492
+ 1740 0dbf D603     		.sleb128 470
+ 1741 0dc1 09       		.uleb128 0x9
+ 1742 0dc2 93010000 		.4byte	.LASF493
+ 1743 0dc6 D703     		.sleb128 471
+ 1744 0dc8 09       		.uleb128 0x9
+ 1745 0dc9 98180000 		.4byte	.LASF494
+ 1746 0dcd D803     		.sleb128 472
+ 1747 0dcf 00       		.byte	0
+ 1748 0dd0 02       		.uleb128 0x2
+ 1749 0dd1 01       		.byte	0x1
+ 1750 0dd2 06       		.byte	0x6
+ 1751 0dd3 2B000000 		.4byte	.LASF495
+ 1752 0dd7 0A       		.uleb128 0xa
+ 1753 0dd8 02       		.byte	0x2
+ 1754 0dd9 03       		.byte	0x3
+ 1755 0dda DD18     		.2byte	0x18dd
+ 1756 0ddc 000E0000 		.4byte	0xe00
+ 1757 0de0 09       		.uleb128 0x9
+ 1758 0de1 350D0000 		.4byte	.LASF496
+ 1759 0de5 00       		.sleb128 0
+ 1760 0de6 09       		.uleb128 0x9
+ 1761 0de7 2A250000 		.4byte	.LASF497
+ 1762 0deb 01       		.sleb128 1
+ 1763 0dec 09       		.uleb128 0x9
+ 1764 0ded A2230000 		.4byte	.LASF498
+ 1765 0df1 02       		.sleb128 2
+ 1766 0df2 09       		.uleb128 0x9
+ 1767 0df3 F7020000 		.4byte	.LASF499
+ 1768 0df7 03       		.sleb128 3
+ 1769 0df8 09       		.uleb128 0x9
+ 1770 0df9 23070000 		.4byte	.LASF500
+ 1771 0dfd 8002     		.sleb128 256
+ 1772 0dff 00       		.byte	0
+ 1773 0e00 0B       		.uleb128 0xb
+ 1774 0e01 F6110000 		.4byte	.LASF522
+ 1775 0e05 01       		.byte	0x1
+ 1776 0e06 55       		.byte	0x55
+ 1777 0e07 00000000 		.4byte	.LFB0
+ 1778 0e0b 78000000 		.4byte	.LFE0-.LFB0
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 35
+
+
+ 1779 0e0f 01       		.uleb128 0x1
+ 1780 0e10 9C       		.byte	0x9c
+ 1781 0e11 950E0000 		.4byte	0xe95
+ 1782 0e15 0C       		.uleb128 0xc
+ 1783 0e16 73726300 		.ascii	"src\000"
+ 1784 0e1a 01       		.byte	0x1
+ 1785 0e1b 57       		.byte	0x57
+ 1786 0e1c 950E0000 		.4byte	0xe95
+ 1787 0e20 0D       		.uleb128 0xd
+ 1788 0e21 D51C0000 		.4byte	.LASF523
+ 1789 0e25 01       		.byte	0x1
+ 1790 0e26 58       		.byte	0x58
+ 1791 0e27 950E0000 		.4byte	0xe95
+ 1792 0e2b 01       		.uleb128 0x1
+ 1793 0e2c 53       		.byte	0x53
+ 1794 0e2d 0E       		.uleb128 0xe
+ 1795 0e2e 72230000 		.4byte	.LASF501
+ 1796 0e32 01       		.byte	0x1
+ 1797 0e33 59       		.byte	0x59
+ 1798 0e34 950E0000 		.4byte	0xe95
+ 1799 0e38 0F       		.uleb128 0xf
+ 1800 0e39 1A000000 		.4byte	.LVL0
+ 1801 0e3d BE0F0000 		.4byte	0xfbe
+ 1802 0e41 540E0000 		.4byte	0xe54
+ 1803 0e45 10       		.uleb128 0x10
+ 1804 0e46 01       		.uleb128 0x1
+ 1805 0e47 51       		.byte	0x51
+ 1806 0e48 05       		.uleb128 0x5
+ 1807 0e49 03       		.byte	0x3
+ 1808 0e4a 00000000 		.4byte	.LC0
+ 1809 0e4e 10       		.uleb128 0x10
+ 1810 0e4f 01       		.uleb128 0x1
+ 1811 0e50 50       		.byte	0x50
+ 1812 0e51 01       		.uleb128 0x1
+ 1813 0e52 47       		.byte	0x47
+ 1814 0e53 00       		.byte	0
+ 1815 0e54 0F       		.uleb128 0xf
+ 1816 0e55 22000000 		.4byte	.LVL1
+ 1817 0e59 BE0F0000 		.4byte	0xfbe
+ 1818 0e5d 700E0000 		.4byte	0xe70
+ 1819 0e61 10       		.uleb128 0x10
+ 1820 0e62 01       		.uleb128 0x1
+ 1821 0e63 51       		.byte	0x51
+ 1822 0e64 05       		.uleb128 0x5
+ 1823 0e65 03       		.byte	0x3
+ 1824 0e66 11000000 		.4byte	.LC1
+ 1825 0e6a 10       		.uleb128 0x10
+ 1826 0e6b 01       		.uleb128 0x1
+ 1827 0e6c 50       		.byte	0x50
+ 1828 0e6d 01       		.uleb128 0x1
+ 1829 0e6e 47       		.byte	0x47
+ 1830 0e6f 00       		.byte	0
+ 1831 0e70 0F       		.uleb128 0xf
+ 1832 0e71 28000000 		.4byte	.LVL2
+ 1833 0e75 D80F0000 		.4byte	0xfd8
+ 1834 0e79 830E0000 		.4byte	0xe83
+ 1835 0e7d 10       		.uleb128 0x10
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 36
+
+
+ 1836 0e7e 01       		.uleb128 0x1
+ 1837 0e7f 50       		.byte	0x50
+ 1838 0e80 01       		.uleb128 0x1
+ 1839 0e81 37       		.byte	0x37
+ 1840 0e82 00       		.byte	0
+ 1841 0e83 11       		.uleb128 0x11
+ 1842 0e84 34000000 		.4byte	.LVL3
+ 1843 0e88 D80F0000 		.4byte	0xfd8
+ 1844 0e8c 10       		.uleb128 0x10
+ 1845 0e8d 01       		.uleb128 0x1
+ 1846 0e8e 50       		.byte	0x50
+ 1847 0e8f 03       		.uleb128 0x3
+ 1848 0e90 0A       		.byte	0xa
+ 1849 0e91 9C01     		.2byte	0x19c
+ 1850 0e93 00       		.byte	0
+ 1851 0e94 00       		.byte	0
+ 1852 0e95 12       		.uleb128 0x12
+ 1853 0e96 04       		.byte	0x4
+ 1854 0e97 7A000000 		.4byte	0x7a
+ 1855 0e9b 13       		.uleb128 0x13
+ 1856 0e9c 9D100000 		.4byte	.LASF524
+ 1857 0ea0 01       		.byte	0x1
+ 1858 0ea1 91       		.byte	0x91
+ 1859 0ea2 5E000000 		.4byte	0x5e
+ 1860 0ea6 00000000 		.4byte	.LFB1
+ 1861 0eaa 1A000000 		.4byte	.LFE1-.LFB1
+ 1862 0eae 01       		.uleb128 0x1
+ 1863 0eaf 9C       		.byte	0x9c
+ 1864 0eb0 0A0F0000 		.4byte	0xf0a
+ 1865 0eb4 14       		.uleb128 0x14
+ 1866 0eb5 DA1C0000 		.4byte	.LASF502
+ 1867 0eb9 01       		.byte	0x1
+ 1868 0eba 91       		.byte	0x91
+ 1869 0ebb 7A000000 		.4byte	0x7a
+ 1870 0ebf 00000000 		.4byte	.LLST0
+ 1871 0ec3 14       		.uleb128 0x14
+ 1872 0ec4 E5160000 		.4byte	.LASF503
+ 1873 0ec8 01       		.byte	0x1
+ 1874 0ec9 91       		.byte	0x91
+ 1875 0eca 7A000000 		.4byte	0x7a
+ 1876 0ece 37000000 		.4byte	.LLST1
+ 1877 0ed2 14       		.uleb128 0x14
+ 1878 0ed3 ED160000 		.4byte	.LASF504
+ 1879 0ed7 01       		.byte	0x1
+ 1880 0ed8 91       		.byte	0x91
+ 1881 0ed9 7A000000 		.4byte	0x7a
+ 1882 0edd 6E000000 		.4byte	.LLST2
+ 1883 0ee1 15       		.uleb128 0x15
+ 1884 0ee2 0C000000 		.4byte	.LVL10
+ 1885 0ee6 000E0000 		.4byte	0xe00
+ 1886 0eea 16       		.uleb128 0x16
+ 1887 0eeb 1A000000 		.4byte	.LVL12
+ 1888 0eef ED0F0000 		.4byte	0xfed
+ 1889 0ef3 10       		.uleb128 0x10
+ 1890 0ef4 01       		.uleb128 0x1
+ 1891 0ef5 52       		.byte	0x52
+ 1892 0ef6 03       		.uleb128 0x3
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 37
+
+
+ 1893 0ef7 F3       		.byte	0xf3
+ 1894 0ef8 01       		.uleb128 0x1
+ 1895 0ef9 52       		.byte	0x52
+ 1896 0efa 10       		.uleb128 0x10
+ 1897 0efb 01       		.uleb128 0x1
+ 1898 0efc 51       		.byte	0x51
+ 1899 0efd 03       		.uleb128 0x3
+ 1900 0efe F3       		.byte	0xf3
+ 1901 0eff 01       		.uleb128 0x1
+ 1902 0f00 51       		.byte	0x51
+ 1903 0f01 10       		.uleb128 0x10
+ 1904 0f02 01       		.uleb128 0x1
+ 1905 0f03 50       		.byte	0x50
+ 1906 0f04 03       		.uleb128 0x3
+ 1907 0f05 F3       		.byte	0xf3
+ 1908 0f06 01       		.uleb128 0x1
+ 1909 0f07 50       		.byte	0x50
+ 1910 0f08 00       		.byte	0
+ 1911 0f09 00       		.byte	0
+ 1912 0f0a 17       		.uleb128 0x17
+ 1913 0f0b D7150000 		.4byte	.LASF505
+ 1914 0f0f 01       		.byte	0x1
+ 1915 0f10 2B       		.byte	0x2b
+ 1916 0f11 7A000000 		.4byte	0x7a
+ 1917 0f15 17       		.uleb128 0x17
+ 1918 0f16 C0080000 		.4byte	.LASF506
+ 1919 0f1a 01       		.byte	0x1
+ 1920 0f1b 2C       		.byte	0x2c
+ 1921 0f1c 7A000000 		.4byte	0x7a
+ 1922 0f20 17       		.uleb128 0x17
+ 1923 0f21 91080000 		.4byte	.LASF507
+ 1924 0f25 01       		.byte	0x1
+ 1925 0f26 2D       		.byte	0x2d
+ 1926 0f27 7A000000 		.4byte	0x7a
+ 1927 0f2b 17       		.uleb128 0x17
+ 1928 0f2c 68240000 		.4byte	.LASF508
+ 1929 0f30 01       		.byte	0x1
+ 1930 0f31 2E       		.byte	0x2e
+ 1931 0f32 7A000000 		.4byte	0x7a
+ 1932 0f36 17       		.uleb128 0x17
+ 1933 0f37 DB200000 		.4byte	.LASF509
+ 1934 0f3b 01       		.byte	0x1
+ 1935 0f3c 2F       		.byte	0x2f
+ 1936 0f3d 7A000000 		.4byte	0x7a
+ 1937 0f41 17       		.uleb128 0x17
+ 1938 0f42 0B140000 		.4byte	.LASF510
+ 1939 0f46 01       		.byte	0x1
+ 1940 0f47 30       		.byte	0x30
+ 1941 0f48 7A000000 		.4byte	0x7a
+ 1942 0f4c 17       		.uleb128 0x17
+ 1943 0f4d 9E0C0000 		.4byte	.LASF511
+ 1944 0f51 01       		.byte	0x1
+ 1945 0f52 31       		.byte	0x31
+ 1946 0f53 7A000000 		.4byte	0x7a
+ 1947 0f57 17       		.uleb128 0x17
+ 1948 0f58 BA100000 		.4byte	.LASF512
+ 1949 0f5c 01       		.byte	0x1
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 38
+
+
+ 1950 0f5d 32       		.byte	0x32
+ 1951 0f5e 7A000000 		.4byte	0x7a
+ 1952 0f62 17       		.uleb128 0x17
+ 1953 0f63 191A0000 		.4byte	.LASF513
+ 1954 0f67 01       		.byte	0x1
+ 1955 0f68 35       		.byte	0x35
+ 1956 0f69 6D0F0000 		.4byte	0xf6d
+ 1957 0f6d 18       		.uleb128 0x18
+ 1958 0f6e 07010000 		.4byte	0x107
+ 1959 0f72 19       		.uleb128 0x19
+ 1960 0f73 7A000000 		.4byte	0x7a
+ 1961 0f77 820F0000 		.4byte	0xf82
+ 1962 0f7b 1A       		.uleb128 0x1a
+ 1963 0f7c 57000000 		.4byte	0x57
+ 1964 0f80 0B       		.byte	0xb
+ 1965 0f81 00       		.byte	0
+ 1966 0f82 1B       		.uleb128 0x1b
+ 1967 0f83 D51E0000 		.4byte	.LASF514
+ 1968 0f87 01       		.byte	0x1
+ 1969 0f88 3B       		.byte	0x3b
+ 1970 0f89 930F0000 		.4byte	0xf93
+ 1971 0f8d 05       		.uleb128 0x5
+ 1972 0f8e 03       		.byte	0x3
+ 1973 0f8f 00000000 		.4byte	KAppHeader
+ 1974 0f93 18       		.uleb128 0x18
+ 1975 0f94 720F0000 		.4byte	0xf72
+ 1976 0f98 19       		.uleb128 0x19
+ 1977 0f99 25000000 		.4byte	0x25
+ 1978 0f9d A80F0000 		.4byte	0xfa8
+ 1979 0fa1 1A       		.uleb128 0x1a
+ 1980 0fa2 57000000 		.4byte	0x57
+ 1981 0fa6 07       		.byte	0x7
+ 1982 0fa7 00       		.byte	0
+ 1983 0fa8 1B       		.uleb128 0x1b
+ 1984 0fa9 70100000 		.4byte	.LASF515
+ 1985 0fad 01       		.byte	0x1
+ 1986 0fae 4B       		.byte	0x4b
+ 1987 0faf B90F0000 		.4byte	0xfb9
+ 1988 0fb3 05       		.uleb128 0x5
+ 1989 0fb4 03       		.byte	0x3
+ 1990 0fb5 00000000 		.4byte	KKek
+ 1991 0fb9 18       		.uleb128 0x18
+ 1992 0fba 980F0000 		.4byte	0xf98
+ 1993 0fbe 1C       		.uleb128 0x1c
+ 1994 0fbf 02150000 		.4byte	.LASF516
+ 1995 0fc3 03       		.byte	0x3
+ 1996 0fc4 A2       		.byte	0xa2
+ 1997 0fc5 3E000000 		.4byte	0x3e
+ 1998 0fc9 D80F0000 		.4byte	0xfd8
+ 1999 0fcd 1D       		.uleb128 0x1d
+ 2000 0fce 3E000000 		.4byte	0x3e
+ 2001 0fd2 1D       		.uleb128 0x1d
+ 2002 0fd3 3E000000 		.4byte	0x3e
+ 2003 0fd7 00       		.byte	0
+ 2004 0fd8 1C       		.uleb128 0x1c
+ 2005 0fd9 F8140000 		.4byte	.LASF517
+ 2006 0fdd 03       		.byte	0x3
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 39
+
+
+ 2007 0fde A1       		.byte	0xa1
+ 2008 0fdf 3E000000 		.4byte	0x3e
+ 2009 0fe3 ED0F0000 		.4byte	0xfed
+ 2010 0fe7 1D       		.uleb128 0x1d
+ 2011 0fe8 3E000000 		.4byte	0x3e
+ 2012 0fec 00       		.byte	0
+ 2013 0fed 1E       		.uleb128 0x1e
+ 2014 0fee AC060000 		.4byte	.LASF525
+ 2015 0ff2 01       		.byte	0x1
+ 2016 0ff3 36       		.byte	0x36
+ 2017 0ff4 5E000000 		.4byte	0x5e
+ 2018 0ff8 1D       		.uleb128 0x1d
+ 2019 0ff9 7A000000 		.4byte	0x7a
+ 2020 0ffd 1D       		.uleb128 0x1d
+ 2021 0ffe 7A000000 		.4byte	0x7a
+ 2022 1002 1D       		.uleb128 0x1d
+ 2023 1003 7A000000 		.4byte	0x7a
+ 2024 1007 00       		.byte	0
+ 2025 1008 00       		.byte	0
+ 2026              		.section	.debug_abbrev,"",%progbits
+ 2027              	.Ldebug_abbrev0:
+ 2028 0000 01       		.uleb128 0x1
+ 2029 0001 11       		.uleb128 0x11
+ 2030 0002 01       		.byte	0x1
+ 2031 0003 25       		.uleb128 0x25
+ 2032 0004 0E       		.uleb128 0xe
+ 2033 0005 13       		.uleb128 0x13
+ 2034 0006 0B       		.uleb128 0xb
+ 2035 0007 03       		.uleb128 0x3
+ 2036 0008 0E       		.uleb128 0xe
+ 2037 0009 1B       		.uleb128 0x1b
+ 2038 000a 0E       		.uleb128 0xe
+ 2039 000b 55       		.uleb128 0x55
+ 2040 000c 17       		.uleb128 0x17
+ 2041 000d 11       		.uleb128 0x11
+ 2042 000e 01       		.uleb128 0x1
+ 2043 000f 10       		.uleb128 0x10
+ 2044 0010 17       		.uleb128 0x17
+ 2045 0011 00       		.byte	0
+ 2046 0012 00       		.byte	0
+ 2047 0013 02       		.uleb128 0x2
+ 2048 0014 24       		.uleb128 0x24
+ 2049 0015 00       		.byte	0
+ 2050 0016 0B       		.uleb128 0xb
+ 2051 0017 0B       		.uleb128 0xb
+ 2052 0018 3E       		.uleb128 0x3e
+ 2053 0019 0B       		.uleb128 0xb
+ 2054 001a 03       		.uleb128 0x3
+ 2055 001b 0E       		.uleb128 0xe
+ 2056 001c 00       		.byte	0
+ 2057 001d 00       		.byte	0
+ 2058 001e 03       		.uleb128 0x3
+ 2059 001f 16       		.uleb128 0x16
+ 2060 0020 00       		.byte	0
+ 2061 0021 03       		.uleb128 0x3
+ 2062 0022 0E       		.uleb128 0xe
+ 2063 0023 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 40
+
+
+ 2064 0024 0B       		.uleb128 0xb
+ 2065 0025 3B       		.uleb128 0x3b
+ 2066 0026 0B       		.uleb128 0xb
+ 2067 0027 49       		.uleb128 0x49
+ 2068 0028 13       		.uleb128 0x13
+ 2069 0029 00       		.byte	0
+ 2070 002a 00       		.byte	0
+ 2071 002b 04       		.uleb128 0x4
+ 2072 002c 24       		.uleb128 0x24
+ 2073 002d 00       		.byte	0
+ 2074 002e 0B       		.uleb128 0xb
+ 2075 002f 0B       		.uleb128 0xb
+ 2076 0030 3E       		.uleb128 0x3e
+ 2077 0031 0B       		.uleb128 0xb
+ 2078 0032 03       		.uleb128 0x3
+ 2079 0033 08       		.uleb128 0x8
+ 2080 0034 00       		.byte	0
+ 2081 0035 00       		.byte	0
+ 2082 0036 05       		.uleb128 0x5
+ 2083 0037 13       		.uleb128 0x13
+ 2084 0038 01       		.byte	0x1
+ 2085 0039 0B       		.uleb128 0xb
+ 2086 003a 0B       		.uleb128 0xb
+ 2087 003b 3A       		.uleb128 0x3a
+ 2088 003c 0B       		.uleb128 0xb
+ 2089 003d 3B       		.uleb128 0x3b
+ 2090 003e 05       		.uleb128 0x5
+ 2091 003f 01       		.uleb128 0x1
+ 2092 0040 13       		.uleb128 0x13
+ 2093 0041 00       		.byte	0
+ 2094 0042 00       		.byte	0
+ 2095 0043 06       		.uleb128 0x6
+ 2096 0044 0D       		.uleb128 0xd
+ 2097 0045 00       		.byte	0
+ 2098 0046 03       		.uleb128 0x3
+ 2099 0047 0E       		.uleb128 0xe
+ 2100 0048 3A       		.uleb128 0x3a
+ 2101 0049 0B       		.uleb128 0xb
+ 2102 004a 3B       		.uleb128 0x3b
+ 2103 004b 05       		.uleb128 0x5
+ 2104 004c 49       		.uleb128 0x49
+ 2105 004d 13       		.uleb128 0x13
+ 2106 004e 38       		.uleb128 0x38
+ 2107 004f 0B       		.uleb128 0xb
+ 2108 0050 00       		.byte	0
+ 2109 0051 00       		.byte	0
+ 2110 0052 07       		.uleb128 0x7
+ 2111 0053 16       		.uleb128 0x16
+ 2112 0054 00       		.byte	0
+ 2113 0055 03       		.uleb128 0x3
+ 2114 0056 0E       		.uleb128 0xe
+ 2115 0057 3A       		.uleb128 0x3a
+ 2116 0058 0B       		.uleb128 0xb
+ 2117 0059 3B       		.uleb128 0x3b
+ 2118 005a 05       		.uleb128 0x5
+ 2119 005b 49       		.uleb128 0x49
+ 2120 005c 13       		.uleb128 0x13
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 41
+
+
+ 2121 005d 00       		.byte	0
+ 2122 005e 00       		.byte	0
+ 2123 005f 08       		.uleb128 0x8
+ 2124 0060 04       		.uleb128 0x4
+ 2125 0061 01       		.byte	0x1
+ 2126 0062 03       		.uleb128 0x3
+ 2127 0063 0E       		.uleb128 0xe
+ 2128 0064 0B       		.uleb128 0xb
+ 2129 0065 0B       		.uleb128 0xb
+ 2130 0066 3A       		.uleb128 0x3a
+ 2131 0067 0B       		.uleb128 0xb
+ 2132 0068 3B       		.uleb128 0x3b
+ 2133 0069 05       		.uleb128 0x5
+ 2134 006a 01       		.uleb128 0x1
+ 2135 006b 13       		.uleb128 0x13
+ 2136 006c 00       		.byte	0
+ 2137 006d 00       		.byte	0
+ 2138 006e 09       		.uleb128 0x9
+ 2139 006f 28       		.uleb128 0x28
+ 2140 0070 00       		.byte	0
+ 2141 0071 03       		.uleb128 0x3
+ 2142 0072 0E       		.uleb128 0xe
+ 2143 0073 1C       		.uleb128 0x1c
+ 2144 0074 0D       		.uleb128 0xd
+ 2145 0075 00       		.byte	0
+ 2146 0076 00       		.byte	0
+ 2147 0077 0A       		.uleb128 0xa
+ 2148 0078 04       		.uleb128 0x4
+ 2149 0079 01       		.byte	0x1
+ 2150 007a 0B       		.uleb128 0xb
+ 2151 007b 0B       		.uleb128 0xb
+ 2152 007c 3A       		.uleb128 0x3a
+ 2153 007d 0B       		.uleb128 0xb
+ 2154 007e 3B       		.uleb128 0x3b
+ 2155 007f 05       		.uleb128 0x5
+ 2156 0080 01       		.uleb128 0x1
+ 2157 0081 13       		.uleb128 0x13
+ 2158 0082 00       		.byte	0
+ 2159 0083 00       		.byte	0
+ 2160 0084 0B       		.uleb128 0xb
+ 2161 0085 2E       		.uleb128 0x2e
+ 2162 0086 01       		.byte	0x1
+ 2163 0087 3F       		.uleb128 0x3f
+ 2164 0088 19       		.uleb128 0x19
+ 2165 0089 03       		.uleb128 0x3
+ 2166 008a 0E       		.uleb128 0xe
+ 2167 008b 3A       		.uleb128 0x3a
+ 2168 008c 0B       		.uleb128 0xb
+ 2169 008d 3B       		.uleb128 0x3b
+ 2170 008e 0B       		.uleb128 0xb
+ 2171 008f 27       		.uleb128 0x27
+ 2172 0090 19       		.uleb128 0x19
+ 2173 0091 11       		.uleb128 0x11
+ 2174 0092 01       		.uleb128 0x1
+ 2175 0093 12       		.uleb128 0x12
+ 2176 0094 06       		.uleb128 0x6
+ 2177 0095 40       		.uleb128 0x40
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 42
+
+
+ 2178 0096 18       		.uleb128 0x18
+ 2179 0097 9742     		.uleb128 0x2117
+ 2180 0099 19       		.uleb128 0x19
+ 2181 009a 01       		.uleb128 0x1
+ 2182 009b 13       		.uleb128 0x13
+ 2183 009c 00       		.byte	0
+ 2184 009d 00       		.byte	0
+ 2185 009e 0C       		.uleb128 0xc
+ 2186 009f 34       		.uleb128 0x34
+ 2187 00a0 00       		.byte	0
+ 2188 00a1 03       		.uleb128 0x3
+ 2189 00a2 08       		.uleb128 0x8
+ 2190 00a3 3A       		.uleb128 0x3a
+ 2191 00a4 0B       		.uleb128 0xb
+ 2192 00a5 3B       		.uleb128 0x3b
+ 2193 00a6 0B       		.uleb128 0xb
+ 2194 00a7 49       		.uleb128 0x49
+ 2195 00a8 13       		.uleb128 0x13
+ 2196 00a9 00       		.byte	0
+ 2197 00aa 00       		.byte	0
+ 2198 00ab 0D       		.uleb128 0xd
+ 2199 00ac 34       		.uleb128 0x34
+ 2200 00ad 00       		.byte	0
+ 2201 00ae 03       		.uleb128 0x3
+ 2202 00af 0E       		.uleb128 0xe
+ 2203 00b0 3A       		.uleb128 0x3a
+ 2204 00b1 0B       		.uleb128 0xb
+ 2205 00b2 3B       		.uleb128 0x3b
+ 2206 00b3 0B       		.uleb128 0xb
+ 2207 00b4 49       		.uleb128 0x49
+ 2208 00b5 13       		.uleb128 0x13
+ 2209 00b6 02       		.uleb128 0x2
+ 2210 00b7 18       		.uleb128 0x18
+ 2211 00b8 00       		.byte	0
+ 2212 00b9 00       		.byte	0
+ 2213 00ba 0E       		.uleb128 0xe
+ 2214 00bb 34       		.uleb128 0x34
+ 2215 00bc 00       		.byte	0
+ 2216 00bd 03       		.uleb128 0x3
+ 2217 00be 0E       		.uleb128 0xe
+ 2218 00bf 3A       		.uleb128 0x3a
+ 2219 00c0 0B       		.uleb128 0xb
+ 2220 00c1 3B       		.uleb128 0x3b
+ 2221 00c2 0B       		.uleb128 0xb
+ 2222 00c3 49       		.uleb128 0x49
+ 2223 00c4 13       		.uleb128 0x13
+ 2224 00c5 00       		.byte	0
+ 2225 00c6 00       		.byte	0
+ 2226 00c7 0F       		.uleb128 0xf
+ 2227 00c8 898201   		.uleb128 0x4109
+ 2228 00cb 01       		.byte	0x1
+ 2229 00cc 11       		.uleb128 0x11
+ 2230 00cd 01       		.uleb128 0x1
+ 2231 00ce 31       		.uleb128 0x31
+ 2232 00cf 13       		.uleb128 0x13
+ 2233 00d0 01       		.uleb128 0x1
+ 2234 00d1 13       		.uleb128 0x13
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 43
+
+
+ 2235 00d2 00       		.byte	0
+ 2236 00d3 00       		.byte	0
+ 2237 00d4 10       		.uleb128 0x10
+ 2238 00d5 8A8201   		.uleb128 0x410a
+ 2239 00d8 00       		.byte	0
+ 2240 00d9 02       		.uleb128 0x2
+ 2241 00da 18       		.uleb128 0x18
+ 2242 00db 9142     		.uleb128 0x2111
+ 2243 00dd 18       		.uleb128 0x18
+ 2244 00de 00       		.byte	0
+ 2245 00df 00       		.byte	0
+ 2246 00e0 11       		.uleb128 0x11
+ 2247 00e1 898201   		.uleb128 0x4109
+ 2248 00e4 01       		.byte	0x1
+ 2249 00e5 11       		.uleb128 0x11
+ 2250 00e6 01       		.uleb128 0x1
+ 2251 00e7 31       		.uleb128 0x31
+ 2252 00e8 13       		.uleb128 0x13
+ 2253 00e9 00       		.byte	0
+ 2254 00ea 00       		.byte	0
+ 2255 00eb 12       		.uleb128 0x12
+ 2256 00ec 0F       		.uleb128 0xf
+ 2257 00ed 00       		.byte	0
+ 2258 00ee 0B       		.uleb128 0xb
+ 2259 00ef 0B       		.uleb128 0xb
+ 2260 00f0 49       		.uleb128 0x49
+ 2261 00f1 13       		.uleb128 0x13
+ 2262 00f2 00       		.byte	0
+ 2263 00f3 00       		.byte	0
+ 2264 00f4 13       		.uleb128 0x13
+ 2265 00f5 2E       		.uleb128 0x2e
+ 2266 00f6 01       		.byte	0x1
+ 2267 00f7 3F       		.uleb128 0x3f
+ 2268 00f8 19       		.uleb128 0x19
+ 2269 00f9 03       		.uleb128 0x3
+ 2270 00fa 0E       		.uleb128 0xe
+ 2271 00fb 3A       		.uleb128 0x3a
+ 2272 00fc 0B       		.uleb128 0xb
+ 2273 00fd 3B       		.uleb128 0x3b
+ 2274 00fe 0B       		.uleb128 0xb
+ 2275 00ff 27       		.uleb128 0x27
+ 2276 0100 19       		.uleb128 0x19
+ 2277 0101 49       		.uleb128 0x49
+ 2278 0102 13       		.uleb128 0x13
+ 2279 0103 11       		.uleb128 0x11
+ 2280 0104 01       		.uleb128 0x1
+ 2281 0105 12       		.uleb128 0x12
+ 2282 0106 06       		.uleb128 0x6
+ 2283 0107 40       		.uleb128 0x40
+ 2284 0108 18       		.uleb128 0x18
+ 2285 0109 9742     		.uleb128 0x2117
+ 2286 010b 19       		.uleb128 0x19
+ 2287 010c 01       		.uleb128 0x1
+ 2288 010d 13       		.uleb128 0x13
+ 2289 010e 00       		.byte	0
+ 2290 010f 00       		.byte	0
+ 2291 0110 14       		.uleb128 0x14
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 44
+
+
+ 2292 0111 05       		.uleb128 0x5
+ 2293 0112 00       		.byte	0
+ 2294 0113 03       		.uleb128 0x3
+ 2295 0114 0E       		.uleb128 0xe
+ 2296 0115 3A       		.uleb128 0x3a
+ 2297 0116 0B       		.uleb128 0xb
+ 2298 0117 3B       		.uleb128 0x3b
+ 2299 0118 0B       		.uleb128 0xb
+ 2300 0119 49       		.uleb128 0x49
+ 2301 011a 13       		.uleb128 0x13
+ 2302 011b 02       		.uleb128 0x2
+ 2303 011c 17       		.uleb128 0x17
+ 2304 011d 00       		.byte	0
+ 2305 011e 00       		.byte	0
+ 2306 011f 15       		.uleb128 0x15
+ 2307 0120 898201   		.uleb128 0x4109
+ 2308 0123 00       		.byte	0
+ 2309 0124 11       		.uleb128 0x11
+ 2310 0125 01       		.uleb128 0x1
+ 2311 0126 31       		.uleb128 0x31
+ 2312 0127 13       		.uleb128 0x13
+ 2313 0128 00       		.byte	0
+ 2314 0129 00       		.byte	0
+ 2315 012a 16       		.uleb128 0x16
+ 2316 012b 898201   		.uleb128 0x4109
+ 2317 012e 01       		.byte	0x1
+ 2318 012f 11       		.uleb128 0x11
+ 2319 0130 01       		.uleb128 0x1
+ 2320 0131 9542     		.uleb128 0x2115
+ 2321 0133 19       		.uleb128 0x19
+ 2322 0134 31       		.uleb128 0x31
+ 2323 0135 13       		.uleb128 0x13
+ 2324 0136 00       		.byte	0
+ 2325 0137 00       		.byte	0
+ 2326 0138 17       		.uleb128 0x17
+ 2327 0139 34       		.uleb128 0x34
+ 2328 013a 00       		.byte	0
+ 2329 013b 03       		.uleb128 0x3
+ 2330 013c 0E       		.uleb128 0xe
+ 2331 013d 3A       		.uleb128 0x3a
+ 2332 013e 0B       		.uleb128 0xb
+ 2333 013f 3B       		.uleb128 0x3b
+ 2334 0140 0B       		.uleb128 0xb
+ 2335 0141 49       		.uleb128 0x49
+ 2336 0142 13       		.uleb128 0x13
+ 2337 0143 3F       		.uleb128 0x3f
+ 2338 0144 19       		.uleb128 0x19
+ 2339 0145 3C       		.uleb128 0x3c
+ 2340 0146 19       		.uleb128 0x19
+ 2341 0147 00       		.byte	0
+ 2342 0148 00       		.byte	0
+ 2343 0149 18       		.uleb128 0x18
+ 2344 014a 26       		.uleb128 0x26
+ 2345 014b 00       		.byte	0
+ 2346 014c 49       		.uleb128 0x49
+ 2347 014d 13       		.uleb128 0x13
+ 2348 014e 00       		.byte	0
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 45
+
+
+ 2349 014f 00       		.byte	0
+ 2350 0150 19       		.uleb128 0x19
+ 2351 0151 01       		.uleb128 0x1
+ 2352 0152 01       		.byte	0x1
+ 2353 0153 49       		.uleb128 0x49
+ 2354 0154 13       		.uleb128 0x13
+ 2355 0155 01       		.uleb128 0x1
+ 2356 0156 13       		.uleb128 0x13
+ 2357 0157 00       		.byte	0
+ 2358 0158 00       		.byte	0
+ 2359 0159 1A       		.uleb128 0x1a
+ 2360 015a 21       		.uleb128 0x21
+ 2361 015b 00       		.byte	0
+ 2362 015c 49       		.uleb128 0x49
+ 2363 015d 13       		.uleb128 0x13
+ 2364 015e 2F       		.uleb128 0x2f
+ 2365 015f 0B       		.uleb128 0xb
+ 2366 0160 00       		.byte	0
+ 2367 0161 00       		.byte	0
+ 2368 0162 1B       		.uleb128 0x1b
+ 2369 0163 34       		.uleb128 0x34
+ 2370 0164 00       		.byte	0
+ 2371 0165 03       		.uleb128 0x3
+ 2372 0166 0E       		.uleb128 0xe
+ 2373 0167 3A       		.uleb128 0x3a
+ 2374 0168 0B       		.uleb128 0xb
+ 2375 0169 3B       		.uleb128 0x3b
+ 2376 016a 0B       		.uleb128 0xb
+ 2377 016b 49       		.uleb128 0x49
+ 2378 016c 13       		.uleb128 0x13
+ 2379 016d 3F       		.uleb128 0x3f
+ 2380 016e 19       		.uleb128 0x19
+ 2381 016f 02       		.uleb128 0x2
+ 2382 0170 18       		.uleb128 0x18
+ 2383 0171 00       		.byte	0
+ 2384 0172 00       		.byte	0
+ 2385 0173 1C       		.uleb128 0x1c
+ 2386 0174 2E       		.uleb128 0x2e
+ 2387 0175 01       		.byte	0x1
+ 2388 0176 3F       		.uleb128 0x3f
+ 2389 0177 19       		.uleb128 0x19
+ 2390 0178 03       		.uleb128 0x3
+ 2391 0179 0E       		.uleb128 0xe
+ 2392 017a 3A       		.uleb128 0x3a
+ 2393 017b 0B       		.uleb128 0xb
+ 2394 017c 3B       		.uleb128 0x3b
+ 2395 017d 0B       		.uleb128 0xb
+ 2396 017e 27       		.uleb128 0x27
+ 2397 017f 19       		.uleb128 0x19
+ 2398 0180 49       		.uleb128 0x49
+ 2399 0181 13       		.uleb128 0x13
+ 2400 0182 3C       		.uleb128 0x3c
+ 2401 0183 19       		.uleb128 0x19
+ 2402 0184 01       		.uleb128 0x1
+ 2403 0185 13       		.uleb128 0x13
+ 2404 0186 00       		.byte	0
+ 2405 0187 00       		.byte	0
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 46
+
+
+ 2406 0188 1D       		.uleb128 0x1d
+ 2407 0189 05       		.uleb128 0x5
+ 2408 018a 00       		.byte	0
+ 2409 018b 49       		.uleb128 0x49
+ 2410 018c 13       		.uleb128 0x13
+ 2411 018d 00       		.byte	0
+ 2412 018e 00       		.byte	0
+ 2413 018f 1E       		.uleb128 0x1e
+ 2414 0190 2E       		.uleb128 0x2e
+ 2415 0191 01       		.byte	0x1
+ 2416 0192 3F       		.uleb128 0x3f
+ 2417 0193 19       		.uleb128 0x19
+ 2418 0194 03       		.uleb128 0x3
+ 2419 0195 0E       		.uleb128 0xe
+ 2420 0196 3A       		.uleb128 0x3a
+ 2421 0197 0B       		.uleb128 0xb
+ 2422 0198 3B       		.uleb128 0x3b
+ 2423 0199 0B       		.uleb128 0xb
+ 2424 019a 27       		.uleb128 0x27
+ 2425 019b 19       		.uleb128 0x19
+ 2426 019c 49       		.uleb128 0x49
+ 2427 019d 13       		.uleb128 0x13
+ 2428 019e 3C       		.uleb128 0x3c
+ 2429 019f 19       		.uleb128 0x19
+ 2430 01a0 00       		.byte	0
+ 2431 01a1 00       		.byte	0
+ 2432 01a2 00       		.byte	0
+ 2433              		.section	.debug_loc,"",%progbits
+ 2434              	.Ldebug_loc0:
+ 2435              	.LLST0:
+ 2436 0000 00000000 		.4byte	.LVL9
+ 2437 0004 0B000000 		.4byte	.LVL10-1
+ 2438 0008 0100     		.2byte	0x1
+ 2439 000a 50       		.byte	0x50
+ 2440 000b 0B000000 		.4byte	.LVL10-1
+ 2441 000f 16000000 		.4byte	.LVL11
+ 2442 0013 0100     		.2byte	0x1
+ 2443 0015 56       		.byte	0x56
+ 2444 0016 16000000 		.4byte	.LVL11
+ 2445 001a 19000000 		.4byte	.LVL12-1
+ 2446 001e 0100     		.2byte	0x1
+ 2447 0020 50       		.byte	0x50
+ 2448 0021 19000000 		.4byte	.LVL12-1
+ 2449 0025 1A000000 		.4byte	.LFE1
+ 2450 0029 0400     		.2byte	0x4
+ 2451 002b F3       		.byte	0xf3
+ 2452 002c 01       		.uleb128 0x1
+ 2453 002d 50       		.byte	0x50
+ 2454 002e 9F       		.byte	0x9f
+ 2455 002f 00000000 		.4byte	0
+ 2456 0033 00000000 		.4byte	0
+ 2457              	.LLST1:
+ 2458 0037 00000000 		.4byte	.LVL9
+ 2459 003b 0B000000 		.4byte	.LVL10-1
+ 2460 003f 0100     		.2byte	0x1
+ 2461 0041 51       		.byte	0x51
+ 2462 0042 0B000000 		.4byte	.LVL10-1
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 47
+
+
+ 2463 0046 16000000 		.4byte	.LVL11
+ 2464 004a 0100     		.2byte	0x1
+ 2465 004c 55       		.byte	0x55
+ 2466 004d 16000000 		.4byte	.LVL11
+ 2467 0051 19000000 		.4byte	.LVL12-1
+ 2468 0055 0100     		.2byte	0x1
+ 2469 0057 51       		.byte	0x51
+ 2470 0058 19000000 		.4byte	.LVL12-1
+ 2471 005c 1A000000 		.4byte	.LFE1
+ 2472 0060 0400     		.2byte	0x4
+ 2473 0062 F3       		.byte	0xf3
+ 2474 0063 01       		.uleb128 0x1
+ 2475 0064 51       		.byte	0x51
+ 2476 0065 9F       		.byte	0x9f
+ 2477 0066 00000000 		.4byte	0
+ 2478 006a 00000000 		.4byte	0
+ 2479              	.LLST2:
+ 2480 006e 00000000 		.4byte	.LVL9
+ 2481 0072 0B000000 		.4byte	.LVL10-1
+ 2482 0076 0100     		.2byte	0x1
+ 2483 0078 52       		.byte	0x52
+ 2484 0079 0B000000 		.4byte	.LVL10-1
+ 2485 007d 16000000 		.4byte	.LVL11
+ 2486 0081 0100     		.2byte	0x1
+ 2487 0083 54       		.byte	0x54
+ 2488 0084 16000000 		.4byte	.LVL11
+ 2489 0088 19000000 		.4byte	.LVL12-1
+ 2490 008c 0100     		.2byte	0x1
+ 2491 008e 52       		.byte	0x52
+ 2492 008f 19000000 		.4byte	.LVL12-1
+ 2493 0093 1A000000 		.4byte	.LFE1
+ 2494 0097 0400     		.2byte	0x4
+ 2495 0099 F3       		.byte	0xf3
+ 2496 009a 01       		.uleb128 0x1
+ 2497 009b 52       		.byte	0x52
+ 2498 009c 9F       		.byte	0x9f
+ 2499 009d 00000000 		.4byte	0
+ 2500 00a1 00000000 		.4byte	0
+ 2501              		.section	.debug_aranges,"",%progbits
+ 2502 0000 24000000 		.4byte	0x24
+ 2503 0004 0200     		.2byte	0x2
+ 2504 0006 00000000 		.4byte	.Ldebug_info0
+ 2505 000a 04       		.byte	0x4
+ 2506 000b 00       		.byte	0
+ 2507 000c 0000     		.2byte	0
+ 2508 000e 0000     		.2byte	0
+ 2509 0010 00000000 		.4byte	.LFB0
+ 2510 0014 78000000 		.4byte	.LFE0-.LFB0
+ 2511 0018 00000000 		.4byte	.LFB1
+ 2512 001c 1A000000 		.4byte	.LFE1-.LFB1
+ 2513 0020 00000000 		.4byte	0
+ 2514 0024 00000000 		.4byte	0
+ 2515              		.section	.debug_ranges,"",%progbits
+ 2516              	.Ldebug_ranges0:
+ 2517 0000 00000000 		.4byte	.LFB0
+ 2518 0004 78000000 		.4byte	.LFE0
+ 2519 0008 00000000 		.4byte	.LFB1
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 48
+
+
+ 2520 000c 1A000000 		.4byte	.LFE1
+ 2521 0010 00000000 		.4byte	0
+ 2522 0014 00000000 		.4byte	0
+ 2523              		.section	.debug_line,"",%progbits
+ 2524              	.Ldebug_line0:
+ 2525 0000 A9000000 		.section	.debug_str,"MS",%progbits,1
+ 2525      02005900 
+ 2525      00000201 
+ 2525      FB0E0D00 
+ 2525      01010101 
+ 2526              	.LASF333:
+ 2527 0000 4F535F46 		.ascii	"OS_FN_CLICC_LED_OPEN\000"
+ 2527      4E5F434C 
+ 2527      4943435F 
+ 2527      4C45445F 
+ 2527      4F50454E 
+ 2528              	.LASF346:
+ 2529 0015 4F535F46 		.ascii	"OS_FN_DRIVER_REGISTER\000"
+ 2529      4E5F4452 
+ 2529      49564552 
+ 2529      5F524547 
+ 2529      49535445 
+ 2530              	.LASF495:
+ 2531 002b 63686172 		.ascii	"char\000"
+ 2531      00
+ 2532              	.LASF321:
+ 2533 0030 4F535F46 		.ascii	"OS_FN_CODEC_CLOSE\000"
+ 2533      4E5F434F 
+ 2533      4445435F 
+ 2533      434C4F53 
+ 2533      4500
+ 2534              	.LASF433:
+ 2535 0042 4F535F46 		.ascii	"OS_FN_GET_CALLID\000"
+ 2535      4E5F4745 
+ 2535      545F4341 
+ 2535      4C4C4944 
+ 2535      00
+ 2536              	.LASF199:
+ 2537 0053 4F535F46 		.ascii	"OS_FN_FILE_INIT_SEARCH\000"
+ 2537      4E5F4649 
+ 2537      4C455F49 
+ 2537      4E49545F 
+ 2537      53454152 
+ 2538              	.LASF14:
+ 2539 006a 705F7669 		.ascii	"p_virgin\000"
+ 2539      7267696E 
+ 2539      00
+ 2540              	.LASF179:
+ 2541 0073 4F535F46 		.ascii	"OS_FN_FILE_SEEK\000"
+ 2541      4E5F4649 
+ 2541      4C455F53 
+ 2541      45454B00 
+ 2542              	.LASF6:
+ 2543 0083 73697A65 		.ascii	"sizetype\000"
+ 2543      74797065 
+ 2543      00
+ 2544              	.LASF420:
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 49
+
+
+ 2545 008c 4F535F46 		.ascii	"OS_FN_NFC_IC_REG_DIRECT_WRITE\000"
+ 2545      4E5F4E46 
+ 2545      435F4943 
+ 2545      5F524547 
+ 2545      5F444952 
+ 2546              	.LASF171:
+ 2547 00aa 4F535F46 		.ascii	"OS_FN_FILE_CREATE_OWNER\000"
+ 2547      4E5F4649 
+ 2547      4C455F43 
+ 2547      52454154 
+ 2547      455F4F57 
+ 2548              	.LASF309:
+ 2549 00c2 4F535F46 		.ascii	"OS_FN_GPRS_SMS_SEND\000"
+ 2549      4E5F4750 
+ 2549      52535F53 
+ 2549      4D535F53 
+ 2549      454E4400 
+ 2550              	.LASF18:
+ 2551 00d6 625F7479 		.ascii	"b_type\000"
+ 2551      706500
+ 2552              	.LASF338:
+ 2553 00dd 4F535F46 		.ascii	"OS_FN_CLICC_LED_ON\000"
+ 2553      4E5F434C 
+ 2553      4943435F 
+ 2553      4C45445F 
+ 2553      4F4E00
+ 2554              	.LASF345:
+ 2555 00f0 4F535F46 		.ascii	"OS_FN_USBHOST_DEVICEMAP\000"
+ 2555      4E5F5553 
+ 2555      42484F53 
+ 2555      545F4445 
+ 2555      56494345 
+ 2556              	.LASF354:
+ 2557 0108 4F535F46 		.ascii	"OS_FN_DEVICE_SEARCH_NEXT\000"
+ 2557      4E5F4445 
+ 2557      56494345 
+ 2557      5F534541 
+ 2557      5243485F 
+ 2558              	.LASF463:
+ 2559 0121 4F535F46 		.ascii	"OS_FN_GCM_AES_OPEN\000"
+ 2559      4E5F4743 
+ 2559      4D5F4145 
+ 2559      535F4F50 
+ 2559      454E00
+ 2560              	.LASF320:
+ 2561 0134 4F535F46 		.ascii	"OS_FN_CODEC_OPEN\000"
+ 2561      4E5F434F 
+ 2561      4445435F 
+ 2561      4F50454E 
+ 2561      00
+ 2562              	.LASF87:
+ 2563 0145 4F535F46 		.ascii	"OS_FN_COM3_SREAD\000"
+ 2563      4E5F434F 
+ 2563      4D335F53 
+ 2563      52454144 
+ 2563      00
+ 2564              	.LASF175:
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 50
+
+
+ 2565 0156 4F535F46 		.ascii	"OS_FN_FILE_EXIST\000"
+ 2565      4E5F4649 
+ 2565      4C455F45 
+ 2565      58495354 
+ 2565      00
+ 2566              	.LASF485:
+ 2567 0167 4F535F46 		.ascii	"OS_FN_IMG_SENSOR_LED_OPEN\000"
+ 2567      4E5F494D 
+ 2567      475F5345 
+ 2567      4E534F52 
+ 2567      5F4C4544 
+ 2568              	.LASF124:
+ 2569 0181 4F535F46 		.ascii	"OS_FN_SM4_DECRYPT\000"
+ 2569      4E5F534D 
+ 2569      345F4445 
+ 2569      43525950 
+ 2569      5400
+ 2570              	.LASF493:
+ 2571 0193 4F535F46 		.ascii	"OS_FN_GPS_GET_DETAIL_INFO\000"
+ 2571      4E5F4750 
+ 2571      535F4745 
+ 2571      545F4445 
+ 2571      5441494C 
+ 2572              	.LASF305:
+ 2573 01ad 4F535F46 		.ascii	"OS_FN_GPRS_GET_CID\000"
+ 2573      4E5F4750 
+ 2573      52535F47 
+ 2573      45545F43 
+ 2573      494400
+ 2574              	.LASF374:
+ 2575 01c0 4F535F46 		.ascii	"OS_FN_TAMPER_RESET_STATUS\000"
+ 2575      4E5F5441 
+ 2575      4D504552 
+ 2575      5F524553 
+ 2575      45545F53 
+ 2576              	.LASF447:
+ 2577 01da 4F535F46 		.ascii	"OS_FN_POWER\000"
+ 2577      4E5F504F 
+ 2577      57455200 
+ 2578              	.LASF295:
+ 2579 01e6 4F535F46 		.ascii	"OS_FN_ADC_CH_DISABLE\000"
+ 2579      4E5F4144 
+ 2579      435F4348 
+ 2579      5F444953 
+ 2579      41424C45 
+ 2580              	.LASF221:
+ 2581 01fb 4F535F46 		.ascii	"OS_FN_MMC_SIZE\000"
+ 2581      4E5F4D4D 
+ 2581      435F5349 
+ 2581      5A4500
+ 2582              	.LASF188:
+ 2583 020a 4F535F46 		.ascii	"OS_FN_FILE_DSEARCH_ALL\000"
+ 2583      4E5F4649 
+ 2583      4C455F44 
+ 2583      53454152 
+ 2583      43485F41 
+ 2584              	.LASF442:
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 51
+
+
+ 2585 0221 4F535F46 		.ascii	"OS_FN_DMK_KVC_READ\000"
+ 2585      4E5F444D 
+ 2585      4B5F4B56 
+ 2585      435F5245 
+ 2585      414400
+ 2586              	.LASF34:
+ 2587 0234 4F535F46 		.ascii	"OS_FN_TIMER_SET\000"
+ 2587      4E5F5449 
+ 2587      4D45525F 
+ 2587      53455400 
+ 2588              	.LASF469:
+ 2589 0244 4F535F46 		.ascii	"OS_FN_SYS_THREAD_CREATE\000"
+ 2589      4E5F5359 
+ 2589      535F5448 
+ 2589      52454144 
+ 2589      5F435245 
+ 2590              	.LASF152:
+ 2591 025c 4F535F46 		.ascii	"OS_FN_BUFMAN_FREE\000"
+ 2591      4E5F4255 
+ 2591      464D414E 
+ 2591      5F465245 
+ 2591      4500
+ 2592              	.LASF300:
+ 2593 026e 4F535F46 		.ascii	"OS_FN_GPRS_AT_RESP\000"
+ 2593      4E5F4750 
+ 2593      52535F41 
+ 2593      545F5245 
+ 2593      535000
+ 2594              	.LASF483:
+ 2595 0281 4F535F46 		.ascii	"OS_FN_GPRS_IS_HL6RD_OLD_FRM\000"
+ 2595      4E5F4750 
+ 2595      52535F49 
+ 2595      535F484C 
+ 2595      3652445F 
+ 2596              	.LASF284:
+ 2597 029d 4F535F46 		.ascii	"OS_FN_MCOM_TXRDY\000"
+ 2597      4E5F4D43 
+ 2597      4F4D5F54 
+ 2597      58524459 
+ 2597      00
+ 2598              	.LASF228:
+ 2599 02ae 4F535F46 		.ascii	"OS_FN_SLE_OPEN\000"
+ 2599      4E5F534C 
+ 2599      455F4F50 
+ 2599      454E00
+ 2600              	.LASF55:
+ 2601 02bd 4F535F46 		.ascii	"OS_FN_DISP_BRIGHTNESS\000"
+ 2601      4E5F4449 
+ 2601      53505F42 
+ 2601      52494748 
+ 2601      544E4553 
+ 2602              	.LASF311:
+ 2603 02d3 4F535F46 		.ascii	"OS_FN_GPRS_SMS_READ\000"
+ 2603      4E5F4750 
+ 2603      52535F53 
+ 2603      4D535F52 
+ 2603      45414400 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 52
+
+
+ 2604              	.LASF302:
+ 2605 02e7 4F535F46 		.ascii	"OS_FN_GPRS_READ\000"
+ 2605      4E5F4750 
+ 2605      52535F52 
+ 2605      45414400 
+ 2606              	.LASF499:
+ 2607 02f7 55534246 		.ascii	"USBFPRT_GENERAL_INFO_IMG_BPP\000"
+ 2607      5052545F 
+ 2607      47454E45 
+ 2607      52414C5F 
+ 2607      494E464F 
+ 2608              	.LASF195:
+ 2609 0314 4F535F46 		.ascii	"OS_FN_FILE_GET_FREE_SPACE\000"
+ 2609      4E5F4649 
+ 2609      4C455F47 
+ 2609      45545F46 
+ 2609      5245455F 
+ 2610              	.LASF135:
+ 2611 032e 4F535F46 		.ascii	"OS_FN_KEY_SAVE_NC\000"
+ 2611      4E5F4B45 
+ 2611      595F5341 
+ 2611      56455F4E 
+ 2611      4300
+ 2612              	.LASF474:
+ 2613 0340 4F535F46 		.ascii	"OS_FN_WIFI_SOCKET_SEND_UDP\000"
+ 2613      4E5F5749 
+ 2613      46495F53 
+ 2613      4F434B45 
+ 2613      545F5345 
+ 2614              	.LASF445:
+ 2615 035b 4F535F46 		.ascii	"OS_FN_RMB_CONTROL\000"
+ 2615      4E5F524D 
+ 2615      425F434F 
+ 2615      4E54524F 
+ 2615      4C00
+ 2616              	.LASF115:
+ 2617 036d 4F535F46 		.ascii	"OS_FN_SM2_GET_SIGNATURE\000"
+ 2617      4E5F534D 
+ 2617      325F4745 
+ 2617      545F5349 
+ 2617      474E4154 
+ 2618              	.LASF81:
+ 2619 0385 4F535F46 		.ascii	"OS_FN_COM3_CLOSE\000"
+ 2619      4E5F434F 
+ 2619      4D335F43 
+ 2619      4C4F5345 
+ 2619      00
+ 2620              	.LASF71:
+ 2621 0396 4F535F46 		.ascii	"OS_FN_COM2_OPEN\000"
+ 2621      4E5F434F 
+ 2621      4D325F4F 
+ 2621      50454E00 
+ 2622              	.LASF344:
+ 2623 03a6 4F535F46 		.ascii	"OS_FN_USBHOST_DEVINFO\000"
+ 2623      4E5F5553 
+ 2623      42484F53 
+ 2623      545F4445 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 53
+
+
+ 2623      56494E46 
+ 2624              	.LASF241:
+ 2625 03bc 4F535F46 		.ascii	"OS_FN_MSR_RXLEN\000"
+ 2625      4E5F4D53 
+ 2625      525F5258 
+ 2625      4C454E00 
+ 2626              	.LASF100:
+ 2627 03cc 4F535F46 		.ascii	"OS_FN_AES_ENCRYPT_BLOCK\000"
+ 2627      4E5F4145 
+ 2627      535F454E 
+ 2627      43525950 
+ 2627      545F424C 
+ 2628              	.LASF185:
+ 2629 03e4 4F535F46 		.ascii	"OS_FN_FILE_END\000"
+ 2629      4E5F4649 
+ 2629      4C455F45 
+ 2629      4E4400
+ 2630              	.LASF212:
+ 2631 03f3 4F535F46 		.ascii	"OS_FN_SAM_SELECT\000"
+ 2631      4E5F5341 
+ 2631      4D5F5345 
+ 2631      4C454354 
+ 2631      00
+ 2632              	.LASF429:
+ 2633 0404 4F535F46 		.ascii	"OS_FN_GPS_ENABLED\000"
+ 2633      4E5F4750 
+ 2633      535F454E 
+ 2633      41424C45 
+ 2633      4400
+ 2634              	.LASF405:
+ 2635 0416 4F535F46 		.ascii	"OS_FN_BARCODE_STATUS\000"
+ 2635      4E5F4241 
+ 2635      52434F44 
+ 2635      455F5354 
+ 2635      41545553 
+ 2636              	.LASF210:
+ 2637 042b 4F535F46 		.ascii	"OS_FN_SAM_OPEN\000"
+ 2637      4E5F5341 
+ 2637      4D5F4F50 
+ 2637      454E00
+ 2638              	.LASF108:
+ 2639 043a 4F535F46 		.ascii	"OS_FN_SHA_FINISH\000"
+ 2639      4E5F5348 
+ 2639      415F4649 
+ 2639      4E495348 
+ 2639      00
+ 2640              	.LASF519:
+ 2641 044b 2E2E2F4C 		.ascii	"../LibA5T1000/gcc/cstartup.c\000"
+ 2641      69624135 
+ 2641      54313030 
+ 2641      302F6763 
+ 2641      632F6373 
+ 2642              	.LASF427:
+ 2643 0468 4F535F46 		.ascii	"OS_FN_GPS_RESP\000"
+ 2643      4E5F4750 
+ 2643      535F5245 
+ 2643      535000
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 54
+
+
+ 2644              	.LASF191:
+ 2645 0477 4F535F46 		.ascii	"OS_FN_FILE_GET_NAME\000"
+ 2645      4E5F4649 
+ 2645      4C455F47 
+ 2645      45545F4E 
+ 2645      414D4500 
+ 2646              	.LASF520:
+ 2647 048b 443A5C47 		.ascii	"D:\\GuadianPro\\Core\\S_MISR\\APP\\MISR\000"
+ 2647      75616469 
+ 2647      616E5072 
+ 2647      6F5C436F 
+ 2647      72655C53 
+ 2648              	.LASF116:
+ 2649 04ae 4F535F46 		.ascii	"OS_FN_SM2_VERIFY_SIGNATURE\000"
+ 2649      4E5F534D 
+ 2649      325F5645 
+ 2649      52494659 
+ 2649      5F534947 
+ 2650              	.LASF101:
+ 2651 04c9 4F535F46 		.ascii	"OS_FN_AES_DECRYPT_BLOCK\000"
+ 2651      4E5F4145 
+ 2651      535F4445 
+ 2651      43525950 
+ 2651      545F424C 
+ 2652              	.LASF127:
+ 2653 04e1 4F535F46 		.ascii	"OS_FN_KEY_DES\000"
+ 2653      4E5F4B45 
+ 2653      595F4445 
+ 2653      5300
+ 2654              	.LASF2:
+ 2655 04ef 42595445 		.ascii	"BYTE\000"
+ 2655      00
+ 2656              	.LASF412:
+ 2657 04f4 4F535F46 		.ascii	"OS_FN_WIFI_PROFILES_WRITE\000"
+ 2657      4E5F5749 
+ 2657      46495F50 
+ 2657      524F4649 
+ 2657      4C45535F 
+ 2658              	.LASF125:
+ 2659 050e 4F535F46 		.ascii	"OS_FN_KEY_SAVE\000"
+ 2659      4E5F4B45 
+ 2659      595F5341 
+ 2659      564500
+ 2660              	.LASF98:
+ 2661 051d 4F535F46 		.ascii	"OS_FN_RSA_PRIVATE\000"
+ 2661      4E5F5253 
+ 2661      415F5052 
+ 2661      49564154 
+ 2661      4500
+ 2662              	.LASF260:
+ 2663 052f 4F535F46 		.ascii	"OS_FN_FL_PGM\000"
+ 2663      4E5F464C 
+ 2663      5F50474D 
+ 2663      00
+ 2664              	.LASF202:
+ 2665 053c 4F535F46 		.ascii	"OS_FN_FILE_RMDIR\000"
+ 2665      4E5F4649 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 55
+
+
+ 2665      4C455F52 
+ 2665      4D444952 
+ 2665      00
+ 2666              	.LASF448:
+ 2667 054d 4F535F46 		.ascii	"OS_FN_CLICC_DEBUG\000"
+ 2667      4E5F434C 
+ 2667      4943435F 
+ 2667      44454255 
+ 2667      4700
+ 2668              	.LASF391:
+ 2669 055f 4F535F46 		.ascii	"OS_FN_MIF_RESTORE\000"
+ 2669      4E5F4D49 
+ 2669      465F5245 
+ 2669      53544F52 
+ 2669      4500
+ 2670              	.LASF286:
+ 2671 0571 4F535F46 		.ascii	"OS_FN_MCOM_SSEND\000"
+ 2671      4E5F4D43 
+ 2671      4F4D5F53 
+ 2671      53454E44 
+ 2671      00
+ 2672              	.LASF348:
+ 2673 0582 4F535F46 		.ascii	"OS_FN_DEVICE_ALLOC\000"
+ 2673      4E5F4445 
+ 2673      56494345 
+ 2673      5F414C4C 
+ 2673      4F4300
+ 2674              	.LASF459:
+ 2675 0595 4F535F46 		.ascii	"OS_FN_FPRT_INFO_GET\000"
+ 2675      4E5F4650 
+ 2675      52545F49 
+ 2675      4E464F5F 
+ 2675      47455400 
+ 2676              	.LASF204:
+ 2677 05a9 4F535F46 		.ascii	"OS_FN_FILE_SYNC\000"
+ 2677      4E5F4649 
+ 2677      4C455F53 
+ 2677      594E4300 
+ 2678              	.LASF455:
+ 2679 05b9 4F535F46 		.ascii	"OS_FN_FPRT_OPEN\000"
+ 2679      4E5F4650 
+ 2679      52545F4F 
+ 2679      50454E00 
+ 2680              	.LASF242:
+ 2681 05c9 4F535F46 		.ascii	"OS_FN_MSR_GETC\000"
+ 2681      4E5F4D53 
+ 2681      525F4745 
+ 2681      544300
+ 2682              	.LASF86:
+ 2683 05d8 4F535F46 		.ascii	"OS_FN_COM3_STATUS\000"
+ 2683      4E5F434F 
+ 2683      4D335F53 
+ 2683      54415455 
+ 2683      5300
+ 2684              	.LASF293:
+ 2685 05ea 4F535F46 		.ascii	"OS_FN_BATT_CHARGE_MODE\000"
+ 2685      4E5F4241 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 56
+
+
+ 2685      54545F43 
+ 2685      48415247 
+ 2685      455F4D4F 
+ 2686              	.LASF397:
+ 2687 0601 4F535F46 		.ascii	"OS_FN_MIF_INFO_SET\000"
+ 2687      4E5F4D49 
+ 2687      465F494E 
+ 2687      464F5F53 
+ 2687      455400
+ 2688              	.LASF362:
+ 2689 0614 4F535F46 		.ascii	"OS_FN_USBOTG_GET_STATE\000"
+ 2689      4E5F5553 
+ 2689      424F5447 
+ 2689      5F474554 
+ 2689      5F535441 
+ 2690              	.LASF9:
+ 2691 062b 6C6F6E67 		.ascii	"long int\000"
+ 2691      20696E74 
+ 2691      00
+ 2692              	.LASF151:
+ 2693 0634 4F535F46 		.ascii	"OS_FN_BUFMAN_ALLOC\000"
+ 2693      4E5F4255 
+ 2693      464D414E 
+ 2693      5F414C4C 
+ 2693      4F4300
+ 2694              	.LASF62:
+ 2695 0647 4F535F46 		.ascii	"OS_FN_COM1_OPEN\000"
+ 2695      4E5F434F 
+ 2695      4D315F4F 
+ 2695      50454E00 
+ 2696              	.LASF306:
+ 2697 0657 4F535F46 		.ascii	"OS_FN_GPRS_READ_USSD\000"
+ 2697      4E5F4750 
+ 2697      52535F52 
+ 2697      4541445F 
+ 2697      55535344 
+ 2698              	.LASF117:
+ 2699 066c 4F535F46 		.ascii	"OS_FN_SM2_ENCRYPT\000"
+ 2699      4E5F534D 
+ 2699      325F454E 
+ 2699      43525950 
+ 2699      5400
+ 2700              	.LASF466:
+ 2701 067e 4F535F46 		.ascii	"OS_FN_GCM_AES_PROCESS\000"
+ 2701      4E5F4743 
+ 2701      4D5F4145 
+ 2701      535F5052 
+ 2701      4F434553 
+ 2702              	.LASF350:
+ 2703 0694 4F535F46 		.ascii	"OS_FN_DEVICE_UNREGISTER\000"
+ 2703      4E5F4445 
+ 2703      56494345 
+ 2703      5F554E52 
+ 2703      45474953 
+ 2704              	.LASF525:
+ 2705 06ac 6D61696E 		.ascii	"main\000"
+ 2705      00
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 57
+
+
+ 2706              	.LASF114:
+ 2707 06b1 4F535F46 		.ascii	"OS_FN_SM2_FREE_CURVE\000"
+ 2707      4E5F534D 
+ 2707      325F4652 
+ 2707      45455F43 
+ 2707      55525645 
+ 2708              	.LASF491:
+ 2709 06c6 4F535F46 		.ascii	"OS_FN_BATT_LEVEL2\000"
+ 2709      4E5F4241 
+ 2709      54545F4C 
+ 2709      4556454C 
+ 2709      3200
+ 2710              	.LASF266:
+ 2711 06d8 4F535F46 		.ascii	"OS_FN_FL_COPYB_START\000"
+ 2711      4E5F464C 
+ 2711      5F434F50 
+ 2711      59425F53 
+ 2711      54415254 
+ 2712              	.LASF53:
+ 2713 06ed 4F535F46 		.ascii	"OS_FN_DISP_TEXTC\000"
+ 2713      4E5F4449 
+ 2713      53505F54 
+ 2713      45585443 
+ 2713      00
+ 2714              	.LASF187:
+ 2715 06fe 4F535F46 		.ascii	"OS_FN_FILE_DSEARCH\000"
+ 2715      4E5F4649 
+ 2715      4C455F44 
+ 2715      53454152 
+ 2715      434800
+ 2716              	.LASF410:
+ 2717 0711 4F535F46 		.ascii	"OS_FN_WIFI_STATUS\000"
+ 2717      4E5F5749 
+ 2717      46495F53 
+ 2717      54415455 
+ 2717      5300
+ 2718              	.LASF500:
+ 2719 0723 55534246 		.ascii	"USBFPRT_GENERAL_INFO_END\000"
+ 2719      5052545F 
+ 2719      47454E45 
+ 2719      52414C5F 
+ 2719      494E464F 
+ 2720              	.LASF42:
+ 2721 073c 4F535F46 		.ascii	"OS_FN_DISP_OPEN\000"
+ 2721      4E5F4449 
+ 2721      53505F4F 
+ 2721      50454E00 
+ 2722              	.LASF44:
+ 2723 074c 4F535F46 		.ascii	"OS_FN_DISP_PUTC\000"
+ 2723      4E5F4449 
+ 2723      53505F50 
+ 2723      55544300 
+ 2724              	.LASF332:
+ 2725 075c 4F535F46 		.ascii	"OS_FN_CLICC_EMV_LV1\000"
+ 2725      4E5F434C 
+ 2725      4943435F 
+ 2725      454D565F 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 58
+
+
+ 2725      4C563100 
+ 2726              	.LASF48:
+ 2727 0770 4F535F46 		.ascii	"OS_FN_DISP_PUTG\000"
+ 2727      4E5F4449 
+ 2727      53505F50 
+ 2727      55544700 
+ 2728              	.LASF138:
+ 2729 0780 4F535F46 		.ascii	"OS_FN_KEY_SAVE_TMK_CBC_NC\000"
+ 2729      4E5F4B45 
+ 2729      595F5341 
+ 2729      56455F54 
+ 2729      4D4B5F43 
+ 2730              	.LASF294:
+ 2731 079a 4F535F46 		.ascii	"OS_FN_ADC_CH_ENABLE\000"
+ 2731      4E5F4144 
+ 2731      435F4348 
+ 2731      5F454E41 
+ 2731      424C4500 
+ 2732              	.LASF46:
+ 2733 07ae 4F535F46 		.ascii	"OS_FN_DISP_PUTN\000"
+ 2733      4E5F4449 
+ 2733      53505F50 
+ 2733      55544E00 
+ 2734              	.LASF479:
+ 2735 07be 4F535F46 		.ascii	"OS_FN_IMG_SENSOR_GET_FRAME\000"
+ 2735      4E5F494D 
+ 2735      475F5345 
+ 2735      4E534F52 
+ 2735      5F474554 
+ 2736              	.LASF49:
+ 2737 07d9 4F535F46 		.ascii	"OS_FN_DISP_PUTP\000"
+ 2737      4E5F4449 
+ 2737      53505F50 
+ 2737      55545000 
+ 2738              	.LASF440:
+ 2739 07e9 4F535F46 		.ascii	"OS_FN_DUMMY\000"
+ 2739      4E5F4455 
+ 2739      4D4D5900 
+ 2740              	.LASF324:
+ 2741 07f5 4F535F46 		.ascii	"OS_FN_CODEC_STOP\000"
+ 2741      4E5F434F 
+ 2741      4445435F 
+ 2741      53544F50 
+ 2741      00
+ 2742              	.LASF45:
+ 2743 0806 4F535F46 		.ascii	"OS_FN_DISP_PUTS\000"
+ 2743      4E5F4449 
+ 2743      53505F50 
+ 2743      55545300 
+ 2744              	.LASF207:
+ 2745 0816 4F535F46 		.ascii	"OS_FN_CONFIG_READ\000"
+ 2745      4E5F434F 
+ 2745      4E464947 
+ 2745      5F524541 
+ 2745      4400
+ 2746              	.LASF254:
+ 2747 0828 4F535F46 		.ascii	"OS_FN_USBSER_STATUS\000"
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 59
+
+
+ 2747      4E5F5553 
+ 2747      42534552 
+ 2747      5F535441 
+ 2747      54555300 
+ 2748              	.LASF413:
+ 2749 083c 4F535F46 		.ascii	"OS_FN_NFC_OPEN_FELICA\000"
+ 2749      4E5F4E46 
+ 2749      435F4F50 
+ 2749      454E5F46 
+ 2749      454C4943 
+ 2750              	.LASF160:
+ 2751 0852 4F535F46 		.ascii	"OS_FN_LED_ON\000"
+ 2751      4E5F4C45 
+ 2751      445F4F4E 
+ 2751      00
+ 2752              	.LASF172:
+ 2753 085f 4F535F46 		.ascii	"OS_FN_FILE_OPEN\000"
+ 2753      4E5F4649 
+ 2753      4C455F4F 
+ 2753      50454E00 
+ 2754              	.LASF182:
+ 2755 086f 4F535F46 		.ascii	"OS_FN_FILE_PUTC\000"
+ 2755      4E5F4649 
+ 2755      4C455F50 
+ 2755      55544300 
+ 2756              	.LASF148:
+ 2757 087f 4F535F46 		.ascii	"OS_FN_THREAD_PUSH\000"
+ 2757      4E5F5448 
+ 2757      52454144 
+ 2757      5F505553 
+ 2757      4800
+ 2758              	.LASF507:
+ 2759 0891 5F737461 		.ascii	"_start_of_data\000"
+ 2759      72745F6F 
+ 2759      665F6461 
+ 2759      746100
+ 2760              	.LASF441:
+ 2761 08a0 4F535F46 		.ascii	"OS_FN_OFF\000"
+ 2761      4E5F4F46 
+ 2761      4600
+ 2762              	.LASF13:
+ 2763 08aa 705F666E 		.ascii	"p_fntbl\000"
+ 2763      74626C00 
+ 2764              	.LASF0:
+ 2765 08b2 756E7369 		.ascii	"unsigned char\000"
+ 2765      676E6564 
+ 2765      20636861 
+ 2765      7200
+ 2766              	.LASF506:
+ 2767 08c0 5F656E64 		.ascii	"_end_of_app\000"
+ 2767      5F6F665F 
+ 2767      61707000 
+ 2768              	.LASF25:
+ 2769 08cc 4F535F46 		.ascii	"OS_FN_KBD_OPEN\000"
+ 2769      4E5F4B42 
+ 2769      445F4F50 
+ 2769      454E00
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 60
+
+
+ 2770              	.LASF132:
+ 2771 08db 4F535F46 		.ascii	"OS_FN_KEY_CUP_MAC\000"
+ 2771      4E5F4B45 
+ 2771      595F4355 
+ 2771      505F4D41 
+ 2771      4300
+ 2772              	.LASF381:
+ 2773 08ed 4F535F46 		.ascii	"OS_FN_MIF_STATUS\000"
+ 2773      4E5F4D49 
+ 2773      465F5354 
+ 2773      41545553 
+ 2773      00
+ 2774              	.LASF58:
+ 2775 08fe 4F535F46 		.ascii	"OS_FN_DISP_ICON_PUTC\000"
+ 2775      4E5F4449 
+ 2775      53505F49 
+ 2775      434F4E5F 
+ 2775      50555443 
+ 2776              	.LASF206:
+ 2777 0913 4F535F46 		.ascii	"OS_FN_CONFIG_LENGTH\000"
+ 2777      4E5F434F 
+ 2777      4E464947 
+ 2777      5F4C454E 
+ 2777      47544800 
+ 2778              	.LASF17:
+ 2779 0927 625F7375 		.ascii	"b_subver\000"
+ 2779      62766572 
+ 2779      00
+ 2780              	.LASF269:
+ 2781 0930 4F535F46 		.ascii	"OS_FN_FL_CREAD_RAND\000"
+ 2781      4E5F464C 
+ 2781      5F435245 
+ 2781      41445F52 
+ 2781      414E4400 
+ 2782              	.LASF142:
+ 2783 0944 4F535F46 		.ascii	"OS_FN_THREAD_OPEN\000"
+ 2783      4E5F5448 
+ 2783      52454144 
+ 2783      5F4F5045 
+ 2783      4E00
+ 2784              	.LASF181:
+ 2785 0956 4F535F46 		.ascii	"OS_FN_FILE_WRITE\000"
+ 2785      4E5F4649 
+ 2785      4C455F57 
+ 2785      52495445 
+ 2785      00
+ 2786              	.LASF415:
+ 2787 0967 4F535F46 		.ascii	"OS_FN_NFC_CANCEL\000"
+ 2787      4E5F4E46 
+ 2787      435F4341 
+ 2787      4E43454C 
+ 2787      00
+ 2788              	.LASF475:
+ 2789 0978 4F535F46 		.ascii	"OS_FN_WIFI_GET_DEVICE_STATE\000"
+ 2789      4E5F5749 
+ 2789      46495F47 
+ 2789      45545F44 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 61
+
+
+ 2789      45564943 
+ 2790              	.LASF67:
+ 2791 0994 4F535F46 		.ascii	"OS_FN_COM1_SEND\000"
+ 2791      4E5F434F 
+ 2791      4D315F53 
+ 2791      454E4400 
+ 2792              	.LASF141:
+ 2793 09a4 4F535F46 		.ascii	"OS_FN_PCI_DSS\000"
+ 2793      4E5F5043 
+ 2793      495F4453 
+ 2793      5300
+ 2794              	.LASF20:
+ 2795 09b2 645F6D61 		.ascii	"d_magic\000"
+ 2795      67696300 
+ 2796              	.LASF157:
+ 2797 09ba 4F535F46 		.ascii	"OS_FN_LED_STATUS\000"
+ 2797      4E5F4C45 
+ 2797      445F5354 
+ 2797      41545553 
+ 2797      00
+ 2798              	.LASF75:
+ 2799 09cb 4F535F46 		.ascii	"OS_FN_COM2_READ\000"
+ 2799      4E5F434F 
+ 2799      4D325F52 
+ 2799      45414400 
+ 2800              	.LASF36:
+ 2801 09db 4F535F46 		.ascii	"OS_FN_BUZ_OPEN\000"
+ 2801      4E5F4255 
+ 2801      5A5F4F50 
+ 2801      454E00
+ 2802              	.LASF334:
+ 2803 09ea 4F535F46 		.ascii	"OS_FN_CLICC_LED_CLOSE\000"
+ 2803      4E5F434C 
+ 2803      4943435F 
+ 2803      4C45445F 
+ 2803      434C4F53 
+ 2804              	.LASF390:
+ 2805 0a00 4F535F46 		.ascii	"OS_FN_MIF_DEC\000"
+ 2805      4E5F4D49 
+ 2805      465F4445 
+ 2805      4300
+ 2806              	.LASF232:
+ 2807 0a0e 4F535F46 		.ascii	"OS_FN_LAN_OPEN\000"
+ 2807      4E5F4C41 
+ 2807      4E5F4F50 
+ 2807      454E00
+ 2808              	.LASF454:
+ 2809 0a1d 4F535F46 		.ascii	"OS_FN_LPT_GET_COUNT\000"
+ 2809      4E5F4C50 
+ 2809      545F4745 
+ 2809      545F434F 
+ 2809      554E5400 
+ 2810              	.LASF290:
+ 2811 0a31 4F535F46 		.ascii	"OS_FN_BATT_LEVEL\000"
+ 2811      4E5F4241 
+ 2811      54545F4C 
+ 2811      4556454C 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 62
+
+
+ 2811      00
+ 2812              	.LASF438:
+ 2813 0a42 4F535F46 		.ascii	"OS_FN_HD_CONFIG\000"
+ 2813      4E5F4844 
+ 2813      5F434F4E 
+ 2813      46494700 
+ 2814              	.LASF198:
+ 2815 0a52 4F535F46 		.ascii	"OS_FN_FILE_FTRUNCATE\000"
+ 2815      4E5F4649 
+ 2815      4C455F46 
+ 2815      5452554E 
+ 2815      43415445 
+ 2816              	.LASF235:
+ 2817 0a67 4F535F46 		.ascii	"OS_FN_LAN_TXRDY\000"
+ 2817      4E5F4C41 
+ 2817      4E5F5458 
+ 2817      52445900 
+ 2818              	.LASF143:
+ 2819 0a77 4F535F46 		.ascii	"OS_FN_THREAD_CLOSE\000"
+ 2819      4E5F5448 
+ 2819      52454144 
+ 2819      5F434C4F 
+ 2819      534500
+ 2820              	.LASF292:
+ 2821 0a8a 4F535F46 		.ascii	"OS_FN_BATT_CONTROL\000"
+ 2821      4E5F4241 
+ 2821      54545F43 
+ 2821      4F4E5452 
+ 2821      4F4C00
+ 2822              	.LASF379:
+ 2823 0a9d 4F535F46 		.ascii	"OS_FN_MIF_CARD_TYPE\000"
+ 2823      4E5F4D49 
+ 2823      465F4341 
+ 2823      52445F54 
+ 2823      59504500 
+ 2824              	.LASF226:
+ 2825 0ab1 4F535F46 		.ascii	"OS_FN_MMC_WRITE\000"
+ 2825      4E5F4D4D 
+ 2825      435F5752 
+ 2825      49544500 
+ 2826              	.LASF121:
+ 2827 0ac1 4F535F46 		.ascii	"OS_FN_SM3\000"
+ 2827      4E5F534D 
+ 2827      3300
+ 2828              	.LASF460:
+ 2829 0acb 4F535F46 		.ascii	"OS_FN_ECC_KEYPAIR_GENERATE\000"
+ 2829      4E5F4543 
+ 2829      435F4B45 
+ 2829      59504149 
+ 2829      525F4745 
+ 2830              	.LASF282:
+ 2831 0ae6 4F535F46 		.ascii	"OS_FN_MCOM_PERMIT\000"
+ 2831      4E5F4D43 
+ 2831      4F4D5F50 
+ 2831      45524D49 
+ 2831      5400
+ 2832              	.LASF395:
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 63
+
+
+ 2833 0af8 4F535F46 		.ascii	"OS_FN_MIF_SENDCMD\000"
+ 2833      4E5F4D49 
+ 2833      465F5345 
+ 2833      4E44434D 
+ 2833      4400
+ 2834              	.LASF28:
+ 2835 0b0a 4F535F46 		.ascii	"OS_FN_KBD_SCODE\000"
+ 2835      4E5F4B42 
+ 2835      445F5343 
+ 2835      4F444500 
+ 2836              	.LASF470:
+ 2837 0b1a 4F535F46 		.ascii	"OS_FN_WIFI_SOCKET_CONNECT\000"
+ 2837      4E5F5749 
+ 2837      46495F53 
+ 2837      4F434B45 
+ 2837      545F434F 
+ 2838              	.LASF462:
+ 2839 0b34 4F535F46 		.ascii	"OS_FN_ECC_SCALAR_MULTIPLY\000"
+ 2839      4E5F4543 
+ 2839      435F5343 
+ 2839      414C4152 
+ 2839      5F4D554C 
+ 2840              	.LASF368:
+ 2841 0b4e 4F535F46 		.ascii	"OS_FN_USBKBD_OPEN\000"
+ 2841      4E5F5553 
+ 2841      424B4244 
+ 2841      5F4F5045 
+ 2841      4E00
+ 2842              	.LASF385:
+ 2843 0b60 4F535F46 		.ascii	"OS_FN_MIF_AUTH1\000"
+ 2843      4E5F4D49 
+ 2843      465F4155 
+ 2843      54483100 
+ 2844              	.LASF386:
+ 2845 0b70 4F535F46 		.ascii	"OS_FN_MIF_AUTH2\000"
+ 2845      4E5F4D49 
+ 2845      465F4155 
+ 2845      54483200 
+ 2846              	.LASF91:
+ 2847 0b80 4F535F46 		.ascii	"OS_FN_DES2\000"
+ 2847      4E5F4445 
+ 2847      533200
+ 2848              	.LASF111:
+ 2849 0b8b 4F535F46 		.ascii	"OS_FN_MD4_PROCESS\000"
+ 2849      4E5F4D44 
+ 2849      345F5052 
+ 2849      4F434553 
+ 2849      5300
+ 2850              	.LASF12:
+ 2851 0b9d 705F7369 		.ascii	"p_signature\000"
+ 2851      676E6174 
+ 2851      75726500 
+ 2852              	.LASF393:
+ 2853 0ba9 4F535F46 		.ascii	"OS_FN_MIF_DEC_TRANS\000"
+ 2853      4E5F4D49 
+ 2853      465F4445 
+ 2853      435F5452 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 64
+
+
+ 2853      414E5300 
+ 2854              	.LASF349:
+ 2855 0bbd 4F535F46 		.ascii	"OS_FN_DEVICE_REGISTER\000"
+ 2855      4E5F4445 
+ 2855      56494345 
+ 2855      5F524547 
+ 2855      49535445 
+ 2856              	.LASF66:
+ 2857 0bd3 4F535F46 		.ascii	"OS_FN_COM1_READ\000"
+ 2857      4E5F434F 
+ 2857      4D315F52 
+ 2857      45414400 
+ 2858              	.LASF229:
+ 2859 0be3 4F535F46 		.ascii	"OS_FN_SLE_CLOSE\000"
+ 2859      4E5F534C 
+ 2859      455F434C 
+ 2859      4F534500 
+ 2860              	.LASF238:
+ 2861 0bf3 4F535F46 		.ascii	"OS_FN_LAN_STATUS\000"
+ 2861      4E5F4C41 
+ 2861      4E5F5354 
+ 2861      41545553 
+ 2861      00
+ 2862              	.LASF166:
+ 2863 0c04 4F535F46 		.ascii	"OS_FN_APP_CLR_VIRGIN\000"
+ 2863      4E5F4150 
+ 2863      505F434C 
+ 2863      525F5649 
+ 2863      5247494E 
+ 2864              	.LASF16:
+ 2865 0c19 625F7665 		.ascii	"b_version\000"
+ 2865      7273696F 
+ 2865      6E00
+ 2866              	.LASF165:
+ 2867 0c23 4F535F46 		.ascii	"OS_FN_APP_GET_VIRGIN\000"
+ 2867      4E5F4150 
+ 2867      505F4745 
+ 2867      545F5649 
+ 2867      5247494E 
+ 2868              	.LASF214:
+ 2869 0c38 4F535F46 		.ascii	"OS_FN_SAM_ON\000"
+ 2869      4E5F5341 
+ 2869      4D5F4F4E 
+ 2869      00
+ 2870              	.LASF289:
+ 2871 0c45 4F535F46 		.ascii	"OS_FN_MCOM_SEND\000"
+ 2871      4E5F4D43 
+ 2871      4F4D5F53 
+ 2871      454E4400 
+ 2872              	.LASF251:
+ 2873 0c55 4F535F46 		.ascii	"OS_FN_USBSER_CLOSE\000"
+ 2873      4E5F5553 
+ 2873      42534552 
+ 2873      5F434C4F 
+ 2873      534500
+ 2874              	.LASF424:
+ 2875 0c68 4F535F46 		.ascii	"OS_FN_GPS_GET_INFO\000"
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 65
+
+
+ 2875      4E5F4750 
+ 2875      535F4745 
+ 2875      545F494E 
+ 2875      464F00
+ 2876              	.LASF275:
+ 2877 0c7b 4F535F46 		.ascii	"OS_FN_MDM_DIAL\000"
+ 2877      4E5F4D44 
+ 2877      4D5F4449 
+ 2877      414C00
+ 2878              	.LASF145:
+ 2879 0c8a 4F535F46 		.ascii	"OS_FN_THREAD_DELETE\000"
+ 2879      4E5F5448 
+ 2879      52454144 
+ 2879      5F44454C 
+ 2879      45544500 
+ 2880              	.LASF511:
+ 2881 0c9e 5F656E64 		.ascii	"_end_of_sram\000"
+ 2881      5F6F665F 
+ 2881      7372616D 
+ 2881      00
+ 2882              	.LASF155:
+ 2883 0cab 4F535F46 		.ascii	"OS_FN_LED_OPEN\000"
+ 2883      4E5F4C45 
+ 2883      445F4F50 
+ 2883      454E00
+ 2884              	.LASF40:
+ 2885 0cba 4F535F46 		.ascii	"OS_FN_RTC_GET\000"
+ 2885      4E5F5254 
+ 2885      435F4745 
+ 2885      5400
+ 2886              	.LASF407:
+ 2887 0cc8 4F535F46 		.ascii	"OS_FN_WIFI_CONTROL\000"
+ 2887      4E5F5749 
+ 2887      46495F43 
+ 2887      4F4E5452 
+ 2887      4F4C00
+ 2888              	.LASF64:
+ 2889 0cdb 4F535F46 		.ascii	"OS_FN_COM1_RXRDY\000"
+ 2889      4E5F434F 
+ 2889      4D315F52 
+ 2889      58524459 
+ 2889      00
+ 2890              	.LASF159:
+ 2891 0cec 4F535F46 		.ascii	"OS_FN_LED_CLEAR\000"
+ 2891      4E5F4C45 
+ 2891      445F434C 
+ 2891      45415200 
+ 2892              	.LASF451:
+ 2893 0cfc 4F535F46 		.ascii	"OS_FN_DTIMER_LATCH_STOP\000"
+ 2893      4E5F4454 
+ 2893      494D4552 
+ 2893      5F4C4154 
+ 2893      43485F53 
+ 2894              	.LASF360:
+ 2895 0d14 4F535F46 		.ascii	"OS_FN_BUS_START\000"
+ 2895      4E5F4255 
+ 2895      535F5354 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 66
+
+
+ 2895      41525400 
+ 2896              	.LASF105:
+ 2897 0d24 4F535F46 		.ascii	"OS_FN_MD5_FINISH\000"
+ 2897      4E5F4D44 
+ 2897      355F4649 
+ 2897      4E495348 
+ 2897      00
+ 2898              	.LASF496:
+ 2899 0d35 55534246 		.ascii	"USBFPRT_GENERAL_INFO_MODEL\000"
+ 2899      5052545F 
+ 2899      47454E45 
+ 2899      52414C5F 
+ 2899      494E464F 
+ 2900              	.LASF422:
+ 2901 0d50 4F535F46 		.ascii	"OS_FN_GPS_ON\000"
+ 2901      4E5F4750 
+ 2901      535F4F4E 
+ 2901      00
+ 2902              	.LASF323:
+ 2903 0d5d 4F535F46 		.ascii	"OS_FN_CODEC_PLAY_RAM\000"
+ 2903      4E5F434F 
+ 2903      4445435F 
+ 2903      504C4159 
+ 2903      5F52414D 
+ 2904              	.LASF287:
+ 2905 0d72 4F535F46 		.ascii	"OS_FN_MCOM_STATUS\000"
+ 2905      4E5F4D43 
+ 2905      4F4D5F53 
+ 2905      54415455 
+ 2905      5300
+ 2906              	.LASF59:
+ 2907 0d84 4F535F46 		.ascii	"OS_FN_DISP_ICON_TEXTC\000"
+ 2907      4E5F4449 
+ 2907      53505F49 
+ 2907      434F4E5F 
+ 2907      54455854 
+ 2908              	.LASF435:
+ 2909 0d9a 4F535F46 		.ascii	"OS_FN_POWER_SLEEP\000"
+ 2909      4E5F504F 
+ 2909      5745525F 
+ 2909      534C4545 
+ 2909      5000
+ 2910              	.LASF173:
+ 2911 0dac 4F535F46 		.ascii	"OS_FN_FILE_CREATE\000"
+ 2911      4E5F4649 
+ 2911      4C455F43 
+ 2911      52454154 
+ 2911      4500
+ 2912              	.LASF245:
+ 2913 0dbe 4F535F46 		.ascii	"OS_FN_LPT_OPEN\000"
+ 2913      4E5F4C50 
+ 2913      545F4F50 
+ 2913      454E00
+ 2914              	.LASF247:
+ 2915 0dcd 4F535F46 		.ascii	"OS_FN_LPT_PUTC\000"
+ 2915      4E5F4C50 
+ 2915      545F5055 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 67
+
+
+ 2915      544300
+ 2916              	.LASF406:
+ 2917 0ddc 4F535F46 		.ascii	"OS_FN_BARCODE_ENABLED\000"
+ 2917      4E5F4241 
+ 2917      52434F44 
+ 2917      455F454E 
+ 2917      41424C45 
+ 2918              	.LASF237:
+ 2919 0df2 4F535F46 		.ascii	"OS_FN_LAN_SEND\000"
+ 2919      4E5F4C41 
+ 2919      4E5F5345 
+ 2919      4E4400
+ 2920              	.LASF380:
+ 2921 0e01 4F535F46 		.ascii	"OS_FN_MIF_TAG\000"
+ 2921      4E5F4D49 
+ 2921      465F5441 
+ 2921      4700
+ 2922              	.LASF457:
+ 2923 0e0f 4F535F46 		.ascii	"OS_FN_FPRT_SCAN_IMG\000"
+ 2923      4E5F4650 
+ 2923      52545F53 
+ 2923      43414E5F 
+ 2923      494D4700 
+ 2924              	.LASF315:
+ 2925 0e23 4F535F46 		.ascii	"OS_FN_TPAD_DEL_OBJ\000"
+ 2925      4E5F5450 
+ 2925      41445F44 
+ 2925      454C5F4F 
+ 2925      424A00
+ 2926              	.LASF250:
+ 2927 0e36 4F535F46 		.ascii	"OS_FN_USBSER_OPEN\000"
+ 2927      4E5F5553 
+ 2927      42534552 
+ 2927      5F4F5045 
+ 2927      4E00
+ 2928              	.LASF439:
+ 2929 0e48 4F535F46 		.ascii	"OS_FN_RDLL_APP\000"
+ 2929      4E5F5244 
+ 2929      4C4C5F41 
+ 2929      505000
+ 2930              	.LASF180:
+ 2931 0e57 4F535F46 		.ascii	"OS_FN_FILE_READ\000"
+ 2931      4E5F4649 
+ 2931      4C455F52 
+ 2931      45414400 
+ 2932              	.LASF149:
+ 2933 0e67 4F535F46 		.ascii	"OS_FN_THREAD_POP\000"
+ 2933      4E5F5448 
+ 2933      52454144 
+ 2933      5F504F50 
+ 2933      00
+ 2934              	.LASF329:
+ 2935 0e78 4F535F46 		.ascii	"OS_FN_CLICC_CLOSE\000"
+ 2935      4E5F434C 
+ 2935      4943435F 
+ 2935      434C4F53 
+ 2935      4500
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 68
+
+
+ 2936              	.LASF342:
+ 2937 0e8a 4F535F46 		.ascii	"OS_FN_USBHOST_STATUS\000"
+ 2937      4E5F5553 
+ 2937      42484F53 
+ 2937      545F5354 
+ 2937      41545553 
+ 2938              	.LASF486:
+ 2939 0e9f 4F535F46 		.ascii	"OS_FN_DISP_PUTS_ANYWHERE\000"
+ 2939      4E5F4449 
+ 2939      53505F50 
+ 2939      5554535F 
+ 2939      414E5957 
+ 2940              	.LASF521:
+ 2941 0eb8 73797374 		.ascii	"system_call_list\000"
+ 2941      656D5F63 
+ 2941      616C6C5F 
+ 2941      6C697374 
+ 2941      00
+ 2942              	.LASF231:
+ 2943 0ec9 4F535F46 		.ascii	"OS_FN_SLE_IO\000"
+ 2943      4E5F534C 
+ 2943      455F494F 
+ 2943      00
+ 2944              	.LASF277:
+ 2945 0ed6 4F535F46 		.ascii	"OS_FN_MDM_CID\000"
+ 2945      4E5F4D44 
+ 2945      4D5F4349 
+ 2945      4400
+ 2946              	.LASF283:
+ 2947 0ee4 4F535F46 		.ascii	"OS_FN_MCOM_RXRDY\000"
+ 2947      4E5F4D43 
+ 2947      4F4D5F52 
+ 2947      58524459 
+ 2947      00
+ 2948              	.LASF246:
+ 2949 0ef5 4F535F46 		.ascii	"OS_FN_LPT_CLOSE\000"
+ 2949      4E5F4C50 
+ 2949      545F434C 
+ 2949      4F534500 
+ 2950              	.LASF128:
+ 2951 0f05 4F535F46 		.ascii	"OS_FN_KEY_RSA\000"
+ 2951      4E5F4B45 
+ 2951      595F5253 
+ 2951      4100
+ 2952              	.LASF211:
+ 2953 0f13 4F535F46 		.ascii	"OS_FN_SAM_CLOSE\000"
+ 2953      4E5F5341 
+ 2953      4D5F434C 
+ 2953      4F534500 
+ 2954              	.LASF92:
+ 2955 0f23 4F535F46 		.ascii	"OS_FN_COM_DESKEY\000"
+ 2955      4E5F434F 
+ 2955      4D5F4445 
+ 2955      534B4559 
+ 2955      00
+ 2956              	.LASF299:
+ 2957 0f34 4F535F46 		.ascii	"OS_FN_GPRS_AT_CMD\000"
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 69
+
+
+ 2957      4E5F4750 
+ 2957      52535F41 
+ 2957      545F434D 
+ 2957      4400
+ 2958              	.LASF487:
+ 2959 0f46 4F535F46 		.ascii	"OS_FN_BATT_CHARGE_NOW\000"
+ 2959      4E5F4241 
+ 2959      54545F43 
+ 2959      48415247 
+ 2959      455F4E4F 
+ 2960              	.LASF203:
+ 2961 0f5c 4F535F46 		.ascii	"OS_FN_FILE_GET_LONGNAME\000"
+ 2961      4E5F4649 
+ 2961      4C455F47 
+ 2961      45545F4C 
+ 2961      4F4E474E 
+ 2962              	.LASF378:
+ 2963 0f74 4F535F46 		.ascii	"OS_FN_MIF_HALT\000"
+ 2963      4E5F4D49 
+ 2963      465F4841 
+ 2963      4C5400
+ 2964              	.LASF271:
+ 2965 0f83 4F535F46 		.ascii	"OS_FN_FL_CREAD_END\000"
+ 2965      4E5F464C 
+ 2965      5F435245 
+ 2965      41445F45 
+ 2965      4E4400
+ 2966              	.LASF244:
+ 2967 0f96 4F535F46 		.ascii	"OS_FN_MSR_STATUS\000"
+ 2967      4E5F4D53 
+ 2967      525F5354 
+ 2967      41545553 
+ 2967      00
+ 2968              	.LASF399:
+ 2969 0fa7 4F535F46 		.ascii	"OS_FN_BARCODE_OPEN\000"
+ 2969      4E5F4241 
+ 2969      52434F44 
+ 2969      455F4F50 
+ 2969      454E00
+ 2970              	.LASF19:
+ 2971 0fba 625F6170 		.ascii	"b_appid\000"
+ 2971      70696400 
+ 2972              	.LASF477:
+ 2973 0fc2 4F535F46 		.ascii	"OS_FN_WIFI_SOCKET_LISTEN\000"
+ 2973      4E5F5749 
+ 2973      46495F53 
+ 2973      4F434B45 
+ 2973      545F4C49 
+ 2974              	.LASF253:
+ 2975 0fdb 4F535F46 		.ascii	"OS_FN_USBSER_WRITE\000"
+ 2975      4E5F5553 
+ 2975      42534552 
+ 2975      5F575249 
+ 2975      544500
+ 2976              	.LASF377:
+ 2977 0fee 4F535F46 		.ascii	"OS_FN_MIF_CANCEL\000"
+ 2977      4E5F4D49 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 70
+
+
+ 2977      465F4341 
+ 2977      4E43454C 
+ 2977      00
+ 2978              	.LASF10:
+ 2979 0fff 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2979      20756E73 
+ 2979      69676E65 
+ 2979      6420696E 
+ 2979      7400
+ 2980              	.LASF54:
+ 2981 1011 4F535F46 		.ascii	"OS_FN_DISP_BACKC\000"
+ 2981      4E5F4449 
+ 2981      53505F42 
+ 2981      41434B43 
+ 2981      00
+ 2982              	.LASF50:
+ 2983 1022 4F535F46 		.ascii	"OS_FN_DISP_GETP\000"
+ 2983      4E5F4449 
+ 2983      53505F47 
+ 2983      45545000 
+ 2984              	.LASF430:
+ 2985 1032 4F535F46 		.ascii	"OS_FN_BREG_READ\000"
+ 2985      4E5F4252 
+ 2985      45475F52 
+ 2985      45414400 
+ 2986              	.LASF308:
+ 2987 1042 4F535F46 		.ascii	"OS_FN_GPRS_SMS_ACK\000"
+ 2987      4E5F4750 
+ 2987      52535F53 
+ 2987      4D535F41 
+ 2987      434B00
+ 2988              	.LASF23:
+ 2989 1055 4F535F46 		.ascii	"OS_FN_RAND\000"
+ 2989      4E5F5241 
+ 2989      4E4400
+ 2990              	.LASF240:
+ 2991 1060 4F535F46 		.ascii	"OS_FN_MSR_CLOSE\000"
+ 2991      4E5F4D53 
+ 2991      525F434C 
+ 2991      4F534500 
+ 2992              	.LASF515:
+ 2993 1070 4B4B656B 		.ascii	"KKek\000"
+ 2993      00
+ 2994              	.LASF409:
+ 2995 1075 4F535F46 		.ascii	"OS_FN_WIFI_RECV_RESPONSE\000"
+ 2995      4E5F5749 
+ 2995      46495F52 
+ 2995      4543565F 
+ 2995      52455350 
+ 2996              	.LASF236:
+ 2997 108e 4F535F46 		.ascii	"OS_FN_LAN_READ\000"
+ 2997      4E5F4C41 
+ 2997      4E5F5245 
+ 2997      414400
+ 2998              	.LASF524:
+ 2999 109d 63737461 		.ascii	"cstartup\000"
+ 2999      72747570 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 71
+
+
+ 2999      00
+ 3000              	.LASF468:
+ 3001 10a6 4F535F46 		.ascii	"OS_FN_GCM_AES_CLOSE\000"
+ 3001      4E5F4743 
+ 3001      4D5F4145 
+ 3001      535F434C 
+ 3001      4F534500 
+ 3002              	.LASF512:
+ 3003 10ba 5F656E64 		.ascii	"_end_of_flash\000"
+ 3003      5F6F665F 
+ 3003      666C6173 
+ 3003      6800
+ 3004              	.LASF273:
+ 3005 10c8 4F535F46 		.ascii	"OS_FN_MDM_OPEN\000"
+ 3005      4E5F4D44 
+ 3005      4D5F4F50 
+ 3005      454E00
+ 3006              	.LASF279:
+ 3007 10d7 4F535F46 		.ascii	"OS_FN_MDM_LAST_CONN_STAT\000"
+ 3007      4E5F4D44 
+ 3007      4D5F4C41 
+ 3007      53545F43 
+ 3007      4F4E4E5F 
+ 3008              	.LASF434:
+ 3009 10f0 4F535F46 		.ascii	"OS_FN_SLEEP\000"
+ 3009      4E5F534C 
+ 3009      45455000 
+ 3010              	.LASF248:
+ 3011 10fc 4F535F46 		.ascii	"OS_FN_LPT_PUTDW\000"
+ 3011      4E5F4C50 
+ 3011      545F5055 
+ 3011      54445700 
+ 3012              	.LASF30:
+ 3013 110c 4F535F46 		.ascii	"OS_FN_KBD_LOCK\000"
+ 3013      4E5F4B42 
+ 3013      445F4C4F 
+ 3013      434B00
+ 3014              	.LASF482:
+ 3015 111b 4F535F46 		.ascii	"OS_FN_GPRS_IS_HL6RD\000"
+ 3015      4E5F4750 
+ 3015      52535F49 
+ 3015      535F484C 
+ 3015      36524400 
+ 3016              	.LASF158:
+ 3017 112f 4F535F46 		.ascii	"OS_FN_LED_SET\000"
+ 3017      4E5F4C45 
+ 3017      445F5345 
+ 3017      5400
+ 3018              	.LASF326:
+ 3019 113d 4F535F46 		.ascii	"OS_FN_CLICC_OPEN\000"
+ 3019      4E5F434C 
+ 3019      4943435F 
+ 3019      4F50454E 
+ 3019      00
+ 3020              	.LASF461:
+ 3021 114e 4F535F46 		.ascii	"OS_FN_ECC_PUBKEY_VERIFY\000"
+ 3021      4E5F4543 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 72
+
+
+ 3021      435F5055 
+ 3021      424B4559 
+ 3021      5F564552 
+ 3022              	.LASF370:
+ 3023 1166 4F535F46 		.ascii	"OS_FN_USBKBD_INKEY\000"
+ 3023      4E5F5553 
+ 3023      424B4244 
+ 3023      5F494E4B 
+ 3023      455900
+ 3024              	.LASF74:
+ 3025 1179 4F535F46 		.ascii	"OS_FN_COM2_TXRDY\000"
+ 3025      4E5F434F 
+ 3025      4D325F54 
+ 3025      58524459 
+ 3025      00
+ 3026              	.LASF146:
+ 3027 118a 4F535F46 		.ascii	"OS_FN_THREAD_LOCK\000"
+ 3027      4E5F5448 
+ 3027      52454144 
+ 3027      5F4C4F43 
+ 3027      4B00
+ 3028              	.LASF361:
+ 3029 119c 4F535F46 		.ascii	"OS_FN_BUS_STOP\000"
+ 3029      4E5F4255 
+ 3029      535F5354 
+ 3029      4F5000
+ 3030              	.LASF307:
+ 3031 11ab 4F535F46 		.ascii	"OS_FN_GPRS_SMS_DECODE\000"
+ 3031      4E5F4750 
+ 3031      52535F53 
+ 3031      4D535F44 
+ 3031      45434F44 
+ 3032              	.LASF285:
+ 3033 11c1 4F535F46 		.ascii	"OS_FN_MCOM_SREAD\000"
+ 3033      4E5F4D43 
+ 3033      4F4D5F53 
+ 3033      52454144 
+ 3033      00
+ 3034              	.LASF134:
+ 3035 11d2 4F535F46 		.ascii	"OS_FN_KEY_HASH\000"
+ 3035      4E5F4B45 
+ 3035      595F4841 
+ 3035      534800
+ 3036              	.LASF196:
+ 3037 11e1 4F535F46 		.ascii	"OS_FN_FILE_FREESPACE\000"
+ 3037      4E5F4649 
+ 3037      4C455F46 
+ 3037      52454553 
+ 3037      50414345 
+ 3038              	.LASF522:
+ 3039 11f6 5365676D 		.ascii	"SegmentInit\000"
+ 3039      656E7449 
+ 3039      6E697400 
+ 3040              	.LASF216:
+ 3041 1202 4F535F46 		.ascii	"OS_FN_SAM_T1\000"
+ 3041      4E5F5341 
+ 3041      4D5F5431 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 73
+
+
+ 3041      00
+ 3042              	.LASF200:
+ 3043 120f 4F535F46 		.ascii	"OS_FN_FILE_READDIR\000"
+ 3043      4E5F4649 
+ 3043      4C455F52 
+ 3043      45414444 
+ 3043      495200
+ 3044              	.LASF38:
+ 3045 1222 4F535F46 		.ascii	"OS_FN_BUZ_BEEP\000"
+ 3045      4E5F4255 
+ 3045      5A5F4245 
+ 3045      455000
+ 3046              	.LASF446:
+ 3047 1231 4F535F46 		.ascii	"OS_FN_APPCALL_RETURN\000"
+ 3047      4E5F4150 
+ 3047      5043414C 
+ 3047      4C5F5245 
+ 3047      5455524E 
+ 3048              	.LASF126:
+ 3049 1246 4F535F46 		.ascii	"OS_FN_KEY_SAVE_TMK\000"
+ 3049      4E5F4B45 
+ 3049      595F5341 
+ 3049      56455F54 
+ 3049      4D4B00
+ 3050              	.LASF24:
+ 3051 1259 4F535F46 		.ascii	"OS_FN_RAND_UPDATE\000"
+ 3051      4E5F5241 
+ 3051      4E445F55 
+ 3051      50444154 
+ 3051      4500
+ 3052              	.LASF411:
+ 3053 126b 4F535F46 		.ascii	"OS_FN_WIFI_PROFILES_READ\000"
+ 3053      4E5F5749 
+ 3053      46495F50 
+ 3053      524F4649 
+ 3053      4C45535F 
+ 3054              	.LASF174:
+ 3055 1284 4F535F46 		.ascii	"OS_FN_FILE_CLOSE\000"
+ 3055      4E5F4649 
+ 3055      4C455F43 
+ 3055      4C4F5345 
+ 3055      00
+ 3056              	.LASF170:
+ 3057 1295 4F535F46 		.ascii	"OS_FN_FREE\000"
+ 3057      4E5F4652 
+ 3057      454500
+ 3058              	.LASF26:
+ 3059 12a0 4F535F46 		.ascii	"OS_FN_KBD_CLOSE\000"
+ 3059      4E5F4B42 
+ 3059      445F434C 
+ 3059      4F534500 
+ 3060              	.LASF11:
+ 3061 12b0 6C6F6E67 		.ascii	"long long int\000"
+ 3061      206C6F6E 
+ 3061      6720696E 
+ 3061      7400
+ 3062              	.LASF43:
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 74
+
+
+ 3063 12be 4F535F46 		.ascii	"OS_FN_DISP_CLOSE\000"
+ 3063      4E5F4449 
+ 3063      53505F43 
+ 3063      4C4F5345 
+ 3063      00
+ 3064              	.LASF383:
+ 3065 12cf 4F535F46 		.ascii	"OS_FN_MIF_SELECT\000"
+ 3065      4E5F4D49 
+ 3065      465F5345 
+ 3065      4C454354 
+ 3065      00
+ 3066              	.LASF21:
+ 3067 12e0 545F4150 		.ascii	"T_APP_HDR\000"
+ 3067      505F4844 
+ 3067      5200
+ 3068              	.LASF77:
+ 3069 12ea 4F535F46 		.ascii	"OS_FN_COM2_STATUS\000"
+ 3069      4E5F434F 
+ 3069      4D325F53 
+ 3069      54415455 
+ 3069      5300
+ 3070              	.LASF94:
+ 3071 12fc 4F535F46 		.ascii	"OS_FN_COM_DES2\000"
+ 3071      4E5F434F 
+ 3071      4D5F4445 
+ 3071      533200
+ 3072              	.LASF303:
+ 3073 130b 4F535F46 		.ascii	"OS_FN_GPRS_RESET\000"
+ 3073      4E5F4750 
+ 3073      52535F52 
+ 3073      45534554 
+ 3073      00
+ 3074              	.LASF400:
+ 3075 131c 4F535F46 		.ascii	"OS_FN_BARCODE_CLOSE\000"
+ 3075      4E5F4241 
+ 3075      52434F44 
+ 3075      455F434C 
+ 3075      4F534500 
+ 3076              	.LASF261:
+ 3077 1330 4F535F46 		.ascii	"OS_FN_FL_PGM_START\000"
+ 3077      4E5F464C 
+ 3077      5F50474D 
+ 3077      5F535441 
+ 3077      525400
+ 3078              	.LASF265:
+ 3079 1343 4F535F46 		.ascii	"OS_FN_FL_ERASE_END\000"
+ 3079      4E5F464C 
+ 3079      5F455241 
+ 3079      53455F45 
+ 3079      4E4400
+ 3080              	.LASF301:
+ 3081 1356 4F535F46 		.ascii	"OS_FN_GPRS_SEND\000"
+ 3081      4E5F4750 
+ 3081      52535F53 
+ 3081      454E4400 
+ 3082              	.LASF249:
+ 3083 1366 4F535F46 		.ascii	"OS_FN_LPT_STATUS\000"
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 75
+
+
+ 3083      4E5F4C50 
+ 3083      545F5354 
+ 3083      41545553 
+ 3083      00
+ 3084              	.LASF57:
+ 3085 1377 4F535F46 		.ascii	"OS_FN_DISP_ICON_COLOR\000"
+ 3085      4E5F4449 
+ 3085      53505F49 
+ 3085      434F4E5F 
+ 3085      434F4C4F 
+ 3086              	.LASF163:
+ 3087 138d 4F535F46 		.ascii	"OS_FN_APP_SEARCH_ID\000"
+ 3087      4E5F4150 
+ 3087      505F5345 
+ 3087      41524348 
+ 3087      5F494400 
+ 3088              	.LASF355:
+ 3089 13a1 4F535F46 		.ascii	"OS_FN_DEVICE_OPEN\000"
+ 3089      4E5F4445 
+ 3089      56494345 
+ 3089      5F4F5045 
+ 3089      4E00
+ 3090              	.LASF61:
+ 3091 13b3 4F535F46 		.ascii	"OS_FN_DISP_OVERLAY\000"
+ 3091      4E5F4449 
+ 3091      53505F4F 
+ 3091      5645524C 
+ 3091      415900
+ 3092              	.LASF319:
+ 3093 13c6 4F535F46 		.ascii	"OS_FN_TPAD_RAW_POS\000"
+ 3093      4E5F5450 
+ 3093      41445F52 
+ 3093      41575F50 
+ 3093      4F5300
+ 3094              	.LASF219:
+ 3095 13d9 4F535F46 		.ascii	"OS_FN_MMC_CLOSE\000"
+ 3095      4E5F4D4D 
+ 3095      435F434C 
+ 3095      4F534500 
+ 3096              	.LASF365:
+ 3097 13e9 4F535F46 		.ascii	"OS_FN_NETDEV_GETLINK\000"
+ 3097      4E5F4E45 
+ 3097      54444556 
+ 3097      5F474554 
+ 3097      4C494E4B 
+ 3098              	.LASF89:
+ 3099 13fe 4F535F46 		.ascii	"OS_FN_DESKEY\000"
+ 3099      4E5F4445 
+ 3099      534B4559 
+ 3099      00
+ 3100              	.LASF510:
+ 3101 140b 5F656E64 		.ascii	"_end_of_bss\000"
+ 3101      5F6F665F 
+ 3101      62737300 
+ 3102              	.LASF252:
+ 3103 1417 4F535F46 		.ascii	"OS_FN_USBSER_READ\000"
+ 3103      4E5F5553 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 76
+
+
+ 3103      42534552 
+ 3103      5F524541 
+ 3103      4400
+ 3104              	.LASF104:
+ 3105 1429 4F535F46 		.ascii	"OS_FN_MD5_PROCESS\000"
+ 3105      4E5F4D44 
+ 3105      355F5052 
+ 3105      4F434553 
+ 3105      5300
+ 3106              	.LASF65:
+ 3107 143b 4F535F46 		.ascii	"OS_FN_COM1_TXRDY\000"
+ 3107      4E5F434F 
+ 3107      4D315F54 
+ 3107      58524459 
+ 3107      00
+ 3108              	.LASF176:
+ 3109 144c 4F535F46 		.ascii	"OS_FN_FILE_RENAME\000"
+ 3109      4E5F4649 
+ 3109      4C455F52 
+ 3109      454E414D 
+ 3109      4500
+ 3110              	.LASF456:
+ 3111 145e 4F535F46 		.ascii	"OS_FN_FPRT_CLOSE\000"
+ 3111      4E5F4650 
+ 3111      52545F43 
+ 3111      4C4F5345 
+ 3111      00
+ 3112              	.LASF131:
+ 3113 146f 4F535F46 		.ascii	"OS_FN_KEY_DUKPT_MAC_CAL\000"
+ 3113      4E5F4B45 
+ 3113      595F4455 
+ 3113      4B50545F 
+ 3113      4D41435F 
+ 3114              	.LASF358:
+ 3115 1487 4F535F46 		.ascii	"OS_FN_INTERRUPT_REGISTER\000"
+ 3115      4E5F494E 
+ 3115      54455252 
+ 3115      5550545F 
+ 3115      52454749 
+ 3116              	.LASF217:
+ 3117 14a0 4F535F46 		.ascii	"OS_FN_SAM_CHANGE\000"
+ 3117      4E5F5341 
+ 3117      4D5F4348 
+ 3117      414E4745 
+ 3117      00
+ 3118              	.LASF190:
+ 3119 14b1 4F535F46 		.ascii	"OS_FN_FILE_ACTIVATE\000"
+ 3119      4E5F4649 
+ 3119      4C455F41 
+ 3119      43544956 
+ 3119      41544500 
+ 3120              	.LASF51:
+ 3121 14c5 4F535F46 		.ascii	"OS_FN_DISP_LENGTH\000"
+ 3121      4E5F4449 
+ 3121      53505F4C 
+ 3121      454E4754 
+ 3121      4800
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 77
+
+
+ 3122              	.LASF458:
+ 3123 14d7 4F535F46 		.ascii	"OS_FN_FPRT_INFO_SET\000"
+ 3123      4E5F4650 
+ 3123      52545F49 
+ 3123      4E464F5F 
+ 3123      53455400 
+ 3124              	.LASF4:
+ 3125 14eb 756E7369 		.ascii	"unsigned int\000"
+ 3125      676E6564 
+ 3125      20696E74 
+ 3125      00
+ 3126              	.LASF517:
+ 3127 14f8 7379735F 		.ascii	"sys_func0\000"
+ 3127      66756E63 
+ 3127      3000
+ 3128              	.LASF516:
+ 3129 1502 7379735F 		.ascii	"sys_func1\000"
+ 3129      66756E63 
+ 3129      3100
+ 3130              	.LASF452:
+ 3131 150c 4F535F46 		.ascii	"OS_FN_DTIMER_LATCH_TIME\000"
+ 3131      4E5F4454 
+ 3131      494D4552 
+ 3131      5F4C4154 
+ 3131      43485F54 
+ 3132              	.LASF330:
+ 3133 1524 4F535F46 		.ascii	"OS_FN_CLICC_SENDCOMMAND\000"
+ 3133      4E5F434C 
+ 3133      4943435F 
+ 3133      53454E44 
+ 3133      434F4D4D 
+ 3134              	.LASF443:
+ 3135 153c 4F535F46 		.ascii	"OS_FN_DLL_REQ\000"
+ 3135      4E5F444C 
+ 3135      4C5F5245 
+ 3135      5100
+ 3136              	.LASF183:
+ 3137 154a 4F535F46 		.ascii	"OS_FN_FILE_GETC\000"
+ 3137      4E5F4649 
+ 3137      4C455F47 
+ 3137      45544300 
+ 3138              	.LASF403:
+ 3139 155a 4F535F46 		.ascii	"OS_FN_BARCODE_READ\000"
+ 3139      4E5F4241 
+ 3139      52434F44 
+ 3139      455F5245 
+ 3139      414400
+ 3140              	.LASF359:
+ 3141 156d 4F535F46 		.ascii	"OS_FN_INTERRUPT_UNREGISTER\000"
+ 3141      4E5F494E 
+ 3141      54455252 
+ 3141      5550545F 
+ 3141      554E5245 
+ 3142              	.LASF480:
+ 3143 1588 4F535F46 		.ascii	"OS_FN_IMG_SENSOR_GET_FRAME_COMPLETE\000"
+ 3143      4E5F494D 
+ 3143      475F5345 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 78
+
+
+ 3143      4E534F52 
+ 3143      5F474554 
+ 3144              	.LASF304:
+ 3145 15ac 4F535F46 		.ascii	"OS_FN_GPRS_CONTROL\000"
+ 3145      4E5F4750 
+ 3145      52535F43 
+ 3145      4F4E5452 
+ 3145      4F4C00
+ 3146              	.LASF425:
+ 3147 15bf 4F535F46 		.ascii	"OS_FN_GPRS_GET_GPS_INFO\000"
+ 3147      4E5F4750 
+ 3147      52535F47 
+ 3147      45545F47 
+ 3147      50535F49 
+ 3148              	.LASF505:
+ 3149 15d7 5F737461 		.ascii	"_start_of_app\000"
+ 3149      72745F6F 
+ 3149      665F6170 
+ 3149      7000
+ 3150              	.LASF133:
+ 3151 15e5 4F535F46 		.ascii	"OS_FN_KEY_CBC_MAC\000"
+ 3151      4E5F4B45 
+ 3151      595F4342 
+ 3151      435F4D41 
+ 3151      4300
+ 3152              	.LASF99:
+ 3153 15f7 4F535F46 		.ascii	"OS_FN_AES_SETUP_KEY\000"
+ 3153      4E5F4145 
+ 3153      535F5345 
+ 3153      5455505F 
+ 3153      4B455900 
+ 3154              	.LASF356:
+ 3155 160b 4F535F46 		.ascii	"OS_FN_DEVICE_MOUNT\000"
+ 3155      4E5F4445 
+ 3155      56494345 
+ 3155      5F4D4F55 
+ 3155      4E5400
+ 3156              	.LASF95:
+ 3157 161e 4F535F46 		.ascii	"OS_FN_NEW_DES\000"
+ 3157      4E5F4E45 
+ 3157      575F4445 
+ 3157      5300
+ 3158              	.LASF189:
+ 3159 162c 4F535F46 		.ascii	"OS_FN_FILE_DEACTIVATE\000"
+ 3159      4E5F4649 
+ 3159      4C455F44 
+ 3159      45414354 
+ 3159      49564154 
+ 3160              	.LASF372:
+ 3161 1642 4F535F46 		.ascii	"OS_FN_TAMPER_ON\000"
+ 3161      4E5F5441 
+ 3161      4D504552 
+ 3161      5F4F4E00 
+ 3162              	.LASF263:
+ 3163 1652 4F535F46 		.ascii	"OS_FN_FL_PGM_END\000"
+ 3163      4E5F464C 
+ 3163      5F50474D 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 79
+
+
+ 3163      5F454E44 
+ 3163      00
+ 3164              	.LASF270:
+ 3165 1663 4F535F46 		.ascii	"OS_FN_FL_CREAD\000"
+ 3165      4E5F464C 
+ 3165      5F435245 
+ 3165      414400
+ 3166              	.LASF421:
+ 3167 1672 4F535F46 		.ascii	"OS_FN_NFC_IC_REG_DIRECT_READ\000"
+ 3167      4E5F4E46 
+ 3167      435F4943 
+ 3167      5F524547 
+ 3167      5F444952 
+ 3168              	.LASF394:
+ 3169 168f 4F535F46 		.ascii	"OS_FN_MIF_SNO\000"
+ 3169      4E5F4D49 
+ 3169      465F534E 
+ 3169      4F00
+ 3170              	.LASF136:
+ 3171 169d 4F535F46 		.ascii	"OS_FN_KEY_SAVE_TMK_NC\000"
+ 3171      4E5F4B45 
+ 3171      595F5341 
+ 3171      56455F54 
+ 3171      4D4B5F4E 
+ 3172              	.LASF257:
+ 3173 16b3 4F535F46 		.ascii	"OS_FN_FL_STATUS\000"
+ 3173      4E5F464C 
+ 3173      5F535441 
+ 3173      54555300 
+ 3174              	.LASF312:
+ 3175 16c3 4F535F46 		.ascii	"OS_FN_TPAD_OPEN\000"
+ 3175      4E5F5450 
+ 3175      41445F4F 
+ 3175      50454E00 
+ 3176              	.LASF118:
+ 3177 16d3 4F535F46 		.ascii	"OS_FN_SM2_DECRYPT\000"
+ 3177      4E5F534D 
+ 3177      325F4445 
+ 3177      43525950 
+ 3177      5400
+ 3178              	.LASF503:
+ 3179 16e5 61506172 		.ascii	"aParam2\000"
+ 3179      616D3200 
+ 3180              	.LASF504:
+ 3181 16ed 61506172 		.ascii	"aParam3\000"
+ 3181      616D3300 
+ 3182              	.LASF230:
+ 3183 16f5 4F535F46 		.ascii	"OS_FN_SLE_HIST\000"
+ 3183      4E5F534C 
+ 3183      455F4849 
+ 3183      535400
+ 3184              	.LASF431:
+ 3185 1704 4F535F46 		.ascii	"OS_FN_BREG_WRITE\000"
+ 3185      4E5F4252 
+ 3185      45475F57 
+ 3185      52495445 
+ 3185      00
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 80
+
+
+ 3186              	.LASF123:
+ 3187 1715 4F535F46 		.ascii	"OS_FN_SM4_ENCRYPT\000"
+ 3187      4E5F534D 
+ 3187      345F454E 
+ 3187      43525950 
+ 3187      5400
+ 3188              	.LASF222:
+ 3189 1727 4F535F46 		.ascii	"OS_FN_MMC_PSTATUS\000"
+ 3189      4E5F4D4D 
+ 3189      435F5053 
+ 3189      54415455 
+ 3189      5300
+ 3190              	.LASF436:
+ 3191 1739 4F535F46 		.ascii	"OS_FN_RESET\000"
+ 3191      4E5F5245 
+ 3191      53455400 
+ 3192              	.LASF366:
+ 3193 1745 4F535F46 		.ascii	"OS_FN_NETDEV_EVENT\000"
+ 3193      4E5F4E45 
+ 3193      54444556 
+ 3193      5F455645 
+ 3193      4E5400
+ 3194              	.LASF322:
+ 3195 1758 4F535F46 		.ascii	"OS_FN_CODEC_PLAY\000"
+ 3195      4E5F434F 
+ 3195      4445435F 
+ 3195      504C4159 
+ 3195      00
+ 3196              	.LASF56:
+ 3197 1769 4F535F46 		.ascii	"OS_FN_DISP_BL_CONTROL\000"
+ 3197      4E5F4449 
+ 3197      53505F42 
+ 3197      4C5F434F 
+ 3197      4E54524F 
+ 3198              	.LASF363:
+ 3199 177f 4F535F46 		.ascii	"OS_FN_NETDEV_OPEN\000"
+ 3199      4E5F4E45 
+ 3199      54444556 
+ 3199      5F4F5045 
+ 3199      4E00
+ 3200              	.LASF467:
+ 3201 1791 4F535F46 		.ascii	"OS_FN_GCM_AES_FINISH\000"
+ 3201      4E5F4743 
+ 3201      4D5F4145 
+ 3201      535F4649 
+ 3201      4E495348 
+ 3202              	.LASF325:
+ 3203 17a6 4F535F46 		.ascii	"OS_FN_CODEC_STATUS\000"
+ 3203      4E5F434F 
+ 3203      4445435F 
+ 3203      53544154 
+ 3203      555300
+ 3204              	.LASF336:
+ 3205 17b9 4F535F46 		.ascii	"OS_FN_CLICC_LED_SET\000"
+ 3205      4E5F434C 
+ 3205      4943435F 
+ 3205      4C45445F 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 81
+
+
+ 3205      53455400 
+ 3206              	.LASF414:
+ 3207 17cd 4F535F46 		.ascii	"OS_FN_NFC_SEND_FELICA_COMMAND\000"
+ 3207      4E5F4E46 
+ 3207      435F5345 
+ 3207      4E445F46 
+ 3207      454C4943 
+ 3208              	.LASF47:
+ 3209 17eb 4F535F46 		.ascii	"OS_FN_DISP_GETG\000"
+ 3209      4E5F4449 
+ 3209      53505F47 
+ 3209      45544700 
+ 3210              	.LASF331:
+ 3211 17fb 4F535F46 		.ascii	"OS_FN_CLICC_CTRL\000"
+ 3211      4E5F434C 
+ 3211      4943435F 
+ 3211      4354524C 
+ 3211      00
+ 3212              	.LASF224:
+ 3213 180c 4F535F46 		.ascii	"OS_FN_MMC_BLK_WRITE\000"
+ 3213      4E5F4D4D 
+ 3213      435F424C 
+ 3213      4B5F5752 
+ 3213      49544500 
+ 3214              	.LASF369:
+ 3215 1820 4F535F46 		.ascii	"OS_FN_USBKBD_CLOSE\000"
+ 3215      4E5F5553 
+ 3215      424B4244 
+ 3215      5F434C4F 
+ 3215      534500
+ 3216              	.LASF193:
+ 3217 1833 4F535F46 		.ascii	"OS_FN_FILE_AUTH\000"
+ 3217      4E5F4649 
+ 3217      4C455F41 
+ 3217      55544800 
+ 3218              	.LASF272:
+ 3219 1843 4F535F46 		.ascii	"OS_FN_FL_COPYBACK\000"
+ 3219      4E5F464C 
+ 3219      5F434F50 
+ 3219      59424143 
+ 3219      4B00
+ 3220              	.LASF27:
+ 3221 1855 4F535F46 		.ascii	"OS_FN_KBD_INKEY\000"
+ 3221      4E5F4B42 
+ 3221      445F494E 
+ 3221      4B455900 
+ 3222              	.LASF35:
+ 3223 1865 4F535F46 		.ascii	"OS_FN_TIMER_GET\000"
+ 3223      4E5F5449 
+ 3223      4D45525F 
+ 3223      47455400 
+ 3224              	.LASF83:
+ 3225 1875 4F535F46 		.ascii	"OS_FN_COM3_TXRDY\000"
+ 3225      4E5F434F 
+ 3225      4D335F54 
+ 3225      58524459 
+ 3225      00
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 82
+
+
+ 3226              	.LASF184:
+ 3227 1886 4F535F46 		.ascii	"OS_FN_FILE_LENGTH\000"
+ 3227      4E5F4649 
+ 3227      4C455F4C 
+ 3227      454E4754 
+ 3227      4800
+ 3228              	.LASF494:
+ 3229 1898 454E445F 		.ascii	"END_OF_OS_FN_LIST\000"
+ 3229      4F465F4F 
+ 3229      535F464E 
+ 3229      5F4C4953 
+ 3229      5400
+ 3230              	.LASF168:
+ 3231 18aa 4F535F46 		.ascii	"OS_FN_MALLOC\000"
+ 3231      4E5F4D41 
+ 3231      4C4C4F43 
+ 3231      00
+ 3232              	.LASF371:
+ 3233 18b7 4F535F46 		.ascii	"OS_FN_USBKBD_GETKEY\000"
+ 3233      4E5F5553 
+ 3233      424B4244 
+ 3233      5F474554 
+ 3233      4B455900 
+ 3234              	.LASF76:
+ 3235 18cb 4F535F46 		.ascii	"OS_FN_COM2_SEND\000"
+ 3235      4E5F434F 
+ 3235      4D325F53 
+ 3235      454E4400 
+ 3236              	.LASF426:
+ 3237 18db 4F535F46 		.ascii	"OS_FN_GPS_CMD\000"
+ 3237      4E5F4750 
+ 3237      535F434D 
+ 3237      4400
+ 3238              	.LASF389:
+ 3239 18e9 4F535F46 		.ascii	"OS_FN_MIF_INC\000"
+ 3239      4E5F4D49 
+ 3239      465F494E 
+ 3239      4300
+ 3240              	.LASF177:
+ 3241 18f7 4F535F46 		.ascii	"OS_FN_FILE_DELETE\000"
+ 3241      4E5F4649 
+ 3241      4C455F44 
+ 3241      454C4554 
+ 3241      4500
+ 3242              	.LASF153:
+ 3243 1909 4F535F46 		.ascii	"OS_FN_BUFMAN_REALLOC\000"
+ 3243      4E5F4255 
+ 3243      464D414E 
+ 3243      5F524541 
+ 3243      4C4C4F43 
+ 3244              	.LASF318:
+ 3245 191e 4F535F46 		.ascii	"OS_FN_TPAD_CALIBRATE\000"
+ 3245      4E5F5450 
+ 3245      41445F43 
+ 3245      414C4942 
+ 3245      52415445 
+ 3246              	.LASF113:
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 83
+
+
+ 3247 1933 4F535F46 		.ascii	"OS_FN_SM2_SET_CURVE\000"
+ 3247      4E5F534D 
+ 3247      325F5345 
+ 3247      545F4355 
+ 3247      52564500 
+ 3248              	.LASF280:
+ 3249 1947 4F535F46 		.ascii	"OS_FN_MCOM_OPEN\000"
+ 3249      4E5F4D43 
+ 3249      4F4D5F4F 
+ 3249      50454E00 
+ 3250              	.LASF337:
+ 3251 1957 4F535F46 		.ascii	"OS_FN_CLICC_LED_CLEAR\000"
+ 3251      4E5F434C 
+ 3251      4943435F 
+ 3251      4C45445F 
+ 3251      434C4541 
+ 3252              	.LASF164:
+ 3253 196d 4F535F46 		.ascii	"OS_FN_APP_SEARCH_NAME\000"
+ 3253      4E5F4150 
+ 3253      505F5345 
+ 3253      41524348 
+ 3253      5F4E414D 
+ 3254              	.LASF107:
+ 3255 1983 4F535F46 		.ascii	"OS_FN_SHA_PROCESS\000"
+ 3255      4E5F5348 
+ 3255      415F5052 
+ 3255      4F434553 
+ 3255      5300
+ 3256              	.LASF367:
+ 3257 1995 4F535F46 		.ascii	"OS_FN_NETDEV_IOCTL\000"
+ 3257      4E5F4E45 
+ 3257      54444556 
+ 3257      5F494F43 
+ 3257      544C00
+ 3258              	.LASF90:
+ 3259 19a8 4F535F46 		.ascii	"OS_FN_DES\000"
+ 3259      4E5F4445 
+ 3259      5300
+ 3260              	.LASF481:
+ 3261 19b2 4F535F46 		.ascii	"OS_FN_IMG_SENSOR_CLOSE\000"
+ 3261      4E5F494D 
+ 3261      475F5345 
+ 3261      4E534F52 
+ 3261      5F434C4F 
+ 3262              	.LASF63:
+ 3263 19c9 4F535F46 		.ascii	"OS_FN_COM1_CLOSE\000"
+ 3263      4E5F434F 
+ 3263      4D315F43 
+ 3263      4C4F5345 
+ 3263      00
+ 3264              	.LASF402:
+ 3265 19da 4F535F46 		.ascii	"OS_FN_BARCODE_SCAN\000"
+ 3265      4E5F4241 
+ 3265      52434F44 
+ 3265      455F5343 
+ 3265      414E00
+ 3266              	.LASF29:
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 84
+
+
+ 3267 19ed 4F535F46 		.ascii	"OS_FN_KBD_GETKEY\000"
+ 3267      4E5F4B42 
+ 3267      445F4745 
+ 3267      544B4559 
+ 3267      00
+ 3268              	.LASF341:
+ 3269 19fe 4F535F46 		.ascii	"OS_FN_USBHOST_RESET_DEVICE\000"
+ 3269      4E5F5553 
+ 3269      42484F53 
+ 3269      545F5245 
+ 3269      5345545F 
+ 3270              	.LASF513:
+ 3271 1a19 4B417070 		.ascii	"KAppHdr\000"
+ 3271      48647200 
+ 3272              	.LASF314:
+ 3273 1a21 4F535F46 		.ascii	"OS_FN_TPAD_ADD_OBJ\000"
+ 3273      4E5F5450 
+ 3273      41445F41 
+ 3273      44445F4F 
+ 3273      424A00
+ 3274              	.LASF5:
+ 3275 1a34 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 3275      206C6F6E 
+ 3275      6720756E 
+ 3275      7369676E 
+ 3275      65642069 
+ 3276              	.LASF205:
+ 3277 1a4b 4F535F46 		.ascii	"OS_FN_FILE_IOCTL\000"
+ 3277      4E5F4649 
+ 3277      4C455F49 
+ 3277      4F43544C 
+ 3277      00
+ 3278              	.LASF186:
+ 3279 1a5c 4F535F46 		.ascii	"OS_FN_FILE_SEARCH\000"
+ 3279      4E5F4649 
+ 3279      4C455F53 
+ 3279      45415243 
+ 3279      4800
+ 3280              	.LASF417:
+ 3281 1a6e 4F535F46 		.ascii	"OS_FN_NFC_GET_VALID_RESP\000"
+ 3281      4E5F4E46 
+ 3281      435F4745 
+ 3281      545F5641 
+ 3281      4C49445F 
+ 3282              	.LASF490:
+ 3283 1a87 4F535F46 		.ascii	"OS_FN_TAMPER_UNLOCK\000"
+ 3283      4E5F5441 
+ 3283      4D504552 
+ 3283      5F554E4C 
+ 3283      4F434B00 
+ 3284              	.LASF347:
+ 3285 1a9b 4F535F46 		.ascii	"OS_FN_DRIVER_UNREGISTER\000"
+ 3285      4E5F4452 
+ 3285      49564552 
+ 3285      5F554E52 
+ 3285      45474953 
+ 3286              	.LASF471:
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 85
+
+
+ 3287 1ab3 4F535F46 		.ascii	"OS_FN_WIFI_SOCKET_DISCONNECT\000"
+ 3287      4E5F5749 
+ 3287      46495F53 
+ 3287      4F434B45 
+ 3287      545F4449 
+ 3288              	.LASF317:
+ 3289 1ad0 4F535F46 		.ascii	"OS_FN_TPAD_ALERT_RETURN\000"
+ 3289      4E5F5450 
+ 3289      41445F41 
+ 3289      4C455254 
+ 3289      5F524554 
+ 3290              	.LASF137:
+ 3291 1ae8 4F535F46 		.ascii	"OS_FN_KEY_SAVE_TMK_CBC\000"
+ 3291      4E5F4B45 
+ 3291      595F5341 
+ 3291      56455F54 
+ 3291      4D4B5F43 
+ 3292              	.LASF93:
+ 3293 1aff 4F535F46 		.ascii	"OS_FN_COM_DES\000"
+ 3293      4E5F434F 
+ 3293      4D5F4445 
+ 3293      5300
+ 3294              	.LASF112:
+ 3295 1b0d 4F535F46 		.ascii	"OS_FN_MD4_FINISH\000"
+ 3295      4E5F4D44 
+ 3295      345F4649 
+ 3295      4E495348 
+ 3295      00
+ 3296              	.LASF80:
+ 3297 1b1e 4F535F46 		.ascii	"OS_FN_COM3_OPEN\000"
+ 3297      4E5F434F 
+ 3297      4D335F4F 
+ 3297      50454E00 
+ 3298              	.LASF450:
+ 3299 1b2e 4F535F46 		.ascii	"OS_FN_DTIMER_LATCH_START\000"
+ 3299      4E5F4454 
+ 3299      494D4552 
+ 3299      5F4C4154 
+ 3299      43485F53 
+ 3300              	.LASF267:
+ 3301 1b47 4F535F46 		.ascii	"OS_FN_FL_COPYB_PGM\000"
+ 3301      4E5F464C 
+ 3301      5F434F50 
+ 3301      59425F50 
+ 3301      474D00
+ 3302              	.LASF492:
+ 3303 1b5a 4F535F46 		.ascii	"OS_FN_IMG_SENSOR_SET_MODE\000"
+ 3303      4E5F494D 
+ 3303      475F5345 
+ 3303      4E534F52 
+ 3303      5F534554 
+ 3304              	.LASF268:
+ 3305 1b74 4F535F46 		.ascii	"OS_FN_FL_COPYB_END\000"
+ 3305      4E5F464C 
+ 3305      5F434F50 
+ 3305      59425F45 
+ 3305      4E4400
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 86
+
+
+ 3306              	.LASF72:
+ 3307 1b87 4F535F46 		.ascii	"OS_FN_COM2_CLOSE\000"
+ 3307      4E5F434F 
+ 3307      4D325F43 
+ 3307      4C4F5345 
+ 3307      00
+ 3308              	.LASF227:
+ 3309 1b98 4F535F46 		.ascii	"OS_FN_MMC_INSERTED\000"
+ 3309      4E5F4D4D 
+ 3309      435F494E 
+ 3309      53455254 
+ 3309      454400
+ 3310              	.LASF428:
+ 3311 1bab 4F535F46 		.ascii	"OS_FN_GPS_RESET\000"
+ 3311      4E5F4750 
+ 3311      535F5245 
+ 3311      53455400 
+ 3312              	.LASF375:
+ 3313 1bbb 4F535F46 		.ascii	"OS_FN_MIF_OPEN\000"
+ 3313      4E5F4D49 
+ 3313      465F4F50 
+ 3313      454E00
+ 3314              	.LASF464:
+ 3315 1bca 4F535F46 		.ascii	"OS_FN_GCM_AES_INIT\000"
+ 3315      4E5F4743 
+ 3315      4D5F4145 
+ 3315      535F494E 
+ 3315      495400
+ 3316              	.LASF489:
+ 3317 1bdd 4F535F46 		.ascii	"OS_FN_WIFI_SET_REGULATORY_DOMAIN\000"
+ 3317      4E5F5749 
+ 3317      46495F53 
+ 3317      45545F52 
+ 3317      4547554C 
+ 3318              	.LASF291:
+ 3319 1bfe 4F535F46 		.ascii	"OS_FN_BATT_TEMP\000"
+ 3319      4E5F4241 
+ 3319      54545F54 
+ 3319      454D5000 
+ 3320              	.LASF392:
+ 3321 1c0e 4F535F46 		.ascii	"OS_FN_MIF_TRANSFER\000"
+ 3321      4E5F4D49 
+ 3321      465F5452 
+ 3321      414E5346 
+ 3321      455200
+ 3322              	.LASF33:
+ 3323 1c21 4F535F46 		.ascii	"OS_FN_TIMER_CLOSE\000"
+ 3323      4E5F5449 
+ 3323      4D45525F 
+ 3323      434C4F53 
+ 3323      4500
+ 3324              	.LASF154:
+ 3325 1c33 4F535F46 		.ascii	"OS_FN_BUFMAN_SHRINK\000"
+ 3325      4E5F4255 
+ 3325      464D414E 
+ 3325      5F534852 
+ 3325      494E4B00 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 87
+
+
+ 3326              	.LASF281:
+ 3327 1c47 4F535F46 		.ascii	"OS_FN_MCOM_CLOSE\000"
+ 3327      4E5F4D43 
+ 3327      4F4D5F43 
+ 3327      4C4F5345 
+ 3327      00
+ 3328              	.LASF110:
+ 3329 1c58 4F535F46 		.ascii	"OS_FN_RC4_ENCRYPT\000"
+ 3329      4E5F5243 
+ 3329      345F454E 
+ 3329      43525950 
+ 3329      5400
+ 3330              	.LASF404:
+ 3331 1c6a 4F535F46 		.ascii	"OS_FN_BARCODE_ABORT\000"
+ 3331      4E5F4241 
+ 3331      52434F44 
+ 3331      455F4142 
+ 3331      4F525400 
+ 3332              	.LASF401:
+ 3333 1c7e 4F535F46 		.ascii	"OS_FN_BARCODE_CMD\000"
+ 3333      4E5F4241 
+ 3333      52434F44 
+ 3333      455F434D 
+ 3333      4400
+ 3334              	.LASF39:
+ 3335 1c90 4F535F46 		.ascii	"OS_FN_BUZ_STATE\000"
+ 3335      4E5F4255 
+ 3335      5A5F5354 
+ 3335      41544500 
+ 3336              	.LASF310:
+ 3337 1ca0 4F535F46 		.ascii	"OS_FN_GPRS_SMS_CONTROL\000"
+ 3337      4E5F4750 
+ 3337      52535F53 
+ 3337      4D535F43 
+ 3337      4F4E5452 
+ 3338              	.LASF234:
+ 3339 1cb7 4F535F46 		.ascii	"OS_FN_LAN_RXRDY\000"
+ 3339      4E5F4C41 
+ 3339      4E5F5258 
+ 3339      52445900 
+ 3340              	.LASF41:
+ 3341 1cc7 4F535F46 		.ascii	"OS_FN_RTC_SET\000"
+ 3341      4E5F5254 
+ 3341      435F5345 
+ 3341      5400
+ 3342              	.LASF523:
+ 3343 1cd5 64657374 		.ascii	"dest\000"
+ 3343      00
+ 3344              	.LASF502:
+ 3345 1cda 6146756E 		.ascii	"aFuncNo\000"
+ 3345      634E6F00 
+ 3346              	.LASF352:
+ 3347 1ce2 4F535F46 		.ascii	"OS_FN_DEVICE_IOCTL\000"
+ 3347      4E5F4445 
+ 3347      56494345 
+ 3347      5F494F43 
+ 3347      544C00
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 88
+
+
+ 3348              	.LASF161:
+ 3349 1cf5 4F535F46 		.ascii	"OS_FN_GET_CHALLENGE\000"
+ 3349      4E5F4745 
+ 3349      545F4348 
+ 3349      414C4C45 
+ 3349      4E474500 
+ 3350              	.LASF223:
+ 3351 1d09 4F535F46 		.ascii	"OS_FN_MMC_BLK_READ\000"
+ 3351      4E5F4D4D 
+ 3351      435F424C 
+ 3351      4B5F5245 
+ 3351      414400
+ 3352              	.LASF103:
+ 3353 1d1c 4F535F46 		.ascii	"OS_FN_MD5_INIT\000"
+ 3353      4E5F4D44 
+ 3353      355F494E 
+ 3353      495400
+ 3354              	.LASF259:
+ 3355 1d2b 4F535F46 		.ascii	"OS_FN_FL_PAGE\000"
+ 3355      4E5F464C 
+ 3355      5F504147 
+ 3355      4500
+ 3356              	.LASF150:
+ 3357 1d39 4F535F46 		.ascii	"OS_FN_THREAD_RETURN\000"
+ 3357      4E5F5448 
+ 3357      52454144 
+ 3357      5F524554 
+ 3357      55524E00 
+ 3358              	.LASF209:
+ 3359 1d4d 4F535F46 		.ascii	"OS_FN_CONFIG_UPDATE\000"
+ 3359      4E5F434F 
+ 3359      4E464947 
+ 3359      5F555044 
+ 3359      41544500 
+ 3360              	.LASF418:
+ 3361 1d61 4F535F46 		.ascii	"OS_FN_NFC_INFO_GET\000"
+ 3361      4E5F4E46 
+ 3361      435F494E 
+ 3361      464F5F47 
+ 3361      455400
+ 3362              	.LASF197:
+ 3363 1d74 4F535F46 		.ascii	"OS_FN_FILE_GET_SYSTEMINFO\000"
+ 3363      4E5F4649 
+ 3363      4C455F47 
+ 3363      45545F53 
+ 3363      59535445 
+ 3364              	.LASF384:
+ 3365 1d8e 4F535F46 		.ascii	"OS_FN_MIF_LOAD_KEY\000"
+ 3365      4E5F4D49 
+ 3365      465F4C4F 
+ 3365      41445F4B 
+ 3365      455900
+ 3366              	.LASF218:
+ 3367 1da1 4F535F46 		.ascii	"OS_FN_MMC_OPEN\000"
+ 3367      4E5F4D4D 
+ 3367      435F4F50 
+ 3367      454E00
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 89
+
+
+ 3368              	.LASF351:
+ 3369 1db0 4F535F46 		.ascii	"OS_FN_DEVICE_ALLOC_MEDIA\000"
+ 3369      4E5F4445 
+ 3369      56494345 
+ 3369      5F414C4C 
+ 3369      4F435F4D 
+ 3370              	.LASF465:
+ 3371 1dc9 4F535F46 		.ascii	"OS_FN_GCM_AES_PROCESS_AAD\000"
+ 3371      4E5F4743 
+ 3371      4D5F4145 
+ 3371      535F5052 
+ 3371      4F434553 
+ 3372              	.LASF373:
+ 3373 1de3 4F535F46 		.ascii	"OS_FN_TAMPER_GET_STATUS\000"
+ 3373      4E5F5441 
+ 3373      4D504552 
+ 3373      5F474554 
+ 3373      5F535441 
+ 3374              	.LASF85:
+ 3375 1dfb 4F535F46 		.ascii	"OS_FN_COM3_SEND\000"
+ 3375      4E5F434F 
+ 3375      4D335F53 
+ 3375      454E4400 
+ 3376              	.LASF130:
+ 3377 1e0b 4F535F46 		.ascii	"OS_FN_KEY_DUKPT_ENCRYPT\000"
+ 3377      4E5F4B45 
+ 3377      595F4455 
+ 3377      4B50545F 
+ 3377      454E4352 
+ 3378              	.LASF147:
+ 3379 1e23 4F535F46 		.ascii	"OS_FN_THREAD_UNLOCK\000"
+ 3379      4E5F5448 
+ 3379      52454144 
+ 3379      5F554E4C 
+ 3379      4F434B00 
+ 3380              	.LASF376:
+ 3381 1e37 4F535F46 		.ascii	"OS_FN_MIF_CLOSE\000"
+ 3381      4E5F4D49 
+ 3381      465F434C 
+ 3381      4F534500 
+ 3382              	.LASF313:
+ 3383 1e47 4F535F46 		.ascii	"OS_FN_TPAD_CLOSE\000"
+ 3383      4E5F5450 
+ 3383      41445F43 
+ 3383      4C4F5345 
+ 3383      00
+ 3384              	.LASF8:
+ 3385 1e58 73686F72 		.ascii	"short int\000"
+ 3385      7420696E 
+ 3385      7400
+ 3386              	.LASF213:
+ 3387 1e62 4F535F46 		.ascii	"OS_FN_SAM_INSERTED\000"
+ 3387      4E5F5341 
+ 3387      4D5F494E 
+ 3387      53455254 
+ 3387      454400
+ 3388              	.LASF335:
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 90
+
+
+ 3389 1e75 4F535F46 		.ascii	"OS_FN_CLICC_LED_STATUS\000"
+ 3389      4E5F434C 
+ 3389      4943435F 
+ 3389      4C45445F 
+ 3389      53544154 
+ 3390              	.LASF70:
+ 3391 1e8c 4F535F46 		.ascii	"OS_FN_COM1_SSEND\000"
+ 3391      4E5F434F 
+ 3391      4D315F53 
+ 3391      53454E44 
+ 3391      00
+ 3392              	.LASF353:
+ 3393 1e9d 4F535F46 		.ascii	"OS_FN_DEVICE_SEARCH_INIT\000"
+ 3393      4E5F4445 
+ 3393      56494345 
+ 3393      5F534541 
+ 3393      5243485F 
+ 3394              	.LASF288:
+ 3395 1eb6 4F535F46 		.ascii	"OS_FN_MCOM_READ\000"
+ 3395      4E5F4D43 
+ 3395      4F4D5F52 
+ 3395      45414400 
+ 3396              	.LASF437:
+ 3397 1ec6 4F535F46 		.ascii	"OS_FN_FREE_RUN\000"
+ 3397      4E5F4652 
+ 3397      45455F52 
+ 3397      554E00
+ 3398              	.LASF514:
+ 3399 1ed5 4B417070 		.ascii	"KAppHeader\000"
+ 3399      48656164 
+ 3399      657200
+ 3400              	.LASF297:
+ 3401 1ee0 4F535F46 		.ascii	"OS_FN_GPRS_SIGNAL\000"
+ 3401      4E5F4750 
+ 3401      52535F53 
+ 3401      49474E41 
+ 3401      4C00
+ 3402              	.LASF256:
+ 3403 1ef2 4F535F46 		.ascii	"OS_FN_FL_INFO\000"
+ 3403      4E5F464C 
+ 3403      5F494E46 
+ 3403      4F00
+ 3404              	.LASF484:
+ 3405 1f00 4F535F46 		.ascii	"OS_FN_GPRS_SET_PIN_STATUS\000"
+ 3405      4E5F4750 
+ 3405      52535F53 
+ 3405      45545F50 
+ 3405      494E5F53 
+ 3406              	.LASF120:
+ 3407 1f1a 4F535F46 		.ascii	"OS_FN_SM3_ASCII\000"
+ 3407      4E5F534D 
+ 3407      335F4153 
+ 3407      43494900 
+ 3408              	.LASF215:
+ 3409 1f2a 4F535F46 		.ascii	"OS_FN_SAM_OFF\000"
+ 3409      4E5F5341 
+ 3409      4D5F4F46 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 91
+
+
+ 3409      4600
+ 3410              	.LASF423:
+ 3411 1f38 4F535F46 		.ascii	"OS_FN_GPS_OFF\000"
+ 3411      4E5F4750 
+ 3411      535F4F46 
+ 3411      4600
+ 3412              	.LASF129:
+ 3413 1f46 4F535F46 		.ascii	"OS_FN_KEY_FLUSH\000"
+ 3413      4E5F4B45 
+ 3413      595F464C 
+ 3413      55534800 
+ 3414              	.LASF119:
+ 3415 1f56 4F535F46 		.ascii	"OS_FN_SM2_GET_MESS\000"
+ 3415      4E5F534D 
+ 3415      325F4745 
+ 3415      545F4D45 
+ 3415      535300
+ 3416              	.LASF258:
+ 3417 1f69 4F535F46 		.ascii	"OS_FN_FL_PAGE_READ\000"
+ 3417      4E5F464C 
+ 3417      5F504147 
+ 3417      455F5245 
+ 3417      414400
+ 3418              	.LASF169:
+ 3419 1f7c 4F535F46 		.ascii	"OS_FN_REALLOC\000"
+ 3419      4E5F5245 
+ 3419      414C4C4F 
+ 3419      4300
+ 3420              	.LASF472:
+ 3421 1f8a 4F535F46 		.ascii	"OS_FN_WIFI_SOCKET_GET_STATE\000"
+ 3421      4E5F5749 
+ 3421      46495F53 
+ 3421      4F434B45 
+ 3421      545F4745 
+ 3422              	.LASF382:
+ 3423 1fa6 4F535F46 		.ascii	"OS_FN_MIF_ANTICOLL\000"
+ 3423      4E5F4D49 
+ 3423      465F414E 
+ 3423      5449434F 
+ 3423      4C4C00
+ 3424              	.LASF419:
+ 3425 1fb9 4F535F46 		.ascii	"OS_FN_NFC_INFO_SET\000"
+ 3425      4E5F4E46 
+ 3425      435F494E 
+ 3425      464F5F53 
+ 3425      455400
+ 3426              	.LASF473:
+ 3427 1fcc 4F535F46 		.ascii	"OS_FN_WIFI_SOCKET_SEND_TCP\000"
+ 3427      4E5F5749 
+ 3427      46495F53 
+ 3427      4F434B45 
+ 3427      545F5345 
+ 3428              	.LASF139:
+ 3429 1fe7 4F535F46 		.ascii	"OS_FN_PCI_DSS_GET_KVC\000"
+ 3429      4E5F5043 
+ 3429      495F4453 
+ 3429      535F4745 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 92
+
+
+ 3429      545F4B56 
+ 3430              	.LASF476:
+ 3431 1ffd 4F535F46 		.ascii	"OS_FN_WIFI_SOCKET_GET_STATUS\000"
+ 3431      4E5F5749 
+ 3431      46495F53 
+ 3431      4F434B45 
+ 3431      545F4745 
+ 3432              	.LASF122:
+ 3433 201a 4F535F46 		.ascii	"OS_FN_SM4_SET_KEY\000"
+ 3433      4E5F534D 
+ 3433      345F5345 
+ 3433      545F4B45 
+ 3433      5900
+ 3434              	.LASF60:
+ 3435 202c 4F535F46 		.ascii	"OS_FN_DISP_ICON_SET_SIGNAL_TYPE\000"
+ 3435      4E5F4449 
+ 3435      53505F49 
+ 3435      434F4E5F 
+ 3435      5345545F 
+ 3436              	.LASF316:
+ 3437 204c 4F535F46 		.ascii	"OS_FN_TPAD_CPOS\000"
+ 3437      4E5F5450 
+ 3437      41445F43 
+ 3437      504F5300 
+ 3438              	.LASF7:
+ 3439 205c 7369676E 		.ascii	"signed char\000"
+ 3439      65642063 
+ 3439      68617200 
+ 3440              	.LASF408:
+ 3441 2068 4F535F46 		.ascii	"OS_FN_WIFI_SEND_COMMAND\000"
+ 3441      4E5F5749 
+ 3441      46495F53 
+ 3441      454E445F 
+ 3441      434F4D4D 
+ 3442              	.LASF68:
+ 3443 2080 4F535F46 		.ascii	"OS_FN_COM1_STATUS\000"
+ 3443      4E5F434F 
+ 3443      4D315F53 
+ 3443      54415455 
+ 3443      5300
+ 3444              	.LASF140:
+ 3445 2092 4F535F46 		.ascii	"OS_FN_PCI_DSS_REGEN_KEY\000"
+ 3445      4E5F5043 
+ 3445      495F4453 
+ 3445      535F5245 
+ 3445      47454E5F 
+ 3446              	.LASF84:
+ 3447 20aa 4F535F46 		.ascii	"OS_FN_COM3_READ\000"
+ 3447      4E5F434F 
+ 3447      4D335F52 
+ 3447      45414400 
+ 3448              	.LASF488:
+ 3449 20ba 4F535F46 		.ascii	"OS_FN_WIFI_GET_REGULATORY_DOMAIN\000"
+ 3449      4E5F5749 
+ 3449      46495F47 
+ 3449      45545F52 
+ 3449      4547554C 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 93
+
+
+ 3450              	.LASF509:
+ 3451 20db 5F737461 		.ascii	"_start_of_bss\000"
+ 3451      72745F6F 
+ 3451      665F6273 
+ 3451      7300
+ 3452              	.LASF396:
+ 3453 20e9 4F535F46 		.ascii	"OS_FN_MIF_GET\000"
+ 3453      4E5F4D49 
+ 3453      465F4745 
+ 3453      5400
+ 3454              	.LASF194:
+ 3455 20f7 4F535F46 		.ascii	"OS_FN_FILE_SET_LOCK\000"
+ 3455      4E5F4649 
+ 3455      4C455F53 
+ 3455      45545F4C 
+ 3455      4F434B00 
+ 3456              	.LASF264:
+ 3457 210b 4F535F46 		.ascii	"OS_FN_FL_ERASE_START\000"
+ 3457      4E5F464C 
+ 3457      5F455241 
+ 3457      53455F53 
+ 3457      54415254 
+ 3458              	.LASF167:
+ 3459 2120 4F535F46 		.ascii	"OS_FN_APP_INFO\000"
+ 3459      4E5F4150 
+ 3459      505F494E 
+ 3459      464F00
+ 3460              	.LASF243:
+ 3461 212f 4F535F46 		.ascii	"OS_FN_MSR_READ\000"
+ 3461      4E5F4D53 
+ 3461      525F5245 
+ 3461      414400
+ 3462              	.LASF388:
+ 3463 213e 4F535F46 		.ascii	"OS_FN_MIF_WRITE\000"
+ 3463      4E5F4D49 
+ 3463      465F5752 
+ 3463      49544500 
+ 3464              	.LASF31:
+ 3465 214e 4F535F46 		.ascii	"OS_FN_KBD_UNLOCK\000"
+ 3465      4E5F4B42 
+ 3465      445F554E 
+ 3465      4C4F434B 
+ 3465      00
+ 3466              	.LASF387:
+ 3467 215f 4F535F46 		.ascii	"OS_FN_MIF_READ\000"
+ 3467      4E5F4D49 
+ 3467      465F5245 
+ 3467      414400
+ 3468              	.LASF432:
+ 3469 216e 4F535F46 		.ascii	"OS_FN_APPDL_WRITE_APP\000"
+ 3469      4E5F4150 
+ 3469      50444C5F 
+ 3469      57524954 
+ 3469      455F4150 
+ 3470              	.LASF201:
+ 3471 2184 4F535F46 		.ascii	"OS_FN_FILE_MKDIR\000"
+ 3471      4E5F4649 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 94
+
+
+ 3471      4C455F4D 
+ 3471      4B444952 
+ 3471      00
+ 3472              	.LASF15:
+ 3473 2195 705F6170 		.ascii	"p_appname\000"
+ 3473      706E616D 
+ 3473      6500
+ 3474              	.LASF162:
+ 3475 219f 4F535F46 		.ascii	"OS_FN_AUTH\000"
+ 3475      4E5F4155 
+ 3475      544800
+ 3476              	.LASF233:
+ 3477 21aa 4F535F46 		.ascii	"OS_FN_LAN_CLOSE\000"
+ 3477      4E5F4C41 
+ 3477      4E5F434C 
+ 3477      4F534500 
+ 3478              	.LASF102:
+ 3479 21ba 4F535F46 		.ascii	"OS_FN_SHA1\000"
+ 3479      4E5F5348 
+ 3479      413100
+ 3480              	.LASF32:
+ 3481 21c5 4F535F46 		.ascii	"OS_FN_TIMER_OPEN\000"
+ 3481      4E5F5449 
+ 3481      4D45525F 
+ 3481      4F50454E 
+ 3481      00
+ 3482              	.LASF220:
+ 3483 21d6 4F535F46 		.ascii	"OS_FN_MMC_BLK_SIZE\000"
+ 3483      4E5F4D4D 
+ 3483      435F424C 
+ 3483      4B5F5349 
+ 3483      5A4500
+ 3484              	.LASF73:
+ 3485 21e9 4F535F46 		.ascii	"OS_FN_COM2_RXRDY\000"
+ 3485      4E5F434F 
+ 3485      4D325F52 
+ 3485      58524459 
+ 3485      00
+ 3486              	.LASF444:
+ 3487 21fa 4F535F46 		.ascii	"OS_FN_GET_MCLK\000"
+ 3487      4E5F4745 
+ 3487      545F4D43 
+ 3487      4C4B00
+ 3488              	.LASF278:
+ 3489 2209 4F535F46 		.ascii	"OS_FN_MDM_STATUS\000"
+ 3489      4E5F4D44 
+ 3489      4D5F5354 
+ 3489      41545553 
+ 3489      00
+ 3490              	.LASF3:
+ 3491 221a 44574F52 		.ascii	"DWORD\000"
+ 3491      4400
+ 3492              	.LASF518:
+ 3493 2220 474E5520 		.ascii	"GNU C 4.9.3 20141119 (release) [ARM/embedded-4_9-br"
+ 3493      4320342E 
+ 3493      392E3320 
+ 3493      32303134 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 95
+
+
+ 3493      31313139 
+ 3494 2253 616E6368 		.ascii	"anch revision 218278] -mthumb -mcpu=cortex-a5 -mthu"
+ 3494      20726576 
+ 3494      6973696F 
+ 3494      6E203231 
+ 3494      38323738 
+ 3495 2286 6D622D69 		.ascii	"mb-interwork -mstructure-size-boundary=32 -mno-unal"
+ 3495      6E746572 
+ 3495      776F726B 
+ 3495      202D6D73 
+ 3495      74727563 
+ 3496 22b9 69676E65 		.ascii	"igned-access -g -Os -ffunction-sections -fsigned-ch"
+ 3496      642D6163 
+ 3496      63657373 
+ 3496      202D6720 
+ 3496      2D4F7320 
+ 3497 22ec 617200   		.ascii	"ar\000"
+ 3498              	.LASF239:
+ 3499 22ef 4F535F46 		.ascii	"OS_FN_MSR_OPEN\000"
+ 3499      4E5F4D53 
+ 3499      525F4F50 
+ 3499      454E00
+ 3500              	.LASF328:
+ 3501 22fe 4F535F46 		.ascii	"OS_FN_CLICC_REMOVE\000"
+ 3501      4E5F434C 
+ 3501      4943435F 
+ 3501      52454D4F 
+ 3501      564500
+ 3502              	.LASF262:
+ 3503 2311 4F535F46 		.ascii	"OS_FN_FL_WRITE\000"
+ 3503      4E5F464C 
+ 3503      5F575249 
+ 3503      544500
+ 3504              	.LASF79:
+ 3505 2320 4F535F46 		.ascii	"OS_FN_COM2_SSEND\000"
+ 3505      4E5F434F 
+ 3505      4D325F53 
+ 3505      53454E44 
+ 3505      00
+ 3506              	.LASF225:
+ 3507 2331 4F535F46 		.ascii	"OS_FN_MMC_READ\000"
+ 3507      4E5F4D4D 
+ 3507      435F5245 
+ 3507      414400
+ 3508              	.LASF276:
+ 3509 2340 4F535F46 		.ascii	"OS_FN_MDM_DISC\000"
+ 3509      4E5F4D44 
+ 3509      4D5F4449 
+ 3509      534300
+ 3510              	.LASF96:
+ 3511 234f 4F535F46 		.ascii	"OS_FN_NEW_DES2\000"
+ 3511      4E5F4E45 
+ 3511      575F4445 
+ 3511      533200
+ 3512              	.LASF192:
+ 3513 235e 4F535F46 		.ascii	"OS_FN_FILE_TRUNCATE\000"
+ 3513      4E5F4649 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 96
+
+
+ 3513      4C455F54 
+ 3513      52554E43 
+ 3513      41544500 
+ 3514              	.LASF501:
+ 3515 2372 656E645F 		.ascii	"end_addr\000"
+ 3515      61646472 
+ 3515      00
+ 3516              	.LASF1:
+ 3517 237b 73686F72 		.ascii	"short unsigned int\000"
+ 3517      7420756E 
+ 3517      7369676E 
+ 3517      65642069 
+ 3517      6E7400
+ 3518              	.LASF144:
+ 3519 238e 4F535F46 		.ascii	"OS_FN_THREAD_CREATE\000"
+ 3519      4E5F5448 
+ 3519      52454144 
+ 3519      5F435245 
+ 3519      41544500 
+ 3520              	.LASF498:
+ 3521 23a2 55534246 		.ascii	"USBFPRT_GENERAL_INFO_IMG_HEIGHT\000"
+ 3521      5052545F 
+ 3521      47454E45 
+ 3521      52414C5F 
+ 3521      494E464F 
+ 3522              	.LASF364:
+ 3523 23c2 4F535F46 		.ascii	"OS_FN_NETDEV_CLOSE\000"
+ 3523      4E5F4E45 
+ 3523      54444556 
+ 3523      5F434C4F 
+ 3523      534500
+ 3524              	.LASF478:
+ 3525 23d5 4F535F46 		.ascii	"OS_FN_IMG_SENSOR_OPEN\000"
+ 3525      4E5F494D 
+ 3525      475F5345 
+ 3525      4E534F52 
+ 3525      5F4F5045 
+ 3526              	.LASF69:
+ 3527 23eb 4F535F46 		.ascii	"OS_FN_COM1_SREAD\000"
+ 3527      4E5F434F 
+ 3527      4D315F53 
+ 3527      52454144 
+ 3527      00
+ 3528              	.LASF109:
+ 3529 23fc 4F535F46 		.ascii	"OS_FN_RC4_SETUP\000"
+ 3529      4E5F5243 
+ 3529      345F5345 
+ 3529      54555000 
+ 3530              	.LASF97:
+ 3531 240c 4F535F46 		.ascii	"OS_FN_RSA\000"
+ 3531      4E5F5253 
+ 3531      4100
+ 3532              	.LASF343:
+ 3533 2416 4F535F46 		.ascii	"OS_FN_USBHOST_RHPORT_STATUS\000"
+ 3533      4E5F5553 
+ 3533      42484F53 
+ 3533      545F5248 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 97
+
+
+ 3533      504F5254 
+ 3534              	.LASF156:
+ 3535 2432 4F535F46 		.ascii	"OS_FN_LED_CLOSE\000"
+ 3535      4E5F4C45 
+ 3535      445F434C 
+ 3535      4F534500 
+ 3536              	.LASF357:
+ 3537 2442 4F535F46 		.ascii	"OS_FN_DEVICE_UNMOUNT\000"
+ 3537      4E5F4445 
+ 3537      56494345 
+ 3537      5F554E4D 
+ 3537      4F554E54 
+ 3538              	.LASF82:
+ 3539 2457 4F535F46 		.ascii	"OS_FN_COM3_RXRDY\000"
+ 3539      4E5F434F 
+ 3539      4D335F52 
+ 3539      58524459 
+ 3539      00
+ 3540              	.LASF508:
+ 3541 2468 5F656E64 		.ascii	"_end_of_data\000"
+ 3541      5F6F665F 
+ 3541      64617461 
+ 3541      00
+ 3542              	.LASF398:
+ 3543 2475 4F535F46 		.ascii	"OS_FN_MIF_INFO_GET\000"
+ 3543      4E5F4D49 
+ 3543      465F494E 
+ 3543      464F5F47 
+ 3543      455400
+ 3544              	.LASF255:
+ 3545 2488 4F535F46 		.ascii	"OS_FN_USBSER_ENABLE\000"
+ 3545      4E5F5553 
+ 3545      42534552 
+ 3545      5F454E41 
+ 3545      424C4500 
+ 3546              	.LASF453:
+ 3547 249c 4F535F46 		.ascii	"OS_FN_LPT_RESET_COUNT\000"
+ 3547      4E5F4C50 
+ 3547      545F5245 
+ 3547      5345545F 
+ 3547      434F554E 
+ 3548              	.LASF298:
+ 3549 24b2 4F535F46 		.ascii	"OS_FN_GPRS_STATUS\000"
+ 3549      4E5F4750 
+ 3549      52535F53 
+ 3549      54415455 
+ 3549      5300
+ 3550              	.LASF88:
+ 3551 24c4 4F535F46 		.ascii	"OS_FN_COM3_SSEND\000"
+ 3551      4E5F434F 
+ 3551      4D335F53 
+ 3551      53454E44 
+ 3551      00
+ 3552              	.LASF416:
+ 3553 24d5 4F535F46 		.ascii	"OS_FN_NFC_CLOSE\000"
+ 3553      4E5F4E46 
+ 3553      435F434C 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 98
+
+
+ 3553      4F534500 
+ 3554              	.LASF22:
+ 3555 24e5 4F535F46 		.ascii	"OS_FN_GET_VERSION\000"
+ 3555      4E5F4745 
+ 3555      545F5645 
+ 3555      5253494F 
+ 3555      4E00
+ 3556              	.LASF296:
+ 3557 24f7 4F535F46 		.ascii	"OS_FN_ADC_CH_READ\000"
+ 3557      4E5F4144 
+ 3557      435F4348 
+ 3557      5F524541 
+ 3557      4400
+ 3558              	.LASF274:
+ 3559 2509 4F535F46 		.ascii	"OS_FN_MDM_CLOSE\000"
+ 3559      4E5F4D44 
+ 3559      4D5F434C 
+ 3559      4F534500 
+ 3560              	.LASF449:
+ 3561 2519 4F535F46 		.ascii	"OS_FN_DMK_INJECT\000"
+ 3561      4E5F444D 
+ 3561      4B5F494E 
+ 3561      4A454354 
+ 3561      00
+ 3562              	.LASF497:
+ 3563 252a 55534246 		.ascii	"USBFPRT_GENERAL_INFO_IMG_WIDTH\000"
+ 3563      5052545F 
+ 3563      47454E45 
+ 3563      52414C5F 
+ 3563      494E464F 
+ 3564              	.LASF37:
+ 3565 2549 4F535F46 		.ascii	"OS_FN_BUZ_CLOSE\000"
+ 3565      4E5F4255 
+ 3565      5A5F434C 
+ 3565      4F534500 
+ 3566              	.LASF178:
+ 3567 2559 4F535F46 		.ascii	"OS_FN_FILE_FLUSHED\000"
+ 3567      4E5F4649 
+ 3567      4C455F46 
+ 3567      4C555348 
+ 3567      454400
+ 3568              	.LASF106:
+ 3569 256c 4F535F46 		.ascii	"OS_FN_SHA_INIT\000"
+ 3569      4E5F5348 
+ 3569      415F494E 
+ 3569      495400
+ 3570              	.LASF52:
+ 3571 257b 4F535F46 		.ascii	"OS_FN_DISP_GET_LCD_BUFFER\000"
+ 3571      4E5F4449 
+ 3571      53505F47 
+ 3571      45545F4C 
+ 3571      43445F42 
+ 3572              	.LASF327:
+ 3573 2595 4F535F46 		.ascii	"OS_FN_CLICC_POLL\000"
+ 3573      4E5F434C 
+ 3573      4943435F 
+ 3573      504F4C4C 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 99
+
+
+ 3573      00
+ 3574              	.LASF78:
+ 3575 25a6 4F535F46 		.ascii	"OS_FN_COM2_SREAD\000"
+ 3575      4E5F434F 
+ 3575      4D325F53 
+ 3575      52454144 
+ 3575      00
+ 3576              	.LASF339:
+ 3577 25b7 4F535F46 		.ascii	"OS_FN_USBHOST_SUBMIT_BUFFER\000"
+ 3577      4E5F5553 
+ 3577      42484F53 
+ 3577      545F5355 
+ 3577      424D4954 
+ 3578              	.LASF208:
+ 3579 25d3 4F535F46 		.ascii	"OS_FN_CONFIG_WRITE\000"
+ 3579      4E5F434F 
+ 3579      4E464947 
+ 3579      5F575249 
+ 3579      544500
+ 3580              	.LASF340:
+ 3581 25e6 4F535F46 		.ascii	"OS_FN_USBHOST_UNLINK_BUFFER\000"
+ 3581      4E5F5553 
+ 3581      42484F53 
+ 3581      545F554E 
+ 3581      4C494E4B 
+ 3582              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-br
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s 			page 100
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 cstartup.c
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s:19     .text.SegmentInit:00000000 $t
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s:24     .text.SegmentInit:00000000 SegmentInit
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s:101    .text.SegmentInit:00000058 $d
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s:113    sect_startup:00000000 $t
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s:118    sect_startup:00000000 cstartup
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s:183    sect_kek:00000000 KKek
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s:162    sect_apphdr:00000000 KAppHeader
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccKmIaQP.s:159    sect_apphdr:00000000 $d
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+sys_func1
+sys_func0
+_end_of_bss
+_end_of_sram
+_end_of_app
+_start_of_data
+_end_of_data
+_start_of_bss
+main
+KAppHdr
+_start_of_app
+_end_of_flash

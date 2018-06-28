@@ -1,0 +1,1226 @@
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccLXRxzg.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-a5
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"constant.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.global	KTransBitmap
+  19              		.global	KTransHeader
+  20              		.global	KRspText
+  21              		.section	.rodata
+  22              		.align	2
+  23              		.type	KTransBitmap, %object
+  24              		.size	KTransBitmap, 12
+  25              	KTransBitmap:
+  26 0000 0008     		.short	2048
+  27 0002 20       		.byte	32
+  28 0003 20       		.byte	32
+  29 0004 01       		.byte	1
+  30 0005 00       		.byte	0
+  31 0006 00       		.byte	0
+  32 0007 80       		.byte	-128
+  33 0008 00       		.byte	0
+  34 0009 10       		.byte	16
+  35 000a 92       		.byte	-110
+  36 000b 00       		.space	1
+  37              		.type	KRspText, %object
+  38              		.size	KRspText, 264
+  39              	KRspText:
+  40 000c 3030     		.short	12336
+  41 000e 0000     		.space	2
+  42 0010 00000000 		.word	KComplted
+  43 0014 3331     		.short	12595
+  44 0016 0000     		.space	2
+  45 0018 00000000 		.word	KBadAmount
+  46 001c 3837     		.short	14136
+  47 001e 0000     		.space	2
+  48 0020 00000000 		.word	KTxnNotFound
+  49 0024 5041     		.short	16720
+  50 0026 0000     		.space	2
+  51 0028 00000000 		.word	KTxnAccepted
+  52 002c 4C42     		.short	16972
+  53 002e 0000     		.space	2
+  54 0030 00000000 		.word	KLowBattery
+  55 0034 4E43     		.short	17230
+  56 0036 0000     		.space	2
+  57 0038 00000000 		.word	KTxnCanceled
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccLXRxzg.s 			page 2
+
+
+  58 003c 4544     		.short	17477
+  59 003e 0000     		.space	2
+  60 0040 00000000 		.word	KDataError
+  61 0044 4E44     		.short	17486
+  62 0046 0000     		.space	2
+  63 0048 00000000 		.word	KNoDialTone
+  64 004c 4345     		.short	17731
+  65 004e 0000     		.space	2
+  66 0050 00000000 		.word	KECRCommErr
+  67 0054 5049     		.short	18768
+  68 0056 0000     		.space	2
+  69 0058 00000000 		.word	KBadProcCode
+  70 005c 5249     		.short	18770
+  71 005e 0000     		.space	2
+  72 0060 00000000 		.word	KInvalidSeq
+  73 0064 5349     		.short	18771
+  74 0066 0000     		.space	2
+  75 0068 00000000 		.word	KInvalidTrace
+  76 006c 5449     		.short	18772
+  77 006e 0000     		.space	2
+  78 0070 00000000 		.word	KInvalidTerm
+  79 0074 4F48     		.short	18511
+  80 0076 0000     		.space	2
+  81 0078 00000000 		.word	KHostOffline
+  82 007c 4E48     		.short	18510
+  83 007e 0000     		.space	2
+  84 0080 00000000 		.word	KHostNotFound
+  85 0084 424C     		.short	19522
+  86 0086 0000     		.space	2
+  87 0088 00000000 		.word	KLineBusy
+  88 008c 434C     		.short	19523
+  89 008e 0000     		.space	2
+  90 0090 00000000 		.word	KTryAgainLC
+  91 0094 4E4C     		.short	19534
+  92 0096 0000     		.space	2
+  93 0098 00000000 		.word	KNoLine
+  94 009c 4F4C     		.short	19535
+  95 009e 0000     		.space	2
+  96 00a0 00000000 		.word	KLineOccup
+  97 00a4 414D     		.short	19777
+  98 00a6 0000     		.space	2
+  99 00a8 00000000 		.word	KSwipeCard
+ 100 00ac 454D     		.short	19781
+ 101 00ae 0000     		.space	2
+ 102 00b0 00000000 		.word	KWrongMAC
+ 103 00b4 434E     		.short	20035
+ 104 00b6 0000     		.space	2
+ 105 00b8 00000000 		.word	KTryAgainNC
+ 106 00bc 454E     		.short	20037
+ 107 00be 0000     		.space	2
+ 108 00c0 00000000 		.word	KNotAllowed
+ 109 00c4 544E     		.short	20052
+ 110 00c6 0000     		.space	2
+ 111 00c8 00000000 		.word	KNoTransRec
+ 112 00cc 4650     		.short	20550
+ 113 00ce 0000     		.space	2
+ 114 00d0 00000000 		.word	KInvalidPWD
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccLXRxzg.s 			page 3
+
+
+ 115 00d4 4552     		.short	21061
+ 116 00d6 0000     		.space	2
+ 117 00d8 00000000 		.word	KCardReadErr
+ 118 00dc 4253     		.short	21314
+ 119 00de 0000     		.space	2
+ 120 00e0 00000000 		.word	KCardBlocked
+ 121 00e4 4353     		.short	21315
+ 122 00e6 0000     		.space	2
+ 123 00e8 00000000 		.word	KSwipeCard
+ 124 00ec 4553     		.short	21317
+ 125 00ee 0000     		.space	2
+ 126 00f0 00000000 		.word	KSysError
+ 127 00f4 4F54     		.short	21583
+ 128 00f6 0000     		.space	2
+ 129 00f8 00000000 		.word	KTryAgainTO
+ 130 00fc 4355     		.short	21827
+ 131 00fe 0000     		.space	2
+ 132 0100 00000000 		.word	KUnSupportCard
+ 133 0104 315A     		.short	23089
+ 134 0106 0000     		.space	2
+ 135 0108 00000000 		.word	KUpdateRequest
+ 136 010c 2A2A     		.short	10794
+ 137 010e 0000     		.space	2
+ 138 0110 00000000 		.word	KInvalidResp
+ 139              		.data
+ 140              		.align	2
+ 141              		.type	KTransHeader, %object
+ 142              		.size	KTransHeader, 12
+ 143              	KTransHeader:
+ 144 0000 00000000 		.word	KEDCInit
+ 145 0004 00000000 		.word	KDnloadBIN
+ 146 0008 00000000 		.word	KDnloadSchedule
+ 147              		.text
+ 148              	.Letext0:
+ 149              		.file 1 "../LibA5T1000/common.h"
+ 150              		.file 2 "src/constant.h"
+ 151              		.file 3 "src/message.h"
+ 152              		.file 4 "src/constant.c"
+ 153              		.file 5 "../LibA5T1000/system.h"
+ 154              		.section	.debug_info,"",%progbits
+ 155              	.Ldebug_info0:
+ 156 0000 D1030000 		.4byte	0x3d1
+ 157 0004 0400     		.2byte	0x4
+ 158 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 159 000a 04       		.byte	0x4
+ 160 000b 01       		.uleb128 0x1
+ 161 000c 16000000 		.4byte	.LASF64
+ 162 0010 01       		.byte	0x1
+ 163 0011 E5000000 		.4byte	.LASF65
+ 164 0015 48030000 		.4byte	.LASF66
+ 165 0019 00000000 		.4byte	.Ldebug_line0
+ 166 001d 02       		.uleb128 0x2
+ 167 001e 01       		.byte	0x1
+ 168 001f 08       		.byte	0x8
+ 169 0020 38020000 		.4byte	.LASF2
+ 170 0024 03       		.uleb128 0x3
+ 171 0025 8C010000 		.4byte	.LASF0
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccLXRxzg.s 			page 4
+
+
+ 172 0029 01       		.byte	0x1
+ 173 002a 0E       		.byte	0xe
+ 174 002b 1D000000 		.4byte	0x1d
+ 175 002f 03       		.uleb128 0x3
+ 176 0030 9D010000 		.4byte	.LASF1
+ 177 0034 01       		.byte	0x1
+ 178 0035 0F       		.byte	0xf
+ 179 0036 3A000000 		.4byte	0x3a
+ 180 003a 02       		.uleb128 0x2
+ 181 003b 02       		.byte	0x2
+ 182 003c 07       		.byte	0x7
+ 183 003d B8020000 		.4byte	.LASF3
+ 184 0041 03       		.uleb128 0x3
+ 185 0042 26020000 		.4byte	.LASF4
+ 186 0046 01       		.byte	0x1
+ 187 0047 10       		.byte	0x10
+ 188 0048 4C000000 		.4byte	0x4c
+ 189 004c 02       		.uleb128 0x2
+ 190 004d 04       		.byte	0x4
+ 191 004e 07       		.byte	0x7
+ 192 004f A2020000 		.4byte	.LASF5
+ 193 0053 02       		.uleb128 0x2
+ 194 0054 08       		.byte	0x8
+ 195 0055 07       		.byte	0x7
+ 196 0056 73020000 		.4byte	.LASF6
+ 197 005a 02       		.uleb128 0x2
+ 198 005b 04       		.byte	0x4
+ 199 005c 07       		.byte	0x7
+ 200 005d DB010000 		.4byte	.LASF7
+ 201 0061 04       		.uleb128 0x4
+ 202 0062 04       		.byte	0x4
+ 203 0063 05       		.byte	0x5
+ 204 0064 696E7400 		.ascii	"int\000"
+ 205 0068 02       		.uleb128 0x2
+ 206 0069 01       		.byte	0x1
+ 207 006a 06       		.byte	0x6
+ 208 006b 5C020000 		.4byte	.LASF8
+ 209 006f 02       		.uleb128 0x2
+ 210 0070 02       		.byte	0x2
+ 211 0071 05       		.byte	0x5
+ 212 0072 31010000 		.4byte	.LASF9
+ 213 0076 02       		.uleb128 0x2
+ 214 0077 04       		.byte	0x4
+ 215 0078 05       		.byte	0x5
+ 216 0079 D2010000 		.4byte	.LASF10
+ 217 007d 02       		.uleb128 0x2
+ 218 007e 04       		.byte	0x4
+ 219 007f 07       		.byte	0x7
+ 220 0080 36030000 		.4byte	.LASF11
+ 221 0084 02       		.uleb128 0x2
+ 222 0085 08       		.byte	0x8
+ 223 0086 05       		.byte	0x5
+ 224 0087 B9010000 		.4byte	.LASF12
+ 225 008b 02       		.uleb128 0x2
+ 226 008c 01       		.byte	0x1
+ 227 008d 06       		.byte	0x6
+ 228 008e D8020000 		.4byte	.LASF13
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccLXRxzg.s 			page 5
+
+
+ 229 0092 05       		.uleb128 0x5
+ 230 0093 04       		.byte	0x4
+ 231 0094 98000000 		.4byte	0x98
+ 232 0098 06       		.uleb128 0x6
+ 233 0099 8B000000 		.4byte	0x8b
+ 234 009d 07       		.uleb128 0x7
+ 235 009e 24000000 		.4byte	0x24
+ 236 00a2 AD000000 		.4byte	0xad
+ 237 00a6 08       		.uleb128 0x8
+ 238 00a7 5A000000 		.4byte	0x5a
+ 239 00ab 07       		.byte	0x7
+ 240 00ac 00       		.byte	0
+ 241 00ad 09       		.uleb128 0x9
+ 242 00ae 02       		.byte	0x2
+ 243 00af 05       		.byte	0x5
+ 244 00b0 DD18     		.2byte	0x18dd
+ 245 00b2 D6000000 		.4byte	0xd6
+ 246 00b6 0A       		.uleb128 0xa
+ 247 00b7 3B010000 		.4byte	.LASF14
+ 248 00bb 00       		.sleb128 0
+ 249 00bc 0A       		.uleb128 0xa
+ 250 00bd 62010000 		.4byte	.LASF15
+ 251 00c1 01       		.sleb128 1
+ 252 00c2 0A       		.uleb128 0xa
+ 253 00c3 BF030000 		.4byte	.LASF16
+ 254 00c7 02       		.sleb128 2
+ 255 00c8 0A       		.uleb128 0xa
+ 256 00c9 8C030000 		.4byte	.LASF17
+ 257 00cd 03       		.sleb128 3
+ 258 00ce 0A       		.uleb128 0xa
+ 259 00cf F4000000 		.4byte	.LASF18
+ 260 00d3 8002     		.sleb128 256
+ 261 00d5 00       		.byte	0
+ 262 00d6 0B       		.uleb128 0xb
+ 263 00d7 0D010000 		.4byte	.LASF21
+ 264 00db 08       		.byte	0x8
+ 265 00dc 02       		.byte	0x2
+ 266 00dd 2C       		.byte	0x2c
+ 267 00de FB000000 		.4byte	0xfb
+ 268 00e2 0C       		.uleb128 0xc
+ 269 00e3 0F040000 		.4byte	.LASF19
+ 270 00e7 02       		.byte	0x2
+ 271 00e8 2D       		.byte	0x2d
+ 272 00e9 2F000000 		.4byte	0x2f
+ 273 00ed 00       		.byte	0
+ 274 00ee 0C       		.uleb128 0xc
+ 275 00ef 84030000 		.4byte	.LASF20
+ 276 00f3 02       		.byte	0x2
+ 277 00f4 2E       		.byte	0x2e
+ 278 00f5 92000000 		.4byte	0x92
+ 279 00f9 04       		.byte	0x4
+ 280 00fa 00       		.byte	0
+ 281 00fb 0B       		.uleb128 0xb
+ 282 00fc FA030000 		.4byte	.LASF22
+ 283 0100 0C       		.byte	0xc
+ 284 0101 02       		.byte	0x2
+ 285 0102 37       		.byte	0x37
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccLXRxzg.s 			page 6
+
+
+ 286 0103 2C010000 		.4byte	0x12c
+ 287 0107 0C       		.uleb128 0xc
+ 288 0108 1E030000 		.4byte	.LASF23
+ 289 010c 02       		.byte	0x2
+ 290 010d 38       		.byte	0x38
+ 291 010e 2F000000 		.4byte	0x2f
+ 292 0112 00       		.byte	0
+ 293 0113 0C       		.uleb128 0xc
+ 294 0114 91010000 		.4byte	.LASF24
+ 295 0118 02       		.byte	0x2
+ 296 0119 39       		.byte	0x39
+ 297 011a 9D000000 		.4byte	0x9d
+ 298 011e 02       		.byte	0x2
+ 299 011f 0C       		.uleb128 0xc
+ 300 0120 AD010000 		.4byte	.LASF25
+ 301 0124 02       		.byte	0x2
+ 302 0125 3A       		.byte	0x3a
+ 303 0126 24000000 		.4byte	0x24
+ 304 012a 0A       		.byte	0xa
+ 305 012b 00       		.byte	0
+ 306 012c 07       		.uleb128 0x7
+ 307 012d 24000000 		.4byte	0x24
+ 308 0131 37010000 		.4byte	0x137
+ 309 0135 0D       		.uleb128 0xd
+ 310 0136 00       		.byte	0
+ 311 0137 0E       		.uleb128 0xe
+ 312 0138 0C000000 		.4byte	.LASF26
+ 313 013c 03       		.byte	0x3
+ 314 013d 8F       		.byte	0x8f
+ 315 013e 42010000 		.4byte	0x142
+ 316 0142 06       		.uleb128 0x6
+ 317 0143 2C010000 		.4byte	0x12c
+ 318 0147 0E       		.uleb128 0xe
+ 319 0148 81010000 		.4byte	.LASF27
+ 320 014c 03       		.byte	0x3
+ 321 014d 90       		.byte	0x90
+ 322 014e 52010000 		.4byte	0x152
+ 323 0152 06       		.uleb128 0x6
+ 324 0153 2C010000 		.4byte	0x12c
+ 325 0157 0E       		.uleb128 0xe
+ 326 0158 11030000 		.4byte	.LASF28
+ 327 015c 03       		.byte	0x3
+ 328 015d 91       		.byte	0x91
+ 329 015e 62010000 		.4byte	0x162
+ 330 0162 06       		.uleb128 0x6
+ 331 0163 2C010000 		.4byte	0x12c
+ 332 0167 0E       		.uleb128 0xe
+ 333 0168 DD020000 		.4byte	.LASF29
+ 334 016c 03       		.byte	0x3
+ 335 016d 92       		.byte	0x92
+ 336 016e 72010000 		.4byte	0x172
+ 337 0172 06       		.uleb128 0x6
+ 338 0173 2C010000 		.4byte	0x12c
+ 339 0177 0E       		.uleb128 0xe
+ 340 0178 15040000 		.4byte	.LASF30
+ 341 017c 03       		.byte	0x3
+ 342 017d 93       		.byte	0x93
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccLXRxzg.s 			page 7
+
+
+ 343 017e 82010000 		.4byte	0x182
+ 344 0182 06       		.uleb128 0x6
+ 345 0183 2C010000 		.4byte	0x12c
+ 346 0187 0E       		.uleb128 0xe
+ 347 0188 8A020000 		.4byte	.LASF31
+ 348 018c 03       		.byte	0x3
+ 349 018d 94       		.byte	0x94
+ 350 018e 92010000 		.4byte	0x192
+ 351 0192 06       		.uleb128 0x6
+ 352 0193 2C010000 		.4byte	0x12c
+ 353 0197 0E       		.uleb128 0xe
+ 354 0198 2D040000 		.4byte	.LASF32
+ 355 019c 03       		.byte	0x3
+ 356 019d 95       		.byte	0x95
+ 357 019e A2010000 		.4byte	0x1a2
+ 358 01a2 06       		.uleb128 0x6
+ 359 01a3 2C010000 		.4byte	0x12c
+ 360 01a7 0E       		.uleb128 0xe
+ 361 01a8 97020000 		.4byte	.LASF33
+ 362 01ac 03       		.byte	0x3
+ 363 01ad 96       		.byte	0x96
+ 364 01ae B2010000 		.4byte	0x1b2
+ 365 01b2 06       		.uleb128 0x6
+ 366 01b3 2C010000 		.4byte	0x12c
+ 367 01b7 0E       		.uleb128 0xe
+ 368 01b8 F6020000 		.4byte	.LASF34
+ 369 01bc 03       		.byte	0x3
+ 370 01bd 97       		.byte	0x97
+ 371 01be C2010000 		.4byte	0x1c2
+ 372 01c2 06       		.uleb128 0x6
+ 373 01c3 2C010000 		.4byte	0x12c
+ 374 01c7 0E       		.uleb128 0xe
+ 375 01c8 EA020000 		.4byte	.LASF35
+ 376 01cc 03       		.byte	0x3
+ 377 01cd 98       		.byte	0x98
+ 378 01ce D2010000 		.4byte	0x1d2
+ 379 01d2 06       		.uleb128 0x6
+ 380 01d3 2C010000 		.4byte	0x12c
+ 381 01d7 0E       		.uleb128 0xe
+ 382 01d8 E4010000 		.4byte	.LASF36
+ 383 01dc 03       		.byte	0x3
+ 384 01dd 99       		.byte	0x99
+ 385 01de E2010000 		.4byte	0x1e2
+ 386 01e2 06       		.uleb128 0x6
+ 387 01e3 2C010000 		.4byte	0x12c
+ 388 01e7 0E       		.uleb128 0xe
+ 389 01e8 6D030000 		.4byte	.LASF37
+ 390 01ec 03       		.byte	0x3
+ 391 01ed 9A       		.byte	0x9a
+ 392 01ee F2010000 		.4byte	0x1f2
+ 393 01f2 06       		.uleb128 0x6
+ 394 01f3 2C010000 		.4byte	0x12c
+ 395 01f7 0E       		.uleb128 0xe
+ 396 01f8 EC030000 		.4byte	.LASF38
+ 397 01fc 03       		.byte	0x3
+ 398 01fd 9B       		.byte	0x9b
+ 399 01fe 02020000 		.4byte	0x202
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccLXRxzg.s 			page 8
+
+
+ 400 0202 06       		.uleb128 0x6
+ 401 0203 2C010000 		.4byte	0x12c
+ 402 0207 0E       		.uleb128 0xe
+ 403 0208 C7010000 		.4byte	.LASF39
+ 404 020c 03       		.byte	0x3
+ 405 020d 9C       		.byte	0x9c
+ 406 020e 12020000 		.4byte	0x212
+ 407 0212 06       		.uleb128 0x6
+ 408 0213 2C010000 		.4byte	0x12c
+ 409 0217 0E       		.uleb128 0xe
+ 410 0218 7A030000 		.4byte	.LASF40
+ 411 021c 03       		.byte	0x3
+ 412 021d 9D       		.byte	0x9d
+ 413 021e 22020000 		.4byte	0x222
+ 414 0222 06       		.uleb128 0x6
+ 415 0223 2C010000 		.4byte	0x12c
+ 416 0227 0E       		.uleb128 0xe
+ 417 0228 B3030000 		.4byte	.LASF41
+ 418 022c 03       		.byte	0x3
+ 419 022d 9E       		.byte	0x9e
+ 420 022e 32020000 		.4byte	0x232
+ 421 0232 06       		.uleb128 0x6
+ 422 0233 2C010000 		.4byte	0x12c
+ 423 0237 0E       		.uleb128 0xe
+ 424 0238 00000000 		.4byte	.LASF42
+ 425 023c 03       		.byte	0x3
+ 426 023d 9F       		.byte	0x9f
+ 427 023e 42020000 		.4byte	0x242
+ 428 0242 06       		.uleb128 0x6
+ 429 0243 2C010000 		.4byte	0x12c
+ 430 0247 0E       		.uleb128 0xe
+ 431 0248 25010000 		.4byte	.LASF43
+ 432 024c 03       		.byte	0x3
+ 433 024d A0       		.byte	0xa0
+ 434 024e 52020000 		.4byte	0x252
+ 435 0252 06       		.uleb128 0x6
+ 436 0253 2C010000 		.4byte	0x12c
+ 437 0257 0E       		.uleb128 0xe
+ 438 0258 0C020000 		.4byte	.LASF44
+ 439 025c 03       		.byte	0x3
+ 440 025d A1       		.byte	0xa1
+ 441 025e 62020000 		.4byte	0x262
+ 442 0262 06       		.uleb128 0x6
+ 443 0263 2C010000 		.4byte	0x12c
+ 444 0267 0E       		.uleb128 0xe
+ 445 0268 19020000 		.4byte	.LASF45
+ 446 026c 03       		.byte	0x3
+ 447 026d A2       		.byte	0xa2
+ 448 026e 72020000 		.4byte	0x272
+ 449 0272 06       		.uleb128 0x6
+ 450 0273 2C010000 		.4byte	0x12c
+ 451 0277 0E       		.uleb128 0xe
+ 452 0278 02020000 		.4byte	.LASF46
+ 453 027c 03       		.byte	0x3
+ 454 027d A3       		.byte	0xa3
+ 455 027e 82020000 		.4byte	0x282
+ 456 0282 06       		.uleb128 0x6
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccLXRxzg.s 			page 9
+
+
+ 457 0283 2C010000 		.4byte	0x12c
+ 458 0287 0E       		.uleb128 0xe
+ 459 0288 02030000 		.4byte	.LASF47
+ 460 028c 03       		.byte	0x3
+ 461 028d A4       		.byte	0xa4
+ 462 028e 92020000 		.4byte	0x292
+ 463 0292 06       		.uleb128 0x6
+ 464 0293 2C010000 		.4byte	0x12c
+ 465 0297 0E       		.uleb128 0xe
+ 466 0298 16010000 		.4byte	.LASF48
+ 467 029c 03       		.byte	0x3
+ 468 029d A5       		.byte	0xa5
+ 469 029e A2020000 		.4byte	0x2a2
+ 470 02a2 06       		.uleb128 0x6
+ 471 02a3 2C010000 		.4byte	0x12c
+ 472 02a7 0E       		.uleb128 0xe
+ 473 02a8 29030000 		.4byte	.LASF49
+ 474 02ac 03       		.byte	0x3
+ 475 02ad A6       		.byte	0xa6
+ 476 02ae B2020000 		.4byte	0x2b2
+ 477 02b2 06       		.uleb128 0x6
+ 478 02b3 2C010000 		.4byte	0x12c
+ 479 02b7 0E       		.uleb128 0xe
+ 480 02b8 3A040000 		.4byte	.LASF50
+ 481 02bc 03       		.byte	0x3
+ 482 02bd A7       		.byte	0xa7
+ 483 02be C2020000 		.4byte	0x2c2
+ 484 02c2 06       		.uleb128 0x6
+ 485 02c3 2C010000 		.4byte	0x12c
+ 486 02c7 0E       		.uleb128 0xe
+ 487 02c8 4F020000 		.4byte	.LASF51
+ 488 02cc 03       		.byte	0x3
+ 489 02cd A8       		.byte	0xa8
+ 490 02ce D2020000 		.4byte	0x2d2
+ 491 02d2 06       		.uleb128 0x6
+ 492 02d3 2C010000 		.4byte	0x12c
+ 493 02d7 0E       		.uleb128 0xe
+ 494 02d8 A9030000 		.4byte	.LASF52
+ 495 02dc 03       		.byte	0x3
+ 496 02dd A9       		.byte	0xa9
+ 497 02de E2020000 		.4byte	0x2e2
+ 498 02e2 06       		.uleb128 0x6
+ 499 02e3 2C010000 		.4byte	0x12c
+ 500 02e7 0E       		.uleb128 0xe
+ 501 02e8 21040000 		.4byte	.LASF53
+ 502 02ec 03       		.byte	0x3
+ 503 02ed AA       		.byte	0xaa
+ 504 02ee F2020000 		.4byte	0x2f2
+ 505 02f2 06       		.uleb128 0x6
+ 506 02f3 2C010000 		.4byte	0x12c
+ 507 02f7 0E       		.uleb128 0xe
+ 508 02f8 A2010000 		.4byte	.LASF54
+ 509 02fc 03       		.byte	0x3
+ 510 02fd AB       		.byte	0xab
+ 511 02fe 02030000 		.4byte	0x302
+ 512 0302 06       		.uleb128 0x6
+ 513 0303 2C010000 		.4byte	0x12c
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccLXRxzg.s 			page 10
+
+
+ 514 0307 0E       		.uleb128 0xe
+ 515 0308 07040000 		.4byte	.LASF55
+ 516 030c 03       		.byte	0x3
+ 517 030d AC       		.byte	0xac
+ 518 030e 12030000 		.4byte	0x312
+ 519 0312 06       		.uleb128 0x6
+ 520 0313 2C010000 		.4byte	0x12c
+ 521 0317 0E       		.uleb128 0xe
+ 522 0318 2C020000 		.4byte	.LASF56
+ 523 031c 03       		.byte	0x3
+ 524 031d AD       		.byte	0xad
+ 525 031e 22030000 		.4byte	0x322
+ 526 0322 06       		.uleb128 0x6
+ 527 0323 2C010000 		.4byte	0x12c
+ 528 0327 0E       		.uleb128 0xe
+ 529 0328 56010000 		.4byte	.LASF57
+ 530 032c 03       		.byte	0x3
+ 531 032d AE       		.byte	0xae
+ 532 032e 32030000 		.4byte	0x332
+ 533 0332 06       		.uleb128 0x6
+ 534 0333 2C010000 		.4byte	0x12c
+ 535 0337 0E       		.uleb128 0xe
+ 536 0338 68020000 		.4byte	.LASF58
+ 537 033c 03       		.byte	0x3
+ 538 033d AF       		.byte	0xaf
+ 539 033e 42030000 		.4byte	0x342
+ 540 0342 06       		.uleb128 0x6
+ 541 0343 2C010000 		.4byte	0x12c
+ 542 0347 0E       		.uleb128 0xe
+ 543 0348 F2010000 		.4byte	.LASF59
+ 544 034c 03       		.byte	0x3
+ 545 034d B0       		.byte	0xb0
+ 546 034e 52030000 		.4byte	0x352
+ 547 0352 06       		.uleb128 0x6
+ 548 0353 2C010000 		.4byte	0x12c
+ 549 0357 0E       		.uleb128 0xe
+ 550 0358 AF020000 		.4byte	.LASF60
+ 551 035c 03       		.byte	0x3
+ 552 035d B3       		.byte	0xb3
+ 553 035e 62030000 		.4byte	0x362
+ 554 0362 06       		.uleb128 0x6
+ 555 0363 2C010000 		.4byte	0x12c
+ 556 0367 07       		.uleb128 0x7
+ 557 0368 D6000000 		.4byte	0xd6
+ 558 036c 77030000 		.4byte	0x377
+ 559 0370 08       		.uleb128 0x8
+ 560 0371 5A000000 		.4byte	0x5a
+ 561 0375 20       		.byte	0x20
+ 562 0376 00       		.byte	0
+ 563 0377 0F       		.uleb128 0xf
+ 564 0378 46020000 		.4byte	.LASF61
+ 565 037c 04       		.byte	0x4
+ 566 037d 2C       		.byte	0x2c
+ 567 037e 88030000 		.4byte	0x388
+ 568 0382 05       		.uleb128 0x5
+ 569 0383 03       		.byte	0x3
+ 570 0384 00000000 		.4byte	KRspText
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccLXRxzg.s 			page 11
+
+
+ 571 0388 06       		.uleb128 0x6
+ 572 0389 67030000 		.4byte	0x367
+ 573 038d 07       		.uleb128 0x7
+ 574 038e FB000000 		.4byte	0xfb
+ 575 0392 9D030000 		.4byte	0x39d
+ 576 0396 08       		.uleb128 0x8
+ 577 0397 5A000000 		.4byte	0x5a
+ 578 039b 00       		.byte	0
+ 579 039c 00       		.byte	0
+ 580 039d 0F       		.uleb128 0xf
+ 581 039e DF030000 		.4byte	.LASF62
+ 582 03a2 04       		.byte	0x4
+ 583 03a3 57       		.byte	0x57
+ 584 03a4 AE030000 		.4byte	0x3ae
+ 585 03a8 05       		.uleb128 0x5
+ 586 03a9 03       		.byte	0x3
+ 587 03aa 00000000 		.4byte	KTransBitmap
+ 588 03ae 06       		.uleb128 0x6
+ 589 03af 8D030000 		.4byte	0x38d
+ 590 03b3 07       		.uleb128 0x7
+ 591 03b4 92000000 		.4byte	0x92
+ 592 03b8 C3030000 		.4byte	0x3c3
+ 593 03bc 08       		.uleb128 0x8
+ 594 03bd 5A000000 		.4byte	0x5a
+ 595 03c1 02       		.byte	0x2
+ 596 03c2 00       		.byte	0
+ 597 03c3 0F       		.uleb128 0xf
+ 598 03c4 CB020000 		.4byte	.LASF63
+ 599 03c8 04       		.byte	0x4
+ 600 03c9 51       		.byte	0x51
+ 601 03ca B3030000 		.4byte	0x3b3
+ 602 03ce 05       		.uleb128 0x5
+ 603 03cf 03       		.byte	0x3
+ 604 03d0 00000000 		.4byte	KTransHeader
+ 605 03d4 00       		.byte	0
+ 606              		.section	.debug_abbrev,"",%progbits
+ 607              	.Ldebug_abbrev0:
+ 608 0000 01       		.uleb128 0x1
+ 609 0001 11       		.uleb128 0x11
+ 610 0002 01       		.byte	0x1
+ 611 0003 25       		.uleb128 0x25
+ 612 0004 0E       		.uleb128 0xe
+ 613 0005 13       		.uleb128 0x13
+ 614 0006 0B       		.uleb128 0xb
+ 615 0007 03       		.uleb128 0x3
+ 616 0008 0E       		.uleb128 0xe
+ 617 0009 1B       		.uleb128 0x1b
+ 618 000a 0E       		.uleb128 0xe
+ 619 000b 10       		.uleb128 0x10
+ 620 000c 17       		.uleb128 0x17
+ 621 000d 00       		.byte	0
+ 622 000e 00       		.byte	0
+ 623 000f 02       		.uleb128 0x2
+ 624 0010 24       		.uleb128 0x24
+ 625 0011 00       		.byte	0
+ 626 0012 0B       		.uleb128 0xb
+ 627 0013 0B       		.uleb128 0xb
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccLXRxzg.s 			page 12
+
+
+ 628 0014 3E       		.uleb128 0x3e
+ 629 0015 0B       		.uleb128 0xb
+ 630 0016 03       		.uleb128 0x3
+ 631 0017 0E       		.uleb128 0xe
+ 632 0018 00       		.byte	0
+ 633 0019 00       		.byte	0
+ 634 001a 03       		.uleb128 0x3
+ 635 001b 16       		.uleb128 0x16
+ 636 001c 00       		.byte	0
+ 637 001d 03       		.uleb128 0x3
+ 638 001e 0E       		.uleb128 0xe
+ 639 001f 3A       		.uleb128 0x3a
+ 640 0020 0B       		.uleb128 0xb
+ 641 0021 3B       		.uleb128 0x3b
+ 642 0022 0B       		.uleb128 0xb
+ 643 0023 49       		.uleb128 0x49
+ 644 0024 13       		.uleb128 0x13
+ 645 0025 00       		.byte	0
+ 646 0026 00       		.byte	0
+ 647 0027 04       		.uleb128 0x4
+ 648 0028 24       		.uleb128 0x24
+ 649 0029 00       		.byte	0
+ 650 002a 0B       		.uleb128 0xb
+ 651 002b 0B       		.uleb128 0xb
+ 652 002c 3E       		.uleb128 0x3e
+ 653 002d 0B       		.uleb128 0xb
+ 654 002e 03       		.uleb128 0x3
+ 655 002f 08       		.uleb128 0x8
+ 656 0030 00       		.byte	0
+ 657 0031 00       		.byte	0
+ 658 0032 05       		.uleb128 0x5
+ 659 0033 0F       		.uleb128 0xf
+ 660 0034 00       		.byte	0
+ 661 0035 0B       		.uleb128 0xb
+ 662 0036 0B       		.uleb128 0xb
+ 663 0037 49       		.uleb128 0x49
+ 664 0038 13       		.uleb128 0x13
+ 665 0039 00       		.byte	0
+ 666 003a 00       		.byte	0
+ 667 003b 06       		.uleb128 0x6
+ 668 003c 26       		.uleb128 0x26
+ 669 003d 00       		.byte	0
+ 670 003e 49       		.uleb128 0x49
+ 671 003f 13       		.uleb128 0x13
+ 672 0040 00       		.byte	0
+ 673 0041 00       		.byte	0
+ 674 0042 07       		.uleb128 0x7
+ 675 0043 01       		.uleb128 0x1
+ 676 0044 01       		.byte	0x1
+ 677 0045 49       		.uleb128 0x49
+ 678 0046 13       		.uleb128 0x13
+ 679 0047 01       		.uleb128 0x1
+ 680 0048 13       		.uleb128 0x13
+ 681 0049 00       		.byte	0
+ 682 004a 00       		.byte	0
+ 683 004b 08       		.uleb128 0x8
+ 684 004c 21       		.uleb128 0x21
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccLXRxzg.s 			page 13
+
+
+ 685 004d 00       		.byte	0
+ 686 004e 49       		.uleb128 0x49
+ 687 004f 13       		.uleb128 0x13
+ 688 0050 2F       		.uleb128 0x2f
+ 689 0051 0B       		.uleb128 0xb
+ 690 0052 00       		.byte	0
+ 691 0053 00       		.byte	0
+ 692 0054 09       		.uleb128 0x9
+ 693 0055 04       		.uleb128 0x4
+ 694 0056 01       		.byte	0x1
+ 695 0057 0B       		.uleb128 0xb
+ 696 0058 0B       		.uleb128 0xb
+ 697 0059 3A       		.uleb128 0x3a
+ 698 005a 0B       		.uleb128 0xb
+ 699 005b 3B       		.uleb128 0x3b
+ 700 005c 05       		.uleb128 0x5
+ 701 005d 01       		.uleb128 0x1
+ 702 005e 13       		.uleb128 0x13
+ 703 005f 00       		.byte	0
+ 704 0060 00       		.byte	0
+ 705 0061 0A       		.uleb128 0xa
+ 706 0062 28       		.uleb128 0x28
+ 707 0063 00       		.byte	0
+ 708 0064 03       		.uleb128 0x3
+ 709 0065 0E       		.uleb128 0xe
+ 710 0066 1C       		.uleb128 0x1c
+ 711 0067 0D       		.uleb128 0xd
+ 712 0068 00       		.byte	0
+ 713 0069 00       		.byte	0
+ 714 006a 0B       		.uleb128 0xb
+ 715 006b 13       		.uleb128 0x13
+ 716 006c 01       		.byte	0x1
+ 717 006d 03       		.uleb128 0x3
+ 718 006e 0E       		.uleb128 0xe
+ 719 006f 0B       		.uleb128 0xb
+ 720 0070 0B       		.uleb128 0xb
+ 721 0071 3A       		.uleb128 0x3a
+ 722 0072 0B       		.uleb128 0xb
+ 723 0073 3B       		.uleb128 0x3b
+ 724 0074 0B       		.uleb128 0xb
+ 725 0075 01       		.uleb128 0x1
+ 726 0076 13       		.uleb128 0x13
+ 727 0077 00       		.byte	0
+ 728 0078 00       		.byte	0
+ 729 0079 0C       		.uleb128 0xc
+ 730 007a 0D       		.uleb128 0xd
+ 731 007b 00       		.byte	0
+ 732 007c 03       		.uleb128 0x3
+ 733 007d 0E       		.uleb128 0xe
+ 734 007e 3A       		.uleb128 0x3a
+ 735 007f 0B       		.uleb128 0xb
+ 736 0080 3B       		.uleb128 0x3b
+ 737 0081 0B       		.uleb128 0xb
+ 738 0082 49       		.uleb128 0x49
+ 739 0083 13       		.uleb128 0x13
+ 740 0084 38       		.uleb128 0x38
+ 741 0085 0B       		.uleb128 0xb
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccLXRxzg.s 			page 14
+
+
+ 742 0086 00       		.byte	0
+ 743 0087 00       		.byte	0
+ 744 0088 0D       		.uleb128 0xd
+ 745 0089 21       		.uleb128 0x21
+ 746 008a 00       		.byte	0
+ 747 008b 00       		.byte	0
+ 748 008c 00       		.byte	0
+ 749 008d 0E       		.uleb128 0xe
+ 750 008e 34       		.uleb128 0x34
+ 751 008f 00       		.byte	0
+ 752 0090 03       		.uleb128 0x3
+ 753 0091 0E       		.uleb128 0xe
+ 754 0092 3A       		.uleb128 0x3a
+ 755 0093 0B       		.uleb128 0xb
+ 756 0094 3B       		.uleb128 0x3b
+ 757 0095 0B       		.uleb128 0xb
+ 758 0096 49       		.uleb128 0x49
+ 759 0097 13       		.uleb128 0x13
+ 760 0098 3F       		.uleb128 0x3f
+ 761 0099 19       		.uleb128 0x19
+ 762 009a 3C       		.uleb128 0x3c
+ 763 009b 19       		.uleb128 0x19
+ 764 009c 00       		.byte	0
+ 765 009d 00       		.byte	0
+ 766 009e 0F       		.uleb128 0xf
+ 767 009f 34       		.uleb128 0x34
+ 768 00a0 00       		.byte	0
+ 769 00a1 03       		.uleb128 0x3
+ 770 00a2 0E       		.uleb128 0xe
+ 771 00a3 3A       		.uleb128 0x3a
+ 772 00a4 0B       		.uleb128 0xb
+ 773 00a5 3B       		.uleb128 0x3b
+ 774 00a6 0B       		.uleb128 0xb
+ 775 00a7 49       		.uleb128 0x49
+ 776 00a8 13       		.uleb128 0x13
+ 777 00a9 3F       		.uleb128 0x3f
+ 778 00aa 19       		.uleb128 0x19
+ 779 00ab 02       		.uleb128 0x2
+ 780 00ac 18       		.uleb128 0x18
+ 781 00ad 00       		.byte	0
+ 782 00ae 00       		.byte	0
+ 783 00af 00       		.byte	0
+ 784              		.section	.debug_aranges,"",%progbits
+ 785 0000 14000000 		.4byte	0x14
+ 786 0004 0200     		.2byte	0x2
+ 787 0006 00000000 		.4byte	.Ldebug_info0
+ 788 000a 04       		.byte	0x4
+ 789 000b 00       		.byte	0
+ 790 000c 0000     		.2byte	0
+ 791 000e 0000     		.2byte	0
+ 792 0010 00000000 		.4byte	0
+ 793 0014 00000000 		.4byte	0
+ 794              		.section	.debug_line,"",%progbits
+ 795              	.Ldebug_line0:
+ 796 0000 6C000000 		.section	.debug_str,"MS",%progbits,1
+ 796      02006600 
+ 796      00000201 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccLXRxzg.s 			page 15
+
+
+ 796      FB0E0D00 
+ 796      01010101 
+ 797              	.LASF42:
+ 798 0000 4B4E6F54 		.ascii	"KNoTransRec\000"
+ 798      72616E73 
+ 798      52656300 
+ 799              	.LASF26:
+ 800 000c 4B436F6D 		.ascii	"KComplted\000"
+ 800      706C7465 
+ 800      6400
+ 801              	.LASF64:
+ 802 0016 474E5520 		.ascii	"GNU C 4.9.3 20141119 (release) [ARM/embedded-4_9-br"
+ 802      4320342E 
+ 802      392E3320 
+ 802      32303134 
+ 802      31313139 
+ 803 0049 616E6368 		.ascii	"anch revision 218278] -mthumb -mcpu=cortex-a5 -mthu"
+ 803      20726576 
+ 803      6973696F 
+ 803      6E203231 
+ 803      38323738 
+ 804 007c 6D622D69 		.ascii	"mb-interwork -mstructure-size-boundary=32 -mno-unal"
+ 804      6E746572 
+ 804      776F726B 
+ 804      202D6D73 
+ 804      74727563 
+ 805 00af 69676E65 		.ascii	"igned-access -g -Os -ffunction-sections -fsigned-ch"
+ 805      642D6163 
+ 805      63657373 
+ 805      202D6720 
+ 805      2D4F7320 
+ 806 00e2 617200   		.ascii	"ar\000"
+ 807              	.LASF65:
+ 808 00e5 7372632F 		.ascii	"src/constant.c\000"
+ 808      636F6E73 
+ 808      74616E74 
+ 808      2E6300
+ 809              	.LASF18:
+ 810 00f4 55534246 		.ascii	"USBFPRT_GENERAL_INFO_END\000"
+ 810      5052545F 
+ 810      47454E45 
+ 810      52414C5F 
+ 810      494E464F 
+ 811              	.LASF21:
+ 812 010d 5253505F 		.ascii	"RSP_TEXT\000"
+ 812      54455854 
+ 812      00
+ 813              	.LASF48:
+ 814 0116 4B557064 		.ascii	"KUpdateRequest\000"
+ 814      61746552 
+ 814      65717565 
+ 814      737400
+ 815              	.LASF43:
+ 816 0125 4B496E76 		.ascii	"KInvalidPWD\000"
+ 816      616C6964 
+ 816      50574400 
+ 817              	.LASF9:
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccLXRxzg.s 			page 16
+
+
+ 818 0131 73686F72 		.ascii	"short int\000"
+ 818      7420696E 
+ 818      7400
+ 819              	.LASF14:
+ 820 013b 55534246 		.ascii	"USBFPRT_GENERAL_INFO_MODEL\000"
+ 820      5052545F 
+ 820      47454E45 
+ 820      52414C5F 
+ 820      494E464F 
+ 821              	.LASF57:
+ 822 0156 4B547279 		.ascii	"KTryAgainTO\000"
+ 822      41676169 
+ 822      6E544F00 
+ 823              	.LASF15:
+ 824 0162 55534246 		.ascii	"USBFPRT_GENERAL_INFO_IMG_WIDTH\000"
+ 824      5052545F 
+ 824      47454E45 
+ 824      52414C5F 
+ 824      494E464F 
+ 825              	.LASF27:
+ 826 0181 4B426164 		.ascii	"KBadAmount\000"
+ 826      416D6F75 
+ 826      6E7400
+ 827              	.LASF0:
+ 828 018c 42595445 		.ascii	"BYTE\000"
+ 828      00
+ 829              	.LASF24:
+ 830 0191 73625F74 		.ascii	"sb_txbitmap\000"
+ 830      78626974 
+ 830      6D617000 
+ 831              	.LASF1:
+ 832 019d 574F5244 		.ascii	"WORD\000"
+ 832      00
+ 833              	.LASF54:
+ 834 01a2 4B4C696E 		.ascii	"KLineOccup\000"
+ 834      654F6363 
+ 834      757000
+ 835              	.LASF25:
+ 836 01ad 625F7072 		.ascii	"b_proc_code\000"
+ 836      6F635F63 
+ 836      6F646500 
+ 837              	.LASF12:
+ 838 01b9 6C6F6E67 		.ascii	"long long int\000"
+ 838      206C6F6E 
+ 838      6720696E 
+ 838      7400
+ 839              	.LASF39:
+ 840 01c7 4B537769 		.ascii	"KSwipeCard\000"
+ 840      70654361 
+ 840      726400
+ 841              	.LASF10:
+ 842 01d2 6C6F6E67 		.ascii	"long int\000"
+ 842      20696E74 
+ 842      00
+ 843              	.LASF7:
+ 844 01db 73697A65 		.ascii	"sizetype\000"
+ 844      74797065 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccLXRxzg.s 			page 17
+
+
+ 844      00
+ 845              	.LASF36:
+ 846 01e4 4B496E76 		.ascii	"KInvalidTrace\000"
+ 846      616C6964 
+ 846      54726163 
+ 846      6500
+ 847              	.LASF59:
+ 848 01f2 4B446E6C 		.ascii	"KDnloadSchedule\000"
+ 848      6F616453 
+ 848      63686564 
+ 848      756C6500 
+ 849              	.LASF46:
+ 850 0202 4B537973 		.ascii	"KSysError\000"
+ 850      4572726F 
+ 850      7200
+ 851              	.LASF44:
+ 852 020c 4B436172 		.ascii	"KCardReadErr\000"
+ 852      64526561 
+ 852      64457272 
+ 852      00
+ 853              	.LASF45:
+ 854 0219 4B436172 		.ascii	"KCardBlocked\000"
+ 854      64426C6F 
+ 854      636B6564 
+ 854      00
+ 855              	.LASF4:
+ 856 0226 44574F52 		.ascii	"DWORD\000"
+ 856      4400
+ 857              	.LASF56:
+ 858 022c 4B547279 		.ascii	"KTryAgainNC\000"
+ 858      41676169 
+ 858      6E4E4300 
+ 859              	.LASF2:
+ 860 0238 756E7369 		.ascii	"unsigned char\000"
+ 860      676E6564 
+ 860      20636861 
+ 860      7200
+ 861              	.LASF61:
+ 862 0246 4B527370 		.ascii	"KRspText\000"
+ 862      54657874 
+ 862      00
+ 863              	.LASF51:
+ 864 024f 4B486F73 		.ascii	"KHostOffline\000"
+ 864      744F6666 
+ 864      6C696E65 
+ 864      00
+ 865              	.LASF8:
+ 866 025c 7369676E 		.ascii	"signed char\000"
+ 866      65642063 
+ 866      68617200 
+ 867              	.LASF58:
+ 868 0268 4B446E6C 		.ascii	"KDnloadBIN\000"
+ 868      6F616442 
+ 868      494E00
+ 869              	.LASF6:
+ 870 0273 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 870      206C6F6E 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccLXRxzg.s 			page 18
+
+
+ 870      6720756E 
+ 870      7369676E 
+ 870      65642069 
+ 871              	.LASF31:
+ 872 028a 4B54786E 		.ascii	"KTxnCanceled\000"
+ 872      43616E63 
+ 872      656C6564 
+ 872      00
+ 873              	.LASF33:
+ 874 0297 4B446174 		.ascii	"KDataError\000"
+ 874      61457272 
+ 874      6F7200
+ 875              	.LASF5:
+ 876 02a2 756E7369 		.ascii	"unsigned int\000"
+ 876      676E6564 
+ 876      20696E74 
+ 876      00
+ 877              	.LASF60:
+ 878 02af 4B454443 		.ascii	"KEDCInit\000"
+ 878      496E6974 
+ 878      00
+ 879              	.LASF3:
+ 880 02b8 73686F72 		.ascii	"short unsigned int\000"
+ 880      7420756E 
+ 880      7369676E 
+ 880      65642069 
+ 880      6E7400
+ 881              	.LASF63:
+ 882 02cb 4B547261 		.ascii	"KTransHeader\000"
+ 882      6E734865 
+ 882      61646572 
+ 882      00
+ 883              	.LASF13:
+ 884 02d8 63686172 		.ascii	"char\000"
+ 884      00
+ 885              	.LASF29:
+ 886 02dd 4B54786E 		.ascii	"KTxnAccepted\000"
+ 886      41636365 
+ 886      70746564 
+ 886      00
+ 887              	.LASF35:
+ 888 02ea 4B496E76 		.ascii	"KInvalidSeq\000"
+ 888      616C6964 
+ 888      53657100 
+ 889              	.LASF34:
+ 890 02f6 4B454352 		.ascii	"KECRCommErr\000"
+ 890      436F6D6D 
+ 890      45727200 
+ 891              	.LASF47:
+ 892 0302 4B556E53 		.ascii	"KUnSupportCard\000"
+ 892      7570706F 
+ 892      72744361 
+ 892      726400
+ 893              	.LASF28:
+ 894 0311 4B54786E 		.ascii	"KTxnNotFound\000"
+ 894      4E6F7446 
+ 894      6F756E64 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccLXRxzg.s 			page 19
+
+
+ 894      00
+ 895              	.LASF23:
+ 896 031e 775F7478 		.ascii	"w_txmsg_id\000"
+ 896      6D73675F 
+ 896      696400
+ 897              	.LASF49:
+ 898 0329 4B496E76 		.ascii	"KInvalidResp\000"
+ 898      616C6964 
+ 898      52657370 
+ 898      00
+ 899              	.LASF11:
+ 900 0336 6C6F6E67 		.ascii	"long unsigned int\000"
+ 900      20756E73 
+ 900      69676E65 
+ 900      6420696E 
+ 900      7400
+ 901              	.LASF66:
+ 902 0348 433A5C54 		.ascii	"C:\\T1000-A5\\Projects\\APM\\apm_v3.0s03\000"
+ 902      31303030 
+ 902      2D41355C 
+ 902      50726F6A 
+ 902      65637473 
+ 903              	.LASF37:
+ 904 036d 4B496E76 		.ascii	"KInvalidTerm\000"
+ 904      616C6964 
+ 904      5465726D 
+ 904      00
+ 905              	.LASF40:
+ 906 037a 4B57726F 		.ascii	"KWrongMAC\000"
+ 906      6E674D41 
+ 906      4300
+ 907              	.LASF20:
+ 908 0384 70635F74 		.ascii	"pc_text\000"
+ 908      65787400 
+ 909              	.LASF17:
+ 910 038c 55534246 		.ascii	"USBFPRT_GENERAL_INFO_IMG_BPP\000"
+ 910      5052545F 
+ 910      47454E45 
+ 910      52414C5F 
+ 910      494E464F 
+ 911              	.LASF52:
+ 912 03a9 4B4C696E 		.ascii	"KLineBusy\000"
+ 912      65427573 
+ 912      7900
+ 913              	.LASF41:
+ 914 03b3 4B4E6F74 		.ascii	"KNotAllowed\000"
+ 914      416C6C6F 
+ 914      77656400 
+ 915              	.LASF16:
+ 916 03bf 55534246 		.ascii	"USBFPRT_GENERAL_INFO_IMG_HEIGHT\000"
+ 916      5052545F 
+ 916      47454E45 
+ 916      52414C5F 
+ 916      494E464F 
+ 917              	.LASF62:
+ 918 03df 4B547261 		.ascii	"KTransBitmap\000"
+ 918      6E734269 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccLXRxzg.s 			page 20
+
+
+ 918      746D6170 
+ 918      00
+ 919              	.LASF38:
+ 920 03ec 4B486F73 		.ascii	"KHostNotFound\000"
+ 920      744E6F74 
+ 920      466F756E 
+ 920      6400
+ 921              	.LASF22:
+ 922 03fa 5452414E 		.ascii	"TRANS_BITMAP\000"
+ 922      535F4249 
+ 922      544D4150 
+ 922      00
+ 923              	.LASF55:
+ 924 0407 4B4E6F4C 		.ascii	"KNoLine\000"
+ 924      696E6500 
+ 925              	.LASF19:
+ 926 040f 775F6964 		.ascii	"w_idx\000"
+ 926      7800
+ 927              	.LASF30:
+ 928 0415 4B4C6F77 		.ascii	"KLowBattery\000"
+ 928      42617474 
+ 928      65727900 
+ 929              	.LASF53:
+ 930 0421 4B547279 		.ascii	"KTryAgainLC\000"
+ 930      41676169 
+ 930      6E4C4300 
+ 931              	.LASF32:
+ 932 042d 4B426164 		.ascii	"KBadProcCode\000"
+ 932      50726F63 
+ 932      436F6465 
+ 932      00
+ 933              	.LASF50:
+ 934 043a 4B4E6F44 		.ascii	"KNoDialTone\000"
+ 934      69616C54 
+ 934      6F6E6500 
+ 935              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-br
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccLXRxzg.s 			page 21
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 constant.c
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccLXRxzg.s:25     .rodata:00000000 KTransBitmap
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccLXRxzg.s:143    .data:00000000 KTransHeader
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccLXRxzg.s:39     .rodata:0000000c KRspText
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccLXRxzg.s:22     .rodata:00000000 $d
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccLXRxzg.s:140    .data:00000000 $d
+
+UNDEFINED SYMBOLS
+KComplted
+KBadAmount
+KTxnNotFound
+KTxnAccepted
+KLowBattery
+KTxnCanceled
+KDataError
+KNoDialTone
+KECRCommErr
+KBadProcCode
+KInvalidSeq
+KInvalidTrace
+KInvalidTerm
+KHostOffline
+KHostNotFound
+KLineBusy
+KTryAgainLC
+KNoLine
+KLineOccup
+KSwipeCard
+KWrongMAC
+KTryAgainNC
+KNotAllowed
+KNoTransRec
+KInvalidPWD
+KCardReadErr
+KCardBlocked
+KSysError
+KTryAgainTO
+KUnSupportCard
+KUpdateRequest
+KInvalidResp
+KEDCInit
+KDnloadBIN
+KDnloadSchedule

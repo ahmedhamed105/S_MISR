@@ -1,0 +1,3618 @@
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-a5
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"message.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.GetConstMsg,"ax",%progbits
+  19              		.align	1
+  20              		.global	GetConstMsg
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	GetConstMsg, %function
+  24              	GetConstMsg:
+  25              	.LFB0:
+  26              		.file 1 "src/message.c"
+   1:src/message.c **** //-----------------------------------------------------------------------------
+   2:src/message.c **** //  File          : message.c
+   3:src/message.c **** //  Module        :
+   4:src/message.c **** //  Description   : Include Message defination use by Application.
+   5:src/message.c **** //  Author        : Lewis
+   6:src/message.c **** //  Notes         :
+   7:src/message.c **** //
+   8:src/message.c **** // ============================================================================
+   9:src/message.c **** // | Naming conventions                                                       |
+  10:src/message.c **** // | ~~~~~~~~~~~~~~~~~~                                                       |
+  11:src/message.c **** // |        Struct define : Leading T                                         |
+  12:src/message.c **** // |         Struct/Array : Leading s                                         |
+  13:src/message.c **** // |             Constant : Leading K                                         |
+  14:src/message.c **** // |      Global Variable : Leading g  (variable use outside one C file)      |
+  15:src/message.c **** // |                                                                          |
+  16:src/message.c **** // |   BYTE( 8 Bits) size : Leading b                                         |
+  17:src/message.c **** // |   CHAR( 8 Bits) size : Leading c                                         |
+  18:src/message.c **** // |   WORD(16 Bits) size : Leading w                                         |
+  19:src/message.c **** // |  DWORD(32 Bits) size : Leading d                                         |
+  20:src/message.c **** // |    int(32 Bits) size : Leading i                                         |
+  21:src/message.c **** // | DDWORD(64 Bits) size : Leading dd                                        |
+  22:src/message.c **** // |              Pointer : Leading p                                         |
+  23:src/message.c **** // |                                                                          |
+  24:src/message.c **** // |    Function argument : Leading a                                         |
+  25:src/message.c **** // |       Local Variable : All lower case                                    |
+  26:src/message.c **** // |                                                                          |
+  27:src/message.c **** // | Examples:                                                                |
+  28:src/message.c **** // |                Array : Leading s, (sb = arrary of byte, etc)             |
+  29:src/message.c **** // |              Pointer : Leading p, (pb = pointer of byte, etc)            |
+  30:src/message.c **** // ============================================================================
+  31:src/message.c **** //
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 2
+
+
+  32:src/message.c **** //  Date          Who         Action
+  33:src/message.c **** //  ------------  ----------- -------------------------------------------------
+  34:src/message.c **** //  29 Sept 2008  Lewis       Initial Version.
+  35:src/message.c **** //-----------------------------------------------------------------------------
+  36:src/message.c **** #include "message.h"
+  37:src/message.c **** 
+  38:src/message.c **** //-----------------------------------------------------------------------------
+  39:src/message.c **** //   Generic message struct
+  40:src/message.c **** //-----------------------------------------------------------------------------
+  41:src/message.c **** struct CONST_MSG {
+  42:src/message.c ****   DWORD d_msg_id;
+  43:src/message.c ****   const char *pb_Msg;
+  44:src/message.c **** };
+  45:src/message.c **** //-----------------------------------------------------------------------------
+  46:src/message.c **** //   Constants  messages
+  47:src/message.c **** //-----------------------------------------------------------------------------
+  48:src/message.c **** static const struct CONST_MSG KMessage[] = {
+  49:src/message.c ****   // coremain.c
+  50:src/message.c ****   {EDC_CO_SWIPE_INS         ,"SWIPE | INS CARD"},
+  51:src/message.c ****   {EDC_CO_SWIPE_INS_TAP     ," SWIPE|INS|TAP  "},
+  52:src/message.c ****   {EDC_CO_REMOVE_ICC        ,"                 PLS REMOVE ICC "},
+  53:src/message.c ****   {EDC_CO_PROCESSING        ,"                 PROCESSING...  "},
+  54:src/message.c **** 
+  55:src/message.c ****   // Constant.c
+  56:src/message.c ****   {EDC_CN_AUTH              ,"AUTH            "},
+  57:src/message.c ****   {EDC_CN_SALE              ,"SALE            "},
+  58:src/message.c ****   {EDC_CN_REFUND            ,"OFFLINE REFUND  "},
+  59:src/message.c ****   {EDC_CN_OFFLINE           ,"OFFLINE SALE    "},
+  60:src/message.c ****   {EDC_CN_SALE_COMP         ,"SALE COMP       "},
+  61:src/message.c ****   {EDC_CN_VOID              ,"VOID            "},
+  62:src/message.c ****   {EDC_CN_ADJUST            ,"ADJUST          "},
+  63:src/message.c ****   {EDC_CN_UPLOAD            ,"UPLOAD          "},
+  64:src/message.c ****   {EDC_CN_SETTLE            ,"SETTLEMENT      "},
+  65:src/message.c ****   {EDC_CN_REVERSAL          ,"REVERSAL        "},
+  66:src/message.c ****   {EDC_CN_TEST_MSG          ,"TEST MSG        "},
+  67:src/message.c **** 
+  68:src/message.c ****   // input.c
+  69:src/message.c ****   {EDC_IN_CHK_DIGIT_ERROR   ,"                CHECK DIGIT ERR."},
+  70:src/message.c ****   {EDC_IN_USE_ICC           ,"                 PLS INSERT ICC "},
+  71:src/message.c ****   {EDC_IN_SWIPE_CARD        ,"                 PLS SWIPE CARD "},
+  72:src/message.c ****   {EDC_IN_CORRECT           ,"                CORRECT ?       "},
+  73:src/message.c ****   {EDC_IN_APP_CODE          ,"                APPV CODE       "},
+  74:src/message.c ****   {EDC_IN_BASE_AMT          ,"                 BASE AMOUNT ?  "},
+  75:src/message.c ****   {EDC_IN_ENTER_AMOUNT      ,"                  ENTER AMOUNT  "},
+  76:src/message.c ****   {EDC_IN_ENTER_TIPS        ,"                ENTER TIP AMOUNT"},
+  77:src/message.c ****   {EDC_IN_INV_TIPS          ,"                INVALID TIPS AMT"},
+  78:src/message.c ****   {EDC_IN_TOTAL_PROMPT      ,"           TOTAL"},
+  79:src/message.c ****   {EDC_IN_EXPIRY_DATE       ,"                EXPIRY DATE:MMYY"},
+  80:src/message.c ****   {EDC_IN_INV_EXPIRE        ,"   EXPIRY DATE      INVALID!    "},
+  81:src/message.c ****   {EDC_IN_CARD_EXPIRED      ,"                 CARD EXPIRED !!"},
+  82:src/message.c ****   {EDC_IN_ENTER_DESC        ," SELECT PRODUCT "},
+  83:src/message.c ****   {EDC_IN_4DBC              ,"                CARD SECURITY NO"},
+  84:src/message.c ****   {EDC_IN_INVALID_CARD      ,"                  INVALID CARD  "},
+  85:src/message.c ****   {EDC_IN_TRACE             ,"                RECEIPT NUMBER  "},
+  86:src/message.c ****   {EDC_IN_ECRREF            ,"                ECR REFERENCE NO"},
+  87:src/message.c ****   {EDC_IN_CUR_ERROR         ,"               CURRECY ERROR    "},
+  88:src/message.c **** 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 3
+
+
+  89:src/message.c ****   // Tranutil.c
+  90:src/message.c ****   {EDC_TU_NOT_ALLOW         ,"  NOT ALLOWED                   "},
+  91:src/message.c ****   {EDC_TU_CLOSE_BATCH       ,"PLS SETTLE BATCH                "},
+  92:src/message.c **** 
+  93:src/message.c ****   // Adjust.c
+  94:src/message.c ****   {EDC_AJ_TOTAL_PROMPT      ,"           TOTAL"},
+  95:src/message.c ****   {EDC_AJ_NOT_ALLOW         ,"   NOT ALLOWED                  "},
+  96:src/message.c ****   {EDC_AJ_ENTER_NAMT        ,"      NEW AMOUNT"},
+  97:src/message.c ****   {EDC_AJ_ENTER_NTIP        ,"        NEW TIP "},
+  98:src/message.c ****   {EDC_AJ_BASE_AMT          ,"     BASE AMOUNT"},
+  99:src/message.c ****   {EDC_AJ_TIPS_AMT          ,"      TIP AMOUNT"},
+ 100:src/message.c ****   {EDC_AJ_OVERLIMIT         ,"ADJUST OVR LIMIT                "},
+ 101:src/message.c ****   {EDC_AJ_TXN_VOIDED        ,"                 TRANS. VOIDED  "},
+ 102:src/message.c ****   {EDC_AJ_CLOSE_BATCH       ,"                PLS SETTLE BATCH"},
+ 103:src/message.c ****   {EDC_AJ_COMPLETED         ,"                TRANS. ACCEPTED "},
+ 104:src/message.c **** 
+ 105:src/message.c ****   // Void.c
+ 106:src/message.c ****   {EDC_VD_VOIDED            ," TRANS. VOIDED                  "},
+ 107:src/message.c ****   {EDC_VD_NOT_ALLOW         ,"   NOT ALLOWED                  "},
+ 108:src/message.c **** 
+ 109:src/message.c ****   // Func.c
+ 110:src/message.c ****   {EDC_FN_START_BATCH       ,"                 START OF BATCH "},
+ 111:src/message.c ****   {EDC_FN_END_BATCH         ,"                  END OF BATCH  "},
+ 112:src/message.c ****   {EDC_FN_CARD_TOTAL        ," TOTAL  BY CARD "},
+ 113:src/message.c ****   {EDC_FN_CARD_REC          ," BATCH  RECORDS "},
+ 114:src/message.c ****   {EDC_FN_CLR_BATCH         ,"  CLEAR BATCH ? "},
+ 115:src/message.c ****   {EDC_FN_BATCH_ERASE       ,"  BATCH ERASED! "},
+ 116:src/message.c ****   {EDC_FN_NO_REV            ,"                  NO  REVERSAL  "},
+ 117:src/message.c ****   {EDC_FN_CLR_REV           ,"CLEAR REVERSAL? "},
+ 118:src/message.c ****   {EDC_FN_REV_CLEAR         ,"REVERSAL CLEARED"},
+ 119:src/message.c ****   {EDC_FN_DISP_BATCH        ," DISPLAY  BATCH "},
+ 120:src/message.c ****   {EDC_FN_REPRINT_BATCH     ," REPRINT  BATCH "},
+ 121:src/message.c ****   {EDC_FN_PRINT_REPORT      ," CONFIG   REPORT"},
+ 122:src/message.c **** 
+ 123:src/message.c ****   // Lptutil.c
+ 124:src/message.c ****   {EDC_PN_PRINTING          ,"  PRINTING...                   "},
+ 125:src/message.c ****   {EDC_PN_MANUALCUT         ," PLS TEAR PAPER                 "},
+ 126:src/message.c ****   {EDC_PN_HIGHTEMP          ,"    HIGH TEMP                   "},
+ 127:src/message.c ****   {EDC_PN_NO_PAPER          ,"   NO PAPER                     "},
+ 128:src/message.c ****   {EDC_PN_PLS_REPRINT       ," PLEASE REPRINT                 "},
+ 129:src/message.c ****   {EDC_PN_PLS_WAIT          ,"  PLEASE WAIT                   "},
+ 130:src/message.c ****   {EDC_PN_LOW_BATT          ,"  LOW BATTERY                   "},
+ 131:src/message.c **** 
+ 132:src/message.c ****  // Message.c
+ 133:src/message.c ****   {EDC_RSP_COMPLETED        ,"                TRANS. ACCEPTED "},
+ 134:src/message.c ****   {EDC_RSP_CALL_ISSUER      ,"                PLS CALL ISSUER "},
+ 135:src/message.c ****   {EDC_RSP_REFERRAL         ,"                REFERRAL        "},
+ 136:src/message.c ****   {EDC_RSP_INVALID_MERCH    ,"                INVALID MERCHANT"},
+ 137:src/message.c ****   {EDC_RSP_PICKUP_CARD      ,"                  PICK UP CARD  "},
+ 138:src/message.c ****   {EDC_RSP_NOT_HONOUR       ,"                 DO NOT HONOUR  "},
+ 139:src/message.c ****   {EDC_RSP_APPV_ID          ,"                APPROVED WITH ID"},
+ 140:src/message.c ****   {EDC_RSP_BAD_PROC         ,"                BAD PROCESS CODE"},
+ 141:src/message.c ****   {EDC_RSP_BAD_AMOUNT       ,"                 INVALID AMOUNT "},
+ 142:src/message.c ****   {EDC_RSP_INVALID_ACC      ,"                INVALID ACCOUNT "},
+ 143:src/message.c ****   {EDC_RSP_RETRY            ,"                RE-ENTER TRANS. "},
+ 144:src/message.c ****   {EDC_RSP_INVALID_TERM     ,"                INVALID TERMINAL"},
+ 145:src/message.c ****   {EDC_RSP_EDIT_ERROR       ,"                   EDIT ERROR   "},
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 4
+
+
+ 146:src/message.c ****   {EDC_RSP_UNKNOWN_CARD     ,"                  UNKNOWN CARD  "},
+ 147:src/message.c ****   {EDC_RSP_CALL_LC          ,"                PLEASE CALL - LC"},
+ 148:src/message.c ****   {EDC_RSP_CALL_CC          ,"                PLEASE CALL - CC"},
+ 149:src/message.c ****   {EDC_RSP_DECLINED         ,"                    DECLINED    "},
+ 150:src/message.c ****   {EDC_RSP_CARD_EXPIRED     ,"                 CARD EXPIRED !!"},
+ 151:src/message.c ****   {EDC_RSP_PIN_ERROR        ,"                 INCORRECT PIN  "},
+ 152:src/message.c ****   {EDC_RSP_INV_SERVICE      ,"                INVALID SERVICE "},
+ 153:src/message.c ****   {EDC_RSP_CONTACT_ACQ      ,"                CONTACT ACQUIRER"},
+ 154:src/message.c ****   {EDC_RSP_BAD_PROD         ,"                BAD PRODUCT CODE"},
+ 155:src/message.c ****   {EDC_RSP_TOT_MISMATCH     ,"                RECONCILE ERROR "},
+ 156:src/message.c ****   {EDC_RSP_ROC_NOT_FOUND    ,"                TRACE NOT FOUND "},
+ 157:src/message.c ****   {EDC_RSP_BAD_BATCH_NO     ,"                BAD BATCH NUMBER"},
+ 158:src/message.c ****   {EDC_RSP_BATCH_NOT_FOUND  ,"                BATCH NOT FOUND "},
+ 159:src/message.c ****   {EDC_RSP_CALL_AMEX        ,"                APPRV, CALL AMEX"},
+ 160:src/message.c ****   {EDC_RSP_BAD_TERMINAL_ID  ,"                BAD TERMINAL ID "},
+ 161:src/message.c ****   {EDC_RSP_SYS_NOT_AVAIL    ,"                SYSTEM NOT AVAIL"},
+ 162:src/message.c ****   {EDC_RSP_DUP_TRACE        ,"                DUPLICATE TRACE "},
+ 163:src/message.c ****   {EDC_RSP_BATCH_XFER       ,"                 BATCH TRANSFER "},
+ 164:src/message.c ****   {EDC_RSP_OTHER_REASON     ,"                INVALID MESSAGE "},
+ 165:src/message.c ****   {EDC_RSP_APP_CODE         ,"                APPV CODE       "},
+ 166:src/message.c ****   {EDC_RSP_LOW_BATT         ,"LOW BATTERY                     "},
+ 167:src/message.c ****   {EDC_RSP_CTL_TOI          ,"                TRY OTHER INTERF"},
+ 168:src/message.c ****   {EDC_RSP_CTL_DDA          ,"                   DDA FAILED   "},
+ 169:src/message.c ****   {EDC_RSP_CTL_OCARD        ,"                 OVERSEAS CARD  "},
+ 170:src/message.c ****   {EDC_RSP_CTL_REFER_MOBILE ,"                REFER TO MOBILE "},
+ 171:src/message.c ****   {EDC_RSP_TXN_CANCEL       ,"                TRANS. CANCELLED"},
+ 172:src/message.c ****   {EDC_RSP_DATA_ERROR       ,"                   DATA ERROR   "},
+ 173:src/message.c ****   {EDC_RSP_TRY_AGAIN_NC     ,"                PLS TRY AGAIN-NC"},
+ 174:src/message.c ****   {EDC_RSP_CALL_IP          ,"                CALL HELP - IP  "},
+ 175:src/message.c ****   {EDC_RSP_CALL_IR          ,"                CALL HELP - IR  "},
+ 176:src/message.c ****   {EDC_RSP_CALL_IS          ,"                CALL HELP - IS  "},
+ 177:src/message.c ****   {EDC_RSP_CALL_IT          ,"                CALL HELP - IT  "},
+ 178:src/message.c ****   {EDC_RSP_TRY_AGAIN_LC     ,"                PLS TRY AGAIN-LC"},
+ 179:src/message.c ****   {EDC_RSP_NO_DIALTONE      ,"  NO DIAL TONE                  "},
+ 180:src/message.c ****   {EDC_RSP_LINE_OCCUP       ,"                 LINE  OCCUPIED "},
+ 181:src/message.c ****   {EDC_RSP_SWIPE_CARD       ," PLS SWIPE CARD                 "},
+ 182:src/message.c ****   {EDC_RSP_READ_ERROR       ,"                CARD READ ERROR "},
+ 183:src/message.c ****   {EDC_RSP_CARD_BLOCKED     ,"                  CARD BLOCKED  "},
+ 184:src/message.c ****   {EDC_RSP_SWIPT_AE         ,"SWIPE  AMEX CARD                "},
+ 185:src/message.c ****   {EDC_RSP_SYS_ERROR        ,"                  SYSTEM ERROR  "},
+ 186:src/message.c ****   {EDC_RSP_RSP_TXN_ACP      ,"                TRANS. ACCEPTED "},
+ 187:src/message.c ****   {EDC_RSP_TRY_AGAING_TO    ,"PLS TRY AGAIN-TO                "},
+ 188:src/message.c ****   //{EDC_RSP_VERIFY_SIGN      ,"                VERIFY SIGNATURE"},
+ 189:src/message.c ****   {EDC_RSP_VERIFY_SIGN      ,"                TRANS. ACCEPTED "},
+ 190:src/message.c ****   {EDC_RSP_UNSUPPORT_CARD   ,"                UNSUPPORTED CARD"},
+ 191:src/message.c ****   {EDC_RSP_INVALID_CARD     ,"                 INVALID  CARD  "},
+ 192:src/message.c ****   {EDC_RSP_CALL_IC          ,"                CALL HELP - IC  "},
+ 193:src/message.c ****   {EDC_RSP_NO_REC           ,"                NO TRANS. RECORD"},
+ 194:src/message.c **** 
+ 195:src/message.c ****   // Settle.c
+ 196:src/message.c ****   {EDC_SE_BUS_DATE          ,"                BUS. DATE:  MMDD"},
+ 197:src/message.c ****   {EDC_SE_NO_BATCH          ,"                 NO BATCH TOTAL "},
+ 198:src/message.c ****   {EDC_SE_SALE_TOTAL        ,"            SALE"},
+ 199:src/message.c ****   {EDC_SE_REFUND_TOTAL      ,"          REFUND"},
+ 200:src/message.c ****   {EDC_SE_TOTAL_WRONG       ,"                TOTAL INCORRECT "},
+ 201:src/message.c ****   {EDC_SE_ENTER_SALE_TOTAL  ,"                SALE TOTAL:     "},
+ 202:src/message.c ****   {EDC_SE_ENTER_REF_TOTAL   ,"                REFUND TOTAL:   "},
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 5
+
+
+ 203:src/message.c **** 
+ 204:src/message.c ****   // emvtrans.c
+ 205:src/message.c ****   {EDC_EMV_FATAL            ," EMV2 FATAL ERR!PLS CALL SERVICE"},
+ 206:src/message.c ****   {EDC_EMV_PROCESSING       ,"                 PROCESSING...  "},
+ 207:src/message.c ****   {EDC_EMV_SEL_APP          ,"                PLS SELECT?[Y/N]"},
+ 208:src/message.c ****   {EDC_EMV_CANNOT_SEL       ,"CANNOT SEL. APP.                "},
+ 209:src/message.c **** 
+ 210:src/message.c ****   // ctltrans.c
+ 211:src/message.c ****   {EDC_CTL_FATAL            ,"EMVCL FATAL ERR!PLS CALL SERVICE"},
+ 212:src/message.c ****   {EDC_CTL_PROCESSING       ,"                 PROCESSING...  "},
+ 213:src/message.c ****   {EDC_CTL_PREPROCESS_ERR   ,"                PRE-PROCESS ERR "},
+ 214:src/message.c ****   {EDC_CTL_TAP_CARD         ,"                  PLS TAP CARD  "},
+ 215:src/message.c ****   {EDC_CTL_AMT_EXCEED       ,"                AMT EXCEED LIMIT"},
+ 216:src/message.c ****   {EDC_CTL_CARD_READ_OK     ,"CARD READ OK\n  REMOVE CARD"},
+ 217:src/message.c **** 
+ 218:src/message.c ****   // network.c
+ 219:src/message.c ****   {EDC_NET_INIT             ,"  NETWORK INIT      PLS WAIT    "},
+ 220:src/message.c **** 
+ 221:src/message.c ****   {EDC_MSG_END              ,NULL},
+ 222:src/message.c **** } ;
+ 223:src/message.c **** 
+ 224:src/message.c **** // Response Message
+ 225:src/message.c **** const struct RSP_TEXT KRspText[] = {
+ 226:src/message.c ****   {'0'*256+'0',EDC_RSP_COMPLETED               },
+ 227:src/message.c ****   {'0'*256+'1',EDC_RSP_CALL_ISSUER             },
+ 228:src/message.c ****   {'0'*256+'2',EDC_RSP_REFERRAL                },
+ 229:src/message.c ****   {'0'*256+'3',EDC_RSP_INVALID_MERCH           },
+ 230:src/message.c ****   {'0'*256+'4',EDC_RSP_PICKUP_CARD             },
+ 231:src/message.c ****   {'0'*256+'5',EDC_RSP_NOT_HONOUR              },
+ 232:src/message.c ****   {'0'*256+'8',EDC_RSP_APPV_ID                 },
+ 233:src/message.c ****   {'1'*256+'2',EDC_RSP_BAD_PROC                },
+ 234:src/message.c ****   {'1'*256+'3',EDC_RSP_BAD_AMOUNT              },
+ 235:src/message.c ****   {'1'*256+'4',EDC_RSP_INVALID_ACC             },
+ 236:src/message.c ****   {'1'*256+'9',EDC_RSP_RETRY                   },
+ 237:src/message.c ****   {'2'*256+'5',EDC_RSP_INVALID_TERM            },
+ 238:src/message.c ****   {'3'*256+'0',EDC_RSP_EDIT_ERROR              },
+ 239:src/message.c ****   {'3'*256+'1',EDC_RSP_UNKNOWN_CARD            },
+ 240:src/message.c ****   {'4'*256+'1',EDC_RSP_CALL_LC                 },
+ 241:src/message.c ****   {'4'*256+'3',EDC_RSP_CALL_CC                 },
+ 242:src/message.c ****   {'5'*256+'1',EDC_RSP_DECLINED                },
+ 243:src/message.c ****   {'5'*256+'4',EDC_RSP_CARD_EXPIRED            },
+ 244:src/message.c ****   {'5'*256+'5',EDC_RSP_PIN_ERROR               },
+ 245:src/message.c ****   {'5'*256+'8',EDC_RSP_INV_SERVICE             },
+ 246:src/message.c ****   {'6'*256+'0',EDC_RSP_CONTACT_ACQ             },
+ 247:src/message.c ****   {'7'*256+'6',EDC_RSP_BAD_PROD                },
+ 248:src/message.c ****   {'7'*256+'7',EDC_RSP_TOT_MISMATCH            },
+ 249:src/message.c ****   {'7'*256+'8',EDC_RSP_ROC_NOT_FOUND           },
+ 250:src/message.c ****   {'8'*256+'0',EDC_RSP_BAD_BATCH_NO            },
+ 251:src/message.c ****   {'8'*256+'5',EDC_RSP_BATCH_NOT_FOUND         },
+ 252:src/message.c ****   {'8'*256+'8',EDC_RSP_CALL_AMEX               },
+ 253:src/message.c ****   {'8'*256+'9',EDC_RSP_BAD_TERMINAL_ID         },
+ 254:src/message.c ****   {'9'*256+'1',EDC_RSP_SYS_NOT_AVAIL           },
+ 255:src/message.c ****   {'9'*256+'4',EDC_RSP_DUP_TRACE               },
+ 256:src/message.c ****   {'9'*256+'5',EDC_RSP_BATCH_XFER              },
+ 257:src/message.c ****   {'9'*256+'6',EDC_RSP_OTHER_REASON            },
+ 258:src/message.c ****   {'A'*256+'P',EDC_RSP_APP_CODE                },
+ 259:src/message.c ****   {'B'*256+'L',EDC_RSP_LOW_BATT                },
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 6
+
+
+ 260:src/message.c ****   {'C'*256+'0',EDC_RSP_CTL_TOI                 },
+ 261:src/message.c ****   {'C'*256+'1',EDC_RSP_CTL_DDA                 },
+ 262:src/message.c ****   {'C'*256+'2',EDC_RSP_CTL_OCARD               },
+ 263:src/message.c ****   {'C'*256+'3',EDC_RSP_CTL_REFER_MOBILE        },
+ 264:src/message.c ****   {'C'*256+'N',EDC_RSP_TXN_CANCEL              },
+ 265:src/message.c ****   {'D'*256+'E',EDC_RSP_DATA_ERROR              },
+ 266:src/message.c ****   {'H'*256+'O',EDC_RSP_TRY_AGAIN_NC            },
+ 267:src/message.c ****   {'I'*256+'P',EDC_RSP_CALL_IP                 },
+ 268:src/message.c ****   {'I'*256+'R',EDC_RSP_CALL_IR                 },
+ 269:src/message.c ****   {'I'*256+'S',EDC_RSP_CALL_IS                 },
+ 270:src/message.c ****   {'I'*256+'T',EDC_RSP_CALL_IT                 },
+ 271:src/message.c ****   {'L'*256+'C',EDC_RSP_TRY_AGAIN_LC            },
+ 272:src/message.c ****   {'L'*256+'N',EDC_RSP_NO_DIALTONE             },
+ 273:src/message.c ****   {'L'*256+'O',EDC_RSP_LINE_OCCUP              },
+ 274:src/message.c ****   {'M'*256+'A',EDC_RSP_SWIPE_CARD              },
+ 275:src/message.c ****   {'N'*256+'C',EDC_RSP_TRY_AGAIN_NC            },
+ 276:src/message.c ****   {'N'*256+'T',EDC_RSP_NO_REC                  },
+ 277:src/message.c ****   {'R'*256+'E',EDC_RSP_READ_ERROR              },
+ 278:src/message.c ****   {'S'*256+'B',EDC_RSP_CARD_BLOCKED            },
+ 279:src/message.c ****   {'S'*256+'C',EDC_RSP_SWIPT_AE                },
+ 280:src/message.c ****   {'S'*256+'E',EDC_RSP_SYS_ERROR               },
+ 281:src/message.c ****   {'T'*256+'A',EDC_RSP_RSP_TXN_ACP             },
+ 282:src/message.c ****   {'T'*256+'O',EDC_RSP_TRY_AGAING_TO           },
+ 283:src/message.c ****   {'V'*256+'S',EDC_RSP_VERIFY_SIGN             },
+ 284:src/message.c ****   {'U'*256+'C',EDC_RSP_UNSUPPORT_CARD          },
+ 285:src/message.c ****   {'*'*256+'*',EDC_RSP_CALL_IC                 },
+ 286:src/message.c **** };
+ 287:src/message.c **** //*****************************************************************************
+ 288:src/message.c **** //  Function        : GetConstMsg
+ 289:src/message.c **** //  Description     : Get Message pointer base on the config.
+ 290:src/message.c **** //  Input           : aMsgId;     // KMessage id;
+ 291:src/message.c **** //  Return          : pointer to KMessage
+ 292:src/message.c **** //  Note            : N/A
+ 293:src/message.c **** //  Globals Changed : N/A
+ 294:src/message.c **** //*****************************************************************************
+ 295:src/message.c **** BYTE *GetConstMsg(DWORD aMsgId)
+ 296:src/message.c **** {
+  27              		.loc 1 296 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+  32              	.LVL0:
+ 297:src/message.c ****   return ((BYTE *)KMessage[aMsgId].pb_Msg);
+  33              		.loc 1 297 0
+  34 0000 024B     		ldr	r3, .L2
+  35 0002 03EBC000 		add	r0, r3, r0, lsl #3
+  36              	.LVL1:
+ 298:src/message.c **** }
+  37              		.loc 1 298 0
+  38 0006 4068     		ldr	r0, [r0, #4]
+  39 0008 7047     		bx	lr
+  40              	.L3:
+  41 000a 00BF     		.align	2
+  42              	.L2:
+  43 000c 00000000 		.word	.LANCHOR0
+  44              		.cfi_endproc
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 7
+
+
+  45              	.LFE0:
+  46              		.size	GetConstMsg, .-GetConstMsg
+  47              		.global	KRspText
+  48              		.section	.rodata
+  49              		.align	2
+  50              		.set	.LANCHOR0,. + 0
+  51              		.type	KMessage, %object
+  52              		.size	KMessage, 1168
+  53              	KMessage:
+  54 0000 00000000 		.word	0
+  55 0004 00000000 		.word	.LC0
+  56 0008 01000000 		.word	1
+  57 000c 11000000 		.word	.LC1
+  58 0010 02000000 		.word	2
+  59 0014 22000000 		.word	.LC2
+  60 0018 03000000 		.word	3
+  61 001c 43000000 		.word	.LC3
+  62 0020 04000000 		.word	4
+  63 0024 64000000 		.word	.LC4
+  64 0028 05000000 		.word	5
+  65 002c 75000000 		.word	.LC5
+  66 0030 06000000 		.word	6
+  67 0034 86000000 		.word	.LC6
+  68 0038 07000000 		.word	7
+  69 003c 97000000 		.word	.LC7
+  70 0040 08000000 		.word	8
+  71 0044 A8000000 		.word	.LC8
+  72 0048 09000000 		.word	9
+  73 004c B9000000 		.word	.LC9
+  74 0050 0A000000 		.word	10
+  75 0054 CA000000 		.word	.LC10
+  76 0058 0B000000 		.word	11
+  77 005c DB000000 		.word	.LC11
+  78 0060 0C000000 		.word	12
+  79 0064 EC000000 		.word	.LC12
+  80 0068 0D000000 		.word	13
+  81 006c FD000000 		.word	.LC13
+  82 0070 0E000000 		.word	14
+  83 0074 0E010000 		.word	.LC14
+  84 0078 0F000000 		.word	15
+  85 007c 1F010000 		.word	.LC15
+  86 0080 10000000 		.word	16
+  87 0084 40010000 		.word	.LC16
+  88 0088 11000000 		.word	17
+  89 008c 61010000 		.word	.LC17
+  90 0090 12000000 		.word	18
+  91 0094 82010000 		.word	.LC18
+  92 0098 13000000 		.word	19
+  93 009c A3010000 		.word	.LC19
+  94 00a0 14000000 		.word	20
+  95 00a4 C4010000 		.word	.LC20
+  96 00a8 15000000 		.word	21
+  97 00ac E5010000 		.word	.LC21
+  98 00b0 16000000 		.word	22
+  99 00b4 06020000 		.word	.LC22
+ 100 00b8 17000000 		.word	23
+ 101 00bc 27020000 		.word	.LC23
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 8
+
+
+ 102 00c0 18000000 		.word	24
+ 103 00c4 48020000 		.word	.LC24
+ 104 00c8 19000000 		.word	25
+ 105 00cc 59020000 		.word	.LC25
+ 106 00d0 1A000000 		.word	26
+ 107 00d4 7A020000 		.word	.LC26
+ 108 00d8 1B000000 		.word	27
+ 109 00dc 9B020000 		.word	.LC27
+ 110 00e0 1C000000 		.word	28
+ 111 00e4 BC020000 		.word	.LC28
+ 112 00e8 1D000000 		.word	29
+ 113 00ec CD020000 		.word	.LC29
+ 114 00f0 1E000000 		.word	30
+ 115 00f4 EE020000 		.word	.LC30
+ 116 00f8 1F000000 		.word	31
+ 117 00fc 0F030000 		.word	.LC31
+ 118 0100 20000000 		.word	32
+ 119 0104 30030000 		.word	.LC32
+ 120 0108 21000000 		.word	33
+ 121 010c 51030000 		.word	.LC33
+ 122 0110 22000000 		.word	34
+ 123 0114 72030000 		.word	.LC34
+ 124 0118 23000000 		.word	35
+ 125 011c 93030000 		.word	.LC35
+ 126 0120 24000000 		.word	36
+ 127 0124 48020000 		.word	.LC24
+ 128 0128 25000000 		.word	37
+ 129 012c B4030000 		.word	.LC36
+ 130 0130 26000000 		.word	38
+ 131 0134 D5030000 		.word	.LC37
+ 132 0138 27000000 		.word	39
+ 133 013c E6030000 		.word	.LC38
+ 134 0140 28000000 		.word	40
+ 135 0144 F7030000 		.word	.LC39
+ 136 0148 29000000 		.word	41
+ 137 014c 08040000 		.word	.LC40
+ 138 0150 2A000000 		.word	42
+ 139 0154 19040000 		.word	.LC41
+ 140 0158 2B000000 		.word	43
+ 141 015c 3A040000 		.word	.LC42
+ 142 0160 2C000000 		.word	44
+ 143 0164 5B040000 		.word	.LC43
+ 144 0168 2D000000 		.word	45
+ 145 016c 7C040000 		.word	.LC44
+ 146 0170 2E000000 		.word	46
+ 147 0174 9D040000 		.word	.LC45
+ 148 0178 2F000000 		.word	47
+ 149 017c B4030000 		.word	.LC36
+ 150 0180 30000000 		.word	48
+ 151 0184 BE040000 		.word	.LC46
+ 152 0188 31000000 		.word	49
+ 153 018c DF040000 		.word	.LC47
+ 154 0190 32000000 		.word	50
+ 155 0194 00050000 		.word	.LC48
+ 156 0198 33000000 		.word	51
+ 157 019c 11050000 		.word	.LC49
+ 158 01a0 34000000 		.word	52
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 9
+
+
+ 159 01a4 22050000 		.word	.LC50
+ 160 01a8 35000000 		.word	53
+ 161 01ac 33050000 		.word	.LC51
+ 162 01b0 36000000 		.word	54
+ 163 01b4 44050000 		.word	.LC52
+ 164 01b8 37000000 		.word	55
+ 165 01bc 65050000 		.word	.LC53
+ 166 01c0 38000000 		.word	56
+ 167 01c4 76050000 		.word	.LC54
+ 168 01c8 39000000 		.word	57
+ 169 01cc 87050000 		.word	.LC55
+ 170 01d0 3A000000 		.word	58
+ 171 01d4 98050000 		.word	.LC56
+ 172 01d8 3B000000 		.word	59
+ 173 01dc A9050000 		.word	.LC57
+ 174 01e0 3C000000 		.word	60
+ 175 01e4 BA050000 		.word	.LC58
+ 176 01e8 3D000000 		.word	61
+ 177 01ec DB050000 		.word	.LC59
+ 178 01f0 3E000000 		.word	62
+ 179 01f4 FC050000 		.word	.LC60
+ 180 01f8 3F000000 		.word	63
+ 181 01fc 1D060000 		.word	.LC61
+ 182 0200 40000000 		.word	64
+ 183 0204 3E060000 		.word	.LC62
+ 184 0208 41000000 		.word	65
+ 185 020c 5F060000 		.word	.LC63
+ 186 0210 42000000 		.word	66
+ 187 0214 80060000 		.word	.LC64
+ 188 0218 43000000 		.word	67
+ 189 021c 7C040000 		.word	.LC44
+ 190 0220 44000000 		.word	68
+ 191 0224 A1060000 		.word	.LC65
+ 192 0228 45000000 		.word	69
+ 193 022c C2060000 		.word	.LC66
+ 194 0230 46000000 		.word	70
+ 195 0234 E3060000 		.word	.LC67
+ 196 0238 47000000 		.word	71
+ 197 023c 04070000 		.word	.LC68
+ 198 0240 48000000 		.word	72
+ 199 0244 25070000 		.word	.LC69
+ 200 0248 49000000 		.word	73
+ 201 024c 46070000 		.word	.LC70
+ 202 0250 4A000000 		.word	74
+ 203 0254 67070000 		.word	.LC71
+ 204 0258 4B000000 		.word	75
+ 205 025c 88070000 		.word	.LC72
+ 206 0260 4C000000 		.word	76
+ 207 0264 A9070000 		.word	.LC73
+ 208 0268 4D000000 		.word	77
+ 209 026c CA070000 		.word	.LC74
+ 210 0270 4E000000 		.word	78
+ 211 0274 EB070000 		.word	.LC75
+ 212 0278 4F000000 		.word	79
+ 213 027c 0C080000 		.word	.LC76
+ 214 0280 50000000 		.word	80
+ 215 0284 2D080000 		.word	.LC77
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 10
+
+
+ 216 0288 51000000 		.word	81
+ 217 028c 4E080000 		.word	.LC78
+ 218 0290 52000000 		.word	82
+ 219 0294 6F080000 		.word	.LC79
+ 220 0298 53000000 		.word	83
+ 221 029c 90080000 		.word	.LC80
+ 222 02a0 54000000 		.word	84
+ 223 02a4 9B020000 		.word	.LC27
+ 224 02a8 55000000 		.word	85
+ 225 02ac B1080000 		.word	.LC81
+ 226 02b0 56000000 		.word	86
+ 227 02b4 D2080000 		.word	.LC82
+ 228 02b8 57000000 		.word	87
+ 229 02bc F3080000 		.word	.LC83
+ 230 02c0 58000000 		.word	88
+ 231 02c4 14090000 		.word	.LC84
+ 232 02c8 59000000 		.word	89
+ 233 02cc 35090000 		.word	.LC85
+ 234 02d0 5A000000 		.word	90
+ 235 02d4 56090000 		.word	.LC86
+ 236 02d8 5B000000 		.word	91
+ 237 02dc 77090000 		.word	.LC87
+ 238 02e0 5C000000 		.word	92
+ 239 02e4 98090000 		.word	.LC88
+ 240 02e8 5D000000 		.word	93
+ 241 02ec B9090000 		.word	.LC89
+ 242 02f0 5E000000 		.word	94
+ 243 02f4 DA090000 		.word	.LC90
+ 244 02f8 5F000000 		.word	95
+ 245 02fc FB090000 		.word	.LC91
+ 246 0300 60000000 		.word	96
+ 247 0304 1C0A0000 		.word	.LC92
+ 248 0308 61000000 		.word	97
+ 249 030c 3D0A0000 		.word	.LC93
+ 250 0310 62000000 		.word	98
+ 251 0314 5E0A0000 		.word	.LC94
+ 252 0318 63000000 		.word	99
+ 253 031c A3010000 		.word	.LC19
+ 254 0320 64000000 		.word	100
+ 255 0324 7F0A0000 		.word	.LC95
+ 256 0328 65000000 		.word	101
+ 257 032c A00A0000 		.word	.LC96
+ 258 0330 66000000 		.word	102
+ 259 0334 C10A0000 		.word	.LC97
+ 260 0338 67000000 		.word	103
+ 261 033c E20A0000 		.word	.LC98
+ 262 0340 68000000 		.word	104
+ 263 0344 030B0000 		.word	.LC99
+ 264 0348 69000000 		.word	105
+ 265 034c 240B0000 		.word	.LC100
+ 266 0350 6A000000 		.word	106
+ 267 0354 450B0000 		.word	.LC101
+ 268 0358 6B000000 		.word	107
+ 269 035c 660B0000 		.word	.LC102
+ 270 0360 6C000000 		.word	108
+ 271 0364 870B0000 		.word	.LC103
+ 272 0368 6D000000 		.word	109
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 11
+
+
+ 273 036c A80B0000 		.word	.LC104
+ 274 0370 6E000000 		.word	110
+ 275 0374 C90B0000 		.word	.LC105
+ 276 0378 6F000000 		.word	111
+ 277 037c EA0B0000 		.word	.LC106
+ 278 0380 70000000 		.word	112
+ 279 0384 0B0C0000 		.word	.LC107
+ 280 0388 71000000 		.word	113
+ 281 038c 2C0C0000 		.word	.LC108
+ 282 0390 72000000 		.word	114
+ 283 0394 4D0C0000 		.word	.LC109
+ 284 0398 73000000 		.word	115
+ 285 039c 6E0C0000 		.word	.LC110
+ 286 03a0 74000000 		.word	116
+ 287 03a4 8F0C0000 		.word	.LC111
+ 288 03a8 75000000 		.word	117
+ 289 03ac B00C0000 		.word	.LC112
+ 290 03b0 76000000 		.word	118
+ 291 03b4 D10C0000 		.word	.LC113
+ 292 03b8 77000000 		.word	119
+ 293 03bc F20C0000 		.word	.LC114
+ 294 03c0 78000000 		.word	120
+ 295 03c4 7C040000 		.word	.LC44
+ 296 03c8 79000000 		.word	121
+ 297 03cc 130D0000 		.word	.LC115
+ 298 03d0 7A000000 		.word	122
+ 299 03d4 7C040000 		.word	.LC44
+ 300 03d8 7B000000 		.word	123
+ 301 03dc 340D0000 		.word	.LC116
+ 302 03e0 7C000000 		.word	124
+ 303 03e4 550D0000 		.word	.LC117
+ 304 03e8 7D000000 		.word	125
+ 305 03ec 760D0000 		.word	.LC118
+ 306 03f0 7E000000 		.word	126
+ 307 03f4 970D0000 		.word	.LC119
+ 308 03f8 7F000000 		.word	127
+ 309 03fc B80D0000 		.word	.LC120
+ 310 0400 80000000 		.word	128
+ 311 0404 D90D0000 		.word	.LC121
+ 312 0408 81000000 		.word	129
+ 313 040c FA0D0000 		.word	.LC122
+ 314 0410 82000000 		.word	130
+ 315 0414 0B0E0000 		.word	.LC123
+ 316 0418 83000000 		.word	131
+ 317 041c 1C0E0000 		.word	.LC124
+ 318 0420 84000000 		.word	132
+ 319 0424 3D0E0000 		.word	.LC125
+ 320 0428 85000000 		.word	133
+ 321 042c 5E0E0000 		.word	.LC126
+ 322 0430 86000000 		.word	134
+ 323 0434 7F0E0000 		.word	.LC127
+ 324 0438 87000000 		.word	135
+ 325 043c 43000000 		.word	.LC3
+ 326 0440 88000000 		.word	136
+ 327 0444 A00E0000 		.word	.LC128
+ 328 0448 89000000 		.word	137
+ 329 044c C10E0000 		.word	.LC129
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 12
+
+
+ 330 0450 8A000000 		.word	138
+ 331 0454 E20E0000 		.word	.LC130
+ 332 0458 8B000000 		.word	139
+ 333 045c 43000000 		.word	.LC3
+ 334 0460 8C000000 		.word	140
+ 335 0464 030F0000 		.word	.LC131
+ 336 0468 8D000000 		.word	141
+ 337 046c 240F0000 		.word	.LC132
+ 338 0470 8E000000 		.word	142
+ 339 0474 450F0000 		.word	.LC133
+ 340 0478 8F000000 		.word	143
+ 341 047c 660F0000 		.word	.LC134
+ 342 0480 90000000 		.word	144
+ 343 0484 810F0000 		.word	.LC135
+ 344 0488 91000000 		.word	145
+ 345 048c 00000000 		.word	0
+ 346              		.type	KRspText, %object
+ 347              		.size	KRspText, 480
+ 348              	KRspText:
+ 349 0490 3030     		.short	12336
+ 350 0492 0000     		.space	2
+ 351 0494 43000000 		.word	67
+ 352 0498 3130     		.short	12337
+ 353 049a 0000     		.space	2
+ 354 049c 44000000 		.word	68
+ 355 04a0 3230     		.short	12338
+ 356 04a2 0000     		.space	2
+ 357 04a4 45000000 		.word	69
+ 358 04a8 3330     		.short	12339
+ 359 04aa 0000     		.space	2
+ 360 04ac 46000000 		.word	70
+ 361 04b0 3430     		.short	12340
+ 362 04b2 0000     		.space	2
+ 363 04b4 47000000 		.word	71
+ 364 04b8 3530     		.short	12341
+ 365 04ba 0000     		.space	2
+ 366 04bc 48000000 		.word	72
+ 367 04c0 3830     		.short	12344
+ 368 04c2 0000     		.space	2
+ 369 04c4 49000000 		.word	73
+ 370 04c8 3231     		.short	12594
+ 371 04ca 0000     		.space	2
+ 372 04cc 4A000000 		.word	74
+ 373 04d0 3331     		.short	12595
+ 374 04d2 0000     		.space	2
+ 375 04d4 4B000000 		.word	75
+ 376 04d8 3431     		.short	12596
+ 377 04da 0000     		.space	2
+ 378 04dc 4C000000 		.word	76
+ 379 04e0 3931     		.short	12601
+ 380 04e2 0000     		.space	2
+ 381 04e4 4D000000 		.word	77
+ 382 04e8 3532     		.short	12853
+ 383 04ea 0000     		.space	2
+ 384 04ec 4E000000 		.word	78
+ 385 04f0 3033     		.short	13104
+ 386 04f2 0000     		.space	2
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 13
+
+
+ 387 04f4 4F000000 		.word	79
+ 388 04f8 3133     		.short	13105
+ 389 04fa 0000     		.space	2
+ 390 04fc 50000000 		.word	80
+ 391 0500 3134     		.short	13361
+ 392 0502 0000     		.space	2
+ 393 0504 51000000 		.word	81
+ 394 0508 3334     		.short	13363
+ 395 050a 0000     		.space	2
+ 396 050c 52000000 		.word	82
+ 397 0510 3135     		.short	13617
+ 398 0512 0000     		.space	2
+ 399 0514 53000000 		.word	83
+ 400 0518 3435     		.short	13620
+ 401 051a 0000     		.space	2
+ 402 051c 54000000 		.word	84
+ 403 0520 3535     		.short	13621
+ 404 0522 0000     		.space	2
+ 405 0524 55000000 		.word	85
+ 406 0528 3835     		.short	13624
+ 407 052a 0000     		.space	2
+ 408 052c 56000000 		.word	86
+ 409 0530 3036     		.short	13872
+ 410 0532 0000     		.space	2
+ 411 0534 57000000 		.word	87
+ 412 0538 3637     		.short	14134
+ 413 053a 0000     		.space	2
+ 414 053c 58000000 		.word	88
+ 415 0540 3737     		.short	14135
+ 416 0542 0000     		.space	2
+ 417 0544 59000000 		.word	89
+ 418 0548 3837     		.short	14136
+ 419 054a 0000     		.space	2
+ 420 054c 5A000000 		.word	90
+ 421 0550 3038     		.short	14384
+ 422 0552 0000     		.space	2
+ 423 0554 5B000000 		.word	91
+ 424 0558 3538     		.short	14389
+ 425 055a 0000     		.space	2
+ 426 055c 5C000000 		.word	92
+ 427 0560 3838     		.short	14392
+ 428 0562 0000     		.space	2
+ 429 0564 5D000000 		.word	93
+ 430 0568 3938     		.short	14393
+ 431 056a 0000     		.space	2
+ 432 056c 5E000000 		.word	94
+ 433 0570 3139     		.short	14641
+ 434 0572 0000     		.space	2
+ 435 0574 5F000000 		.word	95
+ 436 0578 3439     		.short	14644
+ 437 057a 0000     		.space	2
+ 438 057c 60000000 		.word	96
+ 439 0580 3539     		.short	14645
+ 440 0582 0000     		.space	2
+ 441 0584 61000000 		.word	97
+ 442 0588 3639     		.short	14646
+ 443 058a 0000     		.space	2
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 14
+
+
+ 444 058c 62000000 		.word	98
+ 445 0590 5041     		.short	16720
+ 446 0592 0000     		.space	2
+ 447 0594 63000000 		.word	99
+ 448 0598 4C42     		.short	16972
+ 449 059a 0000     		.space	2
+ 450 059c 64000000 		.word	100
+ 451 05a0 3043     		.short	17200
+ 452 05a2 0000     		.space	2
+ 453 05a4 65000000 		.word	101
+ 454 05a8 3143     		.short	17201
+ 455 05aa 0000     		.space	2
+ 456 05ac 66000000 		.word	102
+ 457 05b0 3243     		.short	17202
+ 458 05b2 0000     		.space	2
+ 459 05b4 67000000 		.word	103
+ 460 05b8 3343     		.short	17203
+ 461 05ba 0000     		.space	2
+ 462 05bc 68000000 		.word	104
+ 463 05c0 4E43     		.short	17230
+ 464 05c2 0000     		.space	2
+ 465 05c4 69000000 		.word	105
+ 466 05c8 4544     		.short	17477
+ 467 05ca 0000     		.space	2
+ 468 05cc 6A000000 		.word	106
+ 469 05d0 4F48     		.short	18511
+ 470 05d2 0000     		.space	2
+ 471 05d4 6B000000 		.word	107
+ 472 05d8 5049     		.short	18768
+ 473 05da 0000     		.space	2
+ 474 05dc 6C000000 		.word	108
+ 475 05e0 5249     		.short	18770
+ 476 05e2 0000     		.space	2
+ 477 05e4 6D000000 		.word	109
+ 478 05e8 5349     		.short	18771
+ 479 05ea 0000     		.space	2
+ 480 05ec 6E000000 		.word	110
+ 481 05f0 5449     		.short	18772
+ 482 05f2 0000     		.space	2
+ 483 05f4 6F000000 		.word	111
+ 484 05f8 434C     		.short	19523
+ 485 05fa 0000     		.space	2
+ 486 05fc 70000000 		.word	112
+ 487 0600 4E4C     		.short	19534
+ 488 0602 0000     		.space	2
+ 489 0604 71000000 		.word	113
+ 490 0608 4F4C     		.short	19535
+ 491 060a 0000     		.space	2
+ 492 060c 72000000 		.word	114
+ 493 0610 414D     		.short	19777
+ 494 0612 0000     		.space	2
+ 495 0614 73000000 		.word	115
+ 496 0618 434E     		.short	20035
+ 497 061a 0000     		.space	2
+ 498 061c 6B000000 		.word	107
+ 499 0620 544E     		.short	20052
+ 500 0622 0000     		.space	2
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 15
+
+
+ 501 0624 7E000000 		.word	126
+ 502 0628 4552     		.short	21061
+ 503 062a 0000     		.space	2
+ 504 062c 74000000 		.word	116
+ 505 0630 4253     		.short	21314
+ 506 0632 0000     		.space	2
+ 507 0634 75000000 		.word	117
+ 508 0638 4353     		.short	21315
+ 509 063a 0000     		.space	2
+ 510 063c 76000000 		.word	118
+ 511 0640 4553     		.short	21317
+ 512 0642 0000     		.space	2
+ 513 0644 77000000 		.word	119
+ 514 0648 4154     		.short	21569
+ 515 064a 0000     		.space	2
+ 516 064c 78000000 		.word	120
+ 517 0650 4F54     		.short	21583
+ 518 0652 0000     		.space	2
+ 519 0654 79000000 		.word	121
+ 520 0658 5356     		.short	22099
+ 521 065a 0000     		.space	2
+ 522 065c 7A000000 		.word	122
+ 523 0660 4355     		.short	21827
+ 524 0662 0000     		.space	2
+ 525 0664 7B000000 		.word	123
+ 526 0668 2A2A     		.short	10794
+ 527 066a 0000     		.space	2
+ 528 066c 7D000000 		.word	125
+ 529              		.section	.rodata.str1.1,"aMS",%progbits,1
+ 530              	.LC0:
+ 531 0000 53574950 		.ascii	"SWIPE | INS CARD\000"
+ 531      45207C20 
+ 531      494E5320 
+ 531      43415244 
+ 531      00
+ 532              	.LC1:
+ 533 0011 20535749 		.ascii	" SWIPE|INS|TAP  \000"
+ 533      50457C49 
+ 533      4E537C54 
+ 533      41502020 
+ 533      00
+ 534              	.LC2:
+ 535 0022 20202020 		.ascii	"                 PLS REMOVE ICC \000"
+ 535      20202020 
+ 535      20202020 
+ 535      20202020 
+ 535      20504C53 
+ 536              	.LC3:
+ 537 0043 20202020 		.ascii	"                 PROCESSING...  \000"
+ 537      20202020 
+ 537      20202020 
+ 537      20202020 
+ 537      2050524F 
+ 538              	.LC4:
+ 539 0064 41555448 		.ascii	"AUTH            \000"
+ 539      20202020 
+ 539      20202020 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 16
+
+
+ 539      20202020 
+ 539      00
+ 540              	.LC5:
+ 541 0075 53414C45 		.ascii	"SALE            \000"
+ 541      20202020 
+ 541      20202020 
+ 541      20202020 
+ 541      00
+ 542              	.LC6:
+ 543 0086 4F46464C 		.ascii	"OFFLINE REFUND  \000"
+ 543      494E4520 
+ 543      52454655 
+ 543      4E442020 
+ 543      00
+ 544              	.LC7:
+ 545 0097 4F46464C 		.ascii	"OFFLINE SALE    \000"
+ 545      494E4520 
+ 545      53414C45 
+ 545      20202020 
+ 545      00
+ 546              	.LC8:
+ 547 00a8 53414C45 		.ascii	"SALE COMP       \000"
+ 547      20434F4D 
+ 547      50202020 
+ 547      20202020 
+ 547      00
+ 548              	.LC9:
+ 549 00b9 564F4944 		.ascii	"VOID            \000"
+ 549      20202020 
+ 549      20202020 
+ 549      20202020 
+ 549      00
+ 550              	.LC10:
+ 551 00ca 41444A55 		.ascii	"ADJUST          \000"
+ 551      53542020 
+ 551      20202020 
+ 551      20202020 
+ 551      00
+ 552              	.LC11:
+ 553 00db 55504C4F 		.ascii	"UPLOAD          \000"
+ 553      41442020 
+ 553      20202020 
+ 553      20202020 
+ 553      00
+ 554              	.LC12:
+ 555 00ec 53455454 		.ascii	"SETTLEMENT      \000"
+ 555      4C454D45 
+ 555      4E542020 
+ 555      20202020 
+ 555      00
+ 556              	.LC13:
+ 557 00fd 52455645 		.ascii	"REVERSAL        \000"
+ 557      5253414C 
+ 557      20202020 
+ 557      20202020 
+ 557      00
+ 558              	.LC14:
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 17
+
+
+ 559 010e 54455354 		.ascii	"TEST MSG        \000"
+ 559      204D5347 
+ 559      20202020 
+ 559      20202020 
+ 559      00
+ 560              	.LC15:
+ 561 011f 20202020 		.ascii	"                CHECK DIGIT ERR.\000"
+ 561      20202020 
+ 561      20202020 
+ 561      20202020 
+ 561      43484543 
+ 562              	.LC16:
+ 563 0140 20202020 		.ascii	"                 PLS INSERT ICC \000"
+ 563      20202020 
+ 563      20202020 
+ 563      20202020 
+ 563      20504C53 
+ 564              	.LC17:
+ 565 0161 20202020 		.ascii	"                 PLS SWIPE CARD \000"
+ 565      20202020 
+ 565      20202020 
+ 565      20202020 
+ 565      20504C53 
+ 566              	.LC18:
+ 567 0182 20202020 		.ascii	"                CORRECT ?       \000"
+ 567      20202020 
+ 567      20202020 
+ 567      20202020 
+ 567      434F5252 
+ 568              	.LC19:
+ 569 01a3 20202020 		.ascii	"                APPV CODE       \000"
+ 569      20202020 
+ 569      20202020 
+ 569      20202020 
+ 569      41505056 
+ 570              	.LC20:
+ 571 01c4 20202020 		.ascii	"                 BASE AMOUNT ?  \000"
+ 571      20202020 
+ 571      20202020 
+ 571      20202020 
+ 571      20424153 
+ 572              	.LC21:
+ 573 01e5 20202020 		.ascii	"                  ENTER AMOUNT  \000"
+ 573      20202020 
+ 573      20202020 
+ 573      20202020 
+ 573      2020454E 
+ 574              	.LC22:
+ 575 0206 20202020 		.ascii	"                ENTER TIP AMOUNT\000"
+ 575      20202020 
+ 575      20202020 
+ 575      20202020 
+ 575      454E5445 
+ 576              	.LC23:
+ 577 0227 20202020 		.ascii	"                INVALID TIPS AMT\000"
+ 577      20202020 
+ 577      20202020 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 18
+
+
+ 577      20202020 
+ 577      494E5641 
+ 578              	.LC24:
+ 579 0248 20202020 		.ascii	"           TOTAL\000"
+ 579      20202020 
+ 579      20202054 
+ 579      4F54414C 
+ 579      00
+ 580              	.LC25:
+ 581 0259 20202020 		.ascii	"                EXPIRY DATE:MMYY\000"
+ 581      20202020 
+ 581      20202020 
+ 581      20202020 
+ 581      45585049 
+ 582              	.LC26:
+ 583 027a 20202045 		.ascii	"   EXPIRY DATE      INVALID!    \000"
+ 583      58504952 
+ 583      59204441 
+ 583      54452020 
+ 583      20202020 
+ 584              	.LC27:
+ 585 029b 20202020 		.ascii	"                 CARD EXPIRED !!\000"
+ 585      20202020 
+ 585      20202020 
+ 585      20202020 
+ 585      20434152 
+ 586              	.LC28:
+ 587 02bc 2053454C 		.ascii	" SELECT PRODUCT \000"
+ 587      45435420 
+ 587      50524F44 
+ 587      55435420 
+ 587      00
+ 588              	.LC29:
+ 589 02cd 20202020 		.ascii	"                CARD SECURITY NO\000"
+ 589      20202020 
+ 589      20202020 
+ 589      20202020 
+ 589      43415244 
+ 590              	.LC30:
+ 591 02ee 20202020 		.ascii	"                  INVALID CARD  \000"
+ 591      20202020 
+ 591      20202020 
+ 591      20202020 
+ 591      2020494E 
+ 592              	.LC31:
+ 593 030f 20202020 		.ascii	"                RECEIPT NUMBER  \000"
+ 593      20202020 
+ 593      20202020 
+ 593      20202020 
+ 593      52454345 
+ 594              	.LC32:
+ 595 0330 20202020 		.ascii	"                ECR REFERENCE NO\000"
+ 595      20202020 
+ 595      20202020 
+ 595      20202020 
+ 595      45435220 
+ 596              	.LC33:
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 19
+
+
+ 597 0351 20202020 		.ascii	"               CURRECY ERROR    \000"
+ 597      20202020 
+ 597      20202020 
+ 597      20202043 
+ 597      55525245 
+ 598              	.LC34:
+ 599 0372 20204E4F 		.ascii	"  NOT ALLOWED                   \000"
+ 599      5420414C 
+ 599      4C4F5745 
+ 599      44202020 
+ 599      20202020 
+ 600              	.LC35:
+ 601 0393 504C5320 		.ascii	"PLS SETTLE BATCH                \000"
+ 601      53455454 
+ 601      4C452042 
+ 601      41544348 
+ 601      20202020 
+ 602              	.LC36:
+ 603 03b4 2020204E 		.ascii	"   NOT ALLOWED                  \000"
+ 603      4F542041 
+ 603      4C4C4F57 
+ 603      45442020 
+ 603      20202020 
+ 604              	.LC37:
+ 605 03d5 20202020 		.ascii	"      NEW AMOUNT\000"
+ 605      20204E45 
+ 605      5720414D 
+ 605      4F554E54 
+ 605      00
+ 606              	.LC38:
+ 607 03e6 20202020 		.ascii	"        NEW TIP \000"
+ 607      20202020 
+ 607      4E455720 
+ 607      54495020 
+ 607      00
+ 608              	.LC39:
+ 609 03f7 20202020 		.ascii	"     BASE AMOUNT\000"
+ 609      20424153 
+ 609      4520414D 
+ 609      4F554E54 
+ 609      00
+ 610              	.LC40:
+ 611 0408 20202020 		.ascii	"      TIP AMOUNT\000"
+ 611      20205449 
+ 611      5020414D 
+ 611      4F554E54 
+ 611      00
+ 612              	.LC41:
+ 613 0419 41444A55 		.ascii	"ADJUST OVR LIMIT                \000"
+ 613      5354204F 
+ 613      5652204C 
+ 613      494D4954 
+ 613      20202020 
+ 614              	.LC42:
+ 615 043a 20202020 		.ascii	"                 TRANS. VOIDED  \000"
+ 615      20202020 
+ 615      20202020 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 20
+
+
+ 615      20202020 
+ 615      20545241 
+ 616              	.LC43:
+ 617 045b 20202020 		.ascii	"                PLS SETTLE BATCH\000"
+ 617      20202020 
+ 617      20202020 
+ 617      20202020 
+ 617      504C5320 
+ 618              	.LC44:
+ 619 047c 20202020 		.ascii	"                TRANS. ACCEPTED \000"
+ 619      20202020 
+ 619      20202020 
+ 619      20202020 
+ 619      5452414E 
+ 620              	.LC45:
+ 621 049d 20545241 		.ascii	" TRANS. VOIDED                  \000"
+ 621      4E532E20 
+ 621      564F4944 
+ 621      45442020 
+ 621      20202020 
+ 622              	.LC46:
+ 623 04be 20202020 		.ascii	"                 START OF BATCH \000"
+ 623      20202020 
+ 623      20202020 
+ 623      20202020 
+ 623      20535441 
+ 624              	.LC47:
+ 625 04df 20202020 		.ascii	"                  END OF BATCH  \000"
+ 625      20202020 
+ 625      20202020 
+ 625      20202020 
+ 625      2020454E 
+ 626              	.LC48:
+ 627 0500 20544F54 		.ascii	" TOTAL  BY CARD \000"
+ 627      414C2020 
+ 627      42592043 
+ 627      41524420 
+ 627      00
+ 628              	.LC49:
+ 629 0511 20424154 		.ascii	" BATCH  RECORDS \000"
+ 629      43482020 
+ 629      5245434F 
+ 629      52445320 
+ 629      00
+ 630              	.LC50:
+ 631 0522 2020434C 		.ascii	"  CLEAR BATCH ? \000"
+ 631      45415220 
+ 631      42415443 
+ 631      48203F20 
+ 631      00
+ 632              	.LC51:
+ 633 0533 20204241 		.ascii	"  BATCH ERASED! \000"
+ 633      54434820 
+ 633      45524153 
+ 633      45442120 
+ 633      00
+ 634              	.LC52:
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 21
+
+
+ 635 0544 20202020 		.ascii	"                  NO  REVERSAL  \000"
+ 635      20202020 
+ 635      20202020 
+ 635      20202020 
+ 635      20204E4F 
+ 636              	.LC53:
+ 637 0565 434C4541 		.ascii	"CLEAR REVERSAL? \000"
+ 637      52205245 
+ 637      56455253 
+ 637      414C3F20 
+ 637      00
+ 638              	.LC54:
+ 639 0576 52455645 		.ascii	"REVERSAL CLEARED\000"
+ 639      5253414C 
+ 639      20434C45 
+ 639      41524544 
+ 639      00
+ 640              	.LC55:
+ 641 0587 20444953 		.ascii	" DISPLAY  BATCH \000"
+ 641      504C4159 
+ 641      20204241 
+ 641      54434820 
+ 641      00
+ 642              	.LC56:
+ 643 0598 20524550 		.ascii	" REPRINT  BATCH \000"
+ 643      52494E54 
+ 643      20204241 
+ 643      54434820 
+ 643      00
+ 644              	.LC57:
+ 645 05a9 20434F4E 		.ascii	" CONFIG   REPORT\000"
+ 645      46494720 
+ 645      20205245 
+ 645      504F5254 
+ 645      00
+ 646              	.LC58:
+ 647 05ba 20205052 		.ascii	"  PRINTING...                   \000"
+ 647      494E5449 
+ 647      4E472E2E 
+ 647      2E202020 
+ 647      20202020 
+ 648              	.LC59:
+ 649 05db 20504C53 		.ascii	" PLS TEAR PAPER                 \000"
+ 649      20544541 
+ 649      52205041 
+ 649      50455220 
+ 649      20202020 
+ 650              	.LC60:
+ 651 05fc 20202020 		.ascii	"    HIGH TEMP                   \000"
+ 651      48494748 
+ 651      2054454D 
+ 651      50202020 
+ 651      20202020 
+ 652              	.LC61:
+ 653 061d 2020204E 		.ascii	"   NO PAPER                     \000"
+ 653      4F205041 
+ 653      50455220 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 22
+
+
+ 653      20202020 
+ 653      20202020 
+ 654              	.LC62:
+ 655 063e 20504C45 		.ascii	" PLEASE REPRINT                 \000"
+ 655      41534520 
+ 655      52455052 
+ 655      494E5420 
+ 655      20202020 
+ 656              	.LC63:
+ 657 065f 2020504C 		.ascii	"  PLEASE WAIT                   \000"
+ 657      45415345 
+ 657      20574149 
+ 657      54202020 
+ 657      20202020 
+ 658              	.LC64:
+ 659 0680 20204C4F 		.ascii	"  LOW BATTERY                   \000"
+ 659      57204241 
+ 659      54544552 
+ 659      59202020 
+ 659      20202020 
+ 660              	.LC65:
+ 661 06a1 20202020 		.ascii	"                PLS CALL ISSUER \000"
+ 661      20202020 
+ 661      20202020 
+ 661      20202020 
+ 661      504C5320 
+ 662              	.LC66:
+ 663 06c2 20202020 		.ascii	"                REFERRAL        \000"
+ 663      20202020 
+ 663      20202020 
+ 663      20202020 
+ 663      52454645 
+ 664              	.LC67:
+ 665 06e3 20202020 		.ascii	"                INVALID MERCHANT\000"
+ 665      20202020 
+ 665      20202020 
+ 665      20202020 
+ 665      494E5641 
+ 666              	.LC68:
+ 667 0704 20202020 		.ascii	"                  PICK UP CARD  \000"
+ 667      20202020 
+ 667      20202020 
+ 667      20202020 
+ 667      20205049 
+ 668              	.LC69:
+ 669 0725 20202020 		.ascii	"                 DO NOT HONOUR  \000"
+ 669      20202020 
+ 669      20202020 
+ 669      20202020 
+ 669      20444F20 
+ 670              	.LC70:
+ 671 0746 20202020 		.ascii	"                APPROVED WITH ID\000"
+ 671      20202020 
+ 671      20202020 
+ 671      20202020 
+ 671      41505052 
+ 672              	.LC71:
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 23
+
+
+ 673 0767 20202020 		.ascii	"                BAD PROCESS CODE\000"
+ 673      20202020 
+ 673      20202020 
+ 673      20202020 
+ 673      42414420 
+ 674              	.LC72:
+ 675 0788 20202020 		.ascii	"                 INVALID AMOUNT \000"
+ 675      20202020 
+ 675      20202020 
+ 675      20202020 
+ 675      20494E56 
+ 676              	.LC73:
+ 677 07a9 20202020 		.ascii	"                INVALID ACCOUNT \000"
+ 677      20202020 
+ 677      20202020 
+ 677      20202020 
+ 677      494E5641 
+ 678              	.LC74:
+ 679 07ca 20202020 		.ascii	"                RE-ENTER TRANS. \000"
+ 679      20202020 
+ 679      20202020 
+ 679      20202020 
+ 679      52452D45 
+ 680              	.LC75:
+ 681 07eb 20202020 		.ascii	"                INVALID TERMINAL\000"
+ 681      20202020 
+ 681      20202020 
+ 681      20202020 
+ 681      494E5641 
+ 682              	.LC76:
+ 683 080c 20202020 		.ascii	"                   EDIT ERROR   \000"
+ 683      20202020 
+ 683      20202020 
+ 683      20202020 
+ 683      20202045 
+ 684              	.LC77:
+ 685 082d 20202020 		.ascii	"                  UNKNOWN CARD  \000"
+ 685      20202020 
+ 685      20202020 
+ 685      20202020 
+ 685      2020554E 
+ 686              	.LC78:
+ 687 084e 20202020 		.ascii	"                PLEASE CALL - LC\000"
+ 687      20202020 
+ 687      20202020 
+ 687      20202020 
+ 687      504C4541 
+ 688              	.LC79:
+ 689 086f 20202020 		.ascii	"                PLEASE CALL - CC\000"
+ 689      20202020 
+ 689      20202020 
+ 689      20202020 
+ 689      504C4541 
+ 690              	.LC80:
+ 691 0890 20202020 		.ascii	"                    DECLINED    \000"
+ 691      20202020 
+ 691      20202020 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 24
+
+
+ 691      20202020 
+ 691      20202020 
+ 692              	.LC81:
+ 693 08b1 20202020 		.ascii	"                 INCORRECT PIN  \000"
+ 693      20202020 
+ 693      20202020 
+ 693      20202020 
+ 693      20494E43 
+ 694              	.LC82:
+ 695 08d2 20202020 		.ascii	"                INVALID SERVICE \000"
+ 695      20202020 
+ 695      20202020 
+ 695      20202020 
+ 695      494E5641 
+ 696              	.LC83:
+ 697 08f3 20202020 		.ascii	"                CONTACT ACQUIRER\000"
+ 697      20202020 
+ 697      20202020 
+ 697      20202020 
+ 697      434F4E54 
+ 698              	.LC84:
+ 699 0914 20202020 		.ascii	"                BAD PRODUCT CODE\000"
+ 699      20202020 
+ 699      20202020 
+ 699      20202020 
+ 699      42414420 
+ 700              	.LC85:
+ 701 0935 20202020 		.ascii	"                RECONCILE ERROR \000"
+ 701      20202020 
+ 701      20202020 
+ 701      20202020 
+ 701      5245434F 
+ 702              	.LC86:
+ 703 0956 20202020 		.ascii	"                TRACE NOT FOUND \000"
+ 703      20202020 
+ 703      20202020 
+ 703      20202020 
+ 703      54524143 
+ 704              	.LC87:
+ 705 0977 20202020 		.ascii	"                BAD BATCH NUMBER\000"
+ 705      20202020 
+ 705      20202020 
+ 705      20202020 
+ 705      42414420 
+ 706              	.LC88:
+ 707 0998 20202020 		.ascii	"                BATCH NOT FOUND \000"
+ 707      20202020 
+ 707      20202020 
+ 707      20202020 
+ 707      42415443 
+ 708              	.LC89:
+ 709 09b9 20202020 		.ascii	"                APPRV, CALL AMEX\000"
+ 709      20202020 
+ 709      20202020 
+ 709      20202020 
+ 709      41505052 
+ 710              	.LC90:
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 25
+
+
+ 711 09da 20202020 		.ascii	"                BAD TERMINAL ID \000"
+ 711      20202020 
+ 711      20202020 
+ 711      20202020 
+ 711      42414420 
+ 712              	.LC91:
+ 713 09fb 20202020 		.ascii	"                SYSTEM NOT AVAIL\000"
+ 713      20202020 
+ 713      20202020 
+ 713      20202020 
+ 713      53595354 
+ 714              	.LC92:
+ 715 0a1c 20202020 		.ascii	"                DUPLICATE TRACE \000"
+ 715      20202020 
+ 715      20202020 
+ 715      20202020 
+ 715      4455504C 
+ 716              	.LC93:
+ 717 0a3d 20202020 		.ascii	"                 BATCH TRANSFER \000"
+ 717      20202020 
+ 717      20202020 
+ 717      20202020 
+ 717      20424154 
+ 718              	.LC94:
+ 719 0a5e 20202020 		.ascii	"                INVALID MESSAGE \000"
+ 719      20202020 
+ 719      20202020 
+ 719      20202020 
+ 719      494E5641 
+ 720              	.LC95:
+ 721 0a7f 4C4F5720 		.ascii	"LOW BATTERY                     \000"
+ 721      42415454 
+ 721      45525920 
+ 721      20202020 
+ 721      20202020 
+ 722              	.LC96:
+ 723 0aa0 20202020 		.ascii	"                TRY OTHER INTERF\000"
+ 723      20202020 
+ 723      20202020 
+ 723      20202020 
+ 723      54525920 
+ 724              	.LC97:
+ 725 0ac1 20202020 		.ascii	"                   DDA FAILED   \000"
+ 725      20202020 
+ 725      20202020 
+ 725      20202020 
+ 725      20202044 
+ 726              	.LC98:
+ 727 0ae2 20202020 		.ascii	"                 OVERSEAS CARD  \000"
+ 727      20202020 
+ 727      20202020 
+ 727      20202020 
+ 727      204F5645 
+ 728              	.LC99:
+ 729 0b03 20202020 		.ascii	"                REFER TO MOBILE \000"
+ 729      20202020 
+ 729      20202020 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 26
+
+
+ 729      20202020 
+ 729      52454645 
+ 730              	.LC100:
+ 731 0b24 20202020 		.ascii	"                TRANS. CANCELLED\000"
+ 731      20202020 
+ 731      20202020 
+ 731      20202020 
+ 731      5452414E 
+ 732              	.LC101:
+ 733 0b45 20202020 		.ascii	"                   DATA ERROR   \000"
+ 733      20202020 
+ 733      20202020 
+ 733      20202020 
+ 733      20202044 
+ 734              	.LC102:
+ 735 0b66 20202020 		.ascii	"                PLS TRY AGAIN-NC\000"
+ 735      20202020 
+ 735      20202020 
+ 735      20202020 
+ 735      504C5320 
+ 736              	.LC103:
+ 737 0b87 20202020 		.ascii	"                CALL HELP - IP  \000"
+ 737      20202020 
+ 737      20202020 
+ 737      20202020 
+ 737      43414C4C 
+ 738              	.LC104:
+ 739 0ba8 20202020 		.ascii	"                CALL HELP - IR  \000"
+ 739      20202020 
+ 739      20202020 
+ 739      20202020 
+ 739      43414C4C 
+ 740              	.LC105:
+ 741 0bc9 20202020 		.ascii	"                CALL HELP - IS  \000"
+ 741      20202020 
+ 741      20202020 
+ 741      20202020 
+ 741      43414C4C 
+ 742              	.LC106:
+ 743 0bea 20202020 		.ascii	"                CALL HELP - IT  \000"
+ 743      20202020 
+ 743      20202020 
+ 743      20202020 
+ 743      43414C4C 
+ 744              	.LC107:
+ 745 0c0b 20202020 		.ascii	"                PLS TRY AGAIN-LC\000"
+ 745      20202020 
+ 745      20202020 
+ 745      20202020 
+ 745      504C5320 
+ 746              	.LC108:
+ 747 0c2c 20204E4F 		.ascii	"  NO DIAL TONE                  \000"
+ 747      20444941 
+ 747      4C20544F 
+ 747      4E452020 
+ 747      20202020 
+ 748              	.LC109:
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 27
+
+
+ 749 0c4d 20202020 		.ascii	"                 LINE  OCCUPIED \000"
+ 749      20202020 
+ 749      20202020 
+ 749      20202020 
+ 749      204C494E 
+ 750              	.LC110:
+ 751 0c6e 20504C53 		.ascii	" PLS SWIPE CARD                 \000"
+ 751      20535749 
+ 751      50452043 
+ 751      41524420 
+ 751      20202020 
+ 752              	.LC111:
+ 753 0c8f 20202020 		.ascii	"                CARD READ ERROR \000"
+ 753      20202020 
+ 753      20202020 
+ 753      20202020 
+ 753      43415244 
+ 754              	.LC112:
+ 755 0cb0 20202020 		.ascii	"                  CARD BLOCKED  \000"
+ 755      20202020 
+ 755      20202020 
+ 755      20202020 
+ 755      20204341 
+ 756              	.LC113:
+ 757 0cd1 53574950 		.ascii	"SWIPE  AMEX CARD                \000"
+ 757      45202041 
+ 757      4D455820 
+ 757      43415244 
+ 757      20202020 
+ 758              	.LC114:
+ 759 0cf2 20202020 		.ascii	"                  SYSTEM ERROR  \000"
+ 759      20202020 
+ 759      20202020 
+ 759      20202020 
+ 759      20205359 
+ 760              	.LC115:
+ 761 0d13 504C5320 		.ascii	"PLS TRY AGAIN-TO                \000"
+ 761      54525920 
+ 761      41474149 
+ 761      4E2D544F 
+ 761      20202020 
+ 762              	.LC116:
+ 763 0d34 20202020 		.ascii	"                UNSUPPORTED CARD\000"
+ 763      20202020 
+ 763      20202020 
+ 763      20202020 
+ 763      554E5355 
+ 764              	.LC117:
+ 765 0d55 20202020 		.ascii	"                 INVALID  CARD  \000"
+ 765      20202020 
+ 765      20202020 
+ 765      20202020 
+ 765      20494E56 
+ 766              	.LC118:
+ 767 0d76 20202020 		.ascii	"                CALL HELP - IC  \000"
+ 767      20202020 
+ 767      20202020 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 28
+
+
+ 767      20202020 
+ 767      43414C4C 
+ 768              	.LC119:
+ 769 0d97 20202020 		.ascii	"                NO TRANS. RECORD\000"
+ 769      20202020 
+ 769      20202020 
+ 769      20202020 
+ 769      4E4F2054 
+ 770              	.LC120:
+ 771 0db8 20202020 		.ascii	"                BUS. DATE:  MMDD\000"
+ 771      20202020 
+ 771      20202020 
+ 771      20202020 
+ 771      4255532E 
+ 772              	.LC121:
+ 773 0dd9 20202020 		.ascii	"                 NO BATCH TOTAL \000"
+ 773      20202020 
+ 773      20202020 
+ 773      20202020 
+ 773      204E4F20 
+ 774              	.LC122:
+ 775 0dfa 20202020 		.ascii	"            SALE\000"
+ 775      20202020 
+ 775      20202020 
+ 775      53414C45 
+ 775      00
+ 776              	.LC123:
+ 777 0e0b 20202020 		.ascii	"          REFUND\000"
+ 777      20202020 
+ 777      20205245 
+ 777      46554E44 
+ 777      00
+ 778              	.LC124:
+ 779 0e1c 20202020 		.ascii	"                TOTAL INCORRECT \000"
+ 779      20202020 
+ 779      20202020 
+ 779      20202020 
+ 779      544F5441 
+ 780              	.LC125:
+ 781 0e3d 20202020 		.ascii	"                SALE TOTAL:     \000"
+ 781      20202020 
+ 781      20202020 
+ 781      20202020 
+ 781      53414C45 
+ 782              	.LC126:
+ 783 0e5e 20202020 		.ascii	"                REFUND TOTAL:   \000"
+ 783      20202020 
+ 783      20202020 
+ 783      20202020 
+ 783      52454655 
+ 784              	.LC127:
+ 785 0e7f 20454D56 		.ascii	" EMV2 FATAL ERR!PLS CALL SERVICE\000"
+ 785      32204641 
+ 785      54414C20 
+ 785      45525221 
+ 785      504C5320 
+ 786              	.LC128:
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 29
+
+
+ 787 0ea0 20202020 		.ascii	"                PLS SELECT?[Y/N]\000"
+ 787      20202020 
+ 787      20202020 
+ 787      20202020 
+ 787      504C5320 
+ 788              	.LC129:
+ 789 0ec1 43414E4E 		.ascii	"CANNOT SEL. APP.                \000"
+ 789      4F542053 
+ 789      454C2E20 
+ 789      4150502E 
+ 789      20202020 
+ 790              	.LC130:
+ 791 0ee2 454D5643 		.ascii	"EMVCL FATAL ERR!PLS CALL SERVICE\000"
+ 791      4C204641 
+ 791      54414C20 
+ 791      45525221 
+ 791      504C5320 
+ 792              	.LC131:
+ 793 0f03 20202020 		.ascii	"                PRE-PROCESS ERR \000"
+ 793      20202020 
+ 793      20202020 
+ 793      20202020 
+ 793      5052452D 
+ 794              	.LC132:
+ 795 0f24 20202020 		.ascii	"                  PLS TAP CARD  \000"
+ 795      20202020 
+ 795      20202020 
+ 795      20202020 
+ 795      2020504C 
+ 796              	.LC133:
+ 797 0f45 20202020 		.ascii	"                AMT EXCEED LIMIT\000"
+ 797      20202020 
+ 797      20202020 
+ 797      20202020 
+ 797      414D5420 
+ 798              	.LC134:
+ 799 0f66 43415244 		.ascii	"CARD READ OK\012  REMOVE CARD\000"
+ 799      20524541 
+ 799      44204F4B 
+ 799      0A202052 
+ 799      454D4F56 
+ 800              	.LC135:
+ 801 0f81 20204E45 		.ascii	"  NETWORK INIT      PLS WAIT    \000"
+ 801      54574F52 
+ 801      4B20494E 
+ 801      49542020 
+ 801      20202020 
+ 802              		.text
+ 803              	.Letext0:
+ 804              		.file 2 "../LibA5T1000/common.h"
+ 805              		.file 3 "src/message.h"
+ 806              		.section	.debug_info,"",%progbits
+ 807              	.Ldebug_info0:
+ 808 0000 06050000 		.4byte	0x506
+ 809 0004 0400     		.2byte	0x4
+ 810 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 811 000a 04       		.byte	0x4
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 30
+
+
+ 812 000b 01       		.uleb128 0x1
+ 813 000c B4010000 		.4byte	.LASF161
+ 814 0010 01       		.byte	0x1
+ 815 0011 B9030000 		.4byte	.LASF162
+ 816 0015 78000000 		.4byte	.LASF163
+ 817 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 818 001d 00000000 		.4byte	0
+ 819 0021 00000000 		.4byte	.Ldebug_line0
+ 820 0025 02       		.uleb128 0x2
+ 821 0026 01       		.byte	0x1
+ 822 0027 08       		.byte	0x8
+ 823 0028 AC070000 		.4byte	.LASF2
+ 824 002c 03       		.uleb128 0x3
+ 825 002d 28050000 		.4byte	.LASF0
+ 826 0031 02       		.byte	0x2
+ 827 0032 0E       		.byte	0xe
+ 828 0033 25000000 		.4byte	0x25
+ 829 0037 03       		.uleb128 0x3
+ 830 0038 41060000 		.4byte	.LASF1
+ 831 003c 02       		.byte	0x2
+ 832 003d 0F       		.byte	0xf
+ 833 003e 42000000 		.4byte	0x42
+ 834 0042 02       		.uleb128 0x2
+ 835 0043 02       		.byte	0x2
+ 836 0044 07       		.byte	0x7
+ 837 0045 15050000 		.4byte	.LASF3
+ 838 0049 03       		.uleb128 0x3
+ 839 004a 39030000 		.4byte	.LASF4
+ 840 004e 02       		.byte	0x2
+ 841 004f 10       		.byte	0x10
+ 842 0050 54000000 		.4byte	0x54
+ 843 0054 02       		.uleb128 0x2
+ 844 0055 04       		.byte	0x4
+ 845 0056 07       		.byte	0x7
+ 846 0057 23040000 		.4byte	.LASF5
+ 847 005b 02       		.uleb128 0x2
+ 848 005c 08       		.byte	0x8
+ 849 005d 07       		.byte	0x7
+ 850 005e CC000000 		.4byte	.LASF6
+ 851 0062 02       		.uleb128 0x2
+ 852 0063 04       		.byte	0x4
+ 853 0064 07       		.byte	0x7
+ 854 0065 07060000 		.4byte	.LASF7
+ 855 0069 04       		.uleb128 0x4
+ 856 006a 04       		.byte	0x4
+ 857 006b 2C000000 		.4byte	0x2c
+ 858 006f 05       		.uleb128 0x5
+ 859 0070 65030000 		.4byte	.LASF156
+ 860 0074 08       		.byte	0x8
+ 861 0075 03       		.byte	0x3
+ 862 0076 2B       		.byte	0x2b
+ 863 0077 94000000 		.4byte	0x94
+ 864 007b 06       		.uleb128 0x6
+ 865 007c 01060000 		.4byte	.LASF8
+ 866 0080 03       		.byte	0x3
+ 867 0081 2C       		.byte	0x2c
+ 868 0082 37000000 		.4byte	0x37
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 31
+
+
+ 869 0086 00       		.byte	0
+ 870 0087 06       		.uleb128 0x6
+ 871 0088 2A000000 		.4byte	.LASF9
+ 872 008c 03       		.byte	0x3
+ 873 008d 2D       		.byte	0x2d
+ 874 008e 49000000 		.4byte	0x49
+ 875 0092 04       		.byte	0x4
+ 876 0093 00       		.byte	0
+ 877 0094 07       		.uleb128 0x7
+ 878 0095 01       		.byte	0x1
+ 879 0096 03       		.byte	0x3
+ 880 0097 34       		.byte	0x34
+ 881 0098 5B040000 		.4byte	0x45b
+ 882 009c 08       		.uleb128 0x8
+ 883 009d 96030000 		.4byte	.LASF10
+ 884 00a1 00       		.sleb128 0
+ 885 00a2 08       		.uleb128 0x8
+ 886 00a3 9E080000 		.4byte	.LASF11
+ 887 00a7 01       		.sleb128 1
+ 888 00a8 08       		.uleb128 0x8
+ 889 00a9 38080000 		.4byte	.LASF12
+ 890 00ad 02       		.sleb128 2
+ 891 00ae 08       		.uleb128 0x8
+ 892 00af A7030000 		.4byte	.LASF13
+ 893 00b3 03       		.sleb128 3
+ 894 00b4 08       		.uleb128 0x8
+ 895 00b5 10000000 		.4byte	.LASF14
+ 896 00b9 04       		.sleb128 4
+ 897 00ba 08       		.uleb128 0x8
+ 898 00bb A5060000 		.4byte	.LASF15
+ 899 00bf 05       		.sleb128 5
+ 900 00c0 08       		.uleb128 0x8
+ 901 00c1 23060000 		.4byte	.LASF16
+ 902 00c5 06       		.sleb128 6
+ 903 00c6 08       		.uleb128 0x8
+ 904 00c7 7F010000 		.4byte	.LASF17
+ 905 00cb 07       		.sleb128 7
+ 906 00cc 08       		.uleb128 0x8
+ 907 00cd E3000000 		.4byte	.LASF18
+ 908 00d1 08       		.sleb128 8
+ 909 00d2 08       		.uleb128 0x8
+ 910 00d3 40040000 		.4byte	.LASF19
+ 911 00d7 09       		.sleb128 9
+ 912 00d8 08       		.uleb128 0x8
+ 913 00d9 5A060000 		.4byte	.LASF20
+ 914 00dd 0A       		.sleb128 10
+ 915 00de 08       		.uleb128 0x8
+ 916 00df 9D090000 		.4byte	.LASF21
+ 917 00e3 0B       		.sleb128 11
+ 918 00e4 08       		.uleb128 0x8
+ 919 00e5 1C000000 		.4byte	.LASF22
+ 920 00e9 0C       		.sleb128 12
+ 921 00ea 08       		.uleb128 0x8
+ 922 00eb 9A040000 		.4byte	.LASF23
+ 923 00ef 0D       		.sleb128 13
+ 924 00f0 08       		.uleb128 0x8
+ 925 00f1 F0070000 		.4byte	.LASF24
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 32
+
+
+ 926 00f5 0E       		.sleb128 14
+ 927 00f6 08       		.uleb128 0x8
+ 928 00f7 0C0A0000 		.4byte	.LASF25
+ 929 00fb 0F       		.sleb128 15
+ 930 00fc 08       		.uleb128 0x8
+ 931 00fd C70A0000 		.4byte	.LASF26
+ 932 0101 10       		.sleb128 16
+ 933 0102 08       		.uleb128 0x8
+ 934 0103 FF020000 		.4byte	.LASF27
+ 935 0107 11       		.sleb128 17
+ 936 0108 08       		.uleb128 0x8
+ 937 0109 D60A0000 		.4byte	.LASF28
+ 938 010d 12       		.sleb128 18
+ 939 010e 08       		.uleb128 0x8
+ 940 010f DE0B0000 		.4byte	.LASF29
+ 941 0113 13       		.sleb128 19
+ 942 0114 08       		.uleb128 0x8
+ 943 0115 3F030000 		.4byte	.LASF30
+ 944 0119 14       		.sleb128 20
+ 945 011a 08       		.uleb128 0x8
+ 946 011b 3A090000 		.4byte	.LASF31
+ 947 011f 15       		.sleb128 21
+ 948 0120 08       		.uleb128 0x8
+ 949 0121 6F060000 		.4byte	.LASF32
+ 950 0125 16       		.sleb128 22
+ 951 0126 08       		.uleb128 0x8
+ 952 0127 E3060000 		.4byte	.LASF33
+ 953 012b 17       		.sleb128 23
+ 954 012c 08       		.uleb128 0x8
+ 955 012d DF020000 		.4byte	.LASF34
+ 956 0131 18       		.sleb128 24
+ 957 0132 08       		.uleb128 0x8
+ 958 0133 11030000 		.4byte	.LASF35
+ 959 0137 19       		.sleb128 25
+ 960 0138 08       		.uleb128 0x8
+ 961 0139 5D010000 		.4byte	.LASF36
+ 962 013d 1A       		.sleb128 26
+ 963 013e 08       		.uleb128 0x8
+ 964 013f 75070000 		.4byte	.LASF37
+ 965 0143 1B       		.sleb128 27
+ 966 0144 08       		.uleb128 0x8
+ 967 0145 3B050000 		.4byte	.LASF38
+ 968 0149 1C       		.sleb128 28
+ 969 014a 08       		.uleb128 0x8
+ 970 014b F3020000 		.4byte	.LASF39
+ 971 014f 1D       		.sleb128 29
+ 972 0150 08       		.uleb128 0x8
+ 973 0151 CB070000 		.4byte	.LASF40
+ 974 0155 1E       		.sleb128 30
+ 975 0156 08       		.uleb128 0x8
+ 976 0157 80030000 		.4byte	.LASF41
+ 977 015b 1F       		.sleb128 31
+ 978 015c 08       		.uleb128 0x8
+ 979 015d 2D050000 		.4byte	.LASF42
+ 980 0161 20       		.sleb128 32
+ 981 0162 08       		.uleb128 0x8
+ 982 0163 720A0000 		.4byte	.LASF43
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 33
+
+
+ 983 0167 21       		.sleb128 33
+ 984 0168 08       		.uleb128 0x8
+ 985 0169 80050000 		.4byte	.LASF44
+ 986 016d 22       		.sleb128 34
+ 987 016e 08       		.uleb128 0x8
+ 988 016f 00040000 		.4byte	.LASF45
+ 989 0173 23       		.sleb128 35
+ 990 0174 08       		.uleb128 0x8
+ 991 0175 560B0000 		.4byte	.LASF46
+ 992 0179 24       		.sleb128 36
+ 993 017a 08       		.uleb128 0x8
+ 994 017b 81060000 		.4byte	.LASF47
+ 995 017f 25       		.sleb128 37
+ 996 0180 08       		.uleb128 0x8
+ 997 0181 D1060000 		.4byte	.LASF48
+ 998 0185 26       		.sleb128 38
+ 999 0186 08       		.uleb128 0x8
+ 1000 0187 6E030000 		.4byte	.LASF49
+ 1001 018b 27       		.sleb128 39
+ 1002 018c 08       		.uleb128 0x8
+ 1003 018d 9B000000 		.4byte	.LASF50
+ 1004 0191 28       		.sleb128 40
+ 1005 0192 08       		.uleb128 0x8
+ 1006 0193 FD080000 		.4byte	.LASF51
+ 1007 0197 29       		.sleb128 41
+ 1008 0198 08       		.uleb128 0x8
+ 1009 0199 AA040000 		.4byte	.LASF52
+ 1010 019d 2A       		.sleb128 42
+ 1011 019e 08       		.uleb128 0x8
+ 1012 019f 83020000 		.4byte	.LASF53
+ 1013 01a3 2B       		.sleb128 43
+ 1014 01a4 08       		.uleb128 0x8
+ 1015 01a5 10060000 		.4byte	.LASF54
+ 1016 01a9 2C       		.sleb128 44
+ 1017 01aa 08       		.uleb128 0x8
+ 1018 01ab 830A0000 		.4byte	.LASF55
+ 1019 01af 2D       		.sleb128 45
+ 1020 01b0 08       		.uleb128 0x8
+ 1021 01b1 90080000 		.4byte	.LASF56
+ 1022 01b5 2E       		.sleb128 46
+ 1023 01b6 08       		.uleb128 0x8
+ 1024 01b7 EC080000 		.4byte	.LASF57
+ 1025 01bb 2F       		.sleb128 47
+ 1026 01bc 08       		.uleb128 0x8
+ 1027 01bd 02050000 		.4byte	.LASF58
+ 1028 01c1 30       		.sleb128 48
+ 1029 01c2 08       		.uleb128 0x8
+ 1030 01c3 4A080000 		.4byte	.LASF59
+ 1031 01c7 31       		.sleb128 49
+ 1032 01c8 08       		.uleb128 0x8
+ 1033 01c9 8B090000 		.4byte	.LASF60
+ 1034 01cd 32       		.sleb128 50
+ 1035 01ce 08       		.uleb128 0x8
+ 1036 01cf 89070000 		.4byte	.LASF61
+ 1037 01d3 33       		.sleb128 51
+ 1038 01d4 08       		.uleb128 0x8
+ 1039 01d5 BC020000 		.4byte	.LASF62
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 34
+
+
+ 1040 01d9 34       		.sleb128 52
+ 1041 01da 08       		.uleb128 0x8
+ 1042 01db 44070000 		.4byte	.LASF63
+ 1043 01df 35       		.sleb128 53
+ 1044 01e0 08       		.uleb128 0x8
+ 1045 01e1 F4000000 		.4byte	.LASF64
+ 1046 01e5 36       		.sleb128 54
+ 1047 01e6 08       		.uleb128 0x8
+ 1048 01e7 6E080000 		.4byte	.LASF65
+ 1049 01eb 37       		.sleb128 55
+ 1050 01ec 08       		.uleb128 0x8
+ 1051 01ed F0050000 		.4byte	.LASF66
+ 1052 01f1 38       		.sleb128 56
+ 1053 01f2 08       		.uleb128 0x8
+ 1054 01f3 00080000 		.4byte	.LASF67
+ 1055 01f7 39       		.sleb128 57
+ 1056 01f8 08       		.uleb128 0x8
+ 1057 01f9 C7030000 		.4byte	.LASF68
+ 1058 01fd 3A       		.sleb128 58
+ 1059 01fe 08       		.uleb128 0x8
+ 1060 01ff 330A0000 		.4byte	.LASF69
+ 1061 0203 3B       		.sleb128 59
+ 1062 0204 08       		.uleb128 0x8
+ 1063 0205 AB090000 		.4byte	.LASF70
+ 1064 0209 3C       		.sleb128 60
+ 1065 020a 08       		.uleb128 0x8
+ 1066 020b 0E0B0000 		.4byte	.LASF71
+ 1067 020f 3D       		.sleb128 61
+ 1068 0210 08       		.uleb128 0x8
+ 1069 0211 B1060000 		.4byte	.LASF72
+ 1070 0215 3E       		.sleb128 62
+ 1071 0216 08       		.uleb128 0x8
+ 1072 0217 C1060000 		.4byte	.LASF73
+ 1073 021b 3F       		.sleb128 63
+ 1074 021c 08       		.uleb128 0x8
+ 1075 021d 5B080000 		.4byte	.LASF74
+ 1076 0221 C000     		.sleb128 64
+ 1077 0223 08       		.uleb128 0x8
+ 1078 0224 34000000 		.4byte	.LASF75
+ 1079 0228 C100     		.sleb128 65
+ 1080 022a 08       		.uleb128 0x8
+ 1081 022b 13040000 		.4byte	.LASF76
+ 1082 022f C200     		.sleb128 66
+ 1083 0231 08       		.uleb128 0x8
+ 1084 0232 8E010000 		.4byte	.LASF77
+ 1085 0236 C300     		.sleb128 67
+ 1086 0238 08       		.uleb128 0x8
+ 1087 0239 E6090000 		.4byte	.LASF78
+ 1088 023d C400     		.sleb128 68
+ 1089 023f 08       		.uleb128 0x8
+ 1090 0240 4D050000 		.4byte	.LASF79
+ 1091 0244 C500     		.sleb128 69
+ 1092 0246 08       		.uleb128 0x8
+ 1093 0247 DE040000 		.4byte	.LASF80
+ 1094 024b C600     		.sleb128 70
+ 1095 024d 08       		.uleb128 0x8
+ 1096 024e B6050000 		.4byte	.LASF81
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 35
+
+
+ 1097 0252 C700     		.sleb128 71
+ 1098 0254 08       		.uleb128 0x8
+ 1099 0255 44000000 		.4byte	.LASF82
+ 1100 0259 C800     		.sleb128 72
+ 1101 025b 08       		.uleb128 0x8
+ 1102 025c BB040000 		.4byte	.LASF83
+ 1103 0260 C900     		.sleb128 73
+ 1104 0262 08       		.uleb128 0x8
+ 1105 0263 5E050000 		.4byte	.LASF84
+ 1106 0267 CA00     		.sleb128 74
+ 1107 0269 08       		.uleb128 0x8
+ 1108 026a 0A070000 		.4byte	.LASF85
+ 1109 026e CB00     		.sleb128 75
+ 1110 0270 08       		.uleb128 0x8
+ 1111 0271 9B0A0000 		.4byte	.LASF86
+ 1112 0275 CC00     		.sleb128 76
+ 1113 0277 08       		.uleb128 0x8
+ 1114 0278 8C040000 		.4byte	.LASF87
+ 1115 027c CD00     		.sleb128 77
+ 1116 027e 08       		.uleb128 0x8
+ 1117 027f AB000000 		.4byte	.LASF88
+ 1118 0283 CE00     		.sleb128 78
+ 1119 0285 08       		.uleb128 0x8
+ 1120 0286 92060000 		.4byte	.LASF89
+ 1121 028a CF00     		.sleb128 79
+ 1122 028c 08       		.uleb128 0x8
+ 1123 028d 63040000 		.4byte	.LASF90
+ 1124 0291 D000     		.sleb128 80
+ 1125 0293 08       		.uleb128 0x8
+ 1126 0294 30040000 		.4byte	.LASF91
+ 1127 0298 D100     		.sleb128 81
+ 1128 029a 08       		.uleb128 0x8
+ 1129 029b 6F010000 		.4byte	.LASF92
+ 1130 029f D200     		.sleb128 82
+ 1131 02a1 08       		.uleb128 0x8
+ 1132 02a2 CD0B0000 		.4byte	.LASF93
+ 1133 02a6 D300     		.sleb128 83
+ 1134 02a8 08       		.uleb128 0x8
+ 1135 02a9 2F070000 		.4byte	.LASF94
+ 1136 02ad D400     		.sleb128 84
+ 1137 02af 08       		.uleb128 0x8
+ 1138 02b0 1D070000 		.4byte	.LASF95
+ 1139 02b4 D500     		.sleb128 85
+ 1140 02b6 08       		.uleb128 0x8
+ 1141 02b7 A0010000 		.4byte	.LASF96
+ 1142 02bb D600     		.sleb128 86
+ 1143 02bd 08       		.uleb128 0x8
+ 1144 02be 78040000 		.4byte	.LASF97
+ 1145 02c2 D700     		.sleb128 87
+ 1146 02c4 08       		.uleb128 0x8
+ 1147 02c5 6F050000 		.4byte	.LASF98
+ 1148 02c9 D800     		.sleb128 88
+ 1149 02cb 08       		.uleb128 0x8
+ 1150 02cc 24030000 		.4byte	.LASF99
+ 1151 02d0 D900     		.sleb128 89
+ 1152 02d2 08       		.uleb128 0x8
+ 1153 02d3 DA050000 		.4byte	.LASF100
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 36
+
+
+ 1154 02d7 DA00     		.sleb128 90
+ 1155 02d9 08       		.uleb128 0x8
+ 1156 02da 57000000 		.4byte	.LASF101
+ 1157 02de DB00     		.sleb128 91
+ 1158 02e0 08       		.uleb128 0x8
+ 1159 02e1 4E090000 		.4byte	.LASF102
+ 1160 02e5 DC00     		.sleb128 92
+ 1161 02e7 08       		.uleb128 0x8
+ 1162 02e8 FA090000 		.4byte	.LASF103
+ 1163 02ec DD00     		.sleb128 93
+ 1164 02ee 08       		.uleb128 0x8
+ 1165 02ef AF0A0000 		.4byte	.LASF104
+ 1166 02f3 DE00     		.sleb128 94
+ 1167 02f5 08       		.uleb128 0x8
+ 1168 02f6 BB090000 		.4byte	.LASF105
+ 1169 02fa DF00     		.sleb128 95
+ 1170 02fc 08       		.uleb128 0x8
+ 1171 02fd A4050000 		.4byte	.LASF106
+ 1172 0301 E000     		.sleb128 96
+ 1173 0303 08       		.uleb128 0x8
+ 1174 0304 8A0B0000 		.4byte	.LASF107
+ 1175 0308 E100     		.sleb128 97
+ 1176 030a 08       		.uleb128 0x8
+ 1177 030b 1F0B0000 		.4byte	.LASF108
+ 1178 030f E200     		.sleb128 98
+ 1179 0311 08       		.uleb128 0x8
+ 1180 0312 DF070000 		.4byte	.LASF109
+ 1181 0316 E300     		.sleb128 99
+ 1182 0318 08       		.uleb128 0x8
+ 1183 0319 BA070000 		.4byte	.LASF110
+ 1184 031d E400     		.sleb128 100
+ 1185 031f 08       		.uleb128 0x8
+ 1186 0320 12090000 		.4byte	.LASF111
+ 1187 0324 E500     		.sleb128 101
+ 1188 0326 08       		.uleb128 0x8
+ 1189 0327 95020000 		.4byte	.LASF112
+ 1190 032b E600     		.sleb128 102
+ 1191 032d 08       		.uleb128 0x8
+ 1192 032e DA080000 		.4byte	.LASF113
+ 1193 0332 E700     		.sleb128 103
+ 1194 0334 08       		.uleb128 0x8
+ 1195 0335 02010000 		.4byte	.LASF114
+ 1196 0339 E800     		.sleb128 104
+ 1197 033b 08       		.uleb128 0x8
+ 1198 033c 2E010000 		.4byte	.LASF115
+ 1199 0340 E900     		.sleb128 105
+ 1200 0342 08       		.uleb128 0x8
+ 1201 0343 DC030000 		.4byte	.LASF116
+ 1202 0347 EA00     		.sleb128 106
+ 1203 0349 08       		.uleb128 0x8
+ 1204 034a 12080000 		.4byte	.LASF117
+ 1205 034e EB00     		.sleb128 107
+ 1206 0350 08       		.uleb128 0x8
+ 1207 0351 230A0000 		.4byte	.LASF118
+ 1208 0355 EC00     		.sleb128 108
+ 1209 0357 08       		.uleb128 0x8
+ 1210 0358 9D0B0000 		.4byte	.LASF119
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 37
+
+
+ 1211 035c ED00     		.sleb128 109
+ 1212 035e 08       		.uleb128 0x8
+ 1213 035f AD0B0000 		.4byte	.LASF120
+ 1214 0363 EE00     		.sleb128 110
+ 1215 0365 08       		.uleb128 0x8
+ 1216 0366 BD0B0000 		.4byte	.LASF121
+ 1217 036a EF00     		.sleb128 111
+ 1218 036c 08       		.uleb128 0x8
+ 1219 036d D1090000 		.4byte	.LASF122
+ 1220 0371 F000     		.sleb128 112
+ 1221 0373 08       		.uleb128 0x8
+ 1222 0374 E50A0000 		.4byte	.LASF123
+ 1223 0378 F100     		.sleb128 113
+ 1224 037a 08       		.uleb128 0x8
+ 1225 037b 99070000 		.4byte	.LASF124
+ 1226 037f F200     		.sleb128 114
+ 1227 0381 08       		.uleb128 0x8
+ 1228 0382 770B0000 		.4byte	.LASF125
+ 1229 0386 F300     		.sleb128 115
+ 1230 0388 08       		.uleb128 0x8
+ 1231 0389 7D080000 		.4byte	.LASF126
+ 1232 038d F400     		.sleb128 116
+ 1233 038f 08       		.uleb128 0x8
+ 1234 0390 F90A0000 		.4byte	.LASF127
+ 1235 0394 F500     		.sleb128 117
+ 1236 0396 08       		.uleb128 0x8
+ 1237 0397 27080000 		.4byte	.LASF128
+ 1238 039b F600     		.sleb128 118
+ 1239 039d 08       		.uleb128 0x8
+ 1240 039e 4B010000 		.4byte	.LASF129
+ 1241 03a2 F700     		.sleb128 119
+ 1242 03a4 08       		.uleb128 0x8
+ 1243 03a5 46060000 		.4byte	.LASF130
+ 1244 03a9 F800     		.sleb128 120
+ 1245 03ab 08       		.uleb128 0x8
+ 1246 03ac 4F030000 		.4byte	.LASF131
+ 1247 03b0 F900     		.sleb128 121
+ 1248 03b2 08       		.uleb128 0x8
+ 1249 03b3 340B0000 		.4byte	.LASF132
+ 1250 03b7 FA00     		.sleb128 122
+ 1251 03b9 08       		.uleb128 0x8
+ 1252 03ba F3060000 		.4byte	.LASF133
+ 1253 03be FB00     		.sleb128 123
+ 1254 03c0 08       		.uleb128 0x8
+ 1255 03c1 60070000 		.4byte	.LASF134
+ 1256 03c5 FC00     		.sleb128 124
+ 1257 03c7 08       		.uleb128 0x8
+ 1258 03c8 66090000 		.4byte	.LASF135
+ 1259 03cc FD00     		.sleb128 125
+ 1260 03ce 08       		.uleb128 0x8
+ 1261 03cf 2B090000 		.4byte	.LASF136
+ 1262 03d3 FE00     		.sleb128 126
+ 1263 03d5 08       		.uleb128 0x8
+ 1264 03d6 00000000 		.4byte	.LASF137
+ 1265 03da FF00     		.sleb128 127
+ 1266 03dc 08       		.uleb128 0x8
+ 1267 03dd CA050000 		.4byte	.LASF138
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 38
+
+
+ 1268 03e1 8001     		.sleb128 128
+ 1269 03e3 08       		.uleb128 0x8
+ 1270 03e4 CD020000 		.4byte	.LASF139
+ 1271 03e8 8101     		.sleb128 129
+ 1272 03ea 08       		.uleb128 0x8
+ 1273 03eb C6080000 		.4byte	.LASF140
+ 1274 03ef 8201     		.sleb128 130
+ 1275 03f1 08       		.uleb128 0x8
+ 1276 03f2 1B010000 		.4byte	.LASF141
+ 1277 03f6 8301     		.sleb128 131
+ 1278 03f8 08       		.uleb128 0x8
+ 1279 03f9 470A0000 		.4byte	.LASF142
+ 1280 03fd 8401     		.sleb128 132
+ 1281 03ff 08       		.uleb128 0x8
+ 1282 0400 A5020000 		.4byte	.LASF143
+ 1283 0404 8501     		.sleb128 133
+ 1284 0406 08       		.uleb128 0x8
+ 1285 0407 480B0000 		.4byte	.LASF144
+ 1286 040b 8601     		.sleb128 134
+ 1287 040d 08       		.uleb128 0x8
+ 1288 040e CB040000 		.4byte	.LASF145
+ 1289 0412 8701     		.sleb128 135
+ 1290 0414 08       		.uleb128 0x8
+ 1291 0415 31060000 		.4byte	.LASF146
+ 1292 0419 8801     		.sleb128 136
+ 1293 041b 08       		.uleb128 0x8
+ 1294 041c 5F0A0000 		.4byte	.LASF147
+ 1295 0420 8901     		.sleb128 137
+ 1296 0422 08       		.uleb128 0x8
+ 1297 0423 F4040000 		.4byte	.LASF148
+ 1298 0427 8A01     		.sleb128 138
+ 1299 0429 08       		.uleb128 0x8
+ 1300 042a B3080000 		.4byte	.LASF149
+ 1301 042e 8B01     		.sleb128 139
+ 1302 0430 08       		.uleb128 0x8
+ 1303 0431 4C040000 		.4byte	.LASF150
+ 1304 0435 8C01     		.sleb128 140
+ 1305 0437 08       		.uleb128 0x8
+ 1306 0438 EF030000 		.4byte	.LASF151
+ 1307 043c 8D01     		.sleb128 141
+ 1308 043e 08       		.uleb128 0x8
+ 1309 043f 91050000 		.4byte	.LASF152
+ 1310 0443 8E01     		.sleb128 142
+ 1311 0445 08       		.uleb128 0x8
+ 1312 0446 76090000 		.4byte	.LASF153
+ 1313 044a 8F01     		.sleb128 143
+ 1314 044c 08       		.uleb128 0x8
+ 1315 044d 6A0B0000 		.4byte	.LASF154
+ 1316 0451 9001     		.sleb128 144
+ 1317 0453 08       		.uleb128 0x8
+ 1318 0454 C0000000 		.4byte	.LASF155
+ 1319 0458 9101     		.sleb128 145
+ 1320 045a 00       		.byte	0
+ 1321 045b 05       		.uleb128 0x5
+ 1322 045c 41010000 		.4byte	.LASF157
+ 1323 0460 08       		.byte	0x8
+ 1324 0461 01       		.byte	0x1
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 39
+
+
+ 1325 0462 29       		.byte	0x29
+ 1326 0463 80040000 		.4byte	0x480
+ 1327 0467 06       		.uleb128 0x6
+ 1328 0468 8D030000 		.4byte	.LASF158
+ 1329 046c 01       		.byte	0x1
+ 1330 046d 2A       		.byte	0x2a
+ 1331 046e 49000000 		.4byte	0x49
+ 1332 0472 00       		.byte	0
+ 1333 0473 06       		.uleb128 0x6
+ 1334 0474 940A0000 		.4byte	.LASF159
+ 1335 0478 01       		.byte	0x1
+ 1336 0479 2B       		.byte	0x2b
+ 1337 047a 80040000 		.4byte	0x480
+ 1338 047e 04       		.byte	0x4
+ 1339 047f 00       		.byte	0
+ 1340 0480 04       		.uleb128 0x4
+ 1341 0481 04       		.byte	0x4
+ 1342 0482 86040000 		.4byte	0x486
+ 1343 0486 09       		.uleb128 0x9
+ 1344 0487 8B040000 		.4byte	0x48b
+ 1345 048b 02       		.uleb128 0x2
+ 1346 048c 01       		.byte	0x1
+ 1347 048d 06       		.byte	0x6
+ 1348 048e 0D090000 		.4byte	.LASF160
+ 1349 0492 0A       		.uleb128 0xa
+ 1350 0493 6C000000 		.4byte	.LASF164
+ 1351 0497 01       		.byte	0x1
+ 1352 0498 2701     		.2byte	0x127
+ 1353 049a 69000000 		.4byte	0x69
+ 1354 049e 00000000 		.4byte	.LFB0
+ 1355 04a2 10000000 		.4byte	.LFE0-.LFB0
+ 1356 04a6 01       		.uleb128 0x1
+ 1357 04a7 9C       		.byte	0x9c
+ 1358 04a8 BD040000 		.4byte	0x4bd
+ 1359 04ac 0B       		.uleb128 0xb
+ 1360 04ad 68060000 		.4byte	.LASF165
+ 1361 04b1 01       		.byte	0x1
+ 1362 04b2 2701     		.2byte	0x127
+ 1363 04b4 49000000 		.4byte	0x49
+ 1364 04b8 00000000 		.4byte	.LLST0
+ 1365 04bc 00       		.byte	0
+ 1366 04bd 0C       		.uleb128 0xc
+ 1367 04be 5B040000 		.4byte	0x45b
+ 1368 04c2 CD040000 		.4byte	0x4cd
+ 1369 04c6 0D       		.uleb128 0xd
+ 1370 04c7 62000000 		.4byte	0x62
+ 1371 04cb 91       		.byte	0x91
+ 1372 04cc 00       		.byte	0
+ 1373 04cd 0E       		.uleb128 0xe
+ 1374 04ce 22090000 		.4byte	.LASF166
+ 1375 04d2 01       		.byte	0x1
+ 1376 04d3 30       		.byte	0x30
+ 1377 04d4 DE040000 		.4byte	0x4de
+ 1378 04d8 05       		.uleb128 0x5
+ 1379 04d9 03       		.byte	0x3
+ 1380 04da 00000000 		.4byte	KMessage
+ 1381 04de 09       		.uleb128 0x9
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 40
+
+
+ 1382 04df BD040000 		.4byte	0x4bd
+ 1383 04e3 0C       		.uleb128 0xc
+ 1384 04e4 6F000000 		.4byte	0x6f
+ 1385 04e8 F3040000 		.4byte	0x4f3
+ 1386 04ec 0D       		.uleb128 0xd
+ 1387 04ed 62000000 		.4byte	0x62
+ 1388 04f1 3B       		.byte	0x3b
+ 1389 04f2 00       		.byte	0
+ 1390 04f3 0F       		.uleb128 0xf
+ 1391 04f4 57070000 		.4byte	.LASF167
+ 1392 04f8 01       		.byte	0x1
+ 1393 04f9 E1       		.byte	0xe1
+ 1394 04fa 04050000 		.4byte	0x504
+ 1395 04fe 05       		.uleb128 0x5
+ 1396 04ff 03       		.byte	0x3
+ 1397 0500 00000000 		.4byte	KRspText
+ 1398 0504 09       		.uleb128 0x9
+ 1399 0505 E3040000 		.4byte	0x4e3
+ 1400 0509 00       		.byte	0
+ 1401              		.section	.debug_abbrev,"",%progbits
+ 1402              	.Ldebug_abbrev0:
+ 1403 0000 01       		.uleb128 0x1
+ 1404 0001 11       		.uleb128 0x11
+ 1405 0002 01       		.byte	0x1
+ 1406 0003 25       		.uleb128 0x25
+ 1407 0004 0E       		.uleb128 0xe
+ 1408 0005 13       		.uleb128 0x13
+ 1409 0006 0B       		.uleb128 0xb
+ 1410 0007 03       		.uleb128 0x3
+ 1411 0008 0E       		.uleb128 0xe
+ 1412 0009 1B       		.uleb128 0x1b
+ 1413 000a 0E       		.uleb128 0xe
+ 1414 000b 55       		.uleb128 0x55
+ 1415 000c 17       		.uleb128 0x17
+ 1416 000d 11       		.uleb128 0x11
+ 1417 000e 01       		.uleb128 0x1
+ 1418 000f 10       		.uleb128 0x10
+ 1419 0010 17       		.uleb128 0x17
+ 1420 0011 00       		.byte	0
+ 1421 0012 00       		.byte	0
+ 1422 0013 02       		.uleb128 0x2
+ 1423 0014 24       		.uleb128 0x24
+ 1424 0015 00       		.byte	0
+ 1425 0016 0B       		.uleb128 0xb
+ 1426 0017 0B       		.uleb128 0xb
+ 1427 0018 3E       		.uleb128 0x3e
+ 1428 0019 0B       		.uleb128 0xb
+ 1429 001a 03       		.uleb128 0x3
+ 1430 001b 0E       		.uleb128 0xe
+ 1431 001c 00       		.byte	0
+ 1432 001d 00       		.byte	0
+ 1433 001e 03       		.uleb128 0x3
+ 1434 001f 16       		.uleb128 0x16
+ 1435 0020 00       		.byte	0
+ 1436 0021 03       		.uleb128 0x3
+ 1437 0022 0E       		.uleb128 0xe
+ 1438 0023 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 41
+
+
+ 1439 0024 0B       		.uleb128 0xb
+ 1440 0025 3B       		.uleb128 0x3b
+ 1441 0026 0B       		.uleb128 0xb
+ 1442 0027 49       		.uleb128 0x49
+ 1443 0028 13       		.uleb128 0x13
+ 1444 0029 00       		.byte	0
+ 1445 002a 00       		.byte	0
+ 1446 002b 04       		.uleb128 0x4
+ 1447 002c 0F       		.uleb128 0xf
+ 1448 002d 00       		.byte	0
+ 1449 002e 0B       		.uleb128 0xb
+ 1450 002f 0B       		.uleb128 0xb
+ 1451 0030 49       		.uleb128 0x49
+ 1452 0031 13       		.uleb128 0x13
+ 1453 0032 00       		.byte	0
+ 1454 0033 00       		.byte	0
+ 1455 0034 05       		.uleb128 0x5
+ 1456 0035 13       		.uleb128 0x13
+ 1457 0036 01       		.byte	0x1
+ 1458 0037 03       		.uleb128 0x3
+ 1459 0038 0E       		.uleb128 0xe
+ 1460 0039 0B       		.uleb128 0xb
+ 1461 003a 0B       		.uleb128 0xb
+ 1462 003b 3A       		.uleb128 0x3a
+ 1463 003c 0B       		.uleb128 0xb
+ 1464 003d 3B       		.uleb128 0x3b
+ 1465 003e 0B       		.uleb128 0xb
+ 1466 003f 01       		.uleb128 0x1
+ 1467 0040 13       		.uleb128 0x13
+ 1468 0041 00       		.byte	0
+ 1469 0042 00       		.byte	0
+ 1470 0043 06       		.uleb128 0x6
+ 1471 0044 0D       		.uleb128 0xd
+ 1472 0045 00       		.byte	0
+ 1473 0046 03       		.uleb128 0x3
+ 1474 0047 0E       		.uleb128 0xe
+ 1475 0048 3A       		.uleb128 0x3a
+ 1476 0049 0B       		.uleb128 0xb
+ 1477 004a 3B       		.uleb128 0x3b
+ 1478 004b 0B       		.uleb128 0xb
+ 1479 004c 49       		.uleb128 0x49
+ 1480 004d 13       		.uleb128 0x13
+ 1481 004e 38       		.uleb128 0x38
+ 1482 004f 0B       		.uleb128 0xb
+ 1483 0050 00       		.byte	0
+ 1484 0051 00       		.byte	0
+ 1485 0052 07       		.uleb128 0x7
+ 1486 0053 04       		.uleb128 0x4
+ 1487 0054 01       		.byte	0x1
+ 1488 0055 0B       		.uleb128 0xb
+ 1489 0056 0B       		.uleb128 0xb
+ 1490 0057 3A       		.uleb128 0x3a
+ 1491 0058 0B       		.uleb128 0xb
+ 1492 0059 3B       		.uleb128 0x3b
+ 1493 005a 0B       		.uleb128 0xb
+ 1494 005b 01       		.uleb128 0x1
+ 1495 005c 13       		.uleb128 0x13
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 42
+
+
+ 1496 005d 00       		.byte	0
+ 1497 005e 00       		.byte	0
+ 1498 005f 08       		.uleb128 0x8
+ 1499 0060 28       		.uleb128 0x28
+ 1500 0061 00       		.byte	0
+ 1501 0062 03       		.uleb128 0x3
+ 1502 0063 0E       		.uleb128 0xe
+ 1503 0064 1C       		.uleb128 0x1c
+ 1504 0065 0D       		.uleb128 0xd
+ 1505 0066 00       		.byte	0
+ 1506 0067 00       		.byte	0
+ 1507 0068 09       		.uleb128 0x9
+ 1508 0069 26       		.uleb128 0x26
+ 1509 006a 00       		.byte	0
+ 1510 006b 49       		.uleb128 0x49
+ 1511 006c 13       		.uleb128 0x13
+ 1512 006d 00       		.byte	0
+ 1513 006e 00       		.byte	0
+ 1514 006f 0A       		.uleb128 0xa
+ 1515 0070 2E       		.uleb128 0x2e
+ 1516 0071 01       		.byte	0x1
+ 1517 0072 3F       		.uleb128 0x3f
+ 1518 0073 19       		.uleb128 0x19
+ 1519 0074 03       		.uleb128 0x3
+ 1520 0075 0E       		.uleb128 0xe
+ 1521 0076 3A       		.uleb128 0x3a
+ 1522 0077 0B       		.uleb128 0xb
+ 1523 0078 3B       		.uleb128 0x3b
+ 1524 0079 05       		.uleb128 0x5
+ 1525 007a 27       		.uleb128 0x27
+ 1526 007b 19       		.uleb128 0x19
+ 1527 007c 49       		.uleb128 0x49
+ 1528 007d 13       		.uleb128 0x13
+ 1529 007e 11       		.uleb128 0x11
+ 1530 007f 01       		.uleb128 0x1
+ 1531 0080 12       		.uleb128 0x12
+ 1532 0081 06       		.uleb128 0x6
+ 1533 0082 40       		.uleb128 0x40
+ 1534 0083 18       		.uleb128 0x18
+ 1535 0084 9742     		.uleb128 0x2117
+ 1536 0086 19       		.uleb128 0x19
+ 1537 0087 01       		.uleb128 0x1
+ 1538 0088 13       		.uleb128 0x13
+ 1539 0089 00       		.byte	0
+ 1540 008a 00       		.byte	0
+ 1541 008b 0B       		.uleb128 0xb
+ 1542 008c 05       		.uleb128 0x5
+ 1543 008d 00       		.byte	0
+ 1544 008e 03       		.uleb128 0x3
+ 1545 008f 0E       		.uleb128 0xe
+ 1546 0090 3A       		.uleb128 0x3a
+ 1547 0091 0B       		.uleb128 0xb
+ 1548 0092 3B       		.uleb128 0x3b
+ 1549 0093 05       		.uleb128 0x5
+ 1550 0094 49       		.uleb128 0x49
+ 1551 0095 13       		.uleb128 0x13
+ 1552 0096 02       		.uleb128 0x2
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 43
+
+
+ 1553 0097 17       		.uleb128 0x17
+ 1554 0098 00       		.byte	0
+ 1555 0099 00       		.byte	0
+ 1556 009a 0C       		.uleb128 0xc
+ 1557 009b 01       		.uleb128 0x1
+ 1558 009c 01       		.byte	0x1
+ 1559 009d 49       		.uleb128 0x49
+ 1560 009e 13       		.uleb128 0x13
+ 1561 009f 01       		.uleb128 0x1
+ 1562 00a0 13       		.uleb128 0x13
+ 1563 00a1 00       		.byte	0
+ 1564 00a2 00       		.byte	0
+ 1565 00a3 0D       		.uleb128 0xd
+ 1566 00a4 21       		.uleb128 0x21
+ 1567 00a5 00       		.byte	0
+ 1568 00a6 49       		.uleb128 0x49
+ 1569 00a7 13       		.uleb128 0x13
+ 1570 00a8 2F       		.uleb128 0x2f
+ 1571 00a9 0B       		.uleb128 0xb
+ 1572 00aa 00       		.byte	0
+ 1573 00ab 00       		.byte	0
+ 1574 00ac 0E       		.uleb128 0xe
+ 1575 00ad 34       		.uleb128 0x34
+ 1576 00ae 00       		.byte	0
+ 1577 00af 03       		.uleb128 0x3
+ 1578 00b0 0E       		.uleb128 0xe
+ 1579 00b1 3A       		.uleb128 0x3a
+ 1580 00b2 0B       		.uleb128 0xb
+ 1581 00b3 3B       		.uleb128 0x3b
+ 1582 00b4 0B       		.uleb128 0xb
+ 1583 00b5 49       		.uleb128 0x49
+ 1584 00b6 13       		.uleb128 0x13
+ 1585 00b7 02       		.uleb128 0x2
+ 1586 00b8 18       		.uleb128 0x18
+ 1587 00b9 00       		.byte	0
+ 1588 00ba 00       		.byte	0
+ 1589 00bb 0F       		.uleb128 0xf
+ 1590 00bc 34       		.uleb128 0x34
+ 1591 00bd 00       		.byte	0
+ 1592 00be 03       		.uleb128 0x3
+ 1593 00bf 0E       		.uleb128 0xe
+ 1594 00c0 3A       		.uleb128 0x3a
+ 1595 00c1 0B       		.uleb128 0xb
+ 1596 00c2 3B       		.uleb128 0x3b
+ 1597 00c3 0B       		.uleb128 0xb
+ 1598 00c4 49       		.uleb128 0x49
+ 1599 00c5 13       		.uleb128 0x13
+ 1600 00c6 3F       		.uleb128 0x3f
+ 1601 00c7 19       		.uleb128 0x19
+ 1602 00c8 02       		.uleb128 0x2
+ 1603 00c9 18       		.uleb128 0x18
+ 1604 00ca 00       		.byte	0
+ 1605 00cb 00       		.byte	0
+ 1606 00cc 00       		.byte	0
+ 1607              		.section	.debug_loc,"",%progbits
+ 1608              	.Ldebug_loc0:
+ 1609              	.LLST0:
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 44
+
+
+ 1610 0000 00000000 		.4byte	.LVL0
+ 1611 0004 06000000 		.4byte	.LVL1
+ 1612 0008 0100     		.2byte	0x1
+ 1613 000a 50       		.byte	0x50
+ 1614 000b 06000000 		.4byte	.LVL1
+ 1615 000f 10000000 		.4byte	.LFE0
+ 1616 0013 0400     		.2byte	0x4
+ 1617 0015 F3       		.byte	0xf3
+ 1618 0016 01       		.uleb128 0x1
+ 1619 0017 50       		.byte	0x50
+ 1620 0018 9F       		.byte	0x9f
+ 1621 0019 00000000 		.4byte	0
+ 1622 001d 00000000 		.4byte	0
+ 1623              		.section	.debug_aranges,"",%progbits
+ 1624 0000 1C000000 		.4byte	0x1c
+ 1625 0004 0200     		.2byte	0x2
+ 1626 0006 00000000 		.4byte	.Ldebug_info0
+ 1627 000a 04       		.byte	0x4
+ 1628 000b 00       		.byte	0
+ 1629 000c 0000     		.2byte	0
+ 1630 000e 0000     		.2byte	0
+ 1631 0010 00000000 		.4byte	.LFB0
+ 1632 0014 10000000 		.4byte	.LFE0-.LFB0
+ 1633 0018 00000000 		.4byte	0
+ 1634 001c 00000000 		.4byte	0
+ 1635              		.section	.debug_ranges,"",%progbits
+ 1636              	.Ldebug_ranges0:
+ 1637 0000 00000000 		.4byte	.LFB0
+ 1638 0004 10000000 		.4byte	.LFE0
+ 1639 0008 00000000 		.4byte	0
+ 1640 000c 00000000 		.4byte	0
+ 1641              		.section	.debug_line,"",%progbits
+ 1642              	.Ldebug_line0:
+ 1643 0000 63000000 		.section	.debug_str,"MS",%progbits,1
+ 1643      02004B00 
+ 1643      00000201 
+ 1643      FB0E0D00 
+ 1643      01010101 
+ 1644              	.LASF137:
+ 1645 0000 4544435F 		.ascii	"EDC_SE_BUS_DATE\000"
+ 1645      53455F42 
+ 1645      55535F44 
+ 1645      41544500 
+ 1646              	.LASF14:
+ 1647 0010 4544435F 		.ascii	"EDC_CN_AUTH\000"
+ 1647      434E5F41 
+ 1647      55544800 
+ 1648              	.LASF22:
+ 1649 001c 4544435F 		.ascii	"EDC_CN_SETTLE\000"
+ 1649      434E5F53 
+ 1649      4554544C 
+ 1649      4500
+ 1650              	.LASF9:
+ 1651 002a 645F7465 		.ascii	"d_text_id\000"
+ 1651      78745F69 
+ 1651      6400
+ 1652              	.LASF75:
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 45
+
+
+ 1653 0034 4544435F 		.ascii	"EDC_PN_PLS_WAIT\000"
+ 1653      504E5F50 
+ 1653      4C535F57 
+ 1653      41495400 
+ 1654              	.LASF82:
+ 1655 0044 4544435F 		.ascii	"EDC_RSP_NOT_HONOUR\000"
+ 1655      5253505F 
+ 1655      4E4F545F 
+ 1655      484F4E4F 
+ 1655      555200
+ 1656              	.LASF101:
+ 1657 0057 4544435F 		.ascii	"EDC_RSP_BAD_BATCH_NO\000"
+ 1657      5253505F 
+ 1657      4241445F 
+ 1657      42415443 
+ 1657      485F4E4F 
+ 1658              	.LASF164:
+ 1659 006c 47657443 		.ascii	"GetConstMsg\000"
+ 1659      6F6E7374 
+ 1659      4D736700 
+ 1660              	.LASF163:
+ 1661 0078 443A5C47 		.ascii	"D:\\GuadianPro\\Core\\S_MISR\\APP\\MISR\000"
+ 1661      75616469 
+ 1661      616E5072 
+ 1661      6F5C436F 
+ 1661      72655C53 
+ 1662              	.LASF50:
+ 1663 009b 4544435F 		.ascii	"EDC_AJ_BASE_AMT\000"
+ 1663      414A5F42 
+ 1663      4153455F 
+ 1663      414D5400 
+ 1664              	.LASF88:
+ 1665 00ab 4544435F 		.ascii	"EDC_RSP_INVALID_TERM\000"
+ 1665      5253505F 
+ 1665      494E5641 
+ 1665      4C49445F 
+ 1665      5445524D 
+ 1666              	.LASF155:
+ 1667 00c0 4544435F 		.ascii	"EDC_MSG_END\000"
+ 1667      4D53475F 
+ 1667      454E4400 
+ 1668              	.LASF6:
+ 1669 00cc 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1669      206C6F6E 
+ 1669      6720756E 
+ 1669      7369676E 
+ 1669      65642069 
+ 1670              	.LASF18:
+ 1671 00e3 4544435F 		.ascii	"EDC_CN_SALE_COMP\000"
+ 1671      434E5F53 
+ 1671      414C455F 
+ 1671      434F4D50 
+ 1671      00
+ 1672              	.LASF64:
+ 1673 00f4 4544435F 		.ascii	"EDC_FN_NO_REV\000"
+ 1673      464E5F4E 
+ 1673      4F5F5245 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 46
+
+
+ 1673      5600
+ 1674              	.LASF114:
+ 1675 0102 4544435F 		.ascii	"EDC_RSP_CTL_REFER_MOBILE\000"
+ 1675      5253505F 
+ 1675      43544C5F 
+ 1675      52454645 
+ 1675      525F4D4F 
+ 1676              	.LASF141:
+ 1677 011b 4544435F 		.ascii	"EDC_SE_TOTAL_WRONG\000"
+ 1677      53455F54 
+ 1677      4F54414C 
+ 1677      5F57524F 
+ 1677      4E4700
+ 1678              	.LASF115:
+ 1679 012e 4544435F 		.ascii	"EDC_RSP_TXN_CANCEL\000"
+ 1679      5253505F 
+ 1679      54584E5F 
+ 1679      43414E43 
+ 1679      454C00
+ 1680              	.LASF157:
+ 1681 0141 434F4E53 		.ascii	"CONST_MSG\000"
+ 1681      545F4D53 
+ 1681      4700
+ 1682              	.LASF129:
+ 1683 014b 4544435F 		.ascii	"EDC_RSP_SYS_ERROR\000"
+ 1683      5253505F 
+ 1683      5359535F 
+ 1683      4552524F 
+ 1683      5200
+ 1684              	.LASF36:
+ 1685 015d 4544435F 		.ascii	"EDC_IN_INV_EXPIRE\000"
+ 1685      494E5F49 
+ 1685      4E565F45 
+ 1685      58504952 
+ 1685      4500
+ 1686              	.LASF92:
+ 1687 016f 4544435F 		.ascii	"EDC_RSP_CALL_CC\000"
+ 1687      5253505F 
+ 1687      43414C4C 
+ 1687      5F434300 
+ 1688              	.LASF17:
+ 1689 017f 4544435F 		.ascii	"EDC_CN_OFFLINE\000"
+ 1689      434E5F4F 
+ 1689      46464C49 
+ 1689      4E4500
+ 1690              	.LASF77:
+ 1691 018e 4544435F 		.ascii	"EDC_RSP_COMPLETED\000"
+ 1691      5253505F 
+ 1691      434F4D50 
+ 1691      4C455445 
+ 1691      4400
+ 1692              	.LASF96:
+ 1693 01a0 4544435F 		.ascii	"EDC_RSP_INV_SERVICE\000"
+ 1693      5253505F 
+ 1693      494E565F 
+ 1693      53455256 
+ 1693      49434500 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 47
+
+
+ 1694              	.LASF161:
+ 1695 01b4 474E5520 		.ascii	"GNU C 4.9.3 20141119 (release) [ARM/embedded-4_9-br"
+ 1695      4320342E 
+ 1695      392E3320 
+ 1695      32303134 
+ 1695      31313139 
+ 1696 01e7 616E6368 		.ascii	"anch revision 218278] -mthumb -mcpu=cortex-a5 -mthu"
+ 1696      20726576 
+ 1696      6973696F 
+ 1696      6E203231 
+ 1696      38323738 
+ 1697 021a 6D622D69 		.ascii	"mb-interwork -mstructure-size-boundary=32 -mno-unal"
+ 1697      6E746572 
+ 1697      776F726B 
+ 1697      202D6D73 
+ 1697      74727563 
+ 1698 024d 69676E65 		.ascii	"igned-access -g -Os -ffunction-sections -fsigned-ch"
+ 1698      642D6163 
+ 1698      63657373 
+ 1698      202D6720 
+ 1698      2D4F7320 
+ 1699 0280 617200   		.ascii	"ar\000"
+ 1700              	.LASF53:
+ 1701 0283 4544435F 		.ascii	"EDC_AJ_TXN_VOIDED\000"
+ 1701      414A5F54 
+ 1701      584E5F56 
+ 1701      4F494445 
+ 1701      4400
+ 1702              	.LASF112:
+ 1703 0295 4544435F 		.ascii	"EDC_RSP_CTL_DDA\000"
+ 1703      5253505F 
+ 1703      43544C5F 
+ 1703      44444100 
+ 1704              	.LASF143:
+ 1705 02a5 4544435F 		.ascii	"EDC_SE_ENTER_REF_TOTAL\000"
+ 1705      53455F45 
+ 1705      4E544552 
+ 1705      5F524546 
+ 1705      5F544F54 
+ 1706              	.LASF62:
+ 1707 02bc 4544435F 		.ascii	"EDC_FN_CLR_BATCH\000"
+ 1707      464E5F43 
+ 1707      4C525F42 
+ 1707      41544348 
+ 1707      00
+ 1708              	.LASF139:
+ 1709 02cd 4544435F 		.ascii	"EDC_SE_SALE_TOTAL\000"
+ 1709      53455F53 
+ 1709      414C455F 
+ 1709      544F5441 
+ 1709      4C00
+ 1710              	.LASF34:
+ 1711 02df 4544435F 		.ascii	"EDC_IN_TOTAL_PROMPT\000"
+ 1711      494E5F54 
+ 1711      4F54414C 
+ 1711      5F50524F 
+ 1711      4D505400 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 48
+
+
+ 1712              	.LASF39:
+ 1713 02f3 4544435F 		.ascii	"EDC_IN_4DBC\000"
+ 1713      494E5F34 
+ 1713      44424300 
+ 1714              	.LASF27:
+ 1715 02ff 4544435F 		.ascii	"EDC_IN_SWIPE_CARD\000"
+ 1715      494E5F53 
+ 1715      57495045 
+ 1715      5F434152 
+ 1715      4400
+ 1716              	.LASF35:
+ 1717 0311 4544435F 		.ascii	"EDC_IN_EXPIRY_DATE\000"
+ 1717      494E5F45 
+ 1717      58504952 
+ 1717      595F4441 
+ 1717      544500
+ 1718              	.LASF99:
+ 1719 0324 4544435F 		.ascii	"EDC_RSP_TOT_MISMATCH\000"
+ 1719      5253505F 
+ 1719      544F545F 
+ 1719      4D49534D 
+ 1719      41544348 
+ 1720              	.LASF4:
+ 1721 0339 44574F52 		.ascii	"DWORD\000"
+ 1721      4400
+ 1722              	.LASF30:
+ 1723 033f 4544435F 		.ascii	"EDC_IN_BASE_AMT\000"
+ 1723      494E5F42 
+ 1723      4153455F 
+ 1723      414D5400 
+ 1724              	.LASF131:
+ 1725 034f 4544435F 		.ascii	"EDC_RSP_TRY_AGAING_TO\000"
+ 1725      5253505F 
+ 1725      5452595F 
+ 1725      41474149 
+ 1725      4E475F54 
+ 1726              	.LASF156:
+ 1727 0365 5253505F 		.ascii	"RSP_TEXT\000"
+ 1727      54455854 
+ 1727      00
+ 1728              	.LASF49:
+ 1729 036e 4544435F 		.ascii	"EDC_AJ_ENTER_NTIP\000"
+ 1729      414A5F45 
+ 1729      4E544552 
+ 1729      5F4E5449 
+ 1729      5000
+ 1730              	.LASF41:
+ 1731 0380 4544435F 		.ascii	"EDC_IN_TRACE\000"
+ 1731      494E5F54 
+ 1731      52414345 
+ 1731      00
+ 1732              	.LASF158:
+ 1733 038d 645F6D73 		.ascii	"d_msg_id\000"
+ 1733      675F6964 
+ 1733      00
+ 1734              	.LASF10:
+ 1735 0396 4544435F 		.ascii	"EDC_CO_SWIPE_INS\000"
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 49
+
+
+ 1735      434F5F53 
+ 1735      57495045 
+ 1735      5F494E53 
+ 1735      00
+ 1736              	.LASF13:
+ 1737 03a7 4544435F 		.ascii	"EDC_CO_PROCESSING\000"
+ 1737      434F5F50 
+ 1737      524F4345 
+ 1737      5353494E 
+ 1737      4700
+ 1738              	.LASF162:
+ 1739 03b9 7372632F 		.ascii	"src/message.c\000"
+ 1739      6D657373 
+ 1739      6167652E 
+ 1739      6300
+ 1740              	.LASF68:
+ 1741 03c7 4544435F 		.ascii	"EDC_FN_REPRINT_BATCH\000"
+ 1741      464E5F52 
+ 1741      45505249 
+ 1741      4E545F42 
+ 1741      41544348 
+ 1742              	.LASF116:
+ 1743 03dc 4544435F 		.ascii	"EDC_RSP_DATA_ERROR\000"
+ 1743      5253505F 
+ 1743      44415441 
+ 1743      5F455252 
+ 1743      4F5200
+ 1744              	.LASF151:
+ 1745 03ef 4544435F 		.ascii	"EDC_CTL_TAP_CARD\000"
+ 1745      43544C5F 
+ 1745      5441505F 
+ 1745      43415244 
+ 1745      00
+ 1746              	.LASF45:
+ 1747 0400 4544435F 		.ascii	"EDC_TU_CLOSE_BATCH\000"
+ 1747      54555F43 
+ 1747      4C4F5345 
+ 1747      5F424154 
+ 1747      434800
+ 1748              	.LASF76:
+ 1749 0413 4544435F 		.ascii	"EDC_PN_LOW_BATT\000"
+ 1749      504E5F4C 
+ 1749      4F575F42 
+ 1749      41545400 
+ 1750              	.LASF5:
+ 1751 0423 756E7369 		.ascii	"unsigned int\000"
+ 1751      676E6564 
+ 1751      20696E74 
+ 1751      00
+ 1752              	.LASF91:
+ 1753 0430 4544435F 		.ascii	"EDC_RSP_CALL_LC\000"
+ 1753      5253505F 
+ 1753      43414C4C 
+ 1753      5F4C4300 
+ 1754              	.LASF19:
+ 1755 0440 4544435F 		.ascii	"EDC_CN_VOID\000"
+ 1755      434E5F56 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 50
+
+
+ 1755      4F494400 
+ 1756              	.LASF150:
+ 1757 044c 4544435F 		.ascii	"EDC_CTL_PREPROCESS_ERR\000"
+ 1757      43544C5F 
+ 1757      50524550 
+ 1757      524F4345 
+ 1757      53535F45 
+ 1758              	.LASF90:
+ 1759 0463 4544435F 		.ascii	"EDC_RSP_UNKNOWN_CARD\000"
+ 1759      5253505F 
+ 1759      554E4B4E 
+ 1759      4F574E5F 
+ 1759      43415244 
+ 1760              	.LASF97:
+ 1761 0478 4544435F 		.ascii	"EDC_RSP_CONTACT_ACQ\000"
+ 1761      5253505F 
+ 1761      434F4E54 
+ 1761      4143545F 
+ 1761      41435100 
+ 1762              	.LASF87:
+ 1763 048c 4544435F 		.ascii	"EDC_RSP_RETRY\000"
+ 1763      5253505F 
+ 1763      52455452 
+ 1763      5900
+ 1764              	.LASF23:
+ 1765 049a 4544435F 		.ascii	"EDC_CN_REVERSAL\000"
+ 1765      434E5F52 
+ 1765      45564552 
+ 1765      53414C00 
+ 1766              	.LASF52:
+ 1767 04aa 4544435F 		.ascii	"EDC_AJ_OVERLIMIT\000"
+ 1767      414A5F4F 
+ 1767      5645524C 
+ 1767      494D4954 
+ 1767      00
+ 1768              	.LASF83:
+ 1769 04bb 4544435F 		.ascii	"EDC_RSP_APPV_ID\000"
+ 1769      5253505F 
+ 1769      41505056 
+ 1769      5F494400 
+ 1770              	.LASF145:
+ 1771 04cb 4544435F 		.ascii	"EDC_EMV_PROCESSING\000"
+ 1771      454D565F 
+ 1771      50524F43 
+ 1771      45535349 
+ 1771      4E4700
+ 1772              	.LASF80:
+ 1773 04de 4544435F 		.ascii	"EDC_RSP_INVALID_MERCH\000"
+ 1773      5253505F 
+ 1773      494E5641 
+ 1773      4C49445F 
+ 1773      4D455243 
+ 1774              	.LASF148:
+ 1775 04f4 4544435F 		.ascii	"EDC_CTL_FATAL\000"
+ 1775      43544C5F 
+ 1775      46415441 
+ 1775      4C00
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 51
+
+
+ 1776              	.LASF58:
+ 1777 0502 4544435F 		.ascii	"EDC_FN_START_BATCH\000"
+ 1777      464E5F53 
+ 1777      54415254 
+ 1777      5F424154 
+ 1777      434800
+ 1778              	.LASF3:
+ 1779 0515 73686F72 		.ascii	"short unsigned int\000"
+ 1779      7420756E 
+ 1779      7369676E 
+ 1779      65642069 
+ 1779      6E7400
+ 1780              	.LASF0:
+ 1781 0528 42595445 		.ascii	"BYTE\000"
+ 1781      00
+ 1782              	.LASF42:
+ 1783 052d 4544435F 		.ascii	"EDC_IN_ECRREF\000"
+ 1783      494E5F45 
+ 1783      43525245 
+ 1783      4600
+ 1784              	.LASF38:
+ 1785 053b 4544435F 		.ascii	"EDC_IN_ENTER_DESC\000"
+ 1785      494E5F45 
+ 1785      4E544552 
+ 1785      5F444553 
+ 1785      4300
+ 1786              	.LASF79:
+ 1787 054d 4544435F 		.ascii	"EDC_RSP_REFERRAL\000"
+ 1787      5253505F 
+ 1787      52454645 
+ 1787      5252414C 
+ 1787      00
+ 1788              	.LASF84:
+ 1789 055e 4544435F 		.ascii	"EDC_RSP_BAD_PROC\000"
+ 1789      5253505F 
+ 1789      4241445F 
+ 1789      50524F43 
+ 1789      00
+ 1790              	.LASF98:
+ 1791 056f 4544435F 		.ascii	"EDC_RSP_BAD_PROD\000"
+ 1791      5253505F 
+ 1791      4241445F 
+ 1791      50524F44 
+ 1791      00
+ 1792              	.LASF44:
+ 1793 0580 4544435F 		.ascii	"EDC_TU_NOT_ALLOW\000"
+ 1793      54555F4E 
+ 1793      4F545F41 
+ 1793      4C4C4F57 
+ 1793      00
+ 1794              	.LASF152:
+ 1795 0591 4544435F 		.ascii	"EDC_CTL_AMT_EXCEED\000"
+ 1795      43544C5F 
+ 1795      414D545F 
+ 1795      45584345 
+ 1795      454400
+ 1796              	.LASF106:
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 52
+
+
+ 1797 05a4 4544435F 		.ascii	"EDC_RSP_DUP_TRACE\000"
+ 1797      5253505F 
+ 1797      4455505F 
+ 1797      54524143 
+ 1797      4500
+ 1798              	.LASF81:
+ 1799 05b6 4544435F 		.ascii	"EDC_RSP_PICKUP_CARD\000"
+ 1799      5253505F 
+ 1799      5049434B 
+ 1799      55505F43 
+ 1799      41524400 
+ 1800              	.LASF138:
+ 1801 05ca 4544435F 		.ascii	"EDC_SE_NO_BATCH\000"
+ 1801      53455F4E 
+ 1801      4F5F4241 
+ 1801      54434800 
+ 1802              	.LASF100:
+ 1803 05da 4544435F 		.ascii	"EDC_RSP_ROC_NOT_FOUND\000"
+ 1803      5253505F 
+ 1803      524F435F 
+ 1803      4E4F545F 
+ 1803      464F554E 
+ 1804              	.LASF66:
+ 1805 05f0 4544435F 		.ascii	"EDC_FN_REV_CLEAR\000"
+ 1805      464E5F52 
+ 1805      45565F43 
+ 1805      4C454152 
+ 1805      00
+ 1806              	.LASF8:
+ 1807 0601 775F6964 		.ascii	"w_idx\000"
+ 1807      7800
+ 1808              	.LASF7:
+ 1809 0607 73697A65 		.ascii	"sizetype\000"
+ 1809      74797065 
+ 1809      00
+ 1810              	.LASF54:
+ 1811 0610 4544435F 		.ascii	"EDC_AJ_CLOSE_BATCH\000"
+ 1811      414A5F43 
+ 1811      4C4F5345 
+ 1811      5F424154 
+ 1811      434800
+ 1812              	.LASF16:
+ 1813 0623 4544435F 		.ascii	"EDC_CN_REFUND\000"
+ 1813      434E5F52 
+ 1813      4546554E 
+ 1813      4400
+ 1814              	.LASF146:
+ 1815 0631 4544435F 		.ascii	"EDC_EMV_SEL_APP\000"
+ 1815      454D565F 
+ 1815      53454C5F 
+ 1815      41505000 
+ 1816              	.LASF1:
+ 1817 0641 574F5244 		.ascii	"WORD\000"
+ 1817      00
+ 1818              	.LASF130:
+ 1819 0646 4544435F 		.ascii	"EDC_RSP_RSP_TXN_ACP\000"
+ 1819      5253505F 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 53
+
+
+ 1819      5253505F 
+ 1819      54584E5F 
+ 1819      41435000 
+ 1820              	.LASF20:
+ 1821 065a 4544435F 		.ascii	"EDC_CN_ADJUST\000"
+ 1821      434E5F41 
+ 1821      444A5553 
+ 1821      5400
+ 1822              	.LASF165:
+ 1823 0668 614D7367 		.ascii	"aMsgId\000"
+ 1823      496400
+ 1824              	.LASF32:
+ 1825 066f 4544435F 		.ascii	"EDC_IN_ENTER_TIPS\000"
+ 1825      494E5F45 
+ 1825      4E544552 
+ 1825      5F544950 
+ 1825      5300
+ 1826              	.LASF47:
+ 1827 0681 4544435F 		.ascii	"EDC_AJ_NOT_ALLOW\000"
+ 1827      414A5F4E 
+ 1827      4F545F41 
+ 1827      4C4C4F57 
+ 1827      00
+ 1828              	.LASF89:
+ 1829 0692 4544435F 		.ascii	"EDC_RSP_EDIT_ERROR\000"
+ 1829      5253505F 
+ 1829      45444954 
+ 1829      5F455252 
+ 1829      4F5200
+ 1830              	.LASF15:
+ 1831 06a5 4544435F 		.ascii	"EDC_CN_SALE\000"
+ 1831      434E5F53 
+ 1831      414C4500 
+ 1832              	.LASF72:
+ 1833 06b1 4544435F 		.ascii	"EDC_PN_HIGHTEMP\000"
+ 1833      504E5F48 
+ 1833      49474854 
+ 1833      454D5000 
+ 1834              	.LASF73:
+ 1835 06c1 4544435F 		.ascii	"EDC_PN_NO_PAPER\000"
+ 1835      504E5F4E 
+ 1835      4F5F5041 
+ 1835      50455200 
+ 1836              	.LASF48:
+ 1837 06d1 4544435F 		.ascii	"EDC_AJ_ENTER_NAMT\000"
+ 1837      414A5F45 
+ 1837      4E544552 
+ 1837      5F4E414D 
+ 1837      5400
+ 1838              	.LASF33:
+ 1839 06e3 4544435F 		.ascii	"EDC_IN_INV_TIPS\000"
+ 1839      494E5F49 
+ 1839      4E565F54 
+ 1839      49505300 
+ 1840              	.LASF133:
+ 1841 06f3 4544435F 		.ascii	"EDC_RSP_UNSUPPORT_CARD\000"
+ 1841      5253505F 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 54
+
+
+ 1841      554E5355 
+ 1841      50504F52 
+ 1841      545F4341 
+ 1842              	.LASF85:
+ 1843 070a 4544435F 		.ascii	"EDC_RSP_BAD_AMOUNT\000"
+ 1843      5253505F 
+ 1843      4241445F 
+ 1843      414D4F55 
+ 1843      4E5400
+ 1844              	.LASF95:
+ 1845 071d 4544435F 		.ascii	"EDC_RSP_PIN_ERROR\000"
+ 1845      5253505F 
+ 1845      50494E5F 
+ 1845      4552524F 
+ 1845      5200
+ 1846              	.LASF94:
+ 1847 072f 4544435F 		.ascii	"EDC_RSP_CARD_EXPIRED\000"
+ 1847      5253505F 
+ 1847      43415244 
+ 1847      5F455850 
+ 1847      49524544 
+ 1848              	.LASF63:
+ 1849 0744 4544435F 		.ascii	"EDC_FN_BATCH_ERASE\000"
+ 1849      464E5F42 
+ 1849      41544348 
+ 1849      5F455241 
+ 1849      534500
+ 1850              	.LASF167:
+ 1851 0757 4B527370 		.ascii	"KRspText\000"
+ 1851      54657874 
+ 1851      00
+ 1852              	.LASF134:
+ 1853 0760 4544435F 		.ascii	"EDC_RSP_INVALID_CARD\000"
+ 1853      5253505F 
+ 1853      494E5641 
+ 1853      4C49445F 
+ 1853      43415244 
+ 1854              	.LASF37:
+ 1855 0775 4544435F 		.ascii	"EDC_IN_CARD_EXPIRED\000"
+ 1855      494E5F43 
+ 1855      4152445F 
+ 1855      45585049 
+ 1855      52454400 
+ 1856              	.LASF61:
+ 1857 0789 4544435F 		.ascii	"EDC_FN_CARD_REC\000"
+ 1857      464E5F43 
+ 1857      4152445F 
+ 1857      52454300 
+ 1858              	.LASF124:
+ 1859 0799 4544435F 		.ascii	"EDC_RSP_LINE_OCCUP\000"
+ 1859      5253505F 
+ 1859      4C494E45 
+ 1859      5F4F4343 
+ 1859      555000
+ 1860              	.LASF2:
+ 1861 07ac 756E7369 		.ascii	"unsigned char\000"
+ 1861      676E6564 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 55
+
+
+ 1861      20636861 
+ 1861      7200
+ 1862              	.LASF110:
+ 1863 07ba 4544435F 		.ascii	"EDC_RSP_LOW_BATT\000"
+ 1863      5253505F 
+ 1863      4C4F575F 
+ 1863      42415454 
+ 1863      00
+ 1864              	.LASF40:
+ 1865 07cb 4544435F 		.ascii	"EDC_IN_INVALID_CARD\000"
+ 1865      494E5F49 
+ 1865      4E56414C 
+ 1865      49445F43 
+ 1865      41524400 
+ 1866              	.LASF109:
+ 1867 07df 4544435F 		.ascii	"EDC_RSP_APP_CODE\000"
+ 1867      5253505F 
+ 1867      4150505F 
+ 1867      434F4445 
+ 1867      00
+ 1868              	.LASF24:
+ 1869 07f0 4544435F 		.ascii	"EDC_CN_TEST_MSG\000"
+ 1869      434E5F54 
+ 1869      4553545F 
+ 1869      4D534700 
+ 1870              	.LASF67:
+ 1871 0800 4544435F 		.ascii	"EDC_FN_DISP_BATCH\000"
+ 1871      464E5F44 
+ 1871      4953505F 
+ 1871      42415443 
+ 1871      4800
+ 1872              	.LASF117:
+ 1873 0812 4544435F 		.ascii	"EDC_RSP_TRY_AGAIN_NC\000"
+ 1873      5253505F 
+ 1873      5452595F 
+ 1873      41474149 
+ 1873      4E5F4E43 
+ 1874              	.LASF128:
+ 1875 0827 4544435F 		.ascii	"EDC_RSP_SWIPT_AE\000"
+ 1875      5253505F 
+ 1875      53574950 
+ 1875      545F4145 
+ 1875      00
+ 1876              	.LASF12:
+ 1877 0838 4544435F 		.ascii	"EDC_CO_REMOVE_ICC\000"
+ 1877      434F5F52 
+ 1877      454D4F56 
+ 1877      455F4943 
+ 1877      4300
+ 1878              	.LASF59:
+ 1879 084a 4544435F 		.ascii	"EDC_FN_END_BATCH\000"
+ 1879      464E5F45 
+ 1879      4E445F42 
+ 1879      41544348 
+ 1879      00
+ 1880              	.LASF74:
+ 1881 085b 4544435F 		.ascii	"EDC_PN_PLS_REPRINT\000"
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 56
+
+
+ 1881      504E5F50 
+ 1881      4C535F52 
+ 1881      45505249 
+ 1881      4E5400
+ 1882              	.LASF65:
+ 1883 086e 4544435F 		.ascii	"EDC_FN_CLR_REV\000"
+ 1883      464E5F43 
+ 1883      4C525F52 
+ 1883      455600
+ 1884              	.LASF126:
+ 1885 087d 4544435F 		.ascii	"EDC_RSP_READ_ERROR\000"
+ 1885      5253505F 
+ 1885      52454144 
+ 1885      5F455252 
+ 1885      4F5200
+ 1886              	.LASF56:
+ 1887 0890 4544435F 		.ascii	"EDC_VD_VOIDED\000"
+ 1887      56445F56 
+ 1887      4F494445 
+ 1887      4400
+ 1888              	.LASF11:
+ 1889 089e 4544435F 		.ascii	"EDC_CO_SWIPE_INS_TAP\000"
+ 1889      434F5F53 
+ 1889      57495045 
+ 1889      5F494E53 
+ 1889      5F544150 
+ 1890              	.LASF149:
+ 1891 08b3 4544435F 		.ascii	"EDC_CTL_PROCESSING\000"
+ 1891      43544C5F 
+ 1891      50524F43 
+ 1891      45535349 
+ 1891      4E4700
+ 1892              	.LASF140:
+ 1893 08c6 4544435F 		.ascii	"EDC_SE_REFUND_TOTAL\000"
+ 1893      53455F52 
+ 1893      4546554E 
+ 1893      445F544F 
+ 1893      54414C00 
+ 1894              	.LASF113:
+ 1895 08da 4544435F 		.ascii	"EDC_RSP_CTL_OCARD\000"
+ 1895      5253505F 
+ 1895      43544C5F 
+ 1895      4F434152 
+ 1895      4400
+ 1896              	.LASF57:
+ 1897 08ec 4544435F 		.ascii	"EDC_VD_NOT_ALLOW\000"
+ 1897      56445F4E 
+ 1897      4F545F41 
+ 1897      4C4C4F57 
+ 1897      00
+ 1898              	.LASF51:
+ 1899 08fd 4544435F 		.ascii	"EDC_AJ_TIPS_AMT\000"
+ 1899      414A5F54 
+ 1899      4950535F 
+ 1899      414D5400 
+ 1900              	.LASF160:
+ 1901 090d 63686172 		.ascii	"char\000"
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 57
+
+
+ 1901      00
+ 1902              	.LASF111:
+ 1903 0912 4544435F 		.ascii	"EDC_RSP_CTL_TOI\000"
+ 1903      5253505F 
+ 1903      43544C5F 
+ 1903      544F4900 
+ 1904              	.LASF166:
+ 1905 0922 4B4D6573 		.ascii	"KMessage\000"
+ 1905      73616765 
+ 1905      00
+ 1906              	.LASF136:
+ 1907 092b 4544435F 		.ascii	"EDC_RSP_NO_REC\000"
+ 1907      5253505F 
+ 1907      4E4F5F52 
+ 1907      454300
+ 1908              	.LASF31:
+ 1909 093a 4544435F 		.ascii	"EDC_IN_ENTER_AMOUNT\000"
+ 1909      494E5F45 
+ 1909      4E544552 
+ 1909      5F414D4F 
+ 1909      554E5400 
+ 1910              	.LASF102:
+ 1911 094e 4544435F 		.ascii	"EDC_RSP_BATCH_NOT_FOUND\000"
+ 1911      5253505F 
+ 1911      42415443 
+ 1911      485F4E4F 
+ 1911      545F464F 
+ 1912              	.LASF135:
+ 1913 0966 4544435F 		.ascii	"EDC_RSP_CALL_IC\000"
+ 1913      5253505F 
+ 1913      43414C4C 
+ 1913      5F494300 
+ 1914              	.LASF153:
+ 1915 0976 4544435F 		.ascii	"EDC_CTL_CARD_READ_OK\000"
+ 1915      43544C5F 
+ 1915      43415244 
+ 1915      5F524541 
+ 1915      445F4F4B 
+ 1916              	.LASF60:
+ 1917 098b 4544435F 		.ascii	"EDC_FN_CARD_TOTAL\000"
+ 1917      464E5F43 
+ 1917      4152445F 
+ 1917      544F5441 
+ 1917      4C00
+ 1918              	.LASF21:
+ 1919 099d 4544435F 		.ascii	"EDC_CN_UPLOAD\000"
+ 1919      434E5F55 
+ 1919      504C4F41 
+ 1919      4400
+ 1920              	.LASF70:
+ 1921 09ab 4544435F 		.ascii	"EDC_PN_PRINTING\000"
+ 1921      504E5F50 
+ 1921      52494E54 
+ 1921      494E4700 
+ 1922              	.LASF105:
+ 1923 09bb 4544435F 		.ascii	"EDC_RSP_SYS_NOT_AVAIL\000"
+ 1923      5253505F 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 58
+
+
+ 1923      5359535F 
+ 1923      4E4F545F 
+ 1923      41564149 
+ 1924              	.LASF122:
+ 1925 09d1 4544435F 		.ascii	"EDC_RSP_TRY_AGAIN_LC\000"
+ 1925      5253505F 
+ 1925      5452595F 
+ 1925      41474149 
+ 1925      4E5F4C43 
+ 1926              	.LASF78:
+ 1927 09e6 4544435F 		.ascii	"EDC_RSP_CALL_ISSUER\000"
+ 1927      5253505F 
+ 1927      43414C4C 
+ 1927      5F495353 
+ 1927      55455200 
+ 1928              	.LASF103:
+ 1929 09fa 4544435F 		.ascii	"EDC_RSP_CALL_AMEX\000"
+ 1929      5253505F 
+ 1929      43414C4C 
+ 1929      5F414D45 
+ 1929      5800
+ 1930              	.LASF25:
+ 1931 0a0c 4544435F 		.ascii	"EDC_IN_CHK_DIGIT_ERROR\000"
+ 1931      494E5F43 
+ 1931      484B5F44 
+ 1931      49474954 
+ 1931      5F455252 
+ 1932              	.LASF118:
+ 1933 0a23 4544435F 		.ascii	"EDC_RSP_CALL_IP\000"
+ 1933      5253505F 
+ 1933      43414C4C 
+ 1933      5F495000 
+ 1934              	.LASF69:
+ 1935 0a33 4544435F 		.ascii	"EDC_FN_PRINT_REPORT\000"
+ 1935      464E5F50 
+ 1935      52494E54 
+ 1935      5F524550 
+ 1935      4F525400 
+ 1936              	.LASF142:
+ 1937 0a47 4544435F 		.ascii	"EDC_SE_ENTER_SALE_TOTAL\000"
+ 1937      53455F45 
+ 1937      4E544552 
+ 1937      5F53414C 
+ 1937      455F544F 
+ 1938              	.LASF147:
+ 1939 0a5f 4544435F 		.ascii	"EDC_EMV_CANNOT_SEL\000"
+ 1939      454D565F 
+ 1939      43414E4E 
+ 1939      4F545F53 
+ 1939      454C00
+ 1940              	.LASF43:
+ 1941 0a72 4544435F 		.ascii	"EDC_IN_CUR_ERROR\000"
+ 1941      494E5F43 
+ 1941      55525F45 
+ 1941      52524F52 
+ 1941      00
+ 1942              	.LASF55:
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 59
+
+
+ 1943 0a83 4544435F 		.ascii	"EDC_AJ_COMPLETED\000"
+ 1943      414A5F43 
+ 1943      4F4D504C 
+ 1943      45544544 
+ 1943      00
+ 1944              	.LASF159:
+ 1945 0a94 70625F4D 		.ascii	"pb_Msg\000"
+ 1945      736700
+ 1946              	.LASF86:
+ 1947 0a9b 4544435F 		.ascii	"EDC_RSP_INVALID_ACC\000"
+ 1947      5253505F 
+ 1947      494E5641 
+ 1947      4C49445F 
+ 1947      41434300 
+ 1948              	.LASF104:
+ 1949 0aaf 4544435F 		.ascii	"EDC_RSP_BAD_TERMINAL_ID\000"
+ 1949      5253505F 
+ 1949      4241445F 
+ 1949      5445524D 
+ 1949      494E414C 
+ 1950              	.LASF26:
+ 1951 0ac7 4544435F 		.ascii	"EDC_IN_USE_ICC\000"
+ 1951      494E5F55 
+ 1951      53455F49 
+ 1951      434300
+ 1952              	.LASF28:
+ 1953 0ad6 4544435F 		.ascii	"EDC_IN_CORRECT\000"
+ 1953      494E5F43 
+ 1953      4F525245 
+ 1953      435400
+ 1954              	.LASF123:
+ 1955 0ae5 4544435F 		.ascii	"EDC_RSP_NO_DIALTONE\000"
+ 1955      5253505F 
+ 1955      4E4F5F44 
+ 1955      49414C54 
+ 1955      4F4E4500 
+ 1956              	.LASF127:
+ 1957 0af9 4544435F 		.ascii	"EDC_RSP_CARD_BLOCKED\000"
+ 1957      5253505F 
+ 1957      43415244 
+ 1957      5F424C4F 
+ 1957      434B4544 
+ 1958              	.LASF71:
+ 1959 0b0e 4544435F 		.ascii	"EDC_PN_MANUALCUT\000"
+ 1959      504E5F4D 
+ 1959      414E5541 
+ 1959      4C435554 
+ 1959      00
+ 1960              	.LASF108:
+ 1961 0b1f 4544435F 		.ascii	"EDC_RSP_OTHER_REASON\000"
+ 1961      5253505F 
+ 1961      4F544845 
+ 1961      525F5245 
+ 1961      41534F4E 
+ 1962              	.LASF132:
+ 1963 0b34 4544435F 		.ascii	"EDC_RSP_VERIFY_SIGN\000"
+ 1963      5253505F 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 60
+
+
+ 1963      56455249 
+ 1963      46595F53 
+ 1963      49474E00 
+ 1964              	.LASF144:
+ 1965 0b48 4544435F 		.ascii	"EDC_EMV_FATAL\000"
+ 1965      454D565F 
+ 1965      46415441 
+ 1965      4C00
+ 1966              	.LASF46:
+ 1967 0b56 4544435F 		.ascii	"EDC_AJ_TOTAL_PROMPT\000"
+ 1967      414A5F54 
+ 1967      4F54414C 
+ 1967      5F50524F 
+ 1967      4D505400 
+ 1968              	.LASF154:
+ 1969 0b6a 4544435F 		.ascii	"EDC_NET_INIT\000"
+ 1969      4E45545F 
+ 1969      494E4954 
+ 1969      00
+ 1970              	.LASF125:
+ 1971 0b77 4544435F 		.ascii	"EDC_RSP_SWIPE_CARD\000"
+ 1971      5253505F 
+ 1971      53574950 
+ 1971      455F4341 
+ 1971      524400
+ 1972              	.LASF107:
+ 1973 0b8a 4544435F 		.ascii	"EDC_RSP_BATCH_XFER\000"
+ 1973      5253505F 
+ 1973      42415443 
+ 1973      485F5846 
+ 1973      455200
+ 1974              	.LASF119:
+ 1975 0b9d 4544435F 		.ascii	"EDC_RSP_CALL_IR\000"
+ 1975      5253505F 
+ 1975      43414C4C 
+ 1975      5F495200 
+ 1976              	.LASF120:
+ 1977 0bad 4544435F 		.ascii	"EDC_RSP_CALL_IS\000"
+ 1977      5253505F 
+ 1977      43414C4C 
+ 1977      5F495300 
+ 1978              	.LASF121:
+ 1979 0bbd 4544435F 		.ascii	"EDC_RSP_CALL_IT\000"
+ 1979      5253505F 
+ 1979      43414C4C 
+ 1979      5F495400 
+ 1980              	.LASF93:
+ 1981 0bcd 4544435F 		.ascii	"EDC_RSP_DECLINED\000"
+ 1981      5253505F 
+ 1981      4445434C 
+ 1981      494E4544 
+ 1981      00
+ 1982              	.LASF29:
+ 1983 0bde 4544435F 		.ascii	"EDC_IN_APP_CODE\000"
+ 1983      494E5F41 
+ 1983      50505F43 
+ 1983      4F444500 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 61
+
+
+ 1984              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-br
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s 			page 62
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 message.c
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s:19     .text.GetConstMsg:00000000 $t
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s:24     .text.GetConstMsg:00000000 GetConstMsg
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s:43     .text.GetConstMsg:0000000c $d
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s:348    .rodata:00000490 KRspText
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s:49     .rodata:00000000 $d
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\cckpLaCT.s:53     .rodata:00000000 KMessage
+                     .debug_frame:00000010 $d
+
+NO UNDEFINED SYMBOLS

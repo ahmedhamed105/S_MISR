@@ -1,0 +1,54 @@
+[Version] 					 	     	; Version section
+Signature="$Chicago$" 				 	     	; All Windows versions
+Class=Ports 					 	     	; This is a serial port driver
+ClassGuid={4D36E978-E325-11CE-BFC1-08002BE10318} 	     	; Associated GUID
+Provider=%SPECTRA%				 	     	; Driver is provided by SPECTRA
+DriverVer=12/07/2009,1.0.0.1			 	     	; Driver version 1.0.0.1 published on 12 July 2009
+
+; Port Class Install
+[ClassInstall]
+AddReg=USBClassInstall
+[USBClassInstall]
+HKR,,,,%Enumerator%
+HKR,,Icon,,"-23"
+HKR,,Installer32,,"MsPorts.Dll, PortsClassInstaller"
+
+[DestinationDirs]					     	; DestinationDirs section
+DefaultDestDir=12						; Default install directory is \drivers or \IOSubSys
+
+[Manufacturer] 					 	     	; Manufacturer section
+%SPECTRA%=SpectraMfg				 	     	; Only one manufacturer (SPECTRA), models section is named
+							     	; SpectraMfg
+
+[SpectraMfg]					             	; Models section corresponding to SPECTRA
+%USBSerialPort%=USBtoSer.Install,USB\VID_123A&PID_0001		; Identifies a device with SPECTRA Vendor ID (123Ah) and
+							     	; Product ID equal to 0001h. Corresponding Install section
+							     	; is named USBtoSer.Install
+
+[USBtoSer.Install]					     	; Install section
+CopyFiles=USBtoSer.CopyFiles					; Files to copy are listed in USBtoSer.CopyFiles
+AddReg=USBtoSer.AddReg						; Registry keys to add are listed in USBtoSer.AddReg
+
+[USBtoSer.CopyFiles]						; FileList section
+usbser.sys,,,0x20
+
+[USBtoSer.AddReg]						; AddReg section
+HKR,,DevLoader,,*ntkern 					; 
+HKR,,NTMPDriver,,usbser.sys
+HKR,,EnumPropPages32,,"MsPorts.dll,SerialPortPropPageProvider"
+
+[USBtoSer.Install.Services]				     	; Services section
+AddService=usbser,0x00000002,USBtoSer.AddService	     	; Assign usbser as the PnP driver for the device
+
+[USBtoSer.AddService]				     		; Service install section
+DisplayName=%USBSer%					     	; Name of the serial driver
+ServiceType=1						     	; Service kernel driver
+StartType=3						    	; Driver is started by the PnP manager
+ErrorControl=1						     	; Warn about errors
+ServiceBinary=%12%\usbser.sys				     	; Driver filename
+
+[Strings]						     	; Strings section
+SPECTRA="SPECTRA Technologies"			 	     	; String value for the SPECTRA symbol
+USBSerialPort="Spectra USB Serial Port"			     	; String value for the USBSerialPort symbol
+Enumerator = "USB Serial Emulator"
+USBSer="USB Serial Driver"				     	; String value for the USBSer symbol

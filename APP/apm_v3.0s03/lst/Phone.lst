@@ -1,0 +1,64 @@
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccpQnSMX.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-a5
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"Phone.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              	.Letext0:
+  19              		.section	.debug_line,"",%progbits
+  20              	.Ldebug_line0:
+  21              		.section	.debug_str,"MS",%progbits,1
+  22              	.LASF0:
+  23 0000 7372632F 		.ascii	"src/Phone.c\000"
+  23      50686F6E 
+  23      652E6300 
+  24              	.LASF1:
+  25 000c 433A5C54 		.ascii	"C:\\T1000-A5\\Projects\\APM\\apm_v3.0s03\000"
+  25      31303030 
+  25      2D41355C 
+  25      50726F6A 
+  25      65637473 
+  26              	.LASF2:
+  27 0031 474E5520 		.ascii	"GNU C 4.9.3 20141119 (release) [ARM/embedded-4_9-br"
+  27      4320342E 
+  27      392E3320 
+  27      32303134 
+  27      31313139 
+  28 0064 616E6368 		.ascii	"anch revision 218278] -mthumb -mcpu=cortex-a5 -mthu"
+  28      20726576 
+  28      6973696F 
+  28      6E203231 
+  28      38323738 
+  29 0097 6D622D69 		.ascii	"mb-interwork -mstructure-size-boundary=32 -mno-unal"
+  29      6E746572 
+  29      776F726B 
+  29      202D6D73 
+  29      74727563 
+  30 00ca 69676E65 		.ascii	"igned-access -g -Os -ffunction-sections -fsigned-ch"
+  30      642D6163 
+  30      63657373 
+  30      202D6720 
+  30      2D4F7320 
+  31 00fd 617200   		.ascii	"ar\000"
+  32              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-br
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccpQnSMX.s 			page 2
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 Phone.c
+
+NO UNDEFINED SYMBOLS
