@@ -184,9 +184,11 @@ void PackHostMsg(void)
   TxBufSetup(ExtraMsgLen());
 	  
    pack_mem("ISO0433211105000", 16);
+   
   /* PowerCard header */
  // pack_mem("ISO", 3);
- // len_ptr = get_pptr();     // 4-byte length
+  len_ptr = get_pptr();     // 4-byte length
+  inc_pptr(16);
  // inc_pptr(4);
  // pack_byte('2');           // POS
  // SprintfMW(buf, "%02X%02X0", SOFT_VERSION, SOFT_SUBVERSION);   // SW Version
