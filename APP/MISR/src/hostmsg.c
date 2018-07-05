@@ -182,371 +182,429 @@ void PackHostMsg(void)
   struct DESC_TBL prod;
 
   TxBufSetup(ExtraMsgLen());
-	  
-   pack_mem("ISO0433211105000", 16);
-   
-  /* PowerCard header */
- // pack_mem("ISO", 3);
-  len_ptr = get_pptr();     // 4-byte length
-  inc_pptr(16);
- // inc_pptr(4);
- // pack_byte('2');           // POS
- // SprintfMW(buf, "%02X%02X0", SOFT_VERSION, SOFT_SUBVERSION);   // SW Version
- // pack_mem(buf, 5);
- // pack_mem("000", 3);       // single message
-  
-  /* msg type id */
+/* PowerCard header */
+pack_byte(0x49);
+pack_byte(0x53);
+pack_byte(0x4F);
+pack_byte(0x30);
+pack_byte(0x34);
+pack_byte(0x36);
+pack_byte(0x35);
+pack_byte(0x32);
+pack_byte(0x31);
+pack_byte(0x31);
+pack_byte(0x31);
+pack_byte(0x30);
+pack_byte(0x35);
+pack_byte(0x30);
+pack_byte(0x30);
+pack_byte(0x30);
+/* PowerCard header */
+
+/* PowerCard Message id */
+//pack_byte(0x31);
+//pack_byte(0x32);
+//pack_byte(0x30);
+//pack_byte(0x30);
   SprintfMW(buf, "%04X", KTransBitmap[TX_DATA.b_trans].w_txmsg_id);
   pack_mem(buf, 4);
+/* PowerCard Message id */
+
   
-  /* bitmap */
-  memcpy(tx_bitmap, KTransBitmap[TX_DATA.b_trans].sb_txbitmap, 16);
+/* PowerCard Map */
+
+//pack_byte(0xF2);
+//pack_byte(0x34);
+//pack_byte(0x87);
+//pack_byte(0x41);
+//pack_byte(0x68);
+//pack_byte(0xE1);
+//pack_byte(0x9A);
+//pack_byte(0x03);
+//pack_byte(0x01);
+//pack_byte(0x00);
+//pack_byte(0x00);
+//pack_byte(0x00);
+//pack_byte(0x00);
+//pack_byte(0x00);
+//pack_byte(0x00);
+//pack_byte(0x00);
+
+memcpy(tx_bitmap, KTransBitmap[TX_DATA.b_trans].sb_txbitmap, 16);
   bitmap_ptr = get_pptr();
   if (tx_bitmap[0] & 0x80)
-    inc_pptr(16);
+   inc_pptr(16);
   else
     inc_pptr(8);
 
-  // Send PAN and expire date if TRK2 not available of ICC trans.
-  if ((TX_DATA.b_trans >= SALE_ICC) && (TX_DATA.b_trans <= AUTH_ICC)) {
-    if (INPUT.s_trk2buf.b_len == 0) {
-      tx_bitmap[0] |= 0x40;
-      tx_bitmap[1] |= 0x04;
-      tx_bitmap[4] &= ~0x20;
-    }
-  }
+/* PowerCard Map */
 
-  if (memcmp(&TX_DATA.s_dtg.b_year, "\x00\x00\x00\x00\x00\x00", 6) == 0)
-    ReadRTC(&TX_DATA.s_dtg);
+pack_byte(0x16);pack_byte(0x34);pack_byte(0x32);pack_byte(0x32);pack_byte(0x33);pack_byte(0x33);pack_byte(0x30);pack_byte(0x31);pack_byte(0x33);pack_byte(0x36);pack_byte(0x35);pack_byte(0x39);pack_byte(0x38);pack_byte(0x34);pack_byte(0x38);pack_byte(0x31);pack_byte(0x39);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x31);pack_byte(0x34);pack_byte(0x30);pack_byte(0x30);pack_byte(0x31);pack_byte(0x36);pack_byte(0x30);pack_byte(0x35);pack_byte(0x32);pack_byte(0x33);pack_byte(0x31);pack_byte(0x31);pack_byte(0x32);pack_byte(0x37);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x31);pack_byte(0x31);pack_byte(0x38);pack_byte(0x31);pack_byte(0x36);pack_byte(0x30);pack_byte(0x35);pack_byte(0x32);pack_byte(0x33);pack_byte(0x31);pack_byte(0x31);pack_byte(0x32);pack_byte(0x37);pack_byte(0x35);pack_byte(0x38);pack_byte(0x32);pack_byte(0x31);pack_byte(0x30);pack_byte(0x33);pack_byte(0x30);pack_byte(0x35);pack_byte(0x32);pack_byte(0x33);pack_byte(0x38);pack_byte(0x31);pack_byte(0x30);pack_byte(0x31);pack_byte(0x30);pack_byte(0x31);pack_byte(0x35);pack_byte(0x31);pack_byte(0x30);pack_byte(0x31);pack_byte(0x34);pack_byte(0x63);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x32);pack_byte(0x30);pack_byte(0x30);pack_byte(0x34);pack_byte(0x38);pack_byte(0x31);pack_byte(0x34);pack_byte(0x06);pack_byte(0x30);pack_byte(0x31);pack_byte(0x31);pack_byte(0x32);pack_byte(0x30);pack_byte(0x30);pack_byte(0x08);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x32);pack_byte(0x34);pack_byte(0x32);pack_byte(0x32);pack_byte(0x33);pack_byte(0x33);pack_byte(0x30);pack_byte(0x31);pack_byte(0x33);pack_byte(0x36);pack_byte(0x35);pack_byte(0x39);pack_byte(0x38);pack_byte(0x34);pack_byte(0x38);pack_byte(0x31);pack_byte(0x39);pack_byte(0x3D);pack_byte(0x32);pack_byte(0x31);pack_byte(0x30);pack_byte(0x33);pack_byte(0x32);pack_byte(0x32);pack_byte(0x36);pack_byte(0x31);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x39);pack_byte(0x32);pack_byte(0x34);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x31);pack_byte(0x31);pack_byte(0x38);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x32);pack_byte(0x38);pack_byte(0x31);pack_byte(0x37);pack_byte(0x34);pack_byte(0x39);pack_byte(0x37);pack_byte(0x39);pack_byte(0x31);pack_byte(0x32);pack_byte(0x37);pack_byte(0x30);pack_byte(0x37);pack_byte(0x32);pack_byte(0x38);pack_byte(0x30);pack_byte(0x30);pack_byte(0x37);pack_byte(0x20);pack_byte(0x20);pack_byte(0x20);pack_byte(0x20);pack_byte(0x20);pack_byte(0x11);pack_byte(0x31);pack_byte(0x32);pack_byte(0x33);pack_byte(0x34);pack_byte(0x35);pack_byte(0x36);pack_byte(0x37);pack_byte(0x38);pack_byte(0x45);pack_byte(0x47);pack_byte(0x59);pack_byte(0x00);pack_byte(0x38);pack_byte(0x50);pack_byte(0x31);pack_byte(0x30);pack_byte(0x30);pack_byte(0x33);pack_byte(0x32);pack_byte(0x41);pack_byte(0x35);pack_byte(0x35);pack_byte(0x34);pack_byte(0x41);pack_byte(0x39);pack_byte(0x36);pack_byte(0x34);pack_byte(0x35);pack_byte(0x39);pack_byte(0x45);pack_byte(0x33);pack_byte(0x36);pack_byte(0x38);pack_byte(0x42);pack_byte(0x46);pack_byte(0x36);pack_byte(0x30);pack_byte(0x42);pack_byte(0x39);pack_byte(0x32);pack_byte(0x37);pack_byte(0x45);pack_byte(0x39);pack_byte(0x46);pack_byte(0x34);pack_byte(0x41);pack_byte(0x44);pack_byte(0x31);pack_byte(0x34);pack_byte(0x45);pack_byte(0x39);pack_byte(0x38);pack_byte(0x31);pack_byte(0x38);pack_byte(0x2D);pack_byte(0x6B);pack_byte(0xA9);pack_byte(0x3C);pack_byte(0xE9);pack_byte(0xCF);pack_byte(0x18);pack_byte(0x45);pack_byte(0x09);pack_byte(0x30);pack_byte(0x31);pack_byte(0x30);pack_byte(0x31);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x01);pack_byte(0x40);pack_byte(0x5F);pack_byte(0x2A);pack_byte(0x02);pack_byte(0x08);pack_byte(0x18);pack_byte(0x82);pack_byte(0x02);pack_byte(0x3C);pack_byte(0x00);pack_byte(0x84);pack_byte(0x07);pack_byte(0xA0);pack_byte(0x00);pack_byte(0x00);pack_byte(0x00);pack_byte(0x03);pack_byte(0x10);pack_byte(0x10);pack_byte(0x95);pack_byte(0x05);pack_byte(0x08);pack_byte(0xA0);pack_byte(0x24);pack_byte(0x80);pack_byte(0x00);pack_byte(0x9A);pack_byte(0x03);pack_byte(0x16);pack_byte(0x05);pack_byte(0x23);pack_byte(0x9C);pack_byte(0x01);pack_byte(0x00);pack_byte(0x9F);pack_byte(0x02);pack_byte(0x06);pack_byte(0x00);pack_byte(0x00);pack_byte(0x00);pack_byte(0x00);pack_byte(0x14);pack_byte(0x00);pack_byte(0x9F);pack_byte(0x03);pack_byte(0x06);pack_byte(0x00);pack_byte(0x00);pack_byte(0x00);pack_byte(0x00);pack_byte(0x00);pack_byte(0x00);pack_byte(0x9F);pack_byte(0x09);pack_byte(0x02);pack_byte(0x00);pack_byte(0x8C);pack_byte(0x9F);pack_byte(0x10);pack_byte(0x07);pack_byte(0x06);pack_byte(0x01);pack_byte(0x0A);pack_byte(0x03);pack_byte(0xA0);pack_byte(0xE8);pack_byte(0x00);pack_byte(0x9F);pack_byte(0x1A);pack_byte(0x02);pack_byte(0x08);pack_byte(0x18);pack_byte(0x9F);pack_byte(0x1E);pack_byte(0x08);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x9F);pack_byte(0x26);pack_byte(0x08);pack_byte(0x9B);pack_byte(0x17);pack_byte(0x71);pack_byte(0xFB);pack_byte(0x41);pack_byte(0xD5);pack_byte(0xD7);pack_byte(0xA5);pack_byte(0x9F);pack_byte(0x27);pack_byte(0x01);pack_byte(0x80);pack_byte(0x9F);pack_byte(0x33);pack_byte(0x03);pack_byte(0xE0);pack_byte(0xF8);pack_byte(0xC8);pack_byte(0x9F);pack_byte(0x34);pack_byte(0x03);pack_byte(0x42);pack_byte(0x03);pack_byte(0x00);pack_byte(0x9F);pack_byte(0x35);pack_byte(0x01);pack_byte(0x22);pack_byte(0x9F);pack_byte(0x36);pack_byte(0x02);pack_byte(0x00);pack_byte(0x45);pack_byte(0x9F);pack_byte(0x37);pack_byte(0x04);pack_byte(0x9A);pack_byte(0x66);pack_byte(0x1B);pack_byte(0x9D);pack_byte(0x9F);pack_byte(0x41);pack_byte(0x04);pack_byte(0x00);pack_byte(0x00);pack_byte(0x00);pack_byte(0x01);pack_byte(0x9F);pack_byte(0x53);pack_byte(0x01);pack_byte(0x52);pack_byte(0x5F);pack_byte(0x34);pack_byte(0x01);pack_byte(0x00);pack_byte(0x00);pack_byte(0x25);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x00);pack_byte(0x00);pack_byte(0x00);pack_byte(0x00);pack_byte(0x00);pack_byte(0x00);pack_byte(0x00);pack_byte(0x00);pack_byte(0x00);pack_byte(0x00);
+	  
+ //  pack_mem("ISO0433211105000", 16);
+ //  
+ // /* PowerCard header */
+ //// pack_mem("ISO", 3);
+ // len_ptr = get_pptr();     // 4-byte length
+ // inc_pptr(16);
+ //// inc_pptr(4);
+ //// pack_byte('2');           // POS
+ //// SprintfMW(buf, "%02X%02X0", SOFT_VERSION, SOFT_SUBVERSION);   // SW Version
+ //// pack_mem(buf, 5);
+ //// pack_mem("000", 3);       // single message
+ // 
+ // /* msg type id */
+ // SprintfMW(buf, "%04X", KTransBitmap[TX_DATA.b_trans].w_txmsg_id);
+ // pack_mem(buf, 4);
+ // 
+ // /* bitmap */
+ // memcpy(tx_bitmap, KTransBitmap[TX_DATA.b_trans].sb_txbitmap, 16);
+ // bitmap_ptr = get_pptr();
+ // if (tx_bitmap[0] & 0x80)
+ //   inc_pptr(16);
+ // else
+ //   inc_pptr(8);
 
-  /* 02. primary account number */
-  if (tx_bitmap[0] & 0x40) {
-    var_i = (BYTE)fndb(TX_DATA.sb_pan, 0xff, 10);
-    if (var_i == 0xff)
-      var_i = 10;
-    var_j = var_i * 2;
-    if ((TX_DATA.sb_pan[var_i-1] & 0x0f) == 0x0f) {
-      var_j -= 1;
-      //if ((STIS_ACQ_TBL(0).sb_nii[0]*256+STIS_ACQ_TBL(0).sb_nii[1]) == 0x016)
-      //  TX_DATA.sb_pan[var_i - 1] &= 0xf0;
-    }
-    pack_byte((BYTE)bin2bcd(var_j));
-    split(buf, TX_DATA.sb_pan, var_i);
-    pack_mem(buf, var_j);                     // PAN in ascii format
-  }
+ // // Send PAN and expire date if TRK2 not available of ICC trans.
+ // if ((TX_DATA.b_trans >= SALE_ICC) && (TX_DATA.b_trans <= AUTH_ICC)) {
+ //   if (INPUT.s_trk2buf.b_len == 0) {
+ //     tx_bitmap[0] |= 0x40;
+ //     tx_bitmap[1] |= 0x04;
+ //     tx_bitmap[4] &= ~0x20;
+ //   }
+ // }
 
-  /* 03. processing code */
-  if (tx_bitmap[0] & 0x20) {
-    split_data(TX_DATA.sb_proc_code, 3);
-  }
+ // if (memcmp(&TX_DATA.s_dtg.b_year, "\x00\x00\x00\x00\x00\x00", 6) == 0)
+ //   ReadRTC(&TX_DATA.s_dtg);
 
-  /* 04. amount, transaction */
-  if (tx_bitmap[0] & 0x10) {
-    if (TX_DATA.b_trans != VOID)
-      dbin2bcd(tmp,TX_DATA.dd_amount);
-    else
-      memset(&tmp[4], 0, 6);
-    split_data(&tmp[4], 6);
-  }
+ // /* 02. primary account number */
+ // if (tx_bitmap[0] & 0x40) {
+ //   var_i = (BYTE)fndb(TX_DATA.sb_pan, 0xff, 10);
+ //   if (var_i == 0xff)
+ //     var_i = 10;
+ //   var_j = var_i * 2;
+ //   if ((TX_DATA.sb_pan[var_i-1] & 0x0f) == 0x0f) {
+ //     var_j -= 1;
+ //     //if ((STIS_ACQ_TBL(0).sb_nii[0]*256+STIS_ACQ_TBL(0).sb_nii[1]) == 0x016)
+ //     //  TX_DATA.sb_pan[var_i - 1] &= 0xf0;
+ //   }
+ //   pack_byte((BYTE)bin2bcd(var_j));
+ //   split(buf, TX_DATA.sb_pan, var_i);
+ //   pack_mem(buf, var_j);                     // PAN in ascii format
+ // }
 
-  /* 07. transmission date & time */
-  if (tx_bitmap[1] & 0x10) {
-    split_data(&TX_DATA.s_dtg.b_year, 5);
-  }
+ // /* 03. processing code */
+ // if (tx_bitmap[0] & 0x20) {
+ //   split_data(TX_DATA.sb_proc_code, 3);
+ // }
 
-  /* 11. systems trace audit number */
-  if (tx_bitmap[1] & 0x20) {
-    split_data(TX_DATA.sb_trace_no, 3);
-  }
+ // /* 04. amount, transaction */
+ // if (tx_bitmap[0] & 0x10) {
+ //   if (TX_DATA.b_trans != VOID)
+ //     dbin2bcd(tmp,TX_DATA.dd_amount);
+ //   else
+ //     memset(&tmp[4], 0, 6);
+ //   split_data(&tmp[4], 6);
+ // }
 
-  /* 12. local transaction date & time */
-  if (tx_bitmap[1] & 0x10) {
-    split_data(&TX_DATA.s_dtg.b_year, 6);
-  }
+ // /* 07. transmission date & time */
+ // if (tx_bitmap[1] & 0x10) {
+ //   split_data(&TX_DATA.s_dtg.b_year, 5);
+ // }
 
-  /* 14. expiry date */
-  if (tx_bitmap[1] & 0x04) {
-    split_data(TX_DATA.sb_exp_date, 2);
-  }
+ // /* 11. systems trace audit number */
+ // if (tx_bitmap[1] & 0x20) {
+ //   split_data(TX_DATA.sb_trace_no, 3);
+ // }
 
-  /* 17. capture date (MMDD) */
-  if (tx_bitmap[2] & 0x80) {
-    split_data(&TX_DATA.s_dtg.b_month, 2);
-  }
+ // /* 12. local transaction date & time */
+ // if (tx_bitmap[1] & 0x10) {
+ //   split_data(&TX_DATA.s_dtg.b_year, 6);
+ // }
 
-  /* 22. Entry mode */
-  if (tx_bitmap[2] & 0x04) {
-    pack_byte('8');       // manual / swipe / EMV
-    pack_byte('1');       // PIN authentication
-    pack_byte('0');       // no card capture
-    pack_byte('1');       // attended
-    pack_byte('0');       // cardholder present
-    pack_byte('1');       // card present
-    switch (TX_DATA.b_entry_mode) {
-      case MANUAL:
-      case MANUAL_4DBC:
-        pack_byte('1');
-        pack_byte('5');   // signature
-        break;
-      case SWIPE:
-      case SWIPE_4DBC:
-        pack_byte('2');
-        pack_byte('5');   // signature
-        break;
-      case FALLBACK:
-      case FALLBACK_4DBC:
-        pack_byte('8');
-        pack_byte('5');   // signature
-        break;
-      default :
-        pack_byte('5');   // chip reading
-        pack_byte('1');   // PIN verified
-        break;
-    }
-    pack_byte('0');       // cardholder auth entity
-    pack_byte('1');       // rewrite capability
-    pack_byte('4');       // display & printing
-    pack_byte('c');       // 12-digit PIN
-  }
+ // /* 14. expiry date */
+ // if (tx_bitmap[1] & 0x04) {
+ //   split_data(TX_DATA.sb_exp_date, 2);
+ // }
 
-  /* 23. pan sequence number */
-  if (tx_bitmap[2] & 0x02) {
-    pack_mem("001", 3);                       //testing only
-  }
+ // /* 17. capture date (MMDD) */
+ // if (tx_bitmap[2] & 0x80) {
+ //   split_data(&TX_DATA.s_dtg.b_month, 2);
+ // }
 
-  /* 24. function code */
-  if (tx_bitmap[2] & 0x01) {
-    if ((TX_DATA.b_trans == AUTH_SWIPE) || (TX_DATA.b_trans == AUTH_MANUAL))
-      pack_mem("101", 3);
-    else if (TX_DATA.b_trans == EDC_REV)
-      pack_mem("400", 3);
-    else if (TX_DATA.b_trans == SETTLEMENT)
-      pack_mem("880", 3);
-    else
-      pack_mem("200", 3);
-  }
+ // /* 22. Entry mode */
+ // if (tx_bitmap[2] & 0x04) {
+ //   pack_byte('8');       // manual / swipe / EMV
+ //   pack_byte('1');       // PIN authentication
+ //   pack_byte('0');       // no card capture
+ //   pack_byte('1');       // attended
+ //   pack_byte('0');       // cardholder present
+ //   pack_byte('1');       // card present
+ //   switch (TX_DATA.b_entry_mode) {
+ //     case MANUAL:
+ //     case MANUAL_4DBC:
+ //       pack_byte('1');
+ //       pack_byte('5');   // signature
+ //       break;
+ //     case SWIPE:
+ //     case SWIPE_4DBC:
+ //       pack_byte('2');
+ //       pack_byte('5');   // signature
+ //       break;
+ //     case FALLBACK:
+ //     case FALLBACK_4DBC:
+ //       pack_byte('8');
+ //       pack_byte('5');   // signature
+ //       break;
+ //     default :
+ //       pack_byte('5');   // chip reading
+ //       pack_byte('1');   // PIN verified
+ //       break;
+ //   }
+ //   pack_byte('0');       // cardholder auth entity
+ //   pack_byte('1');       // rewrite capability
+ //   pack_byte('4');       // display & printing
+ //   pack_byte('c');       // 12-digit PIN
+ // }
 
-  /* 26. merchant business code */
-  if (tx_bitmap[3] & 0x40) {
-    pack_mem("5814", 4);                      //testing only
-  }
+ // /* 23. pan sequence number */
+ // if (tx_bitmap[2] & 0x02) {
+ //   pack_mem("001", 3);                       //testing only
+ // }
 
-  /* 32. acquirer id */
-  if (tx_bitmap[3] & 0x01) {
-    pack_byte(0x06);
-    pack_mem("011200", 6);                    //testing only
-  }
+ // /* 24. function code */
+ // if (tx_bitmap[2] & 0x01) {
+ //   if ((TX_DATA.b_trans == AUTH_SWIPE) || (TX_DATA.b_trans == AUTH_MANUAL))
+ //     pack_mem("101", 3);
+ //   else if (TX_DATA.b_trans == EDC_REV)
+ //     pack_mem("400", 3);
+ //   else if (TX_DATA.b_trans == SETTLEMENT)
+ //     pack_mem("880", 3);
+ //   else
+ //     pack_mem("200", 3);
+ // }
 
-  /* 34. pan extension */
-  if (tx_bitmap[4] & 0x40) {
-    pack_byte(0x08);
-    pack_mem("00000000", 8);                  //testing only
-  }
+ // /* 26. merchant business code */
+ // if (tx_bitmap[3] & 0x40) {
+ //   pack_mem("5814", 4);                      //testing only
+ // }
 
-  /* 35. track 2 data */
-  if (tx_bitmap[4] & 0x20) {
-    if (INPUT.s_trk2buf.b_len) {
-      pack_byte((BYTE)bin2bcd(INPUT.s_trk2buf.b_len));
-      pack_mem(INPUT.s_trk2buf.sb_content, INPUT.s_trk2buf.b_len);
-    } else
-      tx_bitmap[4] &= ~0x20;
-  }
+ // /* 32. acquirer id */
+ // if (tx_bitmap[3] & 0x01) {
+ //   pack_byte(0x06);
+ //   pack_mem("011200", 6);                    //testing only
+ // }
 
-  /* 37. RRN */
-  if (tx_bitmap[4] & 0x08) {
-    if ((TX_DATA.b_trans == EDC_REV) && (TX_DATA.b_org_trans != VOID))
-      tx_bitmap[4] &= ~0x08; /* not applicable, clear BIT */
-    else {
-      if (memcmp(TX_DATA.sb_rrn, "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00", 12))
-        pack_mem(TX_DATA.sb_rrn, 12);
-      else
-        tx_bitmap[4] &= ~0x08; /* not applicable, clear BIT */
-    }
-  }
+ // /* 34. pan extension */
+ // if (tx_bitmap[4] & 0x40) {
+ //   pack_byte(0x08);
+ //   pack_mem("00000000", 8);                  //testing only
+ // }
 
-  /* 38. authorization code */
-  if (tx_bitmap[4] & 0x04) {
-    pack_mem(TX_DATA.sb_auth_code, 6);
-  }
-  
-  /* 41. terminal identification */
-  if (tx_bitmap[5] & 0x80) {
-    pack_mem(STIS_ACQ_TBL(0).sb_term_id, 8);
-  }
+ // /* 35. track 2 data */
+ // if (tx_bitmap[4] & 0x20) {
+ //   if (INPUT.s_trk2buf.b_len) {
+ //     pack_byte((BYTE)bin2bcd(INPUT.s_trk2buf.b_len));
+ //     pack_mem(INPUT.s_trk2buf.sb_content, INPUT.s_trk2buf.b_len);
+ //   } else
+ //     tx_bitmap[4] &= ~0x20;
+ // }
 
-  /* 42. card acceptor identification */
-  if (tx_bitmap[5] & 0x40) {
-    pack_mem(STIS_ACQ_TBL(0).sb_acceptor_id, 15);
-  }
+ // /* 37. RRN */
+ // if (tx_bitmap[4] & 0x08) {
+ //   if ((TX_DATA.b_trans == EDC_REV) && (TX_DATA.b_org_trans != VOID))
+ //     tx_bitmap[4] &= ~0x08; /* not applicable, clear BIT */
+ //   else {
+ //     if (memcmp(TX_DATA.sb_rrn, "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00", 12))
+ //       pack_mem(TX_DATA.sb_rrn, 12);
+ //     else
+ //       tx_bitmap[4] &= ~0x08; /* not applicable, clear BIT */
+ //   }
+ // }
 
-  /* 43. card acceptor name & address */
-  if (tx_bitmap[5] & 0x20) {
-    pack_byte((BYTE)bin2bcd(sizeof(STIS_TERM_CFG.sb_name_loc)));
-    pack_mem(STIS_TERM_CFG.sb_name_loc, sizeof(STIS_TERM_CFG.sb_name_loc));
-  }
-  
-  /* 44. additional resp. data */
-  if (tx_bitmap[5] & 0x10) { /* indicates under floor limit approval */
-    if (TX_DATA.b_trans == TRANS_UPLOAD) {
-      if ((TX_DATA.b_org_trans == REFUND) ||
-          (TX_DATA.b_org_trans == SALE_OFFLINE) ||
-          (TX_DATA.b_org_trans == SALE_COMPLETE) ||
-          (TX_DATA.b_org_trans == SALE_UNDER_LMT) ||
-          (TX_DATA.b_org_trans == ESALE_COMPLETE) ||
-          (TX_DATA.b_org_trans == ESALE_UNDER_LMT)
-         )
-        tx_bitmap[5] &= ~0x10; /* not applicable, clear bit */
-    }
-    else /* indicates under floor limit approval */
-      if ((TX_DATA.b_org_trans == SALE_UNDER_LMT) ||(TX_DATA.b_org_trans == ESALE_UNDER_LMT))
-        pack_str("\x02\x30\x33");
-      else
-        pack_str("\x02\x30\x30");
-  }
+ // /* 38. authorization code */
+ // if (tx_bitmap[4] & 0x04) {
+ //   pack_mem(TX_DATA.sb_auth_code, 6);
+ // }
+ // 
+ // /* 41. terminal identification */
+ // if (tx_bitmap[5] & 0x80) {
+ //   pack_mem(STIS_ACQ_TBL(0).sb_term_id, 8);
+ // }
 
-  /* 45. track 1 data */
-  if (tx_bitmap[5] & 0x08) {
-    // Send Track1 when available
-    if ((INPUT.s_trk1buf.b_len==0)||!Track1Enable())
-      tx_bitmap[5] &= ~0x08;
-    else {
-      pack_byte((BYTE)bin2bcd(INPUT.s_trk1buf.b_len));
-      split_data(INPUT.s_trk1buf.sb_content, INPUT.s_trk1buf.b_len);
-    }
-  }
+ // /* 42. card acceptor identification */
+ // if (tx_bitmap[5] & 0x40) {
+ //   pack_mem(STIS_ACQ_TBL(0).sb_acceptor_id, 15);
+ // }
 
-  /* 48. additional resp. data */
-  if (tx_bitmap[5] & 0x01) {
-    pack_mem("0038", 4);                                //Total length of TLVs
-    pack_mem("P10", 3);                                 //Tag P10 - PIN encryption key
-    pack_mem("032", 3);                                 //length of data
-    pack_mem("A554A96459E368BF60B927E9F4AD14E9", 32);   //testing only
-  }
+ // /* 43. card acceptor name & address */
+ // if (tx_bitmap[5] & 0x20) {
+ //   pack_byte((BYTE)bin2bcd(sizeof(STIS_TERM_CFG.sb_name_loc)));
+ //   pack_mem(STIS_TERM_CFG.sb_name_loc, sizeof(STIS_TERM_CFG.sb_name_loc));
+ // }
+ // 
+ // /* 44. additional resp. data */
+ // if (tx_bitmap[5] & 0x10) { /* indicates under floor limit approval */
+ //   if (TX_DATA.b_trans == TRANS_UPLOAD) {
+ //     if ((TX_DATA.b_org_trans == REFUND) ||
+ //         (TX_DATA.b_org_trans == SALE_OFFLINE) ||
+ //         (TX_DATA.b_org_trans == SALE_COMPLETE) ||
+ //         (TX_DATA.b_org_trans == SALE_UNDER_LMT) ||
+ //         (TX_DATA.b_org_trans == ESALE_COMPLETE) ||
+ //         (TX_DATA.b_org_trans == ESALE_UNDER_LMT)
+ //        )
+ //       tx_bitmap[5] &= ~0x10; /* not applicable, clear bit */
+ //   }
+ //   else /* indicates under floor limit approval */
+ //     if ((TX_DATA.b_org_trans == SALE_UNDER_LMT) ||(TX_DATA.b_org_trans == ESALE_UNDER_LMT))
+ //       pack_str("\x02\x30\x33");
+ //     else
+ //       pack_str("\x02\x30\x30");
+ // }
 
-  /* 49. transaction currency code */
-  if (tx_bitmap[6] & 0x80) {
-    pack_mem("818", 3);                       //testing only (EGP)
-  }
+ // /* 45. track 1 data */
+ // if (tx_bitmap[5] & 0x08) {
+ //   // Send Track1 when available
+ //   if ((INPUT.s_trk1buf.b_len==0)||!Track1Enable())
+ //     tx_bitmap[5] &= ~0x08;
+ //   else {
+ //     pack_byte((BYTE)bin2bcd(INPUT.s_trk1buf.b_len));
+ //     split_data(INPUT.s_trk1buf.sb_content, INPUT.s_trk1buf.b_len);
+ //   }
+ // }
 
-  /* 52. pin block */
-  if (tx_bitmap[6] & 0x10) {
-    if (memcmp(TX_DATA.sb_pin, "\x00\x00\x00\x00\x00\x00\x00\x00", 8))
-      pack_mem (TX_DATA.sb_pin, 8);
-    else
-      tx_bitmap[6] &= ~0x10; /* not applicable, clear BIT */
-  }
+ // /* 48. additional resp. data */
+ // if (tx_bitmap[5] & 0x01) {
+ //   pack_mem("0038", 4);                                //Total length of TLVs
+ //   pack_mem("P10", 3);                                 //Tag P10 - PIN encryption key
+ //   pack_mem("032", 3);                                 //length of data
+ //   pack_mem("A554A96459E368BF60B927E9F4AD14E9", 32);   //testing only
+ // }
 
-  /* 53. security data */
-  if (tx_bitmap[6] & 0x08) {
-    pack_byte(0x10);
-    pack_mem("0101000000", 10);               //testing only (encrypted by TPK, ANSI format)
-  }
+ // /* 49. transaction currency code */
+ // if (tx_bitmap[6] & 0x80) {
+ //   pack_mem("818", 3);                       //testing only (EGP)
+ // }
 
-  /* 54. additional amount */
-  if (tx_bitmap[6] & 0x04) {
-    if (TX_DATA.dd_tip !=0) {
-      pack_word(0x0020);
-      pack_mem("04", 2);                  // account type   //testing only
-      pack_mem("04", 2);                  // account type   //testing only
-      pack_mem("818", 3);                 // currency code  //testing only
-      pack_mem("C", 1);                   // credit         //testing only
-      dbin2bcd(tmp,TX_DATA.dd_tip);
-      split_data(&tmp[4],6);
-    }
-    else
-      tx_bitmap[6] &= ~0x04; /* no tip, clear BIT */
-  }
+ // /* 52. pin block */
+ // if (tx_bitmap[6] & 0x10) {
+ //   if (memcmp(TX_DATA.sb_pin, "\x00\x00\x00\x00\x00\x00\x00\x00", 8))
+ //     pack_mem (TX_DATA.sb_pin, 8);
+ //   else
+ //     tx_bitmap[6] &= ~0x10; /* not applicable, clear BIT */
+ // }
 
-  /* 55. EMV data */
-  if (tx_bitmap[6] & 0x02) {
-    // EMVEDC data higher priority
-    if (TX_DATA.s_icc_data.w_misc_len) {
-      pack_word(bin2bcd(TX_DATA.s_icc_data.w_misc_len));
-      pack_mem(TX_DATA.s_icc_data.sb_misc_content, TX_DATA.s_icc_data.w_misc_len);
-    }
-    else
-      if (Prompt4DBC() &&
-          (KTransBitmap[TX_DATA.b_trans].w_txmsg_id!=0x0220) &&
-          (KTransBitmap[TX_DATA.b_trans].w_txmsg_id!=0x0400) &&
-          (KTransBitmap[TX_DATA.b_trans].w_txmsg_id!=0x0320)) {
-        pack_word(0x0004);
-        pack_mem(INPUT.sb_amex_4DBC, 4);
-      }
-      else
-        tx_bitmap[6] &= ~0x02; // no 4DBC
-  }
+ // /* 53. security data */
+ // if (tx_bitmap[6] & 0x08) {
+ //   pack_byte(0x10);
+ //   pack_mem("0101000000", 10);               //testing only (encrypted by TPK, ANSI format)
+ // }
 
-  /* 60. reserved private */
-  if (tx_bitmap[7] & 0x10) {
-    if (TX_DATA.b_trans == SETTLEMENT) {
-      pack_word(0x0006); /* length */
-      split_data(STIS_ACQ_TBL(0).sb_curr_batch_no, 3);
-    }
-    else
-      if (TX_DATA.b_trans == TRANS_UPLOAD) {
-        pack_word(0x0022);
-        tmp [0] = (BYTE)(KTransBitmap[TX_DATA.b_org_trans].w_txmsg_id >> 8);
-        tmp [1] = (BYTE)(KTransBitmap[TX_DATA.b_org_trans].w_txmsg_id &0xF);
-        split_data(tmp, 2);
-        split_data(TX_DATA.sb_org_trace_no, 3);
-        pack_space(12);
-      }
-      else { /* adjust original amount */
-        pack_word(0x0012);
-        dbin2bcd(tmp,TX_DATA.dd_org_amount);
-        split_data(&tmp[4], 6);
-      }
-  }
+ // /* 54. additional amount */
+ // if (tx_bitmap[6] & 0x04) {
+ //   if (TX_DATA.dd_tip !=0) {
+ //     pack_word(0x0020);
+ //     pack_mem("04", 2);                  // account type   //testing only
+ //     pack_mem("04", 2);                  // account type   //testing only
+ //     pack_mem("818", 3);                 // currency code  //testing only
+ //     pack_mem("C", 1);                   // credit         //testing only
+ //     dbin2bcd(tmp,TX_DATA.dd_tip);
+ //     split_data(&tmp[4],6);
+ //   }
+ //   else
+ //     tx_bitmap[6] &= ~0x04; /* no tip, clear BIT */
+ // }
 
-  /* 61. private - product codes */
-  if (tx_bitmap[7] & 0x08) {
-    if (TX_DATA.sb_product[0] == 0xFF)
-      tx_bitmap[7] &= ~0x08; /* clear BIT */
-    else {
-      pack_word(0x0008); /* length */
-      for (var_i = 0; var_i != 4; var_i++) {
-        if (TX_DATA.sb_product[var_i] != 0xFF) {
-          APM_GetDescTbl(TX_DATA.sb_product[var_i], &prod);
-          pack_mem((BYTE *)&prod.sb_host_tx_code, 2);
-        }
-        else
-          pack_space(2);
-      }
-    }
-  }
+ // /* 55. EMV data */
+ // if (tx_bitmap[6] & 0x02) {
+ //   // EMVEDC data higher priority
+ //   if (TX_DATA.s_icc_data.w_misc_len) {
+ //     pack_word(bin2bcd(TX_DATA.s_icc_data.w_misc_len));
+ //     pack_mem(TX_DATA.s_icc_data.sb_misc_content, TX_DATA.s_icc_data.w_misc_len);
+ //   }
+ //   else
+ //     if (Prompt4DBC() &&
+ //         (KTransBitmap[TX_DATA.b_trans].w_txmsg_id!=0x0220) &&
+ //         (KTransBitmap[TX_DATA.b_trans].w_txmsg_id!=0x0400) &&
+ //         (KTransBitmap[TX_DATA.b_trans].w_txmsg_id!=0x0320)) {
+ //       pack_word(0x0004);
+ //       pack_mem(INPUT.sb_amex_4DBC, 4);
+ //     }
+ //     else
+ //       tx_bitmap[6] &= ~0x02; // no 4DBC
+ // }
 
-  /* 62. private - ROC number of financial/SOC number of settlement */
-  if (tx_bitmap[7] & 0x04) {
-    pack_word(0x0006); /* length */
-    split_data(TX_DATA.sb_roc_no, 3);
-  }
+ // /* 60. reserved private */
+ // if (tx_bitmap[7] & 0x10) {
+ //   if (TX_DATA.b_trans == SETTLEMENT) {
+ //     pack_word(0x0006); /* length */
+ //     split_data(STIS_ACQ_TBL(0).sb_curr_batch_no, 3);
+ //   }
+ //   else
+ //     if (TX_DATA.b_trans == TRANS_UPLOAD) {
+ //       pack_word(0x0022);
+ //       tmp [0] = (BYTE)(KTransBitmap[TX_DATA.b_org_trans].w_txmsg_id >> 8);
+ //       tmp [1] = (BYTE)(KTransBitmap[TX_DATA.b_org_trans].w_txmsg_id &0xF);
+ //       split_data(tmp, 2);
+ //       split_data(TX_DATA.sb_org_trace_no, 3);
+ //       pack_space(12);
+ //     }
+ //     else { /* adjust original amount */
+ //       pack_word(0x0012);
+ //       dbin2bcd(tmp,TX_DATA.dd_org_amount);
+ //       split_data(&tmp[4], 6);
+ //     }
+ // }
 
-  /* 63. versions */
-  if (tx_bitmap[7] & 0x02) {
-    pack_word(0x0025);
-    pack_nbyte('0', 25);                              //testing only
-  }
+ // /* 61. private - product codes */
+ // if (tx_bitmap[7] & 0x08) {
+ //   if (TX_DATA.sb_product[0] == 0xFF)
+ //     tx_bitmap[7] &= ~0x08; /* clear BIT */
+ //   else {
+ //     pack_word(0x0008); /* length */
+ //     for (var_i = 0; var_i != 4; var_i++) {
+ //       if (TX_DATA.sb_product[var_i] != 0xFF) {
+ //         APM_GetDescTbl(TX_DATA.sb_product[var_i], &prod);
+ //         pack_mem((BYTE *)&prod.sb_host_tx_code, 2);
+ //       }
+ //       else
+ //         pack_space(2);
+ //     }
+ //   }
+ // }
 
-  /* 64. MAC */
-  if (tx_bitmap[7] & 0x01) {
-    pack_mem("\x00\x00\x00\x00\x00\x00\x00\x00", 8);  //testing only
-  }
+ // /* 62. private - ROC number of financial/SOC number of settlement */
+ // if (tx_bitmap[7] & 0x04) {
+ //   pack_word(0x0006); /* length */
+ //   split_data(TX_DATA.sb_roc_no, 3);
+ // }
 
-  /* 72. Data Record */
-  if (tx_bitmap[8] & 0x01) {
-    if ((TX_DATA.b_trans == AUTH_SWIPE) || (TX_DATA.b_trans == AUTH_MANUAL)) {
-      pack_word(0x0040); /* length */
-      pack_mem("6013260019010000001259708402000000036575", 40);   //testing only
-    }
-  }
-  
-  SprintfMW(buf, "%04d", get_distance());
-  memcpy(len_ptr, buf, 4);
-  if (tx_bitmap[0] & 0x80)
-    memcpy(bitmap_ptr, tx_bitmap, 16);
-  else
-    memcpy(bitmap_ptr, tx_bitmap, 8);
-  PackTxBufLen(ExtraMsgLen());
+ // /* 63. versions */
+ // if (tx_bitmap[7] & 0x02) {
+ //   pack_word(0x0025);
+ //   pack_nbyte('0', 25);                              //testing only
+ // }
+
+ // /* 64. MAC */
+ // if (tx_bitmap[7] & 0x01) {
+ //   pack_mem("\x00\x00\x00\x00\x00\x00\x00\x00", 8);  //testing only
+ // }
+
+ // /* 72. Data Record */
+ // if (tx_bitmap[8] & 0x01) {
+ //   if ((TX_DATA.b_trans == AUTH_SWIPE) || (TX_DATA.b_trans == AUTH_MANUAL)) {
+ //     pack_word(0x0040); /* length */
+ //     pack_mem("6013260019010000001259708402000000036575", 40);   //testing only
+ //   }
+ // }
+ // 
+ // SprintfMW(buf, "%04d", get_distance());
+ // memcpy(len_ptr, buf, 4);
+ // if (tx_bitmap[0] & 0x80)
+ //   memcpy(bitmap_ptr, tx_bitmap, 16);
+ // else
+ //   memcpy(bitmap_ptr, tx_bitmap, 8);
+    PackTxBufLen(ExtraMsgLen());
   dbgHex("TxMsg", TX_BUF.sbContent, TX_BUF.wLen);         /* JJJ */
 }
 /******************************************************************/
