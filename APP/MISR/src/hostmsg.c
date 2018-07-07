@@ -656,7 +656,7 @@ BYTE CheckHostRsp(void)
   DWORD var_i;
   BYTE msg_id[4];
   BYTE buf[4];
-  BYTE amount[12];
+  BYTE words[12];
   BYTE bitmap[8];
   BYTE tmp;
   BOOLEAN more_msg, sync_datetime;
@@ -711,7 +711,7 @@ BYTE CheckHostRsp(void)
   /* 03. processing code */
   if (bitmap[0] & 0x20) {
 
-	  SprintfMW(buf, "%04X", TX_DATA.sb_proc_code);
+	//  SprintfMW(buf, "%04X", TX_DATA.sb_proc_code);
 
    /* if (memcmp(get_pptr(), buf, 6)!=0) {
       if ((TX_DATA.b_trans != SETTLEMENT)|| (memcmp(get_pptr(),KSetlPCode2,2)!=0)) {
@@ -729,12 +729,17 @@ BYTE CheckHostRsp(void)
     }*/
   }
 
+
+
+
   /* 04. amount */
   if (bitmap[0] & 0x10) {
-	  get_mem(RSP_DATA.dd_amount, 12);
-   // RSP_DATA.dd_amount = BcdBin8b(get_pptr(),6);
+
+	//  compress(RSP_DATA.dd_amount, get_pptr(), 6);
+    RSP_DATA.dd_amount = BcdBin8b(get_pptr(),6);
     inc_pptr(12);
   }
+
 
    /* 05. Settlement amount */
   if (bitmap[0] & 0x08) {
@@ -753,14 +758,16 @@ BYTE CheckHostRsp(void)
     inc_pptr(10);
   }
 
+   
+
   /* 11. check system trace no */
   if (bitmap[1] & 0x20) {
-    if (TX_DATA.b_trans != TRANS_UPLOAD) {
+   /* if (TX_DATA.b_trans != TRANS_UPLOAD) {
       if (!Match(TX_DATA.sb_trace_no, 6)) {
         RSP_DATA.w_rspcode = 'I'*256+'S';
         return TRANS_FAIL;
       }
-    } else
+    } else*/
       inc_pptr(6);
   }
 
@@ -778,7 +785,8 @@ BYTE CheckHostRsp(void)
 
   /* 14. expiry date */
   if (bitmap[1] & 0x04) {
-    get_mem(RSP_DATA.sb_exp_date, 4);
+	   compress(RSP_DATA.sb_exp_date, get_pptr(), 2);
+       inc_pptr(4);
   }
 
    /* 17. Capture date */
@@ -824,22 +832,31 @@ BYTE CheckHostRsp(void)
 
   /* 37. retrieval reference number */
   if (bitmap[4] & 0x08) {
+	//    compress(RSP_DATA.sb_rrn, get_pptr(), 6);
+    //   inc_pptr(12);
     get_mem(RSP_DATA.sb_rrn, 12);
   }
+
+
 
   /* 38. auth code */
   memset(RSP_DATA.sb_auth_code, ' ', 6);
   if (bitmap[4] & 0x04) {
+	//    compress(RSP_DATA.sb_auth_code, get_pptr(), 3);
+    //   inc_pptr(6);
     get_mem(RSP_DATA.sb_auth_code, 6);
   }
+
+    
 
   /* 39. 	Action code  */
   RSP_DATA.w_rspcode = '0'*256+'0'; // upload response does not have response code
   if (bitmap[4] & 0x02) {
   //  RSP_DATA.w_rspcode=get_word();
-	 get_mem(RSP_DATA.w_rspcode, 3);
-     printf("\x1b\xc0%02x: %c%c", RSP_DATA.w_rspcode, RSP_DATA.w_rspcode>>8, RSP_DATA.w_rspcode&0xFF); //!TT
-     Delay1Sec(3, 0);
+
+	 get_mem(words, 3);
+   //  printf("\x1b\xc0%02x: %c%c", RSP_DATA.w_rspcode, RSP_DATA.w_rspcode>>8, RSP_DATA.w_rspcode&0xFF); //!TT
+    // Delay1Sec(3, 0);
   }
 
   /* 41. 	Card acceptor device identification */
