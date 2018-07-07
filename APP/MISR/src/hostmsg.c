@@ -182,6 +182,8 @@ void PackHostMsg(void)
   struct DESC_TBL prod;
 
   TxBufSetup(ExtraMsgLen());
+
+ // len_ptr = get_pptr();     // 4-byte length
 /* PowerCard header */
 pack_byte(0x49);
 pack_byte(0x53);
@@ -640,8 +642,8 @@ memcpy(tx_bitmap, KTransBitmap[TX_DATA.b_trans].sb_txbitmap, 16);
     }
   }
  // 
-  SprintfMW(buf, "%04d", get_distance());
-  memcpy(len_ptr, buf, 4);
+//  SprintfMW(buf, "%04d", get_distance());
+//  memcpy(len_ptr, buf, 4);
   if (tx_bitmap[0] & 0x80)
     memcpy(bitmap_ptr, tx_bitmap, 16);
   else
@@ -671,7 +673,8 @@ memcpy(tx_bitmap, KTransBitmap[TX_DATA.b_trans].sb_txbitmap, 16);
 BYTE CheckHostRsp(void)
 {
   DWORD var_i;
-  WORD msg_id;
+  BYTE msg_id[4];
+  BYTE buf[4];
   BYTE bitmap[8];
   BYTE tmp;
   BOOLEAN more_msg, sync_datetime;
@@ -683,16 +686,53 @@ BYTE CheckHostRsp(void)
   dbgHex("RxMsg", RX_BUF.sbContent, RX_BUF.wLen);         /* JJJ */
   RxBufSetup(ExtraMsgLen());
   more_msg = sync_datetime = 0;
-  inc_pptr(5); // 5 BYTE TO MSGID
 
-  if ((msg_id=get_word()) == 0x0820)
+  inc_pptr(14); // 14 BYTE Header
+
+   msg_id[0]=get_byte();
+   msg_id[1]=get_byte();
+   msg_id[2]=get_byte();
+   msg_id[3]=get_byte();
+
+ if (msg_id[0] == 0x31 && msg_id[1] == 0x38 && msg_id[2] == 0x32 && msg_id[3] == 0x30)
     return 0xff; /* please wait message */
-  if ((KTransBitmap[TX_DATA.b_trans].w_txmsg_id + 0x10) != msg_id) {
-    RSP_DATA.w_rspcode = 'I'*256+'R';
+
+   SprintfMW(buf, "%04X", KTransBitmap[TX_DATA.b_trans].w_txmsg_id + 0x10);
+
+      printf("%02X:%02X:%02X:%02X", msg_id[0], msg_id[1], msg_id[2], msg_id[3]);
+	  APM_WaitKey(9000, 0);
+	  printf("%02X:%02X:%02X:%02X", buf[0], buf[1], buf[2], buf[3]);
+	  APM_WaitKey(9000, 0);
+
+
+	  if (memcmp(msg_id, buf, 4)!=0) {
+  RSP_DATA.w_rspcode = 'I'*256+'R';
     return TRANS_FAIL;
-  }
+	  }
+
+	   //if (msg_id[0] == 0x31 && msg_id[1] == 0x32 && msg_id[2] == 0x31 && msg_id[3] == 0x30)
+	   //{
+	   //
+	   //}else{
+	  
+	   //}
+
+	 
+
+  //if ((KTransBitmap[TX_DATA.b_trans].w_txmsg_id + 0x10) != msg_id) {
+  // 
+  //}
 
   get_mem(bitmap, 8);
+
+
+   msg_id[0]=get_byte();
+   msg_id[1]=get_byte();
+   msg_id[2]=get_byte();
+   msg_id[3]=get_byte();
+
+     printf("%02X:%02X:%02X:%02X", msg_id[0], msg_id[1], msg_id[2], msg_id[3]);
+	  APM_WaitKey(9000, 0);
 
   /* 02. pan */
   if (bitmap[0] & 0x40) {
@@ -703,6 +743,9 @@ BYTE CheckHostRsp(void)
 
   /* 03. processing code */
   if (bitmap[0] & 0x20) {
+    get_mem(&TX_DATA.sb_proc_code, 3);
+
+
     if (memcmp(get_pptr(), TX_DATA.sb_proc_code, 2)!=0) {
       if ((TX_DATA.b_trans != SETTLEMENT)|| (memcmp(get_pptr(),KSetlPCode2,2)!=0)) {
         RSP_DATA.w_rspcode = 'I'*256+'P';
