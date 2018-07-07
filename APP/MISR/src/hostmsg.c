@@ -281,25 +281,6 @@ memcpy(tx_bitmap, KTransBitmap[TX_DATA.b_trans].sb_txbitmap, 16);
 
   /* 02. primary account number */
 
-// pack_byte(0x16); //length
-//pack_byte(0x34);
-//pack_byte(0x32);
-//pack_byte(0x32);
-//pack_byte(0x33);
-//pack_byte(0x33);
-//pack_byte(0x30);
-//pack_byte(0x31);
-//pack_byte(0x33);
-//pack_byte(0x36);
-//pack_byte(0x35);
-//pack_byte(0x39);
-//pack_byte(0x38);
-//pack_byte(0x34);
-//pack_byte(0x38);
-//pack_byte(0x31);
-//pack_byte(0x39);
-
-
   if (tx_bitmap[0] & 0x40) {
     var_i = (BYTE)fndb(TX_DATA.sb_pan, 0xff, 10);
     if (var_i == 0xff)
@@ -333,7 +314,7 @@ memcpy(tx_bitmap, KTransBitmap[TX_DATA.b_trans].sb_txbitmap, 16);
   }
 
   /* 07. transmission date & time */
-  if (tx_bitmap[1] & 0x10) {
+  if (tx_bitmap[1] & 0x02) {
   //pack_byte(0x31);
   //pack_byte(0x36);
   //pack_byte(0x30);
@@ -464,11 +445,11 @@ memcpy(tx_bitmap, KTransBitmap[TX_DATA.b_trans].sb_txbitmap, 16);
     }
   }
 
- // /* 38. authorization code */
- // if (tx_bitmap[4] & 0x04) {
- //   pack_mem(TX_DATA.sb_auth_code, 6);
- // }
- // 
+  /* 38. authorization code */
+  if (tx_bitmap[4] & 0x04) {
+    pack_mem(TX_DATA.sb_auth_code, 6);
+  }
+
   /* 41. terminal identification */
   if (tx_bitmap[5] & 0x80) {
     pack_mem(STIS_ACQ_TBL(0).sb_term_id, 8);
@@ -675,9 +656,12 @@ BYTE CheckHostRsp(void)
   DWORD var_i;
   BYTE msg_id[4];
   BYTE buf[4];
+  BYTE amount[12];
   BYTE bitmap[8];
   BYTE tmp;
   BOOLEAN more_msg, sync_datetime;
+
+  // to get in binary mao & with {80,40,20,10,08,04,02,01}
 
   Disp2x16Msg(GetConstMsg(EDC_CO_PROCESSING), MW_LINE5, MW_CENTER|MW_BIGFONT);
   if (TrainingModeON())
@@ -699,10 +683,10 @@ BYTE CheckHostRsp(void)
 
    SprintfMW(buf, "%04X", KTransBitmap[TX_DATA.b_trans].w_txmsg_id + 0x10);
 
-      printf("%02X:%02X:%02X:%02X", msg_id[0], msg_id[1], msg_id[2], msg_id[3]);
-	  APM_WaitKey(9000, 0);
-	  printf("%02X:%02X:%02X:%02X", buf[0], buf[1], buf[2], buf[3]);
-	  APM_WaitKey(9000, 0);
+   //   printf("%02X:%02X:%02X:%02X", msg_id[0], msg_id[1], msg_id[2], msg_id[3]);
+	//  APM_WaitKey(9000, 0);
+	//  printf("%02X:%02X:%02X:%02X", buf[0], buf[1], buf[2], buf[3]);
+	//  APM_WaitKey(9000, 0);
 
 
 	  if (memcmp(msg_id, buf, 4)!=0) {
@@ -710,29 +694,12 @@ BYTE CheckHostRsp(void)
     return TRANS_FAIL;
 	  }
 
-	   //if (msg_id[0] == 0x31 && msg_id[1] == 0x32 && msg_id[2] == 0x31 && msg_id[3] == 0x30)
-	   //{
-	   //
-	   //}else{
-	  
-	   //}
 
-	 
-
-  //if ((KTransBitmap[TX_DATA.b_trans].w_txmsg_id + 0x10) != msg_id) {
-  // 
-  //}
 
   get_mem(bitmap, 8);
 
 
-   msg_id[0]=get_byte();
-   msg_id[1]=get_byte();
-   msg_id[2]=get_byte();
-   msg_id[3]=get_byte();
 
-     printf("%02X:%02X:%02X:%02X", msg_id[0], msg_id[1], msg_id[2], msg_id[3]);
-	  APM_WaitKey(9000, 0);
 
   /* 02. pan */
   if (bitmap[0] & 0x40) {
@@ -743,46 +710,64 @@ BYTE CheckHostRsp(void)
 
   /* 03. processing code */
   if (bitmap[0] & 0x20) {
-    get_mem(&TX_DATA.sb_proc_code, 3);
 
+	  SprintfMW(buf, "%04X", TX_DATA.sb_proc_code);
 
-    if (memcmp(get_pptr(), TX_DATA.sb_proc_code, 2)!=0) {
+   /* if (memcmp(get_pptr(), buf, 6)!=0) {
       if ((TX_DATA.b_trans != SETTLEMENT)|| (memcmp(get_pptr(),KSetlPCode2,2)!=0)) {
         RSP_DATA.w_rspcode = 'I'*256+'P';
         return TRANS_FAIL;
       }
-    }
-    inc_pptr(2);
-    tmp = get_byte();
+    }*/
+    inc_pptr(6);
+   /* tmp = get_byte();
     if ((TX_DATA.b_trans == TRANS_UPLOAD) && (tmp == 0x01))
       more_msg = 1;
     else if ((tmp != 0x01) && tmp) {
       RSP_DATA.w_rspcode = 'I'*256+'P';
       return TRANS_FAIL;
-    }
+    }*/
   }
 
   /* 04. amount */
   if (bitmap[0] & 0x10) {
-    RSP_DATA.dd_amount = BcdBin8b(get_pptr(),6);
-    inc_pptr(6);
+	  get_mem(RSP_DATA.dd_amount, 12);
+   // RSP_DATA.dd_amount = BcdBin8b(get_pptr(),6);
+    inc_pptr(12);
+  }
+
+   /* 05. Settlement amount */
+  if (bitmap[0] & 0x08) {
+    //RSP_DATA.dd_amount = BcdBin8b(get_pptr(),6);
+    inc_pptr(12);
+  }
+     /* 06. unknown */
+  if (bitmap[0] & 0x04) {
+    //RSP_DATA.dd_amount = BcdBin8b(get_pptr(),6);
+    inc_pptr(12);
+  }
+
+     /* 07. Transmission date and time */
+  if (bitmap[0] & 0x02) {
+    //RSP_DATA.dd_amount = BcdBin8b(get_pptr(),6);
+    inc_pptr(10);
   }
 
   /* 11. check system trace no */
   if (bitmap[1] & 0x20) {
     if (TX_DATA.b_trans != TRANS_UPLOAD) {
-      if (!Match(TX_DATA.sb_trace_no, 3)) {
+      if (!Match(TX_DATA.sb_trace_no, 6)) {
         RSP_DATA.w_rspcode = 'I'*256+'S';
         return TRANS_FAIL;
       }
     } else
-      inc_pptr(3);
+      inc_pptr(6);
   }
 
   /* 12. trans time */
   if (bitmap[1] & 0x10) {
     sync_datetime |= 0x10;
-    get_mem(&RSP_DATA.s_dtg.b_hour, 3);
+    get_mem(&RSP_DATA.s_dtg.b_hour, 12);
   }
 
   /* 13. trans date */
@@ -793,17 +778,48 @@ BYTE CheckHostRsp(void)
 
   /* 14. expiry date */
   if (bitmap[1] & 0x04) {
-    get_mem(RSP_DATA.sb_exp_date, 2);
+    get_mem(RSP_DATA.sb_exp_date, 4);
   }
 
+   /* 17. Capture date */
+  if (bitmap[2] & 0x80) {
+    inc_pptr(4);
+  }
+   /* 18. unknown */
+  if (bitmap[2] & 0x40) {
+   inc_pptr(4);
+  }
+   /* 22. POS Entry mode */
+  if (bitmap[2] & 0x04) {
+    inc_pptr(12);
+  }
+   /* 23. Pan Sequence Number */
+  if (bitmap[2] & 0x02) {
+    inc_pptr(3);
+  }
   /* 24. bypass netword id */
   if (bitmap[2] & 0x01) {
-    inc_pptr(2);
+    inc_pptr(3);
   }
 
-  /* 25. pos condition code */
+  /* 25. Message reason code */
   if (bitmap[3] & 0x80) {
-    inc_pptr(1);
+    inc_pptr(4);
+  }
+
+   /* 26. Merchant business code */
+  if (bitmap[3] & 0x40) {
+    inc_pptr(4);
+  }
+
+   /* 32.Acquiring institution identification code */
+  if (bitmap[3] & 0x01) {
+    inc_pptr(6);
+  }
+
+   /* 35. 	Track 2 data */
+  if (bitmap[4] & 0x20) {
+    inc_pptr(3);
   }
 
   /* 37. retrieval reference number */
@@ -817,26 +833,69 @@ BYTE CheckHostRsp(void)
     get_mem(RSP_DATA.sb_auth_code, 6);
   }
 
-  /* 39. response code  */
+  /* 39. 	Action code  */
   RSP_DATA.w_rspcode = '0'*256+'0'; // upload response does not have response code
   if (bitmap[4] & 0x02) {
-    RSP_DATA.w_rspcode=get_word();
-//     printf("\x1b\xc0%02x: %c%c", RSP_DATA.w_rspcode, RSP_DATA.w_rspcode>>8, RSP_DATA.w_rspcode&0xFF); //!TT
-//     Delay1Sec(3, 0);
+  //  RSP_DATA.w_rspcode=get_word();
+	 get_mem(RSP_DATA.w_rspcode, 3);
+     printf("\x1b\xc0%02x: %c%c", RSP_DATA.w_rspcode, RSP_DATA.w_rspcode>>8, RSP_DATA.w_rspcode&0xFF); //!TT
+     Delay1Sec(3, 0);
   }
 
-  /* 41. term id */
+  /* 41. 	Card acceptor device identification */
   if (bitmap[5] & 0x80) {
-    if (!Match(STIS_ACQ_TBL(0).sb_term_id, 8)) {
-      RSP_DATA.w_rspcode = 'I'*256+'T';
-      return TRANS_FAIL;
-    }
+    //if (!Match(STIS_ACQ_TBL(0).sb_term_id, 8)) {
+    //  RSP_DATA.w_rspcode = 'I'*256+'T';
+    //  return TRANS_FAIL;
+    //}
+
+	 inc_pptr(15);
   }
+
+
+ /* 42.Card acceptor identification */
+  if (bitmap[5] & 0x40) {
+	 inc_pptr(15);
+  }
+
+ 
+   /* 43.	Card acceptor name and address */
+  if (bitmap[5] & 0x20) {
+	 inc_pptr(15);
+  }
+
+   /* 48.	Provite Additional Data */
+  if (bitmap[5] & 0x01) {
+	 inc_pptr(75);
+  }
+
+   /* 49.	Transaction currency code */
+  if (bitmap[6] & 0x80) {
+	 inc_pptr(3);
+  }
+
+   /* 50 .Settlement currency code */
+  if (bitmap[6] & 0x40) {
+	 inc_pptr(3);
+  }
+
+    /* 52 .	Pin Data */
+  if (bitmap[6] & 0x10) {
+	 inc_pptr(3);
+  }
+
+    /* 53 .	Security data*/
+  if (bitmap[6] & 0x08) {
+	    var_i = bcd2bin(get_byte());
+	 inc_pptr(((var_i+1)/2)); //confirm lenght
+  }
+
 
   /* 54. additional amount */
   RSP_DATA.dd_tip=0;
   if (bitmap[6] & 0x04) {
-    RSP_DATA.dd_tip = BcdBin8b(get_pptr(),(BYTE)(bcd2bin(get_word())/2));
+	  var_i = bcd2bin(get_word());
+	  get_mem(RSP_DATA.dd_tip, ((var_i+1)/2));
   }
 
   /* 55. EMV relative data */
@@ -860,7 +919,7 @@ BYTE CheckHostRsp(void)
   }
 
   /* 63. private field */
-  if ((bitmap[7] & 0x02) != 0) {
+  if (bitmap[7] & 0x02) {
     var_i = bcd2bin(get_word());
     RSP_DATA.text[0] = (BYTE)((var_i > 69) ? 69 : var_i);
     get_mem(&RSP_DATA.text[1], RSP_DATA.text[0]);
