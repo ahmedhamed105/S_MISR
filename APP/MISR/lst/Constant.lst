@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
+=======
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 1
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
 
 
    1              		.syntax unified
@@ -58,7 +62,11 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
   29:src/Constant.c **** // |              Pointer : Leading p, (pb = pointer of byte, etc)            |
   30:src/Constant.c **** // ============================================================================
   31:src/Constant.c **** //
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 2
+=======
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 2
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
 
 
   32:src/Constant.c **** //  Date          Who         Action
@@ -87,31 +95,32 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
   55:src/Constant.c ****   {0x1200, {0x72, 0x34, 0x85, 0x41, 0x48, 0xE0, 0x88, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
   56:src/Constant.c ****    0x00, 0x00,  SALE_MANUAL, 0x1, 0x00
   57:src/Constant.c ****   },
-  58:src/Constant.c **** //online refund  F2 34 87 41 68 E1 9A 03 01
-  59:src/Constant.c ****   {0x1200, {0xF2, 0x34, 0x87, 0x41, 0x68, 0xE1, 0x9A, 0x03, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
+  58:src/Constant.c **** 
+  59:src/Constant.c ****   {0x1200, {0x72, 0x34, 0x85, 0x41, 0x68, 0xE0, 0x88, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
   60:src/Constant.c ****    0x20, 0x00, ONL_REFUND_SW, 0x0, 0x00
   61:src/Constant.c ****   },
   62:src/Constant.c **** 
-  63:src/Constant.c ****   {0x1200, {0xF2, 0x34, 0x87, 0x41, 0x68, 0xE1, 0x9A, 0x03, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
+  63:src/Constant.c ****   {0x1200, {0x72, 0x34, 0x85, 0x41, 0x48, 0xE0, 0x88, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
   64:src/Constant.c ****    0x20, 0x00, ONL_REFUND_MNL, 0x0, 0x00
   65:src/Constant.c ****   },
   66:src/Constant.c **** 
-  67:src/Constant.c ****   {0x1220, {0xF2, 0x34, 0x87, 0x41, 0x68, 0xE1, 0x9A, 0x03, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
+  67:src/Constant.c ****   {0x1220, {0x72, 0x34, 0x85, 0x41, 0x6C, 0xE0, 0x88, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
   68:src/Constant.c ****    0x20, 0x00, REFUND, 0x0, 0x80
   69:src/Constant.c ****   },
   70:src/Constant.c **** 
-  71:src/Constant.c ****   {0x1220, {0xF2, 0x34, 0x87, 0x41, 0x68, 0xE1, 0x9A, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
+  71:src/Constant.c ****   {0x1220, {0x72, 0x34, 0x85, 0x41, 0x6C, 0xE0, 0x88, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
   72:src/Constant.c ****    0x00, 0x00, SALE_OFFLINE, 0x1, 0x80
   73:src/Constant.c ****   },
   74:src/Constant.c **** 
-  75:src/Constant.c ****   {0x1220, {0xF2, 0x34, 0x87, 0x41, 0x68, 0xE1, 0x9A, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
+  75:src/Constant.c ****   {0x1220, {0x72, 0x34, 0x85, 0x41, 0x6C, 0xE0, 0x88, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
   76:src/Constant.c ****    0x00, 0x06, SALE_COMPLETE, 0x1, 0x80
   77:src/Constant.c ****   },
   78:src/Constant.c **** 
-  79:src/Constant.c ****   {0x1220, {0xF2, 0x34, 0x87, 0x41, 0x68, 0xE1, 0x9A, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
+  79:src/Constant.c ****   {0x1220, {0x72, 0x34, 0x85, 0x41, 0x6C, 0xE0, 0x88, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
   80:src/Constant.c ****    0x00, 0x00, SALE_UNDER_LMT, 0x1, 0x80
   81:src/Constant.c ****   },
   82:src/Constant.c **** 
+<<<<<<< HEAD
   83:src/Constant.c ****   //FE 36 81 81 0E C1 EB 02
   84:src/Constant.c **** 
   85:src/Constant.c ****   {0x1420, {0xFE, 0x36, 0x81, 0x0E, 0xC1, 0xEB, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
@@ -205,20 +214,113 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  167:src/Constant.c **** BOOLEAN SaleType(BYTE aTrans)
  168:src/Constant.c **** {
   27              		.loc 1 168 0
+=======
+  83:src/Constant.c ****   {0x1420, {0x72, 0x34, 0x85, 0x41, 0x6C, 0xE1, 0x9E, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
+  84:src/Constant.c ****    0x02, 0x00, VOID, 0x0, 0x00
+  85:src/Constant.c ****   },
+  86:src/Constant.c **** 
+  87:src/Constant.c ****   {0x1220, {0x70, 0x3C, 0x05, 0x80, 0x0C, 0xC0, 0x04, 0x0C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
+  88:src/Constant.c ****    0x02, 0x00, ADJUST, 0x0, 0x00
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 3
+
+
+  89:src/Constant.c ****   },
+  90:src/Constant.c **** 
+  91:src/Constant.c ****   {0x1304, {0x70, 0x3C, 0x05, 0x80, 0x0C, 0xC0, 0x04, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
+  92:src/Constant.c ****    0x00, 0x00, TRANS_UPLOAD, 0x0,  0x00
+  93:src/Constant.c ****   },
+  94:src/Constant.c **** 
+  95:src/Constant.c ****   {0x1804, {0x20, 0x20, 0x01, 0x00, 0x00, 0xC0, 0x00, 0x16, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
+  96:src/Constant.c ****    0x92, 0x00, SETTLEMENT, 0x0, 0x00
+  97:src/Constant.c ****   },
+  98:src/Constant.c **** 
+  99:src/Constant.c ****   {0x1420, {0x72, 0x34, 0x85, 0x41, 0x6C, 0xE1, 0x9E, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
+ 100:src/Constant.c ****    0x00, 0x00, EDC_REV, 0x0, 0x00
+ 101:src/Constant.c ****   },
+ 102:src/Constant.c **** 
+ 103:src/Constant.c ****   {0x1200, {0xF2, 0x34, 0x87, 0x41, 0x68, 0xE1, 0x9A, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
+ 104:src/Constant.c ****    0x00, 0x00, SALE_ICC, 0x1, 0x00
+ 105:src/Constant.c ****   },
+ 106:src/Constant.c **** 
+ 107:src/Constant.c ****   {0x1100, {0x72, 0x34, 0x87, 0x41, 0x68, 0xE1, 0x9A, 0x03, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
+ 108:src/Constant.c ****    0x00, 0x00, AUTH_ICC, 0x1, 0x00
+ 109:src/Constant.c ****   },
+ 110:src/Constant.c **** 
+ 111:src/Constant.c ****   {0x1220, {0x72, 0x34, 0x85, 0x41, 0x6C, 0xE0, 0x8E, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
+ 112:src/Constant.c ****    0x00, 0x00, ESALE_UNDER_LMT, 0x1, 0x80
+ 113:src/Constant.c ****   },
+ 114:src/Constant.c **** 
+ 115:src/Constant.c ****   {0x1220, {0x72, 0x34, 0x85, 0x41, 0x6C, 0xE0, 0x8E, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
+ 116:src/Constant.c ****    0x00, 0x06, ESALE_COMPLETE, 0x1, 0x80
+ 117:src/Constant.c ****   },
+ 118:src/Constant.c **** 
+ 119:src/Constant.c ****   {0x1200, {0x72, 0x34, 0x87, 0x41, 0x68, 0xE1, 0x9A, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
+ 120:src/Constant.c ****    0x00, 0x00, SALE_CTL, 0x1, 0x00
+ 121:src/Constant.c ****   },
+ 122:src/Constant.c **** 
+ 123:src/Constant.c ****   {0x0800, {0x20, 0x20, 0x01, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
+ 124:src/Constant.c ****    0x99, 0x00, TEST_MSG, 0x00, 0x00
+ 125:src/Constant.c ****   },
+ 126:src/Constant.c **** };
+ 127:src/Constant.c **** 
+ 128:src/Constant.c **** const BYTE KSetlPCode2[3] = {0x96,0,0};
+ 129:src/Constant.c **** 
+ 130:src/Constant.c **** const BYTE KTransHeader[] = {
+ 131:src/Constant.c ****   EDC_CN_AUTH              ,   //0
+ 132:src/Constant.c ****   EDC_CN_AUTH              ,   //1
+ 133:src/Constant.c ****   EDC_CN_SALE              ,   //2
+ 134:src/Constant.c ****   EDC_CN_SALE              ,   //3
+ 135:src/Constant.c ****   EDC_CN_REFUND            ,   //4
+ 136:src/Constant.c ****   EDC_CN_REFUND            ,   //5
+ 137:src/Constant.c ****   EDC_CN_REFUND            ,   //6
+ 138:src/Constant.c ****   EDC_CN_OFFLINE           ,   //7
+ 139:src/Constant.c ****   EDC_CN_SALE_COMP         ,   //8
+ 140:src/Constant.c ****   EDC_CN_SALE              ,   //9
+ 141:src/Constant.c ****   EDC_CN_VOID              ,   //10
+ 142:src/Constant.c ****   EDC_CN_ADJUST            ,   //11
+ 143:src/Constant.c ****   EDC_CN_UPLOAD            ,   //12
+ 144:src/Constant.c ****   EDC_CN_SETTLE            ,   //13
+ 145:src/Constant.c ****   EDC_CN_REVERSAL          ,   //14
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 4
+
+
+ 146:src/Constant.c ****   EDC_CN_SALE              ,   //15
+ 147:src/Constant.c ****   EDC_CN_AUTH              ,   //16
+ 148:src/Constant.c ****   EDC_CN_REFUND            ,   //17
+ 149:src/Constant.c ****   EDC_CN_SALE              ,   //18
+ 150:src/Constant.c ****   EDC_CN_SALE_COMP         ,   //19
+ 151:src/Constant.c ****   EDC_CN_SALE              ,   //20
+ 152:src/Constant.c ****   EDC_CN_AUTH              ,   //21
+ 153:src/Constant.c ****   EDC_CN_REFUND            ,   //22
+ 154:src/Constant.c ****   EDC_CN_TEST_MSG          ,   //23
+ 155:src/Constant.c **** };
+ 156:src/Constant.c **** 
+ 157:src/Constant.c **** //*****************************************************************************
+ 158:src/Constant.c **** //  Function        : SaleType
+ 159:src/Constant.c **** //  Description     : Return TRUE is transaction is define as sale type.
+ 160:src/Constant.c **** //  Input           : trans;  // transaction id.
+ 161:src/Constant.c **** //  Return          : TRUE/FALSE;
+ 162:src/Constant.c **** //  Note            : N/A
+ 163:src/Constant.c **** //  Globals Changed : N/A
+ 164:src/Constant.c **** //*****************************************************************************
+ 165:src/Constant.c **** BOOLEAN SaleType(BYTE aTrans)
+ 166:src/Constant.c **** {
+  27              		.loc 1 166 0
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
   28              		.cfi_startproc
   29              		@ args = 0, pretend = 0, frame = 0
   30              		@ frame_needed = 0, uses_anonymous_args = 0
   31              		@ link register save eliminated.
   32              	.LVL0:
- 169:src/Constant.c ****   return (KTransBitmap[aTrans].b_sale_flag != 0);
-  33              		.loc 1 169 0
+ 167:src/Constant.c ****   return (KTransBitmap[aTrans].b_sale_flag != 0);
+  33              		.loc 1 167 0
   34 0000 1823     		movs	r3, #24
   35 0002 044A     		ldr	r2, .L2
   36 0004 03FB0020 		mla	r0, r3, r0, r2
   37              	.LVL1:
   38 0008 407D     		ldrb	r0, [r0, #21]	@ zero_extendqisi2
- 170:src/Constant.c **** }
-  39              		.loc 1 170 0
+ 168:src/Constant.c **** }
+  39              		.loc 1 168 0
   40 000a 0030     		adds	r0, r0, #0
   41 000c 18BF     		it	ne
   42 000e 0120     		movne	r0, #1
@@ -238,11 +340,17 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
   56              		.set	.LANCHOR0,. + 0
   57              		.type	KTransBitmap, %object
   58              		.size	KTransBitmap, 576
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 5
 
 
+=======
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
   59              	KTransBitmap:
   60 0000 0011     		.short	4352
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 5
+
+
   61 0002 F2       		.byte	-14
   62 0003 34       		.byte	52
   63 0004 85       		.byte	-123
@@ -298,11 +406,17 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  113 0038 88       		.byte	-120
  114 0039 03       		.byte	3
  115 003a 00       		.byte	0
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 6
 
 
+=======
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
  116 003b 00       		.byte	0
  117 003c 00       		.byte	0
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 6
+
+
  118 003d 00       		.byte	0
  119 003e 00       		.byte	0
  120 003f 00       		.byte	0
@@ -338,15 +452,15 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  150 005e 00       		.byte	0
  151 005f 00       		.space	1
  152 0060 0012     		.short	4608
- 153 0062 F2       		.byte	-14
+ 153 0062 72       		.byte	114
  154 0063 34       		.byte	52
- 155 0064 87       		.byte	-121
+ 155 0064 85       		.byte	-123
  156 0065 41       		.byte	65
  157 0066 68       		.byte	104
- 158 0067 E1       		.byte	-31
- 159 0068 9A       		.byte	-102
+ 158 0067 E0       		.byte	-32
+ 159 0068 88       		.byte	-120
  160 0069 03       		.byte	3
- 161 006a 01       		.byte	1
+ 161 006a 00       		.byte	0
  162 006b 00       		.byte	0
  163 006c 00       		.byte	0
  164 006d 00       		.byte	0
@@ -358,21 +472,27 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  170 0073 00       		.byte	0
  171 0074 04       		.byte	4
  172 0075 00       		.byte	0
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 7
 
 
+=======
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
  173 0076 00       		.byte	0
  174 0077 00       		.space	1
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 7
+
+
  175 0078 0012     		.short	4608
- 176 007a F2       		.byte	-14
+ 176 007a 72       		.byte	114
  177 007b 34       		.byte	52
- 178 007c 87       		.byte	-121
+ 178 007c 85       		.byte	-123
  179 007d 41       		.byte	65
- 180 007e 68       		.byte	104
- 181 007f E1       		.byte	-31
- 182 0080 9A       		.byte	-102
+ 180 007e 48       		.byte	72
+ 181 007f E0       		.byte	-32
+ 182 0080 88       		.byte	-120
  183 0081 03       		.byte	3
- 184 0082 01       		.byte	1
+ 184 0082 00       		.byte	0
  185 0083 00       		.byte	0
  186 0084 00       		.byte	0
  187 0085 00       		.byte	0
@@ -387,15 +507,15 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  196 008e 00       		.byte	0
  197 008f 00       		.space	1
  198 0090 2012     		.short	4640
- 199 0092 F2       		.byte	-14
+ 199 0092 72       		.byte	114
  200 0093 34       		.byte	52
- 201 0094 87       		.byte	-121
+ 201 0094 85       		.byte	-123
  202 0095 41       		.byte	65
- 203 0096 68       		.byte	104
- 204 0097 E1       		.byte	-31
- 205 0098 9A       		.byte	-102
+ 203 0096 6C       		.byte	108
+ 204 0097 E0       		.byte	-32
+ 205 0098 88       		.byte	-120
  206 0099 03       		.byte	3
- 207 009a 01       		.byte	1
+ 207 009a 00       		.byte	0
  208 009b 00       		.byte	0
  209 009c 00       		.byte	0
  210 009d 00       		.byte	0
@@ -410,19 +530,25 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  219 00a6 80       		.byte	-128
  220 00a7 00       		.space	1
  221 00a8 2012     		.short	4640
- 222 00aa F2       		.byte	-14
+ 222 00aa 72       		.byte	114
  223 00ab 34       		.byte	52
- 224 00ac 87       		.byte	-121
+ 224 00ac 85       		.byte	-123
  225 00ad 41       		.byte	65
- 226 00ae 68       		.byte	104
- 227 00af E1       		.byte	-31
- 228 00b0 9A       		.byte	-102
+ 226 00ae 6C       		.byte	108
+ 227 00af E0       		.byte	-32
+ 228 00b0 88       		.byte	-120
  229 00b1 03       		.byte	3
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 8
 
 
+=======
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
  230 00b2 00       		.byte	0
  231 00b3 00       		.byte	0
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 8
+
+
  232 00b4 00       		.byte	0
  233 00b5 00       		.byte	0
  234 00b6 00       		.byte	0
@@ -436,13 +562,13 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  242 00be 80       		.byte	-128
  243 00bf 00       		.space	1
  244 00c0 2012     		.short	4640
- 245 00c2 F2       		.byte	-14
+ 245 00c2 72       		.byte	114
  246 00c3 34       		.byte	52
- 247 00c4 87       		.byte	-121
+ 247 00c4 85       		.byte	-123
  248 00c5 41       		.byte	65
- 249 00c6 68       		.byte	104
- 250 00c7 E1       		.byte	-31
- 251 00c8 9A       		.byte	-102
+ 249 00c6 6C       		.byte	108
+ 250 00c7 E0       		.byte	-32
+ 251 00c8 88       		.byte	-120
  252 00c9 03       		.byte	3
  253 00ca 00       		.byte	0
  254 00cb 00       		.byte	0
@@ -459,13 +585,13 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  265 00d6 80       		.byte	-128
  266 00d7 00       		.space	1
  267 00d8 2012     		.short	4640
- 268 00da F2       		.byte	-14
+ 268 00da 72       		.byte	114
  269 00db 34       		.byte	52
- 270 00dc 87       		.byte	-121
+ 270 00dc 85       		.byte	-123
  271 00dd 41       		.byte	65
- 272 00de 68       		.byte	104
- 273 00df E1       		.byte	-31
- 274 00e0 9A       		.byte	-102
+ 272 00de 6C       		.byte	108
+ 273 00df E0       		.byte	-32
+ 274 00e0 88       		.byte	-120
  275 00e1 03       		.byte	3
  276 00e2 00       		.byte	0
  277 00e3 00       		.byte	0
@@ -478,21 +604,27 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  284 00ea 00       		.byte	0
  285 00eb 00       		.byte	0
  286 00ec 09       		.byte	9
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 9
 
 
+=======
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
  287 00ed 01       		.byte	1
  288 00ee 80       		.byte	-128
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 9
+
+
  289 00ef 00       		.space	1
  290 00f0 2014     		.short	5152
- 291 00f2 FE       		.byte	-2
- 292 00f3 36       		.byte	54
- 293 00f4 81       		.byte	-127
- 294 00f5 0E       		.byte	14
- 295 00f6 C1       		.byte	-63
- 296 00f7 EB       		.byte	-21
- 297 00f8 02       		.byte	2
- 298 00f9 00       		.byte	0
+ 291 00f2 72       		.byte	114
+ 292 00f3 34       		.byte	52
+ 293 00f4 85       		.byte	-123
+ 294 00f5 41       		.byte	65
+ 295 00f6 6C       		.byte	108
+ 296 00f7 E1       		.byte	-31
+ 297 00f8 9E       		.byte	-98
+ 298 00f9 03       		.byte	3
  299 00fa 00       		.byte	0
  300 00fb 00       		.byte	0
  301 00fc 00       		.byte	0
@@ -538,11 +670,17 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  341 0126 0C       		.byte	12
  342 0127 C0       		.byte	-64
  343 0128 04       		.byte	4
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 10
 
 
+=======
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
  344 0129 1C       		.byte	28
  345 012a 00       		.byte	0
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 10
+
+
  346 012b 00       		.byte	0
  347 012c 00       		.byte	0
  348 012d 00       		.byte	0
@@ -557,14 +695,14 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  357 0136 00       		.byte	0
  358 0137 00       		.space	1
  359 0138 0418     		.short	6148
- 360 013a 02       		.byte	2
- 361 013b 30       		.byte	48
- 362 013c 81       		.byte	-127
+ 360 013a 20       		.byte	32
+ 361 013b 20       		.byte	32
+ 362 013c 01       		.byte	1
  363 013d 00       		.byte	0
- 364 013e 08       		.byte	8
+ 364 013e 00       		.byte	0
  365 013f C0       		.byte	-64
- 366 0140 08       		.byte	8
- 367 0141 03       		.byte	3
+ 366 0140 00       		.byte	0
+ 367 0141 16       		.byte	22
  368 0142 00       		.byte	0
  369 0143 00       		.byte	0
  370 0144 00       		.byte	0
@@ -598,11 +736,17 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  398 0161 00       		.byte	0
  399 0162 00       		.byte	0
  400 0163 00       		.byte	0
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 11
 
 
+=======
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
  401 0164 0E       		.byte	14
  402 0165 00       		.byte	0
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 11
+
+
  403 0166 00       		.byte	0
  404 0167 00       		.space	1
  405 0168 0012     		.short	4608
@@ -652,17 +796,23 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  449 0196 00       		.byte	0
  450 0197 00       		.space	1
  451 0198 2012     		.short	4640
- 452 019a F2       		.byte	-14
+ 452 019a 72       		.byte	114
  453 019b 34       		.byte	52
- 454 019c 87       		.byte	-121
+ 454 019c 85       		.byte	-123
  455 019d 41       		.byte	65
+<<<<<<< HEAD
  456 019e 68       		.byte	104
  457 019f E1       		.byte	-31
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 12
-
-
- 458 01a0 9A       		.byte	-102
+=======
+ 456 019e 6C       		.byte	108
+ 457 019f E0       		.byte	-32
+ 458 01a0 8E       		.byte	-114
  459 01a1 03       		.byte	3
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 12
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
+
+
  460 01a2 00       		.byte	0
  461 01a3 00       		.byte	0
  462 01a4 00       		.byte	0
@@ -718,11 +868,17 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  512 01d8 00       		.byte	0
  513 01d9 00       		.byte	0
  514 01da 00       		.byte	0
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 13
 
 
+=======
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
  515 01db 00       		.byte	0
  516 01dc 14       		.byte	20
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 13
+
+
  517 01dd 01       		.byte	1
  518 01de 00       		.byte	0
  519 01df 00       		.space	1
@@ -778,11 +934,17 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  565 0252 05       		.byte	5
  566 0253 08       		.byte	8
  567 0254 05       		.byte	5
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 14
 
 
+=======
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
  568 0255 04       		.byte	4
  569 0256 06       		.byte	6
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 14
+
+
  570 0257 0E       		.byte	14
  571              		.type	KSetlPCode2, %object
  572              		.size	KSetlPCode2, 3
@@ -838,11 +1000,17 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  622 0057 5D040000 		.4byte	.LASF5
  623 005b 03       		.uleb128 0x3
  624 005c 08       		.byte	0x8
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 15
 
 
+=======
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
  625 005d 07       		.byte	0x7
  626 005e E7000000 		.4byte	.LASF6
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 15
+
+
  627 0062 03       		.uleb128 0x3
  628 0063 04       		.byte	0x4
  629 0064 07       		.byte	0x7
@@ -898,11 +1066,17 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  679 00c6 A2060000 		.4byte	.LASF22
  680 00ca 0E       		.sleb128 14
  681 00cb 05       		.uleb128 0x5
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 16
 
 
+=======
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
  682 00cc 180B0000 		.4byte	.LASF23
  683 00d0 0F       		.sleb128 15
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 16
+
+
  684 00d1 05       		.uleb128 0x5
  685 00d2 EC0B0000 		.4byte	.LASF24
  686 00d6 10       		.sleb128 16
@@ -958,11 +1132,17 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  736 0138 870B0000 		.4byte	.LASF41
  737 013c 21       		.sleb128 33
  738 013d 05       		.uleb128 0x5
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 17
 
 
+=======
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
  739 013e 06060000 		.4byte	.LASF42
  740 0142 22       		.sleb128 34
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 17
+
+
  741 0143 05       		.uleb128 0x5
  742 0144 3A040000 		.4byte	.LASF43
  743 0148 23       		.sleb128 35
@@ -1018,11 +1198,17 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  793 01aa 08030000 		.4byte	.LASF60
  794 01ae 34       		.sleb128 52
  795 01af 05       		.uleb128 0x5
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 18
 
 
+=======
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
  796 01b0 17080000 		.4byte	.LASF61
  797 01b4 35       		.sleb128 53
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 18
+
+
  798 01b5 05       		.uleb128 0x5
  799 01b6 0F010000 		.4byte	.LASF62
  800 01ba 36       		.sleb128 54
@@ -1078,11 +1264,17 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  850 0223 4D060000 		.4byte	.LASF79
  851 0227 C700     		.sleb128 71
  852 0229 05       		.uleb128 0x5
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 19
 
 
+=======
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
  853 022a 50000000 		.4byte	.LASF80
  854 022e C800     		.sleb128 72
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 19
+
+
  855 0230 05       		.uleb128 0x5
  856 0231 F5040000 		.4byte	.LASF81
  857 0235 C900     		.sleb128 73
@@ -1138,11 +1330,17 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  907 02a8 61060000 		.4byte	.LASF98
  908 02ac DA00     		.sleb128 90
  909 02ae 05       		.uleb128 0x5
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 20
 
 
+=======
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
  910 02af 63000000 		.4byte	.LASF99
  911 02b3 DB00     		.sleb128 91
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 20
+
+
  912 02b5 05       		.uleb128 0x5
  913 02b6 3F0A0000 		.4byte	.LASF100
  914 02ba DC00     		.sleb128 92
@@ -1198,11 +1396,17 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  964 032d DF0C0000 		.4byte	.LASF117
  965 0331 ED00     		.sleb128 109
  966 0333 05       		.uleb128 0x5
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 21
 
 
+=======
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
  967 0334 EF0C0000 		.4byte	.LASF118
  968 0338 EE00     		.sleb128 110
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 21
+
+
  969 033a 05       		.uleb128 0x5
  970 033b FF0C0000 		.4byte	.LASF119
  971 033f EF00     		.sleb128 111
@@ -1258,11 +1462,17 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  1021 03b2 91050000 		.4byte	.LASF136
  1022 03b6 8001     		.sleb128 128
  1023 03b8 05       		.uleb128 0x5
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 22
 
 
+=======
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
  1024 03b9 19030000 		.4byte	.LASF137
  1025 03bd 8101     		.sleb128 129
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 22
+
+
  1026 03bf 05       		.uleb128 0x5
  1027 03c0 9F090000 		.4byte	.LASF138
  1028 03c4 8201     		.sleb128 130
@@ -1318,11 +1528,17 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  1078 0433 33       		.byte	0x33
  1079 0434 D6040000 		.4byte	0x4d6
  1080 0438 05       		.uleb128 0x5
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 23
 
 
+=======
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
  1081 0439 88060000 		.4byte	.LASF154
  1082 043d 00       		.sleb128 0
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 23
+
+
  1083 043e 05       		.uleb128 0x5
  1084 043f 1F0A0000 		.4byte	.LASF155
  1085 0443 01       		.sleb128 1
@@ -1378,11 +1594,17 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  1135 04a5 D3010000 		.4byte	.LASF172
  1136 04a9 12       		.sleb128 18
  1137 04aa 05       		.uleb128 0x5
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 24
 
 
+=======
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
  1138 04ab 3D0D0000 		.4byte	.LASF173
  1139 04af 13       		.sleb128 19
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 24
+
+
  1140 04b0 05       		.uleb128 0x5
  1141 04b1 7E0B0000 		.4byte	.LASF174
  1142 04b5 14       		.sleb128 20
@@ -1438,11 +1660,17 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  1192 0518 55       		.byte	0x55
  1193 0519 37000000 		.4byte	0x37
  1194 051d 14       		.byte	0x14
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 25
 
 
+=======
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
  1195 051e 07       		.uleb128 0x7
  1196 051f D30C0000 		.4byte	.LASF185
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 25
+
+
  1197 0523 04       		.byte	0x4
  1198 0524 56       		.byte	0x56
  1199 0525 37000000 		.4byte	0x37
@@ -1464,7 +1692,7 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  1215 0547 0A       		.uleb128 0xa
  1216 0548 8D010000 		.4byte	.LASF194
  1217 054c 01       		.byte	0x1
- 1218 054d A7       		.byte	0xa7
+ 1218 054d A5       		.byte	0xa5
  1219 054e 25000000 		.4byte	0x25
  1220 0552 00000000 		.4byte	.LFB0
  1221 0556 18000000 		.4byte	.LFE0-.LFB0
@@ -1474,7 +1702,7 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  1225 0560 0B       		.uleb128 0xb
  1226 0561 4B030000 		.4byte	.LASF195
  1227 0565 01       		.byte	0x1
- 1228 0566 A7       		.byte	0xa7
+ 1228 0566 A5       		.byte	0xa5
  1229 0567 37000000 		.4byte	0x37
  1230 056b 00000000 		.4byte	.LLST0
  1231 056f 00       		.byte	0
@@ -1498,17 +1726,23 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  1249 0596 08       		.uleb128 0x8
  1250 0597 37000000 		.4byte	0x37
  1251 059b A6050000 		.4byte	0x5a6
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 26
 
 
+=======
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
  1252 059f 09       		.uleb128 0x9
  1253 05a0 62000000 		.4byte	0x62
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 26
+
+
  1254 05a4 02       		.byte	0x2
  1255 05a5 00       		.byte	0
  1256 05a6 0C       		.uleb128 0xc
  1257 05a7 41060000 		.4byte	.LASF188
  1258 05ab 01       		.byte	0x1
- 1259 05ac 82       		.byte	0x82
+ 1259 05ac 80       		.byte	0x80
  1260 05ad B7050000 		.4byte	0x5b7
  1261 05b1 05       		.uleb128 0x5
  1262 05b2 03       		.byte	0x3
@@ -1525,7 +1759,7 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  1273 05cc 0C       		.uleb128 0xc
  1274 05cd 5C010000 		.4byte	.LASF189
  1275 05d1 01       		.byte	0x1
- 1276 05d2 84       		.byte	0x84
+ 1276 05d2 82       		.byte	0x82
  1277 05d3 DD050000 		.4byte	0x5dd
  1278 05d7 05       		.uleb128 0x5
  1279 05d8 03       		.byte	0x3
@@ -1558,11 +1792,17 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  1306 0014 16       		.uleb128 0x16
  1307 0015 00       		.byte	0
  1308 0016 03       		.uleb128 0x3
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 27
 
 
+=======
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
  1309 0017 0E       		.uleb128 0xe
  1310 0018 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 27
+
+
  1311 0019 0B       		.uleb128 0xb
  1312 001a 3B       		.uleb128 0x3b
  1313 001b 0B       		.uleb128 0xb
@@ -1618,11 +1858,17 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  1363 004d 13       		.uleb128 0x13
  1364 004e 00       		.byte	0
  1365 004f 00       		.byte	0
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 28
 
 
+=======
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
  1366 0050 07       		.uleb128 0x7
  1367 0051 0D       		.uleb128 0xd
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 28
+
+
  1368 0052 00       		.byte	0
  1369 0053 03       		.uleb128 0x3
  1370 0054 0E       		.uleb128 0xe
@@ -1678,11 +1924,17 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  1420 0086 9742     		.uleb128 0x2117
  1421 0088 19       		.uleb128 0x19
  1422 0089 01       		.uleb128 0x1
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 29
 
 
+=======
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
  1423 008a 13       		.uleb128 0x13
  1424 008b 00       		.byte	0
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 29
+
+
  1425 008c 00       		.byte	0
  1426 008d 0B       		.uleb128 0xb
  1427 008e 05       		.uleb128 0x5
@@ -1738,11 +1990,17 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  1477 0016 01       		.uleb128 0x1
  1478 0017 50       		.byte	0x50
  1479 0018 9F       		.byte	0x9f
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 30
 
 
+=======
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
  1480 0019 00000000 		.4byte	0
  1481 001d 00000000 		.4byte	0
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 30
+
+
  1482              		.section	.debug_aranges,"",%progbits
  1483 0000 1C000000 		.4byte	0x1c
  1484 0004 0200     		.2byte	0x2
@@ -1798,11 +2056,17 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  1514      41495400 
  1515              	.LASF80:
  1516 0050 4544435F 		.ascii	"EDC_RSP_NOT_HONOUR\000"
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 31
 
 
+=======
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
  1516      5253505F 
  1516      4E4F545F 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 31
+
+
  1516      484F4E4F 
  1516      555200
  1517              	.LASF99:
@@ -1858,11 +2122,17 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  1536 010f 4544435F 		.ascii	"EDC_FN_NO_REV\000"
  1536      464E5F4E 
  1536      4F5F5245 
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 32
 
 
+=======
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
  1536      5600
  1537              	.LASF112:
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 32
+
+
  1538 011d 4544435F 		.ascii	"EDC_RSP_CTL_REFER_MOBILE\000"
  1538      5253505F 
  1538      43544C5F 
@@ -1918,11 +2188,17 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  1557              	.LASF75:
  1558 01c1 4544435F 		.ascii	"EDC_RSP_COMPLETED\000"
  1558      5253505F 
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 33
 
 
+=======
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
  1558      434F4D50 
  1558      4C455445 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 33
+
+
  1558      4400
  1559              	.LASF172:
  1560 01d3 4553414C 		.ascii	"ESALE_UNDER_LMT\000"
@@ -1978,11 +2254,17 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  1576 02ff 54455354 		.ascii	"TEST_MSG\000"
  1576      5F4D5347 
  1576      00
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 34
 
 
+=======
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
  1577              	.LASF60:
  1578 0308 4544435F 		.ascii	"EDC_FN_CLR_BATCH\000"
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 34
+
+
  1578      464E5F43 
  1578      4C525F42 
  1578      41544348 
@@ -2038,11 +2320,17 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  1598      5452595F 
  1598      41474149 
  1598      4E475F54 
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 35
 
 
+=======
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
  1599              	.LASF47:
  1600 03ba 4544435F 		.ascii	"EDC_AJ_ENTER_NTIP\000"
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 35
+
+
  1600      414A5F45 
  1600      4E544552 
  1600      5F4E5449 
@@ -2098,11 +2386,17 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  1618      41545400 
  1619              	.LASF5:
  1620 045d 756E7369 		.ascii	"unsigned int\000"
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 36
 
 
+=======
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
  1620      676E6564 
  1620      20696E74 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 36
+
+
  1620      00
  1621              	.LASF89:
  1622 046a 4544435F 		.ascii	"EDC_RSP_CALL_LC\000"
@@ -2158,11 +2452,17 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  1640      50524F43 
  1640      45535349 
  1640      4E4700
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 37
 
 
+=======
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
  1641              	.LASF165:
  1642 0518 41444A55 		.ascii	"ADJUST\000"
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 37
+
+
  1642      535400
  1643              	.LASF78:
  1644 051f 4544435F 		.ascii	"EDC_RSP_INVALID_MERCH\000"
@@ -2218,11 +2518,17 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  1662      5F444553 
  1662      4300
  1663              	.LASF77:
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 38
 
 
+=======
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
  1664 05c1 4544435F 		.ascii	"EDC_RSP_REFERRAL\000"
  1664      5253505F 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 38
+
+
  1664      52454645 
  1664      5252414C 
  1664      00
@@ -2278,11 +2584,17 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  1684      41524400 
  1685              	.LASF98:
  1686 0661 4544435F 		.ascii	"EDC_RSP_ROC_NOT_FOUND\000"
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 39
 
 
+=======
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
  1686      5253505F 
  1686      524F435F 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 39
+
+
  1686      4E4F545F 
  1686      464F554E 
  1687              	.LASF64:
@@ -2338,11 +2650,17 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  1708 0703 574F5244 		.ascii	"WORD\000"
  1708      00
  1709              	.LASF156:
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 40
 
 
+=======
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
  1710 0708 53414C45 		.ascii	"SALE_SWIPE\000"
  1710      5F535749 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 40
+
+
  1710      504500
  1711              	.LASF128:
  1712 0713 4544435F 		.ascii	"EDC_RSP_RSP_TXN_ACP\000"
@@ -2398,11 +2716,17 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  1730      4E544552 
  1730      5F4E414D 
  1730      5400
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 41
 
 
+=======
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
  1731              	.LASF31:
  1732 07b6 4544435F 		.ascii	"EDC_IN_INV_TIPS\000"
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 41
+
+
  1732      494E5F49 
  1732      4E565F54 
  1732      49505300 
@@ -2458,11 +2782,17 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  1750      52454300 
  1751              	.LASF179:
  1752 086a 44454641 		.ascii	"DEFAULT_TRANS\000"
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 42
 
 
+=======
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
  1752      554C545F 
  1752      5452414E 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 42
+
+
  1752      5300
  1753              	.LASF122:
  1754 0878 4544435F 		.ascii	"EDC_RSP_LINE_OCCUP\000"
@@ -2518,11 +2848,17 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  1772 090f 4544435F 		.ascii	"EDC_FN_END_BATCH\000"
  1772      464E5F45 
  1772      4E445F42 
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 43
 
 
+=======
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
  1772      41544348 
  1772      00
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 43
+
+
  1773              	.LASF72:
  1774 0920 4544435F 		.ascii	"EDC_PN_PLS_REPRINT\000"
  1774      504E5F50 
@@ -2578,11 +2914,17 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  1792      4F434152 
  1792      4400
  1793              	.LASF191:
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 44
 
 
+=======
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
  1794 09c5 7372632F 		.ascii	"src/Constant.c\000"
  1794      436F6E73 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 44
+
+
  1794      74616E74 
  1794      2E6300
  1795              	.LASF55:
@@ -2638,11 +2980,17 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  1814      5F524541 
  1814      445F4F4B 
  1815              	.LASF58:
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 45
 
 
+=======
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
  1816 0a7c 4544435F 		.ascii	"EDC_FN_CARD_TOTAL\000"
  1816      464E5F43 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 45
+
+
  1816      4152445F 
  1816      544F5441 
  1816      4C00
@@ -2698,11 +3046,17 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  1834      5F455252 
  1835              	.LASF116:
  1836 0b2f 4544435F 		.ascii	"EDC_RSP_CALL_IP\000"
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 46
 
 
+=======
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
  1836      5253505F 
  1836      43414C4C 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 46
+
+
  1836      5F495000 
  1837              	.LASF67:
  1838 0b3f 4544435F 		.ascii	"EDC_FN_PRINT_REPORT\000"
@@ -2758,11 +3112,17 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  1856      4241445F 
  1856      5445524D 
  1856      494E414C 
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 47
 
 
+=======
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
  1857              	.LASF24:
  1858 0bec 4544435F 		.ascii	"EDC_IN_USE_ICC\000"
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 47
+
+
  1858      494E5F55 
  1858      53455F49 
  1858      434300
@@ -2818,11 +3178,17 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  1876      494E4954 
  1876      00
  1877              	.LASF183:
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 48
 
 
+=======
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
  1878 0c9c 625F636F 		.ascii	"b_condition_code\000"
  1878      6E646974 
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 48
+
+
  1878      696F6E5F 
  1878      636F6465 
  1878      00
@@ -2878,15 +3244,21 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 1
  1898      455F434F 
  1898      4D504C45 
  1898      544500
+<<<<<<< HEAD
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 49
 
 
  1899              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-br
 ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s 			page 50
+=======
+ 1899              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-br
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s 			page 49
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 Constant.c
+<<<<<<< HEAD
 C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s:19     .text.SaleType:00000000 $t
 C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s:24     .text.SaleType:00000000 SaleType
 C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s:47     .text.SaleType:00000014 $d
@@ -2894,6 +3266,15 @@ C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s:546    .rodata:00000240 KTran
 C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s:573    .rodata:00000258 KSetlPCode2
 C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s:59     .rodata:00000000 KTransBitmap
 C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccR1UZfx.s:55     .rodata:00000000 $d
+=======
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s:19     .text.SaleType:00000000 $t
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s:24     .text.SaleType:00000000 SaleType
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s:47     .text.SaleType:00000014 $d
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s:546    .rodata:00000240 KTransHeader
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s:573    .rodata:00000258 KSetlPCode2
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s:59     .rodata:00000000 KTransBitmap
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccBmJdEU.s:55     .rodata:00000000 $d
+>>>>>>> parent of 2ec1fdb... make length in header dymaic
                      .debug_frame:00000010 $d
 
 NO UNDEFINED SYMBOLS
