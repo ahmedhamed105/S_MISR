@@ -1483,826 +1483,278 @@ END GROUP
                 0x01010b1c                UpdateRecord
  .text          0x01010b8c        0x0 obj/refund.o
  .text.RefundTrans
-<<<<<<< HEAD
-<<<<<<< HEAD
-                0x01010bf4      0x13c obj/refund.o
-                0x01010bf4                RefundTrans
- .text          0x01010d30        0x0 obj/testrans.o
- .text.TestTrans
-                0x01010d30       0xc0 obj/testrans.o
-                0x01010d30                TestTrans
- .text          0x01010df0        0x0 obj/toggle.o
- .text.ToggleOption
-                0x01010df0      0x12c obj/toggle.o
-                0x01010df0                ToggleOption
- .text          0x01010f1c        0x0 obj/tpadtest.o
- .text.IconPutS
-                0x01010f1c       0x2e obj/tpadtest.o
- *fill*         0x01010f4a        0x2 
- .text.TouchDetected2
-                0x01010f4c       0x60 obj/tpadtest.o
- .text.TouchDetected1
-                0x01010fac       0x60 obj/tpadtest.o
- .text.TouchDetected0
-                0x0101100c       0x60 obj/tpadtest.o
- .text.TouchLoss
-                0x0101106c       0x38 obj/tpadtest.o
- .text.CleanTPadConf
-                0x010110a4        0xa obj/tpadtest.o
- *fill*         0x010110ae        0x2 
- .text.UpdTPadDotSize
-                0x010110b0       0x5c obj/tpadtest.o
- .text.DotUpDn  0x0101110c       0x2c obj/tpadtest.o
- .text.DotDn    0x01011138       0x14 obj/tpadtest.o
- .text.DotUp    0x0101114c       0x14 obj/tpadtest.o
- .text.TPadTest
-                0x01011160      0x1e4 obj/tpadtest.o
-                0x01011160                TPadTest
- .text.TPadTestEnable
-                0x01011344       0x10 obj/tpadtest.o
-                0x01011344                TPadTestEnable
- .text.SPadTest
-                0x01011354      0x1dc obj/tpadtest.o
-                0x01011354                SPadTest
- .text          0x01011530        0x0 obj/tranutil.o
- .text.AddTotal
-                0x01011530       0x16 obj/tranutil.o
- *fill*         0x01011546        0x2 
- .text.PackContents
-                0x01011548      0x29c obj/tranutil.o
- .text.PackContent
-                0x010117e4      0x264 obj/tranutil.o
- .text.PackTelNo
-                0x01011a48       0x88 obj/tranutil.o
- .text.PackTxnSlip.part.0
-                0x01011ad0       0x14 obj/tranutil.o
- .text.ValidAcquirer
-                0x01011ae4       0x68 obj/tranutil.o
- .text.OverMargin
-                0x01011b4c       0x44 obj/tranutil.o
-                0x01011b4c                OverMargin
- .text.PackDTGAA
-                0x01011b90       0x2c obj/tranutil.o
-                0x01011b90                PackDTGAA
- .text.PackDateTime
-                0x01011bbc       0x48 obj/tranutil.o
-                0x01011bbc                PackDateTime
- .text.Packprintissuer
-                0x01011c04      0x210 obj/tranutil.o
-                0x01011c04                Packprintissuer
- .text.Packprintconfig
-                0x01011e14      0x6b4 obj/tranutil.o
-                0x01011e14                Packprintconfig
- .text.PackHeader
-                0x010124c8       0x78 obj/tranutil.o
-                0x010124c8                PackHeader
- .text.PackRecordP
-                0x01012540       0xc8 obj/tranutil.o
-                0x01012540                PackRecordP
- .text.PackInputP
-                0x01012608       0xf0 obj/tranutil.o
-                0x01012608                PackInputP
- .text.DispHeader
-                0x010126f8       0xc0 obj/tranutil.o
-                0x010126f8                DispHeader
- .text.SetRspCode
-                0x010127b8        0xc obj/tranutil.o
-                0x010127b8                SetRspCode
- .text.ClearResponse
-                0x010127c4       0x3c obj/tranutil.o
-                0x010127c4                ClearResponse
- .text.ConfirmCard
-                0x01012800      0x1e8 obj/tranutil.o
-                0x01012800                ConfirmCard
- .text.PackRspText
-                0x010129e8       0xa4 obj/tranutil.o
-                0x010129e8                PackRspText
- .text.DispRspText
-                0x01012a8c       0xd0 obj/tranutil.o
-                0x01012a8c                DispRspText
- .text.DispErrorMsg
-                0x01012b5c       0x30 obj/tranutil.o
-                0x01012b5c                DispErrorMsg
- .text.TransEnd
-                0x01012b8c      0x138 obj/tranutil.o
-                0x01012b8c                TransEnd
- .text.DispAmount
-                0x01012cc4       0x98 obj/tranutil.o
-                0x01012cc4                DispAmount
- .text.AddToTotals
-                0x01012d5c      0x1b0 obj/tranutil.o
-                0x01012d5c                AddToTotals
- .text.CalIssuerSum
-                0x01012f0c       0x40 obj/tranutil.o
- .text.CalTotals
-                0x01012f4c       0x5c obj/tranutil.o
-                0x01012f4c                CalTotals
- .text.PackIssuerSum
-                0x01012fa8      0x2d8 obj/tranutil.o
-                0x01012fa8                PackIssuerSum
- .text.PackIssuerSumT
-                0x01013280      0x278 obj/tranutil.o
-                0x01013280                PackIssuerSumT
- .text.FormatHolderName
-                0x010134f8       0x6e obj/tranutil.o
-                0x010134f8                FormatHolderName
- *fill*         0x01013566        0x2 
- .text.IncTraceNoEND
-                0x01013568       0x34 obj/tranutil.o
-                0x01013568                IncTraceNoEND
- .text.IncTraceNo
-                0x0101359c       0x30 obj/tranutil.o
-                0x0101359c                IncTraceNo
- .text.ClearRspData
-                0x010135cc       0x4c obj/tranutil.o
-                0x010135cc                ClearRspData
- .text.ResetTerm
-                0x01013618       0x6c obj/tranutil.o
-                0x01013618                ResetTerm
- .text.PackComm
-                0x01013684      0x400 obj/tranutil.o
-                0x01013684                PackComm
- .text.TransAllowed
-                0x01013a84      0x16c obj/tranutil.o
-                0x01013a84                TransAllowed
- .text          0x01013bf0        0x0 obj/wavecom.o
- .text.ClearCmdBuf
-                0x01013bf0       0x48 obj/wavecom.o
- .text.SendWaitRsp.part.0
-                0x01013c38      0x128 obj/wavecom.o
- .text.SendWaitRsp
-                0x01013d60       0x68 obj/wavecom.o
- .text.SetSmsMode.part.1
-                0x01013dc8       0x3c obj/wavecom.o
- .text.Asc2DWVAL.constprop.7
-                0x01013e04       0x22 obj/wavecom.o
- *fill*         0x01013e26        0x2 
- .text.WaitModuReady
-                0x01013e28       0x4c obj/wavecom.o
-                0x01013e28                WaitModuReady
- .text.SimDetect
-                0x01013e74       0x38 obj/wavecom.o
-                0x01013e74                SimDetect
- .text.RegisterNetwork
-                0x01013eac       0x84 obj/wavecom.o
-                0x01013eac                RegisterNetwork
- .text.AttachGPRS
-                0x01013f30       0x34 obj/wavecom.o
-                0x01013f30                AttachGPRS
- .text.GetPHBCapcity
-                0x01013f64       0xbc obj/wavecom.o
-                0x01013f64                GetPHBCapcity
- .text.GetContact
-                0x01014020       0xb4 obj/wavecom.o
-                0x01014020                GetContact
- .text.LoadPhoneBook
-                0x010140d4       0x48 obj/wavecom.o
-                0x010140d4                LoadPhoneBook
- .text.SortPhoneBook
-                0x0101411c       0xb8 obj/wavecom.o
-                0x0101411c                SortPhoneBook
- .text.SelectPHBook
-                0x010141d4      0x100 obj/wavecom.o
-                0x010141d4                SelectPHBook
- .text.WriteContact
-                0x010142d4       0x90 obj/wavecom.o
-                0x010142d4                WriteContact
- .text.DelContact
-                0x01014364       0x5c obj/wavecom.o
-                0x01014364                DelContact
- .text.AllCallForward
-                0x010143c0       0x4c obj/wavecom.o
-                0x010143c0                AllCallForward
- .text.MakeCall
-                0x0101440c       0x40 obj/wavecom.o
-                0x0101440c                MakeCall
- .text.MakeReqCall
-                0x0101444c       0x4c obj/wavecom.o
-                0x0101444c                MakeReqCall
- .text.CheckCallStatus
-                0x01014498       0x80 obj/wavecom.o
-                0x01014498                CheckCallStatus
- .text.AnswerCall
-                0x01014518       0x28 obj/wavecom.o
-                0x01014518                AnswerCall
- .text.SendKeyPress
-                0x01014540       0x1c obj/wavecom.o
-                0x01014540                SendKeyPress
- .text.HangUp   0x0101455c       0x28 obj/wavecom.o
-                0x0101455c                HangUp
- .text.CheckCallEnd
-                0x01014584       0x58 obj/wavecom.o
-                0x01014584                CheckCallEnd
- .text.GetCallerID
-                0x010145dc       0x54 obj/wavecom.o
-                0x010145dc                GetCallerID
- .text.ReadGain
-                0x01014630       0x20 obj/wavecom.o
-                0x01014630                ReadGain
- .text.WriteGain
-                0x01014650       0x3c obj/wavecom.o
-                0x01014650                WriteGain
- .text.GetOptrName
-                0x0101468c       0x6c obj/wavecom.o
-                0x0101468c                GetOptrName
- .text.FacilityEnable
-                0x010146f8       0x98 obj/wavecom.o
-                0x010146f8                FacilityEnable
- .text.CheckPinState
-                0x01014790       0x80 obj/wavecom.o
-                0x01014790                CheckPinState
- .text.EnterPin
-                0x01014810       0x4c obj/wavecom.o
-                0x01014810                EnterPin
- .text.ChangePin
-                0x0101485c       0x94 obj/wavecom.o
-                0x0101485c                ChangePin
- .text.SetNewMsgInd
-                0x010148f0       0x20 obj/wavecom.o
-                0x010148f0                SetNewMsgInd
- .text.GetSmsMode
-                0x01014910       0x4c obj/wavecom.o
-                0x01014910                GetSmsMode
- .text.GetSmsTotal
-                0x0101495c       0xa0 obj/wavecom.o
-                0x0101495c                GetSmsTotal
- .text.LoadSmsInbox
-                0x010149fc      0x29c obj/wavecom.o
-                0x010149fc                LoadSmsInbox
- .text.ReadSms  0x01014c98      0x10c obj/wavecom.o
-                0x01014c98                ReadSms
- .text.DelSms   0x01014da4       0x84 obj/wavecom.o
-                0x01014da4                DelSms
- .text.SmsSend  0x01014e28       0xb4 obj/wavecom.o
-                0x01014e28                SmsSend
- .text.ModuleInit
-                0x01014edc       0x38 obj/wavecom.o
-                0x01014edc                ModuleInit
- .text          0x01014f14        0x0 obj/cstartup.o
- .text.SegmentInit
-                0x01014f14       0x78 obj/cstartup.o
-                0x01014f14                SegmentInit
- .text          0x01014f8c        0x0 obj/expect_send.o
- .text.expect_send_release
-                0x01014f8c       0x58 obj/expect_send.o
-                0x01014f8c                expect_send_release
- .text.expect_send_alloc
-                0x01014fe4      0x10e obj/expect_send.o
-                0x01014fe4                expect_send_alloc
- .text          0x010150f2        0x0 obj/libc.o
- .text.printchar
-                0x010150f2       0x14 obj/libc.o
- .text.prints   0x01015106       0xaa obj/libc.o
- .text.printi   0x010151b0       0xa0 obj/libc.o
- .text.print    0x01015250      0x2c0 obj/libc.o
- .text._read_r  0x01015510       0x2a obj/libc.o
-                0x01015510                _read_r
-=======
-                0x01010b8c      0x138 obj/refund.o
+                0x01010b8c      0x13c obj/refund.o
                 0x01010b8c                RefundTrans
- .text          0x01010cc4        0x0 obj/testrans.o
+ .text          0x01010cc8        0x0 obj/testrans.o
  .text.TestTrans
-                0x01010cc4       0xc0 obj/testrans.o
-                0x01010cc4                TestTrans
- .text          0x01010d84        0x0 obj/toggle.o
+                0x01010cc8       0xc0 obj/testrans.o
+                0x01010cc8                TestTrans
+ .text          0x01010d88        0x0 obj/toggle.o
  .text.ToggleOption
-                0x01010d84      0x12c obj/toggle.o
-                0x01010d84                ToggleOption
- .text          0x01010eb0        0x0 obj/tpadtest.o
+                0x01010d88      0x12c obj/toggle.o
+                0x01010d88                ToggleOption
+ .text          0x01010eb4        0x0 obj/tpadtest.o
  .text.IconPutS
-                0x01010eb0       0x2e obj/tpadtest.o
- *fill*         0x01010ede        0x2 
+                0x01010eb4       0x2e obj/tpadtest.o
+ *fill*         0x01010ee2        0x2 
  .text.TouchDetected2
-                0x01010ee0       0x60 obj/tpadtest.o
+                0x01010ee4       0x60 obj/tpadtest.o
  .text.TouchDetected1
-                0x01010f40       0x60 obj/tpadtest.o
+                0x01010f44       0x60 obj/tpadtest.o
  .text.TouchDetected0
-                0x01010fa0       0x60 obj/tpadtest.o
+                0x01010fa4       0x60 obj/tpadtest.o
  .text.TouchLoss
-                0x01011000       0x38 obj/tpadtest.o
+                0x01011004       0x38 obj/tpadtest.o
  .text.CleanTPadConf
-                0x01011038        0xa obj/tpadtest.o
- *fill*         0x01011042        0x2 
+                0x0101103c        0xa obj/tpadtest.o
+ *fill*         0x01011046        0x2 
  .text.UpdTPadDotSize
-                0x01011044       0x5c obj/tpadtest.o
- .text.DotUpDn  0x010110a0       0x2c obj/tpadtest.o
- .text.DotDn    0x010110cc       0x14 obj/tpadtest.o
- .text.DotUp    0x010110e0       0x14 obj/tpadtest.o
+                0x01011048       0x5c obj/tpadtest.o
+ .text.DotUpDn  0x010110a4       0x2c obj/tpadtest.o
+ .text.DotDn    0x010110d0       0x14 obj/tpadtest.o
+ .text.DotUp    0x010110e4       0x14 obj/tpadtest.o
  .text.TPadTest
-                0x010110f4      0x1e4 obj/tpadtest.o
-                0x010110f4                TPadTest
+                0x010110f8      0x1e4 obj/tpadtest.o
+                0x010110f8                TPadTest
  .text.TPadTestEnable
-                0x010112d8       0x10 obj/tpadtest.o
-                0x010112d8                TPadTestEnable
+                0x010112dc       0x10 obj/tpadtest.o
+                0x010112dc                TPadTestEnable
  .text.SPadTest
-                0x010112e8      0x1dc obj/tpadtest.o
-                0x010112e8                SPadTest
- .text          0x010114c4        0x0 obj/tranutil.o
+                0x010112ec      0x1dc obj/tpadtest.o
+                0x010112ec                SPadTest
+ .text          0x010114c8        0x0 obj/tranutil.o
  .text.AddTotal
-                0x010114c4       0x16 obj/tranutil.o
- *fill*         0x010114da        0x2 
+                0x010114c8       0x16 obj/tranutil.o
+ *fill*         0x010114de        0x2 
  .text.PackContents
-                0x010114dc      0x29c obj/tranutil.o
+                0x010114e0      0x29c obj/tranutil.o
  .text.PackContent
-                0x01011778      0x264 obj/tranutil.o
+                0x0101177c      0x264 obj/tranutil.o
  .text.PackTelNo
-                0x010119dc       0x88 obj/tranutil.o
+                0x010119e0       0x88 obj/tranutil.o
  .text.PackTxnSlip.part.0
-                0x01011a64       0x14 obj/tranutil.o
+                0x01011a68       0x14 obj/tranutil.o
  .text.ValidAcquirer
-                0x01011a78       0x68 obj/tranutil.o
+                0x01011a7c       0x68 obj/tranutil.o
  .text.OverMargin
-                0x01011ae0       0x44 obj/tranutil.o
-                0x01011ae0                OverMargin
+                0x01011ae4       0x44 obj/tranutil.o
+                0x01011ae4                OverMargin
  .text.PackDTGAA
-                0x01011b24       0x2c obj/tranutil.o
-                0x01011b24                PackDTGAA
+                0x01011b28       0x2c obj/tranutil.o
+                0x01011b28                PackDTGAA
  .text.PackDateTime
-                0x01011b50       0x48 obj/tranutil.o
-                0x01011b50                PackDateTime
+                0x01011b54       0x48 obj/tranutil.o
+                0x01011b54                PackDateTime
  .text.Packprintissuer
-                0x01011b98      0x210 obj/tranutil.o
-                0x01011b98                Packprintissuer
+                0x01011b9c      0x210 obj/tranutil.o
+                0x01011b9c                Packprintissuer
  .text.Packprintconfig
-                0x01011da8      0x6b4 obj/tranutil.o
-                0x01011da8                Packprintconfig
+                0x01011dac      0x6b4 obj/tranutil.o
+                0x01011dac                Packprintconfig
  .text.PackHeader
-                0x0101245c       0x78 obj/tranutil.o
-                0x0101245c                PackHeader
+                0x01012460       0x78 obj/tranutil.o
+                0x01012460                PackHeader
  .text.PackRecordP
-                0x010124d4       0xc8 obj/tranutil.o
-                0x010124d4                PackRecordP
+                0x010124d8       0xc8 obj/tranutil.o
+                0x010124d8                PackRecordP
  .text.PackInputP
-                0x0101259c       0xf0 obj/tranutil.o
-                0x0101259c                PackInputP
+                0x010125a0       0xf0 obj/tranutil.o
+                0x010125a0                PackInputP
  .text.DispHeader
-                0x0101268c       0xc0 obj/tranutil.o
-                0x0101268c                DispHeader
+                0x01012690       0xc0 obj/tranutil.o
+                0x01012690                DispHeader
  .text.SetRspCode
-                0x0101274c        0xc obj/tranutil.o
-                0x0101274c                SetRspCode
+                0x01012750        0xc obj/tranutil.o
+                0x01012750                SetRspCode
  .text.ClearResponse
-                0x01012758       0x3c obj/tranutil.o
-                0x01012758                ClearResponse
+                0x0101275c       0x3c obj/tranutil.o
+                0x0101275c                ClearResponse
  .text.ConfirmCard
-                0x01012794      0x1e8 obj/tranutil.o
-                0x01012794                ConfirmCard
+                0x01012798      0x1e8 obj/tranutil.o
+                0x01012798                ConfirmCard
  .text.PackRspText
-                0x0101297c       0xa4 obj/tranutil.o
-                0x0101297c                PackRspText
+                0x01012980       0xa4 obj/tranutil.o
+                0x01012980                PackRspText
  .text.DispRspText
-                0x01012a20       0xd0 obj/tranutil.o
-                0x01012a20                DispRspText
+                0x01012a24       0xd0 obj/tranutil.o
+                0x01012a24                DispRspText
  .text.DispErrorMsg
-                0x01012af0       0x30 obj/tranutil.o
-                0x01012af0                DispErrorMsg
+                0x01012af4       0x30 obj/tranutil.o
+                0x01012af4                DispErrorMsg
  .text.TransEnd
-                0x01012b20      0x138 obj/tranutil.o
-                0x01012b20                TransEnd
+                0x01012b24      0x138 obj/tranutil.o
+                0x01012b24                TransEnd
  .text.DispAmount
-                0x01012c58       0x98 obj/tranutil.o
-                0x01012c58                DispAmount
+                0x01012c5c       0x98 obj/tranutil.o
+                0x01012c5c                DispAmount
  .text.AddToTotals
-                0x01012cf0      0x1b0 obj/tranutil.o
-                0x01012cf0                AddToTotals
+                0x01012cf4      0x1b0 obj/tranutil.o
+                0x01012cf4                AddToTotals
  .text.CalIssuerSum
-                0x01012ea0       0x40 obj/tranutil.o
+                0x01012ea4       0x40 obj/tranutil.o
  .text.CalTotals
-                0x01012ee0       0x5c obj/tranutil.o
-                0x01012ee0                CalTotals
+                0x01012ee4       0x5c obj/tranutil.o
+                0x01012ee4                CalTotals
  .text.PackIssuerSum
-                0x01012f3c      0x2d8 obj/tranutil.o
-                0x01012f3c                PackIssuerSum
+                0x01012f40      0x2d8 obj/tranutil.o
+                0x01012f40                PackIssuerSum
  .text.PackIssuerSumT
-                0x01013214      0x278 obj/tranutil.o
-                0x01013214                PackIssuerSumT
+                0x01013218      0x278 obj/tranutil.o
+                0x01013218                PackIssuerSumT
  .text.FormatHolderName
-                0x0101348c       0x6e obj/tranutil.o
-                0x0101348c                FormatHolderName
- *fill*         0x010134fa        0x2 
+                0x01013490       0x6e obj/tranutil.o
+                0x01013490                FormatHolderName
+ *fill*         0x010134fe        0x2 
  .text.IncTraceNoEND
-                0x010134fc       0x34 obj/tranutil.o
-                0x010134fc                IncTraceNoEND
+                0x01013500       0x34 obj/tranutil.o
+                0x01013500                IncTraceNoEND
  .text.IncTraceNo
-                0x01013530       0x30 obj/tranutil.o
-                0x01013530                IncTraceNo
+                0x01013534       0x30 obj/tranutil.o
+                0x01013534                IncTraceNo
  .text.ClearRspData
-                0x01013560       0x4c obj/tranutil.o
-                0x01013560                ClearRspData
+                0x01013564       0x4c obj/tranutil.o
+                0x01013564                ClearRspData
  .text.ResetTerm
-                0x010135ac       0x6c obj/tranutil.o
-                0x010135ac                ResetTerm
+                0x010135b0       0x6c obj/tranutil.o
+                0x010135b0                ResetTerm
  .text.PackComm
-                0x01013618      0x400 obj/tranutil.o
-                0x01013618                PackComm
+                0x0101361c      0x400 obj/tranutil.o
+                0x0101361c                PackComm
  .text.TransAllowed
-                0x01013a18      0x16c obj/tranutil.o
-                0x01013a18                TransAllowed
- .text          0x01013b84        0x0 obj/wavecom.o
+                0x01013a1c      0x16c obj/tranutil.o
+                0x01013a1c                TransAllowed
+ .text          0x01013b88        0x0 obj/wavecom.o
  .text.ClearCmdBuf
-                0x01013b84       0x48 obj/wavecom.o
+                0x01013b88       0x48 obj/wavecom.o
  .text.SendWaitRsp.part.0
-                0x01013bcc      0x128 obj/wavecom.o
+                0x01013bd0      0x128 obj/wavecom.o
  .text.SendWaitRsp
-                0x01013cf4       0x68 obj/wavecom.o
+                0x01013cf8       0x68 obj/wavecom.o
  .text.SetSmsMode.part.1
-                0x01013d5c       0x3c obj/wavecom.o
+                0x01013d60       0x3c obj/wavecom.o
  .text.Asc2DWVAL.constprop.7
-                0x01013d98       0x22 obj/wavecom.o
- *fill*         0x01013dba        0x2 
+                0x01013d9c       0x22 obj/wavecom.o
+ *fill*         0x01013dbe        0x2 
  .text.WaitModuReady
-                0x01013dbc       0x4c obj/wavecom.o
-                0x01013dbc                WaitModuReady
+                0x01013dc0       0x4c obj/wavecom.o
+                0x01013dc0                WaitModuReady
  .text.SimDetect
-                0x01013e08       0x38 obj/wavecom.o
-                0x01013e08                SimDetect
+                0x01013e0c       0x38 obj/wavecom.o
+                0x01013e0c                SimDetect
  .text.RegisterNetwork
-                0x01013e40       0x84 obj/wavecom.o
-                0x01013e40                RegisterNetwork
+                0x01013e44       0x84 obj/wavecom.o
+                0x01013e44                RegisterNetwork
  .text.AttachGPRS
-                0x01013ec4       0x34 obj/wavecom.o
-                0x01013ec4                AttachGPRS
+                0x01013ec8       0x34 obj/wavecom.o
+                0x01013ec8                AttachGPRS
  .text.GetPHBCapcity
-                0x01013ef8       0xbc obj/wavecom.o
-                0x01013ef8                GetPHBCapcity
+                0x01013efc       0xbc obj/wavecom.o
+                0x01013efc                GetPHBCapcity
  .text.GetContact
-                0x01013fb4       0xb4 obj/wavecom.o
-                0x01013fb4                GetContact
+                0x01013fb8       0xb4 obj/wavecom.o
+                0x01013fb8                GetContact
  .text.LoadPhoneBook
-                0x01014068       0x48 obj/wavecom.o
-                0x01014068                LoadPhoneBook
+                0x0101406c       0x48 obj/wavecom.o
+                0x0101406c                LoadPhoneBook
  .text.SortPhoneBook
-                0x010140b0       0xb8 obj/wavecom.o
-                0x010140b0                SortPhoneBook
+                0x010140b4       0xb8 obj/wavecom.o
+                0x010140b4                SortPhoneBook
  .text.SelectPHBook
-                0x01014168      0x100 obj/wavecom.o
-                0x01014168                SelectPHBook
+                0x0101416c      0x100 obj/wavecom.o
+                0x0101416c                SelectPHBook
  .text.WriteContact
-                0x01014268       0x90 obj/wavecom.o
-                0x01014268                WriteContact
+                0x0101426c       0x90 obj/wavecom.o
+                0x0101426c                WriteContact
  .text.DelContact
-                0x010142f8       0x5c obj/wavecom.o
-                0x010142f8                DelContact
+                0x010142fc       0x5c obj/wavecom.o
+                0x010142fc                DelContact
  .text.AllCallForward
-                0x01014354       0x4c obj/wavecom.o
-                0x01014354                AllCallForward
+                0x01014358       0x4c obj/wavecom.o
+                0x01014358                AllCallForward
  .text.MakeCall
-                0x010143a0       0x40 obj/wavecom.o
-                0x010143a0                MakeCall
+                0x010143a4       0x40 obj/wavecom.o
+                0x010143a4                MakeCall
  .text.MakeReqCall
-                0x010143e0       0x4c obj/wavecom.o
-                0x010143e0                MakeReqCall
+                0x010143e4       0x4c obj/wavecom.o
+                0x010143e4                MakeReqCall
  .text.CheckCallStatus
-                0x0101442c       0x80 obj/wavecom.o
-                0x0101442c                CheckCallStatus
+                0x01014430       0x80 obj/wavecom.o
+                0x01014430                CheckCallStatus
  .text.AnswerCall
-                0x010144ac       0x28 obj/wavecom.o
-                0x010144ac                AnswerCall
+                0x010144b0       0x28 obj/wavecom.o
+                0x010144b0                AnswerCall
  .text.SendKeyPress
-                0x010144d4       0x1c obj/wavecom.o
-                0x010144d4                SendKeyPress
- .text.HangUp   0x010144f0       0x28 obj/wavecom.o
-                0x010144f0                HangUp
+                0x010144d8       0x1c obj/wavecom.o
+                0x010144d8                SendKeyPress
+ .text.HangUp   0x010144f4       0x28 obj/wavecom.o
+                0x010144f4                HangUp
  .text.CheckCallEnd
-                0x01014518       0x58 obj/wavecom.o
-                0x01014518                CheckCallEnd
+                0x0101451c       0x58 obj/wavecom.o
+                0x0101451c                CheckCallEnd
  .text.GetCallerID
-                0x01014570       0x54 obj/wavecom.o
-                0x01014570                GetCallerID
+                0x01014574       0x54 obj/wavecom.o
+                0x01014574                GetCallerID
  .text.ReadGain
-                0x010145c4       0x20 obj/wavecom.o
-                0x010145c4                ReadGain
+                0x010145c8       0x20 obj/wavecom.o
+                0x010145c8                ReadGain
  .text.WriteGain
-                0x010145e4       0x3c obj/wavecom.o
-                0x010145e4                WriteGain
+                0x010145e8       0x3c obj/wavecom.o
+                0x010145e8                WriteGain
  .text.GetOptrName
-                0x01014620       0x6c obj/wavecom.o
-                0x01014620                GetOptrName
+                0x01014624       0x6c obj/wavecom.o
+                0x01014624                GetOptrName
  .text.FacilityEnable
-                0x0101468c       0x98 obj/wavecom.o
-                0x0101468c                FacilityEnable
+                0x01014690       0x98 obj/wavecom.o
+                0x01014690                FacilityEnable
  .text.CheckPinState
-                0x01014724       0x80 obj/wavecom.o
-                0x01014724                CheckPinState
+                0x01014728       0x80 obj/wavecom.o
+                0x01014728                CheckPinState
  .text.EnterPin
-                0x010147a4       0x4c obj/wavecom.o
-                0x010147a4                EnterPin
+                0x010147a8       0x4c obj/wavecom.o
+                0x010147a8                EnterPin
  .text.ChangePin
-                0x010147f0       0x94 obj/wavecom.o
-                0x010147f0                ChangePin
+                0x010147f4       0x94 obj/wavecom.o
+                0x010147f4                ChangePin
  .text.SetNewMsgInd
-                0x01014884       0x20 obj/wavecom.o
-                0x01014884                SetNewMsgInd
+                0x01014888       0x20 obj/wavecom.o
+                0x01014888                SetNewMsgInd
  .text.GetSmsMode
-                0x010148a4       0x4c obj/wavecom.o
-                0x010148a4                GetSmsMode
+                0x010148a8       0x4c obj/wavecom.o
+                0x010148a8                GetSmsMode
  .text.GetSmsTotal
-                0x010148f0       0xa0 obj/wavecom.o
-                0x010148f0                GetSmsTotal
+                0x010148f4       0xa0 obj/wavecom.o
+                0x010148f4                GetSmsTotal
  .text.LoadSmsInbox
-                0x01014990      0x29c obj/wavecom.o
-                0x01014990                LoadSmsInbox
- .text.ReadSms  0x01014c2c      0x10c obj/wavecom.o
-                0x01014c2c                ReadSms
- .text.DelSms   0x01014d38       0x84 obj/wavecom.o
-                0x01014d38                DelSms
- .text.SmsSend  0x01014dbc       0xb4 obj/wavecom.o
-                0x01014dbc                SmsSend
+                0x01014994      0x29c obj/wavecom.o
+                0x01014994                LoadSmsInbox
+ .text.ReadSms  0x01014c30      0x10c obj/wavecom.o
+                0x01014c30                ReadSms
+ .text.DelSms   0x01014d3c       0x84 obj/wavecom.o
+                0x01014d3c                DelSms
+ .text.SmsSend  0x01014dc0       0xb4 obj/wavecom.o
+                0x01014dc0                SmsSend
  .text.ModuleInit
-                0x01014e70       0x38 obj/wavecom.o
-                0x01014e70                ModuleInit
- .text          0x01014ea8        0x0 obj/cstartup.o
+                0x01014e74       0x38 obj/wavecom.o
+                0x01014e74                ModuleInit
+ .text          0x01014eac        0x0 obj/cstartup.o
  .text.SegmentInit
-                0x01014ea8       0x78 obj/cstartup.o
-                0x01014ea8                SegmentInit
- .text          0x01014f20        0x0 obj/expect_send.o
+                0x01014eac       0x78 obj/cstartup.o
+                0x01014eac                SegmentInit
+ .text          0x01014f24        0x0 obj/expect_send.o
  .text.expect_send_release
-                0x01014f20       0x58 obj/expect_send.o
-                0x01014f20                expect_send_release
+                0x01014f24       0x58 obj/expect_send.o
+                0x01014f24                expect_send_release
  .text.expect_send_alloc
-                0x01014f78      0x10e obj/expect_send.o
-                0x01014f78                expect_send_alloc
- .text          0x01015086        0x0 obj/libc.o
+                0x01014f7c      0x10e obj/expect_send.o
+                0x01014f7c                expect_send_alloc
+ .text          0x0101508a        0x0 obj/libc.o
  .text.printchar
-=======
-                0x01010b8c      0x138 obj/refund.o
-                0x01010b8c                RefundTrans
- .text          0x01010cc4        0x0 obj/testrans.o
- .text.TestTrans
-                0x01010cc4       0xc0 obj/testrans.o
-                0x01010cc4                TestTrans
- .text          0x01010d84        0x0 obj/toggle.o
- .text.ToggleOption
-                0x01010d84      0x12c obj/toggle.o
-                0x01010d84                ToggleOption
- .text          0x01010eb0        0x0 obj/tpadtest.o
- .text.IconPutS
-                0x01010eb0       0x2e obj/tpadtest.o
- *fill*         0x01010ede        0x2 
- .text.TouchDetected2
-                0x01010ee0       0x60 obj/tpadtest.o
- .text.TouchDetected1
-                0x01010f40       0x60 obj/tpadtest.o
- .text.TouchDetected0
-                0x01010fa0       0x60 obj/tpadtest.o
- .text.TouchLoss
-                0x01011000       0x38 obj/tpadtest.o
- .text.CleanTPadConf
-                0x01011038        0xa obj/tpadtest.o
- *fill*         0x01011042        0x2 
- .text.UpdTPadDotSize
-                0x01011044       0x5c obj/tpadtest.o
- .text.DotUpDn  0x010110a0       0x2c obj/tpadtest.o
- .text.DotDn    0x010110cc       0x14 obj/tpadtest.o
- .text.DotUp    0x010110e0       0x14 obj/tpadtest.o
- .text.TPadTest
-                0x010110f4      0x1e4 obj/tpadtest.o
-                0x010110f4                TPadTest
- .text.TPadTestEnable
-                0x010112d8       0x10 obj/tpadtest.o
-                0x010112d8                TPadTestEnable
- .text.SPadTest
-                0x010112e8      0x1dc obj/tpadtest.o
-                0x010112e8                SPadTest
- .text          0x010114c4        0x0 obj/tranutil.o
- .text.AddTotal
-                0x010114c4       0x16 obj/tranutil.o
- *fill*         0x010114da        0x2 
- .text.PackContents
-                0x010114dc      0x29c obj/tranutil.o
- .text.PackContent
-                0x01011778      0x264 obj/tranutil.o
- .text.PackTelNo
-                0x010119dc       0x88 obj/tranutil.o
- .text.PackTxnSlip.part.0
-                0x01011a64       0x14 obj/tranutil.o
- .text.ValidAcquirer
-                0x01011a78       0x68 obj/tranutil.o
- .text.OverMargin
-                0x01011ae0       0x44 obj/tranutil.o
-                0x01011ae0                OverMargin
- .text.PackDTGAA
-                0x01011b24       0x2c obj/tranutil.o
-                0x01011b24                PackDTGAA
- .text.PackDateTime
-                0x01011b50       0x48 obj/tranutil.o
-                0x01011b50                PackDateTime
- .text.Packprintissuer
-                0x01011b98      0x210 obj/tranutil.o
-                0x01011b98                Packprintissuer
- .text.Packprintconfig
-                0x01011da8      0x6b4 obj/tranutil.o
-                0x01011da8                Packprintconfig
- .text.PackHeader
-                0x0101245c       0x78 obj/tranutil.o
-                0x0101245c                PackHeader
- .text.PackRecordP
-                0x010124d4       0xc8 obj/tranutil.o
-                0x010124d4                PackRecordP
- .text.PackInputP
-                0x0101259c       0xf0 obj/tranutil.o
-                0x0101259c                PackInputP
- .text.DispHeader
-                0x0101268c       0xc0 obj/tranutil.o
-                0x0101268c                DispHeader
- .text.SetRspCode
-                0x0101274c        0xc obj/tranutil.o
-                0x0101274c                SetRspCode
- .text.ClearResponse
-                0x01012758       0x3c obj/tranutil.o
-                0x01012758                ClearResponse
- .text.ConfirmCard
-                0x01012794      0x1e8 obj/tranutil.o
-                0x01012794                ConfirmCard
- .text.PackRspText
-                0x0101297c       0xa4 obj/tranutil.o
-                0x0101297c                PackRspText
- .text.DispRspText
-                0x01012a20       0xd0 obj/tranutil.o
-                0x01012a20                DispRspText
- .text.DispErrorMsg
-                0x01012af0       0x30 obj/tranutil.o
-                0x01012af0                DispErrorMsg
- .text.TransEnd
-                0x01012b20      0x138 obj/tranutil.o
-                0x01012b20                TransEnd
- .text.DispAmount
-                0x01012c58       0x98 obj/tranutil.o
-                0x01012c58                DispAmount
- .text.AddToTotals
-                0x01012cf0      0x1b0 obj/tranutil.o
-                0x01012cf0                AddToTotals
- .text.CalIssuerSum
-                0x01012ea0       0x40 obj/tranutil.o
- .text.CalTotals
-                0x01012ee0       0x5c obj/tranutil.o
-                0x01012ee0                CalTotals
- .text.PackIssuerSum
-                0x01012f3c      0x2d8 obj/tranutil.o
-                0x01012f3c                PackIssuerSum
- .text.PackIssuerSumT
-                0x01013214      0x278 obj/tranutil.o
-                0x01013214                PackIssuerSumT
- .text.FormatHolderName
-                0x0101348c       0x6e obj/tranutil.o
-                0x0101348c                FormatHolderName
- *fill*         0x010134fa        0x2 
- .text.IncTraceNoEND
-                0x010134fc       0x34 obj/tranutil.o
-                0x010134fc                IncTraceNoEND
- .text.IncTraceNo
-                0x01013530       0x30 obj/tranutil.o
-                0x01013530                IncTraceNo
- .text.ClearRspData
-                0x01013560       0x4c obj/tranutil.o
-                0x01013560                ClearRspData
- .text.ResetTerm
-                0x010135ac       0x6c obj/tranutil.o
-                0x010135ac                ResetTerm
- .text.PackComm
-                0x01013618      0x400 obj/tranutil.o
-                0x01013618                PackComm
- .text.TransAllowed
-                0x01013a18      0x16c obj/tranutil.o
-                0x01013a18                TransAllowed
- .text          0x01013b84        0x0 obj/wavecom.o
- .text.ClearCmdBuf
-                0x01013b84       0x48 obj/wavecom.o
- .text.SendWaitRsp.part.0
-                0x01013bcc      0x128 obj/wavecom.o
- .text.SendWaitRsp
-                0x01013cf4       0x68 obj/wavecom.o
- .text.SetSmsMode.part.1
-                0x01013d5c       0x3c obj/wavecom.o
- .text.Asc2DWVAL.constprop.7
-                0x01013d98       0x22 obj/wavecom.o
- *fill*         0x01013dba        0x2 
- .text.WaitModuReady
-                0x01013dbc       0x4c obj/wavecom.o
-                0x01013dbc                WaitModuReady
- .text.SimDetect
-                0x01013e08       0x38 obj/wavecom.o
-                0x01013e08                SimDetect
- .text.RegisterNetwork
-                0x01013e40       0x84 obj/wavecom.o
-                0x01013e40                RegisterNetwork
- .text.AttachGPRS
-                0x01013ec4       0x34 obj/wavecom.o
-                0x01013ec4                AttachGPRS
- .text.GetPHBCapcity
-                0x01013ef8       0xbc obj/wavecom.o
-                0x01013ef8                GetPHBCapcity
- .text.GetContact
-                0x01013fb4       0xb4 obj/wavecom.o
-                0x01013fb4                GetContact
- .text.LoadPhoneBook
-                0x01014068       0x48 obj/wavecom.o
-                0x01014068                LoadPhoneBook
- .text.SortPhoneBook
-                0x010140b0       0xb8 obj/wavecom.o
-                0x010140b0                SortPhoneBook
- .text.SelectPHBook
-                0x01014168      0x100 obj/wavecom.o
-                0x01014168                SelectPHBook
- .text.WriteContact
-                0x01014268       0x90 obj/wavecom.o
-                0x01014268                WriteContact
- .text.DelContact
-                0x010142f8       0x5c obj/wavecom.o
-                0x010142f8                DelContact
- .text.AllCallForward
-                0x01014354       0x4c obj/wavecom.o
-                0x01014354                AllCallForward
- .text.MakeCall
-                0x010143a0       0x40 obj/wavecom.o
-                0x010143a0                MakeCall
- .text.MakeReqCall
-                0x010143e0       0x4c obj/wavecom.o
-                0x010143e0                MakeReqCall
- .text.CheckCallStatus
-                0x0101442c       0x80 obj/wavecom.o
-                0x0101442c                CheckCallStatus
- .text.AnswerCall
-                0x010144ac       0x28 obj/wavecom.o
-                0x010144ac                AnswerCall
- .text.SendKeyPress
-                0x010144d4       0x1c obj/wavecom.o
-                0x010144d4                SendKeyPress
- .text.HangUp   0x010144f0       0x28 obj/wavecom.o
-                0x010144f0                HangUp
- .text.CheckCallEnd
-                0x01014518       0x58 obj/wavecom.o
-                0x01014518                CheckCallEnd
- .text.GetCallerID
-                0x01014570       0x54 obj/wavecom.o
-                0x01014570                GetCallerID
- .text.ReadGain
-                0x010145c4       0x20 obj/wavecom.o
-                0x010145c4                ReadGain
- .text.WriteGain
-                0x010145e4       0x3c obj/wavecom.o
-                0x010145e4                WriteGain
- .text.GetOptrName
-                0x01014620       0x6c obj/wavecom.o
-                0x01014620                GetOptrName
- .text.FacilityEnable
-                0x0101468c       0x98 obj/wavecom.o
-                0x0101468c                FacilityEnable
- .text.CheckPinState
-                0x01014724       0x80 obj/wavecom.o
-                0x01014724                CheckPinState
- .text.EnterPin
-                0x010147a4       0x4c obj/wavecom.o
-                0x010147a4                EnterPin
- .text.ChangePin
-                0x010147f0       0x94 obj/wavecom.o
-                0x010147f0                ChangePin
- .text.SetNewMsgInd
-                0x01014884       0x20 obj/wavecom.o
-                0x01014884                SetNewMsgInd
- .text.GetSmsMode
-                0x010148a4       0x4c obj/wavecom.o
-                0x010148a4                GetSmsMode
- .text.GetSmsTotal
-                0x010148f0       0xa0 obj/wavecom.o
-                0x010148f0                GetSmsTotal
- .text.LoadSmsInbox
-                0x01014990      0x29c obj/wavecom.o
-                0x01014990                LoadSmsInbox
- .text.ReadSms  0x01014c2c      0x10c obj/wavecom.o
-                0x01014c2c                ReadSms
- .text.DelSms   0x01014d38       0x84 obj/wavecom.o
-                0x01014d38                DelSms
- .text.SmsSend  0x01014dbc       0xb4 obj/wavecom.o
-                0x01014dbc                SmsSend
- .text.ModuleInit
-                0x01014e70       0x38 obj/wavecom.o
-                0x01014e70                ModuleInit
- .text          0x01014ea8        0x0 obj/cstartup.o
- .text.SegmentInit
-                0x01014ea8       0x78 obj/cstartup.o
-                0x01014ea8                SegmentInit
- .text          0x01014f20        0x0 obj/expect_send.o
- .text.expect_send_release
-                0x01014f20       0x58 obj/expect_send.o
-                0x01014f20                expect_send_release
- .text.expect_send_alloc
-                0x01014f78      0x10e obj/expect_send.o
-                0x01014f78                expect_send_alloc
- .text          0x01015086        0x0 obj/libc.o
- .text.printchar
->>>>>>> parent of 2ec1fdb... make length in header dymaic
-                0x01015086       0x14 obj/libc.o
- .text.prints   0x0101509a       0xaa obj/libc.o
- .text.printi   0x01015144       0xa0 obj/libc.o
- *fill*         0x010151e4        0x4 
+                0x0101508a       0x14 obj/libc.o
+ .text.prints   0x0101509e       0xaa obj/libc.o
+ .text.printi   0x01015148       0xa0 obj/libc.o
  .text.print    0x010151e8      0x2c0 obj/libc.o
  .text._read_r  0x010154a8       0x2a obj/libc.o
                 0x010154a8                _read_r
-<<<<<<< HEAD
->>>>>>> parent of 2ec1fdb... make length in header dymaic
-=======
->>>>>>> parent of 2ec1fdb... make length in header dymaic
  .text._write_r
                 0x010154d2       0x22 obj/libc.o
                 0x010154d2                _write_r
@@ -3705,15 +3157,7 @@ OUTPUT(app elf32-littlearm)
  .debug_ranges  0x00001820       0x38 ../LibA5T1000/gcc\libspglib.a(GIFLib.o)
  .debug_ranges  0x00001858       0x60 ../LibA5T1000/gcc\libspglib.a(GLib.o)
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-.debug_line     0x00000000     0xad67
-=======
-.debug_line     0x00000000     0xad52
->>>>>>> parent of 2ec1fdb... make length in header dymaic
-=======
-.debug_line     0x00000000     0xad52
->>>>>>> parent of 2ec1fdb... make length in header dymaic
+.debug_line     0x00000000     0xad54
  .debug_line    0x00000000      0x23c obj/Adjust.o
  .debug_line    0x0000023c      0x148 obj/Auth.o
  .debug_line    0x00000384      0x3b9 obj/Chkoptn.o
@@ -3743,73 +3187,6 @@ OUTPUT(app elf32-littlearm)
  .debug_line    0x000046a9       0x1d obj/emvl2cfg.o
  .debug_line    0x000046c6      0x585 obj/emvtrans.o
  .debug_line    0x00004c4b      0x319 obj/hardware.o
-<<<<<<< HEAD
-<<<<<<< HEAD
- .debug_line    0x00004f64      0x3ce obj/hostmsg.o
- .debug_line    0x00005332      0x58d obj/iface.o
- .debug_line    0x000058bf      0x171 obj/iface_util.o
- .debug_line    0x00005a30      0x763 obj/input.o
- .debug_line    0x00006193      0x423 obj/keytrans.o
- .debug_line    0x000065b6      0x2ee obj/lptutil.o
- .debug_line    0x000068a4       0x87 obj/main.o
- .debug_line    0x0000692b      0x270 obj/menu.o
- .debug_line    0x00006b9b       0x67 obj/message.o
- .debug_line    0x00006c02      0x662 obj/network.o
- .debug_line    0x00007264      0x20b obj/record.o
- .debug_line    0x0000746f      0x14d obj/refund.o
- .debug_line    0x000075bc      0x10d obj/testrans.o
- .debug_line    0x000076c9      0x13f obj/toggle.o
- .debug_line    0x00007808      0x31b obj/tpadtest.o
- .debug_line    0x00007b23      0xa65 obj/tranutil.o
- .debug_line    0x00008588      0x703 obj/wavecom.o
- .debug_line    0x00008c8b       0xad obj/cstartup.o
- .debug_line    0x00008d38      0x169 obj/expect_send.o
- .debug_line    0x00008ea1      0x3ab obj/libc.o
- .debug_line    0x0000924c      0x267 ../LibA5T1000/gcc\libsyscall.a(app_call.o)
- .debug_line    0x000094b3       0x7e ../LibA5T1000/gcc\libsyscall.a(sys_call.o)
- .debug_line    0x00009531       0x7f ../LibA5T1000/gcc\libbasecall.a(base_call.o)
- .debug_line    0x000095b0       0x95 ../LibA5T1000/gcc\libsptutil.a(bcd2bin.o)
- .debug_line    0x00009645       0x61 ../LibA5T1000/gcc\libsptutil.a(bcd2val.o)
- .debug_line    0x000096a6       0x77 ../LibA5T1000/gcc\libsptutil.a(bcdadd.o)
- .debug_line    0x0000971d       0x7e ../LibA5T1000/gcc\libsptutil.a(bcdinc.o)
- .debug_line    0x0000979b       0x77 ../LibA5T1000/gcc\libsptutil.a(bcdsub.o)
- .debug_line    0x00009812       0x8e ../LibA5T1000/gcc\libsptutil.a(bin2bcd.o)
- .debug_line    0x000098a0       0x64 ../LibA5T1000/gcc\libsptutil.a(bin2dec.o)
- .debug_line    0x00009904       0x73 ../LibA5T1000/gcc\libsptutil.a(bindec_d.o)
- .debug_line    0x00009977       0x69 ../LibA5T1000/gcc\libsptutil.a(chkdok.o)
- .debug_line    0x000099e0       0x74 ../LibA5T1000/gcc\libsptutil.a(compress.o)
- .debug_line    0x00009a54       0x7a ../LibA5T1000/gcc\libsptutil.a(crcccitt.o)
- .debug_line    0x00009ace      0x10f ../LibA5T1000/gcc\libsptutil.a(dbin2asc.o)
- .debug_line    0x00009bdd       0xa9 ../LibA5T1000/gcc\libsptutil.a(dbin2bcd.o)
- .debug_line    0x00009c86       0x6a ../LibA5T1000/gcc\libsptutil.a(decbin4b.o)
- .debug_line    0x00009cf0       0x94 ../LibA5T1000/gcc\libsptutil.a(decbin8b.o)
- .debug_line    0x00009d84       0x60 ../LibA5T1000/gcc\libsptutil.a(fndb.o)
- .debug_line    0x00009de4       0x71 ../LibA5T1000/gcc\libsptutil.a(get_byte.o)
- .debug_line    0x00009e55       0x60 ../LibA5T1000/gcc\libsptutil.a(get_dist.o)
- .debug_line    0x00009eb5       0x79 ../LibA5T1000/gcc\libsptutil.a(get_mem.o)
- .debug_line    0x00009f2e       0x5f ../LibA5T1000/gcc\libsptutil.a(get_pptr.o)
- .debug_line    0x00009f8d       0x5f ../LibA5T1000/gcc\libsptutil.a(hex_val.o)
- .debug_line    0x00009fec       0x77 ../LibA5T1000/gcc\libsptutil.a(inc_pptr.o)
- .debug_line    0x0000a063       0x64 ../LibA5T1000/gcc\libsptutil.a(isbdigit.o)
- .debug_line    0x0000a0c7       0xa1 ../LibA5T1000/gcc\libsptutil.a(pack_b.o)
- .debug_line    0x0000a168       0x6f ../LibA5T1000/gcc\libsptutil.a(pack_lf.o)
- .debug_line    0x0000a1d7       0x71 ../LibA5T1000/gcc\libsptutil.a(pack_lfs.o)
- .debug_line    0x0000a248       0x75 ../LibA5T1000/gcc\libsptutil.a(pack_mem.o)
- .debug_line    0x0000a2bd       0xfc ../LibA5T1000/gcc\libsptutil.a(pack_nb.o)
- .debug_line    0x0000a3b9       0x71 ../LibA5T1000/gcc\libsptutil.a(pack_spc.o)
- .debug_line    0x0000a42a       0xfb ../LibA5T1000/gcc\libsptutil.a(pack_str.o)
- .debug_line    0x0000a525       0x5e ../LibA5T1000/gcc\libsptutil.a(peek_b.o)
- .debug_line    0x0000a583       0x64 ../LibA5T1000/gcc\libsptutil.a(set_pptr.o)
- .debug_line    0x0000a5e7       0x68 ../LibA5T1000/gcc\libsptutil.a(skpb.o)
- .debug_line    0x0000a64f       0x71 ../LibA5T1000/gcc\libsptutil.a(split.o)
- .debug_line    0x0000a6c0       0x75 ../LibA5T1000/gcc\libsptutil.a(split_d.o)
- .debug_line    0x0000a735       0x61 ../LibA5T1000/gcc\libsptutil.a(val2bcd.o)
- .debug_line    0x0000a796       0x60 ../LibA5T1000/gcc\libsptutil.a(hexdigit.o)
- .debug_line    0x0000a7f6      0x35d ../LibA5T1000/gcc\libspglib.a(GIFLib.o)
- .debug_line    0x0000ab53      0x214 ../LibA5T1000/gcc\libspglib.a(GLib.o)
-=======
-=======
->>>>>>> parent of 2ec1fdb... make length in header dymaic
  .debug_line    0x00004f64      0x3bb obj/hostmsg.o
  .debug_line    0x0000531f      0x58d obj/iface.o
  .debug_line    0x000058ac      0x171 obj/iface_util.o
@@ -3821,61 +3198,57 @@ OUTPUT(app elf32-littlearm)
  .debug_line    0x00006b88       0x67 obj/message.o
  .debug_line    0x00006bef      0x662 obj/network.o
  .debug_line    0x00007251      0x20b obj/record.o
- .debug_line    0x0000745c      0x14b obj/refund.o
- .debug_line    0x000075a7      0x10d obj/testrans.o
- .debug_line    0x000076b4      0x13f obj/toggle.o
- .debug_line    0x000077f3      0x31b obj/tpadtest.o
- .debug_line    0x00007b0e      0xa65 obj/tranutil.o
- .debug_line    0x00008573      0x703 obj/wavecom.o
- .debug_line    0x00008c76       0xad obj/cstartup.o
- .debug_line    0x00008d23      0x169 obj/expect_send.o
- .debug_line    0x00008e8c      0x3ab obj/libc.o
- .debug_line    0x00009237      0x267 ../LibA5T1000/gcc\libsyscall.a(app_call.o)
- .debug_line    0x0000949e       0x7e ../LibA5T1000/gcc\libsyscall.a(sys_call.o)
- .debug_line    0x0000951c       0x7f ../LibA5T1000/gcc\libbasecall.a(base_call.o)
- .debug_line    0x0000959b       0x95 ../LibA5T1000/gcc\libsptutil.a(bcd2bin.o)
- .debug_line    0x00009630       0x61 ../LibA5T1000/gcc\libsptutil.a(bcd2val.o)
- .debug_line    0x00009691       0x77 ../LibA5T1000/gcc\libsptutil.a(bcdadd.o)
- .debug_line    0x00009708       0x7e ../LibA5T1000/gcc\libsptutil.a(bcdinc.o)
- .debug_line    0x00009786       0x77 ../LibA5T1000/gcc\libsptutil.a(bcdsub.o)
- .debug_line    0x000097fd       0x8e ../LibA5T1000/gcc\libsptutil.a(bin2bcd.o)
- .debug_line    0x0000988b       0x64 ../LibA5T1000/gcc\libsptutil.a(bin2dec.o)
- .debug_line    0x000098ef       0x73 ../LibA5T1000/gcc\libsptutil.a(bindec_d.o)
- .debug_line    0x00009962       0x69 ../LibA5T1000/gcc\libsptutil.a(chkdok.o)
- .debug_line    0x000099cb       0x74 ../LibA5T1000/gcc\libsptutil.a(compress.o)
- .debug_line    0x00009a3f       0x7a ../LibA5T1000/gcc\libsptutil.a(crcccitt.o)
- .debug_line    0x00009ab9      0x10f ../LibA5T1000/gcc\libsptutil.a(dbin2asc.o)
- .debug_line    0x00009bc8       0xa9 ../LibA5T1000/gcc\libsptutil.a(dbin2bcd.o)
- .debug_line    0x00009c71       0x6a ../LibA5T1000/gcc\libsptutil.a(decbin4b.o)
- .debug_line    0x00009cdb       0x94 ../LibA5T1000/gcc\libsptutil.a(decbin8b.o)
- .debug_line    0x00009d6f       0x60 ../LibA5T1000/gcc\libsptutil.a(fndb.o)
- .debug_line    0x00009dcf       0x71 ../LibA5T1000/gcc\libsptutil.a(get_byte.o)
- .debug_line    0x00009e40       0x60 ../LibA5T1000/gcc\libsptutil.a(get_dist.o)
- .debug_line    0x00009ea0       0x79 ../LibA5T1000/gcc\libsptutil.a(get_mem.o)
- .debug_line    0x00009f19       0x5f ../LibA5T1000/gcc\libsptutil.a(get_pptr.o)
- .debug_line    0x00009f78       0x5f ../LibA5T1000/gcc\libsptutil.a(hex_val.o)
- .debug_line    0x00009fd7       0x77 ../LibA5T1000/gcc\libsptutil.a(inc_pptr.o)
- .debug_line    0x0000a04e       0x64 ../LibA5T1000/gcc\libsptutil.a(isbdigit.o)
- .debug_line    0x0000a0b2       0xa1 ../LibA5T1000/gcc\libsptutil.a(pack_b.o)
- .debug_line    0x0000a153       0x6f ../LibA5T1000/gcc\libsptutil.a(pack_lf.o)
- .debug_line    0x0000a1c2       0x71 ../LibA5T1000/gcc\libsptutil.a(pack_lfs.o)
- .debug_line    0x0000a233       0x75 ../LibA5T1000/gcc\libsptutil.a(pack_mem.o)
- .debug_line    0x0000a2a8       0xfc ../LibA5T1000/gcc\libsptutil.a(pack_nb.o)
- .debug_line    0x0000a3a4       0x71 ../LibA5T1000/gcc\libsptutil.a(pack_spc.o)
- .debug_line    0x0000a415       0xfb ../LibA5T1000/gcc\libsptutil.a(pack_str.o)
- .debug_line    0x0000a510       0x5e ../LibA5T1000/gcc\libsptutil.a(peek_b.o)
- .debug_line    0x0000a56e       0x64 ../LibA5T1000/gcc\libsptutil.a(set_pptr.o)
- .debug_line    0x0000a5d2       0x68 ../LibA5T1000/gcc\libsptutil.a(skpb.o)
- .debug_line    0x0000a63a       0x71 ../LibA5T1000/gcc\libsptutil.a(split.o)
- .debug_line    0x0000a6ab       0x75 ../LibA5T1000/gcc\libsptutil.a(split_d.o)
- .debug_line    0x0000a720       0x61 ../LibA5T1000/gcc\libsptutil.a(val2bcd.o)
- .debug_line    0x0000a781       0x60 ../LibA5T1000/gcc\libsptutil.a(hexdigit.o)
- .debug_line    0x0000a7e1      0x35d ../LibA5T1000/gcc\libspglib.a(GIFLib.o)
- .debug_line    0x0000ab3e      0x214 ../LibA5T1000/gcc\libspglib.a(GLib.o)
-<<<<<<< HEAD
->>>>>>> parent of 2ec1fdb... make length in header dymaic
-=======
->>>>>>> parent of 2ec1fdb... make length in header dymaic
+ .debug_line    0x0000745c      0x14d obj/refund.o
+ .debug_line    0x000075a9      0x10d obj/testrans.o
+ .debug_line    0x000076b6      0x13f obj/toggle.o
+ .debug_line    0x000077f5      0x31b obj/tpadtest.o
+ .debug_line    0x00007b10      0xa65 obj/tranutil.o
+ .debug_line    0x00008575      0x703 obj/wavecom.o
+ .debug_line    0x00008c78       0xad obj/cstartup.o
+ .debug_line    0x00008d25      0x169 obj/expect_send.o
+ .debug_line    0x00008e8e      0x3ab obj/libc.o
+ .debug_line    0x00009239      0x267 ../LibA5T1000/gcc\libsyscall.a(app_call.o)
+ .debug_line    0x000094a0       0x7e ../LibA5T1000/gcc\libsyscall.a(sys_call.o)
+ .debug_line    0x0000951e       0x7f ../LibA5T1000/gcc\libbasecall.a(base_call.o)
+ .debug_line    0x0000959d       0x95 ../LibA5T1000/gcc\libsptutil.a(bcd2bin.o)
+ .debug_line    0x00009632       0x61 ../LibA5T1000/gcc\libsptutil.a(bcd2val.o)
+ .debug_line    0x00009693       0x77 ../LibA5T1000/gcc\libsptutil.a(bcdadd.o)
+ .debug_line    0x0000970a       0x7e ../LibA5T1000/gcc\libsptutil.a(bcdinc.o)
+ .debug_line    0x00009788       0x77 ../LibA5T1000/gcc\libsptutil.a(bcdsub.o)
+ .debug_line    0x000097ff       0x8e ../LibA5T1000/gcc\libsptutil.a(bin2bcd.o)
+ .debug_line    0x0000988d       0x64 ../LibA5T1000/gcc\libsptutil.a(bin2dec.o)
+ .debug_line    0x000098f1       0x73 ../LibA5T1000/gcc\libsptutil.a(bindec_d.o)
+ .debug_line    0x00009964       0x69 ../LibA5T1000/gcc\libsptutil.a(chkdok.o)
+ .debug_line    0x000099cd       0x74 ../LibA5T1000/gcc\libsptutil.a(compress.o)
+ .debug_line    0x00009a41       0x7a ../LibA5T1000/gcc\libsptutil.a(crcccitt.o)
+ .debug_line    0x00009abb      0x10f ../LibA5T1000/gcc\libsptutil.a(dbin2asc.o)
+ .debug_line    0x00009bca       0xa9 ../LibA5T1000/gcc\libsptutil.a(dbin2bcd.o)
+ .debug_line    0x00009c73       0x6a ../LibA5T1000/gcc\libsptutil.a(decbin4b.o)
+ .debug_line    0x00009cdd       0x94 ../LibA5T1000/gcc\libsptutil.a(decbin8b.o)
+ .debug_line    0x00009d71       0x60 ../LibA5T1000/gcc\libsptutil.a(fndb.o)
+ .debug_line    0x00009dd1       0x71 ../LibA5T1000/gcc\libsptutil.a(get_byte.o)
+ .debug_line    0x00009e42       0x60 ../LibA5T1000/gcc\libsptutil.a(get_dist.o)
+ .debug_line    0x00009ea2       0x79 ../LibA5T1000/gcc\libsptutil.a(get_mem.o)
+ .debug_line    0x00009f1b       0x5f ../LibA5T1000/gcc\libsptutil.a(get_pptr.o)
+ .debug_line    0x00009f7a       0x5f ../LibA5T1000/gcc\libsptutil.a(hex_val.o)
+ .debug_line    0x00009fd9       0x77 ../LibA5T1000/gcc\libsptutil.a(inc_pptr.o)
+ .debug_line    0x0000a050       0x64 ../LibA5T1000/gcc\libsptutil.a(isbdigit.o)
+ .debug_line    0x0000a0b4       0xa1 ../LibA5T1000/gcc\libsptutil.a(pack_b.o)
+ .debug_line    0x0000a155       0x6f ../LibA5T1000/gcc\libsptutil.a(pack_lf.o)
+ .debug_line    0x0000a1c4       0x71 ../LibA5T1000/gcc\libsptutil.a(pack_lfs.o)
+ .debug_line    0x0000a235       0x75 ../LibA5T1000/gcc\libsptutil.a(pack_mem.o)
+ .debug_line    0x0000a2aa       0xfc ../LibA5T1000/gcc\libsptutil.a(pack_nb.o)
+ .debug_line    0x0000a3a6       0x71 ../LibA5T1000/gcc\libsptutil.a(pack_spc.o)
+ .debug_line    0x0000a417       0xfb ../LibA5T1000/gcc\libsptutil.a(pack_str.o)
+ .debug_line    0x0000a512       0x5e ../LibA5T1000/gcc\libsptutil.a(peek_b.o)
+ .debug_line    0x0000a570       0x64 ../LibA5T1000/gcc\libsptutil.a(set_pptr.o)
+ .debug_line    0x0000a5d4       0x68 ../LibA5T1000/gcc\libsptutil.a(skpb.o)
+ .debug_line    0x0000a63c       0x71 ../LibA5T1000/gcc\libsptutil.a(split.o)
+ .debug_line    0x0000a6ad       0x75 ../LibA5T1000/gcc\libsptutil.a(split_d.o)
+ .debug_line    0x0000a722       0x61 ../LibA5T1000/gcc\libsptutil.a(val2bcd.o)
+ .debug_line    0x0000a783       0x60 ../LibA5T1000/gcc\libsptutil.a(hexdigit.o)
+ .debug_line    0x0000a7e3      0x35d ../LibA5T1000/gcc\libspglib.a(GIFLib.o)
+ .debug_line    0x0000ab40      0x214 ../LibA5T1000/gcc\libspglib.a(GLib.o)
 
 .debug_str      0x00000000     0xad59
  .debug_str     0x00000000     0x4151 obj/Adjust.o
