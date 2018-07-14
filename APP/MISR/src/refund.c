@@ -73,7 +73,6 @@ DWORD RefundTrans(DWORD aInputMode)
 	 IncTraceNo();
 	   PackHeader();
     RSP_DATA.b_response = TRANS_ACP;
-	 INPUT.b_trans_status = OFFLINE;
     IncTraceNoEND();
     GenAuthCode(RSP_DATA.sb_auth_code);
     PackDTGAA();
