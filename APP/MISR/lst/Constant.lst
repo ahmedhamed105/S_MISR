@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 1
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 1
 
 
    1              		.syntax unified
@@ -62,11 +58,7 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
   29:src/Constant.c **** // |              Pointer : Leading p, (pb = pointer of byte, etc)            |
   30:src/Constant.c **** // ============================================================================
   31:src/Constant.c **** //
-<<<<<<< HEAD
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 2
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 2
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 2
 
 
   32:src/Constant.c **** //  Date          Who         Action
@@ -120,14 +112,13 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
   80:src/Constant.c ****    0x00, 0x00, SALE_UNDER_LMT, 0x1, 0x80
   81:src/Constant.c ****   },
   82:src/Constant.c **** 
-<<<<<<< HEAD
   83:src/Constant.c ****   {0x1420, {0x72, 0x34, 0x85, 0x41, 0x6C, 0xE1, 0x9E, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
   84:src/Constant.c ****    0x02, 0x00, VOID, 0x0, 0x00
   85:src/Constant.c ****   },
   86:src/Constant.c **** 
   87:src/Constant.c ****   {0x1220, {0x70, 0x3C, 0x05, 0x80, 0x0C, 0xC0, 0x04, 0x0C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
   88:src/Constant.c ****    0x02, 0x00, ADJUST, 0x0, 0x00
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 3
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 3
 
 
   89:src/Constant.c ****   },
@@ -187,7 +178,7 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  143:src/Constant.c ****   EDC_CN_UPLOAD            ,   //12
  144:src/Constant.c ****   EDC_CN_SETTLE            ,   //13
  145:src/Constant.c ****   EDC_CN_REVERSAL          ,   //14
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 4
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 4
 
 
  146:src/Constant.c ****   EDC_CN_SALE              ,   //15
@@ -212,101 +203,6 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  165:src/Constant.c **** BOOLEAN SaleType(BYTE aTrans)
  166:src/Constant.c **** {
   27              		.loc 1 166 0
-=======
-  83:src/Constant.c ****   //FE 36 81 81 0E C1 EB 02
-  84:src/Constant.c **** 
-  85:src/Constant.c ****   {0x1420, {0xFE, 0x36, 0x81, 0x0E, 0xC1, 0xEB, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
-  86:src/Constant.c ****    0x02, 0x00, VOID, 0x0, 0x00
-  87:src/Constant.c ****   },
-  88:src/Constant.c **** 
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 3
-
-
-  89:src/Constant.c ****   {0x1220, {0x70, 0x3C, 0x05, 0x80, 0x0C, 0xC0, 0x04, 0x0C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
-  90:src/Constant.c ****    0x02, 0x00, ADJUST, 0x0, 0x00
-  91:src/Constant.c ****   },
-  92:src/Constant.c **** 
-  93:src/Constant.c ****   {0x1304, {0x70, 0x3C, 0x05, 0x80, 0x0C, 0xC0, 0x04, 0x1C, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
-  94:src/Constant.c ****    0x00, 0x00, TRANS_UPLOAD, 0x0,  0x00
-  95:src/Constant.c ****   },
-  96:src/Constant.c **** //settlement 02 30 81 00 08 C0 08 03
-  97:src/Constant.c ****   {0x1804, {0x02, 0x30, 0x81, 0x00, 0x08, 0xC0, 0x08, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
-  98:src/Constant.c ****    0x92, 0x00, SETTLEMENT, 0x0, 0x00
-  99:src/Constant.c ****   },
- 100:src/Constant.c **** 
- 101:src/Constant.c ****   {0x1420, {0x72, 0x34, 0x85, 0x41, 0x6C, 0xE1, 0x9E, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
- 102:src/Constant.c ****    0x00, 0x00, EDC_REV, 0x0, 0x00
- 103:src/Constant.c ****   },
- 104:src/Constant.c **** 
- 105:src/Constant.c ****   {0x1200, {0xF2, 0x34, 0x87, 0x41, 0x68, 0xE1, 0x9A, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
- 106:src/Constant.c ****    0x00, 0x00, SALE_ICC, 0x1, 0x00
- 107:src/Constant.c ****   },
- 108:src/Constant.c **** 
- 109:src/Constant.c ****   {0x1100, {0x72, 0x34, 0x87, 0x41, 0x68, 0xE1, 0x9A, 0x03, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
- 110:src/Constant.c ****    0x00, 0x00, AUTH_ICC, 0x1, 0x00
- 111:src/Constant.c ****   },
- 112:src/Constant.c **** 
- 113:src/Constant.c ****   {0x1220, {0xF2, 0x34, 0x87, 0x41, 0x68, 0xE1, 0x9A, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
- 114:src/Constant.c ****    0x00, 0x00, ESALE_UNDER_LMT, 0x1, 0x80
- 115:src/Constant.c ****   },
- 116:src/Constant.c **** 
- 117:src/Constant.c ****   {0x1220, {0x72, 0x34, 0x85, 0x41, 0x6C, 0xE0, 0x8E, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
- 118:src/Constant.c ****    0x00, 0x06, ESALE_COMPLETE, 0x1, 0x80
- 119:src/Constant.c ****   },
- 120:src/Constant.c **** 
- 121:src/Constant.c ****   {0x1200, {0x72, 0x34, 0x87, 0x41, 0x68, 0xE1, 0x9A, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
- 122:src/Constant.c ****    0x00, 0x00, SALE_CTL, 0x1, 0x00
- 123:src/Constant.c ****   },
- 124:src/Constant.c **** 
- 125:src/Constant.c ****   {0x0800, {0x20, 0x20, 0x01, 0x00, 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0
- 126:src/Constant.c ****    0x99, 0x00, TEST_MSG, 0x00, 0x00
- 127:src/Constant.c ****   },
- 128:src/Constant.c **** };
- 129:src/Constant.c **** 
- 130:src/Constant.c **** const BYTE KSetlPCode2[3] = {0x96,0,0};
- 131:src/Constant.c **** 
- 132:src/Constant.c **** const BYTE KTransHeader[] = {
- 133:src/Constant.c ****   EDC_CN_AUTH              ,   //0
- 134:src/Constant.c ****   EDC_CN_AUTH              ,   //1
- 135:src/Constant.c ****   EDC_CN_SALE              ,   //2
- 136:src/Constant.c ****   EDC_CN_SALE              ,   //3
- 137:src/Constant.c ****   EDC_CN_REFUND            ,   //4
- 138:src/Constant.c ****   EDC_CN_REFUND            ,   //5
- 139:src/Constant.c ****   EDC_CN_REFUND            ,   //6
- 140:src/Constant.c ****   EDC_CN_OFFLINE           ,   //7
- 141:src/Constant.c ****   EDC_CN_SALE_COMP         ,   //8
- 142:src/Constant.c ****   EDC_CN_SALE              ,   //9
- 143:src/Constant.c ****   EDC_CN_VOID              ,   //10
- 144:src/Constant.c ****   EDC_CN_ADJUST            ,   //11
- 145:src/Constant.c ****   EDC_CN_UPLOAD            ,   //12
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 4
-
-
- 146:src/Constant.c ****   EDC_CN_SETTLE            ,   //13
- 147:src/Constant.c ****   EDC_CN_REVERSAL          ,   //14
- 148:src/Constant.c ****   EDC_CN_SALE              ,   //15
- 149:src/Constant.c ****   EDC_CN_AUTH              ,   //16
- 150:src/Constant.c ****   EDC_CN_REFUND            ,   //17
- 151:src/Constant.c ****   EDC_CN_SALE              ,   //18
- 152:src/Constant.c ****   EDC_CN_SALE_COMP         ,   //19
- 153:src/Constant.c ****   EDC_CN_SALE              ,   //20
- 154:src/Constant.c ****   EDC_CN_AUTH              ,   //21
- 155:src/Constant.c ****   EDC_CN_REFUND            ,   //22
- 156:src/Constant.c ****   EDC_CN_TEST_MSG          ,   //23
- 157:src/Constant.c **** };
- 158:src/Constant.c **** 
- 159:src/Constant.c **** //*****************************************************************************
- 160:src/Constant.c **** //  Function        : SaleType
- 161:src/Constant.c **** //  Description     : Return TRUE is transaction is define as sale type.
- 162:src/Constant.c **** //  Input           : trans;  // transaction id.
- 163:src/Constant.c **** //  Return          : TRUE/FALSE;
- 164:src/Constant.c **** //  Note            : N/A
- 165:src/Constant.c **** //  Globals Changed : N/A
- 166:src/Constant.c **** //*****************************************************************************
- 167:src/Constant.c **** BOOLEAN SaleType(BYTE aTrans)
- 168:src/Constant.c **** {
-  27              		.loc 1 168 0
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
   28              		.cfi_startproc
   29              		@ args = 0, pretend = 0, frame = 0
   30              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -340,15 +236,9 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
   56              		.set	.LANCHOR0,. + 0
   57              		.type	KTransBitmap, %object
   58              		.size	KTransBitmap, 576
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 5
-
-
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
   59              	KTransBitmap:
   60 0000 0011     		.short	4352
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 5
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 5
 
 
   61 0002 F2       		.byte	-14
@@ -406,15 +296,9 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  113 0038 88       		.byte	-120
  114 0039 03       		.byte	3
  115 003a 00       		.byte	0
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 6
-
-
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
  116 003b 00       		.byte	0
  117 003c 00       		.byte	0
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 6
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 6
 
 
  118 003d 00       		.byte	0
@@ -472,15 +356,9 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  170 0073 00       		.byte	0
  171 0074 04       		.byte	4
  172 0075 00       		.byte	0
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 7
-
-
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
  173 0076 00       		.byte	0
  174 0077 00       		.space	1
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 7
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 7
 
 
  175 0078 0012     		.short	4608
@@ -538,15 +416,9 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  227 00af E0       		.byte	-32
  228 00b0 88       		.byte	-120
  229 00b1 03       		.byte	3
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 8
-
-
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
  230 00b2 00       		.byte	0
  231 00b3 00       		.byte	0
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 8
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 8
 
 
  232 00b4 00       		.byte	0
@@ -604,15 +476,9 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  284 00ea 00       		.byte	0
  285 00eb 00       		.byte	0
  286 00ec 09       		.byte	9
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 9
-
-
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
  287 00ed 01       		.byte	1
  288 00ee 80       		.byte	-128
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 9
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 9
 
 
  289 00ef 00       		.space	1
@@ -670,15 +536,9 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  341 0126 0C       		.byte	12
  342 0127 C0       		.byte	-64
  343 0128 04       		.byte	4
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 10
-
-
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
  344 0129 1C       		.byte	28
  345 012a 00       		.byte	0
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 10
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 10
 
 
  346 012b 00       		.byte	0
@@ -736,15 +596,9 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  398 0161 00       		.byte	0
  399 0162 00       		.byte	0
  400 0163 00       		.byte	0
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 11
-
-
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
  401 0164 0E       		.byte	14
  402 0165 00       		.byte	0
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 11
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 11
 
 
  403 0166 00       		.byte	0
@@ -800,17 +654,11 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  453 019b 34       		.byte	52
  454 019c 85       		.byte	-123
  455 019d 41       		.byte	65
-<<<<<<< HEAD
  456 019e 6C       		.byte	108
  457 019f E0       		.byte	-32
  458 01a0 8E       		.byte	-114
  459 01a1 03       		.byte	3
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 12
-=======
- 456 019e 68       		.byte	104
- 457 019f E1       		.byte	-31
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 12
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 12
 
 
  460 01a2 00       		.byte	0
@@ -868,15 +716,9 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  512 01d8 00       		.byte	0
  513 01d9 00       		.byte	0
  514 01da 00       		.byte	0
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 13
-
-
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
  515 01db 00       		.byte	0
  516 01dc 14       		.byte	20
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 13
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 13
 
 
  517 01dd 01       		.byte	1
@@ -934,15 +776,9 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  565 0252 05       		.byte	5
  566 0253 08       		.byte	8
  567 0254 05       		.byte	5
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 14
-
-
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
  568 0255 04       		.byte	4
  569 0256 06       		.byte	6
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 14
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 14
 
 
  570 0257 0E       		.byte	14
@@ -1000,15 +836,9 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  622 0057 5D040000 		.4byte	.LASF5
  623 005b 03       		.uleb128 0x3
  624 005c 08       		.byte	0x8
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 15
-
-
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
  625 005d 07       		.byte	0x7
  626 005e E7000000 		.4byte	.LASF6
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 15
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 15
 
 
  627 0062 03       		.uleb128 0x3
@@ -1066,15 +896,9 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  679 00c6 A2060000 		.4byte	.LASF22
  680 00ca 0E       		.sleb128 14
  681 00cb 05       		.uleb128 0x5
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 16
-
-
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
  682 00cc 180B0000 		.4byte	.LASF23
  683 00d0 0F       		.sleb128 15
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 16
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 16
 
 
  684 00d1 05       		.uleb128 0x5
@@ -1132,15 +956,9 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  736 0138 870B0000 		.4byte	.LASF41
  737 013c 21       		.sleb128 33
  738 013d 05       		.uleb128 0x5
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 17
-
-
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
  739 013e 06060000 		.4byte	.LASF42
  740 0142 22       		.sleb128 34
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 17
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 17
 
 
  741 0143 05       		.uleb128 0x5
@@ -1198,15 +1016,9 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  793 01aa 08030000 		.4byte	.LASF60
  794 01ae 34       		.sleb128 52
  795 01af 05       		.uleb128 0x5
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 18
-
-
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
  796 01b0 17080000 		.4byte	.LASF61
  797 01b4 35       		.sleb128 53
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 18
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 18
 
 
  798 01b5 05       		.uleb128 0x5
@@ -1264,15 +1076,9 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  850 0223 4D060000 		.4byte	.LASF79
  851 0227 C700     		.sleb128 71
  852 0229 05       		.uleb128 0x5
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 19
-
-
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
  853 022a 50000000 		.4byte	.LASF80
  854 022e C800     		.sleb128 72
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 19
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 19
 
 
  855 0230 05       		.uleb128 0x5
@@ -1330,15 +1136,9 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  907 02a8 61060000 		.4byte	.LASF98
  908 02ac DA00     		.sleb128 90
  909 02ae 05       		.uleb128 0x5
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 20
-
-
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
  910 02af 63000000 		.4byte	.LASF99
  911 02b3 DB00     		.sleb128 91
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 20
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 20
 
 
  912 02b5 05       		.uleb128 0x5
@@ -1396,15 +1196,9 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  964 032d DF0C0000 		.4byte	.LASF117
  965 0331 ED00     		.sleb128 109
  966 0333 05       		.uleb128 0x5
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 21
-
-
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
  967 0334 EF0C0000 		.4byte	.LASF118
  968 0338 EE00     		.sleb128 110
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 21
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 21
 
 
  969 033a 05       		.uleb128 0x5
@@ -1462,15 +1256,9 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  1021 03b2 91050000 		.4byte	.LASF136
  1022 03b6 8001     		.sleb128 128
  1023 03b8 05       		.uleb128 0x5
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 22
-
-
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
  1024 03b9 19030000 		.4byte	.LASF137
  1025 03bd 8101     		.sleb128 129
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 22
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 22
 
 
  1026 03bf 05       		.uleb128 0x5
@@ -1528,15 +1316,9 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  1078 0433 33       		.byte	0x33
  1079 0434 D6040000 		.4byte	0x4d6
  1080 0438 05       		.uleb128 0x5
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 23
-
-
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
  1081 0439 88060000 		.4byte	.LASF154
  1082 043d 00       		.sleb128 0
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 23
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 23
 
 
  1083 043e 05       		.uleb128 0x5
@@ -1594,15 +1376,9 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  1135 04a5 D3010000 		.4byte	.LASF172
  1136 04a9 12       		.sleb128 18
  1137 04aa 05       		.uleb128 0x5
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 24
-
-
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
  1138 04ab 3D0D0000 		.4byte	.LASF173
  1139 04af 13       		.sleb128 19
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 24
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 24
 
 
  1140 04b0 05       		.uleb128 0x5
@@ -1660,15 +1436,9 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  1192 0518 55       		.byte	0x55
  1193 0519 37000000 		.4byte	0x37
  1194 051d 14       		.byte	0x14
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 25
-
-
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
  1195 051e 07       		.uleb128 0x7
  1196 051f D30C0000 		.4byte	.LASF185
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 25
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 25
 
 
  1197 0523 04       		.byte	0x4
@@ -1726,15 +1496,9 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  1249 0596 08       		.uleb128 0x8
  1250 0597 37000000 		.4byte	0x37
  1251 059b A6050000 		.4byte	0x5a6
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 26
-
-
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
  1252 059f 09       		.uleb128 0x9
  1253 05a0 62000000 		.4byte	0x62
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 26
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 26
 
 
  1254 05a4 02       		.byte	0x2
@@ -1792,15 +1556,9 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  1306 0014 16       		.uleb128 0x16
  1307 0015 00       		.byte	0
  1308 0016 03       		.uleb128 0x3
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 27
-
-
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
  1309 0017 0E       		.uleb128 0xe
  1310 0018 3A       		.uleb128 0x3a
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 27
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 27
 
 
  1311 0019 0B       		.uleb128 0xb
@@ -1858,15 +1616,9 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  1363 004d 13       		.uleb128 0x13
  1364 004e 00       		.byte	0
  1365 004f 00       		.byte	0
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 28
-
-
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
  1366 0050 07       		.uleb128 0x7
  1367 0051 0D       		.uleb128 0xd
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 28
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 28
 
 
  1368 0052 00       		.byte	0
@@ -1924,15 +1676,9 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  1420 0086 9742     		.uleb128 0x2117
  1421 0088 19       		.uleb128 0x19
  1422 0089 01       		.uleb128 0x1
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 29
-
-
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
  1423 008a 13       		.uleb128 0x13
  1424 008b 00       		.byte	0
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 29
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 29
 
 
  1425 008c 00       		.byte	0
@@ -1990,15 +1736,9 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  1477 0016 01       		.uleb128 0x1
  1478 0017 50       		.byte	0x50
  1479 0018 9F       		.byte	0x9f
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 30
-
-
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
  1480 0019 00000000 		.4byte	0
  1481 001d 00000000 		.4byte	0
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 30
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 30
 
 
  1482              		.section	.debug_aranges,"",%progbits
@@ -2056,15 +1796,9 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  1514      41495400 
  1515              	.LASF80:
  1516 0050 4544435F 		.ascii	"EDC_RSP_NOT_HONOUR\000"
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 31
-
-
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
  1516      5253505F 
  1516      4E4F545F 
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 31
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 31
 
 
  1516      484F4E4F 
@@ -2122,15 +1856,9 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  1536 010f 4544435F 		.ascii	"EDC_FN_NO_REV\000"
  1536      464E5F4E 
  1536      4F5F5245 
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 32
-
-
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
  1536      5600
  1537              	.LASF112:
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 32
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 32
 
 
  1538 011d 4544435F 		.ascii	"EDC_RSP_CTL_REFER_MOBILE\000"
@@ -2188,15 +1916,9 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  1557              	.LASF75:
  1558 01c1 4544435F 		.ascii	"EDC_RSP_COMPLETED\000"
  1558      5253505F 
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 33
-
-
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
  1558      434F4D50 
  1558      4C455445 
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 33
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 33
 
 
  1558      4400
@@ -2254,15 +1976,9 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  1576 02ff 54455354 		.ascii	"TEST_MSG\000"
  1576      5F4D5347 
  1576      00
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 34
-
-
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
  1577              	.LASF60:
  1578 0308 4544435F 		.ascii	"EDC_FN_CLR_BATCH\000"
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 34
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 34
 
 
  1578      464E5F43 
@@ -2320,15 +2036,9 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  1598      5452595F 
  1598      41474149 
  1598      4E475F54 
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 35
-
-
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
  1599              	.LASF47:
  1600 03ba 4544435F 		.ascii	"EDC_AJ_ENTER_NTIP\000"
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 35
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 35
 
 
  1600      414A5F45 
@@ -2386,15 +2096,9 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  1618      41545400 
  1619              	.LASF5:
  1620 045d 756E7369 		.ascii	"unsigned int\000"
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 36
-
-
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
  1620      676E6564 
  1620      20696E74 
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 36
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 36
 
 
  1620      00
@@ -2452,15 +2156,9 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  1640      50524F43 
  1640      45535349 
  1640      4E4700
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 37
-
-
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
  1641              	.LASF165:
  1642 0518 41444A55 		.ascii	"ADJUST\000"
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 37
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 37
 
 
  1642      535400
@@ -2518,15 +2216,9 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  1662      5F444553 
  1662      4300
  1663              	.LASF77:
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 38
-
-
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
  1664 05c1 4544435F 		.ascii	"EDC_RSP_REFERRAL\000"
  1664      5253505F 
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 38
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 38
 
 
  1664      52454645 
@@ -2584,15 +2276,9 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  1684      41524400 
  1685              	.LASF98:
  1686 0661 4544435F 		.ascii	"EDC_RSP_ROC_NOT_FOUND\000"
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 39
-
-
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
  1686      5253505F 
  1686      524F435F 
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 39
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 39
 
 
  1686      4E4F545F 
@@ -2650,15 +2336,9 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  1708 0703 574F5244 		.ascii	"WORD\000"
  1708      00
  1709              	.LASF156:
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 40
-
-
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
  1710 0708 53414C45 		.ascii	"SALE_SWIPE\000"
  1710      5F535749 
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 40
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 40
 
 
  1710      504500
@@ -2716,15 +2396,9 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  1730      4E544552 
  1730      5F4E414D 
  1730      5400
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 41
-
-
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
  1731              	.LASF31:
  1732 07b6 4544435F 		.ascii	"EDC_IN_INV_TIPS\000"
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 41
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 41
 
 
  1732      494E5F49 
@@ -2782,15 +2456,9 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  1750      52454300 
  1751              	.LASF179:
  1752 086a 44454641 		.ascii	"DEFAULT_TRANS\000"
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 42
-
-
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
  1752      554C545F 
  1752      5452414E 
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 42
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 42
 
 
  1752      5300
@@ -2848,15 +2516,9 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  1772 090f 4544435F 		.ascii	"EDC_FN_END_BATCH\000"
  1772      464E5F45 
  1772      4E445F42 
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 43
-
-
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
  1772      41544348 
  1772      00
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 43
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 43
 
 
  1773              	.LASF72:
@@ -2914,15 +2576,9 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  1792      4F434152 
  1792      4400
  1793              	.LASF191:
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 44
-
-
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
  1794 09c5 7372632F 		.ascii	"src/Constant.c\000"
  1794      436F6E73 
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 44
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 44
 
 
  1794      74616E74 
@@ -2980,15 +2636,9 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  1814      5F524541 
  1814      445F4F4B 
  1815              	.LASF58:
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 45
-
-
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
  1816 0a7c 4544435F 		.ascii	"EDC_FN_CARD_TOTAL\000"
  1816      464E5F43 
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 45
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 45
 
 
  1816      4152445F 
@@ -3046,15 +2696,9 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  1834      5F455252 
  1835              	.LASF116:
  1836 0b2f 4544435F 		.ascii	"EDC_RSP_CALL_IP\000"
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 46
-
-
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
  1836      5253505F 
  1836      43414C4C 
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 46
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 46
 
 
  1836      5F495000 
@@ -3112,15 +2756,9 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  1856      4241445F 
  1856      5445524D 
  1856      494E414C 
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 47
-
-
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
  1857              	.LASF24:
  1858 0bec 4544435F 		.ascii	"EDC_IN_USE_ICC\000"
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 47
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 47
 
 
  1858      494E5F55 
@@ -3178,15 +2816,9 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  1876      494E4954 
  1876      00
  1877              	.LASF183:
-<<<<<<< HEAD
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 48
-
-
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
  1878 0c9c 625F636F 		.ascii	"b_condition_code\000"
  1878      6E646974 
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 48
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 48
 
 
  1878      696F6E5F 
@@ -3244,37 +2876,19 @@ ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 1
  1898      455F434F 
  1898      4D504C45 
  1898      544500
-<<<<<<< HEAD
  1899              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-br
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s 			page 49
-=======
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 49
-
-
- 1899              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20141119 (release) [ARM/embedded-4_9-br
-ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s 			page 50
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
+ARM GAS  C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s 			page 49
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 Constant.c
-<<<<<<< HEAD
-C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s:19     .text.SaleType:00000000 $t
-C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s:24     .text.SaleType:00000000 SaleType
-C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s:47     .text.SaleType:00000014 $d
-C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s:546    .rodata:00000240 KTransHeader
-C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s:573    .rodata:00000258 KSetlPCode2
-C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s:59     .rodata:00000000 KTransBitmap
-C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZAiZje.s:55     .rodata:00000000 $d
-=======
-C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s:19     .text.SaleType:00000000 $t
-C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s:24     .text.SaleType:00000000 SaleType
-C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s:47     .text.SaleType:00000014 $d
-C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s:546    .rodata:00000240 KTransHeader
-C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s:573    .rodata:00000258 KSetlPCode2
-C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s:59     .rodata:00000000 KTransBitmap
-C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccIAarxk.s:55     .rodata:00000000 $d
->>>>>>> parent of 6d9cd1b... fix offline refund TRX and update EDC
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s:19     .text.SaleType:00000000 $t
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s:24     .text.SaleType:00000000 SaleType
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s:47     .text.SaleType:00000014 $d
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s:546    .rodata:00000240 KTransHeader
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s:573    .rodata:00000258 KSetlPCode2
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s:59     .rodata:00000000 KTransBitmap
+C:\Users\AHMED~1.ELE\AppData\Local\Temp\ccZjQo8K.s:55     .rodata:00000000 $d
                      .debug_frame:00000010 $d
 
 NO UNDEFINED SYMBOLS
