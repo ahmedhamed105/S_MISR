@@ -312,7 +312,7 @@ void TransModeDisp(BOOLEAN aIdleMode)
             Disp2x16Msg(GetConstMsg(EDC_IN_ENTER_AMOUNT), MW_LINE3, MW_BIGFONT);
         }
         else {
-          TimerSetMW(gTimerHdl[TIMER_DISP], 200);
+          TimerSetMW(gTimerHdl[TIMER_DISP], 2000);
           gGDS->b_disp_chgd = TRUE;
           if (CtlUnderTransLimit((DWORD)(INPUT.dd_amount))) {
             if (gDispLogo)
