@@ -2103,16 +2103,24 @@ void PackComm(DWORD aHostIdx, BOOLEAN aForSettle)
 
   // tcp setting
   comm_param.sTcp.bLen                = sizeof(comm_param.sTcp);
-  GetSysCfgMW(MW_SYSCFG_SIMSEL, &bSimNum);
-  if (bSimNum == 0) {
-    // SIM 1
-    memcpy(&comm_param.sTcp.sTcpCfg.d_ip, acq_tbl.sb_ip, 4);
-    comm_param.sTcp.sTcpCfg.w_port     = acq_tbl.sb_port[0]*256+acq_tbl.sb_port[1];
+  if (acq_tbl.b_ssl_key_idx&0x80) {
+    // use 3G/GPRS
+    GetSysCfgMW(MW_SYSCFG_SIMSEL, &bSimNum);
+    if (bSimNum == 0) {
+      // SIM 1
+      memcpy(&comm_param.sTcp.sTcpCfg.d_ip, acq_tbl.sb_ip, 4);
+      comm_param.sTcp.sTcpCfg.w_port     = acq_tbl.sb_port[0]*256+acq_tbl.sb_port[1];
+    }
+    else {
+      // SIM 2
+      memcpy(&comm_param.sTcp.sTcpCfg.d_ip, term_cfg.apn2_ip, 4);
+      comm_param.sTcp.sTcpCfg.w_port     = term_cfg.apn2_port[0]*256+term_cfg.apn2_port[1];
+    }
   }
   else {
-    // SIM 2
-    memcpy(&comm_param.sTcp.sTcpCfg.d_ip, term_cfg.apn2_ip, 4);
-    comm_param.sTcp.sTcpCfg.w_port     = term_cfg.apn2_port[0]*256+term_cfg.apn2_port[1];
+    // use LAN
+    memcpy(&comm_param.sTcp.sTcpCfg.d_ip, acq_tbl.sb_ip, 4);
+    comm_param.sTcp.sTcpCfg.w_port     = acq_tbl.sb_port[0]*256+acq_tbl.sb_port[1];
   }
 #if 1
   SprintfMW(buf, "IP  : %08X", comm_param.sTcp.sTcpCfg.d_ip);
