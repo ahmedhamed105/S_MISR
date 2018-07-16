@@ -178,7 +178,7 @@ void PackHostMsg(void)
    BYTE *len_ptr, *bitmap_ptr;
   BYTE tx_bitmap[16];
   BYTE var_i, var_j;
-  BYTE buf[128], tmp[10];  // request by dbin2bcd
+   BYTE buf[128], tmp[10],length[4]; // request by dbin2bcd
   struct DESC_TBL prod;
 
   TxBufSetup(ExtraMsgLen());
@@ -188,10 +188,16 @@ void PackHostMsg(void)
 pack_byte(0x49);
 pack_byte(0x53);
 pack_byte(0x4F);
-pack_byte(0x30);
-pack_byte(0x34);
-pack_byte(0x36);
-pack_byte(0x35);
+
+//pack_byte(0x30);
+//pack_byte(0x34);
+//pack_byte(0x36);
+//pack_byte(0x35);
+
+len_ptr = get_pptr();     // 4-byte length
+inc_pptr(4);
+
+
 pack_byte(0x32);
 pack_byte(0x31);
 pack_byte(0x31);
@@ -625,13 +631,21 @@ memcpy(tx_bitmap, KTransBitmap[TX_DATA.b_trans].sb_txbitmap, 16);
  // 
 //  SprintfMW(buf, "%04d", get_distance());
 //  memcpy(len_ptr, buf, 4);
+
+
+PackTxBufLen(ExtraMsgLen());
+
+
+   SprintfMW(length, "%04d", TX_BUF.wLen - 2);
+   memcpy(len_ptr, length, 4);
+
   if (tx_bitmap[0] & 0x80)
     memcpy(bitmap_ptr, tx_bitmap, 16);
   else
     memcpy(bitmap_ptr, tx_bitmap, 8);
 
 
-    PackTxBufLen(ExtraMsgLen());
+  //  PackTxBufLen(ExtraMsgLen());
   dbgHex("TxMsg", TX_BUF.sbContent, TX_BUF.wLen);         /* JJJ */
 }
 /******************************************************************/
