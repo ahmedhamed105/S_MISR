@@ -424,7 +424,7 @@ END GROUP
                 0x01000020                KAppHeader
                 0x01000150                . = (_start_of_app + 0x100)
 
-.text           0x01000150    0x22588
+.text           0x01000150    0x225b8
  *(.text* .glue_7* .gnu.linkonce.t.*)
  .glue_7        0x00000000        0x0 linker stubs
  .glue_7t       0x00000000        0x0 linker stubs
@@ -1196,957 +1196,957 @@ END GROUP
                 0x0100a624       0x3c obj/hostmsg.o
                 0x0100a624                PackProcCode
  .text.PackHostMsg
-                0x0100a660      0x70c obj/hostmsg.o
+                0x0100a660      0x73c obj/hostmsg.o
                 0x0100a660                PackHostMsg
  .text.CheckHostRsp
-                0x0100ad6c      0x4f8 obj/hostmsg.o
-                0x0100ad6c                CheckHostRsp
- .text          0x0100b264        0x0 obj/iface.o
+                0x0100ad9c      0x4f8 obj/hostmsg.o
+                0x0100ad9c                CheckHostRsp
+ .text          0x0100b294        0x0 obj/iface.o
  .text.UpdIfaceDat
-                0x0100b264       0x8c obj/iface.o
- .text.keyPut   0x0100b2f0       0x88 obj/iface.o
- .text.encrypt  0x0100b378       0xf8 obj/iface.o
+                0x0100b294       0x8c obj/iface.o
+ .text.keyPut   0x0100b320       0x88 obj/iface.o
+ .text.encrypt  0x0100b3a8       0xf8 obj/iface.o
  .text.errRspData.isra.0
-                0x0100b470       0x12 obj/iface.o
+                0x0100b4a0       0x12 obj/iface.o
  .text.IfaceRx.part.8
-                0x0100b482       0x2e obj/iface.o
+                0x0100b4b2       0x2e obj/iface.o
  .text.rspPackFmt.isra.6.constprop.9
-                0x0100b4b0      0x150 obj/iface.o
+                0x0100b4e0      0x150 obj/iface.o
  .text.IfaceInitData
-                0x0100b600      0x11c obj/iface.o
-                0x0100b600                IfaceInitData
+                0x0100b630      0x11c obj/iface.o
+                0x0100b630                IfaceInitData
  .text.packFullEmvData
-                0x0100b71c      0x2f0 obj/iface.o
-                0x0100b71c                packFullEmvData
- .text.ItfVoid  0x0100ba0c        0xe obj/iface.o
-                0x0100ba0c                ItfVoid
- *fill*         0x0100ba1a        0x2 
+                0x0100b74c      0x2f0 obj/iface.o
+                0x0100b74c                packFullEmvData
+ .text.ItfVoid  0x0100ba3c        0xe obj/iface.o
+                0x0100ba3c                ItfVoid
+ *fill*         0x0100ba4a        0x2 
  .text.ItfHostTot
-                0x0100ba1c       0x24 obj/iface.o
-                0x0100ba1c                ItfHostTot
+                0x0100ba4c       0x24 obj/iface.o
+                0x0100ba4c                ItfHostTot
  .text.ItfSettle
-                0x0100ba40       0x44 obj/iface.o
-                0x0100ba40                ItfSettle
+                0x0100ba70       0x44 obj/iface.o
+                0x0100ba70                ItfSettle
  .text.Spt3MsgHdr
-                0x0100ba84      0x5a8 obj/iface.o
-                0x0100ba84                Spt3MsgHdr
+                0x0100bab4      0x5a8 obj/iface.o
+                0x0100bab4                Spt3MsgHdr
  .text.IfaceInit
-                0x0100c02c        0x4 obj/iface.o
-                0x0100c02c                IfaceInit
+                0x0100c05c        0x4 obj/iface.o
+                0x0100c05c                IfaceInit
  .text.IfaceClose
-                0x0100c030        0x4 obj/iface.o
-                0x0100c030                IfaceClose
+                0x0100c060        0x4 obj/iface.o
+                0x0100c060                IfaceClose
  .text.debugAuxIface
-                0x0100c034      0x108 obj/iface.o
-                0x0100c034                debugAuxIface
- .text.IfaceTx  0x0100c13c       0x2a obj/iface.o
-                0x0100c13c                IfaceTx
- .text.IfaceRx  0x0100c166       0x28 obj/iface.o
-                0x0100c166                IfaceRx
- *fill*         0x0100c18e        0x2 
+                0x0100c064      0x108 obj/iface.o
+                0x0100c064                debugAuxIface
+ .text.IfaceTx  0x0100c16c       0x2a obj/iface.o
+                0x0100c16c                IfaceTx
+ .text.IfaceRx  0x0100c196       0x28 obj/iface.o
+                0x0100c196                IfaceRx
+ *fill*         0x0100c1be        0x2 
  .text.IfaceProcess
-                0x0100c190       0x60 obj/iface.o
-                0x0100c190                IfaceProcess
- .text          0x0100c1f0        0x0 obj/iface_util.o
- .text.UGet     0x0100c1f0       0x16 obj/iface_util.o
-                0x0100c1f0                UGet
- .text.UPut     0x0100c206       0x10 obj/iface_util.o
-                0x0100c206                UPut
- .text.WGet     0x0100c216        0xc obj/iface_util.o
-                0x0100c216                WGet
- .text.Des      0x0100c222       0x26 obj/iface_util.o
-                0x0100c222                Des
- .text.Des2     0x0100c248       0x26 obj/iface_util.o
-                0x0100c248                Des2
- .text.TDes     0x0100c26e       0x26 obj/iface_util.o
-                0x0100c26e                TDes
- .text.TDes2    0x0100c294       0x26 obj/iface_util.o
-                0x0100c294                TDes2
- *fill*         0x0100c2ba        0x2 
- .text.Crc16    0x0100c2bc       0x28 obj/iface_util.o
-                0x0100c2bc                Crc16
- .text.Random   0x0100c2e4       0x38 obj/iface_util.o
-                0x0100c2e4                Random
- .text          0x0100c31c        0x0 obj/input.o
+                0x0100c1c0       0x60 obj/iface.o
+                0x0100c1c0                IfaceProcess
+ .text          0x0100c220        0x0 obj/iface_util.o
+ .text.UGet     0x0100c220       0x16 obj/iface_util.o
+                0x0100c220                UGet
+ .text.UPut     0x0100c236       0x10 obj/iface_util.o
+                0x0100c236                UPut
+ .text.WGet     0x0100c246        0xc obj/iface_util.o
+                0x0100c246                WGet
+ .text.Des      0x0100c252       0x26 obj/iface_util.o
+                0x0100c252                Des
+ .text.Des2     0x0100c278       0x26 obj/iface_util.o
+                0x0100c278                Des2
+ .text.TDes     0x0100c29e       0x26 obj/iface_util.o
+                0x0100c29e                TDes
+ .text.TDes2    0x0100c2c4       0x26 obj/iface_util.o
+                0x0100c2c4                TDes2
+ *fill*         0x0100c2ea        0x2 
+ .text.Crc16    0x0100c2ec       0x28 obj/iface_util.o
+                0x0100c2ec                Crc16
+ .text.Random   0x0100c314       0x38 obj/iface_util.o
+                0x0100c314                Random
+ .text          0x0100c34c        0x0 obj/input.o
  .text.DispKeyinPAN
-                0x0100c31c       0x94 obj/input.o
+                0x0100c34c       0x94 obj/input.o
  .text.FindSeperator.constprop.2
-                0x0100c3b0       0x30 obj/input.o
+                0x0100c3e0       0x30 obj/input.o
  .text.CheckCurrency
-                0x0100c3e0       0x8c obj/input.o
-                0x0100c3e0                CheckCurrency
+                0x0100c410       0x8c obj/input.o
+                0x0100c410                CheckCurrency
  .text.InCardTable
-                0x0100c46c      0x1a0 obj/input.o
-                0x0100c46c                InCardTable
+                0x0100c49c      0x1a0 obj/input.o
+                0x0100c49c                InCardTable
  .text.PromptYesNo
-                0x0100c60c       0x28 obj/input.o
-                0x0100c60c                PromptYesNo
+                0x0100c63c       0x28 obj/input.o
+                0x0100c63c                PromptYesNo
  .text.GetAuthCode
-                0x0100c634       0xbc obj/input.o
-                0x0100c634                GetAuthCode
+                0x0100c664       0xbc obj/input.o
+                0x0100c664                GetAuthCode
  .text.GetAmount
-                0x0100c6f0      0x248 obj/input.o
-                0x0100c6f0                GetAmount
+                0x0100c720      0x248 obj/input.o
+                0x0100c720                GetAmount
  .text.Expire_diff
-                0x0100c938       0x58 obj/input.o
-                0x0100c938                Expire_diff
+                0x0100c968       0x58 obj/input.o
+                0x0100c968                Expire_diff
  .text.ValidCard
-                0x0100c990      0x308 obj/input.o
-                0x0100c990                ValidCard
+                0x0100c9c0      0x308 obj/input.o
+                0x0100c9c0                ValidCard
  .text.GetExpDate
-                0x0100cc98      0x118 obj/input.o
-                0x0100cc98                GetExpDate
+                0x0100ccc8      0x118 obj/input.o
+                0x0100ccc8                GetExpDate
  .text.GetProductCode
-                0x0100cdb0      0x2c0 obj/input.o
-                0x0100cdb0                GetProductCode
- .text.Get4DBC  0x0100d070       0x7c obj/input.o
-                0x0100d070                Get4DBC
+                0x0100cde0      0x2c0 obj/input.o
+                0x0100cde0                GetProductCode
+ .text.Get4DBC  0x0100d0a0       0x7c obj/input.o
+                0x0100d0a0                Get4DBC
  .text.SearchRecord
-                0x0100d0ec      0x108 obj/input.o
-                0x0100d0ec                SearchRecord
+                0x0100d11c      0x108 obj/input.o
+                0x0100d11c                SearchRecord
  .text.GetCardNbr
-                0x0100d1f4       0xe8 obj/input.o
-                0x0100d1f4                GetCardNbr
- .text.GetCard  0x0100d2dc       0xf8 obj/input.o
-                0x0100d2dc                GetCard
+                0x0100d224       0xe8 obj/input.o
+                0x0100d224                GetCardNbr
+ .text.GetCard  0x0100d30c       0xf8 obj/input.o
+                0x0100d30c                GetCard
  .text.WaitCardTrans
-                0x0100d3d4      0x328 obj/input.o
-                0x0100d3d4                WaitCardTrans
+                0x0100d404      0x328 obj/input.o
+                0x0100d404                WaitCardTrans
  .text.GetEcrRef
-                0x0100d6fc       0x84 obj/input.o
-                0x0100d6fc                GetEcrRef
+                0x0100d72c       0x84 obj/input.o
+                0x0100d72c                GetEcrRef
  .text.GetCashBackAmount
-                0x0100d780       0xcc obj/input.o
-                0x0100d780                GetCashBackAmount
- .text          0x0100d84c        0x0 obj/keytrans.o
+                0x0100d7b0       0xcc obj/input.o
+                0x0100d7b0                GetCashBackAmount
+ .text          0x0100d87c        0x0 obj/keytrans.o
  .text.key_ready
-                0x0100d84c       0x24 obj/keytrans.o
-                0x0100d84c                key_ready
+                0x0100d87c       0x24 obj/keytrans.o
+                0x0100d87c                key_ready
  .text.ResetKey
-                0x0100d870       0x54 obj/keytrans.o
-                0x0100d870                ResetKey
- .text.LoadTmk  0x0100d8c4      0x28c obj/keytrans.o
-                0x0100d8c4                LoadTmk
+                0x0100d8a0       0x54 obj/keytrans.o
+                0x0100d8a0                ResetKey
+ .text.LoadTmk  0x0100d8f4      0x28c obj/keytrans.o
+                0x0100d8f4                LoadTmk
  .text.LoadKeys
-                0x0100db50      0x220 obj/keytrans.o
-                0x0100db50                LoadKeys
- .text.EncData  0x0100dd70      0x114 obj/keytrans.o
-                0x0100dd70                EncData
- .text.DecData  0x0100de84      0x114 obj/keytrans.o
-                0x0100de84                DecData
- .text.SetMode  0x0100df98      0x154 obj/keytrans.o
-                0x0100df98                SetMode
- .text.GetPIN   0x0100e0ec       0xb4 obj/keytrans.o
-                0x0100e0ec                GetPIN
+                0x0100db80      0x220 obj/keytrans.o
+                0x0100db80                LoadKeys
+ .text.EncData  0x0100dda0      0x114 obj/keytrans.o
+                0x0100dda0                EncData
+ .text.DecData  0x0100deb4      0x114 obj/keytrans.o
+                0x0100deb4                DecData
+ .text.SetMode  0x0100dfc8      0x154 obj/keytrans.o
+                0x0100dfc8                SetMode
+ .text.GetPIN   0x0100e11c       0xb4 obj/keytrans.o
+                0x0100e11c                GetPIN
  .text.SetDhostIdx
-                0x0100e1a0       0x84 obj/keytrans.o
-                0x0100e1a0                SetDhostIdx
+                0x0100e1d0       0x84 obj/keytrans.o
+                0x0100e1d0                SetDhostIdx
  .text.ResetDukptIkey
-                0x0100e224       0xac obj/keytrans.o
-                0x0100e224                ResetDukptIkey
+                0x0100e254       0xac obj/keytrans.o
+                0x0100e254                ResetDukptIkey
  .text.LoadDukptIkey
-                0x0100e2d0       0xdc obj/keytrans.o
-                0x0100e2d0                LoadDukptIkey
+                0x0100e300       0xdc obj/keytrans.o
+                0x0100e300                LoadDukptIkey
  .text.GetDukptPin
-                0x0100e3ac      0x108 obj/keytrans.o
-                0x0100e3ac                GetDukptPin
+                0x0100e3dc      0x108 obj/keytrans.o
+                0x0100e3dc                GetDukptPin
  .text.IccTmkInject
-                0x0100e4b4       0xec obj/keytrans.o
-                0x0100e4b4                IccTmkInject
- .text          0x0100e5a0        0x0 obj/lptutil.o
+                0x0100e4e4       0xec obj/keytrans.o
+                0x0100e4e4                IccTmkInject
+ .text          0x0100e5d0        0x0 obj/lptutil.o
  .text.RestartLpt
-                0x0100e5a0       0x2c obj/lptutil.o
+                0x0100e5d0       0x2c obj/lptutil.o
  .text.ResetLpt
-                0x0100e5cc       0x2c obj/lptutil.o
+                0x0100e5fc       0x2c obj/lptutil.o
  .text.WaitPrnFinish
-                0x0100e5f8       0xe0 obj/lptutil.o
-                0x0100e5f8                WaitPrnFinish
+                0x0100e628       0xe0 obj/lptutil.o
+                0x0100e628                WaitPrnFinish
  .text.GetBatteryLevel
-                0x0100e6d8       0x1e obj/lptutil.o
-                0x0100e6d8                GetBatteryLevel
+                0x0100e708       0x1e obj/lptutil.o
+                0x0100e708                GetBatteryLevel
  .text.PrintLowBatt
-                0x0100e6f6       0x10 obj/lptutil.o
-                0x0100e6f6                PrintLowBatt
- *fill*         0x0100e706        0x2 
+                0x0100e726       0x10 obj/lptutil.o
+                0x0100e726                PrintLowBatt
+ *fill*         0x0100e736        0x2 
  .text.LptClose
-                0x0100e708       0x2c obj/lptutil.o
-                0x0100e708                LptClose
- .text.LptOpen  0x0100e734       0xf0 obj/lptutil.o
-                0x0100e734                LptOpen
- .text.LptPutN  0x0100e824       0x54 obj/lptutil.o
-                0x0100e824                LptPutN
- .text.LptPutS  0x0100e878       0x14 obj/lptutil.o
-                0x0100e878                LptPutS
+                0x0100e738       0x2c obj/lptutil.o
+                0x0100e738                LptClose
+ .text.LptOpen  0x0100e764       0xf0 obj/lptutil.o
+                0x0100e764                LptOpen
+ .text.LptPutN  0x0100e854       0x54 obj/lptutil.o
+                0x0100e854                LptPutN
+ .text.LptPutS  0x0100e8a8       0x14 obj/lptutil.o
+                0x0100e8a8                LptPutS
  .text.Adv2Bookmark
-                0x0100e88c       0x78 obj/lptutil.o
-                0x0100e88c                Adv2Bookmark
+                0x0100e8bc       0x78 obj/lptutil.o
+                0x0100e8bc                Adv2Bookmark
  .text.PrintLogo
-                0x0100e904       0x88 obj/lptutil.o
-                0x0100e904                PrintLogo
+                0x0100e934       0x88 obj/lptutil.o
+                0x0100e934                PrintLogo
  .text.PrintBuf
-                0x0100e98c      0x148 obj/lptutil.o
-                0x0100e98c                PrintBuf
+                0x0100e9bc      0x148 obj/lptutil.o
+                0x0100e9bc                PrintBuf
  .text.PrintRcptLF
-                0x0100ead4       0x24 obj/lptutil.o
-                0x0100ead4                PrintRcptLF
+                0x0100eb04       0x24 obj/lptutil.o
+                0x0100eb04                PrintRcptLF
  .text.PrintRcptFF
-                0x0100eaf8        0x6 obj/lptutil.o
-                0x0100eaf8                PrintRcptFF
- .text          0x0100eafe        0x0 obj/main.o
- *fill*         0x0100eafe        0x2 
+                0x0100eb28        0x6 obj/lptutil.o
+                0x0100eb28                PrintRcptFF
+ .text          0x0100eb2e        0x0 obj/main.o
+ *fill*         0x0100eb2e        0x2 
  .text.startup.main
-                0x0100eb00       0x78 obj/main.o
-                0x0100eb00                main
- .text          0x0100eb78        0x0 obj/menu.o
+                0x0100eb30       0x78 obj/main.o
+                0x0100eb30                main
+ .text          0x0100eba8        0x0 obj/menu.o
  .text.MenuSelect
-                0x0100eb78      0x590 obj/menu.o
-                0x0100eb78                MenuSelect
- .text          0x0100f108        0x0 obj/message.o
+                0x0100eba8      0x590 obj/menu.o
+                0x0100eba8                MenuSelect
+ .text          0x0100f138        0x0 obj/message.o
  .text.GetConstMsg
-                0x0100f108       0x10 obj/message.o
-                0x0100f108                GetConstMsg
- .text          0x0100f118        0x0 obj/network.o
+                0x0100f138       0x10 obj/message.o
+                0x0100f138                GetConstMsg
+ .text          0x0100f148        0x0 obj/network.o
  .text.SetBannerMode
-                0x0100f118       0x48 obj/network.o
-                0x0100f118                SetBannerMode
+                0x0100f148       0x48 obj/network.o
+                0x0100f148                SetBannerMode
  .text.IconPuts
-                0x0100f160       0x40 obj/network.o
-                0x0100f160                IconPuts
+                0x0100f190       0x40 obj/network.o
+                0x0100f190                IconPuts
  .text.SetBannerText
-                0x0100f1a0       0x14 obj/network.o
-                0x0100f1a0                SetBannerText
+                0x0100f1d0       0x14 obj/network.o
+                0x0100f1d0                SetBannerText
  .text.GPRSReset
-                0x0100f1b4      0x14c obj/network.o
-                0x0100f1b4                GPRSReset
+                0x0100f1e4      0x14c obj/network.o
+                0x0100f1e4                GPRSReset
  .text.SetPPPConfig
-                0x0100f300       0xa6 obj/network.o
-                0x0100f300                SetPPPConfig
- *fill*         0x0100f3a6        0x2 
+                0x0100f330       0xa6 obj/network.o
+                0x0100f330                SetPPPConfig
+ *fill*         0x0100f3d6        0x2 
  .text.NetworkInfo
-                0x0100f3a8      0x538 obj/network.o
-                0x0100f3a8                NetworkInfo
- .text.SelSIM   0x0100f8e0      0x2a4 obj/network.o
-                0x0100f8e0                SelSIM
+                0x0100f3d8      0x538 obj/network.o
+                0x0100f3d8                NetworkInfo
+ .text.SelSIM   0x0100f910      0x2a4 obj/network.o
+                0x0100f910                SelSIM
  .text.GetBatteryPercent
-                0x0100fb84       0x60 obj/network.o
-                0x0100fb84                GetBatteryPercent
+                0x0100fbb4       0x60 obj/network.o
+                0x0100fbb4                GetBatteryPercent
  .text.ShowSimStatus
-                0x0100fbe4      0x154 obj/network.o
-                0x0100fbe4                ShowSimStatus
+                0x0100fc14      0x154 obj/network.o
+                0x0100fc14                ShowSimStatus
  .text.SimStatusThrd
-                0x0100fd38       0x18 obj/network.o
-                0x0100fd38                SimStatusThrd
+                0x0100fd68       0x18 obj/network.o
+                0x0100fd68                SimStatusThrd
  .text.NetworkInit
-                0x0100fd50      0x26c obj/network.o
-                0x0100fd50                NetworkInit
+                0x0100fd80      0x26c obj/network.o
+                0x0100fd80                NetworkInit
  .text.GetSubNum
-                0x0100ffbc       0xb4 obj/network.o
-                0x0100ffbc                GetSubNum
+                0x0100ffec       0xb4 obj/network.o
+                0x0100ffec                GetSubNum
  .text.GetMobileNum
-                0x01010070      0x1dc obj/network.o
-                0x01010070                GetMobileNum
+                0x010100a0      0x1dc obj/network.o
+                0x010100a0                GetMobileNum
  .text.GetSimCCID
-                0x0101024c      0x28c obj/network.o
-                0x0101024c                GetSimCCID
+                0x0101027c      0x28c obj/network.o
+                0x0101027c                GetSimCCID
  .text.MobileNumTest
-                0x010104d8       0xe4 obj/network.o
-                0x010104d8                MobileNumTest
- .text.SNTest   0x010105bc       0xe8 obj/network.o
-                0x010105bc                SNTest
+                0x01010508       0xe4 obj/network.o
+                0x01010508                MobileNumTest
+ .text.SNTest   0x010105ec       0xe8 obj/network.o
+                0x010105ec                SNTest
  .text.GetPPPStatus
-                0x010106a4       0x20 obj/network.o
-                0x010106a4                GetPPPStatus
+                0x010106d4       0x20 obj/network.o
+                0x010106d4                GetPPPStatus
  .text.DispNifInfo2
-                0x010106c4       0xe4 obj/network.o
-                0x010106c4                DispNifInfo2
+                0x010106f4       0xe4 obj/network.o
+                0x010106f4                DispNifInfo2
  .text.ShowPPPStatus
-                0x010107a8      0x144 obj/network.o
-                0x010107a8                ShowPPPStatus
- .text          0x010108ec        0x0 obj/record.o
+                0x010107d8      0x144 obj/network.o
+                0x010107d8                ShowPPPStatus
+ .text          0x0101091c        0x0 obj/record.o
  .text.MoveInput2Tx
-                0x010108ec       0x2c obj/record.o
-                0x010108ec                MoveInput2Tx
+                0x0101091c       0x2c obj/record.o
+                0x0101091c                MoveInput2Tx
  .text.Input2RecordBuf
-                0x01010918       0xa0 obj/record.o
-                0x01010918                Input2RecordBuf
+                0x01010948       0xa0 obj/record.o
+                0x01010948                Input2RecordBuf
  .text.UpdateHostStatus
-                0x010109b8       0xa0 obj/record.o
-                0x010109b8                UpdateHostStatus
+                0x010109e8       0xa0 obj/record.o
+                0x010109e8                UpdateHostStatus
  .text.SaveRecord
-                0x01010a58       0x78 obj/record.o
-                0x01010a58                SaveRecord
+                0x01010a88       0x78 obj/record.o
+                0x01010a88                SaveRecord
  .text.SaveOfflRecord
-                0x01010ad0       0x70 obj/record.o
-                0x01010ad0                SaveOfflRecord
+                0x01010b00       0x70 obj/record.o
+                0x01010b00                SaveOfflRecord
  .text.UpdateRecord
-                0x01010b40       0x70 obj/record.o
-                0x01010b40                UpdateRecord
- .text          0x01010bb0        0x0 obj/refund.o
+                0x01010b70       0x70 obj/record.o
+                0x01010b70                UpdateRecord
+ .text          0x01010be0        0x0 obj/refund.o
  .text.RefundTrans
-                0x01010bb0      0x13c obj/refund.o
-                0x01010bb0                RefundTrans
- .text          0x01010cec        0x0 obj/testrans.o
+                0x01010be0      0x13c obj/refund.o
+                0x01010be0                RefundTrans
+ .text          0x01010d1c        0x0 obj/testrans.o
  .text.TestTrans
-                0x01010cec       0xc0 obj/testrans.o
-                0x01010cec                TestTrans
- .text          0x01010dac        0x0 obj/toggle.o
+                0x01010d1c       0xc0 obj/testrans.o
+                0x01010d1c                TestTrans
+ .text          0x01010ddc        0x0 obj/toggle.o
  .text.ToggleOption
-                0x01010dac      0x12c obj/toggle.o
-                0x01010dac                ToggleOption
- .text          0x01010ed8        0x0 obj/tpadtest.o
+                0x01010ddc      0x12c obj/toggle.o
+                0x01010ddc                ToggleOption
+ .text          0x01010f08        0x0 obj/tpadtest.o
  .text.IconPutS
-                0x01010ed8       0x2e obj/tpadtest.o
- *fill*         0x01010f06        0x2 
+                0x01010f08       0x2e obj/tpadtest.o
+ *fill*         0x01010f36        0x2 
  .text.TouchDetected2
-                0x01010f08       0x60 obj/tpadtest.o
+                0x01010f38       0x60 obj/tpadtest.o
  .text.TouchDetected1
-                0x01010f68       0x60 obj/tpadtest.o
+                0x01010f98       0x60 obj/tpadtest.o
  .text.TouchDetected0
-                0x01010fc8       0x60 obj/tpadtest.o
+                0x01010ff8       0x60 obj/tpadtest.o
  .text.TouchLoss
-                0x01011028       0x38 obj/tpadtest.o
+                0x01011058       0x38 obj/tpadtest.o
  .text.CleanTPadConf
-                0x01011060        0xa obj/tpadtest.o
- *fill*         0x0101106a        0x2 
+                0x01011090        0xa obj/tpadtest.o
+ *fill*         0x0101109a        0x2 
  .text.UpdTPadDotSize
-                0x0101106c       0x5c obj/tpadtest.o
- .text.DotUpDn  0x010110c8       0x2c obj/tpadtest.o
- .text.DotDn    0x010110f4       0x14 obj/tpadtest.o
- .text.DotUp    0x01011108       0x14 obj/tpadtest.o
+                0x0101109c       0x5c obj/tpadtest.o
+ .text.DotUpDn  0x010110f8       0x2c obj/tpadtest.o
+ .text.DotDn    0x01011124       0x14 obj/tpadtest.o
+ .text.DotUp    0x01011138       0x14 obj/tpadtest.o
  .text.TPadTest
-                0x0101111c      0x1e4 obj/tpadtest.o
-                0x0101111c                TPadTest
+                0x0101114c      0x1e4 obj/tpadtest.o
+                0x0101114c                TPadTest
  .text.TPadTestEnable
-                0x01011300       0x10 obj/tpadtest.o
-                0x01011300                TPadTestEnable
+                0x01011330       0x10 obj/tpadtest.o
+                0x01011330                TPadTestEnable
  .text.SPadTest
-                0x01011310      0x1dc obj/tpadtest.o
-                0x01011310                SPadTest
- .text          0x010114ec        0x0 obj/tranutil.o
+                0x01011340      0x1dc obj/tpadtest.o
+                0x01011340                SPadTest
+ .text          0x0101151c        0x0 obj/tranutil.o
  .text.AddTotal
-                0x010114ec       0x16 obj/tranutil.o
- *fill*         0x01011502        0x2 
+                0x0101151c       0x16 obj/tranutil.o
+ *fill*         0x01011532        0x2 
  .text.PackContents
-                0x01011504      0x29c obj/tranutil.o
+                0x01011534      0x29c obj/tranutil.o
  .text.PackContent
-                0x010117a0      0x264 obj/tranutil.o
+                0x010117d0      0x264 obj/tranutil.o
  .text.PackTelNo
-                0x01011a04       0x88 obj/tranutil.o
+                0x01011a34       0x88 obj/tranutil.o
  .text.PackTxnSlip.part.0
-                0x01011a8c       0x14 obj/tranutil.o
+                0x01011abc       0x14 obj/tranutil.o
  .text.ValidAcquirer
-                0x01011aa0       0x68 obj/tranutil.o
+                0x01011ad0       0x68 obj/tranutil.o
  .text.OverMargin
-                0x01011b08       0x44 obj/tranutil.o
-                0x01011b08                OverMargin
+                0x01011b38       0x44 obj/tranutil.o
+                0x01011b38                OverMargin
  .text.PackDTGAA
-                0x01011b4c       0x2c obj/tranutil.o
-                0x01011b4c                PackDTGAA
+                0x01011b7c       0x2c obj/tranutil.o
+                0x01011b7c                PackDTGAA
  .text.PackDateTime
-                0x01011b78       0x48 obj/tranutil.o
-                0x01011b78                PackDateTime
+                0x01011ba8       0x48 obj/tranutil.o
+                0x01011ba8                PackDateTime
  .text.Packprintissuer
-                0x01011bc0      0x210 obj/tranutil.o
-                0x01011bc0                Packprintissuer
+                0x01011bf0      0x210 obj/tranutil.o
+                0x01011bf0                Packprintissuer
  .text.Packprintconfig
-                0x01011dd0      0x6b4 obj/tranutil.o
-                0x01011dd0                Packprintconfig
+                0x01011e00      0x6b4 obj/tranutil.o
+                0x01011e00                Packprintconfig
  .text.PackHeader
-                0x01012484       0x78 obj/tranutil.o
-                0x01012484                PackHeader
+                0x010124b4       0x78 obj/tranutil.o
+                0x010124b4                PackHeader
  .text.PackRecordP
-                0x010124fc       0xc8 obj/tranutil.o
-                0x010124fc                PackRecordP
+                0x0101252c       0xc8 obj/tranutil.o
+                0x0101252c                PackRecordP
  .text.PackInputP
-                0x010125c4       0xf0 obj/tranutil.o
-                0x010125c4                PackInputP
+                0x010125f4       0xf0 obj/tranutil.o
+                0x010125f4                PackInputP
  .text.DispHeader
-                0x010126b4       0xc0 obj/tranutil.o
-                0x010126b4                DispHeader
+                0x010126e4       0xc0 obj/tranutil.o
+                0x010126e4                DispHeader
  .text.SetRspCode
-                0x01012774        0xc obj/tranutil.o
-                0x01012774                SetRspCode
+                0x010127a4        0xc obj/tranutil.o
+                0x010127a4                SetRspCode
  .text.ClearResponse
-                0x01012780       0x3c obj/tranutil.o
-                0x01012780                ClearResponse
+                0x010127b0       0x3c obj/tranutil.o
+                0x010127b0                ClearResponse
  .text.ConfirmCard
-                0x010127bc      0x1e8 obj/tranutil.o
-                0x010127bc                ConfirmCard
+                0x010127ec      0x1e8 obj/tranutil.o
+                0x010127ec                ConfirmCard
  .text.PackRspText
-                0x010129a4       0xa4 obj/tranutil.o
-                0x010129a4                PackRspText
+                0x010129d4       0xa4 obj/tranutil.o
+                0x010129d4                PackRspText
  .text.DispRspText
-                0x01012a48       0xd0 obj/tranutil.o
-                0x01012a48                DispRspText
+                0x01012a78       0xd0 obj/tranutil.o
+                0x01012a78                DispRspText
  .text.DispErrorMsg
-                0x01012b18       0x30 obj/tranutil.o
-                0x01012b18                DispErrorMsg
+                0x01012b48       0x30 obj/tranutil.o
+                0x01012b48                DispErrorMsg
  .text.TransEnd
-                0x01012b48      0x138 obj/tranutil.o
-                0x01012b48                TransEnd
+                0x01012b78      0x138 obj/tranutil.o
+                0x01012b78                TransEnd
  .text.DispAmount
-                0x01012c80       0x98 obj/tranutil.o
-                0x01012c80                DispAmount
+                0x01012cb0       0x98 obj/tranutil.o
+                0x01012cb0                DispAmount
  .text.AddToTotals
-                0x01012d18      0x1b0 obj/tranutil.o
-                0x01012d18                AddToTotals
+                0x01012d48      0x1b0 obj/tranutil.o
+                0x01012d48                AddToTotals
  .text.CalIssuerSum
-                0x01012ec8       0x40 obj/tranutil.o
+                0x01012ef8       0x40 obj/tranutil.o
  .text.CalTotals
-                0x01012f08       0x5c obj/tranutil.o
-                0x01012f08                CalTotals
+                0x01012f38       0x5c obj/tranutil.o
+                0x01012f38                CalTotals
  .text.PackIssuerSum
-                0x01012f64      0x2d8 obj/tranutil.o
-                0x01012f64                PackIssuerSum
+                0x01012f94      0x2d8 obj/tranutil.o
+                0x01012f94                PackIssuerSum
  .text.PackIssuerSumT
-                0x0101323c      0x278 obj/tranutil.o
-                0x0101323c                PackIssuerSumT
+                0x0101326c      0x278 obj/tranutil.o
+                0x0101326c                PackIssuerSumT
  .text.FormatHolderName
-                0x010134b4       0x6e obj/tranutil.o
-                0x010134b4                FormatHolderName
- *fill*         0x01013522        0x2 
+                0x010134e4       0x6e obj/tranutil.o
+                0x010134e4                FormatHolderName
+ *fill*         0x01013552        0x2 
  .text.IncTraceNoEND
-                0x01013524       0x34 obj/tranutil.o
-                0x01013524                IncTraceNoEND
+                0x01013554       0x34 obj/tranutil.o
+                0x01013554                IncTraceNoEND
  .text.IncTraceNo
-                0x01013558       0x30 obj/tranutil.o
-                0x01013558                IncTraceNo
+                0x01013588       0x30 obj/tranutil.o
+                0x01013588                IncTraceNo
  .text.ClearRspData
-                0x01013588       0x4c obj/tranutil.o
-                0x01013588                ClearRspData
+                0x010135b8       0x4c obj/tranutil.o
+                0x010135b8                ClearRspData
  .text.ResetTerm
-                0x010135d4       0x6c obj/tranutil.o
-                0x010135d4                ResetTerm
+                0x01013604       0x6c obj/tranutil.o
+                0x01013604                ResetTerm
  .text.PackComm
-                0x01013640      0x400 obj/tranutil.o
-                0x01013640                PackComm
+                0x01013670      0x400 obj/tranutil.o
+                0x01013670                PackComm
  .text.TransAllowed
-                0x01013a40      0x16c obj/tranutil.o
-                0x01013a40                TransAllowed
- .text          0x01013bac        0x0 obj/wavecom.o
+                0x01013a70      0x16c obj/tranutil.o
+                0x01013a70                TransAllowed
+ .text          0x01013bdc        0x0 obj/wavecom.o
  .text.ClearCmdBuf
-                0x01013bac       0x48 obj/wavecom.o
+                0x01013bdc       0x48 obj/wavecom.o
  .text.SendWaitRsp.part.0
-                0x01013bf4      0x128 obj/wavecom.o
+                0x01013c24      0x128 obj/wavecom.o
  .text.SendWaitRsp
-                0x01013d1c       0x68 obj/wavecom.o
+                0x01013d4c       0x68 obj/wavecom.o
  .text.SetSmsMode.part.1
-                0x01013d84       0x3c obj/wavecom.o
+                0x01013db4       0x3c obj/wavecom.o
  .text.Asc2DWVAL.constprop.7
-                0x01013dc0       0x22 obj/wavecom.o
- *fill*         0x01013de2        0x2 
+                0x01013df0       0x22 obj/wavecom.o
+ *fill*         0x01013e12        0x2 
  .text.WaitModuReady
-                0x01013de4       0x4c obj/wavecom.o
-                0x01013de4                WaitModuReady
+                0x01013e14       0x4c obj/wavecom.o
+                0x01013e14                WaitModuReady
  .text.SimDetect
-                0x01013e30       0x38 obj/wavecom.o
-                0x01013e30                SimDetect
+                0x01013e60       0x38 obj/wavecom.o
+                0x01013e60                SimDetect
  .text.RegisterNetwork
-                0x01013e68       0x84 obj/wavecom.o
-                0x01013e68                RegisterNetwork
+                0x01013e98       0x84 obj/wavecom.o
+                0x01013e98                RegisterNetwork
  .text.AttachGPRS
-                0x01013eec       0x34 obj/wavecom.o
-                0x01013eec                AttachGPRS
+                0x01013f1c       0x34 obj/wavecom.o
+                0x01013f1c                AttachGPRS
  .text.GetPHBCapcity
-                0x01013f20       0xbc obj/wavecom.o
-                0x01013f20                GetPHBCapcity
+                0x01013f50       0xbc obj/wavecom.o
+                0x01013f50                GetPHBCapcity
  .text.GetContact
-                0x01013fdc       0xb4 obj/wavecom.o
-                0x01013fdc                GetContact
+                0x0101400c       0xb4 obj/wavecom.o
+                0x0101400c                GetContact
  .text.LoadPhoneBook
-                0x01014090       0x48 obj/wavecom.o
-                0x01014090                LoadPhoneBook
+                0x010140c0       0x48 obj/wavecom.o
+                0x010140c0                LoadPhoneBook
  .text.SortPhoneBook
-                0x010140d8       0xb8 obj/wavecom.o
-                0x010140d8                SortPhoneBook
+                0x01014108       0xb8 obj/wavecom.o
+                0x01014108                SortPhoneBook
  .text.SelectPHBook
-                0x01014190      0x100 obj/wavecom.o
-                0x01014190                SelectPHBook
+                0x010141c0      0x100 obj/wavecom.o
+                0x010141c0                SelectPHBook
  .text.WriteContact
-                0x01014290       0x90 obj/wavecom.o
-                0x01014290                WriteContact
+                0x010142c0       0x90 obj/wavecom.o
+                0x010142c0                WriteContact
  .text.DelContact
-                0x01014320       0x5c obj/wavecom.o
-                0x01014320                DelContact
+                0x01014350       0x5c obj/wavecom.o
+                0x01014350                DelContact
  .text.AllCallForward
-                0x0101437c       0x4c obj/wavecom.o
-                0x0101437c                AllCallForward
+                0x010143ac       0x4c obj/wavecom.o
+                0x010143ac                AllCallForward
  .text.MakeCall
-                0x010143c8       0x40 obj/wavecom.o
-                0x010143c8                MakeCall
+                0x010143f8       0x40 obj/wavecom.o
+                0x010143f8                MakeCall
  .text.MakeReqCall
-                0x01014408       0x4c obj/wavecom.o
-                0x01014408                MakeReqCall
+                0x01014438       0x4c obj/wavecom.o
+                0x01014438                MakeReqCall
  .text.CheckCallStatus
-                0x01014454       0x80 obj/wavecom.o
-                0x01014454                CheckCallStatus
+                0x01014484       0x80 obj/wavecom.o
+                0x01014484                CheckCallStatus
  .text.AnswerCall
-                0x010144d4       0x28 obj/wavecom.o
-                0x010144d4                AnswerCall
+                0x01014504       0x28 obj/wavecom.o
+                0x01014504                AnswerCall
  .text.SendKeyPress
-                0x010144fc       0x1c obj/wavecom.o
-                0x010144fc                SendKeyPress
- .text.HangUp   0x01014518       0x28 obj/wavecom.o
-                0x01014518                HangUp
+                0x0101452c       0x1c obj/wavecom.o
+                0x0101452c                SendKeyPress
+ .text.HangUp   0x01014548       0x28 obj/wavecom.o
+                0x01014548                HangUp
  .text.CheckCallEnd
-                0x01014540       0x58 obj/wavecom.o
-                0x01014540                CheckCallEnd
+                0x01014570       0x58 obj/wavecom.o
+                0x01014570                CheckCallEnd
  .text.GetCallerID
-                0x01014598       0x54 obj/wavecom.o
-                0x01014598                GetCallerID
+                0x010145c8       0x54 obj/wavecom.o
+                0x010145c8                GetCallerID
  .text.ReadGain
-                0x010145ec       0x20 obj/wavecom.o
-                0x010145ec                ReadGain
+                0x0101461c       0x20 obj/wavecom.o
+                0x0101461c                ReadGain
  .text.WriteGain
-                0x0101460c       0x3c obj/wavecom.o
-                0x0101460c                WriteGain
+                0x0101463c       0x3c obj/wavecom.o
+                0x0101463c                WriteGain
  .text.GetOptrName
-                0x01014648       0x6c obj/wavecom.o
-                0x01014648                GetOptrName
+                0x01014678       0x6c obj/wavecom.o
+                0x01014678                GetOptrName
  .text.FacilityEnable
-                0x010146b4       0x98 obj/wavecom.o
-                0x010146b4                FacilityEnable
+                0x010146e4       0x98 obj/wavecom.o
+                0x010146e4                FacilityEnable
  .text.CheckPinState
-                0x0101474c       0x80 obj/wavecom.o
-                0x0101474c                CheckPinState
+                0x0101477c       0x80 obj/wavecom.o
+                0x0101477c                CheckPinState
  .text.EnterPin
-                0x010147cc       0x4c obj/wavecom.o
-                0x010147cc                EnterPin
+                0x010147fc       0x4c obj/wavecom.o
+                0x010147fc                EnterPin
  .text.ChangePin
-                0x01014818       0x94 obj/wavecom.o
-                0x01014818                ChangePin
+                0x01014848       0x94 obj/wavecom.o
+                0x01014848                ChangePin
  .text.SetNewMsgInd
-                0x010148ac       0x20 obj/wavecom.o
-                0x010148ac                SetNewMsgInd
+                0x010148dc       0x20 obj/wavecom.o
+                0x010148dc                SetNewMsgInd
  .text.GetSmsMode
-                0x010148cc       0x4c obj/wavecom.o
-                0x010148cc                GetSmsMode
+                0x010148fc       0x4c obj/wavecom.o
+                0x010148fc                GetSmsMode
  .text.GetSmsTotal
-                0x01014918       0xa0 obj/wavecom.o
-                0x01014918                GetSmsTotal
+                0x01014948       0xa0 obj/wavecom.o
+                0x01014948                GetSmsTotal
  .text.LoadSmsInbox
-                0x010149b8      0x29c obj/wavecom.o
-                0x010149b8                LoadSmsInbox
- .text.ReadSms  0x01014c54      0x10c obj/wavecom.o
-                0x01014c54                ReadSms
- .text.DelSms   0x01014d60       0x84 obj/wavecom.o
-                0x01014d60                DelSms
- .text.SmsSend  0x01014de4       0xb4 obj/wavecom.o
-                0x01014de4                SmsSend
+                0x010149e8      0x29c obj/wavecom.o
+                0x010149e8                LoadSmsInbox
+ .text.ReadSms  0x01014c84      0x10c obj/wavecom.o
+                0x01014c84                ReadSms
+ .text.DelSms   0x01014d90       0x84 obj/wavecom.o
+                0x01014d90                DelSms
+ .text.SmsSend  0x01014e14       0xb4 obj/wavecom.o
+                0x01014e14                SmsSend
  .text.ModuleInit
-                0x01014e98       0x38 obj/wavecom.o
-                0x01014e98                ModuleInit
- .text          0x01014ed0        0x0 obj/cstartup.o
+                0x01014ec8       0x38 obj/wavecom.o
+                0x01014ec8                ModuleInit
+ .text          0x01014f00        0x0 obj/cstartup.o
  .text.SegmentInit
-                0x01014ed0       0x78 obj/cstartup.o
-                0x01014ed0                SegmentInit
- .text          0x01014f48        0x0 obj/expect_send.o
+                0x01014f00       0x78 obj/cstartup.o
+                0x01014f00                SegmentInit
+ .text          0x01014f78        0x0 obj/expect_send.o
  .text.expect_send_release
-                0x01014f48       0x58 obj/expect_send.o
-                0x01014f48                expect_send_release
+                0x01014f78       0x58 obj/expect_send.o
+                0x01014f78                expect_send_release
  .text.expect_send_alloc
-                0x01014fa0      0x10e obj/expect_send.o
-                0x01014fa0                expect_send_alloc
- .text          0x010150ae        0x0 obj/libc.o
+                0x01014fd0      0x10e obj/expect_send.o
+                0x01014fd0                expect_send_alloc
+ .text          0x010150de        0x0 obj/libc.o
  .text.printchar
-                0x010150ae       0x14 obj/libc.o
- .text.prints   0x010150c2       0xaa obj/libc.o
- .text.printi   0x0101516c       0xa0 obj/libc.o
- *fill*         0x0101520c        0x4 
- .text.print    0x01015210      0x2c0 obj/libc.o
- .text._read_r  0x010154d0       0x2a obj/libc.o
-                0x010154d0                _read_r
+                0x010150de       0x14 obj/libc.o
+ .text.prints   0x010150f2       0xaa obj/libc.o
+ .text.printi   0x0101519c       0xa0 obj/libc.o
+ *fill*         0x0101523c        0x4 
+ .text.print    0x01015240      0x2c0 obj/libc.o
+ .text._read_r  0x01015500       0x2a obj/libc.o
+                0x01015500                _read_r
  .text._write_r
-                0x010154fa       0x22 obj/libc.o
-                0x010154fa                _write_r
+                0x0101552a       0x22 obj/libc.o
+                0x0101552a                _write_r
  .text._close_r
-                0x0101551c        0x4 obj/libc.o
-                0x0101551c                _close_r
+                0x0101554c        0x4 obj/libc.o
+                0x0101554c                _close_r
  .text._lseek_r
-                0x01015520        0x4 obj/libc.o
-                0x01015520                _lseek_r
+                0x01015550        0x4 obj/libc.o
+                0x01015550                _lseek_r
  .text._fstat_r
-                0x01015524        0xa obj/libc.o
-                0x01015524                _fstat_r
- .text.isatty   0x0101552e        0x4 obj/libc.o
-                0x0101552e                isatty
- *fill*         0x01015532        0x2 
- .text._sbrk_r  0x01015534       0x2c obj/libc.o
-                0x01015534                _sbrk_r
- .text.putchar  0x01015560        0xe obj/libc.o
-                0x01015560                putchar
- .text.printf   0x0101556e       0x1c obj/libc.o
-                0x0101556e                printf
- .text.sprintf  0x0101558a       0x1e obj/libc.o
-                0x0101558a                sprintf
- .text          0x010155a8      0x5f4 ../LibA5T1000/gcc\libsyscall.a(app_call.o)
-                0x010155a8                lib_app_call
- .text          0x01015b9c       0x20 ../LibA5T1000/gcc\libsyscall.a(sys_call.o)
-                0x01015b9c                sys_func3
-                0x01015ba0                sys_func0
-                0x01015bac                sys_func1
-                0x01015bb4                sys_func2
- .text          0x01015bbc       0x1c ../LibA5T1000/gcc\libbasecall.a(base_call.o)
-                0x01015bbc                base_func3
-                0x01015bc0                base_func0
-                0x01015bca                base_func1
-                0x01015bd2                base_func2
- .text          0x01015bd8       0x52 ../LibA5T1000/gcc\libsptutil.a(bcd2bin.o)
-                0x01015bd8                bcd2bin
-                0x01015bf4                lbcd2lbin
- .text          0x01015c2a        0xe ../LibA5T1000/gcc\libsptutil.a(bcd2val.o)
-                0x01015c2a                bcd2val
- .text          0x01015c38       0x40 ../LibA5T1000/gcc\libsptutil.a(bcdadd.o)
-                0x01015c38                bcdadd
- .text          0x01015c78       0x32 ../LibA5T1000/gcc\libsptutil.a(bcdinc.o)
-                0x01015c78                bcdinc
- .text          0x01015caa       0x3e ../LibA5T1000/gcc\libsptutil.a(bcdsub.o)
-                0x01015caa                bcdsub
- .text          0x01015ce8       0x3c ../LibA5T1000/gcc\libsptutil.a(bin2bcd.o)
-                0x01015ce8                binary2bcd
-                0x01015d1e                bin2bcd
- .text          0x01015d24       0x28 ../LibA5T1000/gcc\libsptutil.a(bin2dec.o)
-                0x01015d24                bin2dec
- .text          0x01015d4c       0x1a ../LibA5T1000/gcc\libsptutil.a(bindec_d.o)
-                0x01015d4c                bindec_data
- .text          0x01015d66       0x36 ../LibA5T1000/gcc\libsptutil.a(chkdok.o)
-                0x01015d66                chk_digit_ok
- .text          0x01015d9c       0x32 ../LibA5T1000/gcc\libsptutil.a(compress.o)
-                0x01015d9c                compress
- *fill*         0x01015dce        0x2 
- .text          0x01015dd0       0x30 ../LibA5T1000/gcc\libsptutil.a(crcccitt.o)
-                0x01015dd0                cal_crcx
-                0x01015df8                cal_crc
- .text          0x01015e00       0x42 ../LibA5T1000/gcc\libsptutil.a(dbin2asc.o)
-                0x01015e00                dbin2asc
- .text          0x01015e42       0x60 ../LibA5T1000/gcc\libsptutil.a(dbin2bcd.o)
-                0x01015e42                dbin2bcd
- .text          0x01015ea2       0x1c ../LibA5T1000/gcc\libsptutil.a(decbin4b.o)
-                0x01015ea2                decbin4b
- .text          0x01015ebe       0x40 ../LibA5T1000/gcc\libsptutil.a(decbin8b.o)
-                0x01015ebe                decbin8b
- .text          0x01015efe       0x18 ../LibA5T1000/gcc\libsptutil.a(fndb.o)
-                0x01015efe                fndb
- *fill*         0x01015f16        0x2 
- .text          0x01015f18       0x64 ../LibA5T1000/gcc\libsptutil.a(get_byte.o)
-                0x01015f18                get_byte
-                0x01015f28                get_word
-                0x01015f38                get_dword
-                0x01015f58                get_dword_le
- .text          0x01015f7c       0x14 ../LibA5T1000/gcc\libsptutil.a(get_dist.o)
-                0x01015f7c                get_distance
- .text          0x01015f90       0x2c ../LibA5T1000/gcc\libsptutil.a(get_mem.o)
-                0x01015f90                get_mem
- .text          0x01015fbc        0xc ../LibA5T1000/gcc\libsptutil.a(get_pptr.o)
-                0x01015fbc                get_pptr
- .text          0x01015fc8       0x10 ../LibA5T1000/gcc\libsptutil.a(hex_val.o)
-                0x01015fc8                hex_value
- .text          0x01015fd8       0x20 ../LibA5T1000/gcc\libsptutil.a(inc_pptr.o)
-                0x01015fd8                inc_pptr
- .text          0x01015ff8       0x18 ../LibA5T1000/gcc\libsptutil.a(isbdigit.o)
-                0x01015ff8                isbdigit
- .text          0x01016010       0xfc ../LibA5T1000/gcc\libsptutil.a(pack_b.o)
-                0x01016010                pack_byte
-                0x01016034                pack_word
-                0x01016060                pack_dword
-                0x010160a0                pack_word_le
-                0x010160cc                pack_dword_le
- .text          0x0101610c        0x6 ../LibA5T1000/gcc\libsptutil.a(pack_lf.o)
-                0x0101610c                pack_lf
- .text          0x01016112        0x8 ../LibA5T1000/gcc\libsptutil.a(pack_lfs.o)
-                0x01016112                pack_lfs
- *fill*         0x0101611a        0x2 
- .text          0x0101611c       0x28 ../LibA5T1000/gcc\libsptutil.a(pack_mem.o)
-                0x0101611c                pack_mem
- .text          0x01016144       0x28 ../LibA5T1000/gcc\libsptutil.a(pack_nb.o)
-                0x01016144                pack_nbyte
- .text          0x0101616c        0x8 ../LibA5T1000/gcc\libsptutil.a(pack_spc.o)
-                0x0101616c                pack_space
- .text          0x01016174       0x18 ../LibA5T1000/gcc\libsptutil.a(pack_str.o)
-                0x01016174                pack_str
- .text          0x0101618c        0xc ../LibA5T1000/gcc\libsptutil.a(peek_b.o)
-                0x0101618c                peek_byte
- .text          0x01016198       0x38 ../LibA5T1000/gcc\libsptutil.a(set_pptr.o)
-                0x01016198                buffer_overflow
-                0x010161b4                set_pptr
- .text          0x010161d0       0x18 ../LibA5T1000/gcc\libsptutil.a(skpb.o)
-                0x010161d0                skpb
- .text          0x010161e8       0x2c ../LibA5T1000/gcc\libsptutil.a(split.o)
-                0x010161e8                split
- .text          0x01016214       0x28 ../LibA5T1000/gcc\libsptutil.a(split_d.o)
-                0x01016214                split_data
- .text          0x0101623c       0x18 ../LibA5T1000/gcc\libsptutil.a(val2bcd.o)
-                0x0101623c                val2bcd
- .text          0x01016254        0xe ../LibA5T1000/gcc\libsptutil.a(hexdigit.o)
-                0x01016254                hex_digit
- *fill*         0x01016262        0x2 
- .text          0x01016264      0x7b4 ../LibA5T1000/gcc\libspglib.a(GIFLib.o)
-                0x01016584                GIFSetPos
-                0x01016590                GIFPlay
-                0x0101662c                GIFPlayOn
-                0x01016644                GIFStop
-                0x01016694                GIFUnLoad
-                0x01016700                GIFLoadMem
- .text          0x01016a18      0x340 ../LibA5T1000/gcc\libspglib.a(GLib.o)
-                0x01016a18                GD_SetDotSize
-                0x01016a3c                GD_SetDotColor
-                0x01016a68                GD_SetInSpace
-                0x01016a74                GD_SetOutSpace
-                0x01016a80                FillColorPixel
-                0x01016ab4                FillMonoPixel
-                0x01016aee                GD_Dot
-                0x01016b60                GD_Point
-                0x01016b66                GD_Line
-                0x01016c3c                GD_Rectangle
-                0x01016cc4                GD_Triangle
-                0x01016cec                GD_Circle
- .text          0x01016d58        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-memcmp.o)
- .text.memcmp   0x01016d58       0x54 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-memcmp.o)
-                0x01016d58                memcmp
- .text          0x01016dac        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-memcpy.o)
- .text.memcpy   0x01016dac       0x80 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-memcpy.o)
-                0x01016dac                memcpy
- .text          0x01016e2c        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-memmove.o)
- .text.memmove  0x01016e2c       0x9c C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-memmove.o)
-                0x01016e2c                memmove
- .text          0x01016ec8        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-memset.o)
- .text.memset   0x01016ec8       0x94 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-memset.o)
-                0x01016ec8                memset
- .text          0x01016f5c        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-puts.o)
- .text._puts_r  0x01016f5c       0x60 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-puts.o)
-                0x01016f5c                _puts_r
- .text.puts     0x01016fbc       0x18 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-puts.o)
-                0x01016fbc                puts
- .text          0x01016fd4        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-strcat.o)
- .text.strcat   0x01016fd4       0x54 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-strcat.o)
-                0x01016fd4                strcat
- .text          0x01017028        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-strchr.o)
- .text.strchr   0x01017028       0xdc C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-strchr.o)
-                0x01017028                strchr
- .text          0x01017104        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-strcpy.o)
- .text.strcpy   0x01017104       0x10 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-strcpy.o)
-                0x01017104                strcpy
- .text          0x01017114        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-strlen.o)
- .text.strlen   0x01017114       0x6c C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-strlen.o)
-                0x01017114                strlen
- .text          0x01017180        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-strstr.o)
+                0x01015554        0xa obj/libc.o
+                0x01015554                _fstat_r
+ .text.isatty   0x0101555e        0x4 obj/libc.o
+                0x0101555e                isatty
+ *fill*         0x01015562        0x2 
+ .text._sbrk_r  0x01015564       0x2c obj/libc.o
+                0x01015564                _sbrk_r
+ .text.putchar  0x01015590        0xe obj/libc.o
+                0x01015590                putchar
+ .text.printf   0x0101559e       0x1c obj/libc.o
+                0x0101559e                printf
+ .text.sprintf  0x010155ba       0x1e obj/libc.o
+                0x010155ba                sprintf
+ .text          0x010155d8      0x5f4 ../LibA5T1000/gcc\libsyscall.a(app_call.o)
+                0x010155d8                lib_app_call
+ .text          0x01015bcc       0x20 ../LibA5T1000/gcc\libsyscall.a(sys_call.o)
+                0x01015bcc                sys_func3
+                0x01015bd0                sys_func0
+                0x01015bdc                sys_func1
+                0x01015be4                sys_func2
+ .text          0x01015bec       0x1c ../LibA5T1000/gcc\libbasecall.a(base_call.o)
+                0x01015bec                base_func3
+                0x01015bf0                base_func0
+                0x01015bfa                base_func1
+                0x01015c02                base_func2
+ .text          0x01015c08       0x52 ../LibA5T1000/gcc\libsptutil.a(bcd2bin.o)
+                0x01015c08                bcd2bin
+                0x01015c24                lbcd2lbin
+ .text          0x01015c5a        0xe ../LibA5T1000/gcc\libsptutil.a(bcd2val.o)
+                0x01015c5a                bcd2val
+ .text          0x01015c68       0x40 ../LibA5T1000/gcc\libsptutil.a(bcdadd.o)
+                0x01015c68                bcdadd
+ .text          0x01015ca8       0x32 ../LibA5T1000/gcc\libsptutil.a(bcdinc.o)
+                0x01015ca8                bcdinc
+ .text          0x01015cda       0x3e ../LibA5T1000/gcc\libsptutil.a(bcdsub.o)
+                0x01015cda                bcdsub
+ .text          0x01015d18       0x3c ../LibA5T1000/gcc\libsptutil.a(bin2bcd.o)
+                0x01015d18                binary2bcd
+                0x01015d4e                bin2bcd
+ .text          0x01015d54       0x28 ../LibA5T1000/gcc\libsptutil.a(bin2dec.o)
+                0x01015d54                bin2dec
+ .text          0x01015d7c       0x1a ../LibA5T1000/gcc\libsptutil.a(bindec_d.o)
+                0x01015d7c                bindec_data
+ .text          0x01015d96       0x36 ../LibA5T1000/gcc\libsptutil.a(chkdok.o)
+                0x01015d96                chk_digit_ok
+ .text          0x01015dcc       0x32 ../LibA5T1000/gcc\libsptutil.a(compress.o)
+                0x01015dcc                compress
+ *fill*         0x01015dfe        0x2 
+ .text          0x01015e00       0x30 ../LibA5T1000/gcc\libsptutil.a(crcccitt.o)
+                0x01015e00                cal_crcx
+                0x01015e28                cal_crc
+ .text          0x01015e30       0x42 ../LibA5T1000/gcc\libsptutil.a(dbin2asc.o)
+                0x01015e30                dbin2asc
+ .text          0x01015e72       0x60 ../LibA5T1000/gcc\libsptutil.a(dbin2bcd.o)
+                0x01015e72                dbin2bcd
+ .text          0x01015ed2       0x1c ../LibA5T1000/gcc\libsptutil.a(decbin4b.o)
+                0x01015ed2                decbin4b
+ .text          0x01015eee       0x40 ../LibA5T1000/gcc\libsptutil.a(decbin8b.o)
+                0x01015eee                decbin8b
+ .text          0x01015f2e       0x18 ../LibA5T1000/gcc\libsptutil.a(fndb.o)
+                0x01015f2e                fndb
+ *fill*         0x01015f46        0x2 
+ .text          0x01015f48       0x64 ../LibA5T1000/gcc\libsptutil.a(get_byte.o)
+                0x01015f48                get_byte
+                0x01015f58                get_word
+                0x01015f68                get_dword
+                0x01015f88                get_dword_le
+ .text          0x01015fac       0x14 ../LibA5T1000/gcc\libsptutil.a(get_dist.o)
+                0x01015fac                get_distance
+ .text          0x01015fc0       0x2c ../LibA5T1000/gcc\libsptutil.a(get_mem.o)
+                0x01015fc0                get_mem
+ .text          0x01015fec        0xc ../LibA5T1000/gcc\libsptutil.a(get_pptr.o)
+                0x01015fec                get_pptr
+ .text          0x01015ff8       0x10 ../LibA5T1000/gcc\libsptutil.a(hex_val.o)
+                0x01015ff8                hex_value
+ .text          0x01016008       0x20 ../LibA5T1000/gcc\libsptutil.a(inc_pptr.o)
+                0x01016008                inc_pptr
+ .text          0x01016028       0x18 ../LibA5T1000/gcc\libsptutil.a(isbdigit.o)
+                0x01016028                isbdigit
+ .text          0x01016040       0xfc ../LibA5T1000/gcc\libsptutil.a(pack_b.o)
+                0x01016040                pack_byte
+                0x01016064                pack_word
+                0x01016090                pack_dword
+                0x010160d0                pack_word_le
+                0x010160fc                pack_dword_le
+ .text          0x0101613c        0x6 ../LibA5T1000/gcc\libsptutil.a(pack_lf.o)
+                0x0101613c                pack_lf
+ .text          0x01016142        0x8 ../LibA5T1000/gcc\libsptutil.a(pack_lfs.o)
+                0x01016142                pack_lfs
+ *fill*         0x0101614a        0x2 
+ .text          0x0101614c       0x28 ../LibA5T1000/gcc\libsptutil.a(pack_mem.o)
+                0x0101614c                pack_mem
+ .text          0x01016174       0x28 ../LibA5T1000/gcc\libsptutil.a(pack_nb.o)
+                0x01016174                pack_nbyte
+ .text          0x0101619c        0x8 ../LibA5T1000/gcc\libsptutil.a(pack_spc.o)
+                0x0101619c                pack_space
+ .text          0x010161a4       0x18 ../LibA5T1000/gcc\libsptutil.a(pack_str.o)
+                0x010161a4                pack_str
+ .text          0x010161bc        0xc ../LibA5T1000/gcc\libsptutil.a(peek_b.o)
+                0x010161bc                peek_byte
+ .text          0x010161c8       0x38 ../LibA5T1000/gcc\libsptutil.a(set_pptr.o)
+                0x010161c8                buffer_overflow
+                0x010161e4                set_pptr
+ .text          0x01016200       0x18 ../LibA5T1000/gcc\libsptutil.a(skpb.o)
+                0x01016200                skpb
+ .text          0x01016218       0x2c ../LibA5T1000/gcc\libsptutil.a(split.o)
+                0x01016218                split
+ .text          0x01016244       0x28 ../LibA5T1000/gcc\libsptutil.a(split_d.o)
+                0x01016244                split_data
+ .text          0x0101626c       0x18 ../LibA5T1000/gcc\libsptutil.a(val2bcd.o)
+                0x0101626c                val2bcd
+ .text          0x01016284        0xe ../LibA5T1000/gcc\libsptutil.a(hexdigit.o)
+                0x01016284                hex_digit
+ *fill*         0x01016292        0x2 
+ .text          0x01016294      0x7b4 ../LibA5T1000/gcc\libspglib.a(GIFLib.o)
+                0x010165b4                GIFSetPos
+                0x010165c0                GIFPlay
+                0x0101665c                GIFPlayOn
+                0x01016674                GIFStop
+                0x010166c4                GIFUnLoad
+                0x01016730                GIFLoadMem
+ .text          0x01016a48      0x340 ../LibA5T1000/gcc\libspglib.a(GLib.o)
+                0x01016a48                GD_SetDotSize
+                0x01016a6c                GD_SetDotColor
+                0x01016a98                GD_SetInSpace
+                0x01016aa4                GD_SetOutSpace
+                0x01016ab0                FillColorPixel
+                0x01016ae4                FillMonoPixel
+                0x01016b1e                GD_Dot
+                0x01016b90                GD_Point
+                0x01016b96                GD_Line
+                0x01016c6c                GD_Rectangle
+                0x01016cf4                GD_Triangle
+                0x01016d1c                GD_Circle
+ .text          0x01016d88        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-memcmp.o)
+ .text.memcmp   0x01016d88       0x54 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-memcmp.o)
+                0x01016d88                memcmp
+ .text          0x01016ddc        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-memcpy.o)
+ .text.memcpy   0x01016ddc       0x80 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-memcpy.o)
+                0x01016ddc                memcpy
+ .text          0x01016e5c        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-memmove.o)
+ .text.memmove  0x01016e5c       0x9c C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-memmove.o)
+                0x01016e5c                memmove
+ .text          0x01016ef8        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-memset.o)
+ .text.memset   0x01016ef8       0x94 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-memset.o)
+                0x01016ef8                memset
+ .text          0x01016f8c        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-puts.o)
+ .text._puts_r  0x01016f8c       0x60 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-puts.o)
+                0x01016f8c                _puts_r
+ .text.puts     0x01016fec       0x18 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-puts.o)
+                0x01016fec                puts
+ .text          0x01017004        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-strcat.o)
+ .text.strcat   0x01017004       0x54 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-strcat.o)
+                0x01017004                strcat
+ .text          0x01017058        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-strchr.o)
+ .text.strchr   0x01017058       0xdc C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-strchr.o)
+                0x01017058                strchr
+ .text          0x01017134        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-strcpy.o)
+ .text.strcpy   0x01017134       0x10 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-strcpy.o)
+                0x01017134                strcpy
+ .text          0x01017144        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-strlen.o)
+ .text.strlen   0x01017144       0x6c C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-strlen.o)
+                0x01017144                strlen
+ .text          0x010171b0        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-strstr.o)
  .text.critical_factorization
-                0x01017180       0xc4 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-strstr.o)
+                0x010171b0       0xc4 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-strstr.o)
  .text.two_way_long_needle
-                0x01017244      0x1f8 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-strstr.o)
- .text.strstr   0x0101743c      0x228 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-strstr.o)
-                0x0101743c                strstr
- .text          0x01017664        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-fvwrite.o)
+                0x01017274      0x1f8 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-strstr.o)
+ .text.strstr   0x0101746c      0x228 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-strstr.o)
+                0x0101746c                strstr
+ .text          0x01017694        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-fvwrite.o)
  .text.__sfvwrite_r
-                0x01017664      0x340 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-fvwrite.o)
-                0x01017664                __sfvwrite_r
- .text          0x010179a4        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-impure.o)
- .text          0x010179a4        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-mallocr.o)
+                0x01017694      0x340 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-fvwrite.o)
+                0x01017694                __sfvwrite_r
+ .text          0x010179d4        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-impure.o)
+ .text          0x010179d4        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-mallocr.o)
  .text._malloc_r
-                0x010179a4      0x54c C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-mallocr.o)
-                0x010179a4                _malloc_r
- .text          0x01017ef0        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-memchr.o)
- .text.memchr   0x01017ef0       0x8c C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-memchr.o)
-                0x01017ef0                memchr
- .text          0x01017f7c        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-mlock.o)
+                0x010179d4      0x54c C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-mallocr.o)
+                0x010179d4                _malloc_r
+ .text          0x01017f20        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-memchr.o)
+ .text.memchr   0x01017f20       0x8c C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-memchr.o)
+                0x01017f20                memchr
+ .text          0x01017fac        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-mlock.o)
  .text.__malloc_lock
-                0x01017f7c        0x4 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-mlock.o)
-                0x01017f7c                __malloc_lock
+                0x01017fac        0x4 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-mlock.o)
+                0x01017fac                __malloc_lock
  .text.__malloc_unlock
-                0x01017f80        0x4 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-mlock.o)
-                0x01017f80                __malloc_unlock
- .text          0x01017f84        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-reallocr.o)
+                0x01017fb0        0x4 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-mlock.o)
+                0x01017fb0                __malloc_unlock
+ .text          0x01017fb4        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-reallocr.o)
  .text._realloc_r
-                0x01017f84      0x3dc C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-reallocr.o)
-                0x01017f84                _realloc_r
- .text          0x01018360        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-wsetup.o)
+                0x01017fb4      0x3dc C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-reallocr.o)
+                0x01017fb4                _realloc_r
+ .text          0x01018390        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-wsetup.o)
  .text.__swsetup_r
-                0x01018360       0xd0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-wsetup.o)
-                0x01018360                __swsetup_r
- .text          0x01018430        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-fflush.o)
+                0x01018390       0xd0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-wsetup.o)
+                0x01018390                __swsetup_r
+ .text          0x01018460        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-fflush.o)
  .text.__sflush_r
-                0x01018430      0x168 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-fflush.o)
-                0x01018430                __sflush_r
+                0x01018460      0x168 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-fflush.o)
+                0x01018460                __sflush_r
  .text._fflush_r
-                0x01018598       0x30 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-fflush.o)
-                0x01018598                _fflush_r
- .text.fflush   0x010185c8       0x2c C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-fflush.o)
-                0x010185c8                fflush
- .text          0x010185f4        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-findfp.o)
+                0x010185c8       0x30 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-fflush.o)
+                0x010185c8                _fflush_r
+ .text.fflush   0x010185f8       0x2c C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-fflush.o)
+                0x010185f8                fflush
+ .text          0x01018624        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-findfp.o)
  .text.__fp_lock
-                0x010185f4        0x4 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-findfp.o)
+                0x01018624        0x4 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-findfp.o)
  .text.__fp_unlock
-                0x010185f8        0x4 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-findfp.o)
+                0x01018628        0x4 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-findfp.o)
  .text._cleanup_r
-                0x010185fc       0x14 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-findfp.o)
-                0x010185fc                _cleanup_r
+                0x0101862c       0x14 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-findfp.o)
+                0x0101862c                _cleanup_r
  .text.__sinit.part.1
-                0x01018610       0xf4 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-findfp.o)
+                0x01018640       0xf4 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-findfp.o)
  .text.__sfmoreglue
-                0x01018704       0x34 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-findfp.o)
-                0x01018704                __sfmoreglue
- .text.__sfp    0x01018738       0x94 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-findfp.o)
-                0x01018738                __sfp
+                0x01018734       0x34 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-findfp.o)
+                0x01018734                __sfmoreglue
+ .text.__sfp    0x01018768       0x94 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-findfp.o)
+                0x01018768                __sfp
  .text._cleanup
-                0x010187cc       0x1c C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-findfp.o)
-                0x010187cc                _cleanup
- .text.__sinit  0x010187e8       0x14 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-findfp.o)
-                0x010187e8                __sinit
+                0x010187fc       0x1c C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-findfp.o)
+                0x010187fc                _cleanup
+ .text.__sinit  0x01018818       0x14 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-findfp.o)
+                0x01018818                __sinit
  .text.__sfp_lock_acquire
-                0x010187fc        0x4 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-findfp.o)
-                0x010187fc                __sfp_lock_acquire
+                0x0101882c        0x4 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-findfp.o)
+                0x0101882c                __sfp_lock_acquire
  .text.__sfp_lock_release
-                0x01018800        0x4 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-findfp.o)
-                0x01018800                __sfp_lock_release
+                0x01018830        0x4 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-findfp.o)
+                0x01018830                __sfp_lock_release
  .text.__sinit_lock_acquire
-                0x01018804        0x4 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-findfp.o)
-                0x01018804                __sinit_lock_acquire
+                0x01018834        0x4 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-findfp.o)
+                0x01018834                __sinit_lock_acquire
  .text.__sinit_lock_release
-                0x01018808        0x4 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-findfp.o)
-                0x01018808                __sinit_lock_release
+                0x01018838        0x4 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-findfp.o)
+                0x01018838                __sinit_lock_release
  .text.__fp_lock_all
-                0x0101880c       0x1c C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-findfp.o)
-                0x0101880c                __fp_lock_all
+                0x0101883c       0x1c C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-findfp.o)
+                0x0101883c                __fp_lock_all
  .text.__fp_unlock_all
-                0x01018828       0x1c C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-findfp.o)
-                0x01018828                __fp_unlock_all
- .text          0x01018844        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-freer.o)
+                0x01018858       0x1c C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-findfp.o)
+                0x01018858                __fp_unlock_all
+ .text          0x01018874        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-freer.o)
  .text._malloc_trim_r
-                0x01018844       0xa4 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-freer.o)
-                0x01018844                _malloc_trim_r
- .text._free_r  0x010188e8      0x1b4 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-freer.o)
-                0x010188e8                _free_r
- .text          0x01018a9c        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-fwalk.o)
- .text._fwalk   0x01018a9c       0x50 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-fwalk.o)
-                0x01018a9c                _fwalk
+                0x01018874       0xa4 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-freer.o)
+                0x01018874                _malloc_trim_r
+ .text._free_r  0x01018918      0x1b4 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-freer.o)
+                0x01018918                _free_r
+ .text          0x01018acc        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-fwalk.o)
+ .text._fwalk   0x01018acc       0x50 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-fwalk.o)
+                0x01018acc                _fwalk
  .text._fwalk_reent
-                0x01018aec       0x58 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-fwalk.o)
-                0x01018aec                _fwalk_reent
- .text          0x01018b44        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-makebuf.o)
+                0x01018b1c       0x58 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-fwalk.o)
+                0x01018b1c                _fwalk_reent
+ .text          0x01018b74        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-makebuf.o)
  .text.__smakebuf_r
-                0x01018b44      0x100 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-makebuf.o)
-                0x01018b44                __smakebuf_r
- .text          0x01018c44        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-stdio.o)
- .text.__sread  0x01018c44       0x2c C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-stdio.o)
-                0x01018c44                __sread
+                0x01018b74      0x100 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-makebuf.o)
+                0x01018b74                __smakebuf_r
+ .text          0x01018c74        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-stdio.o)
+ .text.__sread  0x01018c74       0x2c C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-stdio.o)
+                0x01018c74                __sread
  .text.__seofread
-                0x01018c70        0x4 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-stdio.o)
-                0x01018c70                __seofread
+                0x01018ca0        0x4 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-stdio.o)
+                0x01018ca0                __seofread
  .text.__swrite
-                0x01018c74       0x3c C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-stdio.o)
-                0x01018c74                __swrite
- .text.__sseek  0x01018cb0       0x30 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-stdio.o)
-                0x01018cb0                __sseek
+                0x01018ca4       0x3c C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-stdio.o)
+                0x01018ca4                __swrite
+ .text.__sseek  0x01018ce0       0x30 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-stdio.o)
+                0x01018ce0                __sseek
  .text.__sclose
-                0x01018ce0       0x10 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-stdio.o)
-                0x01018ce0                __sclose
- .text          0x01018cf0        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-fclose.o)
+                0x01018d10       0x10 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-stdio.o)
+                0x01018d10                __sclose
+ .text          0x01018d20        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-fclose.o)
  .text._fclose_r
-                0x01018cf0       0x94 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-fclose.o)
-                0x01018cf0                _fclose_r
- .text.fclose   0x01018d84       0x18 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-fclose.o)
-                0x01018d84                fclose
- .text          0x01018d9c        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-isattyr.o)
+                0x01018d20       0x94 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-fclose.o)
+                0x01018d20                _fclose_r
+ .text.fclose   0x01018db4       0x18 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-fclose.o)
+                0x01018db4                fclose
+ .text          0x01018dcc        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-isattyr.o)
  .text._isatty_r
-                0x01018d9c       0x28 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-isattyr.o)
-                0x01018d9c                _isatty_r
- .text          0x01018dc4        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-reent.o)
+                0x01018dcc       0x28 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-isattyr.o)
+                0x01018dcc                _isatty_r
+ .text          0x01018df4        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-reent.o)
  .text.cleanup_glue
-                0x01018dc4       0x20 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-reent.o)
-                0x01018dc4                cleanup_glue
+                0x01018df4       0x20 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-reent.o)
+                0x01018df4                cleanup_glue
  .text._reclaim_reent
-                0x01018de4       0xa0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-reent.o)
-                0x01018de4                _reclaim_reent
- .text          0x01018e84        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libnosys.a(isatty.o)
- .text._isatty  0x01018e84       0x10 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libnosys.a(isatty.o)
-                0x01018e84                _isatty
- .text          0x01018e94        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libm.a(lib_a-w_sqrt.o)
- .text.sqrt     0x01018e94       0xbc C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libm.a(lib_a-w_sqrt.o)
-                0x01018e94                sqrt
- .text          0x01018f50        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libm.a(lib_a-e_sqrt.o)
+                0x01018e14       0xa0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-reent.o)
+                0x01018e14                _reclaim_reent
+ .text          0x01018eb4        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libnosys.a(isatty.o)
+ .text._isatty  0x01018eb4       0x10 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libnosys.a(isatty.o)
+                0x01018eb4                _isatty
+ .text          0x01018ec4        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libm.a(lib_a-w_sqrt.o)
+ .text.sqrt     0x01018ec4       0xbc C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libm.a(lib_a-w_sqrt.o)
+                0x01018ec4                sqrt
+ .text          0x01018f80        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libm.a(lib_a-e_sqrt.o)
  .text.__ieee754_sqrt
-                0x01018f50      0x1d4 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libm.a(lib_a-e_sqrt.o)
-                0x01018f50                __ieee754_sqrt
- .text          0x01019124        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libm.a(lib_a-s_fpclassify.o)
+                0x01018f80      0x1d4 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libm.a(lib_a-e_sqrt.o)
+                0x01018f80                __ieee754_sqrt
+ .text          0x01019154        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libm.a(lib_a-s_fpclassify.o)
  .text.__fpclassifyd
-                0x01019124       0x5c C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libm.a(lib_a-s_fpclassify.o)
-                0x01019124                __fpclassifyd
- .text          0x01019180        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libm.a(lib_a-s_lib_ver.o)
- .text          0x01019180        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libm.a(lib_a-s_matherr.o)
- .text.matherr  0x01019180        0x4 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libm.a(lib_a-s_matherr.o)
-                0x01019180                matherr
- .text          0x01019184      0x114 c:/devtools/gcc_v49_2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3\libgcc.a(_udivsi3.o)
-                0x01019184                __aeabi_uidiv
-                0x01019184                __udivsi3
-                0x01019278                __aeabi_uidivmod
- .text          0x01019298      0x148 c:/devtools/gcc_v49_2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3\libgcc.a(_divsi3.o)
-                0x01019298                __divsi3
-                0x01019298                __aeabi_idiv
-                0x010193c0                __aeabi_idivmod
- .text          0x010193e0        0x4 c:/devtools/gcc_v49_2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3\libgcc.a(_dvmd_tls.o)
-                0x010193e0                __aeabi_idiv0
-                0x010193e0                __aeabi_ldiv0
- .text          0x010193e4      0x41c c:/devtools/gcc_v49_2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3\libgcc.a(_arm_addsubdf3.o)
-                0x010193e4                __aeabi_drsub
-                0x010193ec                __aeabi_dsub
-                0x010193ec                __subdf3
-                0x010193f0                __aeabi_dadd
-                0x010193f0                __adddf3
-                0x01019700                __floatunsidf
-                0x01019700                __aeabi_ui2d
-                0x01019724                __floatsidf
-                0x01019724                __aeabi_i2d
-                0x0101974c                __aeabi_f2d
-                0x0101974c                __extendsfdf2
-                0x0101978c                __floatundidf
-                0x0101978c                __aeabi_ul2d
-                0x010197a0                __floatdidf
-                0x010197a0                __aeabi_l2d
- .text          0x01019800      0x49c c:/devtools/gcc_v49_2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3\libgcc.a(_arm_muldivdf3.o)
-                0x01019800                __aeabi_dmul
-                0x01019800                __muldf3
-                0x01019a90                __divdf3
-                0x01019a90                __aeabi_ddiv
- .text          0x01019c9c      0x144 c:/devtools/gcc_v49_2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3\libgcc.a(_arm_cmpdf2.o)
-                0x01019c9c                __gtdf2
-                0x01019c9c                __gedf2
-                0x01019ca4                __ltdf2
-                0x01019ca4                __ledf2
-                0x01019cac                __nedf2
-                0x01019cac                __eqdf2
-                0x01019cac                __cmpdf2
-                0x01019d34                __aeabi_cdrcmple
-                0x01019d50                __aeabi_cdcmpeq
-                0x01019d50                __aeabi_cdcmple
-                0x01019d68                __aeabi_dcmpeq
-                0x01019d80                __aeabi_dcmplt
-                0x01019d98                __aeabi_dcmple
-                0x01019db0                __aeabi_dcmpge
-                0x01019dc8                __aeabi_dcmpgt
- .text          0x01019de0       0x54 c:/devtools/gcc_v49_2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3\libgcc.a(_arm_fixunsdfsi.o)
-                0x01019de0                __aeabi_d2uiz
-                0x01019de0                __fixunsdfsi
- .text          0x01019e34       0x44 c:/devtools/gcc_v49_2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3\libgcc.a(_aeabi_ldivmod.o)
-                0x01019e34                __aeabi_ldivmod
- .text          0x01019e78       0x3c c:/devtools/gcc_v49_2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3\libgcc.a(_aeabi_uldivmod.o)
-                0x01019e78                __aeabi_uldivmod
- .text          0x01019eb4       0x4c c:/devtools/gcc_v49_2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3\libgcc.a(_fixdfdi.o)
-                0x01019eb4                __fixdfdi
-                0x01019eb4                __aeabi_d2lz
- .text          0x01019f00       0x6c c:/devtools/gcc_v49_2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3\libgcc.a(_fixunsdfdi.o)
-                0x01019f00                __fixunsdfdi
-                0x01019f00                __aeabi_d2ulz
- .text          0x01019f6c       0x84 c:/devtools/gcc_v49_2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3\libgcc.a(bpabi.o)
-                0x01019f6c                __gnu_ldivmod_helper
-                0x01019fb0                __gnu_uldivmod_helper
- .text          0x01019ff0      0x178 c:/devtools/gcc_v49_2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3\libgcc.a(_divdi3.o)
-                0x01019ff0                __divdi3
- .text          0x0101a168      0x120 c:/devtools/gcc_v49_2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3\libgcc.a(_udivdi3.o)
-                0x0101a168                __udivdi3
- .text          0x0101a288       0x28 c:/devtools/gcc_v49_2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3\libgcc.a(_clzdi2.o)
-                0x0101a288                __clzdi2
- .text          0x0101a2b0       0x48 c:/devtools/gcc_v49_2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3\libgcc.a(_clzsi2.o)
-                0x0101a2b0                __clzsi2
+                0x01019154       0x5c C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libm.a(lib_a-s_fpclassify.o)
+                0x01019154                __fpclassifyd
+ .text          0x010191b0        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libm.a(lib_a-s_lib_ver.o)
+ .text          0x010191b0        0x0 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libm.a(lib_a-s_matherr.o)
+ .text.matherr  0x010191b0        0x4 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libm.a(lib_a-s_matherr.o)
+                0x010191b0                matherr
+ .text          0x010191b4      0x114 c:/devtools/gcc_v49_2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3\libgcc.a(_udivsi3.o)
+                0x010191b4                __aeabi_uidiv
+                0x010191b4                __udivsi3
+                0x010192a8                __aeabi_uidivmod
+ .text          0x010192c8      0x148 c:/devtools/gcc_v49_2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3\libgcc.a(_divsi3.o)
+                0x010192c8                __divsi3
+                0x010192c8                __aeabi_idiv
+                0x010193f0                __aeabi_idivmod
+ .text          0x01019410        0x4 c:/devtools/gcc_v49_2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3\libgcc.a(_dvmd_tls.o)
+                0x01019410                __aeabi_idiv0
+                0x01019410                __aeabi_ldiv0
+ .text          0x01019414      0x41c c:/devtools/gcc_v49_2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3\libgcc.a(_arm_addsubdf3.o)
+                0x01019414                __aeabi_drsub
+                0x0101941c                __aeabi_dsub
+                0x0101941c                __subdf3
+                0x01019420                __aeabi_dadd
+                0x01019420                __adddf3
+                0x01019730                __floatunsidf
+                0x01019730                __aeabi_ui2d
+                0x01019754                __floatsidf
+                0x01019754                __aeabi_i2d
+                0x0101977c                __aeabi_f2d
+                0x0101977c                __extendsfdf2
+                0x010197bc                __floatundidf
+                0x010197bc                __aeabi_ul2d
+                0x010197d0                __floatdidf
+                0x010197d0                __aeabi_l2d
+ .text          0x01019830      0x49c c:/devtools/gcc_v49_2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3\libgcc.a(_arm_muldivdf3.o)
+                0x01019830                __aeabi_dmul
+                0x01019830                __muldf3
+                0x01019ac0                __divdf3
+                0x01019ac0                __aeabi_ddiv
+ .text          0x01019ccc      0x144 c:/devtools/gcc_v49_2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3\libgcc.a(_arm_cmpdf2.o)
+                0x01019ccc                __gtdf2
+                0x01019ccc                __gedf2
+                0x01019cd4                __ltdf2
+                0x01019cd4                __ledf2
+                0x01019cdc                __nedf2
+                0x01019cdc                __eqdf2
+                0x01019cdc                __cmpdf2
+                0x01019d64                __aeabi_cdrcmple
+                0x01019d80                __aeabi_cdcmpeq
+                0x01019d80                __aeabi_cdcmple
+                0x01019d98                __aeabi_dcmpeq
+                0x01019db0                __aeabi_dcmplt
+                0x01019dc8                __aeabi_dcmple
+                0x01019de0                __aeabi_dcmpge
+                0x01019df8                __aeabi_dcmpgt
+ .text          0x01019e10       0x54 c:/devtools/gcc_v49_2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3\libgcc.a(_arm_fixunsdfsi.o)
+                0x01019e10                __aeabi_d2uiz
+                0x01019e10                __fixunsdfsi
+ .text          0x01019e64       0x44 c:/devtools/gcc_v49_2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3\libgcc.a(_aeabi_ldivmod.o)
+                0x01019e64                __aeabi_ldivmod
+ .text          0x01019ea8       0x3c c:/devtools/gcc_v49_2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3\libgcc.a(_aeabi_uldivmod.o)
+                0x01019ea8                __aeabi_uldivmod
+ .text          0x01019ee4       0x4c c:/devtools/gcc_v49_2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3\libgcc.a(_fixdfdi.o)
+                0x01019ee4                __fixdfdi
+                0x01019ee4                __aeabi_d2lz
+ .text          0x01019f30       0x6c c:/devtools/gcc_v49_2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3\libgcc.a(_fixunsdfdi.o)
+                0x01019f30                __fixunsdfdi
+                0x01019f30                __aeabi_d2ulz
+ .text          0x01019f9c       0x84 c:/devtools/gcc_v49_2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3\libgcc.a(bpabi.o)
+                0x01019f9c                __gnu_ldivmod_helper
+                0x01019fe0                __gnu_uldivmod_helper
+ .text          0x0101a020      0x178 c:/devtools/gcc_v49_2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3\libgcc.a(_divdi3.o)
+                0x0101a020                __divdi3
+ .text          0x0101a198      0x120 c:/devtools/gcc_v49_2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3\libgcc.a(_udivdi3.o)
+                0x0101a198                __udivdi3
+ .text          0x0101a2b8       0x28 c:/devtools/gcc_v49_2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3\libgcc.a(_clzdi2.o)
+                0x0101a2b8                __clzdi2
+ .text          0x0101a2e0       0x48 c:/devtools/gcc_v49_2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3\libgcc.a(_clzsi2.o)
+                0x0101a2e0                __clzsi2
  *(.init)
  *(.fini)
  *crtbegin.o(.ctors)
@@ -2160,200 +2160,200 @@ END GROUP
  *(SORT(.dtors.*))
  *(.dtors)
  *(.rodata* .gnu.linkonce.r.*)
- .rodata        0x0101a2f8       0x10 obj/Adjust.o
- .rodata        0x0101a308      0x25c obj/Constant.o
-                0x0101a308                KTransBitmap
-                0x0101a548                KTransHeader
-                0x0101a560                KSetlPCode2
- .rodata        0x0101a564       0x24 obj/Coremain.o
-                0x0101a574                KSoftName
-                0x0101a580                KExportFunc
+ .rodata        0x0101a328       0x10 obj/Adjust.o
+ .rodata        0x0101a338      0x25c obj/Constant.o
+                0x0101a338                KTransBitmap
+                0x0101a578                KTransHeader
+                0x0101a590                KSetlPCode2
+ .rodata        0x0101a594       0x24 obj/Coremain.o
+                0x0101a5a4                KSoftName
+                0x0101a5b0                KExportFunc
  .rodata.str1.1
-                0x0101a588       0x9b obj/Coremain.o
- *fill*         0x0101a623        0x1 
- .rodata        0x0101a624     0x3388 obj/DemoTest.o
-                0x0101a624                KCtlKeyRoom
-                0x0101b8bc                KCtlApplCfg
-                0x0101c330                KKeyRoom
-                0x0101cf38                KApplCfg
- .rodata        0x0101d9ac       0x56 obj/Ecr.o
-                0x0101d9ac                KSettleResp
-                0x0101d9b0                KHostTotResp
-                0x0101d9b6                KHostNameResp
-                0x0101d9bc                KLastTrace
-                0x0101d9c4                KOfflSaleResp
-                0x0101d9e2                KSaleResp
- *fill*         0x0101da02        0x2 
- .rodata        0x0101da04      0x2a0 obj/Func.o
+                0x0101a5b8       0x9b obj/Coremain.o
+ *fill*         0x0101a653        0x1 
+ .rodata        0x0101a654     0x3388 obj/DemoTest.o
+                0x0101a654                KCtlKeyRoom
+                0x0101b8ec                KCtlApplCfg
+                0x0101c360                KKeyRoom
+                0x0101cf68                KApplCfg
+ .rodata        0x0101d9dc       0x56 obj/Ecr.o
+                0x0101d9dc                KSettleResp
+                0x0101d9e0                KHostTotResp
+                0x0101d9e6                KHostNameResp
+                0x0101d9ec                KLastTrace
+                0x0101d9f4                KOfflSaleResp
+                0x0101da12                KSaleResp
+ *fill*         0x0101da32        0x2 
+ .rodata        0x0101da34      0x2a0 obj/Func.o
  .rodata.str1.1
-                0x0101dca4      0x1a8 obj/Func.o
+                0x0101dcd4      0x1a8 obj/Func.o
                                 0x1b1 (size before relaxing)
- .rodata        0x0101de4c      0x198 obj/Others.o
-                0x0101de4c                KOtherTransMenu
-                0x0101de68                KOthercurrMenu
-                0x0101de84                KOtherTxncurr
-                0x0101df04                KOtherTxnItem
+ .rodata        0x0101de7c      0x198 obj/Others.o
+                0x0101de7c                KOtherTransMenu
+                0x0101de98                KOthercurrMenu
+                0x0101deb4                KOtherTxncurr
+                0x0101df34                KOtherTxnItem
  .rodata.str1.1
-                0x0101dfe4       0x50 obj/Others.o
- .rodata        0x0101e034        0xc obj/ParamTest.o
+                0x0101e014       0x50 obj/Others.o
+ .rodata        0x0101e064        0xc obj/ParamTest.o
  .rodata.str1.1
-                0x0101e040       0x39 obj/ParamTest.o
- .rodata        0x0101e079       0x62 obj/Print.o
+                0x0101e070       0x39 obj/ParamTest.o
+ .rodata        0x0101e0a9       0x62 obj/Print.o
  .rodata.str1.1
-                0x0101e0db       0x40 obj/Print.o
+                0x0101e10b       0x40 obj/Print.o
                                  0x48 (size before relaxing)
  .rodata.str1.1
-                0x0101e11b       0x2f obj/Sale.o
- *fill*         0x0101e14a        0x2 
- .rodata        0x0101e14c       0x78 obj/Settle.o
+                0x0101e14b       0x2f obj/Sale.o
+ *fill*         0x0101e17a        0x2 
+ .rodata        0x0101e17c       0x78 obj/Settle.o
  .rodata.str1.1
-                0x0101e1c4       0x22 obj/Settle.o
+                0x0101e1f4       0x22 obj/Settle.o
                                  0x28 (size before relaxing)
- .rodata        0x0101e1e6       0x2c obj/Sysutil.o
+ .rodata        0x0101e216       0x2c obj/Sysutil.o
  .rodata.str1.1
-                0x0101e212       0x59 obj/Sysutil.o
+                0x0101e242       0x59 obj/Sysutil.o
                                  0x5b (size before relaxing)
  .rodata.str1.1
-                0x0101e26b       0x18 obj/auxcom.o
+                0x0101e29b       0x18 obj/auxcom.o
                                  0x21 (size before relaxing)
  .rodata.str1.1
-                0x0101e283       0x72 obj/brdrtest.o
+                0x0101e2b3       0x72 obj/brdrtest.o
  .rodata.str1.1
-                0x0101e2f5       0xb2 obj/camtest.o
- .rodata        0x0101e3a7        0xc obj/corevar.o
+                0x0101e325       0xb2 obj/camtest.o
+ .rodata        0x0101e3d7        0xc obj/corevar.o
  .rodata.str1.1
-                0x0101e3b3       0x10 obj/corevar.o
- *fill*         0x0101e3c3        0x1 
- .rodata        0x0101e3c4       0x70 obj/ctltrans.o
-                0x0101e3f6                wCTLDummyTags
-                0x0101e402                wCTLOnlineTags
+                0x0101e3e3       0x10 obj/corevar.o
+ *fill*         0x0101e3f3        0x1 
+ .rodata        0x0101e3f4       0x70 obj/ctltrans.o
+                0x0101e426                wCTLDummyTags
+                0x0101e432                wCTLOnlineTags
  .rodata.str1.1
-                0x0101e434       0xa8 obj/ctltrans.o
+                0x0101e464       0xa8 obj/ctltrans.o
                                  0xb4 (size before relaxing)
- *fill*         0x0101e4dc        0x4 
- .rodata        0x0101e4e0      0x400 obj/debugstis.o
- .rodata        0x0101e8e0       0xd4 obj/emvtrans.o
-                0x0101e8f0                wVMOnlineTags
-                0x0101e96b                KPinMsg
+ *fill*         0x0101e50c        0x4 
+ .rodata        0x0101e510      0x400 obj/debugstis.o
+ .rodata        0x0101e910       0xd4 obj/emvtrans.o
+                0x0101e920                wVMOnlineTags
+                0x0101e99b                KPinMsg
  .rodata.str1.1
-                0x0101e9b4       0x20 obj/emvtrans.o
+                0x0101e9e4       0x20 obj/emvtrans.o
                                  0x3b (size before relaxing)
  .rodata.str1.1
-                0x0101e9d4       0x22 obj/hardware.o
- .rodata        0x0101e9f6       0x1d obj/hostmsg.o
+                0x0101ea04       0x22 obj/hardware.o
+ .rodata        0x0101ea26       0x1d obj/hostmsg.o
  .rodata.str1.1
-                0x0101ea13       0x95 obj/hostmsg.o
+                0x0101ea43       0x95 obj/hostmsg.o
                                  0xb1 (size before relaxing)
- .rodata        0x0101eaa8       0x82 obj/iface.o
-                0x0101eabe                KItfSettleResp
-                0x0101eac6                KItfHostTotResp
-                0x0101eace                KItfHostNameResp
-                0x0101ead6                KItfLastTrace
-                0x0101eae0                KItfOfflSaleResp
-                0x0101eb04                KItfSaleResp
+ .rodata        0x0101ead8       0x82 obj/iface.o
+                0x0101eaee                KItfSettleResp
+                0x0101eaf6                KItfHostTotResp
+                0x0101eafe                KItfHostNameResp
+                0x0101eb06                KItfLastTrace
+                0x0101eb10                KItfOfflSaleResp
+                0x0101eb34                KItfSaleResp
  .rodata.str1.1
-                0x0101eb2a       0x49 obj/iface.o
+                0x0101eb5a       0x49 obj/iface.o
                                  0x4c (size before relaxing)
- *fill*         0x0101eb73        0x1 
- .rodata        0x0101eb74      0x200 obj/iface_util.o
- .rodata        0x0101ed74       0x10 obj/input.o
+ *fill*         0x0101eba3        0x1 
+ .rodata        0x0101eba4      0x200 obj/iface_util.o
+ .rodata        0x0101eda4       0x10 obj/input.o
  .rodata.str1.1
-                0x0101ed84       0x59 obj/input.o
+                0x0101edb4       0x59 obj/input.o
                                  0x5c (size before relaxing)
- .rodata        0x0101eddd       0x2d obj/keytrans.o
+ .rodata        0x0101ee0d       0x2d obj/keytrans.o
  .rodata.str1.1
-                0x0101ee0a      0x23d obj/keytrans.o
- *fill*         0x0101f047        0x1 
- .rodata        0x0101f048      0x914 obj/lptutil.o
+                0x0101ee3a      0x23d obj/keytrans.o
+ *fill*         0x0101f077        0x1 
+ .rodata        0x0101f078      0x914 obj/lptutil.o
  .rodata.str1.1
                 0x00000000        0xc obj/lptutil.o
- .rodata        0x0101f95c       0x18 obj/main.o
-                0x0101f95c                KAppHdr
+ .rodata        0x0101f98c       0x18 obj/main.o
+                0x0101f98c                KAppHdr
  .rodata.str1.1
-                0x0101f974       0x26 obj/main.o
+                0x0101f9a4       0x26 obj/main.o
  .rodata.str1.1
-                0x0101f99a       0x3d obj/menu.o
- *fill*         0x0101f9d7        0x1 
- .rodata        0x0101f9d8      0x670 obj/message.o
-                0x0101fe68                KRspText
+                0x0101f9ca       0x3d obj/menu.o
+ *fill*         0x0101fa07        0x1 
+ .rodata        0x0101fa08      0x670 obj/message.o
+                0x0101fe98                KRspText
  .rodata.str1.1
-                0x01020048      0xfa2 obj/message.o
- *fill*         0x01020fea        0x2 
- .rodata        0x01020fec       0x24 obj/network.o
+                0x01020078      0xfa2 obj/message.o
+ *fill*         0x0102101a        0x2 
+ .rodata        0x0102101c       0x24 obj/network.o
  .rodata.str1.1
-                0x01021010      0x29a obj/network.o
+                0x01021040      0x29a obj/network.o
                                 0x2ae (size before relaxing)
  .rodata.str1.1
-                0x010212aa      0x127 obj/toggle.o
+                0x010212da      0x127 obj/toggle.o
                                 0x137 (size before relaxing)
- *fill*         0x010213d1        0x3 
- .rodata        0x010213d4       0x50 obj/tpadtest.o
-                0x010213d4                KPadObj
-                0x01021404                KPadConf
+ *fill*         0x01021401        0x3 
+ .rodata        0x01021404       0x50 obj/tpadtest.o
+                0x01021404                KPadObj
+                0x01021434                KPadConf
  .rodata.str1.1
-                0x01021424       0xb9 obj/tpadtest.o
- *fill*         0x010214dd        0x3 
- .rodata        0x010214e0      0x104 obj/tranutil.o
+                0x01021454       0xb9 obj/tpadtest.o
+ *fill*         0x0102150d        0x3 
+ .rodata        0x01021510      0x104 obj/tranutil.o
  .rodata.str1.1
-                0x010215e4      0xc14 obj/tranutil.o
+                0x01021614      0xc14 obj/tranutil.o
                                 0xca3 (size before relaxing)
- .rodata        0x010221f8       0x30 obj/wavecom.o
+ .rodata        0x01022228       0x30 obj/wavecom.o
  .rodata.str1.1
-                0x01022228      0x271 obj/wavecom.o
+                0x01022258      0x271 obj/wavecom.o
                                 0x286 (size before relaxing)
  .rodata.str1.1
-                0x01022499       0x20 obj/cstartup.o
+                0x010224c9       0x20 obj/cstartup.o
  .rodata.str1.1
-                0x010224b9        0x7 obj/libc.o
- .rodata        0x010224c0      0x200 ../LibA5T1000/gcc\libsptutil.a(crcccitt.o)
+                0x010224e9        0x7 obj/libc.o
+ .rodata        0x010224f0      0x200 ../LibA5T1000/gcc\libsptutil.a(crcccitt.o)
  .rodata.str1.1
-                0x010226c0        0x4 ../LibA5T1000/gcc\libspglib.a(GIFLib.o)
+                0x010226f0        0x4 ../LibA5T1000/gcc\libspglib.a(GIFLib.o)
  .rodata.str1.4
-                0x010226c4        0x2 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-puts.o)
+                0x010226f4        0x2 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-puts.o)
                                   0x4 (size before relaxing)
- *fill*         0x010226c6        0x2 
+ *fill*         0x010226f6        0x2 
  .rodata.str1.4
-                0x010226c8        0x2 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-impure.o)
+                0x010226f8        0x2 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-impure.o)
                                   0x4 (size before relaxing)
- *fill*         0x010226ca        0x2 
+ *fill*         0x010226fa        0x2 
  .rodata._global_impure_ptr
-                0x010226cc        0x4 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-impure.o)
-                0x010226cc                _global_impure_ptr
+                0x010226fc        0x4 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libc.a(lib_a-impure.o)
+                0x010226fc                _global_impure_ptr
  .rodata.str1.4
-                0x010226d0        0x8 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libm.a(lib_a-w_sqrt.o)
+                0x01022700        0x8 C:\DevTools\gcc_v49_2014q4/arm-none-eabi/lib/thumb\libm.a(lib_a-w_sqrt.o)
  *(.eh_frame*)
 
-.vfp11_veneer   0x010226d8        0x0
+.vfp11_veneer   0x01022708        0x0
  .vfp11_veneer  0x00000000        0x0 linker stubs
 
-.v4_bx          0x010226d8        0x0
+.v4_bx          0x01022708        0x0
  .v4_bx         0x00000000        0x0 linker stubs
 
-.iplt           0x010226d8        0x0
+.iplt           0x01022708        0x0
  .iplt          0x00000000        0x0 obj/Adjust.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x010226d8                __exidx_start = .
+                0x01022708                __exidx_start = .
 
-.ARM.exidx      0x010226d8        0x8
+.ARM.exidx      0x01022708        0x8
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
- .ARM.exidx     0x010226d8        0x8 c:/devtools/gcc_v49_2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3\libgcc.a(_divdi3.o)
- .ARM.exidx     0x010226e0        0x0 c:/devtools/gcc_v49_2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3\libgcc.a(_udivdi3.o)
+ .ARM.exidx     0x01022708        0x8 c:/devtools/gcc_v49_2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3\libgcc.a(_divdi3.o)
+ .ARM.exidx     0x01022710        0x0 c:/devtools/gcc_v49_2014q4/bin/../lib/gcc/arm-none-eabi/4.9.3\libgcc.a(_udivdi3.o)
                                   0x8 (size before relaxing)
-                0x010226e0                __exidx_end = .
+                0x01022710                __exidx_end = .
 
-.text_kek       0x010226e0        0x8
+.text_kek       0x01022710        0x8
  *(sect_kek)
- sect_kek       0x010226e0        0x8 obj/cstartup.o
-                0x010226e0                KKek
-                0x010226e8                _end_of_app = ALIGN (0x4)
+ sect_kek       0x01022710        0x8 obj/cstartup.o
+                0x01022710                KKek
+                0x01022718                _end_of_app = ALIGN (0x4)
 
-.rel.dyn        0x010226e8        0x0
+.rel.dyn        0x01022718        0x0
  .rel.iplt      0x00000000        0x0 obj/Adjust.o
                 0x01800000                . = _start_of_data
 
-.data           0x01800000     0xca30 load address 0x010226e8
+.data           0x01800000     0xca30 load address 0x01022718
  *(.data*)
  .data          0x01800000        0x0 obj/Adjust.o
  .data          0x01800000        0x0 obj/Auth.o
@@ -2556,12 +2556,12 @@ END GROUP
                 0x0180ca30                __fini_array_end = .
                 0x0180ca30                _end_of_data = ALIGN (0x4)
 
-.igot.plt       0x0180ca30        0x0 load address 0x0102f118
+.igot.plt       0x0180ca30        0x0 load address 0x0102f148
  .igot.plt      0x00000000        0x0 obj/Adjust.o
                 0x0180ca30                . = _end_of_data
                 0x0180ca30                _start_of_bss = .
 
-.bss            0x0180ca30     0x8868 load address 0x0102f118
+.bss            0x0180ca30     0x8868 load address 0x0102f148
  *(.bss*)
  .bss           0x0180ca30        0xc obj/Coremain.o
                 0x0180ca31                gDispLogo
@@ -2643,10 +2643,10 @@ END GROUP
                 0x01815294                errno
                 0x01815298                _end = ALIGN (0x4)
                 0x01819298                _end_of_bss = (_end + 0x4000)
-                0x0102f118                _end_of_flash = (_end_of_app + SIZEOF (.data))
+                0x0102f148                _end_of_flash = (_end_of_app + SIZEOF (.data))
 OUTPUT(app elf32-littlearm)
 
-.debug_info     0x00000000    0x86637
+.debug_info     0x00000000    0x866f5
  .debug_info    0x00000000     0x36a9 obj/Adjust.o
  .debug_info    0x000036a9     0x1c94 obj/Auth.o
  .debug_info    0x0000533d     0x1603 obj/Chkoptn.o
@@ -2676,68 +2676,68 @@ OUTPUT(app elf32-littlearm)
  .debug_info    0x00043433       0x72 obj/emvl2cfg.o
  .debug_info    0x000434a5     0x4762 obj/emvtrans.o
  .debug_info    0x00047c07     0x1de8 obj/hardware.o
- .debug_info    0x000499ef     0x3181 obj/hostmsg.o
- .debug_info    0x0004cb70     0x4e6a obj/iface.o
- .debug_info    0x000519da     0x11d9 obj/iface_util.o
- .debug_info    0x00052bb3     0x5184 obj/input.o
- .debug_info    0x00057d37     0x3cf2 obj/keytrans.o
- .debug_info    0x0005ba29     0x223f obj/lptutil.o
- .debug_info    0x0005dc68     0x10dc obj/main.o
- .debug_info    0x0005ed44     0x1cb5 obj/menu.o
- .debug_info    0x000609f9      0x50a obj/message.o
- .debug_info    0x00060f03     0x6a6d obj/network.o
- .debug_info    0x00067970     0x1f0a obj/record.o
- .debug_info    0x0006987a     0x1b7c obj/refund.o
- .debug_info    0x0006b3f6     0x1aa7 obj/testrans.o
- .debug_info    0x0006ce9d     0x1464 obj/toggle.o
- .debug_info    0x0006e301     0x2426 obj/tpadtest.o
- .debug_info    0x00070727     0x8895 obj/tranutil.o
- .debug_info    0x00078fbc     0x3fe5 obj/wavecom.o
- .debug_info    0x0007cfa1     0x1009 obj/cstartup.o
- .debug_info    0x0007dfaa     0x1132 obj/expect_send.o
- .debug_info    0x0007f0dc     0x1fef obj/libc.o
- .debug_info    0x000810cb      0x101 ../LibA5T1000/gcc\libsyscall.a(app_call.o)
- .debug_info    0x000811cc      0x2c6 ../LibA5T1000/gcc\libsyscall.a(sys_call.o)
- .debug_info    0x00081492      0x2c6 ../LibA5T1000/gcc\libbasecall.a(base_call.o)
- .debug_info    0x00081758      0x134 ../LibA5T1000/gcc\libsptutil.a(bcd2bin.o)
- .debug_info    0x0008188c       0x79 ../LibA5T1000/gcc\libsptutil.a(bcd2val.o)
- .debug_info    0x00081905      0x109 ../LibA5T1000/gcc\libsptutil.a(bcdadd.o)
- .debug_info    0x00081a0e       0xed ../LibA5T1000/gcc\libsptutil.a(bcdinc.o)
- .debug_info    0x00081afb      0x109 ../LibA5T1000/gcc\libsptutil.a(bcdsub.o)
- .debug_info    0x00081c04      0x100 ../LibA5T1000/gcc\libsptutil.a(bin2bcd.o)
- .debug_info    0x00081d04       0xa4 ../LibA5T1000/gcc\libsptutil.a(bin2dec.o)
- .debug_info    0x00081da8      0x11f ../LibA5T1000/gcc\libsptutil.a(bindec_d.o)
- .debug_info    0x00081ec7       0xdc ../LibA5T1000/gcc\libsptutil.a(chkdok.o)
- .debug_info    0x00081fa3       0xcb ../LibA5T1000/gcc\libsptutil.a(compress.o)
- .debug_info    0x0008206e      0x14b ../LibA5T1000/gcc\libsptutil.a(crcccitt.o)
- .debug_info    0x000821b9      0x125 ../LibA5T1000/gcc\libsptutil.a(dbin2asc.o)
- .debug_info    0x000822de      0x117 ../LibA5T1000/gcc\libsptutil.a(dbin2bcd.o)
- .debug_info    0x000823f5       0xb5 ../LibA5T1000/gcc\libsptutil.a(decbin4b.o)
- .debug_info    0x000824aa       0xe9 ../LibA5T1000/gcc\libsptutil.a(decbin8b.o)
- .debug_info    0x00082593       0xb5 ../LibA5T1000/gcc\libsptutil.a(fndb.o)
- .debug_info    0x00082648      0x15a ../LibA5T1000/gcc\libsptutil.a(get_byte.o)
- .debug_info    0x000827a2       0x90 ../LibA5T1000/gcc\libsptutil.a(get_dist.o)
- .debug_info    0x00082832      0x13e ../LibA5T1000/gcc\libsptutil.a(get_mem.o)
- .debug_info    0x00082970       0x7a ../LibA5T1000/gcc\libsptutil.a(get_pptr.o)
- .debug_info    0x000829ea       0x84 ../LibA5T1000/gcc\libsptutil.a(hex_val.o)
- .debug_info    0x00082a6e       0xba ../LibA5T1000/gcc\libsptutil.a(inc_pptr.o)
- .debug_info    0x00082b28       0xb3 ../LibA5T1000/gcc\libsptutil.a(isbdigit.o)
- .debug_info    0x00082bdb      0x199 ../LibA5T1000/gcc\libsptutil.a(pack_b.o)
- .debug_info    0x00082d74       0x8a ../LibA5T1000/gcc\libsptutil.a(pack_lf.o)
- .debug_info    0x00082dfe       0xa1 ../LibA5T1000/gcc\libsptutil.a(pack_lfs.o)
- .debug_info    0x00082e9f      0x13a ../LibA5T1000/gcc\libsptutil.a(pack_mem.o)
- .debug_info    0x00082fd9      0x13c ../LibA5T1000/gcc\libsptutil.a(pack_nb.o)
- .debug_info    0x00083115       0xa2 ../LibA5T1000/gcc\libsptutil.a(pack_spc.o)
- .debug_info    0x000831b7      0x123 ../LibA5T1000/gcc\libsptutil.a(pack_str.o)
- .debug_info    0x000832da       0x85 ../LibA5T1000/gcc\libsptutil.a(peek_b.o)
- .debug_info    0x0008335f       0xf7 ../LibA5T1000/gcc\libsptutil.a(set_pptr.o)
- .debug_info    0x00083456       0xb5 ../LibA5T1000/gcc\libsptutil.a(skpb.o)
- .debug_info    0x0008350b       0xcb ../LibA5T1000/gcc\libsptutil.a(split.o)
- .debug_info    0x000835d6      0x12b ../LibA5T1000/gcc\libsptutil.a(split_d.o)
- .debug_info    0x00083701       0x79 ../LibA5T1000/gcc\libsptutil.a(val2bcd.o)
- .debug_info    0x0008377a       0x79 ../LibA5T1000/gcc\libsptutil.a(hexdigit.o)
- .debug_info    0x000837f3     0x194a ../LibA5T1000/gcc\libspglib.a(GIFLib.o)
- .debug_info    0x0008513d     0x14fa ../LibA5T1000/gcc\libspglib.a(GLib.o)
+ .debug_info    0x000499ef     0x323f obj/hostmsg.o
+ .debug_info    0x0004cc2e     0x4e6a obj/iface.o
+ .debug_info    0x00051a98     0x11d9 obj/iface_util.o
+ .debug_info    0x00052c71     0x5184 obj/input.o
+ .debug_info    0x00057df5     0x3cf2 obj/keytrans.o
+ .debug_info    0x0005bae7     0x223f obj/lptutil.o
+ .debug_info    0x0005dd26     0x10dc obj/main.o
+ .debug_info    0x0005ee02     0x1cb5 obj/menu.o
+ .debug_info    0x00060ab7      0x50a obj/message.o
+ .debug_info    0x00060fc1     0x6a6d obj/network.o
+ .debug_info    0x00067a2e     0x1f0a obj/record.o
+ .debug_info    0x00069938     0x1b7c obj/refund.o
+ .debug_info    0x0006b4b4     0x1aa7 obj/testrans.o
+ .debug_info    0x0006cf5b     0x1464 obj/toggle.o
+ .debug_info    0x0006e3bf     0x2426 obj/tpadtest.o
+ .debug_info    0x000707e5     0x8895 obj/tranutil.o
+ .debug_info    0x0007907a     0x3fe5 obj/wavecom.o
+ .debug_info    0x0007d05f     0x1009 obj/cstartup.o
+ .debug_info    0x0007e068     0x1132 obj/expect_send.o
+ .debug_info    0x0007f19a     0x1fef obj/libc.o
+ .debug_info    0x00081189      0x101 ../LibA5T1000/gcc\libsyscall.a(app_call.o)
+ .debug_info    0x0008128a      0x2c6 ../LibA5T1000/gcc\libsyscall.a(sys_call.o)
+ .debug_info    0x00081550      0x2c6 ../LibA5T1000/gcc\libbasecall.a(base_call.o)
+ .debug_info    0x00081816      0x134 ../LibA5T1000/gcc\libsptutil.a(bcd2bin.o)
+ .debug_info    0x0008194a       0x79 ../LibA5T1000/gcc\libsptutil.a(bcd2val.o)
+ .debug_info    0x000819c3      0x109 ../LibA5T1000/gcc\libsptutil.a(bcdadd.o)
+ .debug_info    0x00081acc       0xed ../LibA5T1000/gcc\libsptutil.a(bcdinc.o)
+ .debug_info    0x00081bb9      0x109 ../LibA5T1000/gcc\libsptutil.a(bcdsub.o)
+ .debug_info    0x00081cc2      0x100 ../LibA5T1000/gcc\libsptutil.a(bin2bcd.o)
+ .debug_info    0x00081dc2       0xa4 ../LibA5T1000/gcc\libsptutil.a(bin2dec.o)
+ .debug_info    0x00081e66      0x11f ../LibA5T1000/gcc\libsptutil.a(bindec_d.o)
+ .debug_info    0x00081f85       0xdc ../LibA5T1000/gcc\libsptutil.a(chkdok.o)
+ .debug_info    0x00082061       0xcb ../LibA5T1000/gcc\libsptutil.a(compress.o)
+ .debug_info    0x0008212c      0x14b ../LibA5T1000/gcc\libsptutil.a(crcccitt.o)
+ .debug_info    0x00082277      0x125 ../LibA5T1000/gcc\libsptutil.a(dbin2asc.o)
+ .debug_info    0x0008239c      0x117 ../LibA5T1000/gcc\libsptutil.a(dbin2bcd.o)
+ .debug_info    0x000824b3       0xb5 ../LibA5T1000/gcc\libsptutil.a(decbin4b.o)
+ .debug_info    0x00082568       0xe9 ../LibA5T1000/gcc\libsptutil.a(decbin8b.o)
+ .debug_info    0x00082651       0xb5 ../LibA5T1000/gcc\libsptutil.a(fndb.o)
+ .debug_info    0x00082706      0x15a ../LibA5T1000/gcc\libsptutil.a(get_byte.o)
+ .debug_info    0x00082860       0x90 ../LibA5T1000/gcc\libsptutil.a(get_dist.o)
+ .debug_info    0x000828f0      0x13e ../LibA5T1000/gcc\libsptutil.a(get_mem.o)
+ .debug_info    0x00082a2e       0x7a ../LibA5T1000/gcc\libsptutil.a(get_pptr.o)
+ .debug_info    0x00082aa8       0x84 ../LibA5T1000/gcc\libsptutil.a(hex_val.o)
+ .debug_info    0x00082b2c       0xba ../LibA5T1000/gcc\libsptutil.a(inc_pptr.o)
+ .debug_info    0x00082be6       0xb3 ../LibA5T1000/gcc\libsptutil.a(isbdigit.o)
+ .debug_info    0x00082c99      0x199 ../LibA5T1000/gcc\libsptutil.a(pack_b.o)
+ .debug_info    0x00082e32       0x8a ../LibA5T1000/gcc\libsptutil.a(pack_lf.o)
+ .debug_info    0x00082ebc       0xa1 ../LibA5T1000/gcc\libsptutil.a(pack_lfs.o)
+ .debug_info    0x00082f5d      0x13a ../LibA5T1000/gcc\libsptutil.a(pack_mem.o)
+ .debug_info    0x00083097      0x13c ../LibA5T1000/gcc\libsptutil.a(pack_nb.o)
+ .debug_info    0x000831d3       0xa2 ../LibA5T1000/gcc\libsptutil.a(pack_spc.o)
+ .debug_info    0x00083275      0x123 ../LibA5T1000/gcc\libsptutil.a(pack_str.o)
+ .debug_info    0x00083398       0x85 ../LibA5T1000/gcc\libsptutil.a(peek_b.o)
+ .debug_info    0x0008341d       0xf7 ../LibA5T1000/gcc\libsptutil.a(set_pptr.o)
+ .debug_info    0x00083514       0xb5 ../LibA5T1000/gcc\libsptutil.a(skpb.o)
+ .debug_info    0x000835c9       0xcb ../LibA5T1000/gcc\libsptutil.a(split.o)
+ .debug_info    0x00083694      0x12b ../LibA5T1000/gcc\libsptutil.a(split_d.o)
+ .debug_info    0x000837bf       0x79 ../LibA5T1000/gcc\libsptutil.a(val2bcd.o)
+ .debug_info    0x00083838       0x79 ../LibA5T1000/gcc\libsptutil.a(hexdigit.o)
+ .debug_info    0x000838b1     0x194a ../LibA5T1000/gcc\libspglib.a(GIFLib.o)
+ .debug_info    0x000851fb     0x14fa ../LibA5T1000/gcc\libspglib.a(GLib.o)
 
 .debug_abbrev   0x00000000     0xa1ca
  .debug_abbrev  0x00000000      0x301 obj/Adjust.o
@@ -3157,7 +3157,7 @@ OUTPUT(app elf32-littlearm)
  .debug_ranges  0x00001820       0x38 ../LibA5T1000/gcc\libspglib.a(GIFLib.o)
  .debug_ranges  0x00001858       0x60 ../LibA5T1000/gcc\libspglib.a(GLib.o)
 
-.debug_line     0x00000000     0xad62
+.debug_line     0x00000000     0xad6c
  .debug_line    0x00000000      0x23c obj/Adjust.o
  .debug_line    0x0000023c      0x148 obj/Auth.o
  .debug_line    0x00000384      0x3b9 obj/Chkoptn.o
@@ -3187,68 +3187,68 @@ OUTPUT(app elf32-littlearm)
  .debug_line    0x000046a9       0x1d obj/emvl2cfg.o
  .debug_line    0x000046c6      0x585 obj/emvtrans.o
  .debug_line    0x00004c4b      0x319 obj/hardware.o
- .debug_line    0x00004f64      0x3c9 obj/hostmsg.o
- .debug_line    0x0000532d      0x58d obj/iface.o
- .debug_line    0x000058ba      0x171 obj/iface_util.o
- .debug_line    0x00005a2b      0x763 obj/input.o
- .debug_line    0x0000618e      0x423 obj/keytrans.o
- .debug_line    0x000065b1      0x2ee obj/lptutil.o
- .debug_line    0x0000689f       0x87 obj/main.o
- .debug_line    0x00006926      0x270 obj/menu.o
- .debug_line    0x00006b96       0x67 obj/message.o
- .debug_line    0x00006bfd      0x662 obj/network.o
- .debug_line    0x0000725f      0x20b obj/record.o
- .debug_line    0x0000746a      0x14d obj/refund.o
- .debug_line    0x000075b7      0x10d obj/testrans.o
- .debug_line    0x000076c4      0x13f obj/toggle.o
- .debug_line    0x00007803      0x31b obj/tpadtest.o
- .debug_line    0x00007b1e      0xa65 obj/tranutil.o
- .debug_line    0x00008583      0x703 obj/wavecom.o
- .debug_line    0x00008c86       0xad obj/cstartup.o
- .debug_line    0x00008d33      0x169 obj/expect_send.o
- .debug_line    0x00008e9c      0x3ab obj/libc.o
- .debug_line    0x00009247      0x267 ../LibA5T1000/gcc\libsyscall.a(app_call.o)
- .debug_line    0x000094ae       0x7e ../LibA5T1000/gcc\libsyscall.a(sys_call.o)
- .debug_line    0x0000952c       0x7f ../LibA5T1000/gcc\libbasecall.a(base_call.o)
- .debug_line    0x000095ab       0x95 ../LibA5T1000/gcc\libsptutil.a(bcd2bin.o)
- .debug_line    0x00009640       0x61 ../LibA5T1000/gcc\libsptutil.a(bcd2val.o)
- .debug_line    0x000096a1       0x77 ../LibA5T1000/gcc\libsptutil.a(bcdadd.o)
- .debug_line    0x00009718       0x7e ../LibA5T1000/gcc\libsptutil.a(bcdinc.o)
- .debug_line    0x00009796       0x77 ../LibA5T1000/gcc\libsptutil.a(bcdsub.o)
- .debug_line    0x0000980d       0x8e ../LibA5T1000/gcc\libsptutil.a(bin2bcd.o)
- .debug_line    0x0000989b       0x64 ../LibA5T1000/gcc\libsptutil.a(bin2dec.o)
- .debug_line    0x000098ff       0x73 ../LibA5T1000/gcc\libsptutil.a(bindec_d.o)
- .debug_line    0x00009972       0x69 ../LibA5T1000/gcc\libsptutil.a(chkdok.o)
- .debug_line    0x000099db       0x74 ../LibA5T1000/gcc\libsptutil.a(compress.o)
- .debug_line    0x00009a4f       0x7a ../LibA5T1000/gcc\libsptutil.a(crcccitt.o)
- .debug_line    0x00009ac9      0x10f ../LibA5T1000/gcc\libsptutil.a(dbin2asc.o)
- .debug_line    0x00009bd8       0xa9 ../LibA5T1000/gcc\libsptutil.a(dbin2bcd.o)
- .debug_line    0x00009c81       0x6a ../LibA5T1000/gcc\libsptutil.a(decbin4b.o)
- .debug_line    0x00009ceb       0x94 ../LibA5T1000/gcc\libsptutil.a(decbin8b.o)
- .debug_line    0x00009d7f       0x60 ../LibA5T1000/gcc\libsptutil.a(fndb.o)
- .debug_line    0x00009ddf       0x71 ../LibA5T1000/gcc\libsptutil.a(get_byte.o)
- .debug_line    0x00009e50       0x60 ../LibA5T1000/gcc\libsptutil.a(get_dist.o)
- .debug_line    0x00009eb0       0x79 ../LibA5T1000/gcc\libsptutil.a(get_mem.o)
- .debug_line    0x00009f29       0x5f ../LibA5T1000/gcc\libsptutil.a(get_pptr.o)
- .debug_line    0x00009f88       0x5f ../LibA5T1000/gcc\libsptutil.a(hex_val.o)
- .debug_line    0x00009fe7       0x77 ../LibA5T1000/gcc\libsptutil.a(inc_pptr.o)
- .debug_line    0x0000a05e       0x64 ../LibA5T1000/gcc\libsptutil.a(isbdigit.o)
- .debug_line    0x0000a0c2       0xa1 ../LibA5T1000/gcc\libsptutil.a(pack_b.o)
- .debug_line    0x0000a163       0x6f ../LibA5T1000/gcc\libsptutil.a(pack_lf.o)
- .debug_line    0x0000a1d2       0x71 ../LibA5T1000/gcc\libsptutil.a(pack_lfs.o)
- .debug_line    0x0000a243       0x75 ../LibA5T1000/gcc\libsptutil.a(pack_mem.o)
- .debug_line    0x0000a2b8       0xfc ../LibA5T1000/gcc\libsptutil.a(pack_nb.o)
- .debug_line    0x0000a3b4       0x71 ../LibA5T1000/gcc\libsptutil.a(pack_spc.o)
- .debug_line    0x0000a425       0xfb ../LibA5T1000/gcc\libsptutil.a(pack_str.o)
- .debug_line    0x0000a520       0x5e ../LibA5T1000/gcc\libsptutil.a(peek_b.o)
- .debug_line    0x0000a57e       0x64 ../LibA5T1000/gcc\libsptutil.a(set_pptr.o)
- .debug_line    0x0000a5e2       0x68 ../LibA5T1000/gcc\libsptutil.a(skpb.o)
- .debug_line    0x0000a64a       0x71 ../LibA5T1000/gcc\libsptutil.a(split.o)
- .debug_line    0x0000a6bb       0x75 ../LibA5T1000/gcc\libsptutil.a(split_d.o)
- .debug_line    0x0000a730       0x61 ../LibA5T1000/gcc\libsptutil.a(val2bcd.o)
- .debug_line    0x0000a791       0x60 ../LibA5T1000/gcc\libsptutil.a(hexdigit.o)
- .debug_line    0x0000a7f1      0x35d ../LibA5T1000/gcc\libspglib.a(GIFLib.o)
- .debug_line    0x0000ab4e      0x214 ../LibA5T1000/gcc\libspglib.a(GLib.o)
+ .debug_line    0x00004f64      0x3d3 obj/hostmsg.o
+ .debug_line    0x00005337      0x58d obj/iface.o
+ .debug_line    0x000058c4      0x171 obj/iface_util.o
+ .debug_line    0x00005a35      0x763 obj/input.o
+ .debug_line    0x00006198      0x423 obj/keytrans.o
+ .debug_line    0x000065bb      0x2ee obj/lptutil.o
+ .debug_line    0x000068a9       0x87 obj/main.o
+ .debug_line    0x00006930      0x270 obj/menu.o
+ .debug_line    0x00006ba0       0x67 obj/message.o
+ .debug_line    0x00006c07      0x662 obj/network.o
+ .debug_line    0x00007269      0x20b obj/record.o
+ .debug_line    0x00007474      0x14d obj/refund.o
+ .debug_line    0x000075c1      0x10d obj/testrans.o
+ .debug_line    0x000076ce      0x13f obj/toggle.o
+ .debug_line    0x0000780d      0x31b obj/tpadtest.o
+ .debug_line    0x00007b28      0xa65 obj/tranutil.o
+ .debug_line    0x0000858d      0x703 obj/wavecom.o
+ .debug_line    0x00008c90       0xad obj/cstartup.o
+ .debug_line    0x00008d3d      0x169 obj/expect_send.o
+ .debug_line    0x00008ea6      0x3ab obj/libc.o
+ .debug_line    0x00009251      0x267 ../LibA5T1000/gcc\libsyscall.a(app_call.o)
+ .debug_line    0x000094b8       0x7e ../LibA5T1000/gcc\libsyscall.a(sys_call.o)
+ .debug_line    0x00009536       0x7f ../LibA5T1000/gcc\libbasecall.a(base_call.o)
+ .debug_line    0x000095b5       0x95 ../LibA5T1000/gcc\libsptutil.a(bcd2bin.o)
+ .debug_line    0x0000964a       0x61 ../LibA5T1000/gcc\libsptutil.a(bcd2val.o)
+ .debug_line    0x000096ab       0x77 ../LibA5T1000/gcc\libsptutil.a(bcdadd.o)
+ .debug_line    0x00009722       0x7e ../LibA5T1000/gcc\libsptutil.a(bcdinc.o)
+ .debug_line    0x000097a0       0x77 ../LibA5T1000/gcc\libsptutil.a(bcdsub.o)
+ .debug_line    0x00009817       0x8e ../LibA5T1000/gcc\libsptutil.a(bin2bcd.o)
+ .debug_line    0x000098a5       0x64 ../LibA5T1000/gcc\libsptutil.a(bin2dec.o)
+ .debug_line    0x00009909       0x73 ../LibA5T1000/gcc\libsptutil.a(bindec_d.o)
+ .debug_line    0x0000997c       0x69 ../LibA5T1000/gcc\libsptutil.a(chkdok.o)
+ .debug_line    0x000099e5       0x74 ../LibA5T1000/gcc\libsptutil.a(compress.o)
+ .debug_line    0x00009a59       0x7a ../LibA5T1000/gcc\libsptutil.a(crcccitt.o)
+ .debug_line    0x00009ad3      0x10f ../LibA5T1000/gcc\libsptutil.a(dbin2asc.o)
+ .debug_line    0x00009be2       0xa9 ../LibA5T1000/gcc\libsptutil.a(dbin2bcd.o)
+ .debug_line    0x00009c8b       0x6a ../LibA5T1000/gcc\libsptutil.a(decbin4b.o)
+ .debug_line    0x00009cf5       0x94 ../LibA5T1000/gcc\libsptutil.a(decbin8b.o)
+ .debug_line    0x00009d89       0x60 ../LibA5T1000/gcc\libsptutil.a(fndb.o)
+ .debug_line    0x00009de9       0x71 ../LibA5T1000/gcc\libsptutil.a(get_byte.o)
+ .debug_line    0x00009e5a       0x60 ../LibA5T1000/gcc\libsptutil.a(get_dist.o)
+ .debug_line    0x00009eba       0x79 ../LibA5T1000/gcc\libsptutil.a(get_mem.o)
+ .debug_line    0x00009f33       0x5f ../LibA5T1000/gcc\libsptutil.a(get_pptr.o)
+ .debug_line    0x00009f92       0x5f ../LibA5T1000/gcc\libsptutil.a(hex_val.o)
+ .debug_line    0x00009ff1       0x77 ../LibA5T1000/gcc\libsptutil.a(inc_pptr.o)
+ .debug_line    0x0000a068       0x64 ../LibA5T1000/gcc\libsptutil.a(isbdigit.o)
+ .debug_line    0x0000a0cc       0xa1 ../LibA5T1000/gcc\libsptutil.a(pack_b.o)
+ .debug_line    0x0000a16d       0x6f ../LibA5T1000/gcc\libsptutil.a(pack_lf.o)
+ .debug_line    0x0000a1dc       0x71 ../LibA5T1000/gcc\libsptutil.a(pack_lfs.o)
+ .debug_line    0x0000a24d       0x75 ../LibA5T1000/gcc\libsptutil.a(pack_mem.o)
+ .debug_line    0x0000a2c2       0xfc ../LibA5T1000/gcc\libsptutil.a(pack_nb.o)
+ .debug_line    0x0000a3be       0x71 ../LibA5T1000/gcc\libsptutil.a(pack_spc.o)
+ .debug_line    0x0000a42f       0xfb ../LibA5T1000/gcc\libsptutil.a(pack_str.o)
+ .debug_line    0x0000a52a       0x5e ../LibA5T1000/gcc\libsptutil.a(peek_b.o)
+ .debug_line    0x0000a588       0x64 ../LibA5T1000/gcc\libsptutil.a(set_pptr.o)
+ .debug_line    0x0000a5ec       0x68 ../LibA5T1000/gcc\libsptutil.a(skpb.o)
+ .debug_line    0x0000a654       0x71 ../LibA5T1000/gcc\libsptutil.a(split.o)
+ .debug_line    0x0000a6c5       0x75 ../LibA5T1000/gcc\libsptutil.a(split_d.o)
+ .debug_line    0x0000a73a       0x61 ../LibA5T1000/gcc\libsptutil.a(val2bcd.o)
+ .debug_line    0x0000a79b       0x60 ../LibA5T1000/gcc\libsptutil.a(hexdigit.o)
+ .debug_line    0x0000a7fb      0x35d ../LibA5T1000/gcc\libspglib.a(GIFLib.o)
+ .debug_line    0x0000ab58      0x214 ../LibA5T1000/gcc\libspglib.a(GLib.o)
 
 .debug_str      0x00000000     0xad60
  .debug_str     0x00000000     0x4151 obj/Adjust.o

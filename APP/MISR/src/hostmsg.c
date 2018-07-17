@@ -468,8 +468,22 @@ memcpy(tx_bitmap, KTransBitmap[TX_DATA.b_trans].sb_txbitmap, 16);
 
   /* 43. card acceptor name & address */
   if (tx_bitmap[5] & 0x20) {
-    pack_byte((BYTE)bin2bcd(sizeof(STIS_TERM_CFG.sb_name_loc)));
-    pack_mem(STIS_TERM_CFG.sb_name_loc, sizeof(STIS_TERM_CFG.sb_name_loc));
+  //  pack_byte((BYTE)bin2bcd(sizeof(STIS_TERM_CFG.sb_name_loc)));
+ //   pack_mem(STIS_TERM_CFG.sb_name_loc, sizeof(STIS_TERM_CFG.sb_name_loc));
+pack_byte(0x11);
+pack_byte(0x31);
+pack_byte(0x32);
+pack_byte(0x33);
+pack_byte(0x34);
+pack_byte(0x35);
+pack_byte(0x36);
+pack_byte(0x37);
+pack_byte(0x38);
+pack_byte(0x45);
+pack_byte(0x47);
+pack_byte(0x59);
+
+
   }
  // 
   /* 44. additional resp. data */
