@@ -1,0 +1,51 @@
+ISO8583Editor, version 2.1.6, November 2016.
+http://ISO8583.free.fr
+
+How to use this software :
+
+a) Load a previously defined protocol, or define a new one from scratch.
+First choose how data elements are supposed to be encoded :
+NONE stands for 'pure binary' for bitsmap or binary fields,
+BIGEND means 'big-endian' (network byte order) for integer values (numeric fields and lengths),
+PBCD is for Packed BCD and HEX is for Hexadecimal.
+PACKED is for value that can be read as hexadecimal and store as binary ('Z' type for data track 2).
+To add a data element, use the bottom part of the dialog, input appropriate values,
+then click the 'Apply' button. If the field number already exists, it will be updated,
+otherwise it will be added. To delete a field definition, use the the 'del' key of the keyboard.
+You will NOT be asked for a confirmation, but if deletion was not intended, just clik 'Apply' immediatly.
+Fields 0 and 1 are ommitted. They are reserved for first and second bitmap (16 bytes each).
+
+b) Optionaly, define [new] messages.
+To select a message definition, use the drop-down combo box.
+To add one, input a MTI (4 digits), edit the message title and click '+' button, 
+then use left, right or space key to change data element properties.
+To only change the title of the current message definition, update it and click the '=' button.
+To delete the current message definition, click on the '-' button.
+For each message definition, use left/right arrow keys or space bar to specify mandatory or optional fields (at least one optional!).
+
+Don't forget to save any modification for later re-use !
+
+c) Paste an ISO8583 message (begining with the MTI) into the third tab.
+If the message constains binary parts, paste is as an hexadecimal string and clik on the 'Hexa' checkbox.
+Then click the 'Parse' button.
+
+If a line is selected, hitting the space key highlight the corresponding message part.
+
+The result of parsing can be send to the clipboard by clicking the 'copy' button.
+
+You can find test messages in the testmessages.txt file.
+
+I haven't tested all of the possible combinations of encoding, 
+and perhaps there is some others not yet implemented in this tool.
+So don't hesitate to send me your bug fixes or remarks at iso8583@free.fr.
+
+note : 'size of length for variable lenght fields' in the *.pro files is calculated based on the encoding length.
+
+If you want VS project files and C source code example on how to write a pluggin for sub-element parsing,
+please, email me a request.
+
+***
+
+Changes between 2.1.5 and 2.1.6 [Nov 2016]
+
+- add MTI in the parsing result text.
