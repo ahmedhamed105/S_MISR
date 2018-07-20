@@ -5,14 +5,34 @@
  */
 package com.parser;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
 /**
  *
  * @author ahmed.elemam
  */
 public class ISO_parer extends javax.swing.JFrame {
 
+    
+    
     /**
      * Creates new form ISO_parer
+     * 0 binary
+     * 1 char
+     * 2 number
+     * 3 alphanumeric characters
+     * 4 field containing magnetic track data
+     * 5 LL one byte
+     * 6 LLL two byte
+	 
+	 
+	 another number 
+	 0 Fixed
+	 1 .. up to
+	 3 dynmaic with lenght byte
      */
     public ISO_parer() {
         initComponents();
@@ -44,6 +64,11 @@ public class ISO_parer extends javax.swing.JFrame {
         jLabel2.setText("Msg");
 
         jButton1.setText("Parse");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -81,6 +106,38 @@ public class ISO_parer extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        
+        Properties prop = new Properties();
+	InputStream input = null;
+
+	try {
+
+		input = new FileInputStream("Iso.properties");
+
+		// load a properties file
+		prop.load(input);
+
+		// get the property value and print it out
+		System.out.println(prop.getProperty("field1_name"));
+		System.out.println(prop.getProperty("field1_number"));
+		System.out.println(prop.getProperty("field1_length"));
+                System.out.println(prop.getProperty("field1_type"));
+
+	} catch (IOException ex) {
+		ex.printStackTrace();
+	} finally {
+		if (input != null) {
+			try {
+				input.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
