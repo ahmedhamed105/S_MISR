@@ -458,7 +458,10 @@ memcpy(tx_bitmap, KTransBitmap[TX_DATA.b_trans].sb_txbitmap, 16);
 
   /* 41. terminal identification */
   if (tx_bitmap[5] & 0x80) {
-    pack_mem(STIS_ACQ_TBL(0).sb_term_id, 15);
+ pack_mem("47400010", 8);
+	  
+  //  pack_mem(STIS_ACQ_TBL(0).sb_term_id, 8);
+//	 pack_mem("0000000", 7);
   }
 
   /* 42. card acceptor identification */
@@ -536,10 +539,12 @@ pack_byte(0x59);
 
   /* 52. pin block */
   if (tx_bitmap[6] & 0x10) {
-    if (memcmp(TX_DATA.sb_pin, "\x00\x00\x00\x00\x00\x00\x00\x00", 8))
-      pack_mem (TX_DATA.sb_pin, 8);
-    else
-      tx_bitmap[6] &= ~0x10; /* not applicable, clear BIT */
+
+	  pack_mem("0000000000000000", 16);
+  //  if (memcmp(TX_DATA.sb_pin, "\x00\x00\x00\x00\x00\x00\x00\x00", 8))
+   //   pack_mem (TX_DATA.sb_pin, 8);
+  //  else
+   //   tx_bitmap[6] &= ~0x10; /* not applicable, clear BIT */
   }
 
   /* 53. security data */
