@@ -1,6 +1,6 @@
 ﻿field1_name=Secondary bit map,Primary Account Number (PAN),Processing code,Transaction amount,Settlement amount,Transmission date and time,Systems Trace Audit Number,Transaction local date and time,Expiry date,Settlement date,Capture date,POS Entry mode,Pan Sequence Number,Function Code,Message reason code,Merchant business code,	Acquiring institution identification code,Primary account number extension,Track 2 data,Retrieval reference number,Approval code,Action code,Card acceptor device identification,Card acceptor identification,Card acceptor name and address,Additional response data,Provite Additional Data,Transaction currency code,Settlement currency code,Pin Data,Security data,Additional amounts,Smart Card Information,Original data elements,Redemption number,Versions,Message Authentication Code,Message number,Data record,Action date,Credits number,Debit number,Debits reversal number,Payments number,Payments reversal number,Credits amount,Credits recycled amounts,Debits amount,Debits reversed amounts,Net reconciliation amount,File name,Datacapture linked to ICC cards,Message Authentication Code
 
-field1_number=1,2,3,4,5,7,11,12,14,15,17,23,24,25,26,32,34,35,37,38,39,41,42,43,44,48,49,50,52,53,55,56,62,63,64,71,72,73,74,75,76,77,83,84,86,87,88,89,97,101,110,128
+field1_number=1,2,3,4,5,7,11,12,14,15,17,23,24,25,26,32,34,35,37,38,39,41,42,43,44,48,49,50,52,53,54,55,56,62,63,64,71,72,73,74,75,76,77,83,84,86,87,88,89,97,101,110,128
 
 field1_length=64,0,6,12,12,10,6,12,4,6,4,12,3,3,4,4,11,28,37,12,6,3,15,15,99,999,3,3,8,18,120,255,45,999,999,8,8,999,6,10,10,10,10,10,10,10,16,16,16,16,16,17,999
 
@@ -24,5 +24,5 @@ field1_length=64,0,6,12,12,10,6,12,4,6,4,12,3,3,4,4,11,28,37,12,6,3,15,15,99,999
 	 
 	 
 	 
-field1_type=01,53,10,10,10,10,10,10,10,10,10,30,10,10,10,10,53,53,10,30,10,30,30,53,53,63,10,10,00,53,63,63,53,63,63,00,10,63,30,10,10,10,10,10,1010,10,10,10,10,53,63
+field1_type=00,53,10,10,10,10,10,10,10,10,10,30,10,10,10,10,53,53,53,10,30,10,30,30,53,53,63,10,10,00,53,63,63,53,63,63,00,10,63,30,10,10,10,10,10,10,10,10,10,10,10,53,63,00
 

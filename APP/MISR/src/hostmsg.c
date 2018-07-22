@@ -320,7 +320,7 @@ memcpy(tx_bitmap, KTransBitmap[TX_DATA.b_trans].sb_txbitmap, 16);
   }
 
   /* 07. transmission date & time */
-  if (tx_bitmap[1] & 0x02) {
+  if (tx_bitmap[0] & 0x02) {
   //pack_byte(0x31);
   //pack_byte(0x36);
   //pack_byte(0x30);
@@ -458,7 +458,7 @@ memcpy(tx_bitmap, KTransBitmap[TX_DATA.b_trans].sb_txbitmap, 16);
 
   /* 41. terminal identification */
   if (tx_bitmap[5] & 0x80) {
-    pack_mem(STIS_ACQ_TBL(0).sb_term_id, 8);
+    pack_mem(STIS_ACQ_TBL(0).sb_term_id, 15);
   }
 
   /* 42. card acceptor identification */
@@ -520,8 +520,11 @@ pack_byte(0x59);
   //P10032A554A96459E368BF60B927E9F4AD14E9
   /* 48. additional resp. data */
   if (tx_bitmap[5] & 0x01) {
-    pack_mem("0038", 4);                                //Total length of TLVs
-    pack_mem("P10", 3);                                 //Tag P10 - PIN encryption key
+   // pack_mem("0038", 2);                                //Total length of TLVs
+	pack_byte(0x00);
+    pack_byte(0x38);
+   
+	pack_mem("P10", 3);                                 //Tag P10 - PIN encryption key
     pack_mem("032", 3);                                 //length of data
     pack_mem("A554A96459E368BF60B927E9F4AD14E9", 32);   //testing only
   }

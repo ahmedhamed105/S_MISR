@@ -54,6 +54,8 @@ public class ISO_parer extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,24 +74,31 @@ public class ISO_parer extends javax.swing.JFrame {
             }
         });
 
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jScrollPane2.setViewportView(jTextArea2);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 527, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton1)))
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2)))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -103,7 +112,9 @@ public class ISO_parer extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -126,10 +137,8 @@ public class ISO_parer extends javax.swing.JFrame {
                 String field1_length =prop.getProperty("field1_length");
                 String field1_type =prop.getProperty("field1_type");
                 
-                
-                String text ="01 D1 49 53 4F 30 34 36 35 32 31 31 31 30 35 30 30 30 31 32 30 30 F2 34 87 41 60 E1 8A 03 00 00 00 00 00 00 00 00 16 34 32 30 35 38 35 31 31 39 30 30 30 38 38 35 35 30 30 30 30 30 30 30 30 30 30 30 30 30 38 30 30 30 30 30 30 30 30 37 39 31 38 30 37 31 35 31 32 34 37 34 30 31 36 30 39 30 37 31 35 38 31 30 31 30 31 35 31 30 31 34 63 30 30 30 32 30 30 34 38 31 34 06 30 31 31 32 30 30 08 30 30 30 30 30 30 30 30 32 34 32 30 35 38 35 31 31 39 30 30 30 38 38 35 35 44 31 36 30 39 32 32 36 31 30 30 30 30 36 39 38 36 32 33 30 31 37 36 34 30 30 34 37 34 30 30 30 31 30 30 35 20 20 20 46 20 20 45 44 43 20 44 45 4D 4F 20 41 50 50 4C 49 43 41 54 49 4F 4E 20 20 20 53 50 45 43 54 52 41 20 54 45 43 48 4E 4F 4C 4F 47 49 45 53 20 30 30 33 38 50 31 30 30 33 32 41 35 35 34 41 39 36 34 35 39 45 33 36 38 42 46 36 30 42 39 32 37 45 39 46 34 41 44 31 34 45 39 38 31 38 09 30 31 30 31 30 30 30 30 30 01 35 5F 2A 02 08 40 5F 34 01 00 82 02 7C 00 84 07 A0 00 00 00 03 10 10 95 05 08 40 00 80 00 9A 03 18 07 15 9C 01 00 9F 02 06 00 00 00 08 00 00 9F 03 06 00 00 00 00 00 00 9F 09 02 00 8C 9F 10 07 06 01 0A 03 A4 A8 04 9F 1A 02 08 40 9F 1E 08 32 4B 36 32 34 34 37 37 9F 26 08 FE 77 DA BF 9A 91 9B F2 9F 27 01 80 9F 33 03 E0 F0 C8 9F 34 03 41 03 02 9F 35 01 22 9F 36 02 04 31 9F 37 04 E3 2C CD 03 9F 41 03 00 00 79 00 25 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 30 00 00 00 00 00 00 00 00";
-                        
-                        //jTextArea1.getText();
+                StringBuilder result=new StringBuilder();
+                String text =jTextArea1.getText();
                 
                  String [] data =text.split(" ");
                 
@@ -143,7 +152,7 @@ public class ISO_parer extends javax.swing.JFrame {
 for(int i=0;i<18;i++){
     header[i]=data[i];     
 }     
-            System.out.println("header "+Arrays.toString(header));
+            result.append("header "+Arrays.toString(header)+"\n");
             
             
                String [] msgid = new String[4];
@@ -153,7 +162,7 @@ for(int i=18;i<22;i++){
     j++;    
 }   
 
- System.out.println("msgid "+Arrays.toString(msgid));
+ result.append("msgid "+Arrays.toString(msgid)+"\n");
 
                String [] Map = new String[8];
                String [] B_Map = new String[8];
@@ -163,28 +172,41 @@ for(int i=22;i<22+8;i++){
     B_Map[j]=data[i]; 
     j++;    
 }   
- System.out.println("B_Map "+Arrays.toString(Map));
- System.out.println("Map "+Arrays.toString(B_Map));
+ result.append("B_Map "+Arrays.toString(Map)+"\n");
+ result.append("Map "+Arrays.toString(B_Map)+"\n");
 
  
 // get the property value and print it out
                 
- System.out.println(f_name.length+" "+f_number.length+" "+f_length.length+" "+f_type.length+" ");
+ //System.out.println(f_name.length+" "+f_number.length+" "+f_length.length+" "+f_type.length+" ");
  
  int loop_text=22+8;
  int field_num=1;
 
-  System.out.println("Map "+Arrays.toString(f_number));
+ // System.out.println("Map "+Arrays.toString(f_number));
+  
+  int last_filed=0;
  
 for(int i=0;i<f_number.length;i++){
+    
+    
    
     field_num=Integer.parseInt(f_number[i]);
     
-    System.out.println("calcu "+field_num+" "+String.valueOf(((int)field_num/8)) +" "+String.valueOf((field_num%8)!=0? field_num-(((int)field_num/8)*8)-1 : 0));
+    if(field_num > 64){
+    break;
+    }
+    
+
+   last_filed=(field_num%8)!=0 ?(((int)field_num/8)*8):field_num-8;
+   // System.out.println(field_num+"Last "+last_filed);
+
+  
+     if(Map[(field_num%8)!=0?((int)field_num/8):((int)field_num/8)-1].charAt(((field_num%8)!=0? field_num-(((int)field_num/8)*8)-1 : field_num-last_filed-1))=='1'){
+         
+       //   System.out.println("calcu "+field_num+" "+String.valueOf(((int)field_num/8)) +" "+String.valueOf((field_num%8)!=0? field_num-(((int)field_num/8)*8)-1 : 0));
     
    
-  
-     if(Map[((int)field_num/8)].charAt(((field_num%8)!=0? field_num-(((int)field_num/8)*8)-1 : 0))=='1'){
         
         int length=0;
       
@@ -195,27 +217,27 @@ for(int i=0;i<f_number.length;i++){
              if(f_type[i].charAt(0)=='1' || f_type[i].charAt(0)=='2' || f_type[i].charAt(0)=='3' || f_type[i].charAt(0)=='4'){
  
            length=Integer.parseInt(f_length[i]);
-           System.out.println(f_type[i].charAt(0)+""+f_type[i].charAt(1)+" length "+length);
+        //   System.out.println(f_type[i].charAt(0)+""+f_type[i].charAt(1)+" length "+length);
        
        }else if(f_type[i].charAt(0)=='0' ){     
-           length=Integer.parseInt(f_length[i])/8;
-           System.out.println(f_type[i].charAt(0)+""+f_type[i].charAt(1)+" length "+length);  
+           length=Integer.parseInt(f_length[i]);
+       //    System.out.println(f_type[i].charAt(0)+""+f_type[i].charAt(1)+" length "+length);  
        }
            
      }else if(f_type[i].charAt(1)=='1'){
              if(f_type[i].charAt(0)=='1' || f_type[i].charAt(0)=='2' || f_type[i].charAt(0)=='3' || f_type[i].charAt(0)=='4'){
  
            length=Integer.parseInt(f_length[i]);
-           System.out.println(f_type[i].charAt(0)+""+f_type[i].charAt(1)+" length "+length);
+         //  System.out.println(f_type[i].charAt(0)+""+f_type[i].charAt(1)+" length "+length);
        
        }else if(f_type[i].charAt(0)=='0' ){     
-           length=Integer.parseInt(f_length[i])/8;
-           System.out.println(f_type[i].charAt(0)+""+f_type[i].charAt(1)+" length "+length);  
+           length=Integer.parseInt(f_length[i]);
+        //   System.out.println(f_type[i].charAt(0)+""+f_type[i].charAt(1)+" length "+length);  
        }else  if(f_type[i].charAt(0)=='5'){
  
            length=Integer.parseInt(data[loop_text]);
            loop_text=loop_text+1;
-           System.out.println("53 length "+length);
+        //   System.out.println("53 length "+length);
        
        }else if(f_type[i].charAt(0)=='6'){
             
@@ -225,7 +247,7 @@ for(int i=0;i<f_number.length;i++){
  
            length=Integer.parseInt(len.toString());
            loop_text=loop_text+2;
-           System.out.println("63 length "+length);
+        //   System.out.println("63 length "+length);
        
        }
            
@@ -235,7 +257,7 @@ for(int i=0;i<f_number.length;i++){
  
            length=Integer.parseInt(data[loop_text]);
            loop_text=loop_text+1;
-           System.out.println("53 length "+length);
+         //  System.out.println("53 length "+length);
        
        }else if(f_type[i].charAt(0)=='6'){
             
@@ -245,7 +267,7 @@ for(int i=0;i<f_number.length;i++){
  
            length=Integer.parseInt(len.toString());
            loop_text=loop_text+2;
-           System.out.println("63 length "+length);
+        //   System.out.println("63 length "+length);
        
        }
        }
@@ -258,17 +280,20 @@ for(int i=0;i<f_number.length;i++){
          } 
         loop_text=loop_text+length;
         
-          System.out.println(f_name[i]+" "+value.toString());
+          result.append(field_num+" "+f_name[i]+" "+value.toString()+"\n");
     }
     
     
-   
+    
     
     
     
 
-   // System.out.println("Field "+f_number[i] +" "+f_name[i]+" "+f_length[i]+" "+f_type[i]);
+ 
 }
+
+
+jTextArea2.setText(result.toString());
                 
                 
 	} catch (IOException ex) {
@@ -329,6 +354,8 @@ for(int i=0;i<f_number.length;i++){
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
     // End of variables declaration//GEN-END:variables
 }
