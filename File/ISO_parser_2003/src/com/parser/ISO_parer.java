@@ -5,12 +5,18 @@
  */
 package com.parser;
 
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Properties;
+import javax.xml.bind.DatatypeConverter;
 
 /**
  *
@@ -75,6 +81,7 @@ public class ISO_parer extends javax.swing.JFrame {
         });
 
         jTextArea2.setColumns(20);
+        jTextArea2.setLineWrap(true);
         jTextArea2.setRows(5);
         jScrollPane2.setViewportView(jTextArea2);
 
@@ -280,7 +287,10 @@ for(int i=0;i<f_number.length;i++){
          } 
         loop_text=loop_text+length;
         
-          result.append(field_num+" "+f_name[i]+" "+value.toString()+"\n");
+        byte[] bytes = DatatypeConverter.parseHexBinary(value.toString());
+      String result_con= new String(bytes, "UTF-8");
+        
+          result.append(field_num+" {"+length+"} "+f_name[i]+" "+value.toString()+" {"+result_con+"} "+"\n");
     }
     
     
@@ -294,7 +304,13 @@ for(int i=0;i<f_number.length;i++){
 
 
 jTextArea2.setText(result.toString());
-                
+StringSelection selection = new StringSelection(result.toString());
+Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+clipboard.setContents(selection, selection);       
+
+try(PrintWriter out = new PrintWriter("D:\\GuadianPro\\Core\\S_MISR\\File\\parser\\texts.txt")  ){
+    out.println(result.toString());
+}
                 
 	} catch (IOException ex) {
 		ex.printStackTrace();

@@ -180,6 +180,8 @@ void PackHostMsg(void)
   BYTE var_i, var_j;
    BYTE buf[128], tmp[10],length[4]; // request by dbin2bcd
   struct DESC_TBL prod;
+  BYTE date_time[14];
+
 
   TxBufSetup(ExtraMsgLen());
 
@@ -280,8 +282,12 @@ memcpy(tx_bitmap, KTransBitmap[TX_DATA.b_trans].sb_txbitmap, 16);
  //   }
  // }
 
- if (memcmp(&TX_DATA.s_dtg.b_year, "\x00\x00\x00\x00\x00\x00", 6) == 0)
-   ReadRTC(&TX_DATA.s_dtg);
+ // if (memcmp(&TX_DATA.s_dtg.b_year, "\x00\x00\x00\x00\x00\x00", 6) == 0)
+ //    ReadRTC(&TX_DATA.s_dtg);
+
+  RtcGetMW(date_time);
+
+
 
 
 
@@ -321,17 +327,9 @@ memcpy(tx_bitmap, KTransBitmap[TX_DATA.b_trans].sb_txbitmap, 16);
 
   /* 07. transmission date & time */
   if (tx_bitmap[0] & 0x02) {
-  //pack_byte(0x31);
-  //pack_byte(0x36);
-  //pack_byte(0x30);
-  //pack_byte(0x35);
-  //pack_byte(0x32);
-  //pack_byte(0x33);
-  //pack_byte(0x31);
-  //pack_byte(0x31);
-  //pack_byte(0x32);
-  //pack_byte(0x37);
-    split_data(&TX_DATA.s_dtg.b_year, 5);
+ //   split_data(&TX_DATA.s_dtg.b_year, 5);
+
+	  pack_mem(&date_time[2], 10);
   }
 
 
@@ -346,7 +344,8 @@ memcpy(tx_bitmap, KTransBitmap[TX_DATA.b_trans].sb_txbitmap, 16);
 
   /* 12. local transaction date & time */
   if (tx_bitmap[1] & 0x10) {
-    split_data(&TX_DATA.s_dtg.b_year, 6);
+	  pack_mem(&date_time[2], 12);
+ //   split_data(&TX_DATA.s_dtg.b_year, 6);
   }
 
   /* 14. expiry date */
