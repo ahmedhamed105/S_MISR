@@ -440,14 +440,19 @@ memcpy(tx_bitmap, KTransBitmap[TX_DATA.b_trans].sb_txbitmap, 16);
 
   /* 37. RRN */
   if (tx_bitmap[4] & 0x08) {
-    if ((TX_DATA.b_trans == EDC_REV) && (TX_DATA.b_org_trans != VOID))
-      tx_bitmap[4] &= ~0x08; /* not applicable, clear BIT */
-    else {
-      if (memcmp(TX_DATA.sb_rrn, "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00", 12))
-        pack_mem(TX_DATA.sb_rrn, 12);
-      else
-        tx_bitmap[4] &= ~0x08; /* not applicable, clear BIT */
-    }
+
+ split_data(TX_DATA.sb_trace_no, 3);
+   pack_mem("000000", 6);                  //amr tell that will me reveersal number for last TRX not have response
+
+
+  //  if ((TX_DATA.b_trans == EDC_REV) && (TX_DATA.b_org_trans != VOID))
+   //   tx_bitmap[4] &= ~0x08; /* not applicable, clear BIT */
+   // else {
+    //  if (memcmp(TX_DATA.sb_rrn, "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00", 12))
+    //    pack_mem(TX_DATA.sb_rrn, 12);
+     // else
+      //  tx_bitmap[4] &= ~0x08; /* not applicable, clear BIT */
+    //}
   }
 
   /* 38. authorization code */
@@ -644,7 +649,7 @@ pack_byte(0x59);
 
   /* 72. Data Record */
   if (tx_bitmap[8] & 0x01) {
-    if ((TX_DATA.b_trans == AUTH_SWIPE) || (TX_DATA.b_trans == AUTH_MANUAL)) {
+    if ((TX_DATA.b_trans == AUTH_SWIPE) || (TX_DATA.b_trans == AUTH_MANUAL) || (TX_DATA.b_trans == SETT_ADV)) {
       pack_word(0x0040); /* length */
       pack_mem("6013260019010000001259708402000000036575", 40);   //testing only
     }
@@ -890,7 +895,9 @@ BYTE CheckHostRsp(void)
   //  RSP_DATA.w_rspcode=get_word();
 
 	 get_mem(words, 3);
-   //  printf("\x1b\xc0%02x: %c%c", RSP_DATA.w_rspcode, RSP_DATA.w_rspcode>>8, RSP_DATA.w_rspcode&0xFF); //!TT
+     printf("\x1b\xc%02x: %c%c", RSP_DATA.w_rspcode, RSP_DATA.w_rspcode>>8, RSP_DATA.w_rspcode&0xFF); //!TT
+     APM_WaitKey(9000, 0);
+
     // Delay1Sec(3, 0);
   }
 

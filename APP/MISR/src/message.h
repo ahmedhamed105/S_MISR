@@ -68,6 +68,7 @@ enum {
   EDC_CN_SETTLE            ,
   EDC_CN_REVERSAL          ,
   EDC_CN_TEST_MSG          ,
+  EDC_CN_SETT_ADV          ,
 
   // input.c
   EDC_IN_CHK_DIGIT_ERROR   ,

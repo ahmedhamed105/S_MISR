@@ -73,6 +73,7 @@ enum {
   AUTH_CTL                ,   //21
   REFUND_CTL              ,   //22
   TEST_MSG                ,   //23
+  SETT_ADV                ,   //24
   MAX_TXN_TYPE            ,
   DEFAULT_TRANS = 255     ,
 };

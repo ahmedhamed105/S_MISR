@@ -435,6 +435,23 @@ BOOLEAN SettleTrans(void)
       RSP_DATA.b_response = CheckHostRsp();
       //SaveTraceNo();
       if (RSP_DATA.b_response==TRANS_ACP) {
+
+		  TX_DATA.b_trans = SETT_ADV;
+          PackHostMsg();
+          UpdateHostStatus(SETTLE_PENDING);
+          ClearResponse();
+         if ((RSP_DATA.w_rspcode=APM_SendRcvd(&TX_BUF, &RX_BUF))!=COMM_OK)
+           break;
+         RSP_DATA.b_response = CheckHostRsp();
+      if (RSP_DATA.b_response== '5'*256+'0') {
+
+
+
+	  }else if (RSP_DATA.b_response == TRANS_REJ) {
+	  
+	  
+	  }
+
         UpdateHostStatus(NO_PENDING);
         if (RSP_DATA.text[0] == 0) {
           PackBatchText();
@@ -453,16 +470,41 @@ BOOLEAN SettleTrans(void)
               continue;
           }
         } else if (RSP_DATA.w_rspcode == '7'*256+'7') {
+        
+
+          TX_DATA.b_trans = SETT_ADV;
+          PackHostMsg();
+          UpdateHostStatus(SETTLE_PENDING);
+          ClearResponse();
+         if ((RSP_DATA.w_rspcode=APM_SendRcvd(&TX_BUF, &RX_BUF))!=COMM_OK)
+           break;
+         RSP_DATA.b_response = CheckHostRsp();
+      if (RSP_DATA.b_response== '5'*256+'0') {
+
+
+
+	  }else if (RSP_DATA.b_response == TRANS_REJ) {
+	  
+	  
+	  }
+
+
+
           UpdateHostStatus(NO_PENDING);
           if (RSP_DATA.text[0] == 0) {
             PackRspText();
             PackBatchText();
           }
+
           CloseBatch();
         }
       }
       break;
     } // End While
+
+
+
+
 
     TransEnd(FALSE);
 
