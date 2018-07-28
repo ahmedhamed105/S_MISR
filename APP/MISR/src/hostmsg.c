@@ -1023,6 +1023,17 @@ BYTE CheckHostRsp(void)
       
      print_field(field,3,39);
       
+      
+      printf("\f");
+      i=0;
+      while (i < 3)
+      {
+          printf("%02X:",(int)field[i]);
+          i++;
+      }
+      APM_WaitKey(9000, 0);
+      
+      
       memcpy(RSP_DATA.Actioncode, field, 3);
     
 
