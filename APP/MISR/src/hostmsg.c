@@ -805,7 +805,7 @@ BYTE CheckHostRsp(void)
       
       print_field(6,3);
 
-	  SprintfMW(buf, "%06X", field6);
+	//  SprintfMW(buf, "%06X", field6);
 
    /* if (memcmp(get_pptr(), buf, 6)!=0) {
       if ((TX_DATA.b_trans != SETTLEMENT)|| (memcmp(get_pptr(),KSetlPCode2,2)!=0)) {
