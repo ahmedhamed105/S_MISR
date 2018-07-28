@@ -698,6 +698,13 @@ BYTE CheckHostRsp(void)
   BYTE buf[4];
   BYTE words[12];
   BYTE bitmap[8];
+  
+  BYTE field1[10];
+  BYTE field2[6];
+  BYTE field3[6];
+    
+     int i=0;
+    
   BYTE tmp;
   BOOLEAN more_msg, sync_datetime;
 
@@ -797,8 +804,16 @@ BYTE CheckHostRsp(void)
 
      /* 07. Transmission date and time */
   if (bitmap[0] & 0x02) {
-    RSP_DATA.dd_amount = BcdBin8b(get_pptr(),5);
-      SprintfMW(buf, "%10X", RSP_DATA.dd_amount);
+        get_mem(field1, 10);
+      
+   // RSP_DATA.dd_amount = BcdBin8b(get_pptr(),5);
+     
+      i=0;
+      while (i < sizeof(field1))
+      {
+          print("%02X:",(int)field1[i]);
+          i++;
+      }
         APM_WaitKey(9000, 0);
       
           inc_pptr(10);
@@ -814,16 +829,38 @@ BYTE CheckHostRsp(void)
         return TRANS_FAIL;
       }
     } else*/
-      compress(RSP_DATA.dd_amount, get_pptr(), 3);
-      SprintfMW(buf, "%06X", RSP_DATA.dd_amount);
+   //   compress(RSP_DATA.dd_amount, get_pptr(), 3);
+   //   SprintfMW(buf, "%06X", RSP_DATA.dd_amount);
+   //   APM_WaitKey(9000, 0);
+      
+        get_mem(field2, 6);
+      i=0;
+      while (i < sizeof(field2))
+      {
+          print("%02X:",(int)field2[i]);
+          i++;
+      }
       APM_WaitKey(9000, 0);
+      
       inc_pptr(6);
   }
 
   /* 12. trans time */
   if (bitmap[1] & 0x10) {
     sync_datetime |= 0x10;
-    get_mem(&RSP_DATA.s_dtg.b_hour, 12);
+      
+      
+      get_mem(field3, 12);
+      i=0;
+      while (i < sizeof(field3))
+      {
+          print("%02X:",(int)field3[i]);
+          i++;
+      }
+      APM_WaitKey(9000, 0);
+      
+      
+//    get_mem(&RSP_DATA.s_dtg.b_hour, 12);
   }
 
   /* 13. trans date */
