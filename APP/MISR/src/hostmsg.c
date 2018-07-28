@@ -973,7 +973,7 @@ BYTE CheckHostRsp(void)
     if (bitmap[4] & 0x40) {
         var_i = bcd2bin(get_byte());
         memset(RSP_DATA.sb_pan, 0xFF, 10);
-        print_field(((var_i+1)/2),34);
+        print_field(var_i,34);
         // inc_pptr(6);
     }
 
@@ -981,7 +981,7 @@ BYTE CheckHostRsp(void)
   if (bitmap[4] & 0x20) {
       var_i = bcd2bin(get_byte());
       memset(RSP_DATA.sb_pan, 0xFF, 10);
-      print_field(((var_i+1)/2),35);
+      print_field(var_i,35);
   }
 
   /* 37. retrieval reference number */
@@ -1044,21 +1044,21 @@ BYTE CheckHostRsp(void)
   if (bitmap[5] & 0x20) {
       var_i = bcd2bin(get_byte());
       memset(RSP_DATA.sb_pan, 0xFF, 10);
-      print_field(((var_i+1)/2),43);
+      print_field(var_i,43);
   }
     
     /* 44.   Additional response data */
     if (bitmap[5] & 0x10) {
          var_i = bcd2bin(get_word());
         memset(RSP_DATA.sb_pan, 0xFF, 10);
-        print_field(((var_i+1)/2),44);
+        print_field(var_i,44);
     }
 
    /* 48.	Provite Additional Data */
   if (bitmap[5] & 0x01) {
       var_i = bcd2bin(get_byte());
       memset(RSP_DATA.sb_pan, 0xFF, 10);
-      print_field(((var_i+1)/2),48);
+      print_field(var_i,48);
   }
 
    /* 49.	Transaction currency code */
@@ -1083,7 +1083,7 @@ BYTE CheckHostRsp(void)
   if (bitmap[6] & 0x08) {
       var_i = bcd2bin(get_byte());
       memset(RSP_DATA.sb_pan, 0xFF, 10);
-      print_field(((var_i+1)/2),53);
+      print_field(var_i,53);
   }
 
 
@@ -1092,10 +1092,10 @@ BYTE CheckHostRsp(void)
   if (bitmap[6] & 0x04) {
       var_i = bcd2bin(get_word());
       memset(RSP_DATA.sb_pan, 0xFF, 10);
-      print_field(((var_i+1)/2),54);
+      print_field(var_i,54);
       
 	//  var_i = bcd2bin(get_word());
-	//  get_mem(RSP_DATA.dd_tip, ((var_i+1)/2));
+	//  get_mem(RSP_DATA.dd_tip, var_i);
   }
 
   /* 55. EMV relative data */
@@ -1104,7 +1104,7 @@ BYTE CheckHostRsp(void)
       
       var_i = bcd2bin(get_word());
       memset(RSP_DATA.sb_pan, 0xFF, 10);
-      print_field(((var_i+1)/2),55);
+      print_field(var_i,55);
       
 //    RSP_DATA.s_icc_data.w_misc_len  = bcd2bin(get_word());
  //   if (RSP_DATA.s_icc_data.w_misc_len > sizeof(RSP_DATA.s_icc_data.sb_misc_content)) {
@@ -1120,7 +1120,7 @@ BYTE CheckHostRsp(void)
         
         var_i = bcd2bin(get_byte());
         memset(RSP_DATA.sb_pan, 0xFF, 10);
-        print_field(((var_i+1)/2),56);
+        print_field(var_i,56);
         
       
     }
@@ -1130,7 +1130,7 @@ BYTE CheckHostRsp(void)
       
       var_i = bcd2bin(get_word());
       memset(RSP_DATA.sb_pan, 0xFF, 10);
-      print_field(((var_i+1)/2),62);
+      print_field(var_i,62);
       
       
  //   memset(RSP_DATA.sb_roc_no, 0xFF, 3);
@@ -1148,7 +1148,7 @@ BYTE CheckHostRsp(void)
       
       var_i = bcd2bin(get_word());
       memset(RSP_DATA.sb_pan, 0xFF, 10);
-      print_field(((var_i+1)/2),63);
+      print_field(var_i,63);
       
   }
     
