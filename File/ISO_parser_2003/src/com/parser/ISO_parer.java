@@ -317,7 +317,7 @@ StringSelection selection = new StringSelection(result.toString());
 Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 clipboard.setContents(selection, selection);       
 
-try(PrintWriter out = new PrintWriter("D:\\GuadianPro\\Core\\S_MISR\\File\\parser\\texts.txt")  ){
+try(PrintWriter out = new PrintWriter("texts.txt")  ){
     out.println(result.toString());
 }
                 
