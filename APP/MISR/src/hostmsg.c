@@ -67,7 +67,7 @@ static void print_field(BYTE *value,int aLen,int num)
 {
     
     BYTE field[30];
-     int i=0;
+    // int i=0;
 
     get_mem(field, aLen);
     

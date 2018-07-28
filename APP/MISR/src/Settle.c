@@ -374,7 +374,9 @@ BOOLEAN SettleTrans(void)
 {
   DWORD upload_count;
   BOOLEAN connected, settle_all, settle_done = FALSE;
+     int i=0;
   WORD max_acq = APM_GetAcqCount();
+    
 
   settle_all = (INPUT.w_host_idx == (WORD) -2);
 
