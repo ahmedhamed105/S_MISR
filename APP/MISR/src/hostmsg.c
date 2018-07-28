@@ -711,7 +711,7 @@ BYTE CheckHostRsp(void)
   RxBufSetup(ExtraMsgLen());
   more_msg = sync_datetime = 0;
 
-  inc_pptr(14); // 14 BYTE Header
+  inc_pptr(16); // 14 BYTE Header
 
    msg_id[0]=get_byte();
    msg_id[1]=get_byte();
@@ -723,8 +723,8 @@ BYTE CheckHostRsp(void)
 
    SprintfMW(buf, "%04X", KTransBitmap[TX_DATA.b_trans].w_txmsg_id + 0x10);
 
-   //   printf("%02X:%02X:%02X:%02X", msg_id[0], msg_id[1], msg_id[2], msg_id[3]);
-	//  APM_WaitKey(9000, 0);
+     printf("%02X:%02X:%02X:%02X", msg_id[0], msg_id[1], msg_id[2], msg_id[3]);
+	 APM_WaitKey(9000, 0);
 	//  printf("%02X:%02X:%02X:%02X", buf[0], buf[1], buf[2], buf[3]);
 	//  APM_WaitKey(9000, 0);
 
