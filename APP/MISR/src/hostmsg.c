@@ -811,7 +811,7 @@ BYTE CheckHostRsp(void)
       i=0;
       while (i < sizeof(field1))
       {
-          print("%02X:",(int)field1[i]);
+          printf("%02X:",(int)field1[i]);
           i++;
       }
         APM_WaitKey(9000, 0);
@@ -837,7 +837,7 @@ BYTE CheckHostRsp(void)
       i=0;
       while (i < sizeof(field2))
       {
-          print("%02X:",(int)field2[i]);
+          printf("%02X:",(int)field2[i]);
           i++;
       }
       APM_WaitKey(9000, 0);
@@ -854,7 +854,7 @@ BYTE CheckHostRsp(void)
       i=0;
       while (i < sizeof(field3))
       {
-          print("%02X:",(int)field3[i]);
+          printf("%02X:",(int)field3[i]);
           i++;
       }
       APM_WaitKey(9000, 0);
