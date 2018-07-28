@@ -784,13 +784,24 @@ BYTE CheckHostRsp(void)
 
   /* 02. pan */
   if (bitmap[0] & 0x40) {
+      
+ 
+      
     var_i = bcd2bin(get_byte());
+      
+      printf("\f");
+      printf("length \n");
+      printf("%s",var_i);
+      
+      
+    APM_WaitKey(9000, 0);
+      
     memset(RSP_DATA.sb_pan, 0xFF, 10);
-    get_mem(RSP_DATA.sb_pan, ((var_i+1)/2));
+    get_mem(RSP_DATA.sb_pan, var_i);
       printf("\f");
       printf("field02 \n");
       i=0;
-      while (i < ((var_i+1)/2))
+      while (i < var_i)
       {
           printf("%02X:",(int)RSP_DATA.sb_pan[i]);
           i++;
