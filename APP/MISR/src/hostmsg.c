@@ -67,16 +67,17 @@ static void print_field(int aLen,int num)
 {
     
     BYTE field[30];
+     int i=0;
 
-    get_mem(field12, aLen);
+    get_mem(field, aLen);
     printf("\f");
     
     printf("field%d \n",num);
     
     i=0;
-    while (i < 12)
+    while (i < aLen)
     {
-        printf("%02X:",(int)field12[i]);
+        printf("%02X:",(int)field[i]);
         i++;
     }
     APM_WaitKey(9000, 0);
@@ -732,10 +733,7 @@ BYTE CheckHostRsp(void)
   BYTE buf[4];
   BYTE words[12];
   BYTE bitmap[8];
-  
-  BYTE field10[10];
-  BYTE field6[6];
-  BYTE field12[12];
+
     
      int i=0;
     
