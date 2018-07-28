@@ -711,7 +711,7 @@ BYTE CheckHostRsp(void)
   RxBufSetup(ExtraMsgLen());
   more_msg = sync_datetime = 0;
 
-  inc_pptr(16); // 14 BYTE Header
+  inc_pptr(14); // 14 BYTE Header
 
    msg_id[0]=get_byte();
    msg_id[1]=get_byte();
@@ -724,7 +724,7 @@ BYTE CheckHostRsp(void)
    SprintfMW(buf, "%04X", KTransBitmap[TX_DATA.b_trans].w_txmsg_id + 0x10);
 
      printf("%02X:%02X:%02X:%02X", msg_id[0], msg_id[1], msg_id[2], msg_id[3]);
-	 APM_WaitKey(9000, 0);
+	  APM_WaitKey(9000, 0);
 	//  printf("%02X:%02X:%02X:%02X", buf[0], buf[1], buf[2], buf[3]);
 	//  APM_WaitKey(9000, 0);
 
@@ -750,8 +750,11 @@ BYTE CheckHostRsp(void)
 
   /* 03. processing code */
   if (bitmap[0] & 0x20) {
+      
+      
+        get_mem(TX_DATA.sb_proc_code, 6);
 
-	//  SprintfMW(buf, "%04X", TX_DATA.sb_proc_code);
+	  SprintfMW(buf, "%06X", TX_DATA.sb_proc_code);
 
    /* if (memcmp(get_pptr(), buf, 6)!=0) {
       if ((TX_DATA.b_trans != SETTLEMENT)|| (memcmp(get_pptr(),KSetlPCode2,2)!=0)) {
@@ -794,8 +797,11 @@ BYTE CheckHostRsp(void)
 
      /* 07. Transmission date and time */
   if (bitmap[0] & 0x02) {
-    //RSP_DATA.dd_amount = BcdBin8b(get_pptr(),6);
-    inc_pptr(10);
+    RSP_DATA.dd_amount = BcdBin8b(get_pptr(),5);
+      SprintfMW(buf, "%10X", RSP_DATA.dd_amount);
+        APM_WaitKey(9000, 0);
+      
+          inc_pptr(10);
   }
 
    
@@ -808,6 +814,9 @@ BYTE CheckHostRsp(void)
         return TRANS_FAIL;
       }
     } else*/
+      compress(RSP_DATA.dd_amount, get_pptr(), 3);
+      SprintfMW(buf, "%06X", RSP_DATA.dd_amount);
+      APM_WaitKey(9000, 0);
       inc_pptr(6);
   }
 
@@ -828,6 +837,12 @@ BYTE CheckHostRsp(void)
 	   compress(RSP_DATA.sb_exp_date, get_pptr(), 2);
        inc_pptr(4);
   }
+    
+    
+    /* 15. MSettlement date */
+    if (bitmap[1] & 0x02) {
+        inc_pptr(6);
+    }
 
    /* 17. Capture date */
   if (bitmap[2] & 0x80) {
