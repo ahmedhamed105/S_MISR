@@ -893,10 +893,14 @@ BYTE CheckHostRsp(void)
   RSP_DATA.w_rspcode = '0'*256+'0'; // upload response does not have response code
   if (bitmap[4] & 0x02) {
   //  RSP_DATA.w_rspcode=get_word();
-
-	 get_mem(words, 3);
-     printf("\x1b\xc%02x: %c%c", RSP_DATA.w_rspcode, RSP_DATA.w_rspcode>>8, RSP_DATA.w_rspcode&0xFF); //!TT
-     APM_WaitKey(9000, 0);
+      
+      words[0]=get_byte();
+      words[1]=get_byte();
+      words[2]=get_byte();
+      
+      printf("%02X:%02X:%02X", words[0], words[1], words[2]);
+      APM_WaitKey(9000, 0);
+    
 
     // Delay1Sec(3, 0);
   }
