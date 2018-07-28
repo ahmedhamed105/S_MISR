@@ -70,6 +70,7 @@ struct RSP_DATA {
   COMMON_DATA
   BYTE                  b_response;
   BYTE text[70];
+  BYTE Actioncode[3];
 };
 
 //-----------------------------------------------------------------------------

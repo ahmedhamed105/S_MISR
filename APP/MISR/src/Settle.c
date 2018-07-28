@@ -481,6 +481,16 @@ BOOLEAN SettleTrans(void)
          if ((RSP_DATA.w_rspcode=APM_SendRcvd(&TX_BUF, &RX_BUF))!=COMM_OK)
            break;
          RSP_DATA.b_response = CheckHostRsp();
+            
+            printf("\f");
+            i=0;
+            while (i < 3)
+            {
+                printf("%02X:",(int)RSP_DATA.Actioncode[i]);
+                i++;
+            }
+            APM_WaitKey(9000, 0);
+            
       if (RSP_DATA.b_response== '5'*256+'0') {
 
 
