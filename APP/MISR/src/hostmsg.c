@@ -789,12 +789,6 @@ BYTE CheckHostRsp(void)
       
     var_i = bcd2bin(get_byte());
       
-      printf("\f");
-      printf("length \n");
-      printf("%s",var_i);
-      
-      
-    APM_WaitKey(9000, 0);
       
     memset(RSP_DATA.sb_pan, 0xFF, 10);
     get_mem(RSP_DATA.sb_pan, var_i);
