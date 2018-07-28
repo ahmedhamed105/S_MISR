@@ -134,8 +134,13 @@ public class ISO_parer extends javax.swing.JFrame {
 	InputStream input = null;
 
 	try {
+            
+       String current = new java.io.File( "." ).getCanonicalPath();
+        System.out.println("Current dir:"+current);
+ String currentDir = System.getProperty("user.dir");
+        System.out.println("Current dir using System:" +currentDir);
 
-		input = new FileInputStream("src\\com\\parser\\Iso.properties");
+		input = new FileInputStream("src/com/parser/Iso.properties");
 
 		// load a properties file
 		prop.load(input);
@@ -181,7 +186,10 @@ for(int i=22;i<22+8;i++){
 }   
  result.append("B_Map "+Arrays.toString(Map)+"\n");
  result.append("Map "+Arrays.toString(B_Map)+"\n");
-
+ 
+ 
+            System.out.println("B_Map "+Arrays.toString(Map)+"\n");
+ System.out.println("Map "+Arrays.toString(B_Map)+"\n");
  
 // get the property value and print it out
                 
@@ -200,10 +208,11 @@ for(int i=0;i<f_number.length;i++){
    
     field_num=Integer.parseInt(f_number[i]);
     
-    if(field_num > 64){
-    break;
-    }
+ if(field_num == 1)
+         continue;
     
+ if(field_num >= 64)
+     break;
 
    last_filed=(field_num%8)!=0 ?(((int)field_num/8)*8):field_num-8;
    // System.out.println(field_num+"Last "+last_filed);
@@ -211,7 +220,7 @@ for(int i=0;i<f_number.length;i++){
   
      if(Map[(field_num%8)!=0?((int)field_num/8):((int)field_num/8)-1].charAt(((field_num%8)!=0? field_num-(((int)field_num/8)*8)-1 : field_num-last_filed-1))=='1'){
          
-       //   System.out.println("calcu "+field_num+" "+String.valueOf(((int)field_num/8)) +" "+String.valueOf((field_num%8)!=0? field_num-(((int)field_num/8)*8)-1 : 0));
+       //  System.out.println("calcu "+field_num+" "+String.valueOf(((int)field_num/8)) +" "+String.valueOf((field_num%8)!=0? field_num-(((int)field_num/8)*8)-1 : 0));
     
    
         
