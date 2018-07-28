@@ -965,7 +965,9 @@ BYTE CheckHostRsp(void)
    /* 32.Acquiring institution identification code */
   if (bitmap[3] & 0x01) {
       
-          print_field(6,32);
+      var_i = bcd2bin(get_byte());
+      memset(RSP_DATA.sb_pan, 0xFF, 10);
+      print_field(var_i,32);
    // inc_pptr(6);
   }
     
@@ -1056,7 +1058,7 @@ BYTE CheckHostRsp(void)
 
    /* 48.	Provite Additional Data */
   if (bitmap[5] & 0x01) {
-      var_i = bcd2bin(get_byte());
+      var_i = bcd2bin(get_word());
       memset(RSP_DATA.sb_pan, 0xFF, 10);
       print_field(var_i,48);
   }
@@ -1125,7 +1127,7 @@ BYTE CheckHostRsp(void)
       
     }
 
-  /* 62. private field */
+  /* 62. Redemption number */
   if (bitmap[7] & 0x04) {
       
       var_i = bcd2bin(get_word());
@@ -1140,7 +1142,7 @@ BYTE CheckHostRsp(void)
    // inc_pptr(var_i);
   }
 
-  /* 63. private field */
+  /* 63. Versions */
   if (bitmap[7] & 0x02) {
 //    var_i = bcd2bin(get_word());
 //    RSP_DATA.text[0] = (BYTE)((var_i > 69) ? 69 : var_i);
