@@ -48,6 +48,40 @@
 #include "auxcom.h"
 #include "coremain.h"
 
+
+
+
+
+
+
+
+//*****************************************************************************
+//  Function        : print fields
+//  Description     : print lenght
+//  Input           : N/A
+//  Return          : Transaction status
+//  Note            : N/A
+//  Globals Changed : N/A
+//*****************************************************************************
+static void print_field(int aLen,int num)
+{
+    
+    BYTE field[30];
+
+    get_mem(field12, aLen);
+    printf("\f");
+    
+    printf("field%d \n",num);
+    
+    i=0;
+    while (i < 12)
+    {
+        printf("%02X:",(int)field12[i]);
+        i++;
+    }
+    APM_WaitKey(9000, 0);
+}
+
 //*****************************************************************************
 //  Function        : TrainiingRsp
 //  Description     : Generate training response.
@@ -771,16 +805,7 @@ BYTE CheckHostRsp(void)
       
      //   get_mem(TX_DATA.sb_proc_code, 6);
       
-       get_mem(field6, 6);
-      printf("\f");
-       printf("field03 \n");
-      i=0;
-      while (i < 6)
-      {
-          printf("%02X:",(int)field6[i]);
-          i++;
-      }
-      APM_WaitKey(9000, 0);
+      print_field(6,3);
 
 	  SprintfMW(buf, "%06X", field6);
 
@@ -811,17 +836,7 @@ BYTE CheckHostRsp(void)
       
       
       
-      get_mem(field12, 12);
-      printf("\f");
-       printf("field04 \n");
-      
-      i=0;
-      while (i < 12)
-      {
-          printf("%02X:",(int)TX_DATA.sb_proc_code[i]);
-          i++;
-      }
-      APM_WaitKey(9000, 0);
+      print_field(12,4);
       
       
  //   inc_pptr(12);
@@ -832,16 +847,7 @@ BYTE CheckHostRsp(void)
   if (bitmap[0] & 0x08) {
     //RSP_DATA.dd_amount = BcdBin8b(get_pptr(),6);
       
-      get_mem(field12, 12);
-      printf("\f");
-      printf("field05 \n");
-      i=0;
-      while (i < 12)
-      {
-          printf("%02X:",(int)TX_DATA.sb_proc_code[i]);
-          i++;
-      }
-      APM_WaitKey(9000, 0);
+         print_field(12,5);
       
  //   inc_pptr(12);
   }
@@ -849,16 +855,7 @@ BYTE CheckHostRsp(void)
   if (bitmap[0] & 0x04) {
     //RSP_DATA.dd_amount = BcdBin8b(get_pptr(),6);
       
-      get_mem(field12, 12);
-      printf("\f");
-      printf("field06 \n");
-      i=0;
-      while (i < 12)
-      {
-          printf("%02X:",(int)TX_DATA.sb_proc_code[i]);
-          i++;
-      }
-      APM_WaitKey(9000, 0);
+      print_field(12,6);
       
    // inc_pptr(12);
   }
@@ -866,16 +863,7 @@ BYTE CheckHostRsp(void)
      /* 07. Transmission date and time */
   if (bitmap[0] & 0x02) {
       
-      get_mem(field10, 10);
-      printf("\f");
-       printf("field07 \n");
-      i=0;
-      while (i < 10)
-      {
-          printf("%02X:",(int)field10[i]);
-          i++;
-      }
-      APM_WaitKey(9000, 0);
+     print_field(10,7);
       
   }
 
@@ -894,35 +882,15 @@ BYTE CheckHostRsp(void)
    //   APM_WaitKey(9000, 0);
       
      
-      get_mem(field6, 10);
-      printf("\f");
-      printf("field11 \n");
-      i=0;
-      while (i < 6)
-      {
-          printf("%02X:",(int)field6[i]);
-          i++;
-      }
-      APM_WaitKey(9000, 0);
-      
+      print_field(6,11);
   }
 
   /* 12. trans time */
   if (bitmap[1] & 0x10) {
     sync_datetime |= 0x10;
       
-      get_mem(field12, 10);
-      printf("\f");
       
-      printf("field12 \n");
-      
-      i=0;
-      while (i < 12)
-      {
-          printf("%02X:",(int)field12[i]);
-          i++;
-      }
-      APM_WaitKey(9000, 0);
+      print_field(12,12);
       
       
 //    get_mem(&RSP_DATA.s_dtg.b_hour, 12);
@@ -931,24 +899,33 @@ BYTE CheckHostRsp(void)
   /* 13. trans date */
   if (bitmap[1] & 0x08) {
     sync_datetime |= 0x08;
-    get_mem(&RSP_DATA.s_dtg.b_month, 2);
+      
+         print_field(2,13);
+      
+  //  get_mem(&RSP_DATA.s_dtg.b_month, 2);
   }
 
   /* 14. expiry date */
   if (bitmap[1] & 0x04) {
 	   compress(RSP_DATA.sb_exp_date, get_pptr(), 2);
-       inc_pptr(4);
+       print_field(4,14);
+     //  inc_pptr(4);
   }
     
     
     /* 15. MSettlement date */
     if (bitmap[1] & 0x02) {
-        inc_pptr(6);
+        
+       print_field(6,15);
+        
+      //  inc_pptr(6);
     }
 
    /* 17. Capture date */
   if (bitmap[2] & 0x80) {
-    inc_pptr(4);
+       print_field(4,17);
+      
+   // inc_pptr(4);
   }
    /* 18. unknown */
   if (bitmap[2] & 0x40) {
@@ -956,42 +933,62 @@ BYTE CheckHostRsp(void)
   }
    /* 22. POS Entry mode */
   if (bitmap[2] & 0x04) {
-    inc_pptr(12);
+      print_field(12,22);
+   // inc_pptr(12);
   }
    /* 23. Pan Sequence Number */
   if (bitmap[2] & 0x02) {
-    inc_pptr(3);
+      print_field(3,23);
+   // inc_pptr(3);
   }
   /* 24. bypass netword id */
   if (bitmap[2] & 0x01) {
-    inc_pptr(3);
+      print_field(3,24);
+   // inc_pptr(3);
   }
 
   /* 25. Message reason code */
   if (bitmap[3] & 0x80) {
-    inc_pptr(4);
+      print_field(4,25);
+   // inc_pptr(4);
   }
 
    /* 26. Merchant business code */
   if (bitmap[3] & 0x40) {
-    inc_pptr(4);
+       print_field(4,26);
+  //  inc_pptr(4);
   }
 
    /* 32.Acquiring institution identification code */
   if (bitmap[3] & 0x01) {
-    inc_pptr(6);
+      
+          print_field(6,32);
+   // inc_pptr(6);
   }
+    
+    /* 34.Primary account number extension */
+    if (bitmap[4] & 0x40) {
+        var_i = bcd2bin(get_byte());
+        memset(RSP_DATA.sb_pan, 0xFF, 10);
+        print_field(((var_i+1)/2),34);
+        // inc_pptr(6);
+    }
 
    /* 35. 	Track 2 data */
   if (bitmap[4] & 0x20) {
-    inc_pptr(3);
+      var_i = bcd2bin(get_byte());
+      memset(RSP_DATA.sb_pan, 0xFF, 10);
+      print_field(((var_i+1)/2),35);
   }
 
   /* 37. retrieval reference number */
   if (bitmap[4] & 0x08) {
 	//    compress(RSP_DATA.sb_rrn, get_pptr(), 6);
     //   inc_pptr(12);
-    get_mem(RSP_DATA.sb_rrn, 12);
+
+      print_field(12,37);
+      
+ //   get_mem(RSP_DATA.sb_rrn, 12);
   }
 
 
@@ -999,9 +996,11 @@ BYTE CheckHostRsp(void)
   /* 38. auth code */
   memset(RSP_DATA.sb_auth_code, ' ', 6);
   if (bitmap[4] & 0x04) {
+      print_field(6,38);
+      
 	//    compress(RSP_DATA.sb_auth_code, get_pptr(), 3);
     //   inc_pptr(6);
-    get_mem(RSP_DATA.sb_auth_code, 6);
+  //  get_mem(RSP_DATA.sb_auth_code, 6);
   }
 
     
@@ -1011,12 +1010,7 @@ BYTE CheckHostRsp(void)
   if (bitmap[4] & 0x02) {
   //  RSP_DATA.w_rspcode=get_word();
       
-      words[0]=get_byte();
-      words[1]=get_byte();
-      words[2]=get_byte();
-      
-      printf("%02X:%02X:%02X", words[0], words[1], words[2]);
-      APM_WaitKey(9000, 0);
+     print_field(3,39);
     
 
     // Delay1Sec(3, 0);
@@ -1028,82 +1022,139 @@ BYTE CheckHostRsp(void)
     //  RSP_DATA.w_rspcode = 'I'*256+'T';
     //  return TRANS_FAIL;
     //}
+      print_field(8,41);
+      
 
-	 inc_pptr(15);
+	// inc_pptr(15);
   }
 
 
  /* 42.Card acceptor identification */
   if (bitmap[5] & 0x40) {
-	 inc_pptr(15);
+      
+        print_field(15,42);
+	// inc_pptr(15);
   }
 
  
    /* 43.	Card acceptor name and address */
   if (bitmap[5] & 0x20) {
-	 inc_pptr(15);
+      var_i = bcd2bin(get_byte());
+      memset(RSP_DATA.sb_pan, 0xFF, 10);
+      print_field(((var_i+1)/2),43);
   }
+    
+    /* 44.   Additional response data */
+    if (bitmap[5] & 0x10) {
+         var_i = bcd2bin(get_word());
+        memset(RSP_DATA.sb_pan, 0xFF, 10);
+        print_field(((var_i+1)/2),44);
+    }
 
    /* 48.	Provite Additional Data */
   if (bitmap[5] & 0x01) {
-	 inc_pptr(75);
+      var_i = bcd2bin(get_byte());
+      memset(RSP_DATA.sb_pan, 0xFF, 10);
+      print_field(((var_i+1)/2),48);
   }
 
    /* 49.	Transaction currency code */
   if (bitmap[6] & 0x80) {
-	 inc_pptr(3);
+          print_field(3,49);
+	// inc_pptr(3);
   }
 
    /* 50 .Settlement currency code */
   if (bitmap[6] & 0x40) {
-	 inc_pptr(3);
+       print_field(3,50);
+	// inc_pptr(3);
   }
 
     /* 52 .	Pin Data */
   if (bitmap[6] & 0x10) {
-	 inc_pptr(3);
+      print_field(8,52);
+	// inc_pptr(3);
   }
 
     /* 53 .	Security data*/
   if (bitmap[6] & 0x08) {
-	    var_i = bcd2bin(get_byte());
-	 inc_pptr(((var_i+1)/2)); //confirm lenght
+      var_i = bcd2bin(get_byte());
+      memset(RSP_DATA.sb_pan, 0xFF, 10);
+      print_field(((var_i+1)/2),53);
   }
 
 
   /* 54. additional amount */
   RSP_DATA.dd_tip=0;
   if (bitmap[6] & 0x04) {
-	  var_i = bcd2bin(get_word());
-	  get_mem(RSP_DATA.dd_tip, ((var_i+1)/2));
+      var_i = bcd2bin(get_word());
+      memset(RSP_DATA.sb_pan, 0xFF, 10);
+      print_field(((var_i+1)/2),54);
+      
+	//  var_i = bcd2bin(get_word());
+	//  get_mem(RSP_DATA.dd_tip, ((var_i+1)/2));
   }
 
   /* 55. EMV relative data */
   RSP_DATA.s_icc_data.w_misc_len = 0;
   if (bitmap[6] & 0x02) {
-    RSP_DATA.s_icc_data.w_misc_len  = bcd2bin(get_word());
-    if (RSP_DATA.s_icc_data.w_misc_len > sizeof(RSP_DATA.s_icc_data.sb_misc_content)) {
-      RSP_DATA.w_rspcode = '9'*256 + '6';
-      return(TRANS_FAIL);
-    }
-    get_mem(RSP_DATA.s_icc_data.sb_misc_content, RSP_DATA.s_icc_data.w_misc_len);
+      
+      var_i = bcd2bin(get_word());
+      memset(RSP_DATA.sb_pan, 0xFF, 10);
+      print_field(((var_i+1)/2),55);
+      
+//    RSP_DATA.s_icc_data.w_misc_len  = bcd2bin(get_word());
+ //   if (RSP_DATA.s_icc_data.w_misc_len > sizeof(RSP_DATA.s_icc_data.sb_misc_content)) {
+ //     RSP_DATA.w_rspcode = '9'*256 + '6';
+ //     return(TRANS_FAIL);
+  //  }
+  //  get_mem(RSP_DATA.s_icc_data.sb_misc_content, RSP_DATA.s_icc_data.w_misc_len);
   }
+    
+    
+    /* 56. Original data elements*/
+    if (bitmap[6] & 0x02) {
+        
+        var_i = bcd2bin(get_byte());
+        memset(RSP_DATA.sb_pan, 0xFF, 10);
+        print_field(((var_i+1)/2),56);
+        
+      
+    }
 
   /* 62. private field */
   if (bitmap[7] & 0x04) {
-    memset(RSP_DATA.sb_roc_no, 0xFF, 3);
-    var_i = bcd2bin(get_word());
-    if ((var_i == 6) && (peek_byte() != ' '))
-      compress(RSP_DATA.sb_roc_no, get_pptr(), 3);
-    inc_pptr(var_i);
+      
+      var_i = bcd2bin(get_word());
+      memset(RSP_DATA.sb_pan, 0xFF, 10);
+      print_field(((var_i+1)/2),62);
+      
+      
+ //   memset(RSP_DATA.sb_roc_no, 0xFF, 3);
+  //  var_i = bcd2bin(get_word());
+   // if ((var_i == 6) && (peek_byte() != ' '))
+    //  compress(RSP_DATA.sb_roc_no, get_pptr(), 3);
+   // inc_pptr(var_i);
   }
 
   /* 63. private field */
   if (bitmap[7] & 0x02) {
-    var_i = bcd2bin(get_word());
-    RSP_DATA.text[0] = (BYTE)((var_i > 69) ? 69 : var_i);
-    get_mem(&RSP_DATA.text[1], RSP_DATA.text[0]);
+//    var_i = bcd2bin(get_word());
+//    RSP_DATA.text[0] = (BYTE)((var_i > 69) ? 69 : var_i);
+ //   get_mem(&RSP_DATA.text[1], RSP_DATA.text[0]);
+      
+      var_i = bcd2bin(get_word());
+      memset(RSP_DATA.sb_pan, 0xFF, 10);
+      print_field(((var_i+1)/2),63);
+      
   }
+    
+    /* 64. Message Authentication Code */
+    if (bitmap[7] & 0x01) {
+
+    print_field(8,64);
+        
+    }
 
   if (sync_datetime == 0x18) // Date/time receive from Host.
     SyncHostDtg();
