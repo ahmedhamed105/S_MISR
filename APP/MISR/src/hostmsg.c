@@ -699,9 +699,9 @@ BYTE CheckHostRsp(void)
   BYTE words[12];
   BYTE bitmap[8];
   
-  BYTE field1[10];
-  BYTE field2[6];
-  BYTE field3[6];
+  BYTE field10[10];
+  BYTE field6[6];
+  BYTE field12[12];
     
      int i=0;
     
@@ -729,6 +729,8 @@ BYTE CheckHostRsp(void)
     return 0xff; /* please wait message */
 
    SprintfMW(buf, "%04X", KTransBitmap[TX_DATA.b_trans].w_txmsg_id + 0x10);
+    
+    printf("\f");
 
      printf("%02X:%02X:%02X:%02X", msg_id[0], msg_id[1], msg_id[2], msg_id[3]);
 	  APM_WaitKey(9000, 0);
@@ -753,15 +755,34 @@ BYTE CheckHostRsp(void)
     var_i = bcd2bin(get_byte());
     memset(RSP_DATA.sb_pan, 0xFF, 10);
     get_mem(RSP_DATA.sb_pan, ((var_i+1)/2));
+      printf("\f");
+      printf("field02 \n");
+      i=0;
+      while (i < ((var_i+1)/2))
+      {
+          printf("%02X:",(int)RSP_DATA.sb_pan[i]);
+          i++;
+      }
+      APM_WaitKey(9000, 0);
   }
 
   /* 03. processing code */
   if (bitmap[0] & 0x20) {
       
+     //   get_mem(TX_DATA.sb_proc_code, 6);
       
-        get_mem(TX_DATA.sb_proc_code, 6);
+       get_mem(field6, 6);
+      printf("\f");
+       printf("field03 \n");
+      i=0;
+      while (i < 6)
+      {
+          printf("%02X:",(int)field6[i]);
+          i++;
+      }
+      APM_WaitKey(9000, 0);
 
-	  SprintfMW(buf, "%06X", TX_DATA.sb_proc_code);
+	  SprintfMW(buf, "%06X", field6);
 
    /* if (memcmp(get_pptr(), buf, 6)!=0) {
       if ((TX_DATA.b_trans != SETTLEMENT)|| (memcmp(get_pptr(),KSetlPCode2,2)!=0)) {
@@ -769,7 +790,7 @@ BYTE CheckHostRsp(void)
         return TRANS_FAIL;
       }
     }*/
-    inc_pptr(6);
+//    inc_pptr(6);
    /* tmp = get_byte();
     if ((TX_DATA.b_trans == TRANS_UPLOAD) && (tmp == 0x01))
       more_msg = 1;
@@ -787,36 +808,75 @@ BYTE CheckHostRsp(void)
 
 	//  compress(RSP_DATA.dd_amount, get_pptr(), 6);
     RSP_DATA.dd_amount = BcdBin8b(get_pptr(),6);
-    inc_pptr(12);
+      
+      
+      
+      get_mem(field12, 12);
+      printf("\f");
+       printf("field04 \n");
+      
+      i=0;
+      while (i < 12)
+      {
+          printf("%02X:",(int)TX_DATA.sb_proc_code[i]);
+          i++;
+      }
+      APM_WaitKey(9000, 0);
+      
+      
+ //   inc_pptr(12);
   }
 
 
    /* 05. Settlement amount */
   if (bitmap[0] & 0x08) {
     //RSP_DATA.dd_amount = BcdBin8b(get_pptr(),6);
-    inc_pptr(12);
+      
+      get_mem(field12, 12);
+      printf("\f");
+      printf("field05 \n");
+      i=0;
+      while (i < 12)
+      {
+          printf("%02X:",(int)TX_DATA.sb_proc_code[i]);
+          i++;
+      }
+      APM_WaitKey(9000, 0);
+      
+ //   inc_pptr(12);
   }
-     /* 06. unknown */
+     /* 06. Transmission date and time */
   if (bitmap[0] & 0x04) {
     //RSP_DATA.dd_amount = BcdBin8b(get_pptr(),6);
-    inc_pptr(12);
+      
+      get_mem(field12, 12);
+      printf("\f");
+      printf("field06 \n");
+      i=0;
+      while (i < 12)
+      {
+          printf("%02X:",(int)TX_DATA.sb_proc_code[i]);
+          i++;
+      }
+      APM_WaitKey(9000, 0);
+      
+   // inc_pptr(12);
   }
 
      /* 07. Transmission date and time */
   if (bitmap[0] & 0x02) {
-        get_mem(field1, 10);
       
-   // RSP_DATA.dd_amount = BcdBin8b(get_pptr(),5);
-     
+      get_mem(field10, 10);
+      printf("\f");
+       printf("field07 \n");
       i=0;
-      while (i < sizeof(field1))
+      while (i < 10)
       {
-          printf("%02X:",(int)field1[i]);
+          printf("%02X:",(int)field10[i]);
           i++;
       }
-        APM_WaitKey(9000, 0);
+      APM_WaitKey(9000, 0);
       
-          inc_pptr(10);
   }
 
    
@@ -833,28 +893,33 @@ BYTE CheckHostRsp(void)
    //   SprintfMW(buf, "%06X", RSP_DATA.dd_amount);
    //   APM_WaitKey(9000, 0);
       
-        get_mem(field2, 6);
+     
+      get_mem(field6, 10);
+      printf("\f");
+      printf("field11 \n");
       i=0;
-      while (i < sizeof(field2))
+      while (i < 6)
       {
-          printf("%02X:",(int)field2[i]);
+          printf("%02X:",(int)field6[i]);
           i++;
       }
       APM_WaitKey(9000, 0);
       
-      inc_pptr(6);
   }
 
   /* 12. trans time */
   if (bitmap[1] & 0x10) {
     sync_datetime |= 0x10;
       
+      get_mem(field12, 10);
+      printf("\f");
       
-      get_mem(field3, 12);
+      printf("field12 \n");
+      
       i=0;
-      while (i < sizeof(field3))
+      while (i < 12)
       {
-          printf("%02X:",(int)field3[i]);
+          printf("%02X:",(int)field12[i]);
           i++;
       }
       APM_WaitKey(9000, 0);
