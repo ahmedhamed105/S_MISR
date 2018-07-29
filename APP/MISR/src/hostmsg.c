@@ -813,6 +813,16 @@ BYTE CheckHostRsp(void)
      //   get_mem(TX_DATA.sb_proc_code, 6);
       
       print_field(6,3);
+      
+      
+      printf("\f");
+      i=0;
+      while (i < 6)
+      {
+          printf("%02X:",(int)field[i]);
+          i++;
+      }
+      APM_WaitKey(9000, 0);
 
 	//  SprintfMW(buf, "%06X", field6);
 
