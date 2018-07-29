@@ -67,7 +67,7 @@ static void print_field(int aLen,int num)
 {
     
 
-    // int i=0;
+    int i=0;
 
     
     get_mem(field, aLen);
