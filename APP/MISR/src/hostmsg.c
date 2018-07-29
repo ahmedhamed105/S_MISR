@@ -69,8 +69,8 @@ static void print_field(int aLen,int num)
 
     // int i=0;
 
-    get_mem(field, aLen);
     
+    get_mem(field, aLen);
 
     
   //  printf("\f");
@@ -736,8 +736,7 @@ BYTE CheckHostRsp(void)
   BYTE buf[4];
   BYTE words[12];
   BYTE bitmap[8];
-    
-  BYTE field[300];
+
 
     
      int i=0;
