@@ -73,17 +73,17 @@ static void print_field(int aLen,int num)
     get_mem(field, aLen);
 
     
-  //  printf("\f");
+    printf("\f");
     
- //   printf("field%d \n",num);
+   printf("field%d \n",num);
     
- //   i=0;
-  //  while (i < aLen)
- ///   {
- //       printf("%02X:",(int)field[i]);
-  //      i++;
-  //  }
-   // APM_WaitKey(9000, 0);
+   i=0;
+    while (i < aLen)
+    {
+      printf("%02X:",(int)field[i]);
+       i++;
+    }
+   APM_WaitKey(9000, 0);
 }
 
 //*****************************************************************************
