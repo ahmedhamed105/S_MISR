@@ -833,7 +833,7 @@ BYTE CheckHostRsp(void)
 
       print_field(12,4);
       
-      compress(RSP_DATA.dd_amount, field, 6);
+  //    compress(RSP_DATA.dd_amount, field, 6);
       
  //   inc_pptr(12);
   }
