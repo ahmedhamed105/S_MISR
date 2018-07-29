@@ -789,22 +789,10 @@ BYTE CheckHostRsp(void)
   /* 02. pan */
   if (bitmap[0] & 0x40) {
       
- 
-      
     var_i = bcd2bin(get_byte());
-      
-      
     memset(RSP_DATA.sb_pan, 0xFF, 10);
     get_mem(RSP_DATA.sb_pan, var_i);
-      printf("\f");
-      printf("field02 \n");
-      i=0;
-      while (i < var_i)
-      {
-          printf("%02X:",(int)RSP_DATA.sb_pan[i]);
-          i++;
-      }
-      APM_WaitKey(9000, 0);
+     
   }
 
   /* 03. processing code */
@@ -813,16 +801,8 @@ BYTE CheckHostRsp(void)
      //   get_mem(TX_DATA.sb_proc_code, 6);
       
       print_field(6,3);
-      
-      
-      printf("\f");
-      i=0;
-      while (i < 6)
-      {
-          printf("%02X:",(int)field[i]);
-          i++;
-      }
-      APM_WaitKey(9000, 0);
+
+     memcpy(TX_DATA.sb_proc_code, field, 3);
 
 	//  SprintfMW(buf, "%06X", field6);
 
@@ -848,13 +828,12 @@ BYTE CheckHostRsp(void)
   /* 04. amount */
   if (bitmap[0] & 0x10) {
  memset(field, 0, sizeof(field));
-	//  compress(RSP_DATA.dd_amount, get_pptr(), 6);
-    RSP_DATA.dd_amount = BcdBin8b(get_pptr(),6);
-      
-      
-      
+  
+    //RSP_DATA.dd_amount = BcdBin8b(get_pptr(),6);
+
       print_field(12,4);
       
+      compress(RSP_DATA.dd_amount, field, 6);
       
  //   inc_pptr(12);
   }
@@ -909,8 +888,9 @@ BYTE CheckHostRsp(void)
       
       print_field(12,12);
       
+       memcpy(&RSP_DATA.s_dtg.b_hour, field, 12);
       
-//    get_mem(&RSP_DATA.s_dtg.b_hour, 12);
+   // get_mem(&RSP_DATA.s_dtg.b_hour, 12);
   }
 
   /* 13. trans date */
@@ -919,14 +899,16 @@ BYTE CheckHostRsp(void)
        memset(field, 0, sizeof(field));
          print_field(2,13);
       
+       memcpy(&RSP_DATA.s_dtg.b_month, field, 2);
+      
   //  get_mem(&RSP_DATA.s_dtg.b_month, 2);
   }
 
   /* 14. expiry date */
   if (bitmap[1] & 0x04) {
        memset(field, 0, sizeof(field));
-	   compress(RSP_DATA.sb_exp_date, get_pptr(), 2);
        print_field(4,14);
+             compress(RSP_DATA.sb_exp_date, field, 2);
      //  inc_pptr(4);
   }
     
@@ -984,7 +966,6 @@ BYTE CheckHostRsp(void)
   if (bitmap[3] & 0x01) {
        memset(field, 0, sizeof(field));
       var_i = bcd2bin(get_byte());
-      memset(RSP_DATA.sb_pan, 0xFF, 10);
       print_field(var_i,32);
    // inc_pptr(6);
   }
@@ -993,7 +974,6 @@ BYTE CheckHostRsp(void)
     if (bitmap[4] & 0x40) {
          memset(field, 0, sizeof(field));
         var_i = bcd2bin(get_byte());
-        memset(RSP_DATA.sb_pan, 0xFF, 10);
         print_field(var_i,34);
         // inc_pptr(6);
     }
@@ -1002,7 +982,6 @@ BYTE CheckHostRsp(void)
   if (bitmap[4] & 0x20) {
        memset(field, 0, sizeof(field));
       var_i = bcd2bin(get_byte());
-      memset(RSP_DATA.sb_pan, 0xFF, 10);
       print_field(var_i,35);
   }
 
@@ -1014,6 +993,10 @@ BYTE CheckHostRsp(void)
 
       print_field(12,37);
       
+       memcpy(RSP_DATA.sb_rrn, field, 12);
+      
+      
+      
  //   get_mem(RSP_DATA.sb_rrn, 12);
   }
 
@@ -1022,10 +1005,12 @@ BYTE CheckHostRsp(void)
   /* 38. auth code */
   memset(RSP_DATA.sb_auth_code, ' ', 6);
   if (bitmap[4] & 0x04) {
-       memset(field, 0, sizeof(field));
+    
+      memset(field, 0, sizeof(field));
+      
       print_field(6,38);
       
-      
+      memcpy(RSP_DATA.sb_auth_code, field, 6);
       
 	//    compress(RSP_DATA.sb_auth_code, get_pptr(), 3);
     //   inc_pptr(6);
@@ -1040,17 +1025,6 @@ BYTE CheckHostRsp(void)
     memset(field, 0, sizeof(field));
       
      print_field(3,39);
-      
-      
-      printf("\f");
-      i=0;
-      while (i < 3)
-      {
-          printf("%02X:",(int)field[i]);
-          i++;
-      }
-      APM_WaitKey(9000, 0);
-      
       
       memcpy(RSP_DATA.Actioncode, field, 3);
     
@@ -1084,7 +1058,6 @@ BYTE CheckHostRsp(void)
   if (bitmap[5] & 0x20) {
        memset(field, 0, sizeof(field));
       var_i = bcd2bin(get_byte());
-      memset(RSP_DATA.sb_pan, 0xFF, 10);
       print_field(var_i,43);
   }
     
@@ -1092,7 +1065,7 @@ BYTE CheckHostRsp(void)
     if (bitmap[5] & 0x10) {
          memset(field, 0, sizeof(field));
          var_i = bcd2bin(get_word());
-        memset(RSP_DATA.sb_pan, 0xFF, 10);
+
         print_field(var_i,44);
     }
 
@@ -1168,7 +1141,7 @@ BYTE CheckHostRsp(void)
     if (bitmap[6] & 0x02) {
          memset(field, 0, sizeof(field));
         var_i = bcd2bin(get_byte());
-        memset(RSP_DATA.sb_pan, 0xFF, 10);
+
         print_field(var_i,56);
         
       

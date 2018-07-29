@@ -446,26 +446,32 @@ BOOLEAN SettleTrans(void)
          if ((RSP_DATA.w_rspcode=APM_SendRcvd(&TX_BUF, &RX_BUF))!=COMM_OK)
            break;
          RSP_DATA.b_response = CheckHostRsp();
+           if (RSP_DATA.b_response==TRANS_ACP) {
           
-          printf("\f");
-          i=0;
-          while (i < 3)
+          if (RSP_DATA.Actioncode[0] == 0x35 && RSP_DATA.Actioncode[1] == 0x30 && RSP_DATA.Actioncode[2] == 0x30)
           {
-              printf("%02X:",(int)RSP_DATA.Actioncode[i]);
-              i++;
+              
+              
+          }else{
+              
+              printf("\f");
+              i=0;
+              while (i < 3)
+              {
+                  printf("%02X:",(int)RSP_DATA.Actioncode[i]);
+                  i++;
+              }
+              APM_WaitKey(9000, 0);
+              
+              Short1Beep();
+              if (UploadTransOK())
+                  continue;
+              
           }
-          APM_WaitKey(9000, 0);
+          
+           }
           
           
-          
-      if (RSP_DATA.b_response== '5'*256+'0') {
-
-
-
-	  }else if (RSP_DATA.b_response == TRANS_REJ) {
-	  
-	  
-	  }
 
         UpdateHostStatus(NO_PENDING);
         if (RSP_DATA.text[0] == 0) {
@@ -495,24 +501,31 @@ BOOLEAN SettleTrans(void)
          if ((RSP_DATA.w_rspcode=APM_SendRcvd(&TX_BUF, &RX_BUF))!=COMM_OK)
            break;
          RSP_DATA.b_response = CheckHostRsp();
-            
-            printf("\f");
-            i=0;
-            while (i < 3)
-            {
-                printf("%02X:",(int)RSP_DATA.Actioncode[i]);
-                i++;
+            if (RSP_DATA.b_response==TRANS_ACP) {
+                
+                if (RSP_DATA.Actioncode[0] == 0x35 && RSP_DATA.Actioncode[1] == 0x30 && RSP_DATA.Actioncode[2] == 0x30)
+                {
+                    
+                    
+                }else{
+                    
+                    printf("\f");
+                    i=0;
+                    while (i < 3)
+                    {
+                        printf("%02X:",(int)RSP_DATA.Actioncode[i]);
+                        i++;
+                    }
+                    APM_WaitKey(9000, 0);
+                    
+                    Short1Beep();
+                    if (UploadTransOK())
+                        continue;
+                    
+                }
+                
             }
-            APM_WaitKey(9000, 0);
-            
-      if (RSP_DATA.b_response== '5'*256+'0') {
-
-
-
-	  }else if (RSP_DATA.b_response == TRANS_REJ) {
-	  
-	  
-	  }
+          
 
 
 
