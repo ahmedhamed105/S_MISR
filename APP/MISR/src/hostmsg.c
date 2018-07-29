@@ -446,6 +446,8 @@ memcpy(tx_bitmap, KTransBitmap[TX_DATA.b_trans].sb_txbitmap, 16);
       pack_mem("400", 3);
     else if (TX_DATA.b_trans == SETTLEMENT)
       pack_mem("880", 3);
+    else if (TX_DATA.b_trans == TRANS_UPLOAD)
+        pack_mem("301", 3);
     else
       pack_mem("200", 3);
   }
