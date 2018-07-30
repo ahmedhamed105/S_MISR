@@ -718,7 +718,7 @@ pack_byte(0x59);
         split(buf, TX_DATA.sb_pan, var_i);
         pack_mem(buf, var_j);                     // PAN in ascii format
         //FS1
-        pack_mem("*");
+        pack_mem("*",1);
         //amount
         if (TX_DATA.b_trans != VOID)
             dbin2bcd(tmp,TX_DATA.dd_amount);
@@ -751,7 +751,7 @@ pack_byte(0x59);
            pack_mem("1", 1);
         }
         //FS2
-         pack_mem("?");
+         pack_mem("?",1);
         
         
    //   pack_mem("6013260019010000001259708402000000036575", 40);   //testing only
