@@ -65,6 +65,7 @@ static const struct CONST_MSG KMessage[] = {
   {EDC_CN_REVERSAL          ,"REVERSAL        "},
   {EDC_CN_TEST_MSG          ,"TEST MSG        "},
   {EDC_CN_SETT_ADV          ,"SETT ADV        "},
+  {EDC_CN_TRANS_LAST        ,"SETT UPLOAD     "},
 
   // input.c
   {EDC_IN_CHK_DIGIT_ERROR   ,"                CHECK DIGIT ERR."},
