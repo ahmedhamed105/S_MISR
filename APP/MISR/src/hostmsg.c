@@ -73,17 +73,17 @@ static void print_field(int aLen,int num)
     get_mem(field, aLen);
 
     
-    printf("\f");
+  //  printf("\f");
     
-   printf("field%d \n",num);
+//   printf("field%d \n",num);
     
-   i=0;
-    while (i < aLen)
-    {
-      printf("%02X:",(int)field[i]);
-       i++;
-    }
-   APM_WaitKey(9000, 0);
+ //  i=0;
+ //   while (i < aLen)
+ //   {
+  //    printf("%02X:",(int)field[i]);
+  //     i++;
+  //  }
+ //  APM_WaitKey(9000, 0);
 }
 
 //*****************************************************************************
@@ -392,7 +392,10 @@ memcpy(tx_bitmap, KTransBitmap[TX_DATA.b_trans].sb_txbitmap, 16);
 
   /* 17. capture date (MMDD) */
   if (tx_bitmap[2] & 0x80) {
-    split_data(&TX_DATA.s_dtg.b_month, 2);
+      pack_mem(&date_time[4], 2); //MM
+      pack_mem(&date_time[6], 2); //DD
+
+  //  split_data(&TX_DATA.s_dtg.b_month, 2);
   }
 
 
@@ -449,9 +452,6 @@ memcpy(tx_bitmap, KTransBitmap[TX_DATA.b_trans].sb_txbitmap, 16);
         pack_mem("301", 3);
     else if (TX_DATA.b_trans == TRANS_UPLOAD_LAST)
         pack_mem("300", 3);
-      
-      
-      
     else
       pack_mem("200", 3);
   }
@@ -693,7 +693,7 @@ pack_byte(0x59);
 
   /* 72. Data Record */
   if (tx_bitmap[8] & 0x01) {
-    if ((TX_DATA.b_trans == AUTH_SWIPE) || (TX_DATA.b_trans == AUTH_MANUAL) || (TX_DATA.b_trans == SETT_ADV)) {
+    if ((TX_DATA.b_trans == TRANS_UPLOAD_LAST) || (TX_DATA.b_trans == TRANS_UPLOAD)) {
       pack_word(0x0080); /* length */
         
     //msg_id   4byte

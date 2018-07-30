@@ -207,9 +207,10 @@ for(int i=0;i<f_number.length;i++){
    
     field_num=Integer.parseInt(f_number[i]);
     
- if(field_num == 1)
+ if(field_num == 1){
+     loop_text=loop_text+8;
          continue;
-    
+ }
  if(field_num >= 64)
      break;
 
