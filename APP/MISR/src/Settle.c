@@ -128,11 +128,53 @@ static void FormSettleSlip(void)
 static BOOLEAN UploadTransOK(void)
 {
   DWORD i = 0;
+  int count;
+    
+    count = APM_GetRecCount();
 
   while (TRUE) {
     if (!APM_GetBatchRec(i, (BYTE *)&RECORD_BUF, sizeof(RECORD_BUF)))
       break;
+      
     i++;
+      if(i=count){
+          
+          if (RECORD_BUF.w_host_idx == INPUT.w_host_idx) {
+              if (!ValidRecordCRC((WORD)i)) {         // check record's crc
+                  SetRspCode('D'*256+'E');
+                  PackRspText();
+                  return(FALSE);
+              }
+              ByteCopy((BYTE *)&TX_DATA, (BYTE *)&RECORD_BUF, (BYTE *)TX_DATA.sb_pin-(BYTE *)&TX_DATA);
+              memcpy(TX_DATA.sb_org_trace_no, TX_DATA.sb_trace_no, 3);
+              if (RECORD_BUF.b_trans_status & VOIDED)
+                  TX_DATA.dd_amount = 0;
+              
+              TX_DATA.b_org_trans = RECORD_BUF.b_trans;
+              PackProcCode(TX_DATA.b_org_trans, RECORD_BUF.b_acc_ind);
+              TX_DATA.sb_proc_code[2] = 0x01;            /* more message to come */
+              TX_DATA.b_trans = TRANS_UPLOAD_LAST;
+              IncTraceNo();
+              PackHostMsg();
+              UpdateHostStatus(SETTLE_PENDING);
+              
+              ClearResponse();
+              if ((RSP_DATA.w_rspcode=APM_SendRcvd(&TX_BUF, &RX_BUF))==COMM_OK) {
+                  RSP_DATA.b_response = CheckHostRsp();
+                  //SaveTraceNo();
+                  if (RSP_DATA.b_response == TRANS_ACP)
+                      UpdateHostStatus(NO_PENDING);
+              }
+              if ((RSP_DATA.b_response == TRANS_ACP) || (RSP_DATA.b_response == MORE_RSP))
+                  Short1Beep();
+              else
+                  return FALSE;
+          }
+          
+          
+          
+      }else{
+      
     if (RECORD_BUF.w_host_idx == INPUT.w_host_idx) {
       if (!ValidRecordCRC((WORD)i)) {         // check record's crc
         SetRspCode('D'*256+'E');
@@ -164,6 +206,8 @@ static BOOLEAN UploadTransOK(void)
       else
         return FALSE;
     }
+          
+      }
   }
   return TRUE;
 }

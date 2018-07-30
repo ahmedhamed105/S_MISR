@@ -368,16 +368,15 @@ memcpy(tx_bitmap, KTransBitmap[TX_DATA.b_trans].sb_txbitmap, 16);
  //   split_data(&TX_DATA.s_dtg.b_year, 5);
 
 	  pack_mem(&date_time[2], 10);
+      
+   //   CCYYMMDDHHMMSS
   }
-
-
-
-//  pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x31);pack_byte(0x31);pack_byte(0x38);pack_byte(0x31);pack_byte(0x36);pack_byte(0x30);pack_byte(0x35);pack_byte(0x32);pack_byte(0x33);pack_byte(0x31);pack_byte(0x31);pack_byte(0x32);pack_byte(0x37);pack_byte(0x35);pack_byte(0x38);pack_byte(0x32);pack_byte(0x31);pack_byte(0x30);pack_byte(0x33);pack_byte(0x30);pack_byte(0x35);pack_byte(0x32);pack_byte(0x33);pack_byte(0x38);pack_byte(0x31);pack_byte(0x30);pack_byte(0x31);pack_byte(0x30);pack_byte(0x31);pack_byte(0x35);pack_byte(0x31);pack_byte(0x30);pack_byte(0x31);pack_byte(0x34);pack_byte(0x63);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x32);pack_byte(0x30);pack_byte(0x30);pack_byte(0x34);pack_byte(0x38);pack_byte(0x31);pack_byte(0x34);pack_byte(0x06);pack_byte(0x30);pack_byte(0x31);pack_byte(0x31);pack_byte(0x32);pack_byte(0x30);pack_byte(0x30);pack_byte(0x08);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x32);pack_byte(0x34);pack_byte(0x32);pack_byte(0x32);pack_byte(0x33);pack_byte(0x33);pack_byte(0x30);pack_byte(0x31);pack_byte(0x33);pack_byte(0x36);pack_byte(0x35);pack_byte(0x39);pack_byte(0x38);pack_byte(0x34);pack_byte(0x38);pack_byte(0x31);pack_byte(0x39);pack_byte(0x3D);pack_byte(0x32);pack_byte(0x31);pack_byte(0x30);pack_byte(0x33);pack_byte(0x32);pack_byte(0x32);pack_byte(0x36);pack_byte(0x31);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x39);pack_byte(0x32);pack_byte(0x34);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x31);pack_byte(0x31);pack_byte(0x38);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x32);pack_byte(0x38);pack_byte(0x31);pack_byte(0x37);pack_byte(0x34);pack_byte(0x39);pack_byte(0x37);pack_byte(0x39);pack_byte(0x31);pack_byte(0x32);pack_byte(0x37);pack_byte(0x30);pack_byte(0x37);pack_byte(0x32);pack_byte(0x38);pack_byte(0x30);pack_byte(0x30);pack_byte(0x37);pack_byte(0x20);pack_byte(0x20);pack_byte(0x20);pack_byte(0x20);pack_byte(0x20);pack_byte(0x11);pack_byte(0x31);pack_byte(0x32);pack_byte(0x33);pack_byte(0x34);pack_byte(0x35);pack_byte(0x36);pack_byte(0x37);pack_byte(0x38);pack_byte(0x45);pack_byte(0x47);pack_byte(0x59);pack_byte(0x00);pack_byte(0x38);pack_byte(0x50);pack_byte(0x31);pack_byte(0x30);pack_byte(0x30);pack_byte(0x33);pack_byte(0x32);pack_byte(0x41);pack_byte(0x35);pack_byte(0x35);pack_byte(0x34);pack_byte(0x41);pack_byte(0x39);pack_byte(0x36);pack_byte(0x34);pack_byte(0x35);pack_byte(0x39);pack_byte(0x45);pack_byte(0x33);pack_byte(0x36);pack_byte(0x38);pack_byte(0x42);pack_byte(0x46);pack_byte(0x36);pack_byte(0x30);pack_byte(0x42);pack_byte(0x39);pack_byte(0x32);pack_byte(0x37);pack_byte(0x45);pack_byte(0x39);pack_byte(0x46);pack_byte(0x34);pack_byte(0x41);pack_byte(0x44);pack_byte(0x31);pack_byte(0x34);pack_byte(0x45);pack_byte(0x39);pack_byte(0x38);pack_byte(0x31);pack_byte(0x38);pack_byte(0x2D);pack_byte(0x6B);pack_byte(0xA9);pack_byte(0x3C);pack_byte(0xE9);pack_byte(0xCF);pack_byte(0x18);pack_byte(0x45);pack_byte(0x09);pack_byte(0x30);pack_byte(0x31);pack_byte(0x30);pack_byte(0x31);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x01);pack_byte(0x40);pack_byte(0x5F);pack_byte(0x2A);pack_byte(0x02);pack_byte(0x08);pack_byte(0x18);pack_byte(0x82);pack_byte(0x02);pack_byte(0x3C);pack_byte(0x00);pack_byte(0x84);pack_byte(0x07);pack_byte(0xA0);pack_byte(0x00);pack_byte(0x00);pack_byte(0x00);pack_byte(0x03);pack_byte(0x10);pack_byte(0x10);pack_byte(0x95);pack_byte(0x05);pack_byte(0x08);pack_byte(0xA0);pack_byte(0x24);pack_byte(0x80);pack_byte(0x00);pack_byte(0x9A);pack_byte(0x03);pack_byte(0x16);pack_byte(0x05);pack_byte(0x23);pack_byte(0x9C);pack_byte(0x01);pack_byte(0x00);pack_byte(0x9F);pack_byte(0x02);pack_byte(0x06);pack_byte(0x00);pack_byte(0x00);pack_byte(0x00);pack_byte(0x00);pack_byte(0x14);pack_byte(0x00);pack_byte(0x9F);pack_byte(0x03);pack_byte(0x06);pack_byte(0x00);pack_byte(0x00);pack_byte(0x00);pack_byte(0x00);pack_byte(0x00);pack_byte(0x00);pack_byte(0x9F);pack_byte(0x09);pack_byte(0x02);pack_byte(0x00);pack_byte(0x8C);pack_byte(0x9F);pack_byte(0x10);pack_byte(0x07);pack_byte(0x06);pack_byte(0x01);pack_byte(0x0A);pack_byte(0x03);pack_byte(0xA0);pack_byte(0xE8);pack_byte(0x00);pack_byte(0x9F);pack_byte(0x1A);pack_byte(0x02);pack_byte(0x08);pack_byte(0x18);pack_byte(0x9F);pack_byte(0x1E);pack_byte(0x08);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x9F);pack_byte(0x26);pack_byte(0x08);pack_byte(0x9B);pack_byte(0x17);pack_byte(0x71);pack_byte(0xFB);pack_byte(0x41);pack_byte(0xD5);pack_byte(0xD7);pack_byte(0xA5);pack_byte(0x9F);pack_byte(0x27);pack_byte(0x01);pack_byte(0x80);pack_byte(0x9F);pack_byte(0x33);pack_byte(0x03);pack_byte(0xE0);pack_byte(0xF8);pack_byte(0xC8);pack_byte(0x9F);pack_byte(0x34);pack_byte(0x03);pack_byte(0x42);pack_byte(0x03);pack_byte(0x00);pack_byte(0x9F);pack_byte(0x35);pack_byte(0x01);pack_byte(0x22);pack_byte(0x9F);pack_byte(0x36);pack_byte(0x02);pack_byte(0x00);pack_byte(0x45);pack_byte(0x9F);pack_byte(0x37);pack_byte(0x04);pack_byte(0x9A);pack_byte(0x66);pack_byte(0x1B);pack_byte(0x9D);pack_byte(0x9F);pack_byte(0x41);pack_byte(0x04);pack_byte(0x00);pack_byte(0x00);pack_byte(0x00);pack_byte(0x01);pack_byte(0x9F);pack_byte(0x53);pack_byte(0x01);pack_byte(0x52);pack_byte(0x5F);pack_byte(0x34);pack_byte(0x01);pack_byte(0x00);pack_byte(0x00);pack_byte(0x25);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x30);pack_byte(0x00);pack_byte(0x00);pack_byte(0x00);pack_byte(0x00);pack_byte(0x00);pack_byte(0x00);pack_byte(0x00);pack_byte(0x00);pack_byte(0x00);pack_byte(0x00);
 
 
   /* 11. systems trace audit number */
   if (tx_bitmap[1] & 0x20) {
     split_data(TX_DATA.sb_trace_no, 3);
+      
   }
 
   /* 12. local transaction date & time */
@@ -448,6 +447,11 @@ memcpy(tx_bitmap, KTransBitmap[TX_DATA.b_trans].sb_txbitmap, 16);
       pack_mem("880", 3);
     else if (TX_DATA.b_trans == TRANS_UPLOAD)
         pack_mem("301", 3);
+    else if (TX_DATA.b_trans == TRANS_UPLOAD_LAST)
+        pack_mem("300", 3);
+      
+      
+      
     else
       pack_mem("200", 3);
   }
@@ -690,8 +694,69 @@ pack_byte(0x59);
   /* 72. Data Record */
   if (tx_bitmap[8] & 0x01) {
     if ((TX_DATA.b_trans == AUTH_SWIPE) || (TX_DATA.b_trans == AUTH_MANUAL) || (TX_DATA.b_trans == SETT_ADV)) {
-      pack_word(0x0040); /* length */
-      pack_mem("6013260019010000001259708402000000036575", 40);   //testing only
+      pack_word(0x0080); /* length */
+        
+    //msg_id   4byte
+        SprintfMW(buf, "%04X", KTransBitmap[TX_DATA.b_trans].w_txmsg_id);
+        pack_mem(buf, 4);
+        
+    //processing code
+          split_data(TX_DATA.sb_proc_code, 3);
+     //trace audit code
+        split_data(TX_DATA.sb_trace_no, 3);
+     //PAN
+        var_i = (BYTE)fndb(TX_DATA.sb_pan, 0xff, 10);
+        if (var_i == 0xff)
+            var_i = 10;
+        var_j = var_i * 2;
+        if ((TX_DATA.sb_pan[var_i-1] & 0x0f) == 0x0f) {
+            var_j -= 1;
+            //if ((STIS_ACQ_TBL(0).sb_nii[0]*256+STIS_ACQ_TBL(0).sb_nii[1]) == 0x016)
+            //  TX_DATA.sb_pan[var_i - 1] &= 0xf0;
+        }
+        pack_byte((BYTE)bin2bcd(var_j));
+        split(buf, TX_DATA.sb_pan, var_i);
+        pack_mem(buf, var_j);                     // PAN in ascii format
+        //FS1
+        pack_mem("*");
+        //amount
+        if (TX_DATA.b_trans != VOID)
+            dbin2bcd(tmp,TX_DATA.dd_amount);
+        else
+            memset(&tmp[4], 0, 6);
+        split_data(&tmp[4], 6);
+        //currency
+         pack_mem("818", 3);
+        //Transaction date 6 byte   DDMMYY   for CCYYMMDDHHMMSS
+        pack_mem(&date_time[6], 2); //DD
+        pack_mem(&date_time[4], 2); //MM
+        pack_mem(&date_time[2], 2); //YY
+        //Authorisation number  ask amr 6 byte
+            split_data(TX_DATA.sb_trace_no, 3);
+        //exchenge = 9 byte + DDMM + Amount [12 byte]
+        pack_mem("000000000", 9);
+        pack_mem(&date_time[6], 2); //DD
+        pack_mem(&date_time[4], 2); //MM
+        if (TX_DATA.b_trans != VOID)
+            dbin2bcd(tmp,TX_DATA.dd_amount);
+        else
+            memset(&tmp[4], 0, 6);
+        split_data(&tmp[4], 6);
+        
+        //offline or online
+        if ((TX_DATA.b_trans_status & OFFLINE)==0) {
+           pack_mem("0", 1);
+        }
+        else { /* offline - trans not sent to host yet */
+           pack_mem("1", 1);
+        }
+        //FS2
+         pack_mem("?");
+        
+        
+   //   pack_mem("6013260019010000001259708402000000036575", 40);   //testing only
+        
+        
     }
   }
  // 

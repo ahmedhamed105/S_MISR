@@ -74,6 +74,7 @@ enum {
   REFUND_CTL              ,   //22
   TEST_MSG                ,   //23
   SETT_ADV                ,   //24
+  TRANS_UPLOAD_LAST       ,   //25
   MAX_TXN_TYPE            ,
   DEFAULT_TRANS = 255     ,
 };
