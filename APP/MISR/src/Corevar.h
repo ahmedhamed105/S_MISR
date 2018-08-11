@@ -50,6 +50,7 @@
 
 #define COMMON_DATA                    \
     BYTE            b_trans;           \
+    BYTE            b_trans_old;       \
     BYTE            b_trans_status;    \
     BYTE            sb_trace_no[3];    \
     BYTE            b_acc_ind;         \

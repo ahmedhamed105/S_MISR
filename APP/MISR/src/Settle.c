@@ -153,7 +153,8 @@ static BOOLEAN UploadTransOK(void)
               TX_DATA.b_org_trans = RECORD_BUF.b_trans;
               PackProcCode(TX_DATA.b_org_trans, RECORD_BUF.b_acc_ind);
               TX_DATA.sb_proc_code[2] = 0x01;            /* more message to come */
-              TX_DATA.b_trans = TRANS_UPLOAD_LAST;
+			  TX_DATA.b_trans_old = TX_DATA.b_trans;
+			  TX_DATA.b_trans = TRANS_UPLOAD_LAST;
               IncTraceNo();
               PackHostMsg();
               UpdateHostStatus(SETTLE_PENDING);
@@ -189,6 +190,7 @@ static BOOLEAN UploadTransOK(void)
       TX_DATA.b_org_trans = RECORD_BUF.b_trans;
       PackProcCode(TX_DATA.b_org_trans, RECORD_BUF.b_acc_ind);
       TX_DATA.sb_proc_code[2] = 0x01;            /* more message to come */
+	  TX_DATA.b_trans_old = TX_DATA.b_trans;
       TX_DATA.b_trans = TRANS_UPLOAD;
       IncTraceNo();
       PackHostMsg();

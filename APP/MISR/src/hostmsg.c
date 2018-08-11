@@ -449,9 +449,9 @@ memcpy(tx_bitmap, KTransBitmap[TX_DATA.b_trans].sb_txbitmap, 16);
     else if (TX_DATA.b_trans == SETTLEMENT)
       pack_mem("880", 3);
     else if (TX_DATA.b_trans == TRANS_UPLOAD)
-        pack_mem("301", 3);
-    else if (TX_DATA.b_trans == TRANS_UPLOAD_LAST)
         pack_mem("300", 3);
+    else if (TX_DATA.b_trans == TRANS_UPLOAD_LAST)
+        pack_mem("301", 3);
     else
       pack_mem("200", 3);
   }
@@ -691,13 +691,18 @@ pack_byte(0x59);
     pack_mem("\x00\x00\x00\x00\x00\x00\x00\x00", 8);  //testing only
   }
 
+  /* 71. Message number */
+  if (tx_bitmap[8] & 0x02) {
+	  pack_mem("00000001", 8);               //testing only 
+  }
+
   /* 72. Data Record */
   if (tx_bitmap[8] & 0x01) {
     if ((TX_DATA.b_trans == TRANS_UPLOAD_LAST) || (TX_DATA.b_trans == TRANS_UPLOAD)) {
-      pack_word(0x0080); /* length */
+      pack_word(0x0086); /* length */
         
     //msg_id   4byte
-        SprintfMW(buf, "%04X", KTransBitmap[TX_DATA.b_trans].w_txmsg_id);
+        SprintfMW(buf, "%04X", KTransBitmap[TX_DATA.b_trans_old].w_txmsg_id);
         pack_mem(buf, 4);
         
     //processing code
@@ -762,6 +767,24 @@ pack_byte(0x59);
  // 
 //  SprintfMW(buf, "%04d", get_distance());
 //  memcpy(len_ptr, buf, 4);
+
+
+/* 73. Action date */
+  if (tx_bitmap[9] & 0x80) {
+	  pack_mem(&date_time[2], 6);
+  }
+
+
+  /* 101. File name */
+  if (tx_bitmap[12] & 0x08) {
+	  pack_byte(0x11);
+	  pack_mem("TRANSACTION", 11);
+  }
+
+  /* 128. Message Authentication Code */
+  if (tx_bitmap[15] & 0x01) {
+	  pack_mem("\x00\x00\x00\x00\x00\x00\x00\x00", 8);  //testing only
+  }
 
 
 PackTxBufLen(ExtraMsgLen());
