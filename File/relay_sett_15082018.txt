@@ -1,0 +1,32 @@
+1200
+1- FLD (041) : (008) : [47400010]                                    // correct terminal number = [62301764] \\ --> ok
+2- FLD (042) : (015) : [004740001005   ]                             // correct field format    = [4740001005     ] \\  --> ok
+3- FLD (052) : (016) : [3030303030303030]                            // No need to send this field as long as you didn't do keys exchange \\ --> ok
+4- FLD (053) : (030) : [0000000 010100000 5_*  @_4 ]                 // No need to send this field as long as you didn't do keys exchange \\ --> ok
+
+
+1220
+1- FLD (041) : (008) : [47400010]                                          // correct terminal number = [62301764] \\ --> ok
+2-FLD (042) : (015) : [004740001005   ]                                   // correct field format    = [4740001005     ] \\   --> ok
+3- FLD (052) : (016) : [3030303030303030]                                  // No need to send this field in the offline transactions  \\
+4- FLD (053) : (030) : [0000000 010100000]                                 // correct format FLD (053) : (009) : [010100000] \\
+5- FLD (064) : (008) : []                                                  // FLD (038) & FLD (055) are missing \\
+
+1520
+1- FLD (024) : (003) : [200] //why not 500?If message type = 1520(500 = Final settlement||501 = Intermediate settlement||502 = Final settlement in a specific currency||503 = Intermediate settlement in a specific currency\\ --> ok
+2- //RightFormat++FLD (062) : (020) : [00000000000000000000]\\  --> this is dynamic lenght --> ok
+3- //FLDS 50,54  ,63,74,75,    76,77,   83,84,86,   87,88,89,   97 are Missing\\  --> ok
+
+
+1804
+1- FLD (024) : (003) : [880] //why not 821?If message type = 1804(801 = Opening||811 = Key change request||821 = Last reconciliation request||822 = Intermediate reconciliation request||880 = Initialization request \\--> ok
+2- FLD (041) : (008) : [47400010]                            // correct terminal number = [62301764] \\ --> ok
+3- FLD (042) : (015) : [004740001005   ]                     // correct field format    = [4740001005     ] \\  --> ok
+
+
+1304
+1- FLD (041) : (008) : [47400010]                                      // correct terminal number = [62301764] \\ --> ok
+2- FLD (042) : (015) : [004740001005   ]                               // correct field format    = [4740001005     ] \\ --> ok
+3- FLD (072) : (086) : [1200000001000145 4381724951308804*00000000666681813081800014500000000. //Wrong Format\\//Please Check HPS Manual\\ 
+4- FLD (073) : (006) : [0?1808]                    //Wrong Format\\// correct field format: YYMMDD format \\  --> because of shifting
+5- FLD (101) : (031) : [3 TRANSACTION]             //Wrong Format\\// correct field format:FLD (101) : (011) : [TRANSACTION]\\ --> because of shifting

@@ -447,7 +447,11 @@ memcpy(tx_bitmap, KTransBitmap[TX_DATA.b_trans].sb_txbitmap, 16);
     else if (TX_DATA.b_trans == EDC_REV)
       pack_mem("400", 3);
     else if (TX_DATA.b_trans == SETTLEMENT)
-      pack_mem("880", 3);
+		//15082018 test 
+      pack_mem("821", 3);
+	else if (TX_DATA.b_trans == SETT_ADV)
+		//15082018 test 
+		pack_mem("500", 3);
     else if (TX_DATA.b_trans == TRANS_UPLOAD)
         pack_mem("300", 3);
     else if (TX_DATA.b_trans == TRANS_UPLOAD_LAST)
@@ -506,15 +510,18 @@ memcpy(tx_bitmap, KTransBitmap[TX_DATA.b_trans].sb_txbitmap, 16);
 
   /* 41. terminal identification */
   if (tx_bitmap[5] & 0x80) {
- pack_mem("47400010", 8);
-	  
+ //pack_mem("47400010", 8);
+	  //15082018 test 
+	pack_mem("62301764", 8);     
   //  pack_mem(STIS_ACQ_TBL(0).sb_term_id, 8);
 //	 pack_mem("0000000", 7);
   }
 
   /* 42. card acceptor identification */
   if (tx_bitmap[5] & 0x40) {
-    pack_mem(STIS_ACQ_TBL(0).sb_acceptor_id, 15);
+   // pack_mem(STIS_ACQ_TBL(0).sb_acceptor_id, 15);
+	   //15082018 test 
+	  pack_mem("4740001005     ", 15);
   }
 
   /* 43. card acceptor name & address */
@@ -585,6 +592,12 @@ pack_byte(0x59);
     pack_mem("818", 3);                       //testing only (EGP)
   }
 
+
+  /* 50. Settlement currency code */
+  if (tx_bitmap[6] & 0x40) {
+	  pack_mem("818", 3);                       //testing only (EGP)
+  }
+
   /* 52. pin block */
   if (tx_bitmap[6] & 0x10) {
 
@@ -603,21 +616,29 @@ pack_byte(0x59);
 
   /* 54. additional amount */
   if (tx_bitmap[6] & 0x04) {
-    if (TX_DATA.dd_tip !=0) {
+ //   if (TX_DATA.dd_tip !=0) {
       pack_word(0x0020);
       pack_mem("04", 2);                  // account type   //testing only
       pack_mem("04", 2);                  // account type   //testing only
       pack_mem("818", 3);                 // currency code  //testing only
       pack_mem("C", 1);                   // credit         //testing only
-      dbin2bcd(tmp,TX_DATA.dd_tip);
-      split_data(&tmp[4],6);
-    }
-    else
-      tx_bitmap[6] &= ~0x04; /* no tip, clear BIT */
+     // dbin2bcd(tmp,TX_DATA.dd_tip);
+    //  split_data(&tmp[4],6);
+	  memset(tmp, 0, sizeof(tmp));
+	  if (TX_DATA.b_trans != VOID)
+		  dbin2bcd(tmp, TX_DATA.dd_amount);
+	  else
+		  memset(&tmp[4], 0, 6);
+	  split_data(&tmp[4], 6);
+
+  //  }
+ //   else
+  //    tx_bitmap[6] &= ~0x04; /* no tip, clear BIT */
   }
 
   /* 55. EMV data */
   if (tx_bitmap[6] & 0x02) {
+
     // EMVEDC data higher priority
     if (TX_DATA.s_icc_data.w_misc_len) {
       pack_word(bin2bcd(TX_DATA.s_icc_data.w_misc_len));
@@ -676,8 +697,8 @@ pack_byte(0x59);
 
   /* 62. private - ROC number of financial/SOC number of settlement */
   if (tx_bitmap[7] & 0x04) {
-    pack_word(0x0006); /* length */
-    split_data(TX_DATA.sb_roc_no, 3);
+    pack_word(0x0020); /* length */
+    split_data(TX_DATA.sb_roc_no, 10);
   }
 
   /* 63. versions */
@@ -697,9 +718,10 @@ pack_byte(0x59);
   }
 
   /* 72. Data Record */
+   //15082018 test 
   if (tx_bitmap[8] & 0x01) {
     if ((TX_DATA.b_trans == TRANS_UPLOAD_LAST) || (TX_DATA.b_trans == TRANS_UPLOAD)) {
-      pack_word(0x0086); /* length */
+      pack_word(0x0103); /* length */
         
     //msg_id   4byte
         SprintfMW(buf, "%04X", KTransBitmap[TX_DATA.b_trans_old].w_txmsg_id);
@@ -732,6 +754,16 @@ pack_byte(0x59);
         split_data(&tmp[4], 6);
         //currency
          pack_mem("818", 3);
+
+		 // Reconciliation  amount
+		 if (TX_DATA.b_trans != VOID)
+			 dbin2bcd(tmp, TX_DATA.dd_amount);
+		 else
+			 memset(&tmp[4], 0, 6);
+		 split_data(&tmp[4], 6);
+		 //Reconciliation  currency
+		 pack_mem("818", 3);
+
         //Transaction date 6 byte   DDMMYY   for CCYYMMDDHHMMSS
         pack_mem(&date_time[6], 2); //DD
         pack_mem(&date_time[4], 2); //MM
@@ -773,6 +805,80 @@ pack_byte(0x59);
   if (tx_bitmap[9] & 0x80) {
 	  pack_mem(&date_time[2], 6);
   }
+
+  //15082018 test 
+
+  /* 74. Credits number (sum of all TRX) */
+  if (tx_bitmap[9] & 0x40) {
+	dbin2bcd(tmp, TERM_TOT.s_sale_tot.dd_amount);
+    split_data(&tmp[4], 5);
+  }
+
+
+
+  /* 75. Credits reversal number (sum of all reversal TRX) */
+  if (tx_bitmap[9] & 0x20) {
+	  dbin2bcd(tmp, TERM_TOT.s_refund_tot.dd_amount);
+	  split_data(&tmp[4], 5);
+  }
+
+
+  /* 76. Debit number */
+  if (tx_bitmap[9] & 0x10) {
+	  dbin2bcd(tmp, TERM_TOT.s_sale_tot.dd_amount);
+	  split_data(&tmp[4], 5);
+  }
+
+
+  /* 77. Debits reversal number */
+  if (tx_bitmap[9] & 0x08) {
+	  dbin2bcd(tmp, TERM_TOT.s_refund_tot.dd_amount);
+	  split_data(&tmp[4], 5);
+  }
+
+
+  /* 83. Payments number */
+  if (tx_bitmap[10] & 0x20) {
+	  dbin2bcd(tmp, TERM_TOT.s_refund_tot.dd_amount);
+	  split_data(&tmp[4], 5);
+  }
+
+
+  /* 84. Credits amount */
+  if (tx_bitmap[10] & 0x10) {
+	  dbin2bcd(tmp, TERM_TOT.s_refund_tot.dd_amount);
+	  split_data(&tmp[4], 5);
+  }
+
+
+  /* 86. Payments reversal number */
+  if (tx_bitmap[10] & 0x04) {
+	  pack_mem("0000000000000000", 16);               //testing only 
+  }
+
+
+  /* 87. Credits recycled amounts */
+  if (tx_bitmap[10] & 0x02) {
+	  pack_mem("0000000000000000", 16);               //testing only 
+  }
+
+
+  /* 88. 	Debits amount */
+  if (tx_bitmap[10] & 0x01) {
+	  pack_mem("0000000000000000", 16);               //testing only 
+  }
+
+  /* 89. Debits reversed amounts */
+  if (tx_bitmap[11] & 0x80) {
+	  pack_mem("0000000000000000", 16);               //testing only 
+  }
+
+  /* 97. Net reconciliation amount */
+  if (tx_bitmap[11] & 0x80) {
+	  pack_mem("0000000000000000", 16);               //testing only 
+  }
+
+
 
 
   /* 101. File name */
