@@ -84,28 +84,33 @@ BOOLEAN gIsMaestro;
 //    Constant
 //-----------------------------------------------------------------------------
 const WORD wVMOnlineTags[] = { 
-  0x5F2A,                                 /* Transaction Currency Code */
-  0x5F34,                                 /* PAN Sequence Number */
-  0x82,                                   /* AIP */
-  0x84,                                   /* Dedicated File Name */
-  0x95,                                   /* TVR */
-  0x9A,                                   /* Transaction Date */
-  0x9C,                                   /* Transaction Type */
-  0x9F02,                                 /* Amount Authorised */
-  0x9F03,                                 /* Cashback Amount */
-  0x9F09,                                 /* Application Version # */
-  0x9F10,                                 /* Issuer Application Data */
-  0x9F1A,                                 /* Terminal Country Code */
-  0x9F1E,                                 /* IFD Serial Number */
-  0x9F26,                                 /* Application Cryptogram */
-  0x9F27,                                 /* CID */
-  0x9F33,                                 /* Terminal Capabilities */
-  0x9F34,                                 /* CVM Result */
-  0x9F35,                                 /* Terminal Type */
-  0x9F36,                                 /* Application Transaction Counter */
-  0x9F37,                                 /* Unpredicatable Number */
-  0x9F41,                                 /* Transaction Sequence Counter */
-  0x9F53,                                 /* Transaction Category code */
+  0x71,
+  0x72,
+  0x82,
+  0x84,
+  0x86,
+  0x8A,
+  0x91,
+  0x95,
+  0x9A,
+  0x9C,
+  0x5F2A,
+  0x9F02,
+  0x9F03,
+  0x9F09,
+  0x9F10,
+  0x9F1A,
+  0x9F1E,
+  0x57,
+  0x9F26,
+  0x9F27,
+  0x9F33,
+  0x9F34,
+  0x9F35,
+  0x9F36,
+  0x9F37,
+  0x9F41,
+  0x9F53,
   0
 };
 
@@ -421,195 +426,195 @@ BOOLEAN ValidEMVData(void)
   memcpy(&INPUT.sb_exp_date, TagData(gGDS->s_TagList, 0x5F24), 2); //App. Exp. Date
 
 
-//field71[128];
-if ((psLp = TagSeek(gGDS->s_TagList, 0x71)) != NULL) {      //Issuer Script Template 1 (Tag 71)
-	if ((bLen = psLp->sLen) > sizeof(INPUT.field71))
-		bLen = sizeof(INPUT.field71);
-
-	memcpy(INPUT.field71, psLp->pbLoc, bLen);
-}
-//field72[128];
-if ((psLp = TagSeek(gGDS->s_TagList, 0x72)) != NULL) {      //Issuer Script Template 2 (Tag 72)
-	if ((bLen = psLp->sLen) > sizeof(INPUT.field72))
-		bLen = sizeof(INPUT.field72);
-
-	memcpy(INPUT.field72, psLp->pbLoc, bLen);
-}
-//field82[2];
-if ((psLp = TagSeek(gGDS->s_TagList, 0x82)) != NULL) {      //Application Interchange Profile (Tag 82)
-	if ((bLen = psLp->sLen) > sizeof(INPUT.field82))
-		bLen = sizeof(INPUT.field82);
-
-	memcpy(INPUT.field82, psLp->pbLoc, bLen);
-}
-//field84[16];
-if ((psLp = TagSeek(gGDS->s_TagList, 0x84)) != NULL) {      //Dedicates File Name (Tag 84)
-	if ((bLen = psLp->sLen) > sizeof(INPUT.field84))
-		bLen = sizeof(INPUT.field84);
-
-	memcpy(INPUT.field84, psLp->pbLoc, bLen);
-}
-//field86[21];
-if ((psLp = TagSeek(gGDS->s_TagList, 0x86)) != NULL) {      //Issuer script command (Tag 86)
-	if ((bLen = psLp->sLen) > sizeof(INPUT.field86))
-		bLen = sizeof(INPUT.field86);
-
-	memcpy(INPUT.field86, psLp->pbLoc, bLen);
-}
-//field8A[2];
-if ((psLp = TagSeek(gGDS->s_TagList, 0x8A)) != NULL) {      //Authorization response code (Tag 8A)
-	if ((bLen = psLp->sLen) > sizeof(INPUT.field8A))
-		bLen = sizeof(INPUT.field8A);
-
-	memcpy(INPUT.field8A, psLp->pbLoc, bLen);
-}
-//field91[16];
-if ((psLp = TagSeek(gGDS->s_TagList, 0x91)) != NULL) {      //Issuer Authentication Data (Tag 91)
-	if ((bLen = psLp->sLen) > sizeof(INPUT.field91))
-		bLen = sizeof(INPUT.field91);
-
-	memcpy(INPUT.field91, psLp->pbLoc, bLen);
-}
-//field95[5];
-if ((psLp = TagSeek(gGDS->s_TagList, 0x95)) != NULL) {      //Terminal Verification Results (Tag 95)
-	if ((bLen = psLp->sLen) > sizeof(INPUT.field95))
-		bLen = sizeof(INPUT.field95);
-
-	memcpy(INPUT.field95, psLp->pbLoc, bLen);
-}
-//field9A[3];
-if ((psLp = TagSeek(gGDS->s_TagList, 0x9A)) != NULL) {      //Transaction Date (Tag 9A)
-	if ((bLen = psLp->sLen) > sizeof(INPUT.field9A))
-		bLen = sizeof(INPUT.field9A);
-
-	memcpy(INPUT.field9A, psLp->pbLoc, bLen);
-}
-//field9C;
-if ((psLp = TagSeek(gGDS->s_TagList, 0x9C)) != NULL) {      //Transaction Type (Tag 9C)
-	if ((bLen = psLp->sLen) > sizeof(INPUT.field9C))
-		bLen = sizeof(INPUT.field9C);
-
-	memcpy(INPUT.field9C, psLp->pbLoc, bLen);
-}
-//field5F2A[2];
-if ((psLp = TagSeek(gGDS->s_TagList, 0x5F2A)) != NULL) {      //Transaction Currency Code (Tag 5F2A)
-	if ((bLen = psLp->sLen) > sizeof(INPUT.field5F2A))
-		bLen = sizeof(INPUT.field5F2A);
-
-	memcpy(INPUT.field5F2A, psLp->pbLoc, bLen);
-}
-//field9F02[6];
-if ((psLp = TagSeek(gGDS->s_TagList, 0x9F02)) != NULL) {      //Transaction Amount (Tag 9F02)
-	if ((bLen = psLp->sLen) > sizeof(INPUT.field9F02))
-		bLen = sizeof(INPUT.field9F02);
-
-	memcpy(INPUT.field9F02, psLp->pbLoc, bLen);
-}
-//field9F03[6];
-if ((psLp = TagSeek(gGDS->s_TagList, 0x9F03)) != NULL) {      //Other Amount (Tag 9F03)
-	if ((bLen = psLp->sLen) > sizeof(INPUT.field9F03))
-		bLen = sizeof(INPUT.field9F03);
-
-	memcpy(INPUT.field9F03, psLp->pbLoc, bLen);
-}
-//field9F09[2];
-if ((psLp = TagSeek(gGDS->s_TagList, 0x9F09)) != NULL) {      //Terminal Application Version Number (Tag 9F09)
-	if ((bLen = psLp->sLen) > sizeof(INPUT.field9F09))
-		bLen = sizeof(INPUT.field9F09);
-
-	memcpy(INPUT.field9F09, psLp->pbLoc, bLen);
-}
-//field9F10[32];
-if ((psLp = TagSeek(gGDS->s_TagList, 0x9F10)) != NULL) {      //Issuer Application Data (Tag 9F10)
-	if ((bLen = psLp->sLen) > sizeof(INPUT.field9F10))
-		bLen = sizeof(INPUT.field9F10);
-
-	memcpy(INPUT.field9F10, psLp->pbLoc, bLen);
-}
-//field9F1A[2];
-if ((psLp = TagSeek(gGDS->s_TagList, 0x9F1A)) != NULL) {      //Terminal Country Code (Tag 9F1A)
-	if ((bLen = psLp->sLen) > sizeof(INPUT.field9F1A))
-		bLen = sizeof(INPUT.field9F1A);
-
-	memcpy(INPUT.field9F1A, psLp->pbLoc, bLen);
-}
-//field9F1E[8];
-if ((psLp = TagSeek(gGDS->s_TagList, 0x9F1E)) != NULL) {      //Interface Device (IFD) Serial number (Tag 9F1E)
-	if ((bLen = psLp->sLen) > sizeof(INPUT.field9F1E))
-		bLen = sizeof(INPUT.field9F1E);
-
-	memcpy(INPUT.field9F1E, psLp->pbLoc, bLen);
-}
-//field57[19];
-if ((psLp = TagSeek(gGDS->s_TagList, 0x57)) != NULL) {      //Track II Equivalent Data (Tag 57)
-	if ((bLen = psLp->sLen) > sizeof(INPUT.field57))
-		bLen = sizeof(INPUT.field57);
-
-	memcpy(INPUT.field57, psLp->pbLoc, bLen);
-}
-//field9F26[8];
-if ((psLp = TagSeek(gGDS->s_TagList, 0x9F26)) != NULL) {      //Application cryptogram (Tag 9F26)
-	if ((bLen = psLp->sLen) > sizeof(INPUT.field9F26))
-		bLen = sizeof(INPUT.field9F26);
-
-	memcpy(INPUT.field9F26, psLp->pbLoc, bLen);
-}
-//field9F27;
-if ((psLp = TagSeek(gGDS->s_TagList, 0x9F27)) != NULL) {      //Cryptogram Information Data (Tag 9F27)
-	if ((bLen = psLp->sLen) > sizeof(INPUT.field9F27))
-		bLen = sizeof(INPUT.field9F27);
-
-	memcpy(INPUT.field9F27, psLp->pbLoc, bLen);
-}
-//field9F33[3];
-if ((psLp = TagSeek(gGDS->s_TagList, 0x9F33)) != NULL) {      //Terminal Capabilities  (Tag 9F33)
-	if ((bLen = psLp->sLen) > sizeof(INPUT.field9F33))
-		bLen = sizeof(INPUT.field9F33);
-
-	memcpy(INPUT.field9F33, psLp->pbLoc, bLen);
-}
-//field9F34[4];
-if ((psLp = TagSeek(gGDS->s_TagList, 0x9F34)) != NULL) {      //Cardholder Verification Method Results (Tag 9F34)
-	if ((bLen = psLp->sLen) > sizeof(INPUT.field9F34))
-		bLen = sizeof(INPUT.field9F34);
-
-	memcpy(INPUT.field9F34, psLp->pbLoc, bLen);
-}
-//field9F35;
-if ((psLp = TagSeek(gGDS->s_TagList, 0x9F35)) != NULL) {      //Terminal Type (Tag 9F35)
-	if ((bLen = psLp->sLen) > sizeof(INPUT.field9F35))
-		bLen = sizeof(INPUT.field9F35);
-
-	memcpy(INPUT.field9F35, psLp->pbLoc, bLen);
-}
-//field9F36[2];
-if ((psLp = TagSeek(gGDS->s_TagList, 0x9F36)) != NULL) {      //Application Transaction Counter (ATC) (Tag 9F36)
-	if ((bLen = psLp->sLen) > sizeof(INPUT.field9F36))
-		bLen = sizeof(INPUT.field9F36);
-
-	memcpy(INPUT.field9F36, psLp->pbLoc, bLen);
-}
-//field9F37[4];
-if ((psLp = TagSeek(gGDS->s_TagList, 0x9F37)) != NULL) {      //Unpredictable Number (Tag 9F37)
-	if ((bLen = psLp->sLen) > sizeof(INPUT.field9F37))
-		bLen = sizeof(INPUT.field9F37);
-
-	memcpy(INPUT.field9F37, psLp->pbLoc, bLen);
-}
-//field9F41[4];
-if ((psLp = TagSeek(gGDS->s_TagList, 0x9F41)) != NULL) {      //Transaction Sequence Number (Tag 9F41)
-	if ((bLen = psLp->sLen) > sizeof(INPUT.field9F41))
-		bLen = sizeof(INPUT.field9F41);
-
-	memcpy(INPUT.field9F41, psLp->pbLoc, bLen);
-}
-//field9F53;
-if ((psLp = TagSeek(gGDS->s_TagList, 0x9F53)) != NULL) {      //Transaction Category Code (Tag 9F53)
-	if ((bLen = psLp->sLen) > sizeof(INPUT.field9F53))
-		bLen = sizeof(INPUT.field9F53);
-
-	memcpy(INPUT.field9F53, psLp->pbLoc, bLen);
-}
+////field71[128];
+//if ((psLp = TagSeek(gGDS->s_TagList, 0x71)) != NULL) {      //Issuer Script Template 1 (Tag 71)
+//	if ((bLen = psLp->sLen) > sizeof(INPUT.field71))
+//		bLen = sizeof(INPUT.field71);
+//
+//	memcpy(INPUT.field71, psLp->pbLoc, bLen);
+//}
+////field72[128];
+//if ((psLp = TagSeek(gGDS->s_TagList, 0x72)) != NULL) {      //Issuer Script Template 2 (Tag 72)
+//	if ((bLen = psLp->sLen) > sizeof(INPUT.field72))
+//		bLen = sizeof(INPUT.field72);
+//
+//	memcpy(INPUT.field72, psLp->pbLoc, bLen);
+//}
+////field82[2];
+//if ((psLp = TagSeek(gGDS->s_TagList, 0x82)) != NULL) {      //Application Interchange Profile (Tag 82)
+//	if ((bLen = psLp->sLen) > sizeof(INPUT.field82))
+//		bLen = sizeof(INPUT.field82);
+//
+//	memcpy(INPUT.field82, psLp->pbLoc, bLen);
+//}
+////field84[16];
+//if ((psLp = TagSeek(gGDS->s_TagList, 0x84)) != NULL) {      //Dedicates File Name (Tag 84)
+//	if ((bLen = psLp->sLen) > sizeof(INPUT.field84))
+//		bLen = sizeof(INPUT.field84);
+//
+//	memcpy(INPUT.field84, psLp->pbLoc, bLen);
+//}
+////field86[21];
+//if ((psLp = TagSeek(gGDS->s_TagList, 0x86)) != NULL) {      //Issuer script command (Tag 86)
+//	if ((bLen = psLp->sLen) > sizeof(INPUT.field86))
+//		bLen = sizeof(INPUT.field86);
+//
+//	memcpy(INPUT.field86, psLp->pbLoc, bLen);
+//}
+////field8A[2];
+//if ((psLp = TagSeek(gGDS->s_TagList, 0x8A)) != NULL) {      //Authorization response code (Tag 8A)
+//	if ((bLen = psLp->sLen) > sizeof(INPUT.field8A))
+//		bLen = sizeof(INPUT.field8A);
+//
+//	memcpy(INPUT.field8A, psLp->pbLoc, bLen);
+//}
+////field91[16];
+//if ((psLp = TagSeek(gGDS->s_TagList, 0x91)) != NULL) {      //Issuer Authentication Data (Tag 91)
+//	if ((bLen = psLp->sLen) > sizeof(INPUT.field91))
+//		bLen = sizeof(INPUT.field91);
+//
+//	memcpy(INPUT.field91, psLp->pbLoc, bLen);
+//}
+////field95[5];
+//if ((psLp = TagSeek(gGDS->s_TagList, 0x95)) != NULL) {      //Terminal Verification Results (Tag 95)
+//	if ((bLen = psLp->sLen) > sizeof(INPUT.field95))
+//		bLen = sizeof(INPUT.field95);
+//
+//	memcpy(INPUT.field95, psLp->pbLoc, bLen);
+//}
+////field9A[3];
+//if ((psLp = TagSeek(gGDS->s_TagList, 0x9A)) != NULL) {      //Transaction Date (Tag 9A)
+//	if ((bLen = psLp->sLen) > sizeof(INPUT.field9A))
+//		bLen = sizeof(INPUT.field9A);
+//
+//	memcpy(INPUT.field9A, psLp->pbLoc, bLen);
+//}
+////field9C;
+//if ((psLp = TagSeek(gGDS->s_TagList, 0x9C)) != NULL) {      //Transaction Type (Tag 9C)
+//	if ((bLen = psLp->sLen) > sizeof(INPUT.field9C))
+//		bLen = sizeof(INPUT.field9C);
+//
+//	memcpy(INPUT.field9C, psLp->pbLoc, bLen);
+//}
+////field5F2A[2];
+//if ((psLp = TagSeek(gGDS->s_TagList, 0x5F2A)) != NULL) {      //Transaction Currency Code (Tag 5F2A)
+//	if ((bLen = psLp->sLen) > sizeof(INPUT.field5F2A))
+//		bLen = sizeof(INPUT.field5F2A);
+//
+//	memcpy(INPUT.field5F2A, psLp->pbLoc, bLen);
+//}
+////field9F02[6];
+//if ((psLp = TagSeek(gGDS->s_TagList, 0x9F02)) != NULL) {      //Transaction Amount (Tag 9F02)
+//	if ((bLen = psLp->sLen) > sizeof(INPUT.field9F02))
+//		bLen = sizeof(INPUT.field9F02);
+//
+//	memcpy(INPUT.field9F02, psLp->pbLoc, bLen);
+//}
+////field9F03[6];
+//if ((psLp = TagSeek(gGDS->s_TagList, 0x9F03)) != NULL) {      //Other Amount (Tag 9F03)
+//	if ((bLen = psLp->sLen) > sizeof(INPUT.field9F03))
+//		bLen = sizeof(INPUT.field9F03);
+//
+//	memcpy(INPUT.field9F03, psLp->pbLoc, bLen);
+//}
+////field9F09[2];
+//if ((psLp = TagSeek(gGDS->s_TagList, 0x9F09)) != NULL) {      //Terminal Application Version Number (Tag 9F09)
+//	if ((bLen = psLp->sLen) > sizeof(INPUT.field9F09))
+//		bLen = sizeof(INPUT.field9F09);
+//
+//	memcpy(INPUT.field9F09, psLp->pbLoc, bLen);
+//}
+////field9F10[32];
+//if ((psLp = TagSeek(gGDS->s_TagList, 0x9F10)) != NULL) {      //Issuer Application Data (Tag 9F10)
+//	if ((bLen = psLp->sLen) > sizeof(INPUT.field9F10))
+//		bLen = sizeof(INPUT.field9F10);
+//
+//	memcpy(INPUT.field9F10, psLp->pbLoc, bLen);
+//}
+////field9F1A[2];
+//if ((psLp = TagSeek(gGDS->s_TagList, 0x9F1A)) != NULL) {      //Terminal Country Code (Tag 9F1A)
+//	if ((bLen = psLp->sLen) > sizeof(INPUT.field9F1A))
+//		bLen = sizeof(INPUT.field9F1A);
+//
+//	memcpy(INPUT.field9F1A, psLp->pbLoc, bLen);
+//}
+////field9F1E[8];
+//if ((psLp = TagSeek(gGDS->s_TagList, 0x9F1E)) != NULL) {      //Interface Device (IFD) Serial number (Tag 9F1E)
+//	if ((bLen = psLp->sLen) > sizeof(INPUT.field9F1E))
+//		bLen = sizeof(INPUT.field9F1E);
+//
+//	memcpy(INPUT.field9F1E, psLp->pbLoc, bLen);
+//}
+////field57[19];
+//if ((psLp = TagSeek(gGDS->s_TagList, 0x57)) != NULL) {      //Track II Equivalent Data (Tag 57)
+//	if ((bLen = psLp->sLen) > sizeof(INPUT.field57))
+//		bLen = sizeof(INPUT.field57);
+//
+//	memcpy(INPUT.field57, psLp->pbLoc, bLen);
+//}
+////field9F26[8];
+//if ((psLp = TagSeek(gGDS->s_TagList, 0x9F26)) != NULL) {      //Application cryptogram (Tag 9F26)
+//	if ((bLen = psLp->sLen) > sizeof(INPUT.field9F26))
+//		bLen = sizeof(INPUT.field9F26);
+//
+//	memcpy(INPUT.field9F26, psLp->pbLoc, bLen);
+//}
+////field9F27;
+//if ((psLp = TagSeek(gGDS->s_TagList, 0x9F27)) != NULL) {      //Cryptogram Information Data (Tag 9F27)
+//	if ((bLen = psLp->sLen) > sizeof(INPUT.field9F27))
+//		bLen = sizeof(INPUT.field9F27);
+//
+//	memcpy(INPUT.field9F27, psLp->pbLoc, bLen);
+//}
+////field9F33[3];
+//if ((psLp = TagSeek(gGDS->s_TagList, 0x9F33)) != NULL) {      //Terminal Capabilities  (Tag 9F33)
+//	if ((bLen = psLp->sLen) > sizeof(INPUT.field9F33))
+//		bLen = sizeof(INPUT.field9F33);
+//
+//	memcpy(INPUT.field9F33, psLp->pbLoc, bLen);
+//}
+////field9F34[4];
+//if ((psLp = TagSeek(gGDS->s_TagList, 0x9F34)) != NULL) {      //Cardholder Verification Method Results (Tag 9F34)
+//	if ((bLen = psLp->sLen) > sizeof(INPUT.field9F34))
+//		bLen = sizeof(INPUT.field9F34);
+//
+//	memcpy(INPUT.field9F34, psLp->pbLoc, bLen);
+//}
+////field9F35;
+//if ((psLp = TagSeek(gGDS->s_TagList, 0x9F35)) != NULL) {      //Terminal Type (Tag 9F35)
+//	if ((bLen = psLp->sLen) > sizeof(INPUT.field9F35))
+//		bLen = sizeof(INPUT.field9F35);
+//
+//	memcpy(INPUT.field9F35, psLp->pbLoc, bLen);
+//}
+////field9F36[2];
+//if ((psLp = TagSeek(gGDS->s_TagList, 0x9F36)) != NULL) {      //Application Transaction Counter (ATC) (Tag 9F36)
+//	if ((bLen = psLp->sLen) > sizeof(INPUT.field9F36))
+//		bLen = sizeof(INPUT.field9F36);
+//
+//	memcpy(INPUT.field9F36, psLp->pbLoc, bLen);
+//}
+////field9F37[4];
+//if ((psLp = TagSeek(gGDS->s_TagList, 0x9F37)) != NULL) {      //Unpredictable Number (Tag 9F37)
+//	if ((bLen = psLp->sLen) > sizeof(INPUT.field9F37))
+//		bLen = sizeof(INPUT.field9F37);
+//
+//	memcpy(INPUT.field9F37, psLp->pbLoc, bLen);
+//}
+////field9F41[4];
+//if ((psLp = TagSeek(gGDS->s_TagList, 0x9F41)) != NULL) {      //Transaction Sequence Number (Tag 9F41)
+//	if ((bLen = psLp->sLen) > sizeof(INPUT.field9F41))
+//		bLen = sizeof(INPUT.field9F41);
+//
+//	memcpy(INPUT.field9F41, psLp->pbLoc, bLen);
+//}
+////field9F53;
+//if ((psLp = TagSeek(gGDS->s_TagList, 0x9F53)) != NULL) {      //Transaction Category Code (Tag 9F53)
+//	if ((bLen = psLp->sLen) > sizeof(INPUT.field9F53))
+//		bLen = sizeof(INPUT.field9F53);
+//
+//	memcpy(INPUT.field9F53, psLp->pbLoc, bLen);
+//}
 
 
 

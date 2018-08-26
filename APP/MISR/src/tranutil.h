@@ -56,33 +56,6 @@ struct INPUT_DATA {
   WORD                  w_card_idx;
   BYTE                  b_card_expired;
   BYTE                  sb_amex_4DBC[4];
-  BYTE                  field71[128];
-  BYTE                  field72[128];
-  BYTE                  field82[2];
-  BYTE                  field84[16];
-  BYTE                  field86[21];
-  BYTE                  field8A[2];
-  BYTE                  field91[16];
-  BYTE                  field95[5];
-  BYTE                  field9A[3];
-  BYTE                  field9C;
-  BYTE                  field5F2A[2];
-  BYTE                  field9F02[6];
-  BYTE                  field9F03[6];
-  BYTE                  field9F09[2];
-  BYTE                  field9F10[32];
-  BYTE                  field9F1A[2];
-  BYTE                  field9F1E[8];
-  BYTE                  field57[19];
-  BYTE                  field9F26[8];
-  BYTE                  field9F27;
-  BYTE                  field9F33[3];
-  BYTE                  field9F34[4];
-  BYTE                  field9F35;
-  BYTE                  field9F36[2];
-  BYTE                  field9F37[4];
-  BYTE                  field9F41[4];
-  BYTE                  field9F53;
 };
 
 struct TX_DATA {

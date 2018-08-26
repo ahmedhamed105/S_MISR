@@ -97,7 +97,7 @@ struct ICC_DATA {
   BYTE sb_tag_9b[2];
   BYTE sb_tag_9f26[8];
   WORD w_misc_len;
-  BYTE sb_misc_content[330];
+  BYTE sb_misc_content[255];
 };
 
 struct TXN_RECORD {       // Transaction record
