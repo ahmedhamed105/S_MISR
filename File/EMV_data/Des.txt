@@ -1,0 +1,53 @@
+
+Tag meanings are predefined, please refer to attached EMV book3, there is no information on tag meaning in source code.
+
+the struct TLIST is defined in emv2dll.h as
+typedef struct {                        /* end indicator = 0 Tag */
+  WORD wTag;
+  TL   sLen;
+  BYTE *pbLoc;
+} TLIST;                                /* tag list */
+
+tag is stored as a 16-bit WORD, so it can express 1 or 2 bytes tag. If it's 1 byte tag then it's value is from 0x0000 to 0x00FF.
+If you need to calculate from byte array you can calculate like
+(tag[0] << 8) + tag[1]
+
+
+
+
+static BOOLEAN ePANExtract(void)
+{
+  TLIST *psLp;
+  BYTE bLen;
+
+  if (DeAss(gGDS->s_TagList, gGDS->s_EMVOut.bMsg+2, gGDS->s_EMVOut.wLen - 2)) {
+    if ((psLp = TagSeek(gGDS->s_TagList, 0x5A)) != NULL) {
+      if ((bLen = psLp->sLen) <= 10) {
+        memset(INPUT.sb_pan, 0xFF, 10);
+        memcpy(INPUT.sb_pan, psLp->pbLoc, bLen);  // Save PAN here!
+        //INPUT.sb_pan_len = bLen;
+        if ((INPUT.sb_pan[9] & 0x0F) == 0x0F) {
+          if (InCardTable()) {
+            //if ((psLp = TagSeek(gGDS->s_TagList, 0x5F34)) != NULL)
+            //  INPUT.sb_pan_seqno = psLp->pbLoc[0];
+            //else
+            //  INPUT.sb_pan_seqno = 0;
+            return TRUE;
+          }
+        }
+        RSP_DATA.w_rspcode = 'U'*256+'C';
+        return FALSE;
+      }
+    }
+  }
+  EMVFatal();
+  return FALSE;
+}
+
+Explained:
+  DeAss()    -  link the TLV data returned from kernel with "gGDS->s_TagList"
+    TagSeek()  -  seek the tag and returned data in "psLp"
+                => psLp->pbLoc: tag data pointer returned
+                => psLp->sLen:  tag length returned
+
+
