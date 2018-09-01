@@ -15,7 +15,7 @@
 1520
 1- FLD (024) : (003) : [200] //why not 500?If message type = 1520(500 = Final settlement||501 = Intermediate settlement||502 = Final settlement in a specific currency||503 = Intermediate settlement in a specific currency\\ --> ok
 2- //RightFormat++FLD (062) : (020) : [00000000000000000000]\\  --> this is dynamic lenght --> ok
-3- //FLDS 50,54,63,   74,75,76,77,83,84,86,87,88,89,97 are Missing\\  --> ok
+3- //FLDS 50,54  ,63,74,75,    76,77,   83,84,86,   87,88,89,   97 are Missing\\  --> ok
 
 
 1804
