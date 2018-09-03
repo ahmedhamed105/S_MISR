@@ -811,7 +811,7 @@ pack_byte(0x59);
   /* 74. Credits number (sum of all TRX) */
   if (tx_bitmap[9] & 0x40) {
 	dbin2bcd(tmp, TERM_TOT.s_sale_tot.dd_amount);
-    split_data(&tmp[4], 5);
+    split_data(&tmp[6], 5);
   }
 
 
@@ -819,35 +819,35 @@ pack_byte(0x59);
   /* 75. Credits reversal number (sum of all reversal TRX) */
   if (tx_bitmap[9] & 0x20) {
 	  dbin2bcd(tmp, TERM_TOT.s_refund_tot.dd_amount);
-	  split_data(&tmp[4], 5);
+	  split_data(&tmp[6], 5);
   }
 
 
   /* 76. Debit number */
   if (tx_bitmap[9] & 0x10) {
 	  dbin2bcd(tmp, TERM_TOT.s_sale_tot.dd_amount);
-	  split_data(&tmp[4], 5);
+	  split_data(&tmp[6], 5);
   }
 
 
   /* 77. Debits reversal number */
   if (tx_bitmap[9] & 0x08) {
 	  dbin2bcd(tmp, TERM_TOT.s_refund_tot.dd_amount);
-	  split_data(&tmp[4], 5);
+	  split_data(&tmp[6], 5);
   }
 
 
   /* 83. Payments number */
   if (tx_bitmap[10] & 0x20) {
 	  dbin2bcd(tmp, TERM_TOT.s_refund_tot.dd_amount);
-	  split_data(&tmp[4], 5);
+	  split_data(&tmp[6], 5);
   }
 
 
   /* 84. Credits amount */
   if (tx_bitmap[10] & 0x10) {
 	  dbin2bcd(tmp, TERM_TOT.s_refund_tot.dd_amount);
-	  split_data(&tmp[4], 5);
+	  split_data(&tmp[6], 5);
   }
 
 
